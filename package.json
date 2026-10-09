@@ -1,11 +1,9 @@
 {
   "name": "arsenal",
   "version": "3.0.0",
-  "description": "Arsenal Security Engagement Harness",
+  "description": "Arsenal Security Harness",
   "type": "module",
-  "bin": {
-    "arsenal": "./bin/arsenal.ts"
-  },
+  "bin": { "arsenal": "./bin/arsenal.ts" },
   "scripts": {
     "build": "bun run bin/arsenal.ts build",
     "test": "bun test",
@@ -13,14 +11,6 @@
     "upstream:check": "bun --no-env-file run tools/sync-upstreams.ts --check",
     "upstream:update": "bun --no-env-file run tools/sync-upstreams.ts --write"
   },
-  "dependencies": {
-    "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1",
-    "yaml": "^2.7.0"
-  },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/node": "^22.13.9",
-    "typescript": "^5.8.2"
-  }
+  "dependencies": { "ajv": "^8.17.1", "ajv-formats": "^3.0.1", "yaml": "^2.7.0" },
+  "devDependencies": { "@types/bun": "latest", "@types/node": "^22.13.9", "typescript": "^5.8.2" }
 }
