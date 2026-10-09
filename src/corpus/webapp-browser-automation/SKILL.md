@@ -224,7 +224,7 @@ If the AI detects that desktop application automation is required but OpenRevers
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://webapp-browser-automation/support/SKILL.md` (Master Controller), `skill://webapp-browser-automation/support/routing.md`
 **Applicable Scenarios**: Any task requiring automated browser or desktop application operations
 **Downstream Exit**:
 - Captured requests require analysis → `anything-analyzer` or `js-reverse`
@@ -239,5 +239,5 @@ If the AI detects that desktop application automation is required but OpenRevers
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

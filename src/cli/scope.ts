@@ -11,11 +11,63 @@ import { parseScope } from "../core/scope.ts";
 import type { ScopeDocument } from "../core/scope.ts";
 
 export async function handleScope(ctx: CommandContext): Promise<number> {
-  const scopePath = path.join(ctx.repoRoot, ".omp", "scope.json");
+  const subCommand = ctx.subCommand ?? "show";
+  const arsenalScopePath = path.join(ctx.repoRoot, ".omp", "arsenal", "scope.json");
+  const legacyScopePath = path.join(ctx.repoRoot, ".omp", "scope.json");
+  const scopePath = fs.existsSync(arsenalScopePath)
+    ? arsenalScopePath
+    : fs.existsSync(legacyScopePath)
+      ? legacyScopePath
+      : arsenalScopePath;
   const engagementPath = path.join(ctx.repoRoot, ".omp", "engagement.json");
 
+  if (subCommand === "add") {
+    const target = (ctx.values.target as string) ?? ctx.positionals[0];
+    const exclude = ctx.values.exclude as string | undefined;
+    const authRef = (ctx.values.auth as string) ?? "Authorized Operator";
+    const isWrite = Boolean(ctx.values.write ?? true);
+
+    let currentScope: ScopeDocument;
+    if (fs.existsSync(scopePath)) {
+      try {
+        currentScope = parseScope(scopePath);
+      } catch {
+        currentScope = createDefaultScope(authRef);
+      }
+    } else {
+      currentScope = createDefaultScope(authRef);
+    }
+
+    if (target && !currentScope.in_scope.includes(target)) {
+      currentScope.in_scope.push(target);
+    }
+    if (exclude && !currentScope.out_of_scope.includes(exclude)) {
+      currentScope.out_of_scope.push(exclude);
+    }
+
+    fs.mkdirSync(path.dirname(scopePath), { recursive: true });
+    fs.writeFileSync(scopePath, JSON.stringify(currentScope, null, 2), { mode: 0o600 });
+
+    if (ctx.isJson) {
+      emitJson(
+        createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.SUCCESS, "write", {
+          scopePath,
+          addedTarget: target,
+          addedExclude: exclude,
+          inScope: currentScope.in_scope,
+          outOfScope: currentScope.out_of_scope,
+        })
+      );
+    } else {
+      console.log(`[arsenal scope add] Updated scope at '${scopePath}':`);
+      if (target) console.log(` + In-Scope: ${target}`);
+      if (exclude) console.log(` - Out-of-Scope: ${exclude}`);
+    }
+    return EXIT_CODES.SUCCESS;
+  }
+
   if (!fs.existsSync(scopePath)) {
-    const errorMsg = `No scope file found at '${scopePath}'. Run 'arsenal init' first.`;
+    const errorMsg = `No scope file found at '${scopePath}'. Run 'arsenal scope add --target <url>' first.`;
     if (ctx.isJson) {
       emitJson(
         createJsonEnvelope(
@@ -32,7 +84,6 @@ export async function handleScope(ctx: CommandContext): Promise<number> {
     }
     return EXIT_CODES.ENVIRONMENT_UNAVAILABLE;
   }
-
   let scopeDoc: ScopeDocument;
   try {
     scopeDoc = parseScope(scopePath);
@@ -108,4 +159,28 @@ export async function handleScope(ctx: CommandContext): Promise<number> {
   }
 
   return EXIT_CODES.SUCCESS;
+}
+
+function createDefaultScope(authRef: string): ScopeDocument {
+  return {
+    schema_version: 1,
+    engagement_id: "eng-default",
+    name: "Active Security Engagement",
+    created_at: new Date().toISOString(),
+    domain: "webapp",
+    auth: {
+      status: "granted",
+      basis: "Client Authorization",
+      reference: authRef,
+      ready_for_act: true,
+    },
+    in_scope: [],
+    out_of_scope: [],
+    disallowed_actions: ["dos"],
+    window: {
+      start: new Date().toISOString(),
+      end: new Date(Date.now() + 86400000 * 30).toISOString(),
+      timezone: "UTC",
+    },
+  };
 }

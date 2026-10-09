@@ -76,7 +76,7 @@ Proofpoint:
 - Block macro-enabled Office documents from external senders
 
 ### Step 4: Create Custom Detection Rules
-Use the `support/detecting-spearphishing-with-email-gateway/scripts/process.py` to analyze email gateway logs, identify spearphishing patterns, and generate custom detection rules.
+Use the `skill://red-detecting-spearphishing-with-email-gateway/support/detecting-spearphishing-with-email-gateway/templates/process.py` to analyze email gateway logs, identify spearphishing patterns, and generate custom detection rules.
 
 ### Step 5: Configure Alert and Response Actions
 - Real-time alerts for impersonation attempts

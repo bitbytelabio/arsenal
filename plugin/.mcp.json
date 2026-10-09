@@ -2,8 +2,9 @@
   "mcpServers": {
     "ida-pro": {
       "transport": "stdio",
-      "command": "python3",
+      "command": "uv",
       "args": [
+        "run",
         "-m",
         "ida_mcp"
       ],
@@ -11,8 +12,9 @@
     },
     "ghidra": {
       "transport": "stdio",
-      "command": "python3",
+      "command": "uv",
       "args": [
+        "run",
         "-m",
         "ghidra_mcp"
       ],
@@ -20,17 +22,42 @@
     },
     "frida": {
       "transport": "stdio",
-      "command": "frida-mcp",
+      "command": "uv",
+      "args": [
+        "run",
+        "frida-mcp"
+      ],
       "enabled": false
     },
     "jshook": {
       "transport": "stdio",
-      "command": "jshookmcp",
+      "command": "node",
+      "args": [
+        "jshookmcp.js"
+      ],
       "enabled": false
     },
     "burp-ultra": {
       "transport": "sse",
       "url": "http://127.0.0.1:8080/mcp",
+      "enabled": false
+    },
+    "playwright": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp-server"
+      ],
+      "enabled": false
+    },
+    "semgrep": {
+      "transport": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "semgrep-mcp"
+      ],
       "enabled": false
     }
   }

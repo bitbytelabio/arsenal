@@ -45,7 +45,7 @@ metadata:
 
 ## References
 
-- `references/wireless-lab-rules.md`
+- `skill://red-wifi-wireless/references/wireless-lab-rules.md`
 - `../pentest-tools/` `../attack-chain/` (close-access chapters)
 
 ## Routing Context

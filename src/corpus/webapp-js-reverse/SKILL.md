@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — Confirm that operations under this skill are authorized standard procedures.
+1. `NOW`: Read `skill://webapp-js-reverse/support/field-journal/precedent-reverse.md` — Confirm that operations under this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -137,47 +137,47 @@ Rules:
 
 - If the current task only requires signature generation, this stage can be downgraded
 - If the algorithm chain needs long-term reuse, this stage is mandatory
-- Issue #65 Obfuscation bypass (U–AV §4): JSVMP (AD) → `E-js-vmp`; CFF + string array (AE) → `E-js-deobf`; DevTools/debugger anti-debugging (AF) → `E-js-anti-debug`. For the full trigger table, refer to `support/reverse-engineering/references/nonpe-format-cookbook.md`; for AST details, refer to `references/ast-deobfuscation.md`
+- Issue #65 Obfuscation bypass (U–AV §4): JSVMP (AD) → `E-js-vmp`; CFF + string array (AE) → `E-js-deobf`; DevTools/debugger anti-debugging (AF) → `E-js-anti-debug`. For the full trigger table, refer to `skill://webapp-js-reverse/support/reverse-engineering/references/nonpe-format-cookbook.md`; for AST details, refer to `skill://webapp-js-reverse/references/ast-deobfuscation.md`
 
 ## Execution Requirements
 
 - All key steps must be documented in the local task artifact
 - If a tool invocation cannot be justified, do not invoke it
 - Prioritize using ready-made MCP capabilities from `js-reverse_*` or jshookmcp for direct evidence gathering; do not write scripts to reinvent capabilities prematurely
-- Fall back according to `references/fallbacks.md` upon failure
-- Output must conform to `references/output-contract.md`
+- Fall back according to `skill://webapp-js-reverse/references/fallbacks.md` upon failure
+- Output must conform to `skill://webapp-js-reverse/references/output-contract.md`
 
 ## Required References
 
-- Automation Entry: `references/automation-entry.md`
-- Tool Default Values: `references/tool-defaults.md`
-- Task Input Template: `references/task-input-template.md`
-- MCP-Specific Task Orchestration: `references/mcp-task-template.md`
-- Task Artifacts: `references/task-artifacts.md`
-- Local Reproduction: `references/local-rebuild.md`
-- Environment Patching: `references/env-patching.md`
-- Node Environment Reproduction: `references/node-env-rebuild.md`
-- Instrumentation: `references/instrumentation.md`
-- AST Deobfuscation: `references/ast-deobfuscation.md`
-- Non-PE/JS Obfuscation Cookbook U–AV: `support/reverse-engineering/references/nonpe-format-cookbook.md` (AD/AE/AF)
-- Fallbacks: `references/fallbacks.md`
-- Output Contract: `references/output-contract.md`
+- Automation Entry: `skill://webapp-js-reverse/references/automation-entry.md`
+- Tool Default Values: `skill://webapp-js-reverse/references/tool-defaults.md`
+- Task Input Template: `skill://webapp-js-reverse/references/task-input-template.md`
+- MCP-Specific Task Orchestration: `skill://webapp-js-reverse/references/mcp-task-template.md`
+- Task Artifacts: `skill://webapp-js-reverse/references/task-artifacts.md`
+- Local Reproduction: `skill://webapp-js-reverse/references/local-rebuild.md`
+- Environment Patching: `skill://webapp-js-reverse/references/env-patching.md`
+- Node Environment Reproduction: `skill://webapp-js-reverse/references/node-env-rebuild.md`
+- Instrumentation: `skill://webapp-js-reverse/references/instrumentation.md`
+- AST Deobfuscation: `skill://webapp-js-reverse/references/ast-deobfuscation.md`
+- Non-PE/JS Obfuscation Cookbook U–AV: `skill://webapp-js-reverse/support/reverse-engineering/references/nonpe-format-cookbook.md` (AD/AE/AF)
+- Fallbacks: `skill://webapp-js-reverse/references/fallbacks.md`
+- Output Contract: `skill://webapp-js-reverse/references/output-contract.md`
 
 ---
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://webapp-js-reverse/support/SKILL.md` (Master Controller), `skill://webapp-js-reverse/support/routing.md`
 **Upstream Alternatives**:
 - The browser tools of anything-analyzer MCP (port 23816) can serve as an alternative or supplement
 - jshookmcp can serve as an enhanced browser/CDP/Hook/Network/SourceMap/AST execution surface
 - `arsenal skill_load re-reverse-engineering` (if the target is not front-end JS)
 
 **Downstream Exit**:
-- Needs environment patching → `references/env-patching.md`
-- Needs local reproduction → `references/local-rebuild.md` / `references/node-env-rebuild.md`
-- Needs deobfuscation → `references/ast-deobfuscation.md`
-- Blocked / fallback required → `references/fallbacks.md`
+- Needs environment patching → `skill://webapp-js-reverse/references/env-patching.md`
+- Needs local reproduction → `skill://webapp-js-reverse/references/local-rebuild.md` / `skill://webapp-js-reverse/references/node-env-rebuild.md`
+- Needs deobfuscation → `skill://webapp-js-reverse/references/ast-deobfuscation.md`
+- Blocked / fallback required → `skill://webapp-js-reverse/references/fallbacks.md`
 
 **Related Sibling Modules**: anything-analyzer MCP (browser automation and HTTP capture capabilities can complement each other)
 
@@ -216,5 +216,5 @@ powershell -File "<skill-root>\scripts\bootstrap-reverse.ps1" -Capability @('any
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

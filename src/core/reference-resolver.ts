@@ -504,3 +504,56 @@ export function auditCitations(opts: {
   dangling.sort((a, b) => a.skill.localeCompare(b.skill) || a.target.localeCompare(b.target));
   return { playbooks_scanned: scanned, dangling_count: dangling.length, dangling, resolutions };
 }
+
+export interface ParsedSkillUri {
+  valid: boolean;
+  skillId: string;
+  subpath: string;
+  raw: string;
+  error?: string;
+}
+
+export function parseSkillUri(uri: string): ParsedSkillUri {
+  if (!uri.startsWith("skill://")) {
+    return { valid: false, skillId: "", subpath: "", raw: uri, error: "URI must start with skill://" };
+  }
+  const withoutScheme = uri.slice("skill://".length);
+  const slashIdx = withoutScheme.indexOf("/");
+  if (slashIdx === -1) {
+    return {
+      valid: true,
+      skillId: withoutScheme,
+      subpath: "",
+      raw: uri,
+    };
+  }
+  const skillId = withoutScheme.slice(0, slashIdx);
+  const subpath = withoutScheme.slice(slashIdx + 1);
+  return {
+    valid: true,
+    skillId,
+    subpath,
+    raw: uri,
+  };
+}
+
+export function resolveSkillUri(
+  uri: string,
+  corpusDir: string
+): { resolvedPath: string | null; exists: boolean; error?: string } {
+  const parsed = parseSkillUri(uri);
+  if (!parsed.valid) {
+    return { resolvedPath: null, exists: false, error: parsed.error };
+  }
+  const skillDir = path.join(corpusDir, parsed.skillId);
+  if (!fs.existsSync(skillDir)) {
+    return { resolvedPath: null, exists: false, error: `Skill not found: ${parsed.skillId}` };
+  }
+  const targetPath = parsed.subpath ? path.join(skillDir, parsed.subpath) : path.join(skillDir, "SKILL.md");
+  const exists = fs.existsSync(targetPath);
+  return {
+    resolvedPath: targetPath,
+    exists,
+    error: exists ? undefined : `Asset not found: ${parsed.subpath} in skill ${parsed.skillId}`,
+  };
+}

@@ -45,7 +45,7 @@ metadata:
 
 ## References
 
-- `references/debug-interface-triage.md`
+- `skill://re-hardware-security/references/debug-interface-triage.md`
 - `../firmware-pentest/` `../ot-ics/`
 
 ## Routing Context

@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-pentest.md` — confirm that operations in this skill are authorized standard procedures.
+1. `NOW`: Read `skill://red-supply-chain-security/support/field-journal/precedent-pentest.md` — confirm that operations in this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -166,13 +166,13 @@ Risk Assessment Matrix:
 
 ## References
 
-- `references/sbom-sca-methodology.md` — SBOM + SCA Methodology
-- `references/cicd-pipeline-security.md` — CI/CD Pipeline Security Audit
+- `skill://red-supply-chain-security/references/sbom-sca-methodology.md` — SBOM + SCA Methodology
+- `skill://red-supply-chain-security/references/cicd-pipeline-security.md` — CI/CD Pipeline Security Audit
 
 
 ## Task Completion Self-Check (MUST pass before claiming completion)
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

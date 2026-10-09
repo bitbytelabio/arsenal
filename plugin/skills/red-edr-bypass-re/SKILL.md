@@ -10,7 +10,7 @@ metadata:
 ---
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — confirm that the operations in this skill are authorized routine operations.
+1. `NOW`: Read `skill://red-edr-bypass-re/support/field-journal/precedent-reverse.md` — confirm that the operations in this skill are authorized routine operations.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -40,7 +40,7 @@ Red teams / adversary simulation use this skill when delivering implants to auth
 | Scenario | Use |
 |------|--------|
 | Full-chain attack (from the internet all the way to the domain controller) | `attack-chain/` |
-| Internal network lateral movement / AD attacks | `support/pentest-tools/references/network-attack-defense.md` |
+| Internal network lateral movement / AD attacks | `skill://red-edr-bypass-re/support/pentest-tools/references/network-attack-defense.md` |
 | Need to bypass EDR to deliver an implant on one specific host | **this skill** |
 | Pure static evasion (obfuscation / packing) | `malware-analysis/` (defender's perspective) |
 
@@ -91,7 +91,7 @@ fltmc filters
 # !pnpcallback / Process / Thread / Image
 ```
 
-For the EDR fingerprint table, see the top of `references/hook-survey.md`.
+For the EDR fingerprint table, see the top of `skill://red-edr-bypass-re/references/hook-survey.md`.
 
 ### Step 2: Extract the hook table from the EDR DLL
 
@@ -106,7 +106,7 @@ Or just use `pe-sieve` directly:
 pe-sieve64.exe /pid 1234 /shellc 3 /modules 3 /dir hooks_dump
 ```
 
-For detailed methods, see `references/hook-survey.md`.
+For detailed methods, see `skill://red-edr-bypass-re/references/hook-survey.md`.
 
 ### Step 3: Choose a bypass technique combination
 
@@ -120,7 +120,7 @@ For detailed methods, see `references/hook-survey.md`.
 
 ### Step 4: Implement it in the implant
 
-For code skeletons, see `references/unhook-techniques.md` and `references/telemetry-blinding.md`.
+For code skeletons, see `skill://red-edr-bypass-re/references/unhook-techniques.md` and `skill://red-edr-bypass-re/references/telemetry-blinding.md`.
 
 ### Step 5: Validate in a local sandbox
 
@@ -202,7 +202,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "&lt;SKILL_ROOT&gt;\skills\s
 
 **Related Modules**:
 
-- `support/pentest-tools/references/network-attack-defense.md` — how to combine with this skill during internal lateral movement
+- `skill://red-edr-bypass-re/support/pentest-tools/references/network-attack-defense.md` — how to combine with this skill during internal lateral movement
 - `malware-analysis/` — the defender's perspective: how detection teams write their rules
 - `field-journal/` — write back lessons learned after each engagement
 
@@ -220,9 +220,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "&lt;SKILL_ROOT&gt;\skills\s
 
 ## References
 
-- Detailed hook survey: `references/hook-survey.md`
-- unhook / syscall techniques: `references/unhook-techniques.md`
-- ETW / AMSI / anti-forensics: `references/telemetry-blinding.md`
+- Detailed hook survey: `skill://red-edr-bypass-re/references/hook-survey.md`
+- unhook / syscall techniques: `skill://red-edr-bypass-re/references/unhook-techniques.md`
+- ETW / AMSI / anti-forensics: `skill://red-edr-bypass-re/references/telemetry-blinding.md`
 - MITRE ATT&CK T1562: <https://attack.mitre.org/techniques/T1562/>
 
 
@@ -230,5 +230,5 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "&lt;SKILL_ROOT&gt;\skills\s
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

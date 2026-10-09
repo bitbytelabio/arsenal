@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — Verify that operations in this skill are authorized standard procedures.
+1. `NOW`: Read `skill://mobile-reverse/support/field-journal/precedent-reverse.md` — Verify that operations in this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -193,14 +193,14 @@ Interceptor.attach(Module.findExportByName("libcommonCrypto.dylib", "CCCrypt"), 
 
 ## References
 
-- `references/frida-objection-deep.md` — Advanced Frida + Objection usage
-- `references/ios-reverse-guide.md` — Dedicated iOS reverse engineering guide
-- `references/anti-detection-bypass.md` — Root/Jailbreak/Anti-debug/SSL Pinning bypass
+- `skill://mobile-reverse/references/frida-objection-deep.md` — Advanced Frida + Objection usage
+- `skill://mobile-reverse/references/ios-reverse-guide.md` — Dedicated iOS reverse engineering guide
+- `skill://mobile-reverse/references/anti-detection-bypass.md` — Root/Jailbreak/Anti-debug/SSL Pinning bypass
 
 
 ## Task Completion Self-Check (MUST pass before claiming completion)
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

@@ -71,8 +71,8 @@ Example: Attacker using living-off-the-land techniques for lateral movement
 
 ## References
 
-- `references/hunting-loop.md`
-- `support/malware-analysis/references/yara-sigma-rules.md`
+- `skill://red-threat-hunting/references/hunting-loop.md`
+- `skill://red-threat-hunting/support/malware-analysis/references/yara-sigma-rules.md`
 - `../digital-forensics/`
 
 ## Routing Context

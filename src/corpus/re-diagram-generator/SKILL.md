@@ -27,7 +27,7 @@ Create clear, editable diagrams from messy or structured inputs. Prefer text-bas
 2. Choose the diagram family and language using the decision table below.
 3. Normalize entities, relationships, labels, states, branches, and time/order information before writing diagram code.
 4. Generate concise, readable diagram source.
-5. Validate the syntax mentally and, when creating files, run `scripts/render_diagram.py`.
+5. Validate the syntax mentally and, when creating files, run `templates/render_diagram.py`.
 6. Return the diagram source plus a short note about assumptions. When files are generated, include links to the output files.
 
 Do not over-ask for clarification. If the request is underspecified, make reasonable assumptions and label them briefly.
@@ -66,7 +66,7 @@ Use Mermaid unless another language is clearly better.
 
 ## Mermaid generation rules
 
-Consult `references/diagram-patterns.md` for compact templates.
+Consult `skill://re-diagram-generator/references/diagram-patterns.md` for compact templates.
 
 General Mermaid rules:
 - Start with the correct diagram directive, for example `flowchart TD`, `sequenceDiagram`, `erDiagram`, `gantt`, `mindmap`, or `journey`.
@@ -114,9 +114,9 @@ Use SVG only when text diagram languages cannot express the requested visual rel
 When the user asks for PNG/SVG/PDF, create a source file and run:
 
 ```bash
-python "<SKILL_ROOT>/diagram-generator/scripts/render_diagram.py" input.mmd --format svg --out output.svg
-python "<SKILL_ROOT>/diagram-generator/scripts/render_diagram.py" input.dot --format png --out output.png
-python "<SKILL_ROOT>/diagram-generator/scripts/render_diagram.py" input.puml --format svg --out output.svg
+python "<SKILL_ROOT>/diagram-generator/templates/render_diagram.py" input.mmd --format svg --out output.svg
+python "<SKILL_ROOT>/diagram-generator/templates/render_diagram.py" input.dot --format png --out output.png
+python "<SKILL_ROOT>/diagram-generator/templates/render_diagram.py" input.puml --format svg --out output.svg
 ```
 
 > `<SKILL_ROOT>` is the actual path to the skills directory, which the AI should detect automatically.
@@ -164,19 +164,19 @@ For English user requests, respond in English. For Chinese user requests, respon
 | Mermaid CLI (mmdc) | ✓ | npm install -g @mermaid-js/mermaid-cli | Render Mermaid to PNG/SVG |
 | Graphviz (dot) | ✗ | Manual installation | https://graphviz.org/download/ |
 | PlantUML | ✗ | Requires Java + plantuml.jar | https://plantuml.com/download |
-| Python (render script) | ✓ | Already included in bootstrap | `scripts/render_diagram.py` dependency |
+| Python (render script) | ✓ | Already included in bootstrap | `templates/render_diagram.py` dependency |
 
 ### Notes
 
 This skill primarily outputs text-format diagram source (Mermaid/DOT/PlantUML); local rendering tools are not strictly required. A local renderer is only required when the user explicitly requests generating PNG/SVG/PDF files.
 
-If the renderer is unavailable, `scripts/render_diagram.py` will output installation instructions instead of an error.
+If the renderer is unavailable, `templates/render_diagram.py` will output installation instructions instead of an error.
 
 ---
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://re-diagram-generator/support/SKILL.md` (Master Controller), `skill://re-diagram-generator/support/routing.md`
 **Trigger Condition**: User says "draw diagram", "flowchart", "architecture diagram", "attack path diagram", "sequence diagram", "Mermaid", "Graphviz", "PlantUML"
 **Downstream Exit**:
 - Generated diagrams can be embedded in `docs-generator/` reports
@@ -189,5 +189,5 @@ If the renderer is unavailable, `scripts/render_diagram.py` will output installa
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

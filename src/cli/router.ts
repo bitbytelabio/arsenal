@@ -17,6 +17,7 @@ import { handleSkills } from "./skills.ts";
 import { handleMcp } from "./mcp.ts";
 import { handleVendor } from "./vendor.ts";
 import { handleCase } from "./case.ts";
+import { handleReport } from "./report.ts";
 
 export interface CommandContext {
   family: string;
@@ -46,6 +47,7 @@ const handlers: Record<string, CommandHandler> = {
   mcp: handleMcp,
   vendor: handleVendor,
   case: handleCase,
+  report: handleReport,
 };
 
 export async function dispatch(ctx: CommandContext): Promise<number> {

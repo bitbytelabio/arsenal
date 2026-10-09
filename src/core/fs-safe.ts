@@ -6,6 +6,13 @@
 
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { truncateTailToByteBudget, BOUNDING_LIMITS } from "./bounding.ts";
+
+export interface BoundedReadResult {
+  content: string;
+  sizeBytes: number;
+  truncated: boolean;
+}
 
 export interface SafeWriteOptions {
   write: boolean;
@@ -124,4 +131,30 @@ export function safeMkdir(dirPath: string, mode: number = 0o700): void {
   } catch {
     // Non-POSIX fallback
   }
+}
+
+export function safeReadBoundedFile(
+  filePath: string,
+  maxBytes: number = BOUNDING_LIMITS.MAX_DELIVERED_BYTES
+): BoundedReadResult {
+  const resolved = path.resolve(filePath);
+  if (!fs.existsSync(resolved)) {
+    throw new Error(`File not found: ${resolved}`);
+  }
+  const rawBytes = fs.readFileSync(resolved);
+  const sizeBytes = rawBytes.length;
+  const rawStr = new TextDecoder("utf-8", { fatal: false }).decode(rawBytes);
+  if (sizeBytes <= maxBytes) {
+    return {
+      content: rawStr,
+      sizeBytes,
+      truncated: false,
+    };
+  }
+  const boundedStr = truncateTailToByteBudget(rawStr, maxBytes);
+  return {
+    content: boundedStr,
+    sizeBytes,
+    truncated: true,
+  };
 }

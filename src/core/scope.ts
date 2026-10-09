@@ -194,3 +194,39 @@ export function resolveActiveScope(workspaceDir: string = process.cwd()): Active
 
   return { scope: null, scopeSha256: null, scopePath: null };
 }
+
+export interface ScopePromptDecision {
+  allowed: boolean;
+  action: "proceed" | "added" | "abort";
+  target: string;
+  reason: string;
+}
+
+export async function checkScopeOrPrompt(
+  target: string,
+  workspaceDir: string = process.cwd(),
+  promptCallback?: (question: string) => Promise<string>
+): Promise<ScopePromptDecision> {
+  const { scope, scopePath } = resolveActiveScope(workspaceDir);
+  if (scope) {
+    const attr = attributeTarget(target, scope);
+    if (attr.status === "in_scope") {
+      return { allowed: true, action: "proceed", target, reason: `Target matches in_scope selector: ${attr.matchingSelector}` };
+    }
+    if (attr.status === "out_of_scope") {
+      return { allowed: false, action: "abort", target, reason: `Target is explicitly OUT OF SCOPE: ${attr.matchingSelector}` };
+    }
+  }
+
+  const promptText = `Target '${target}' is not registered in active scope (${scopePath ?? "missing"}). Add target to scope, proceed conditionally, or abort? [add/proceed/abort]`;
+  const answer = promptCallback ? await promptCallback(promptText) : "proceed";
+  const normalized = answer.trim().toLowerCase();
+
+  if (normalized === "add") {
+    return { allowed: true, action: "added", target, reason: "Target dynamically added to active scope by operator" };
+  } else if (normalized === "proceed" || normalized === "yes" || normalized === "y") {
+    return { allowed: true, action: "proceed", target, reason: "Operator authorized conditional execution" };
+  } else {
+    return { allowed: false, action: "abort", target, reason: "Operator aborted out-of-scope operation" };
+  }
+}

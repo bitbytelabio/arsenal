@@ -110,11 +110,13 @@ approvalMode: "yolo"
     const mcpTemplate = JSON.stringify(
       {
         mcpServers: {
-          "burp-ultra": {
-            transport: "sse",
-            url: "http://127.0.0.1:8080/mcp",
-            enabled: false,
-          },
+          "ida-pro": { transport: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], enabled: false },
+          ghidra: { transport: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], enabled: false },
+          frida: { transport: "stdio", command: "uv", args: ["run", "frida-mcp"], enabled: false },
+          jshook: { transport: "stdio", command: "node", args: ["jshookmcp.js"], enabled: false },
+          "burp-ultra": { transport: "sse", url: "http://127.0.0.1:8080/mcp", enabled: false },
+          playwright: { transport: "stdio", command: "npx", args: ["-y", "@playwright/mcp-server"], enabled: false },
+          semgrep: { transport: "stdio", command: "uv", args: ["run", "semgrep-mcp"], enabled: false },
         },
       },
       null,
@@ -128,6 +130,25 @@ approvalMode: "yolo"
       { relPath: "models.yml", content: modelsTemplate },
       { relPath: "mcp.json", content: mcpTemplate },
     ];
+
+    // Copy all 5 specialist agent definitions into agent/agents/
+    const pluginAgentsDir = path.join(ctx.repoRoot, "plugin/agents");
+    const specialistFiles = [
+      "sec-re.md",
+      "sec-webapp.md",
+      "sec-mobile.md",
+      "sec-red.md",
+      "sec-verifier.md",
+    ];
+    for (const sf of specialistFiles) {
+      const srcPath = path.join(pluginAgentsDir, sf);
+      if (fs.existsSync(srcPath)) {
+        templates.push({
+          relPath: path.join("agent/agents", sf),
+          content: fs.readFileSync(srcPath, "utf-8"),
+        });
+      }
+    }
 
     const actions: Array<{ path: string; action: string }> = [];
     let refused = false;
@@ -189,7 +210,18 @@ approvalMode: "yolo"
   }
 
   if (subCommand === "verify") {
-    const requiredFiles = ["AGENTS.md", "RULES.md", "config.yml", "models.yml"];
+    const requiredFiles = [
+      "AGENTS.md",
+      "RULES.md",
+      "config.yml",
+      "models.yml",
+      "mcp.json",
+      "agent/agents/sec-re.md",
+      "agent/agents/sec-webapp.md",
+      "agent/agents/sec-mobile.md",
+      "agent/agents/sec-red.md",
+      "agent/agents/sec-verifier.md",
+    ];
     const missing: string[] = [];
     for (const req of requiredFiles) {
       if (!fs.existsSync(path.join(profileDir, req))) {

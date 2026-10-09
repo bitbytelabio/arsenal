@@ -50,7 +50,7 @@ for f in /Library/PrivilegedHelperTools/*; do
 done
 ```
 
-**How to CONFIRM:** the helper accepts requests after uninstall (job still loaded), reads scripts/config from non-root-writable `/Applications/...`, or relies on PID/bundle-id-only peer validation (raceable).
+**How to CONFIRM:** the helper accepts requests after uninstall (job still loaded), reads templates/config from non-root-writable `/Applications/...`, or relies on PID/bundle-id-only peer validation (raceable).
 
 ### 3. Writable LaunchDaemon plist / target → root (CVE-2025-24085 pattern)
 

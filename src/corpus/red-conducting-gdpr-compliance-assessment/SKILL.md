@@ -42,7 +42,7 @@ metadata:
 
 ## Workflow
 
-**For detailed procedures, templates, and examples, see `support/conducting-gdpr-compliance-assessment/references/detailed-workflow.md`**
+**For detailed procedures, templates, and examples, see `skill://red-conducting-gdpr-compliance-assessment/support/conducting-gdpr-compliance-assessment/references/detailed-workflow.md`**
 
 ### Phase 1: Determine Territorial Applicability (Article 3)
 
@@ -63,7 +63,7 @@ Document for EACH activity:
 - Retention periods
 - Security measures
 
-**Tools**: Use `scripts/article30_parser.py`, `article30_validator.py`, `generate_ropa_report.py`
+**Tools**: Use `templates/article30_parser.py`, `article30_validator.py`, `generate_ropa_report.py`
 
 **Common gaps**: Missing retention periods (68%), vague purposes, undocumented transfers
 
@@ -97,7 +97,7 @@ DPIA **mandatory** for:
 - Large-scale special categories processing
 - Systematic monitoring of public areas (facial recognition)
 
-**Template**: See `support/conducting-gdpr-compliance-assessment/references/detailed-workflow.md` for complete DPIA structure
+**Template**: See `skill://red-conducting-gdpr-compliance-assessment/support/conducting-gdpr-compliance-assessment/references/detailed-workflow.md` for complete DPIA structure
 
 **Content**: Description, necessity, risks, mitigation, consultation (DPO, supervisory authority if novel high-risk)
 

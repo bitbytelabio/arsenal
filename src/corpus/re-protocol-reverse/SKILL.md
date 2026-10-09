@@ -12,9 +12,9 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — Verify authorization and standard operational boundaries
+1. `NOW`: Read `skill://re-protocol-reverse/support/field-journal/precedent-reverse.md` — Verify authorization and standard operational boundaries
 2. `NOW`: Confirm if the task is **protocol/traffic/serialization format** reverse engineering (if purely Web parameter signatures → redirect to `js-reverse/`)
-3. `NOW`: If target network interaction is involved → complete scope via `support/scripts/case-init.sh`; do NOT ACT against targets if `auth` is not granted
+3. `NOW`: If target network interaction is involved → complete scope via `skill://re-protocol-reverse/support/templates/case-init.sh`; do NOT ACT against targets if `auth` is not granted
 4. `NEXT`: Read `tool-index.md`; bootstrap missing tools (tshark/wireshark, etc. may require manual installation)
 5. `ACT`: Enter Workflow Phase 1, produce draft frame layout or message dictionary
 
@@ -86,12 +86,12 @@ MUST produce:
 
 ## References
 
-- `references/protocol-workflow.md` — Frame layout and Protobuf quick reference
+- `skill://re-protocol-reverse/references/protocol-workflow.md` — Frame layout and Protobuf quick reference
 - Related: `../ida-reverse/` `../js-reverse/` `../firmware-pentest/` `../pentest-tools/`
 
 ## Routing Context
 
-**Upstream**: `MASTER-ROUTING` R21 · `support/routing.md`  
+**Upstream**: `MASTER-ROUTING` R21 · `skill://re-protocol-reverse/support/routing.md`  
 **Downstream**: Client-side algorithm required → `ida-reverse`/`js-reverse`; replay verification required → `pentest-tools`/`api-security`  
 **Peer**: `malware-analysis` (C2 protocols), `digital-forensics` (traffic forensics)
 

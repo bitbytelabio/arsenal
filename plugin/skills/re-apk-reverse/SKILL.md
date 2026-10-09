@@ -10,9 +10,9 @@ metadata:
 ---
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-> Endpoint extraction/Frida adaptation and community comparisons: `references/community-security-skills.md`; dynamic analysis requires scoped and authorized devices.
+> Endpoint extraction/Frida adaptation and community comparisons: `skill://re-apk-reverse/references/community-security-skills.md`; dynamic analysis requires scoped and authorized devices.
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized routine operations.
+1. `NOW`: Read `skill://re-apk-reverse/support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized routine operations.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -44,10 +44,10 @@ Prioritize using this skill when the task falls into the following scenarios:
 
 The following workflows are high-frequency and have error-prone parameters; prefer using the skill's bundled scripts:
 
-- Perform `jadx + apktool` extraction to disk in one pass and generate a summary: `scripts/decode.sh`
-- Frida device checks, process enumeration, spawn/attach injection: `scripts/frida-run.sh`
-- Rebuild, align, sign, and install APKs: `scripts/rebuild-sign-install.sh`
-- Quickly extract key Manifest components and permissions: `scripts/manifest-summary.sh`
+- Perform `jadx + apktool` extraction to disk in one pass and generate a summary: `templates/decode.sh`
+- Frida device checks, process enumeration, spawn/attach injection: `templates/frida-run.sh`
+- Rebuild, align, sign, and install APKs: `templates/rebuild-sign-install.sh`
+- Quickly extract key Manifest components and permissions: `templates/manifest-summary.sh`
 
 The following one-line commands should be called directly without dedicated wrappers:
 
@@ -59,7 +59,7 @@ The following one-line commands should be called directly without dedicated wrap
 
 ## Bundled Scripts
 
-### `scripts/decode.sh`
+### `templates/decode.sh`
 
 Purpose:
 
@@ -75,7 +75,7 @@ pwsh -File "<skill-root>\apk-reverse\scripts\decode.sh" -ApkPath "D:\DOWNLOAD\ap
 pwsh -File "<skill-root>\apk-reverse\scripts\decode.sh" -ApkPath "D:\DOWNLOAD\app.apk" -Name demo -SkipJadx
 ```
 
-### `scripts/frida-run.sh`
+### `templates/frida-run.sh`
 
 Purpose:
 
@@ -90,7 +90,7 @@ pwsh -File "<skill-root>\apk-reverse\scripts\frida-run.sh" -Usb -ListProcesses
 pwsh -File "<skill-root>\apk-reverse\scripts\frida-run.sh" -Usb -Spawn -Package com.example.app -ScriptPath "D:\hooks\test.js"
 ```
 
-### `scripts/rebuild-sign-install.sh`
+### `templates/rebuild-sign-install.sh`
 
 Purpose:
 
@@ -111,7 +111,7 @@ Notes:
 - Generates and reuses a debug keystore by default
 - Outputs to the same directory as `ProjectDir` by default, facilitating side-by-side storage with original packages and unpacking directories
 
-### `scripts/manifest-summary.sh`
+### `templates/manifest-summary.sh`
 
 Purpose:
 
@@ -161,7 +161,7 @@ Boundaries:
 
 - JEB Pro is commercial software; users must obtain and install a valid license independently. This package does not download, crack, or bypass licensing.
 - Invoke only when local JEB availability is verified in `tool-index`; otherwise, continue using `jadx`, `apktool`, Ghidra, IDA, or radare2.
-- Third-party JEB MCP bridges are not dependencies of this package. Source code, permissions, network behavior, and versions must be audited according to `support/ops/skill-supply-chain.md` prior to installation, followed by explicit user registration confirmation.
+- Third-party JEB MCP bridges are not dependencies of this package. Source code, permissions, network behavior, and versions must be audited according to `skill://re-apk-reverse/support/ops/skill-supply-chain.md` prior to installation, followed by explicit user registration confirmation.
 
 ### `apktool`
 
@@ -229,7 +229,7 @@ Recommended actions:
    - Primary `package`
    - `application`, `activity`, `service`, `receiver`
    - Whether `.so` files exist in the `lib/` directory
-4. Issue #65 threat profile quick-check (authorized samples/devices; see `support/reverse-engineering/references/nonpe-format-cookbook.md` §7–8):
+4. Issue #65 threat profile quick-check (authorized samples/devices; see `skill://re-apk-reverse/support/reverse-engineering/references/nonpe-format-cookbook.md` §7–8):
    - Transparent/hidden icons (AU): `aapt dump badging` + manifest theme/label/icon → `E-android-hidden-icon-manifest`
    - Magisk/script wipe characteristics and remote curl|sh (AR/AS) → Document signatures and URLs into evidence; **do not execute** destructive commands
    - Persistence paths (AT): `service.d` / `priv-app`, etc. → `E-android-persistence`
@@ -313,7 +313,7 @@ Principles:
 Recommendations:
 
 - Use `frida-*` directly for simple, one-off commands.
-- Prioritize `scripts/frida-run.sh` for repeatable and stable injection workflows.
+- Prioritize `templates/frida-run.sh` for repeatable and stable injection workflows.
 
 ### 6. Native `.so` Triage
 
@@ -371,7 +371,7 @@ frida -U -f com.example.app -l hook.js
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://re-apk-reverse/support/SKILL.md` (Master Controller), `skill://re-apk-reverse/support/routing.md`
 **Downstream Exit**:
 - Core logic in `.so` → `ida-reverse/` or `radare2/`
 - Dynamic hooking/validation needed → `arsenal skill_load re-reverse-engineering/tools-dynamic.md` (Frida section)
@@ -399,9 +399,9 @@ The entry scripts of this skill are integrated with the unified bootstrap system
 
 ### Bootstrap Trigger Points
 
-- `scripts/decode.sh`: Automatically invokes `bootstrap-reverse.ps1` when jadx or apktool is missing
-- `scripts/rebuild-sign-install.sh`: Automatically invokes bootstrap when adb or apktool is missing
-- `scripts/frida-run.sh`: Currently still a manual check (frida is typically installed via pip)
+- `templates/decode.sh`: Automatically invokes `bootstrap-reverse.ps1` when jadx or apktool is missing
+- `templates/rebuild-sign-install.sh`: Automatically invokes bootstrap when adb or apktool is missing
+- `templates/frida-run.sh`: Currently still a manual check (frida is typically installed via pip)
 
 ### On Bootstrap Failure
 
@@ -415,6 +415,6 @@ If automated installation fails, the script will throw an explicit error along w
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?
 - [ ] If hidden icons, wipe scripts, or persistence clues were hit: did I record E-android-* Evidence per the U–AV cookbook (within authorized scope)?

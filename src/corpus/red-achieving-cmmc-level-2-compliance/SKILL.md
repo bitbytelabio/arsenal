@@ -94,7 +94,7 @@ Certification is valid **three years** with **annual affirmations**. Maintain th
 
 ## Output Format
 
-Produce a **CMMC Level 2 Readiness Report** using `support/achieving-cmmc-level-2-compliance/assets/template.md`, containing:
+Produce a **CMMC Level 2 Readiness Report** using `skill://red-achieving-cmmc-level-2-compliance/support/achieving-cmmc-level-2-compliance/assets/template.md`, containing:
 
 1. **Applicability & CUI categories** — why Level 2 applies.
 2. **Scope** — assets by scoping category and the CUI boundary diagram reference.
@@ -104,4 +104,4 @@ Produce a **CMMC Level 2 Readiness Report** using `support/achieving-cmmc-level-
 6. **Assessment path** — self vs C3PAO, target date, affirmation owner.
 7. **Remediation roadmap** — sequenced by point value and effort.
 
-Use `support/achieving-cmmc-level-2-compliance/scripts/process.py` to compute the SPRS score from a control-status JSON, flag POA&M-eligibility concerns, and report the gap to the conditional-certification threshold.
+Use `skill://red-achieving-cmmc-level-2-compliance/support/achieving-cmmc-level-2-compliance/templates/process.py` to compute the SPRS score from a control-status JSON, flag POA&M-eligibility concerns, and report the gap to the conditional-certification threshold.

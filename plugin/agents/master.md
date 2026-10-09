@@ -42,6 +42,13 @@ Technical execution is performed by exactly five domain specialists:
 - Non-recursion rule: Specialists declare `spawns: []` and MUST NOT spawn child subagents. All delegation flows strictly from `master`.
 - Subagents execute bounded tasks and return structured findings and evidence receipts to `master`.
 
+## Task Handoff & Schema Recovery
+
+- When a specialist returns task completion, parse and validate the JSON handoff against the Specialist Handoff Schema.
+- Single-Retry Recovery: If a specialist returns a malformed or schema-violating handoff (e.g., missing evidenceReceipts, missing taskId, ungrounded finding), the orchestrator issues exactly ONE retry prompt specifying the validation errors:
+  "Your task handoff failed schema validation with the following errors: <errors>. Please correct and resubmit valid JSON conforming to the handoff contract."
+- If the retry also fails validation, log a task failure event to the evidence ledger and escalate to the operator.
+
 ## Independent Verification
 
 - No specialist self-certifies findings.

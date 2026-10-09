@@ -10,7 +10,7 @@ metadata:
 ---
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — confirm that the operations in this skill are authorized routine operations.
+1. `NOW`: Read `skill://re-pwn-chain/support/field-journal/precedent-reverse.md` — confirm that the operations in this skill are authorized routine operations.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -100,7 +100,7 @@ Strategy:
 6. Add a ret gadget to fix stack alignment (critical!)
 ```
 
-For a complete template, see `references/stack-pwn.md`.
+For a complete template, see `skill://re-pwn-chain/references/stack-pwn.md`.
 
 ### Scenario 2: Linux kernel driver ioctl out-of-bounds write → get root
 
@@ -118,7 +118,7 @@ Strategy:
 6. Or, more simply: overwrite modprobe_path with "/tmp/x", write a /tmp/x, then trigger modprobe
 ```
 
-For a complete template, see `references/kernel-pwn.md`.
+For a complete template, see `skill://re-pwn-chain/references/kernel-pwn.md`.
 
 ## On-Demand Bootstrap
 
@@ -159,7 +159,7 @@ Stop retrying and output structured manual installation steps (pip source / gem 
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://re-pwn-chain/support/SKILL.md` (Master Controller), `skill://re-pwn-chain/support/routing.md`
 **Trigger Condition**: You have a binary + an identified vulnerability point and need to write an exploit
 
 **Upstream skills (use them first, then return to this skill)**:
@@ -171,9 +171,9 @@ Stop retrying and output structured manual installation steps (pip source / gem 
 - Integrating into a complete attack chain (lateral movement, privilege escalation, persistence) → `attack-chain/`
 
 **Submodule navigation**:
-- Stack-based exploitation (ret2libc / ret2csu / one_gadget / stack alignment) → `references/stack-pwn.md`
-- Heap-based exploitation (tcache / fastbin / unsorted / large bin / FILE struct) → `references/heap-pwn.md`
-- Kernel pwn (kROP / SMEP-SMAP bypass / KASLR leak / modprobe_path) → `references/kernel-pwn.md`
+- Stack-based exploitation (ret2libc / ret2csu / one_gadget / stack alignment) → `skill://re-pwn-chain/references/stack-pwn.md`
+- Heap-based exploitation (tcache / fastbin / unsorted / large bin / FILE struct) → `skill://re-pwn-chain/references/heap-pwn.md`
+- Kernel pwn (kROP / SMEP-SMAP bypass / KASLR leak / modprobe_path) → `skill://re-pwn-chain/references/kernel-pwn.md`
 
 ## Important Notes
 
@@ -188,5 +188,5 @@ Stop retrying and output structured manual installation steps (pip source / gem 
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

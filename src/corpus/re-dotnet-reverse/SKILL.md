@@ -50,7 +50,7 @@ If the target is a purely native binary (compiled with C/C++/Go/Rust without CLR
 | Programmatic IL Manipulation | **dnlib** | Write C# scripts for bulk metadata manipulation and string decrypters. |
 | Direct AI Interaction | **dnSpy MCP** | Tool surfaces such as `dnspy_decompile` / `dnspy_inspect_il`. |
 
-> Prerequisites: Install dnSpyEx + de4dot on Windows hosts (via choco or release archives); use `ilspycmd` + `dotnet runtime` on Linux/macOS. See the installation matrix in `references/sharp-tools.md` for details.
+> Prerequisites: Install dnSpyEx + de4dot on Windows hosts (via choco or release archives); use `ilspycmd` + `dotnet runtime` on Linux/macOS. See the installation matrix in `skill://re-dotnet-reverse/references/sharp-tools.md` for details.
 
 ## Six-Stage Workflow
 
@@ -86,7 +86,7 @@ diec target.exe                        # Detect It Easy CLI
 # Or drag into dnSpyEx to inspect for heavy class name mangling / control flow flattening
 ```
 
-Common Obfuscators → Unpacking Strategies (see `references/obfuscators.md` for details):
+Common Obfuscators → Unpacking Strategies (see `skill://re-dotnet-reverse/references/obfuscators.md` for details):
 
 | Obfuscator | Signatures | de4dot Handling |
 |------------|------------|-----------------|
@@ -108,7 +108,7 @@ de4dot --type sa target.exe            # SmartAssembly
 
 # Multi-layered obfuscation / de4dot reports unknown
 de4dot --detect target.exe             # Inspect what it recognizes
-# May require patching anti-tamper before running de4dot (see references/obfuscators.md)
+# May require patching anti-tamper before running de4dot (see skill://re-dotnet-reverse/references/obfuscators.md)
 ```
 
 Output: `target-clean.exe` to be used for subsequent analysis. **Retain the original sample** for baseline comparison.
@@ -145,7 +145,7 @@ dnSpyEx → Right-click method → Edit Method (C#) or Edit IL
 File → Save Module → Overwrite target file
 ```
 
-**IL patching reliability > C# patching**: C# recompilation can fail due to missing references or syntax incompatibilities, whereas IL edits introduce minimal distortion. See `references/common-workflow.md` for details.
+**IL patching reliability > C# patching**: C# recompilation can fail due to missing references or syntax incompatibilities, whereas IL edits introduce minimal distortion. See `skill://re-dotnet-reverse/references/common-workflow.md` for details.
 
 ## Trigger Scenarios & Routing
 
@@ -159,7 +159,7 @@ Route to this skill when the user mentions:
 
 ## Exit Routing
 
-- IL2CPP-compiled Unity games → `reverse-engineering/` + `support/field-journal/seed-014_unity-il2cpp-reverse.md` (IL2CPP is native, bypass dnSpy)
+- IL2CPP-compiled Unity games → `reverse-engineering/` + `skill://re-dotnet-reverse/support/field-journal/seed-014_unity-il2cpp-reverse.md` (IL2CPP is native, bypass dnSpy)
 - NativeAOT artifacts → `reverse-engineering/` (Native binary)
 - Pure native PE (without CLR) → `reverse-engineering/` / `ida-reverse/`
 - Bulk symbol/function porting between binary versions → `binary-diff/`
@@ -167,11 +167,11 @@ Route to this skill when the user mentions:
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://re-dotnet-reverse/support/SKILL.md` (Master Controller), `skill://re-dotnet-reverse/support/routing.md`
 **Downstream Exit**:
 - IL2CPP / NativeAOT (native) → `reverse-engineering/`
 - In-depth native .so/.dll segment analysis → `ida-reverse/` / `radare2/`
-- Direct AI control over dnSpy → Register and interface with dnSpy MCP (see `references/sharp-tools.md`)
+- Direct AI control over dnSpy → Register and interface with dnSpy MCP (see `skill://re-dotnet-reverse/references/sharp-tools.md`)
 
 **Related Sibling Modules**:
 - `arsenal skill_load re-reverse-engineering/languages-compiled.md` (.NET introduction points to this module)
@@ -179,9 +179,9 @@ Route to this skill when the user mentions:
 
 ## Reference Documents
 
-- [references/obfuscators.md](references/obfuscators.md) — ConfuserEx / SmartAssembly / Babel / Eazfuscator / .NET Reactor deobfuscation guide + anti-tamper bypasses
-- [references/common-workflow.md](references/common-workflow.md) — Complete workflow, IL patch reliability, string decrypter extraction, state machine identification
-- [references/sharp-tools.md](references/sharp-tools.md) — Red team Sharp* tool analysis, tool installation matrix, dnSpy MCP integration, community resource index
+- [references/obfuscators.md](skill://re-dotnet-reverse/references/obfuscators.md) — ConfuserEx / SmartAssembly / Babel / Eazfuscator / .NET Reactor deobfuscation guide + anti-tamper bypasses
+- [references/common-workflow.md](skill://re-dotnet-reverse/references/common-workflow.md) — Complete workflow, IL patch reliability, string decrypter extraction, state machine identification
+- [references/sharp-tools.md](skill://re-dotnet-reverse/references/sharp-tools.md) — Red team Sharp* tool analysis, tool installation matrix, dnSpy MCP integration, community resource index
 
 ## Completion Checklist
 

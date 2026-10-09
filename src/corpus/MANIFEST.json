@@ -96,8 +96,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-achieving-cmmc-level-2-compliance/SKILL.md",
-      "sha256": "f2d1aec5c4686e80cb77aae3dd7b71c88d914a873bab83978dbdf3530660dab4",
-      "bytes": 7940,
+      "sha256": "d5bf2dc2f24e91cd977811f029a0974bd52b007041fdb01ef18c440da204aa43",
+      "bytes": 8034,
       "source_path": "achieving-cmmc-level-2-compliance/SKILL.md",
       "source_sha256": "f5124addbf044b13ff6332872087d93062bfbbdd5283aac96bd76d4c9ddd7a67",
       "support_files": [
@@ -120,8 +120,8 @@
           "bytes": 3801
         },
         {
-          "path": "support/achieving-cmmc-level-2-compliance/scripts/process.py",
-          "source_path": "support/achieving-cmmc-level-2-compliance/scripts/process.py",
+          "path": "support/achieving-cmmc-level-2-compliance/templates/process.py",
+          "source_path": "support/achieving-cmmc-level-2-compliance/templates/process.py",
           "sha256": "2e53b3229f8df1414ba927d78d03dbf0350a53cb959e3358c454635ffa2584c2",
           "bytes": 7774
         }
@@ -178,8 +178,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-detecting-ai-model-prompt-injection-attacks/SKILL.md",
-      "sha256": "b3dee7c0b7d56fcfca77217ca5b4fe2fac7992968bbb9637449e4891e2cad396",
-      "bytes": 9010,
+      "sha256": "0cd05bf6f64e9fa7f2e11a9d1dacd4362f7060009a9a83ed6c051e6f9347bff4",
+      "bytes": 8683,
       "source_path": "ai-security/detecting-ai-model-prompt-injection-attacks/SKILL.md",
       "source_sha256": "04b4b15d591a841252a98186a517d35678f514bb29e70ab19837d693ac82cfc1"
     },
@@ -202,8 +202,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-llm-guardrails-for-security/SKILL.md",
-      "sha256": "6b9d71786b5df5d24f81a930b609f2d98cab48d44cbf6c2bdb026e136315650c",
-      "bytes": 10192,
+      "sha256": "7eb35a3c59406054031d8f4c97f60d4bc403482325443c0f1fc6479f80b9b42f",
+      "bytes": 9865,
       "source_path": "ai-security/implementing-llm-guardrails-for-security/SKILL.md",
       "source_sha256": "9f7c31b34bc7b1bb92c05bd28e8b48223cf55e39864c73caf0dfcc3c97e39c58"
     },
@@ -273,8 +273,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/mobile-analyzing-android-malware-with-apktool/SKILL.md",
-      "sha256": "7534495df72024a69fb8728d548e1254431f761f5073850bddab89269bf3f7d2",
-      "bytes": 2253,
+      "sha256": "2469062eb5cd098c9a550e697e9a9c39a7c32fc01519d4a55871b972b6064352",
+      "bytes": 2255,
       "source_path": "analyzing-android-malware-with-apktool/SKILL.md",
       "source_sha256": "35c586c0d04a334249bdba66ef41578921c8695b3500f066a69de95e2d9fd720",
       "support_files": [
@@ -285,8 +285,8 @@
           "bytes": 2758
         },
         {
-          "path": "scripts/agent.py",
-          "source_path": "scripts/agent.py",
+          "path": "templates/agent.py",
+          "source_path": "templates/agent.py",
           "sha256": "af647ad312a85455ea15a2a8d09f8fcab6e2f7becc8490979ebe1f0542d2a3f4",
           "bytes": 8930
         }
@@ -439,8 +439,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-analyzing-cloud-storage-access-patterns/SKILL.md",
-      "sha256": "98db12cb5fef58270c2395d076f4477466a7914a6519849db3757ed5a3ec3567",
-      "bytes": 2036,
+      "sha256": "1feb21a8897ec0a6f3c980ce7578b929d1116faf557ae72225796cb621883bb0",
+      "bytes": 2026,
       "source_path": "analyzing-cloud-storage-access-patterns/SKILL.md",
       "source_sha256": "1ec405b4ae9da7230cb3d328238bdbf0d1a41d72e426d702ec083a91cf53a32e",
       "support_files": [
@@ -915,8 +915,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-analyzing-malicious-url-with-urlscan/SKILL.md",
-      "sha256": "a48cc31e86699e99023f1fc903084b1cbcece9d62adc275d6998e0e911288ef4",
-      "bytes": 3773,
+      "sha256": "286476afef9cacd9e31129b49249b040a9b3c46589c7ec7381995aaecdee40da",
+      "bytes": 3824,
       "source_path": "analyzing-malicious-url-with-urlscan/SKILL.md",
       "source_sha256": "82f4a952f988eb241bed631580afd6fb3287bcb4463ceaf3648fe29ba1a7eedd",
       "support_files": [
@@ -945,8 +945,8 @@
           "bytes": 2380
         },
         {
-          "path": "support/analyzing-malicious-url-with-urlscan/scripts/process.py",
-          "source_path": "support/analyzing-malicious-url-with-urlscan/scripts/process.py",
+          "path": "support/analyzing-malicious-url-with-urlscan/templates/process.py",
+          "source_path": "support/analyzing-malicious-url-with-urlscan/templates/process.py",
           "sha256": "c32c1257a1350712ac753a2a945dfc5090bf4201a1709f3ccffa3cc039259542",
           "bytes": 15638
         }
@@ -1357,8 +1357,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-analyzing-powershell-script-block-logging/SKILL.md",
-      "sha256": "338579bf8554d939f4ace2220d08f5664df25d1652ad5c03432ad6caafc1fc22",
-      "bytes": 2268,
+      "sha256": "eb37d674552008035f108ee3030ab3509f5e600715b0f4f53b23cfc8eaf8883e",
+      "bytes": 2258,
       "source_path": "analyzing-powershell-script-block-logging/SKILL.md",
       "source_sha256": "6d2aaf3523f8ad82828365000f286f5dab23aa4c162e1850ea92fd1ceca68db4",
       "support_files": [
@@ -1653,8 +1653,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-analyzing-threat-landscape-with-misp/SKILL.md",
-      "sha256": "40e55441d9207776efbb8fe152deb13cdcc569d174ce96fb6bf95247a578c038",
-      "bytes": 1896,
+      "sha256": "8ee90395abb1d72759c7953250144ec41b23906877f130c59901c6b3789abf41",
+      "bytes": 1886,
       "source_path": "analyzing-threat-landscape-with-misp/SKILL.md",
       "source_sha256": "76e556b5cdd012652152c78eae349fcf4e366bd392500322ef19600788614994",
       "support_files": [
@@ -2238,8 +2238,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-input-boundary-testing/SKILL.md",
-      "sha256": "c2ab9273754780d3c641136023adc419361f14c1ff12145cb8b5476365ddc041",
-      "bytes": 8063,
+      "sha256": "d0018d34b31aa48f9b5938a7dcd3cc3fbf154493567ff02ced8c062bc4a0a28b",
+      "bytes": 8062,
       "source_path": "application-security/input-boundary-testing/SKILL.md",
       "source_sha256": "aec37fa87c503e01777a76662fdf34274e6de36f2c2253c37ac2eca06bd91bb1"
     },
@@ -2453,8 +2453,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-auditing-foundry-smart-contract-security/SKILL.md",
-      "sha256": "ab57fcec9c69b01cf30acbc0878e10052191b968ad9a2e477d04266af585a6e0",
-      "bytes": 7069,
+      "sha256": "d4ec5b6a1a56617045d1ea7cb9122e5ca0e0d404112c7d0b9a68b470a2e0df87",
+      "bytes": 7338,
       "source_path": "auditing-foundry-smart-contract-security/SKILL.md",
       "source_sha256": "1d631c528d15c299be4e6446b31e0901484c2a89bbdcb95fd545e5e438db8259",
       "support_files": [
@@ -2477,12 +2477,6 @@
           "bytes": 4955
         },
         {
-          "path": "scripts/agent.py",
-          "source_path": "scripts/agent.py",
-          "sha256": "c6c8e75c32cc9de586216edd421c4a74d22c793e8d4aa1c43cf51564c9c91909",
-          "bytes": 13779
-        },
-        {
           "path": "support/auditing-foundry-smart-contract-security/references/api-reference.md",
           "source_path": "support/auditing-foundry-smart-contract-security/references/api-reference.md",
           "sha256": "ae55c7388afef7f24db509e0eee5d5706712de25ab11e46f51111c419cd03671",
@@ -2499,6 +2493,12 @@
           "source_path": "support/auditing-foundry-smart-contract-security/references/vulnerability-checklist.md",
           "sha256": "737d461946d803abedc443477f20e42d97a785b1a1e15799a3bf3e67eeb17c09",
           "bytes": 4955
+        },
+        {
+          "path": "templates/agent.py",
+          "source_path": "templates/agent.py",
+          "sha256": "c6c8e75c32cc9de586216edd421c4a74d22c793e8d4aa1c43cf51564c9c91909",
+          "bytes": 13779
         }
       ]
     },
@@ -3750,8 +3750,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-building-vulnerability-exception-tracking-system/SKILL.md",
-      "sha256": "8b52373f6d97671239bda830aca0cf71422ae88048fab2de89be017292704a09",
-      "bytes": 6633,
+      "sha256": "1732dcac0e280d448b4df4b61fe0b3e9639b42069fb729f9ea83fffe355ac81f",
+      "bytes": 6637,
       "source_path": "building-vulnerability-exception-tracking-system/SKILL.md",
       "source_sha256": "2a040338e3ecad6af340cda982cbf352985e696b1702bb7ba677d408abe797b5",
       "support_files": [
@@ -3780,8 +3780,8 @@
           "bytes": 2279
         },
         {
-          "path": "scripts/process.py",
-          "source_path": "scripts/process.py",
+          "path": "templates/process.py",
+          "source_path": "templates/process.py",
           "sha256": "244a1031a90168dd24f34400cae5118b942981cb733cd0bf1b76ac0e04009c74",
           "bytes": 8491
         }
@@ -4279,8 +4279,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-conducting-cyber-risk-assessment-with-nist-800-30/SKILL.md",
-      "sha256": "e33187a6ed781af07af45ece65b904f2418519c10dec69afa665ae556adabc9d",
-      "bytes": 9280,
+      "sha256": "9772856b1984011a87f766ea5ba71a1e168f726ac40583f5c2607810fa20b3d7",
+      "bytes": 9468,
       "source_path": "conducting-cyber-risk-assessment-with-nist-800-30/SKILL.md",
       "source_sha256": "2cf6a3a884c4fba73fafd45afad1d5fdd7e34ec6eef25039948ed26fd605c756",
       "support_files": [
@@ -4309,8 +4309,8 @@
           "bytes": 3834
         },
         {
-          "path": "support/conducting-cyber-risk-assessment-with-nist-800-30/scripts/process.py",
-          "source_path": "support/conducting-cyber-risk-assessment-with-nist-800-30/scripts/process.py",
+          "path": "support/conducting-cyber-risk-assessment-with-nist-800-30/templates/process.py",
+          "source_path": "support/conducting-cyber-risk-assessment-with-nist-800-30/templates/process.py",
           "sha256": "4e7f52954a93d5bd827fe037123037b89c7c38de87968f1a61b146a7a762ef1f",
           "bytes": 7964
         }
@@ -4365,8 +4365,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-conducting-gdpr-compliance-assessment/SKILL.md",
-      "sha256": "53a1756b1e58876b72ba980749a96ba62dd2d5a64ead2a2fc2020d3d1c33b840",
-      "bytes": 12791,
+      "sha256": "0d54c0df47f0f169148c88239f0614a8822743ad37ee67a65c3a21e0ac49ce10",
+      "bytes": 12893,
       "source_path": "conducting-gdpr-compliance-assessment/SKILL.md",
       "source_sha256": "7fe5870aad9fc430336dd33cb0b2b4200eeda217d8bc04aef296324d13e3b6a5",
       "support_files": [
@@ -4395,16 +4395,16 @@
           "bytes": 6375
         },
         {
-          "path": "scripts/article30_parser.py",
-          "source_path": "scripts/article30_parser.py",
-          "sha256": "c8304ff60665559487d35a085b68a05c1820f374f5a312da8cdc2d5193815f5f",
-          "bytes": 7746
-        },
-        {
           "path": "support/conducting-gdpr-compliance-assessment/references/detailed-workflow.md",
           "source_path": "support/conducting-gdpr-compliance-assessment/references/detailed-workflow.md",
           "sha256": "a8429be4abf0fdd289df11bc4033d400372584eca29eb6f6db4f599063ffafd7",
           "bytes": 20170
+        },
+        {
+          "path": "templates/article30_parser.py",
+          "source_path": "templates/article30_parser.py",
+          "sha256": "c8304ff60665559487d35a085b68a05c1820f374f5a312da8cdc2d5193815f5f",
+          "bytes": 7746
         }
       ]
     },
@@ -5858,8 +5858,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-performing-post-quantum-cryptography-migration/SKILL.md",
-      "sha256": "e86aa78c437093126daab4bb10fea2af40c24e73716f1829ccd55741124fa68a",
-      "bytes": 14197,
+      "sha256": "058eae48d227aef7f324d77ed10f658ec14be11bab97578169d9bce8771ac9af",
+      "bytes": 13740,
       "source_path": "cryptography/performing-post-quantum-cryptography-migration/SKILL.md",
       "source_sha256": "e899714a8c88c1289f5f2405ba7b8c0c872202ffb70553f680847fca36a18ada"
     },
@@ -5918,8 +5918,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-deploying-active-directory-honeytokens/SKILL.md",
-      "sha256": "c83797d3e7e5603760e120a00e553b6de3bd69ec1df352e52493566641e37420",
-      "bytes": 10486,
+      "sha256": "4de625f61dffa551e6b63fb23364418b4bb941375fd33c5ab905b5a10c976dfa",
+      "bytes": 10630,
       "source_path": "deception-technology/deploying-active-directory-honeytokens/SKILL.md",
       "source_sha256": "a810fa56722a18a2eac53b6f84cc74bae469b5a20bc3acf370c300540abb4096"
     },
@@ -5954,8 +5954,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-defending-llms-with-guardrails/SKILL.md",
-      "sha256": "40a45bfd19b2210e546285db788d8bf773013c3a47846452fc11d2e2c661e118",
-      "bytes": 12058,
+      "sha256": "147ddbd6d29d3fc2ec1729d0342674a65f40bb0d9fa9e00a0e8766e6f063403c",
+      "bytes": 12083,
       "source_path": "defending-llms-with-guardrails/SKILL.md",
       "source_sha256": "800fb9260b8690b5af810445660eda128351e2075f0aa307b5262174ebb1e1e2",
       "support_files": [
@@ -5972,8 +5972,8 @@
           "bytes": 1795
         },
         {
-          "path": "support/defending-llms-with-guardrails/scripts/agent.py",
-          "source_path": "support/defending-llms-with-guardrails/scripts/agent.py",
+          "path": "support/defending-llms-with-guardrails/templates/agent.py",
+          "source_path": "support/defending-llms-with-guardrails/templates/agent.py",
           "sha256": "6a9b1d189e696c018cdd21ff978393a5d546d8365f3b50bde786778255c32d3a",
           "bytes": 5521
         }
@@ -6044,22 +6044,22 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-deploying-active-directory-honeytokens/SKILL.md",
-      "sha256": "8d289397201b5cd41b001abc0b8eed7c2341cdd1f2dd6ad99980ecb96936e143",
-      "bytes": 9278,
+      "sha256": "7902fc2cf7adfbbc73589666772e3d670ac77718e2757ea43f05caa8d92dd5e6",
+      "bytes": 9276,
       "source_path": "deploying-active-directory-honeytokens/SKILL.md",
       "source_sha256": "0118316a153360c6538902d5e535a87279a30a5b26028ccbd1d0afc100f18316",
       "support_files": [
         {
           "path": "references/api-reference.md",
           "source_path": "references/api-reference.md",
-          "sha256": "ffcd34ba4f29024846d10a006f8b0069eef22a411111e527dd672571c83b8102",
-          "bytes": 12004
+          "sha256": "a27b3eb9661022a567cef82b5db04efb2a39ceebe62edaa84c6cfa830b206858",
+          "bytes": 12003
         },
         {
-          "path": "scripts/Deploy-ADHoneytokens.ps1",
-          "source_path": "scripts/Deploy-ADHoneytokens.ps1",
-          "sha256": "2728607e00356e5afc4ebb2c0c08bb000c62ac522a217fc02d6009d4c738a5af",
-          "bytes": 22762
+          "path": "templates/Deploy-ADHoneytokens.sh",
+          "source_path": "templates/Deploy-ADHoneytokens.sh",
+          "sha256": "298ae1775bb61e5bf0f33fcefd0123cb397f3a04af285574b3f5755293f865ea",
+          "bytes": 169
         }
       ]
     },
@@ -6070,8 +6070,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-deploying-cloud-deception-with-decoy-resources/SKILL.md",
-      "sha256": "805125338e1bf558a8aa262de4d990875f01c858d8581c6d23b6a33f9ce0994c",
-      "bytes": 10448,
+      "sha256": "217a0c0c6240c416a7afb5a26cc6c5f8ed605cd3a98136a6f20fc01328819892",
+      "bytes": 10568,
       "source_path": "deploying-cloud-deception-with-decoy-resources/SKILL.md",
       "source_sha256": "38a696a5b3686fe575bbcd0de8cefe5f4272f65c2d0a422fcaffed91d566ef55",
       "support_files": [
@@ -6094,8 +6094,8 @@
           "bytes": 2380
         },
         {
-          "path": "support/deploying-cloud-deception-with-decoy-resources/scripts/process.py",
-          "source_path": "support/deploying-cloud-deception-with-decoy-resources/scripts/process.py",
+          "path": "support/deploying-cloud-deception-with-decoy-resources/templates/process.py",
+          "source_path": "support/deploying-cloud-deception-with-decoy-resources/templates/process.py",
           "sha256": "c0b4061aa1a87da63777adf42d7eb6448145bdb5a42632fa584dfd182b617611",
           "bytes": 5099
         }
@@ -6384,8 +6384,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-designing-adversary-engagement-with-mitre-engage/SKILL.md",
-      "sha256": "aeea1a3a72f53053d58115d4720f3d2721daa342a98227ac082ce04c4b6f6c6a",
-      "bytes": 11033,
+      "sha256": "9939a042ac74c959c79720ed1578ddb0872eee98ebccff673ade9763e9504eba",
+      "bytes": 11218,
       "source_path": "designing-adversary-engagement-with-mitre-engage/SKILL.md",
       "source_sha256": "6f9230b7a8d4c29657d053af7453080e8dd47dca39458e0f22741e999ccdd41c",
       "support_files": [
@@ -6414,8 +6414,8 @@
           "bytes": 4488
         },
         {
-          "path": "support/designing-adversary-engagement-with-mitre-engage/scripts/process.py",
-          "source_path": "support/designing-adversary-engagement-with-mitre-engage/scripts/process.py",
+          "path": "support/designing-adversary-engagement-with-mitre-engage/templates/process.py",
+          "source_path": "support/designing-adversary-engagement-with-mitre-engage/templates/process.py",
           "sha256": "589b2aa8920abf5329c6d7b8a8b0e9d5d091fabbbc66825c8e37e855b1fd16e0",
           "bytes": 6612
         }
@@ -6570,8 +6570,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-aws-credential-exposure-with-trufflehog/SKILL.md",
-      "sha256": "1293954e376e2582afabf9265ba502cbadb0144a50c387ca0d47045300e80c67",
-      "bytes": 10501,
+      "sha256": "b65d4875e40e574950fa42edc13d2532fa8007ea70ad30cf2b8a4357a3406bfc",
+      "bytes": 10529,
       "source_path": "detecting-aws-credential-exposure-with-trufflehog/SKILL.md",
       "source_sha256": "aafe742fca6245cdaaf75366e6a1f3a2062ecc70727150661efe324bf952a641",
       "support_files": [
@@ -7168,8 +7168,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-dependency-confusion/SKILL.md",
-      "sha256": "b7a7ce5a53bbaedea5c227662941ca003baf8fb709f9ec75b40fc6ba41a6f8dc",
-      "bytes": 11454,
+      "sha256": "02b8bc3ffa601911e7d2a2f671c7f9fea68690d5b075f96257568435e7b29e3a",
+      "bytes": 11449,
       "source_path": "detecting-dependency-confusion/SKILL.md",
       "source_sha256": "7197c1fe6cbe07ea5525e999d313aef810ac8736ad84e982b7e6a5fc120368f6",
       "support_files": [
@@ -7434,8 +7434,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-detecting-fileless-malware-techniques/SKILL.md",
-      "sha256": "4cd2bf766cf471d084545709fe061f7ea5d2d93ed9a76731a2ffe31afafe0acc",
-      "bytes": 16344,
+      "sha256": "01d9b2648fac19b7fc2f7fd5ae7415139f11ad795d93ba0e3017e6bc355a24e1",
+      "bytes": 16491,
       "source_path": "detecting-fileless-malware-techniques/SKILL.md",
       "source_sha256": "eb069039f9f19fdad27d0d427ded461006e1a01ab5055d62b6ed97bd8b20ed0e",
       "support_files": [
@@ -7742,8 +7742,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-malicious-npm-packages/SKILL.md",
-      "sha256": "fa04f6f428cb0effb9d7210c8a44f0dc0887be9b4dcd3d0f3d484ea90429fecf",
-      "bytes": 10038,
+      "sha256": "0625fc94590d3a0f955c5ed66238c6596128f0d9d9ded69f3a0bc788a5254dac",
+      "bytes": 10023,
       "source_path": "detecting-malicious-npm-packages/SKILL.md",
       "source_sha256": "5cb5048c9b108a29713ed1077654d4e07583717fddec21c4d964438eabea5b6f",
       "support_files": [
@@ -7911,8 +7911,8 @@
         {
           "path": "references/standards.md",
           "source_path": "references/standards.md",
-          "sha256": "58b2940cee57e9c149e12939c11ccf75d8fd8a507c68966910459826add0ea88",
-          "bytes": 1645
+          "sha256": "c0a87cf24a6f917e9e15182d7124a0b1fdd762fc416b8e6a7ebf196574ab0f24",
+          "bytes": 1644
         }
       ]
     },
@@ -8344,8 +8344,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-secure-boot-bypass/SKILL.md",
-      "sha256": "ee437831a6ee6b1e9f74e13fb459aab19f9b28a651ffe3995a014599e9c642ed",
-      "bytes": 9977,
+      "sha256": "6291703fb23e7a1525455914d9017dc13a3e4df3ce0245de80a74c906c7403a1",
+      "bytes": 9967,
       "source_path": "detecting-secure-boot-bypass/SKILL.md",
       "source_sha256": "4fa16032cb056bb6fd4f4800dfa46310425a39574143ce6ee697b77768e8d63e",
       "support_files": [
@@ -8468,8 +8468,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-spearphishing-with-email-gateway/SKILL.md",
-      "sha256": "aaa9558ad99387f02b4e8944d301f644f38ad6638b9a31245fac8ea3efe65151",
-      "bytes": 4630,
+      "sha256": "25a46dc16e809675acc383b8b781ac23c81bd6413b73e6055c45eb6fc0d8ddb0",
+      "bytes": 4687,
       "source_path": "detecting-spearphishing-with-email-gateway/SKILL.md",
       "source_sha256": "3015374924723812858995f549396019c607837a16d22f32115a41323529ca58",
       "support_files": [
@@ -8498,8 +8498,8 @@
           "bytes": 3813
         },
         {
-          "path": "support/detecting-spearphishing-with-email-gateway/scripts/process.py",
-          "source_path": "support/detecting-spearphishing-with-email-gateway/scripts/process.py",
+          "path": "support/detecting-spearphishing-with-email-gateway/templates/process.py",
+          "source_path": "support/detecting-spearphishing-with-email-gateway/templates/process.py",
           "sha256": "b63cd3e0ce25157af41a014ab90ed2e74c2ea76d4708cf85115a74807caac2c5",
           "bytes": 21603
         }
@@ -8755,8 +8755,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-typosquatting-packages/SKILL.md",
-      "sha256": "d2147d9f287b632760c16cdad83922f913276c501f30938a1b5dd76f225182fd",
-      "bytes": 11634,
+      "sha256": "ab8cec45540c4dc0dc2d91b4bad4f3dc542cd01c9b4ccd8ac06214df4e829f38",
+      "bytes": 11624,
       "source_path": "detecting-typosquatting-packages/SKILL.md",
       "source_sha256": "90da7ab43f9986923cb2bdc45c1a7cd6d8be18b6f7f5430288547476b07cbdb3",
       "support_files": [
@@ -8825,8 +8825,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-detecting-aws-credential-exposure-with-trufflehog/SKILL.md",
-      "sha256": "d1744a96c0c142b6fac06e36f03b440958bcf4b489bb83da26600e95f152895c",
-      "bytes": 11900,
+      "sha256": "8c0ac19628c411827441b7c69a0528d93c601644fe3598670d75e0903a533977",
+      "bytes": 11928,
       "source_path": "devsecops/detecting-aws-credential-exposure-with-trufflehog/SKILL.md",
       "source_sha256": "b751b897000d45806a12c317de8b9d1ac25861c985d7183c6ae474cc70e93300"
     },
@@ -8945,8 +8945,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-secret-scanning-with-gitleaks/SKILL.md",
-      "sha256": "92e4f5dee6f8023e4e69d6c2d9cc4343b40e75d995d49a3f3c2f287f71c4f68a",
-      "bytes": 12450,
+      "sha256": "6d5b3d89cc9ae8e45bf5fadc830d27b5cba0d94b9e326f271b1012fa852fc304",
+      "bytes": 12467,
       "source_path": "devsecops/implementing-secret-scanning-with-gitleaks/SKILL.md",
       "source_sha256": "c59595a0fe0285c92ebd8fe564def96c02e01136ceb45e9d0c0a885b3455cb66"
     },
@@ -9365,8 +9365,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-performing-cloud-log-forensics-with-athena/SKILL.md",
-      "sha256": "10a978058cbd16a5e3743ae6ea3d468860b67fa703eaa874ae0d7c20548360ed",
-      "bytes": 17081,
+      "sha256": "445ff6d208c545ea609a75c2d5823f5194ef77d13077d11228f070c49a4569e0",
+      "bytes": 16754,
       "source_path": "digital-forensics/performing-cloud-log-forensics-with-athena/SKILL.md",
       "source_sha256": "7cd71e8f74bd45f0a47828867919b147d6c88ddc033be6c4ba35f14ec20c3e95"
     },
@@ -9557,8 +9557,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-emulating-cloud-attacks-with-stratus-red-team/SKILL.md",
-      "sha256": "91e4311f08c4a81dd75f80fe33920dd6691559c77cd997f1b3ccbf16dc69a41d",
-      "bytes": 11052,
+      "sha256": "7b2762908d8b36551b40533f06d7dd2ec00835fc0db652b2327d9a11f8c07b5a",
+      "bytes": 11102,
       "source_path": "emulating-cloud-attacks-with-stratus-red-team/SKILL.md",
       "source_sha256": "8c65abcfc2791c72bd3c695c70ab18abdad2722052857e8e3cd1766d3bffd29c",
       "support_files": [
@@ -9575,8 +9575,8 @@
           "bytes": 1252
         },
         {
-          "path": "support/emulating-cloud-attacks-with-stratus-red-team/scripts/agent.py",
-          "source_path": "support/emulating-cloud-attacks-with-stratus-red-team/scripts/agent.py",
+          "path": "support/emulating-cloud-attacks-with-stratus-red-team/templates/agent.py",
+          "source_path": "support/emulating-cloud-attacks-with-stratus-red-team/templates/agent.py",
           "sha256": "d1fcac116e6ba90f0182d2d7d4fca7e183b39c62e5f6abe0fae77d21a6ecd802",
           "bytes": 5196
         }
@@ -9793,8 +9793,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-enumerating-cloud-with-cloudfox/SKILL.md",
-      "sha256": "01def201eb2d49552ad536b98cf6b936883e529e31ec207ff06d2e8ab136c1f2",
-      "bytes": 9501,
+      "sha256": "7942345dd2c8503c241fca5b09cee9535389b144c6ad42bd02a59a533a278d7c",
+      "bytes": 9547,
       "source_path": "enumerating-cloud-with-cloudfox/SKILL.md",
       "source_sha256": "e234e7894163f107784f18811e0039b3fbf029bd5fbcbfa1b8ef036860e7c944",
       "support_files": [
@@ -9811,8 +9811,8 @@
           "bytes": 1106
         },
         {
-          "path": "support/enumerating-cloud-with-cloudfox/scripts/agent.py",
-          "source_path": "support/enumerating-cloud-with-cloudfox/scripts/agent.py",
+          "path": "support/enumerating-cloud-with-cloudfox/templates/agent.py",
+          "source_path": "support/enumerating-cloud-with-cloudfox/templates/agent.py",
           "sha256": "b8aecc7bf2863e322f099d5015515205e09bc266c25fa0f3dea1df5fe549a912",
           "bytes": 3789
         }
@@ -9929,8 +9929,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-executing-nist-rmf-authorization-to-operate/SKILL.md",
-      "sha256": "2d71cf8fc781392ee55f466a19c3a54be1a812067b4f9163d78491fde2e007c6",
-      "bytes": 8075,
+      "sha256": "077d30e038052674067cd683db59fc2e7a048883f382d465d9296182c2012168",
+      "bytes": 8189,
       "source_path": "executing-nist-rmf-authorization-to-operate/SKILL.md",
       "source_sha256": "48c8e110fd95a5cbf653f50eefe75b1f1f2cdfc40b70ba842dbe035b6519a732",
       "support_files": [
@@ -9953,8 +9953,8 @@
           "bytes": 4344
         },
         {
-          "path": "support/executing-nist-rmf-authorization-to-operate/scripts/process.py",
-          "source_path": "support/executing-nist-rmf-authorization-to-operate/scripts/process.py",
+          "path": "support/executing-nist-rmf-authorization-to-operate/templates/process.py",
+          "source_path": "support/executing-nist-rmf-authorization-to-operate/templates/process.py",
           "sha256": "2e59d12da6d38b543f69f777a12b2b2754836fa122d77d78192ff067269547bd",
           "bytes": 7919
         }
@@ -10054,8 +10054,8 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-exploit-dev-offensive-exploit-development/SKILL.md",
-      "sha256": "b55cc2e80edd07b42914aa5060b800f319e25e0deb4f28caa719cb8096455435",
-      "bytes": 34336,
+      "sha256": "e02ae10f59855d344fc1cf8839bfee250ec9f0242b24c6dc9ac15a023f14f889",
+      "bytes": 34395,
       "source_path": "exploit-dev/offensive-exploit-development/SKILL.md",
       "source_sha256": "22ae77955883399b00bfd4b10909f403869efc4c4b49e81ba065f1e477b83cce"
     },
@@ -10158,8 +10158,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-exploiting-aws-with-pacu/SKILL.md",
-      "sha256": "13fcba8eace27dd4c74812dea5182ad40b8013275f2d25024bb9ea46a2f8270f",
-      "bytes": 10146,
+      "sha256": "6b06f63752617ab9a07694bed00dc37b606688c50fbab3843241b42e2a7f2ec2",
+      "bytes": 10185,
       "source_path": "exploiting-aws-with-pacu/SKILL.md",
       "source_sha256": "45188f8b2ac6e0104f3b83d89eacc02d317e1d8e3a62502f55666583eea13bcb",
       "support_files": [
@@ -10176,8 +10176,8 @@
           "bytes": 1346
         },
         {
-          "path": "support/exploiting-aws-with-pacu/scripts/agent.py",
-          "source_path": "support/exploiting-aws-with-pacu/scripts/agent.py",
+          "path": "support/exploiting-aws-with-pacu/templates/agent.py",
+          "source_path": "support/exploiting-aws-with-pacu/templates/agent.py",
           "sha256": "feb043be6f5328e6e4f7c1e536e88f554f2a111a81e4a062d58e379d11f8c131",
           "bytes": 4392
         }
@@ -10221,8 +10221,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-exploiting-broken-link-hijacking/SKILL.md",
-      "sha256": "bf61ab6dd892f12c60550c2b4456b8a6cd0d34c6c421bc6b1146e0008e4b2445",
-      "bytes": 8978,
+      "sha256": "46a831caf9958c2979a2d6f51fed89de5107486695f30ce71982abaae028ab48",
+      "bytes": 8980,
       "source_path": "exploiting-broken-link-hijacking/SKILL.md",
       "source_sha256": "9474484e0d329a41147398236bfabb88b38302e392520c49c751a45fc0fbd8a9",
       "support_files": [
@@ -10916,8 +10916,8 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-fuzzing-offensive-bug-identification/SKILL.md",
-      "sha256": "9da453f6943ac7e06df73862fadb68e5c2e1c2b3381ec000bbaa30baf1215451",
-      "bytes": 56400,
+      "sha256": "7250c63123c30c905906d04d15660daa12d2716b66e842593b2ff969b6f5151c",
+      "bytes": 56404,
       "source_path": "fuzzing/offensive-bug-identification/SKILL.md",
       "source_sha256": "b80715679fc455a96585cbe25005b107963daa0c10e08df743b2ddbc017bc272"
     },
@@ -10940,8 +10940,8 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-fuzzing-offensive-fuzzing/SKILL.md",
-      "sha256": "5b619bd9cace40013273cacc1a7fd52a9871b814371df838731b1d45d6626176",
-      "bytes": 11848,
+      "sha256": "6fbd4d6fc49620704d441f8ee1d851f491b62b7d439573be2eac871d4284d77f",
+      "bytes": 11852,
       "source_path": "fuzzing/offensive-fuzzing/SKILL.md",
       "source_sha256": "fcd129b42cdf383cacd7852db336dc51e3e540d872ead9931c7acec30b4088c4"
     },
@@ -10990,8 +10990,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-generating-forensic-timelines-with-hayabusa/SKILL.md",
-      "sha256": "d52a04dd3c52a417e444e84f025f545f7c8f792f585da18ea82b2d652788cc7c",
-      "bytes": 8569,
+      "sha256": "d19a4a32e54b8b8879d1ed4ad612d9a89326b406af1304bdafc1904ba90146cf",
+      "bytes": 8583,
       "source_path": "generating-forensic-timelines-with-hayabusa/SKILL.md",
       "source_sha256": "2374ac379a6c80a57296a48698adbc78896bdab0caffad76a1dffa3bb3fef57b",
       "support_files": [
@@ -12259,8 +12259,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-hunting-saas-sso-token-abuse/SKILL.md",
-      "sha256": "578065201774ed0fdcaf1f746722cbab00e8c24042c3ae938c5f268022026644",
-      "bytes": 11341,
+      "sha256": "df6d5155bafce905e7e04010f253c62ddf9f1d162c773a08bb657801256f87b2",
+      "bytes": 11384,
       "source_path": "hunting-saas-sso-token-abuse/SKILL.md",
       "source_sha256": "66851481f372bae50bf9a35a0fcc8b4c3172847cb5d646a5cfe6d7b7505eb49c",
       "support_files": [
@@ -12277,8 +12277,8 @@
           "bytes": 1423
         },
         {
-          "path": "support/hunting-saas-sso-token-abuse/scripts/agent.py",
-          "source_path": "support/hunting-saas-sso-token-abuse/scripts/agent.py",
+          "path": "support/hunting-saas-sso-token-abuse/templates/agent.py",
+          "source_path": "support/hunting-saas-sso-token-abuse/templates/agent.py",
           "sha256": "de18286bbc6342aa0f9e0ce157e1d449c27c84849178580aaf0cc7bf2ec6fd20",
           "bytes": 5280
         }
@@ -12817,8 +12817,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-anti-phishing-training-program/SKILL.md",
-      "sha256": "c33e4a2c6f6e5b1c56b347135879f6200b2bffa9d01191da4e76d7fe08a546bb",
-      "bytes": 4289,
+      "sha256": "2c9ee2f1679b8d8a2bf6ffe8111cf6b4609c1174af36cf04bf9906cf0539271b",
+      "bytes": 4347,
       "source_path": "implementing-anti-phishing-training-program/SKILL.md",
       "source_sha256": "c082da8787f495197df15fd9e2857d83e168ccce94a3e64ddd07781f8bdfbc94",
       "support_files": [
@@ -12847,8 +12847,8 @@
           "bytes": 3158
         },
         {
-          "path": "support/implementing-anti-phishing-training-program/scripts/process.py",
-          "source_path": "support/implementing-anti-phishing-training-program/scripts/process.py",
+          "path": "support/implementing-anti-phishing-training-program/templates/process.py",
+          "source_path": "support/implementing-anti-phishing-training-program/templates/process.py",
           "sha256": "37c135d1cd4cb3251004a0c716c55998bc3591f1a0ef24f153d792e5ca8d306f",
           "bytes": 14270
         }
@@ -12961,8 +12961,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-implementing-api-schema-validation-security/SKILL.md",
-      "sha256": "4cbd32191da1722cadcdbdfe7eb5ad98528236228654331e55dc9085f795e047",
-      "bytes": 13434,
+      "sha256": "268892cd72b1b662f5e8ccda97ca8c93dd5eb7c74c39b5d37f2399387c5dca4c",
+      "bytes": 13496,
       "source_path": "implementing-api-schema-validation-security/SKILL.md",
       "source_sha256": "62ca654dbb68bbb79e30d0cad3f44c58133f44de9cfd955655be80bbf78970d1",
       "support_files": [
@@ -13401,8 +13401,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-canary-tokens-for-network-intrusion/SKILL.md",
-      "sha256": "31715850e319105ace4191992178b0f616b91943f88278dc4d340392e6209a52",
-      "bytes": 12040,
+      "sha256": "20258d5fb2fb169ec013087ecfc83e42c7eabe745f856bd7681e086e237dda20",
+      "bytes": 12010,
       "source_path": "implementing-canary-tokens-for-network-intrusion/SKILL.md",
       "source_sha256": "91478d919212791e38629117928269803ec605801a59aa3c356a753364aef71c",
       "support_files": [
@@ -13996,8 +13996,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-dmarc-dkim-spf-email-security/SKILL.md",
-      "sha256": "1a82b889131b0a5a4e25bbe257f3d9436362d5193ed9ad1fe551661fac8e2299",
-      "bytes": 4384,
+      "sha256": "94a2f155cf66a8f46c5b264c697a0a42dd53f29eab6f6b8bc1987c41fe1e7152",
+      "bytes": 4441,
       "source_path": "implementing-dmarc-dkim-spf-email-security/SKILL.md",
       "source_sha256": "150c33a5b13d6e97b6db0fbccf676a35e05cf7e07792f2c8d44f7cbd0357e232",
       "support_files": [
@@ -14026,8 +14026,8 @@
           "bytes": 3205
         },
         {
-          "path": "support/implementing-dmarc-dkim-spf-email-security/scripts/process.py",
-          "source_path": "support/implementing-dmarc-dkim-spf-email-security/scripts/process.py",
+          "path": "support/implementing-dmarc-dkim-spf-email-security/templates/process.py",
+          "source_path": "support/implementing-dmarc-dkim-spf-email-security/templates/process.py",
           "sha256": "89d3b1197b68c0de2d5e62baecac4fc6d2de28be600dffefac4f4bc561208f7f",
           "bytes": 20891
         }
@@ -14613,8 +14613,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-hipaa-security-rule-safeguards/SKILL.md",
-      "sha256": "7f98e4282f214fddd97aea92c7ff8c617ca019914c1454319563abd53344817a",
-      "bytes": 8951,
+      "sha256": "547acac824d57eeb29ee1888e1a750ca024274fb39c1e63ad3b27c5e8772b2c1",
+      "bytes": 9121,
       "source_path": "implementing-hipaa-security-rule-safeguards/SKILL.md",
       "source_sha256": "eec382e0dabb7b2f970982ea65259db1ce9964e14d964ed8e31ce93c5c58b8df",
       "support_files": [
@@ -14643,8 +14643,8 @@
           "bytes": 5612
         },
         {
-          "path": "support/implementing-hipaa-security-rule-safeguards/scripts/process.py",
-          "source_path": "support/implementing-hipaa-security-rule-safeguards/scripts/process.py",
+          "path": "support/implementing-hipaa-security-rule-safeguards/templates/process.py",
+          "source_path": "support/implementing-hipaa-security-rule-safeguards/templates/process.py",
           "sha256": "57f5215567cab2e96cde10e84a098651bed04d7efd9369d17d56bcece1dfa069",
           "bytes": 7836
         }
@@ -15103,8 +15103,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-log-integrity-with-blockchain/SKILL.md",
-      "sha256": "55dce56a7061e9e9acc817b8fe01202dd81b200a73710cf977c6ddf81730b78a",
-      "bytes": 2144,
+      "sha256": "6cab27703754d85cfd0d8aa118eec8fc1205a7057b22476b7bb13c5f1c65c3ff",
+      "bytes": 2134,
       "source_path": "implementing-log-integrity-with-blockchain/SKILL.md",
       "source_sha256": "c7dd6358dbb9628626a6d88abe29d2ce5968a8baabf4e174609b90ba13abd34a",
       "support_files": [
@@ -16062,8 +16062,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-secret-scanning-with-gitleaks/SKILL.md",
-      "sha256": "02b45dad27f16f7edf1b9aea1623360a474bcf03b98572e6391500a1e1532635",
-      "bytes": 10968,
+      "sha256": "9312e9ac218c931cde4b68489786f73b6288c57efc74d2a10533c1725537ba50",
+      "bytes": 10985,
       "source_path": "implementing-secret-scanning-with-gitleaks/SKILL.md",
       "source_sha256": "b4edc041a407d5b88dc54de6085088c797cd97a63d82de605c39436346ff4cc4",
       "support_files": [
@@ -16226,8 +16226,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-siem-correlation-rules-for-apt/SKILL.md",
-      "sha256": "19343580c4e3b566158582b23fc017151185580d30aa06a2ef9a0e3c1d8f2a82",
-      "bytes": 2790,
+      "sha256": "b6ad27580d5e252f2d7455bc7d75f368ce904c720bdc31fe6e7683cb84cb0c50",
+      "bytes": 2780,
       "source_path": "implementing-siem-correlation-rules-for-apt/SKILL.md",
       "source_sha256": "9f673de69a07508cc74291425a1b5d2190c600e06e8867dd3f75af3efad2e628",
       "support_files": [
@@ -16460,8 +16460,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-syslog-centralization-with-rsyslog/SKILL.md",
-      "sha256": "3a9279e9b7c80470ce15fd390e32086da8109eb8faed2228953a1df0e1b16b8c",
-      "bytes": 2423,
+      "sha256": "eac21edb360eae8538729c425dec90914a7d548a84bef28e1a0cb6624f9b70bf",
+      "bytes": 2413,
       "source_path": "implementing-syslog-centralization-with-rsyslog/SKILL.md",
       "source_sha256": "4e55bb7102d3d3fbb2f5d13501c32fded312c1d7a541c55b6e45e6dcf069b316",
       "support_files": [
@@ -16694,8 +16694,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-vulnerability-sla-breach-alerting/SKILL.md",
-      "sha256": "0fb062dfc07c43e79f8d51e40b4219ec7cbb362abc14b61d7fa9530a767a4a4e",
-      "bytes": 9912,
+      "sha256": "0c698ab6e1b71134163dc6d2efac9c84c1c9dbe5ee6f0ca5875b5f756c6fbb33",
+      "bytes": 9918,
       "source_path": "implementing-vulnerability-sla-breach-alerting/SKILL.md",
       "source_sha256": "a0182e7e5d47685e457d66cda0bc43830e43203a6c72e99ca4ca687bedfc88c6",
       "support_files": [
@@ -16724,8 +16724,8 @@
           "bytes": 2532
         },
         {
-          "path": "scripts/process.py",
-          "source_path": "scripts/process.py",
+          "path": "templates/process.py",
+          "source_path": "templates/process.py",
           "sha256": "21ea2887049bc0804f83bb2b160e9b2b5e111afae214cdb007fb94c4c46f8367",
           "bytes": 11675
         }
@@ -17286,8 +17286,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-validating-backup-integrity-for-recovery/SKILL.md",
-      "sha256": "804513633125e16f3008e73c0d24f64ed2ed191f70e53da371ff96434a9c9be4",
-      "bytes": 9210,
+      "sha256": "e1612cb220906a57112f88d9f898866cb9ee917a7246ae040524c45bfb266c1f",
+      "bytes": 8883,
       "source_path": "incident-response/validating-backup-integrity-for-recovery/SKILL.md",
       "source_sha256": "ac2493b43c83922d696bf6b22400acb63ee0c02b700b48b81bed7421544974b2"
     },
@@ -17322,8 +17322,8 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-infrastructure-offensive-initial-access/SKILL.md",
-      "sha256": "37d5f6dae86ce903ebd19cf6bc5686f45f19f7974cce85ad7fa31fb229c1ec90",
-      "bytes": 65993,
+      "sha256": "f25cd116766e19f05255266463cd93ab4b19d8c7ce36f180fc81a29a943e1781",
+      "bytes": 65992,
       "source_path": "infrastructure/offensive-initial-access/SKILL.md",
       "source_sha256": "f7752f0940b2f985aeb4a352f6a77d9ef8bc268fd22c1faa6b40e22ce00cf965"
     },
@@ -17370,7 +17370,7 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-infrastructure-offensive-windows-mitigations/SKILL.md",
-      "sha256": "f229e826ca34f414149d5026c0b82a03e85f59f080ccedc3d0b2d9ccdcc1f51d",
+      "sha256": "4adc136e3d1ca2bfa1ca5c0edff99a36438e4e3356b6db455d12ad788ecf644f",
       "bytes": 530877,
       "source_path": "infrastructure/offensive-windows-mitigations/SKILL.md",
       "source_sha256": "de31c49a6ecaa77f9fb4c351aef94bf661de03a4cac24b58b63fb7c31cca3b8f"
@@ -17529,8 +17529,8 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-iot-offensive-iot/SKILL.md",
-      "sha256": "f71331fd8aded6ee07e67ba95be9a9ae09c275de9d2b7b0e302046a63001ed62",
-      "bytes": 13181,
+      "sha256": "739333049ac174af0963ad06d037b91df4956ba3e977e00fd9c8ff858f1e5a9b",
+      "bytes": 13211,
       "source_path": "iot/offensive-iot/SKILL.md",
       "source_sha256": "4f9e9df132f3b93ba79b7f25f1d76a6ac2ac384cd6e51412dda19b5242ee6ab6"
     },
@@ -17589,8 +17589,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-exploiting-sudo-suid-and-cron-misconfigurations/SKILL.md",
-      "sha256": "b0fc547a07c2aab24db97943a2f9de089812b26264d36c67a3c18cd7631187da",
-      "bytes": 9543,
+      "sha256": "0657879a064dc7a216039cd5930aee7a315f444bebb6ae95617097126f9b17d0",
+      "bytes": 9545,
       "source_path": "linux-hardening/exploiting-sudo-suid-and-cron-misconfigurations/SKILL.md",
       "source_sha256": "a542f2e75a8300ac0f270c282a626a2827c1762418faeeecb31d2e4e7afa54c9"
     },
@@ -17673,8 +17673,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-performing-macos-privilege-escalation/SKILL.md",
-      "sha256": "73ba67e82119b72aca50aa8e6c116509cc2c2a5597729a0f582ca8294fdacc1c",
-      "bytes": 10204,
+      "sha256": "2a704a7df2439513ae804e01e5cf79fa79d977185e091665e525adcb383d39b2",
+      "bytes": 10206,
       "source_path": "macos-security/performing-macos-privilege-escalation/SKILL.md",
       "source_sha256": "94af72d44007f01e449a34189609e7a7e94d17337279c5b90d29e6b7e94e5f35"
     },
@@ -18208,8 +18208,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-managing-third-party-vendor-risk/SKILL.md",
-      "sha256": "3ff775fea750c30db430fccba6fff57188550911c11bf19135d089cb486d315b",
-      "bytes": 8380,
+      "sha256": "95cf5ca4ad285c7d8952779ae8a7ccfb3814fff7311558915e9e447914bf3400",
+      "bytes": 8472,
       "source_path": "managing-third-party-vendor-risk/SKILL.md",
       "source_sha256": "140f002e300e75f94277f8a402e252773ff39125a6dc81fc4417dde91caf361e",
       "support_files": [
@@ -18232,8 +18232,8 @@
           "bytes": 3136
         },
         {
-          "path": "support/managing-third-party-vendor-risk/scripts/process.py",
-          "source_path": "support/managing-third-party-vendor-risk/scripts/process.py",
+          "path": "support/managing-third-party-vendor-risk/templates/process.py",
+          "source_path": "support/managing-third-party-vendor-risk/templates/process.py",
           "sha256": "31dba011998ab7fb05e91ac3d2b15d5fbd9e6d3fd2aeb64763164a7a81a232ec",
           "bytes": 8656
         }
@@ -18569,8 +18569,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-analyzing-network-flow-data-with-netflow/SKILL.md",
-      "sha256": "6a8cb65fe49978faf8a5bd6a510ff8694ace923159402db3342b81fa42e4c342",
-      "bytes": 3955,
+      "sha256": "f45f0ae947a46ad40f7f42bf024ebffb739365609d755feff16b972fb876587e",
+      "bytes": 3618,
       "source_path": "network-security/analyzing-network-flow-data-with-netflow/SKILL.md",
       "source_sha256": "50ecff75b76d0f3378f65ff4c55f76498b1ce36702e76dc94f9b10b1f6c6db56"
     },
@@ -18725,8 +18725,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-lateral-movement-with-zeek/SKILL.md",
-      "sha256": "47bbc057951cd953eade62b70eb70674e7b14f842c7216c9ea2d628e065ca383",
-      "bytes": 9827,
+      "sha256": "12b7b3f09b9943d5e800c4ddf4aca1cf776203939ece84dc797aa0f54bc25229",
+      "bytes": 9500,
       "source_path": "network-security/detecting-lateral-movement-with-zeek/SKILL.md",
       "source_sha256": "c5c818e72b6224925b24676b2465fce3a158e574c937b8cce026594b23834333"
     },
@@ -18905,8 +18905,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-network-traffic-analysis-with-arkime/SKILL.md",
-      "sha256": "505e7466fed34ed1fe3399d59d0a221bf62168275d5ce6f2a9426425d4974fcd",
-      "bytes": 3855,
+      "sha256": "21b2af1a89dce2bb2af6831e4c77ed4cf8ceb350ffd994ac6e905320b5cb6389",
+      "bytes": 3518,
       "source_path": "network-security/implementing-network-traffic-analysis-with-arkime/SKILL.md",
       "source_sha256": "35f8a51af8231297428c3aad1d181e82f243be420f9aa554b93841ac4fa14ce9"
     },
@@ -19505,8 +19505,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-pentesting-winrm/SKILL.md",
-      "sha256": "c660a6bd526227128e1c3f35cf7367587f1c2b554ecf14beaf2cbcb74215d09a",
-      "bytes": 8023,
+      "sha256": "57c6ebf95606acef427f1d3c23205a780d16b78409594eceae9b79a63770ff18",
+      "bytes": 8025,
       "source_path": "network-services-pentesting/pentesting-winrm/SKILL.md",
       "source_sha256": "fe5d35168aca981adc0dac863d91723430e058463eda025f2c7231c7f6b6cc0a"
     },
@@ -19541,8 +19541,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-attack-surface-management/SKILL.md",
-      "sha256": "34b8be6b5389c46214e6e92af800a809fb1d73685e25bdd3bec55a152c252f70",
-      "bytes": 8861,
+      "sha256": "5c0a657109bf21a083a25408624f82cbc944cc13d1a87bf693894d7f8fee6dc2",
+      "bytes": 8534,
       "source_path": "offensive-security/implementing-attack-surface-management/SKILL.md",
       "source_sha256": "1a09855884490f01265d3d319da12cc1360d0f845281f54d4084798880d65369"
     },
@@ -19629,8 +19629,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-operationalizing-misp-threat-feeds/SKILL.md",
-      "sha256": "3fa1db600abdfd623b760b603f43d13635e7695274b8295090db39657d044d5b",
-      "bytes": 10286,
+      "sha256": "ff5d11b0f40b2ca6608d58fd3b2a95e8916cc3278320f18fb45e2e06738cf5a3",
+      "bytes": 10283,
       "source_path": "operationalizing-misp-threat-feeds/SKILL.md",
       "source_sha256": "c568fc3afc62140b55439e6385a96dfdffb2d1a339097d8017b7ea631136a888",
       "support_files": [
@@ -23030,8 +23030,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-performing-post-quantum-cryptography-migration/SKILL.md",
-      "sha256": "137a565dc254d3ea949dc3b4fdad2a3a0fbb8321652a49e384fe3c5028a3324d",
-      "bytes": 12108,
+      "sha256": "58a0acd2a70544415b8ba0f31fb3ee5db92483844aa2f956c2fd390116674d1c",
+      "bytes": 11978,
       "source_path": "performing-post-quantum-cryptography-migration/SKILL.md",
       "source_sha256": "5306f1b76b9a9af4df2cfce66f9d50ec4cc7d5d16b71d2f86ef49862b8aa7845",
       "support_files": [
@@ -23241,8 +23241,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-performing-red-team-phishing-with-gophish/SKILL.md",
-      "sha256": "b8ed610a00fd6ce9836cda473bb24d9fc1a083d8da45510b74d78a731be7d083",
-      "bytes": 2263,
+      "sha256": "a932af12c034f8183b1ee092c0ba262dfc430ddea5b40bc190ef7975b4f2a6fa",
+      "bytes": 2253,
       "source_path": "performing-red-team-phishing-with-gophish/SKILL.md",
       "source_sha256": "3a065722b262f17da18db0966eb6009eb34a967a20da45c5e346190947287caf",
       "support_files": [
@@ -23583,8 +23583,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-performing-ssrf-vulnerability-exploitation/SKILL.md",
-      "sha256": "fe413ae1d829b90229a9ebdc0d5a6f42cc398d1b1dfb916bbc4fbd6dca46f97a",
-      "bytes": 2062,
+      "sha256": "6b20412a1286ba27f4f8ae64a3379836aec69ad2c696169cf71130dea3392020",
+      "bytes": 2052,
       "source_path": "performing-ssrf-vulnerability-exploitation/SKILL.md",
       "source_sha256": "414d9c5c2d3035e3ba7de762f654c30a66ab5e225833f5edbb99570d452efc8f",
       "support_files": [
@@ -24150,8 +24150,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-analyzing-malicious-url-with-urlscan/SKILL.md",
-      "sha256": "4ffaa858bee830a8c82a39bf0505775bcdec9263844493bbf41d00f5bbe24878",
-      "bytes": 5135,
+      "sha256": "3b06e360a1477d3f147e02176d6d7ff41793f4fd40eba45358cbf590961eaf66",
+      "bytes": 5200,
       "source_path": "phishing-defense/analyzing-malicious-url-with-urlscan/SKILL.md",
       "source_sha256": "5ad78a52dcf2ebc881694865eb89a2ccb49fe6b6e80608528e68380d55737789"
     },
@@ -24210,8 +24210,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-detecting-spearphishing-with-email-gateway/SKILL.md",
-      "sha256": "0f86be85bda5d85fd41d83babd7b385a4bdceca1f12cf640fa39ac1778d64926",
-      "bytes": 5758,
+      "sha256": "4a532b6f575262693173da10e6a1765587470bcad7bf9c39fd6d2fdb8755ba5b",
+      "bytes": 5823,
       "source_path": "phishing-defense/detecting-spearphishing-with-email-gateway/SKILL.md",
       "source_sha256": "b93d5daef378ec666efac178e16e25d3dc2eaa5e01bfe2d2922c5a60b1e19cbf"
     },
@@ -24222,8 +24222,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-anti-phishing-training-program/SKILL.md",
-      "sha256": "4b54898c4609876c27d11899dbdb2c96a19eaa48d756b64c39c94371690a6224",
-      "bytes": 5434,
+      "sha256": "47f5b21283e047a7854c9516c1dfe32328f213bad692245c1682bee719f45c21",
+      "bytes": 5503,
       "source_path": "phishing-defense/implementing-anti-phishing-training-program/SKILL.md",
       "source_sha256": "29327809d1dab63a4dc7f2aaee3b490980963f6168c8a5861a4cdbe206cfe371"
     },
@@ -24234,8 +24234,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-dmarc-dkim-spf-email-security/SKILL.md",
-      "sha256": "79b15689639cb900f81782f750be690c30d61e2ae66d45846374ad839636cb1b",
-      "bytes": 5672,
+      "sha256": "a3ffa765cd8f0dc3127a5627dfb6d3216c175152fe2c5256b3368db895472528",
+      "bytes": 5737,
       "source_path": "phishing-defense/implementing-dmarc-dkim-spf-email-security/SKILL.md",
       "source_sha256": "a0dd51223801d7bd23b5f089df295ad9ea13d878c6aa6e27338fc646e9bafb6e"
     },
@@ -26014,8 +26014,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-analyzing-powershell-script-block-logging/SKILL.md",
-      "sha256": "22c0277ad2d4325a172447e071cf98b85e26dd71ce6654803d80d924e1cd9aa3",
-      "bytes": 4433,
+      "sha256": "c2c5a71c7ddc6298236089e86f9467940c7a01f8f7a77dabdfc0d5d90f6ecf45",
+      "bytes": 4096,
       "source_path": "security-operations/analyzing-powershell-script-block-logging/SKILL.md",
       "source_sha256": "fa9740250870f97092eafc22c4a1d7b6d9373018a1d374cb630f74e8d5b3f46a"
     },
@@ -26038,8 +26038,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-analyzing-web-server-logs-for-intrusion/SKILL.md",
-      "sha256": "7ecf9b345846e1faa1590eabf0fb2ba3040714e4e85f6ef5017f913bf03b34d3",
-      "bytes": 4261,
+      "sha256": "1067950e843a67f0a9c096d0c3a7064ce9c846747233dce0f5fe4ed6a6e41cd8",
+      "bytes": 3924,
       "source_path": "security-operations/analyzing-web-server-logs-for-intrusion/SKILL.md",
       "source_sha256": "6d7afb8e421a36aa90f5c17c3ef4ae3e63894418406755fbb9355bb63f089841"
     },
@@ -26122,8 +26122,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-detecting-sql-injection-via-waf-logs/SKILL.md",
-      "sha256": "369a4c4af91b98c7324bbddc61c9268fbc187a7e1486ecb8241953a40612e3b4",
-      "bytes": 3980,
+      "sha256": "ed675e989a37378c4377b7a37ea531c8028a16caf84b9d8327ca14dc489fa690",
+      "bytes": 3643,
       "source_path": "security-operations/detecting-sql-injection-via-waf-logs/SKILL.md",
       "source_sha256": "9b7b1eaad995474546331ba28bffe6d75e875921cd7c11cdfa6156aca92a0e57"
     },
@@ -26194,8 +26194,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-canary-tokens-for-network-intrusion/SKILL.md",
-      "sha256": "a886cbf9de1132cae0c225505515356c53b75dc81fc4f2ab1dbbcae9ac4fed7c",
-      "bytes": 14138,
+      "sha256": "9411d81e274a68c62b041c4d7f9fa2c96087f67ca5a1446ac3715a05427bb899",
+      "bytes": 13781,
       "source_path": "security-operations/implementing-canary-tokens-for-network-intrusion/SKILL.md",
       "source_sha256": "4dbf9ac613fb2e038a01963699db4bdbc3412373ddc7b22d38866d7dd2b3a28f"
     },
@@ -26302,8 +26302,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-log-integrity-with-blockchain/SKILL.md",
-      "sha256": "6ebd44b393f0f370b6763fb277cf9951bdf1486eecaadbfbdfe42747d41427a8",
-      "bytes": 4007,
+      "sha256": "265376bb6fa540f704512eba3a54e0362a0618a4614c50d1ea8c76e6076a2798",
+      "bytes": 3670,
       "source_path": "security-operations/implementing-log-integrity-with-blockchain/SKILL.md",
       "source_sha256": "8470d7294ee073a0d45efc4d5f8520a47be394a6a14d73c1e5c4340350c20a2a"
     },
@@ -26350,8 +26350,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-siem-correlation-rules-for-apt/SKILL.md",
-      "sha256": "373e8b06151fc80ab6cafff4d6225dce2d4aa29c1ba30a07e4cf1f48142228c6",
-      "bytes": 3249,
+      "sha256": "73173839efb8e3e51810e6f502bb4acc7a52e0705155f1ea686ab34e1dd60718",
+      "bytes": 2912,
       "source_path": "security-operations/implementing-siem-correlation-rules-for-apt/SKILL.md",
       "source_sha256": "a5dccce73c38c192fca1b64e5a753527cbf1178cd09c4e4d7ee258870b19dc8b"
     },
@@ -26386,8 +26386,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-syslog-centralization-with-rsyslog/SKILL.md",
-      "sha256": "9cbebf5e7d22bfa057c638ecafa51da1688ad80bffe70e991b44e18d52c45f3f",
-      "bytes": 4085,
+      "sha256": "78dba888bca6f538725ee167f4755215bb854be3097a2078e8e27efc0346f1e2",
+      "bytes": 3748,
       "source_path": "security-operations/implementing-syslog-centralization-with-rsyslog/SKILL.md",
       "source_sha256": "bf52be124158f749ccfaf2259bbe9fa00fe936a1e0ad36e8cb4b66024e3a19c1"
     },
@@ -26410,8 +26410,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-performing-red-team-phishing-with-gophish/SKILL.md",
-      "sha256": "0b2d7bc913ab6c4c324415e093eb901478ee245932494e788a04a24a6fe97236",
-      "bytes": 4112,
+      "sha256": "38d7eac5919a8866285f294db3b04285863b814afa45c67052107eb1c5ea49c4",
+      "bytes": 3775,
       "source_path": "security-operations/performing-red-team-phishing-with-gophish/SKILL.md",
       "source_sha256": "feab25bbb49edcb3e64011f26f1edf42f7bdd09acbcc9ac6039aa071d015426d"
     },
@@ -26422,8 +26422,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-performing-ssrf-vulnerability-exploitation/SKILL.md",
-      "sha256": "ba5bd54022e2a5d6e75e1bd8de44fa4dc5955bad8cd75571370911847488d345",
-      "bytes": 4285,
+      "sha256": "300fc338ef1c40994b9746e6733b20a95824b015cee9cbbb874ed351f47e5dc2",
+      "bytes": 3948,
       "source_path": "security-operations/performing-ssrf-vulnerability-exploitation/SKILL.md",
       "source_sha256": "47e33b6cb2ca47c0fb1debec6c065dc655f1c057fc157e25c30ac2e8c7243b49"
     },
@@ -26470,28 +26470,28 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-api-security/SKILL.md",
-      "sha256": "f29fa4bf95b38ed7cbec464abc94aa444e92e4e348cfd947b6e9233b8366e137",
-      "bytes": 5908,
+      "sha256": "ff74a84d37418249dcbd91b7256e62fdc448b2cc5475b5a99b7516c402e9f7cd",
+      "bytes": 6844,
       "source_path": "skills/api-security/SKILL.md",
       "source_sha256": "ba41791abf3b05daac8726acbba996445be30cf718a756cd8fb99cb27d9861e9",
       "support_files": [
         {
           "path": "references/jwt-oauth-testing.md",
           "source_path": "references/jwt-oauth-testing.md",
-          "sha256": "b9408e4026cbce626f340e4036dee66a1c8122a29473adbfffd1de65774b722f",
-          "bytes": 2943
+          "sha256": "c5b9fe85bc765deef8677b9c9b0e826384fe2c5452317b17fbcfa65d4a812fbf",
+          "bytes": 3216
         },
         {
           "path": "references/rest-graphql-testing.md",
           "source_path": "references/rest-graphql-testing.md",
-          "sha256": "0bb12f409e74104f89f96f53c57ca246677c447fe33e7ff887f0bae6dba8f7ea",
-          "bytes": 3296
+          "sha256": "634a6fd8c44c755332de52d12a908fa09afda9bdc6f0207498adcdc91298ffdc",
+          "bytes": 3575
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         }
       ]
     },
@@ -26502,94 +26502,94 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-apk-reverse/SKILL.md",
-      "sha256": "083d73bc9964d6b58b15fc6120991680a6a5cbf40146e9473d8f49fab5feadd8",
-      "bytes": 11723,
+      "sha256": "6684962cdadde70160992cbe2e7694765829c5c94c0d457c932a50b2430266a6",
+      "bytes": 13920,
       "source_path": "skills/apk-reverse/SKILL.md",
       "source_sha256": "9b23baecde8396b0d0b2f599e4ee1b9ec5663b97bae335624626620635fcacd3",
       "support_files": [
         {
           "path": "references/android-advanced.md",
           "source_path": "references/android-advanced.md",
-          "sha256": "288ee482c6e208f7d395862efb22a3f49cca89fd0de44be65e913416bed921f4",
-          "bytes": 10876
+          "sha256": "fbd289ea86805f6c9e52927518b043fd5a4af86a312099238f7faab847159fbc",
+          "bytes": 11540
         },
         {
           "path": "references/apk-security-checklist.md",
           "source_path": "references/apk-security-checklist.md",
-          "sha256": "025f8f710b16a4537ba6abc76b33353c863d101d2f395a10837b117c2fb4979c",
-          "bytes": 6979
+          "sha256": "d593c5689e28016b812f063b326234055711b3552ea4c4179be6b1092cd53c45",
+          "bytes": 8238
         },
         {
           "path": "references/community-security-skills.md",
           "source_path": "references/community-security-skills.md",
-          "sha256": "21f980cc0105917f52a4377a89b7aa702589a90b225d28f97b9be0a7bbd50e04",
-          "bytes": 7679
+          "sha256": "8b9c830d0e3cfdc91e3c5a50ee6f518b767a402a939106118bbe48986e3edc76",
+          "bytes": 9348
         },
         {
           "path": "references/frida-bypass-kit.md",
           "source_path": "references/frida-bypass-kit.md",
-          "sha256": "29c0ac239752b56f827524ae72ede7b2fc3bcb2cdf92069122d650969e5378e2",
-          "bytes": 2436
+          "sha256": "c74c9473cd112788d9603c79f7b01ff165bc502bf2bab1311673fae3cdf6d69c",
+          "bytes": 2773
         },
         {
           "path": "references/frida-cookbook.md",
           "source_path": "references/frida-cookbook.md",
-          "sha256": "4cc585cc34d94160c3e0efddc923b63c37553e14a74332471fa9dfe90a3fc2a0",
-          "bytes": 14149
-        },
-        {
-          "path": "scripts/decode.ps1",
-          "source_path": "scripts/decode.ps1",
-          "sha256": "83a03a4ca783a206f53b07640d0c9ad26054e0d77c6dacdaf4bbeefc64ca69d7",
-          "bytes": 5927
-        },
-        {
-          "path": "scripts/frida-run.ps1",
-          "source_path": "scripts/frida-run.ps1",
-          "sha256": "89ee51766a03fc2765e04c57942f9b198ed32ca3d3c4803f585787888f0e8e4a",
-          "bytes": 4175
-        },
-        {
-          "path": "scripts/manifest-summary.ps1",
-          "source_path": "scripts/manifest-summary.ps1",
-          "sha256": "144b44d7231cee479b0868967ce7f17d5d9b9f076894a4ae3ecd2acdaa6a2c13",
-          "bytes": 2775
-        },
-        {
-          "path": "scripts/rebuild-sign-install.ps1",
-          "source_path": "scripts/rebuild-sign-install.ps1",
-          "sha256": "c6016aa6d156005c3196c9dc763f6abf31b94e35ba319c40674a66a8ad752f6b",
-          "bytes": 7103
+          "sha256": "dc6900cf53342d526c6b4a0e22cc8432a136ac95b08c33cac0e1fe25c8ada84e",
+          "bytes": 14373
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/ops/skill-supply-chain.md",
           "source_path": "support/ops/skill-supply-chain.md",
-          "sha256": "927f3b6a758be75c22259ab9639c13e57178f6ad65866508586a0367001e698e",
-          "bytes": 3683
+          "sha256": "5bb0862205db8d9b4c7d2c373de353145e94a63768fa745f0cb404e945bcfba9",
+          "bytes": 4569
         },
         {
           "path": "support/reverse-engineering/references/nonpe-format-cookbook.md",
           "source_path": "support/reverse-engineering/references/nonpe-format-cookbook.md",
-          "sha256": "6e5fd5f6cdef266ff0c5951d6cdddb9c4711610e0372f269425796f36c36c5ad",
-          "bytes": 30309
+          "sha256": "abc7b6ff083dc7b5809cb4bde41347a45238322101df228eb2b7de39f3d290cc",
+          "bytes": 35725
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
+        },
+        {
+          "path": "templates/decode.sh",
+          "source_path": "templates/decode.sh",
+          "sha256": "3886337814f460b3ffaf72f28f59bfb194a0fd061e556b5bf5133ea57f9540d8",
+          "bytes": 216
+        },
+        {
+          "path": "templates/frida-run.sh",
+          "source_path": "templates/frida-run.sh",
+          "sha256": "613f4e5f02cb87e868652d4f506a9e9d959afffe82ee1898c2e9355f98dbfa04",
+          "bytes": 217
+        },
+        {
+          "path": "templates/manifest-summary.sh",
+          "source_path": "templates/manifest-summary.sh",
+          "sha256": "a7b95ebd817e382da7126566a8ef7e3f783430f640a6bae7856e17cb157ae5ae",
+          "bytes": 323
+        },
+        {
+          "path": "templates/rebuild-sign-install.sh",
+          "source_path": "templates/rebuild-sign-install.sh",
+          "sha256": "c910dcd1498312f13d4333960d50ee9e8d7adbd570d6a5b7dae11477b6c0be83",
+          "bytes": 158
         }
       ]
     },
@@ -26600,58 +26600,58 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-attack-chain/SKILL.md",
-      "sha256": "279180e287bc429650c91f22eda19eecd419ed22ec95a0696357ef2267dfa874",
-      "bytes": 18694,
+      "sha256": "1a21cf806c219ee335dd78ede8ccad6e1d863ff514d10a74447245bc665dbcc4",
+      "bytes": 21240,
       "source_path": "skills/attack-chain/SKILL.md",
       "source_sha256": "96c94609fdd5c7d9ce552128db50316ca800ba27c202e6619380cd6494a09d37",
       "support_files": [
         {
           "path": "references/attack-playbooks.md",
           "source_path": "references/attack-playbooks.md",
-          "sha256": "0b9e70f95716ad170df35de90e00bee91b467cff8f07bdbaafe5d65dc7368f7a",
-          "bytes": 3674
+          "sha256": "7fd6a1e4abc917b327a398f7a73ae0b5e0344f77630b5f81e6d1a753384648b4",
+          "bytes": 4444
         },
         {
           "path": "references/evasion-cheatsheet.md",
           "source_path": "references/evasion-cheatsheet.md",
-          "sha256": "d39e5acad16732f5e9f4436c37afc2f3882aded82664694cffd60cc15eb4d247",
-          "bytes": 4554
+          "sha256": "5ac362e8222e39fbfc617dd26adc75095b3150dbb2c2224fce6b5fcc3888f297",
+          "bytes": 5249
         },
         {
           "path": "references/lifecycle-checklist.md",
           "source_path": "references/lifecycle-checklist.md",
-          "sha256": "9a411e2f1037670cf1c3efd5ab2bb608265092d54be296effa7e0dc23bdab7e5",
-          "bytes": 1547
+          "sha256": "df47e662408397f6c03b7a829efc686219602fd66b79d12d17e286cbd676e370",
+          "bytes": 1845
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         },
         {
           "path": "support/ops/role-map.md",
           "source_path": "support/ops/role-map.md",
-          "sha256": "6a61ccde45b0ace7df586f8678ec9a675347e40f26e9ca1f3321fbba444451e3",
-          "bytes": 3134
+          "sha256": "e8fb61c280f98a8ed6967f12ce1f4e799870a08db89983f50905e24f90dce973",
+          "bytes": 3649
         },
         {
           "path": "support/ops/scope-contract.md",
           "source_path": "support/ops/scope-contract.md",
-          "sha256": "cf7e170d6796155e43b59bf153c02355852bb414bd0b7d04cd7e3f8bde9cfec0",
-          "bytes": 4011
+          "sha256": "034289dd4676d78946204cf20f84dc5300be439cdea6c4e8d0e56344f7d3c51e",
+          "bytes": 4503
         },
         {
           "path": "support/ops/timeline-workitem.md",
           "source_path": "support/ops/timeline-workitem.md",
-          "sha256": "8621af4384ff89c7a9f106219b2d860bf3652b6f3b67ce58c76a95684bb5dc47",
-          "bytes": 3586
+          "sha256": "2df354214c077cfa2c04a7b3bbdd3abf4aab384709aa284bf81cb992391c5d30",
+          "bytes": 3919
         },
         {
-          "path": "support/scripts/case-init.ps1",
-          "source_path": "support/scripts/case-init.ps1",
-          "sha256": "c386aeba66b9f569b6fd3747212ffbe8536946ffc7e64f9ca677e3dd487c2d6c",
-          "bytes": 15096
+          "path": "support/templates/case-init.sh",
+          "source_path": "support/templates/case-init.sh",
+          "sha256": "13afd0762a918a6640263b7888d62c6c2143a5a3208beebfa36cde80f48910db",
+          "bytes": 120
         }
       ]
     },
@@ -26662,34 +26662,34 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-binary-diff/SKILL.md",
-      "sha256": "a3cdde3bb0076df3bcb91101a606b89637fb44bb388ff58238440556902a6017",
-      "bytes": 11300,
+      "sha256": "8f366754bd794da735f92a1934fc5090b3f2f7b64e606edeb3c3a414995fff65",
+      "bytes": 13124,
       "source_path": "skills/binary-diff/SKILL.md",
       "source_sha256": "62254d63c40bfb15f00d3a30821714657f6742e4e787d8e6ef8a7e98e2a950f6",
       "support_files": [
         {
           "path": "references/prompt-template.md",
           "source_path": "references/prompt-template.md",
-          "sha256": "dd53b5a19b0722983332a88422528f4820c33aa05fce0fdfe168b05586f8ba2c",
-          "bytes": 4947
+          "sha256": "babb92331260c17fe325b6eb11eb6880adfe739b4182283107f99838d651ce8d",
+          "bytes": 5082
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
         }
       ]
     },
@@ -26712,28 +26712,28 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-browser-automation/SKILL.md",
-      "sha256": "69c3c304d3daefaaa1b2837f5e136ef28de5c45de5feb1c102afd23403e7ecd1",
-      "bytes": 7201,
+      "sha256": "f027ee658544968f56b0103a465f55bf3df294807563e7e7c98aae55f7ca9f83",
+      "bytes": 8455,
       "source_path": "skills/browser-automation/SKILL.md",
       "source_sha256": "c19a9293ea15be66cab95ef2f3e622d5becda2bb752b8101610f5feee260fba3",
       "support_files": [
         {
           "path": "references/playwright-cheatsheet.md",
           "source_path": "references/playwright-cheatsheet.md",
-          "sha256": "b4d94649b4e18b54a9cbc3d89e59fe412ac1acc039e8070a7b47e4f8e1209163",
-          "bytes": 9829
+          "sha256": "7f01c9bab773bdde6ad74781083a3a79d73c5f5a59d287ce18f98f0bcef6ad3f",
+          "bytes": 10456
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
         }
       ]
     },
@@ -26744,22 +26744,22 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-browser-extension-reverse/SKILL.md",
-      "sha256": "b053786523a03e784285dff57ab119c31e8340cc652069a43d8e45cde87dcb8f",
-      "bytes": 2058,
+      "sha256": "d511a0e9bec49ab29ed37c70abb30ad8643459394f8766cc28762125cb556451",
+      "bytes": 2415,
       "source_path": "skills/browser-extension-reverse/SKILL.md",
       "source_sha256": "908c0bbcd53cdda04bcfd49cc610d049fdf58f0d9c9b70b65415e1f6730bc565",
       "support_files": [
         {
           "path": "references/extension-analysis.md",
           "source_path": "references/extension-analysis.md",
-          "sha256": "de083cc52478d265cbc19462a67c17ae7932d561dce345158bc97eddc3c2b8b5",
-          "bytes": 328
+          "sha256": "f35472096f01fe41519dfb4cf74e603183ec7078ce19f05f705ae5e522be98a8",
+          "bytes": 434
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         }
       ]
     },
@@ -26770,34 +26770,34 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-case-review/SKILL.md",
-      "sha256": "849f05f57fa48b7a9dfb87f77c5a0b882c789b97062fc8c53311224a0b580638",
-      "bytes": 6917,
+      "sha256": "ea1556f60f19a35dc182d067bff950a15e344db567d3e4c128bbd47151681cf8",
+      "bytes": 7021,
       "source_path": "skills/case-review/SKILL.md",
       "source_sha256": "da9ca51e03f1b1fe3728e74cf97515c1c51b21ed96a98b834d6b3c35558a3b58",
       "support_files": [
         {
-          "path": "scripts/review_case.py",
-          "source_path": "scripts/review_case.py",
-          "sha256": "aace3fad8514ef24aa1f1a99fed83d58eb531f8e876051b36f284e7d3704158d",
-          "bytes": 20559
-        },
-        {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/ops/evidence-finding-path.md",
           "source_path": "support/ops/evidence-finding-path.md",
-          "sha256": "8a4eb04acc865605409f284c2f476b3a07676739fc263b57e7b6c7c9e0c4017a",
-          "bytes": 4376
+          "sha256": "09f5ab8fbd3dadff09cb0fe45ecf5c692b3d7f3db636134e4b378f15b0e8ed37",
+          "bytes": 4719
         },
         {
           "path": "support/ops/timeline-workitem.md",
           "source_path": "support/ops/timeline-workitem.md",
-          "sha256": "8621af4384ff89c7a9f106219b2d860bf3652b6f3b67ce58c76a95684bb5dc47",
-          "bytes": 3586
+          "sha256": "2df354214c077cfa2c04a7b3bbdd3abf4aab384709aa284bf81cb992391c5d30",
+          "bytes": 3919
+        },
+        {
+          "path": "templates/review_case.py",
+          "source_path": "templates/review_case.py",
+          "sha256": "aace3fad8514ef24aa1f1a99fed83d58eb531f8e876051b36f284e7d3704158d",
+          "bytes": 20559
         }
       ]
     },
@@ -26808,22 +26808,22 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-cloud-k8s/SKILL.md",
-      "sha256": "e6aa0223a390bd45cf73ce9ba9c3434d1116fd9d83b0eaf8da1df8f0a8ea62ac",
-      "bytes": 2882,
+      "sha256": "e104e2f407441a13ca520836ee9b0b7f305a8c80cc939065f99acbc2bb10d721",
+      "bytes": 3435,
       "source_path": "skills/cloud-k8s/SKILL.md",
       "source_sha256": "86fdb2c06275b3acf501ec438a8d00f1737f5f831942e80b841bec007a5d5585",
       "support_files": [
         {
           "path": "references/k8s-cloud-checklist.md",
           "source_path": "references/k8s-cloud-checklist.md",
-          "sha256": "6fbaccfecc6c13e617c7916a8c923b75b7c9f38acdade1d071323bde272df8a8",
-          "bytes": 401
+          "sha256": "a1d238c9e97af4ec7003bfc7b876a66ec65ba6453390d8dd8e3aeef552e431e0",
+          "bytes": 477
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         }
       ]
     },
@@ -26834,28 +26834,28 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-code-audit/SKILL.md",
-      "sha256": "b1844b7c9b0c0f7908b60cde4adabec3bd794d62bed12ec0d1589c18227e25e9",
-      "bytes": 2298,
+      "sha256": "9f671dcf2d79087a9dcde6a42671265d4c2c19afa2fb2f2e8abda3c9aa035f60",
+      "bytes": 2783,
       "source_path": "skills/code-audit/SKILL.md",
       "source_sha256": "122dafd8682807da6ea11c81be18cc5f02afad65d306cd7aee117191e6a3ca0b",
       "support_files": [
         {
           "path": "references/sast-review-checklist.md",
           "source_path": "references/sast-review-checklist.md",
-          "sha256": "3d603986a782f6ebdcb899d32bce2e668d06c19745df7a45e8fa5ccee6cf7d09",
-          "bytes": 312
+          "sha256": "9aa84485e5c0608f71b3405cc271e292965ba98a6f75cfb0f39e4fcf8020f0aa",
+          "bytes": 394
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         },
         {
           "path": "support/ops/role-map.md",
           "source_path": "support/ops/role-map.md",
-          "sha256": "6a61ccde45b0ace7df586f8678ec9a675347e40f26e9ca1f3321fbba444451e3",
-          "bytes": 3134
+          "sha256": "e8fb61c280f98a8ed6967f12ce1f4e799870a08db89983f50905e24f90dce973",
+          "bytes": 3649
         }
       ]
     },
@@ -26876,16 +26876,16 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-database-security/SKILL.md",
-      "sha256": "46f705a880a3c14d27d3a9bcc79eb04f84bdf78ee2a3ef959818fab9129141ea",
-      "bytes": 1606,
+      "sha256": "af94742f40d642a0b6ebdfab1011295f4241be8b75852c50e1b60179c53c6f71",
+      "bytes": 2021,
       "source_path": "skills/database-security/SKILL.md",
       "source_sha256": "b052ce09f400b8ea1fc4898d2c1c0e6c52ac5429d5ccd11518a057ce2ebf086a",
       "support_files": [
         {
           "path": "references/db-misconfig-checklist.md",
           "source_path": "references/db-misconfig-checklist.md",
-          "sha256": "02d2ed1d19c906986c0860cb9830fa5642a686b0f0961363967e7d3c0ea8175b",
-          "bytes": 234
+          "sha256": "f22fc32d9484356a10b4788c1fa3d8ba91db4429b9c7415907fb8e07762b672c",
+          "bytes": 327
         }
       ]
     },
@@ -26896,8 +26896,8 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-diagram-generator/SKILL.md",
-      "sha256": "e3ddaa2e4d851334b80c85abb5522d41d6cd1b7385a8adedf0ac9e9943543c07",
-      "bytes": 9477,
+      "sha256": "fbd356a7a4460b9cf4d4b1abaea369f1f9906ac0ea768d0d775b0213c2de5682",
+      "bytes": 9824,
       "source_path": "skills/diagram-generator/SKILL.md",
       "source_sha256": "ed02e5d9f08db6c8648d8311bab7a45af14751b5e594a9b37240878dd72de0c7",
       "support_files": [
@@ -26908,22 +26908,22 @@
           "bytes": 4603
         },
         {
-          "path": "scripts/render_diagram.py",
-          "source_path": "scripts/render_diagram.py",
-          "sha256": "f3a2eee8b9f0f811ba0ee1026449ea563333fdd006554271cb9c83338c15c730",
-          "bytes": 6273
-        },
-        {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
+        },
+        {
+          "path": "templates/render_diagram.py",
+          "source_path": "templates/render_diagram.py",
+          "sha256": "f3a2eee8b9f0f811ba0ee1026449ea563333fdd006554271cb9c83338c15c730",
+          "bytes": 6273
         }
       ]
     },
@@ -26934,22 +26934,22 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-digital-forensics/SKILL.md",
-      "sha256": "841f2b3d4f518ba5e4ac3bb2af105def42ce38a49eb1ab3d22809a22a2aa9731",
-      "bytes": 2216,
+      "sha256": "5474928d78bd973c85162e267b74304291e0e7b706b08298fb78285a0dd8addf",
+      "bytes": 2643,
       "source_path": "skills/digital-forensics/SKILL.md",
       "source_sha256": "e07f637660fc59b2ddb6ebe3c4f8e0c9f6df9ed16990ed81d5f5e8212837dd0d",
       "support_files": [
         {
           "path": "references/forensics-triage.md",
           "source_path": "references/forensics-triage.md",
-          "sha256": "a426cc4c063b9a670c9f4bfb9391c9eaf5f3408c559aebcce57b6fc094afedc7",
-          "bytes": 274
+          "sha256": "7b4cc3ff53d440a5c392cdd39ad19bf61774822230919d800264b8a299e18ab4",
+          "bytes": 358
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         }
       ]
     },
@@ -26960,16 +26960,16 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-docs-generator/SKILL.md",
-      "sha256": "399fb664bb0f622d5018d4c8ce186324e9c11f1c13a83f42f898a7018eda37aa",
-      "bytes": 8040,
+      "sha256": "9b89e86db5d12e977d2f5e96a1374e8d019257a8a2f8de4453b1dcda47ca20fe",
+      "bytes": 10006,
       "source_path": "skills/docs-generator/SKILL.md",
       "source_sha256": "1ceb99a41426a91e69521a6232d44691f4cb299b0e1bda2390ef48a3a047db85",
       "support_files": [
         {
           "path": "references/security-report-templates.md",
           "source_path": "references/security-report-templates.md",
-          "sha256": "b4093349a1e44a52026928f896f01afdd70826dcbc388acba938339628e65a11",
-          "bytes": 8234
+          "sha256": "36349b2abbd612c30ff3ecda1ef3981fc844c560e2a862b6d7c3aeb6574e481a",
+          "bytes": 10156
         },
         {
           "path": "references/templates.md",
@@ -26980,20 +26980,20 @@
         {
           "path": "references/vendor-report-rules.md",
           "source_path": "references/vendor-report-rules.md",
-          "sha256": "7a9f3c6de3e53d8c403d6728285402d1d7dd7b0239f91a915298bbf2bd6856a7",
-          "bytes": 11601
+          "sha256": "9ff0b6c5c555bace32e75f54e1168ee44669dfca36d992f6b4cc64a816cc53e5",
+          "bytes": 14845
         },
         {
           "path": "support/ops/evidence-finding-path.md",
           "source_path": "support/ops/evidence-finding-path.md",
-          "sha256": "8a4eb04acc865605409f284c2f476b3a07676739fc263b57e7b6c7c9e0c4017a",
-          "bytes": 4376
+          "sha256": "09f5ab8fbd3dadff09cb0fe45ecf5c692b3d7f3db636134e4b378f15b0e8ed37",
+          "bytes": 4719
         },
         {
-          "path": "support/scripts/case-init.ps1",
-          "source_path": "support/scripts/case-init.ps1",
-          "sha256": "c386aeba66b9f569b6fd3747212ffbe8536946ffc7e64f9ca677e3dd487c2d6c",
-          "bytes": 15096
+          "path": "support/templates/case-init.sh",
+          "source_path": "support/templates/case-init.sh",
+          "sha256": "13afd0762a918a6640263b7888d62c6c2143a5a3208beebfa36cde80f48910db",
+          "bytes": 120
         }
       ]
     },
@@ -27004,46 +27004,46 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-dotnet-reverse/SKILL.md",
-      "sha256": "f2f0cb33688d3294b521c9265b1b5c91042becda07c486ea051492afabcfe7f0",
-      "bytes": 9040,
+      "sha256": "e5cff5e178ab82076a8a1d9f52fc0416f22bbf74d6ef0d59b28a2805683a5610",
+      "bytes": 11158,
       "source_path": "skills/dotnet-reverse/SKILL.md",
       "source_sha256": "12154b4dd685e9fa4cf3c1912e1582cfaa1a2996dce95fee4c563a2d6c120dd7",
       "support_files": [
         {
           "path": "references/common-workflow.md",
           "source_path": "references/common-workflow.md",
-          "sha256": "2da25776e246b65d9ef4d5104a3a17f40c8587e29f633a1d00bb91d561da48a7",
-          "bytes": 6785
+          "sha256": "03700a6ef08da4ee2e6b48e682e95b767abce3e8f70fd3efd9e561327e686006",
+          "bytes": 8168
         },
         {
           "path": "references/obfuscators.md",
           "source_path": "references/obfuscators.md",
-          "sha256": "7e62af27d2aa4eabbe5489d6eafa35ca0e796f9e622b85b6eb7affc3f5c42dfe",
-          "bytes": 5808
+          "sha256": "70ff4ce7a1b5020339ed5bea3b506a10d39b2ab568316f5e0671a59c2bb82d50",
+          "bytes": 7281
         },
         {
           "path": "references/sharp-tools.md",
           "source_path": "references/sharp-tools.md",
-          "sha256": "085a7627bddd3ec074c9bd8884a3779f3f37749aeee26cf79dd56d53d719ba67",
-          "bytes": 6499
+          "sha256": "767390c8bc3aea1b252a0847e1013e8547a04c2321ef101e8e7a7041b0da7f78",
+          "bytes": 7644
         },
         {
           "path": "support/field-journal/seed-014_unity-il2cpp-reverse.md",
           "source_path": "support/field-journal/seed-014_unity-il2cpp-reverse.md",
-          "sha256": "432ea0d05f1c9d115d4b0cd0230658bc0c6363f268a4c814e6d46dced8f16af4",
-          "bytes": 5421
+          "sha256": "1c61921cc4ef76623734bd26282475edb954340080f8515231197d1cd8d20593",
+          "bytes": 6130
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
         }
       ]
     },
@@ -27054,40 +27054,40 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-edr-bypass-re/SKILL.md",
-      "sha256": "770a2d8fcd4068215974c5ca487f5578d385e5af8e6fa818f3cef0d3236a03a9",
-      "bytes": 9003,
+      "sha256": "ebffadb2e965ea0ee0ca3c4dacfe3a5034599640bdd8caf4157905eafc3e9176",
+      "bytes": 10623,
       "source_path": "skills/edr-bypass-re/SKILL.md",
       "source_sha256": "aec103f818c88937aa360246d76eaa261b96e3e83464eb7f86f96bd8aa04cdb5",
       "support_files": [
         {
           "path": "references/hook-survey.md",
           "source_path": "references/hook-survey.md",
-          "sha256": "2f1774bb16ff99d55cc5c36d17ff79d84ba3b004b4b88e68383116b98daae73f",
-          "bytes": 9594
+          "sha256": "880b533bd0c858dd6d578872a2c9d07eb2019d4a2071037d3b5c64dcd97d7370",
+          "bytes": 10438
         },
         {
           "path": "references/telemetry-blinding.md",
           "source_path": "references/telemetry-blinding.md",
-          "sha256": "7cccbcd5fa6fafdbf611070164788c2455976b2adda0e4f178b407e5bef7105f",
-          "bytes": 12695
+          "sha256": "fd584d979506ac26579a84a956719c7fa7323238202050ebaf283459572b41b9",
+          "bytes": 8034
         },
         {
           "path": "references/unhook-techniques.md",
           "source_path": "references/unhook-techniques.md",
-          "sha256": "96b9d4576ac05f66d3f5bb9b6033c7017c6038d431fe4ba45d9ab67622c27d3c",
-          "bytes": 11100
+          "sha256": "7b27ac151c256992bc03e51549a683d4a00537d87782073068b895c4d3e2d36f",
+          "bytes": 12102
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/pentest-tools/references/network-attack-defense.md",
           "source_path": "support/pentest-tools/references/network-attack-defense.md",
-          "sha256": "3bccbb98b195bc0b5a1dd92869af65660b4dd2d493e30c432381b9831dc71f8c",
-          "bytes": 10119
+          "sha256": "4b2cec68d833c23e7a0c8f61508472106bf7a0fb5b8fef04b30b8b020775c20c",
+          "bytes": 11636
         }
       ]
     },
@@ -27098,16 +27098,16 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-email-security/SKILL.md",
-      "sha256": "a90053d2d5131d45cf216902ccba5d99a6faace6ac9773d03593b8d6804d34ff",
-      "bytes": 1651,
+      "sha256": "8de35e2df840d669440de5d6081e343c32bf8bd8e83ecc77078da3f1f51d90c4",
+      "bytes": 1973,
       "source_path": "skills/email-security/SKILL.md",
       "source_sha256": "fb881515775900b21a6d1266b20d60a21bfe992279a6bf8c4411a71e1a9efa63",
       "support_files": [
         {
           "path": "references/email-auth-checklist.md",
           "source_path": "references/email-auth-checklist.md",
-          "sha256": "6a48fdb41311ad9caff4d234aba7a89ffcaa4497614d21dba0974b258b742ee5",
-          "bytes": 211
+          "sha256": "0f166bae3713eee3e49fc75bd517848684b86ae5a2e5a4c83d671f3e9dc7a887",
+          "bytes": 240
         }
       ]
     },
@@ -27118,46 +27118,46 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-firmware-pentest/SKILL.md",
-      "sha256": "ffec1ef99de7c90ad1a02b913b2ece7dcd84776c1adad54576d59f42c2e04aa1",
-      "bytes": 12138,
+      "sha256": "71a00277ac9d3fd213824635b70fcfbc03c4770f4ea09176c39e5d1b01a53b56",
+      "bytes": 14011,
       "source_path": "skills/firmware-pentest/SKILL.md",
       "source_sha256": "803512f2a83e1bc5731bab71dcce1f7d27a237a7b298e125c397e5d226feecd3",
       "support_files": [
         {
           "path": "references/emba-automated-analysis.md",
           "source_path": "references/emba-automated-analysis.md",
-          "sha256": "fa4a933cb9920b259d4399cd9aa3dac569ca8b818291c179e5854803f0cc08f9",
-          "bytes": 6483
+          "sha256": "a35003e5bdbd731b1876698be52f6b99431cdf2d1a2e90f5f5de3b11dae969c3",
+          "bytes": 7428
         },
         {
           "path": "references/emulation-and-fuzz.md",
           "source_path": "references/emulation-and-fuzz.md",
-          "sha256": "e5760bb6c7b48fb561226163f6642c528afed3ba79ee62f412e3482bff4447c3",
-          "bytes": 8770
+          "sha256": "9192d96d3a22ce0cd685a225633026036587c81b7c07ac632898309d57c51db7",
+          "bytes": 9559
         },
         {
           "path": "references/extraction-methodology.md",
           "source_path": "references/extraction-methodology.md",
-          "sha256": "218610a581207c91d49b4cfb8280ae0b4fb8c1e33fa945b87f9c679e0daac61b",
-          "bytes": 6933
+          "sha256": "e465dec57a4e47f033e7701f9991cb3b7218c12313791a9f8db7a36fec198364",
+          "bytes": 7799
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
         }
       ]
     },
@@ -27168,22 +27168,22 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-ghidra-reverse/SKILL.md",
-      "sha256": "d7270f0581ac663262d3c3f7d7e59ba99a355e31c285e834b0bca2b903f0cf9c",
-      "bytes": 2629,
+      "sha256": "93ac1296d421fd8fbfe1c8a302887e804a0c8ee71a5085d300f057284984862c",
+      "bytes": 3032,
       "source_path": "skills/ghidra-reverse/SKILL.md",
       "source_sha256": "f71acac4668b0320ce9f9768bb7cacc200b75140f1bab051982c8c5c3d3869b7",
       "support_files": [
         {
           "path": "references/ghidra-cheatsheet.md",
           "source_path": "references/ghidra-cheatsheet.md",
-          "sha256": "bd6fb357f9441f3657dff868d9b9a58db7d9f47d7220e5f8839e4c67276cdd1a",
-          "bytes": 353
+          "sha256": "c22f2a38f7e5e778ffccb7aa15b111e41c502b3b9f477d9c4935bff78f745867",
+          "bytes": 371
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         }
       ]
     },
@@ -27194,34 +27194,34 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-go-rust-reverse/SKILL.md",
-      "sha256": "f85a0a7e8f38604f0964adba8c826d58231cb6c68cc6528db8c2b603d5c9c61f",
-      "bytes": 1988,
+      "sha256": "9d6fcd09a69f19f9646775c13725c2d0d7922f2ce6b04501ab933a0a6ca4c786",
+      "bytes": 2344,
       "source_path": "skills/go-rust-reverse/SKILL.md",
       "source_sha256": "e5037d0ec42f8c8ae5c11b8429ce5ba83fac11cccbecf3bccbfc99df4861139c",
       "support_files": [
         {
           "path": "references/go-rust-notes.md",
           "source_path": "references/go-rust-notes.md",
-          "sha256": "661c71d7082d611fb969ecbc35f3301aceb1da15933a89313000088b0d599b64",
-          "bytes": 230
+          "sha256": "1b80d7c0518bce36c0fd308adba8054140664e5c3693895b374d49c2251bb20e",
+          "bytes": 258
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/field-journal/seed-002_go-malware-stripped.md",
           "source_path": "support/field-journal/seed-002_go-malware-stripped.md",
-          "sha256": "e0c7ca18a03e70709d1f972942764599bb183b446c8e840d902b6ed0e0fb021d",
-          "bytes": 3442
+          "sha256": "38423cb84b7037b701c1351ab9704a11abdf36579eac67c5fa05384bd4867272",
+          "bytes": 4127
         },
         {
           "path": "support/reverse-engineering/go-reverse.md",
           "source_path": "support/reverse-engineering/go-reverse.md",
-          "sha256": "75e9060c4f6dd341c7c5f2f33a5c1fbccb21cd2ab2265833ebc5368856631041",
-          "bytes": 7250
+          "sha256": "62956a085c7bd7c99506f1850cb817ee7473a4a6426a190229c8ca5f576d374b",
+          "bytes": 8333
         }
       ]
     },
@@ -27232,16 +27232,16 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-hardware-security/SKILL.md",
-      "sha256": "3d0ff25ce23884ced4a9aa4c205b59172044f0ab308d610c362993b74311ea66",
-      "bytes": 1544,
+      "sha256": "99a4766c3a2e9476d663cf1a57ddb30e6e3991f25d009eb650cc2ba7f9a55dc4",
+      "bytes": 1870,
       "source_path": "skills/hardware-security/SKILL.md",
       "source_sha256": "0c983618e13278817303ab96d32ada26e5f058afc778106b45672fbb04b0ec3c",
       "support_files": [
         {
           "path": "references/debug-interface-triage.md",
           "source_path": "references/debug-interface-triage.md",
-          "sha256": "e74f1cb8c9ad43f4c1f82a0422a958d7c9230b285ffa02dac27554e2db95f62b",
-          "bytes": 217
+          "sha256": "5d79a5ada413bc6e2add2ba9b9efe005508f78250521dfee66c5bdabc0b877f8",
+          "bytes": 319
         }
       ]
     },
@@ -27252,70 +27252,70 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-ida-reverse/SKILL.md",
-      "sha256": "0a3ed65add94024ab321cfceacc0c12889d6d911e02f3fdc0a591fc76b3489b9",
-      "bytes": 19646,
+      "sha256": "7a18f02cd0ec5ca663779edfaae9200643de837012225f1e760b256ea2c282d0",
+      "bytes": 22849,
       "source_path": "skills/ida-reverse/SKILL.md",
       "source_sha256": "c6103d51f982158668587851feb5f6ce98172a4e0c9feb49df52e91561ad39be",
       "support_files": [
         {
           "path": "LOCAL-SETUP.md",
           "source_path": "LOCAL-SETUP.md",
-          "sha256": "dd7837ffded13f5a8b2cd5d03dbac3c18c15db32231e0ff40a36bbe11cc841cf",
-          "bytes": 3370
+          "sha256": "da032a99e01bd79ecd990c4009f50e2b8d68daa3c863a040a6105416f32e71b5",
+          "bytes": 3991
         },
         {
           "path": "references/ida-mcp-cheatsheet.md",
           "source_path": "references/ida-mcp-cheatsheet.md",
-          "sha256": "6d0f3013f4977691fe1e7d81397abe1f550b1b6462ea5f5f5302b816baf0405b",
-          "bytes": 11252
-        },
-        {
-          "path": "scripts/install-autostart.ps1",
-          "source_path": "scripts/install-autostart.ps1",
-          "sha256": "188d6c4bef6b88a30c83ad71e2f25ad3679e53f99392a064e9a1fa1b28a5bccf",
-          "bytes": 2585
-        },
-        {
-          "path": "scripts/open.ps1",
-          "source_path": "scripts/open.ps1",
-          "sha256": "e6ce5e5472c2c70d99af136231248eecab3703410012bf84957350617f15fd59",
-          "bytes": 13588
-        },
-        {
-          "path": "scripts/recover.ps1",
-          "source_path": "scripts/recover.ps1",
-          "sha256": "f0fc2d1adc9ecf243829c44562c58122ec5780b6d7b3aa223b8c26c54ab64de9",
-          "bytes": 478
-        },
-        {
-          "path": "scripts/start-gui.ps1",
-          "source_path": "scripts/start-gui.ps1",
-          "sha256": "bc403fb68cf7849dd60464b087239c0b6147ddd05cb7a15d7cc7ad60e614859a",
-          "bytes": 4047
-        },
-        {
-          "path": "scripts/start.ps1",
-          "source_path": "scripts/start.ps1",
-          "sha256": "4d719c5f10842f68aebbc67b0c2674deeeaae6fa287cb20774f98c5823e8635c",
-          "bytes": 19363
+          "sha256": "82f076a57fbd694e416bc5d93011896998caa87df1f7c7df52eaf1d0c7de9715",
+          "bytes": 12105
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
+        },
+        {
+          "path": "templates/install-autostart.sh",
+          "source_path": "templates/install-autostart.sh",
+          "sha256": "7366d0324ad2561e9fb50e6bb95c27b13c6ab4e4c75ba56edb6e7d1dd4892011",
+          "bytes": 169
+        },
+        {
+          "path": "templates/open.sh",
+          "source_path": "templates/open.sh",
+          "sha256": "c13372494feef5b54e0afc7dd722334b80519090840413ed5343ab7400bc5c88",
+          "bytes": 177
+        },
+        {
+          "path": "templates/recover.sh",
+          "source_path": "templates/recover.sh",
+          "sha256": "80b6217af275276fd8c84158b6c383d5f13373e0bb5b20a8d7ea6593fc652b53",
+          "bytes": 131
+        },
+        {
+          "path": "templates/start-gui.sh",
+          "source_path": "templates/start-gui.sh",
+          "sha256": "da0931ee65d314ff5c98a69a9ebb14538a80dd2b8704e141a0e557f1c1b97111",
+          "bytes": 140
+        },
+        {
+          "path": "templates/start.sh",
+          "source_path": "templates/start.sh",
+          "sha256": "dc957fabba9dd594899c7d8d337b25fadd04edbc0d75913af3bc707a9c0e622a",
+          "bytes": 208
         }
       ]
     },
@@ -27326,16 +27326,16 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-identity-federation/SKILL.md",
-      "sha256": "76d791eebda5765a77398d544570ce3fe79f0232f9ea540ea49e8fb91747fc95",
-      "bytes": 1720,
+      "sha256": "895f4a0c16f70d06e3de3adf2088176797b089d073255aac710d773bba7aa427",
+      "bytes": 2053,
       "source_path": "skills/identity-federation/SKILL.md",
       "source_sha256": "673e4222ed9c06fd9e03fac7ce8b015ff21a93765b236138539081c10e3ced24",
       "support_files": [
         {
           "path": "references/sso-flow-checklist.md",
           "source_path": "references/sso-flow-checklist.md",
-          "sha256": "33c61fe6b7bde7aae5ab60c11b2132d71dd5dcaec060ea0111b3f121a7542b73",
-          "bytes": 238
+          "sha256": "3f22bf0388d15ae8ae28eb90d5f1794f36adfd9bd524477f34645fb8e11c71c7",
+          "bytes": 267
         }
       ]
     },
@@ -27346,106 +27346,106 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-js-reverse/SKILL.md",
-      "sha256": "169cd667d30ece22f6f96e81e63feb4ed443e39fe5cfd73f124f474811a25b4b",
-      "bytes": 9063,
+      "sha256": "166e12b8175e8a5991a0b770c00b655bfa19336924e04044807b85047fb081c3",
+      "bytes": 11254,
       "source_path": "skills/js-reverse/SKILL.md",
       "source_sha256": "ba6379bb85d2f9d80c9b418867d9c4be810f8681db1f74098264fbd04d118dc8",
       "support_files": [
         {
           "path": "references/ast-deobfuscation.md",
           "source_path": "references/ast-deobfuscation.md",
-          "sha256": "f17674b425049e38b11d50123793d0658602e9614cca7882fa6ca193f8090081",
-          "bytes": 146
+          "sha256": "0b15276d1907a1259115b36fd4317591f332f17c08cdafc3e2466e36de75f477",
+          "bytes": 231
         },
         {
           "path": "references/automation-entry.md",
           "source_path": "references/automation-entry.md",
-          "sha256": "74f04e1b434bb4dd716328db52825eef7bf14c4709965a42ca0a4b19338ea4e4",
-          "bytes": 498
+          "sha256": "c1afab623524f38d1f62fdac5dd9b6294d2a74c32f96e8cbad1a7e47258e79ca",
+          "bytes": 595
         },
         {
           "path": "references/env-patching.md",
           "source_path": "references/env-patching.md",
-          "sha256": "86d099755acaf104c9d83966cc11746b6e8378db66c75e546b5f106e6117afb5",
-          "bytes": 232
+          "sha256": "3e04367af54dec5d1533d06321812cf1bbad310a13710c0a61fb8145c08801fd",
+          "bytes": 308
         },
         {
           "path": "references/fallbacks.md",
           "source_path": "references/fallbacks.md",
-          "sha256": "4a29d01fcc2c79b15df353b8f93ef9cd26d57a4dedff66d4170eeb23e0fa4696",
-          "bytes": 235
+          "sha256": "e87f600720379b81dafdbad1e4e755edb594051c9696d2a5b861e4dc89e05b7b",
+          "bytes": 374
         },
         {
           "path": "references/instrumentation.md",
           "source_path": "references/instrumentation.md",
-          "sha256": "04306264d4403a7091f3c9910fdaf575557699496fe5bbde6c9ac96313116d61",
-          "bytes": 198
+          "sha256": "274bf460e7cb7614e5348f8e11b034ecabfc91dead749bbeceee42d603ffeee2",
+          "bytes": 282
         },
         {
           "path": "references/local-rebuild.md",
           "source_path": "references/local-rebuild.md",
-          "sha256": "64819623a0dad7104220cd7c71dd171cb6cc38a59d59b15974fc7df3c3bbc26f",
-          "bytes": 295
+          "sha256": "5b04d523b606dc0b12711187265e7e6da03659b12795b17602fa9f98878b2198",
+          "bytes": 400
         },
         {
           "path": "references/mcp-task-template.md",
           "source_path": "references/mcp-task-template.md",
-          "sha256": "80ea1f87d1a9719d04d98fafcfe355e23984f49a32c88aadfea4b2ccdf6a0f00",
-          "bytes": 408
+          "sha256": "801e165736f8271a663b8951f3dac6cfc8ab1135f1f51e4cf4c2a375f878c315",
+          "bytes": 426
         },
         {
           "path": "references/node-env-rebuild.md",
           "source_path": "references/node-env-rebuild.md",
-          "sha256": "68edef32e61396d6278bdde500c702b7627dd944b88985032c68fff844019027",
-          "bytes": 191
+          "sha256": "3316c948369fc0ba0dd2e0429f2d798fa4a6522980bb13ed211988c5df71d8e1",
+          "bytes": 251
         },
         {
           "path": "references/output-contract.md",
           "source_path": "references/output-contract.md",
-          "sha256": "318818bbde547fa2c91c621b7ec7d50b9f6b585953949ae6709d8da0693116e6",
-          "bytes": 258
+          "sha256": "8b5aa658514c795d7bd2967052b2d8ef307f0eed76b64b71c05f44dac82e62ba",
+          "bytes": 347
         },
         {
           "path": "references/task-artifacts.md",
           "source_path": "references/task-artifacts.md",
-          "sha256": "d798a89acb2526316a155918e4a1063d6b88993b7119329abaa3f8c7ced7ba39",
-          "bytes": 221
+          "sha256": "63b9f5e4d3d099ca2f71f1402762a19c249f546bfe75f7e13365feb664d66e9f",
+          "bytes": 294
         },
         {
           "path": "references/task-input-template.md",
           "source_path": "references/task-input-template.md",
-          "sha256": "286631de3aa4a8767404a3231c633c756e08798084fa145e42d1630106a0dc03",
-          "bytes": 165
+          "sha256": "4244a273fcc2c91629bb38d55348d52e87d62415ee7ca7477c9f7eec56d636a7",
+          "bytes": 172
         },
         {
           "path": "references/tool-defaults.md",
           "source_path": "references/tool-defaults.md",
-          "sha256": "bb8f97f71bad3bd6a10265ac846b2fed5fc7c28da60344ab565b9bd903474af3",
-          "bytes": 406
+          "sha256": "1169321eb81d8dd8711ac763e8c842d4b00eb3549534d559c66d79a2116126d1",
+          "bytes": 478
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/reverse-engineering/references/nonpe-format-cookbook.md",
           "source_path": "support/reverse-engineering/references/nonpe-format-cookbook.md",
-          "sha256": "6e5fd5f6cdef266ff0c5951d6cdddb9c4711610e0372f269425796f36c36c5ad",
-          "bytes": 30309
+          "sha256": "abc7b6ff083dc7b5809cb4bde41347a45238322101df228eb2b7de39f3d290cc",
+          "bytes": 35725
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
         }
       ]
     },
@@ -27456,52 +27456,52 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-llm-security/SKILL.md",
-      "sha256": "5446fab7619bb5ec7a51f8044b10713be5899d80953cb2edcab54bf2acb98bad",
-      "bytes": 5764,
+      "sha256": "e1bef4dd7d7752d31a87b7912737998f10f362bf78be78687ad7caa4726023e3",
+      "bytes": 6646,
       "source_path": "skills/llm-security/SKILL.md",
       "source_sha256": "141ef901d5a070ddcd633f1a07717ba1b4eb8bbe0db4dd2f44429d65d1aece39",
       "support_files": [
         {
           "path": "references/agent-obedience-engineering.md",
           "source_path": "references/agent-obedience-engineering.md",
-          "sha256": "f343a827fb96206a41a6e5c371931e13eb4194ed3f06c18fab5a1370da4dd942",
-          "bytes": 12361
+          "sha256": "55fb61e9127dec2dddab872cda0cbf30f159e3ceb2997c1b5e5178bc079f9fec",
+          "bytes": 14760
         },
         {
           "path": "references/agent-security-testing.md",
           "source_path": "references/agent-security-testing.md",
-          "sha256": "bb63477f428acc9bf69233d5389b81bb995b04d83788c85a9e723cb65c5ddcc8",
-          "bytes": 4600
+          "sha256": "34e76e6fa562456b489e6623819b2f6837f8d11dcd9232b457cdb98226fc9335",
+          "bytes": 5444
         },
         {
           "path": "references/owasp-llm-top10.md",
           "source_path": "references/owasp-llm-top10.md",
-          "sha256": "377bcf373c2f07916af795c2b3237e7522b22d476ff48355a9a201b914b19377",
-          "bytes": 2948
+          "sha256": "51fa9de3d117333d2f2d7e58269df46c72fd06cc623ae15dba73704011c23482",
+          "bytes": 3698
         },
         {
           "path": "references/prompt-injection-methodology.md",
           "source_path": "references/prompt-injection-methodology.md",
-          "sha256": "4a99d68823dd4403bcc9810dd04111bbac111411cbc02bee666102b0f3104b3f",
-          "bytes": 3464
+          "sha256": "1ce3a64b99b6697fa1d6bb448208af6437ca60ab96a30774f8515985731b9d74",
+          "bytes": 3929
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         },
         {
           "path": "support/ops/skill-supply-chain.md",
           "source_path": "support/ops/skill-supply-chain.md",
-          "sha256": "927f3b6a758be75c22259ab9639c13e57178f6ad65866508586a0367001e698e",
-          "bytes": 3683
+          "sha256": "5bb0862205db8d9b4c7d2c373de353145e94a63768fa745f0cb404e945bcfba9",
+          "bytes": 4569
         },
         {
           "path": "support/references/community-security-skills.md",
           "source_path": "support/references/community-security-skills.md",
-          "sha256": "21f980cc0105917f52a4377a89b7aa702589a90b225d28f97b9be0a7bbd50e04",
-          "bytes": 7679
+          "sha256": "8b9c830d0e3cfdc91e3c5a50ee6f518b767a402a939106118bbe48986e3edc76",
+          "bytes": 9348
         }
       ]
     },
@@ -27512,22 +27512,22 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-macos-reverse/SKILL.md",
-      "sha256": "40551a7eeb3a4ee87549130343a6accd507711704caa21ee7d6be16ce1f11cc5",
-      "bytes": 1880,
+      "sha256": "b00dccb98fbdb9df71c97d5ee78a1167a522a1fa2c036257634fe64714116c2a",
+      "bytes": 2147,
       "source_path": "skills/macos-reverse/SKILL.md",
       "source_sha256": "727633a83f01000977d3eecd93fb77324ea082f0207c9fd1b532ae315e01e1ec",
       "support_files": [
         {
           "path": "references/macho-triage.md",
           "source_path": "references/macho-triage.md",
-          "sha256": "cdf5ae1803f16043618ada0e5f00d3edf0b58a3726b2be049eb485c77cf615d1",
-          "bytes": 213
+          "sha256": "a86701da3adea33bb64f6697d74f3758b35b443c43290540543992939699f034",
+          "bytes": 234
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         }
       ]
     },
@@ -27538,52 +27538,52 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-malware-analysis/SKILL.md",
-      "sha256": "3f2d0b5aa70d3a6b64d25cd1bbe0f124f5914f493bb00dbb058e73ee96440d21",
-      "bytes": 14689,
+      "sha256": "2a01f5589c76a0851be112283eaaa6ec1917c8614f27a50b1d021b4bf6704d91",
+      "bytes": 17014,
       "source_path": "skills/malware-analysis/SKILL.md",
       "source_sha256": "4b62b8283d60084fd58f87442d9ac283b26b19e244b71d50ceee699b4353afe1",
       "support_files": [
         {
           "path": "references/anti-analysis-techniques.md",
           "source_path": "references/anti-analysis-techniques.md",
-          "sha256": "27bbda99e9cac6ef6945ff5fedfc3b705cafc8ad9e3a4a6ef3e5e033221ccd2b",
-          "bytes": 5698
+          "sha256": "010a681ecbcd1b993b51bb9bac33e196638b09aebc02a0959330a45146e8fea0",
+          "bytes": 6394
         },
         {
           "path": "references/sandbox-orchestration.md",
           "source_path": "references/sandbox-orchestration.md",
-          "sha256": "679fe226a69e03633b33840dc0b035917c3a800b3b8282ec31c067ba124f658a",
-          "bytes": 5239
+          "sha256": "2da9cd585c8e3304799fde3804f38a2584880c424b2ce90e859490a8d18225b1",
+          "bytes": 5670
         },
         {
           "path": "references/yara-sigma-rules.md",
           "source_path": "references/yara-sigma-rules.md",
-          "sha256": "5369e6177e14518b8752696028fe869baa1b8ae96dbc7dc7d88b65a6ac4a1a76",
-          "bytes": 6464
+          "sha256": "1e37df524f07a4dbbc4df69e3c5038a21da151d29eeb87e07e6d15c978b074e8",
+          "bytes": 6849
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/reverse-engineering/references/nonpe-format-cookbook.md",
           "source_path": "support/reverse-engineering/references/nonpe-format-cookbook.md",
-          "sha256": "6e5fd5f6cdef266ff0c5951d6cdddb9c4711610e0372f269425796f36c36c5ad",
-          "bytes": 30309
+          "sha256": "abc7b6ff083dc7b5809cb4bde41347a45238322101df228eb2b7de39f3d290cc",
+          "bytes": 35725
         },
         {
           "path": "support/reverse-engineering/references/ollvm-deobfuscation.md",
           "source_path": "support/reverse-engineering/references/ollvm-deobfuscation.md",
-          "sha256": "9bc48a802ec429ad1d7a1b097581c3c4988581576c6ef68e4e16f60e4b5afeed",
-          "bytes": 23426
+          "sha256": "8a7b183b2c6cafad08ba640006c8f23ecb2dcf5d7c04bd89ac690a8e41098525",
+          "bytes": 27451
         },
         {
           "path": "support/reverse-engineering/references/re-agent-workflow.md",
           "source_path": "support/reverse-engineering/references/re-agent-workflow.md",
-          "sha256": "b94ab671a3950b9256996e15255a4eb60b8da1d202948511248615c5d4114b7b",
-          "bytes": 16942
+          "sha256": "4f1875d8ab27a4a5eaf285f1c832d786a2c86d726c7b82f127ce25b38c569f2b",
+          "bytes": 20128
         }
       ]
     },
@@ -27594,34 +27594,34 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/mobile-reverse/SKILL.md",
-      "sha256": "32da83c7d5345b8331a3829a7e5eeb66ae8e21f4440b4f319fd909eb68afbb2c",
-      "bytes": 6363,
+      "sha256": "005f94b0cf9250601c4c81ee64df572fa3f6d3fa83d138208b34b0cdb07331d5",
+      "bytes": 7078,
       "source_path": "skills/mobile-reverse/SKILL.md",
       "source_sha256": "b98b526522ba37b64f20ad763dd5992f42884aa34e30e5cc2f73e7a6a86881f5",
       "support_files": [
         {
           "path": "references/anti-detection-bypass.md",
           "source_path": "references/anti-detection-bypass.md",
-          "sha256": "41cc64e54cad6f920ddbf6f88c98da4bc6d0bad2989f6c78f08dc4d3b82a03c2",
-          "bytes": 5579
+          "sha256": "300dfd2305f9c29b01c8f929a44bac28ccfd0d6626b5dc42a6cfe537ba1e582b",
+          "bytes": 5893
         },
         {
           "path": "references/frida-objection-deep.md",
           "source_path": "references/frida-objection-deep.md",
-          "sha256": "73d3f22ead0cf6da134550fb7e4023abe177c1c86ecd075bf95515c1803f2d46",
-          "bytes": 6213
+          "sha256": "19d7c5c1b9d7ae074c98333b8b55ebc95c6dde8b1e3cb9084690616d4d57052a",
+          "bytes": 6348
         },
         {
           "path": "references/ios-reverse-guide.md",
           "source_path": "references/ios-reverse-guide.md",
-          "sha256": "737b28e598257713677404613c55af5fd2def40caa3bd101d3328d14e6b1a62d",
-          "bytes": 5351
+          "sha256": "6001c96a94fb8a4a2ee63b219f9c0e2cafc13e7ec90259e9940308f3c5e428a5",
+          "bytes": 5635
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         }
       ]
     },
@@ -27632,22 +27632,22 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-ot-ics/SKILL.md",
-      "sha256": "00d44d9286efce0f55defae751b97006f5c073a1a79c89cb90cfb3e5c11c63df",
-      "bytes": 2990,
+      "sha256": "8984f5be1658857a91fea51ac580e213bf7fef7eb3d963a4e67536519b7637e6",
+      "bytes": 3746,
       "source_path": "skills/ot-ics/SKILL.md",
       "source_sha256": "81bf7ff97d1e0d446ec262a2fed726e52abe3cce88e07c01ce31afcd0061bc9e",
       "support_files": [
         {
           "path": "references/ot-safe-assessment.md",
           "source_path": "references/ot-safe-assessment.md",
-          "sha256": "0c9eb6ea4d0a8116c813fd0fa9a3c914ba446c6500c674ea2bcf08955bd4edf3",
-          "bytes": 411
+          "sha256": "f09a9a7e3f276ca3c6073c209db5b5a341c31cb3349b6933bab3780787500729",
+          "bytes": 571
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         }
       ]
     },
@@ -27658,46 +27658,46 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-patch-diff-exploit/SKILL.md",
-      "sha256": "5ba2be04911e65f1240c30256328f372d3256805543089ce42ddc0752279e37e",
-      "bytes": 12234,
+      "sha256": "b94b6f38cf366eb84bb3d0dee079e4776f5e5929bab83997f512fd151b38752a",
+      "bytes": 14729,
       "source_path": "skills/patch-diff-exploit/SKILL.md",
       "source_sha256": "b010987e97733c3f218700f45e283c916ee7af925e8ce216320c503006c8bcf7",
       "support_files": [
         {
           "path": "references/diff-tools-comparison.md",
           "source_path": "references/diff-tools-comparison.md",
-          "sha256": "e72cbaa32d76283f5739238e3b66e7b143194b940f44be146ad7624c335ac0cd",
-          "bytes": 8482
+          "sha256": "353f3d4c988172fcd8c00f25395db29b693fabbc165ee1850becde55f49e6e33",
+          "bytes": 9822
         },
         {
           "path": "references/patch-tuesday-workflow.md",
           "source_path": "references/patch-tuesday-workflow.md",
-          "sha256": "d486f45cecd4fb7705b9d3cf329e2b83207315bbbe46998d606f6e68b5aceb86",
-          "bytes": 8936
+          "sha256": "c45ec4e5c6070406eb5c965e9d2e3fe19d65779de32ad06cc2b0fc6d85953577",
+          "bytes": 10140
         },
         {
           "path": "references/root-cause-and-poc.md",
           "source_path": "references/root-cause-and-poc.md",
-          "sha256": "9fee53c914412252e4a61c8183a0471c0451be062f984df559ee25af183ccf5a",
-          "bytes": 5263
+          "sha256": "2ffd4201752e8b59019f57660461d5bf570a34731c3b68a6e944ce9a99daf086",
+          "bytes": 6202
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
         }
       ]
     },
@@ -27708,130 +27708,136 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-pentest-tools/SKILL.md",
-      "sha256": "fe7ab992916fa1a694762a110570af620b592e4b8906cdb66ac94677bb8d4ba0",
-      "bytes": 12861,
+      "sha256": "7d892c16e52d685fd7423e76bbe932212abe4fc223818c96cdb0609d473375bf",
+      "bytes": 15243,
       "source_path": "skills/pentest-tools/SKILL.md",
       "source_sha256": "5bab5fe16593998862c763959ae6643e1bf81ed8d75bfa924f42c2aabd1170c9",
       "support_files": [
         {
           "path": "references/ai-pentest-agents.md",
           "source_path": "references/ai-pentest-agents.md",
-          "sha256": "84b2913a52354265b91e92aa7097a8c7c1b8aa0512f485daa1960cec78990921",
-          "bytes": 6171
+          "sha256": "f3e75287c7ade3996f5c9835b9a42908adc5e6a8f68f9e0af3aefb18ec96476f",
+          "bytes": 7351
         },
         {
           "path": "references/ai-pentesting-landscape-2026.md",
           "source_path": "references/ai-pentesting-landscape-2026.md",
-          "sha256": "649c8665835b084e4398a4ed5a3735606cc50b1c5d4b86e2a210fed477ecf645",
-          "bytes": 3503
+          "sha256": "a4fb6a41a153ba7d2ed03cd9a94b69a32f86fdb9ac9246728ee5c3e47111f6bf",
+          "bytes": 4235
         },
         {
           "path": "references/automation-loop-pattern.md",
           "source_path": "references/automation-loop-pattern.md",
-          "sha256": "256f99caa7b65efb6246e5286ccc2425e957e4bfd323fb59c4b30b114dc4283e",
-          "bytes": 5346
+          "sha256": "30b0b273d6144d0181f98dc1f9a01475771bf3889a3bfb92d090fc368cdfe41f",
+          "bytes": 6608
         },
         {
           "path": "references/awesome-pentest-digest.md",
           "source_path": "references/awesome-pentest-digest.md",
-          "sha256": "7d11cc879edb426cded0ab75c59942ae8049809de5ae6e909927fa9d3f4aad5b",
-          "bytes": 6090
+          "sha256": "ff8e307ce23ddbc943b7a19745b03e30ceb39a6d21d5a60fd3e301d146e7b0eb",
+          "bytes": 6910
         },
         {
           "path": "references/burpsuite-mcp-guide.md",
           "source_path": "references/burpsuite-mcp-guide.md",
-          "sha256": "3e0eeeeada8ba5829aecf2c3abe0a1c3cef0d7e1c64895d9ab6cac50481e5296",
-          "bytes": 23570
+          "sha256": "b1d07c87d8cd83420fc0c3ecda87c0bd8eb6a6c70fc9a5afbe4785465e5fd756",
+          "bytes": 26982
         },
         {
           "path": "references/client-side-lab-playbook.md",
           "source_path": "references/client-side-lab-playbook.md",
-          "sha256": "9380d626b7116c78bceeb7ff6fed83ffc548d9addbcb7ef0be3ea2dfa7c9d4e4",
-          "bytes": 4936
+          "sha256": "00af42782ead3df4a85a5b7357412d3a89eb0fb40746235be32aff7bca1cef87",
+          "bytes": 5494
         },
         {
           "path": "references/kali-mcp-ecosystem.md",
           "source_path": "references/kali-mcp-ecosystem.md",
-          "sha256": "f242aee5c8190f3457755ca2febc88fb8837b51b634c45b8b9426ac617166340",
-          "bytes": 4527
+          "sha256": "323488698993371f698722b3293d4a3ac407bdf8c06888a6aa424f5a96abbcb4",
+          "bytes": 5038
         },
         {
           "path": "references/msf-protocol.md",
           "source_path": "references/msf-protocol.md",
-          "sha256": "e5d0c0b5a1b55d98ed2903cea45500ccb0fc7099beb920a2ad0fb0d2a598c40c",
-          "bytes": 6042
+          "sha256": "e85de23159c85ddf5c30d86f1d017a92bf2db93519d278752112ba983a9fbc0b",
+          "bytes": 7245
         },
         {
           "path": "references/network-attack-defense.md",
           "source_path": "references/network-attack-defense.md",
-          "sha256": "3bccbb98b195bc0b5a1dd92869af65660b4dd2d493e30c432381b9831dc71f8c",
-          "bytes": 10119
+          "sha256": "4b2cec68d833c23e7a0c8f61508472106bf7a0fb5b8fef04b30b8b020775c20c",
+          "bytes": 11636
         },
         {
           "path": "references/nuclei-guide-2026.md",
           "source_path": "references/nuclei-guide-2026.md",
-          "sha256": "479d866711e880dd66460369f010baeee0a8caaceb71d18fcb7f2ebff171c333",
-          "bytes": 4070
+          "sha256": "e4bdad1968800112f2a8f626aadac5706e213671b57979f83bb485ba461eec62",
+          "bytes": 4470
         },
         {
           "path": "references/pentest-ai-agents-matrix.md",
           "source_path": "references/pentest-ai-agents-matrix.md",
-          "sha256": "caebe2d2b65825d7e2c3298cffdad96eb66c6a273740653c97a85d99bf19a9bb",
-          "bytes": 5074
+          "sha256": "9239b4d5aaee6d03e5c976597808522d2545e6ab6e9720f3cef6665bcb263566",
+          "bytes": 5865
         },
         {
           "path": "references/pentest-loop.md",
           "source_path": "references/pentest-loop.md",
-          "sha256": "dcbaccf3318fd968058639b2de4f435a5b9e8f1878b0b819c0f7dfe359aa1af6",
-          "bytes": 6719
+          "sha256": "22352852341cc922793fd695183588441c7357b33a225a353d954926f8da1d99",
+          "bytes": 7622
         },
         {
           "path": "references/recon-pipeline.md",
           "source_path": "references/recon-pipeline.md",
-          "sha256": "bd3e0183e381a77adcc95b021e477f248212384a9679723427b6090bbe23e4b5",
-          "bytes": 5793
+          "sha256": "628637eec6f45e8c431ba2025f804ee29216eb502b3521940d55218fc1c39297",
+          "bytes": 6244
         },
         {
           "path": "references/web-attack-cheatsheet.md",
           "source_path": "references/web-attack-cheatsheet.md",
-          "sha256": "fc8decb8ae27d5dfbb510109c22cdea9c2e02b438177d476d847ec11849f3e53",
-          "bytes": 7700
+          "sha256": "e9408573a4d655c9c48ad866bb5c5cba2133836bf0d48ea3c59a5faa9fce8914",
+          "bytes": 8539
         },
         {
           "path": "src-hunter/SKILL.md",
           "source_path": "src-hunter/SKILL.md",
-          "sha256": "1819d01dce004deeea66217d9e2aeda7e5cead3ff3ecbd5cb77db1844b34741a",
-          "bytes": 12049
+          "sha256": "defd3753b84bcad4ffa494bd720d9abc26b04ed37e88698e8dd9291325a46cdb",
+          "bytes": 13912
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         },
         {
           "path": "support/ops/scope-contract.md",
           "source_path": "support/ops/scope-contract.md",
-          "sha256": "cf7e170d6796155e43b59bf153c02355852bb414bd0b7d04cd7e3f8bde9cfec0",
-          "bytes": 4011
+          "sha256": "034289dd4676d78946204cf20f84dc5300be439cdea6c4e8d0e56344f7d3c51e",
+          "bytes": 4503
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
-        },
-        {
-          "path": "support/scripts/append-evidence.ps1",
-          "source_path": "support/scripts/append-evidence.ps1",
-          "sha256": "3fa09dd75217b56b7313d523a7743d8fec7ca695e92e0675d5940ee014bce7cc",
-          "bytes": 7485
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "7545a5355a6119e6c0664273f81ba711cc0883fb5a571213e1331e10d0ec6f4d",
+          "bytes": 16329
+        },
+        {
+          "path": "support/templates/append-evidence.sh",
+          "source_path": "support/templates/append-evidence.sh",
+          "sha256": "b10e70fd42bd08a4e70eb5dbd4da6c37290ba8ae2d7e78b387ffb5994be695bb",
+          "bytes": 146
+        },
+        {
+          "path": "support/templates/case-init.sh",
+          "source_path": "support/templates/case-init.sh",
+          "sha256": "13afd0762a918a6640263b7888d62c6c2143a5a3208beebfa36cde80f48910db",
+          "bytes": 120
         }
       ]
     },
@@ -27842,34 +27848,34 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-protocol-reverse/SKILL.md",
-      "sha256": "ca00a0682ba0ead04c645c82d7262fb672a5f7a3b9ccb95b1db5a0ca0e2787db",
-      "bytes": 3723,
+      "sha256": "cf44851bb902103a9da1b5d800bed0ede6081ec916596634e9d3afa6c54b29dd",
+      "bytes": 4434,
       "source_path": "skills/protocol-reverse/SKILL.md",
       "source_sha256": "f8408273d7ba4177ed92f838940211d8ba2378a2c89d0efd2a8e33a35d1079da",
       "support_files": [
         {
           "path": "references/protocol-workflow.md",
           "source_path": "references/protocol-workflow.md",
-          "sha256": "f306d29c2121fbdad5ac12bd19c102f68337b4c0dda25daecc3c331abe63b2f6",
-          "bytes": 807
+          "sha256": "422e166c8ebdba6d2c1d3654022484c1a0460934431c0866730aa272c0a504b4",
+          "bytes": 1007
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
-          "path": "support/scripts/case-init.ps1",
-          "source_path": "support/scripts/case-init.ps1",
-          "sha256": "c386aeba66b9f569b6fd3747212ffbe8536946ffc7e64f9ca677e3dd487c2d6c",
-          "bytes": 15096
+          "path": "support/templates/case-init.sh",
+          "source_path": "support/templates/case-init.sh",
+          "sha256": "13afd0762a918a6640263b7888d62c6c2143a5a3208beebfa36cde80f48910db",
+          "bytes": 120
         }
       ]
     },
@@ -27880,46 +27886,46 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-pwn-chain/SKILL.md",
-      "sha256": "342fe965b52fb3894170eb9d126396d150802e5b3a585cdebaeaa26d7de1f07f",
-      "bytes": 8961,
+      "sha256": "20c3275cfc305ca217305df4ac7dd064425b86e92e494b108d3363fa449453d5",
+      "bytes": 10596,
       "source_path": "skills/pwn-chain/SKILL.md",
       "source_sha256": "112df259349791cfde9019e0466258da87df64842ebf2825949f5aadf0a496d2",
       "support_files": [
         {
           "path": "references/heap-pwn.md",
           "source_path": "references/heap-pwn.md",
-          "sha256": "61ff066fffe69d7a3bb828fae6899a636d5a05cfe0874c56fa178a5018ebda0a",
-          "bytes": 9193
+          "sha256": "4a5d0dfe3341254cee11d458ca136a54d2310151f9cd852014f45af7703ebfd1",
+          "bytes": 10003
         },
         {
           "path": "references/kernel-pwn.md",
           "source_path": "references/kernel-pwn.md",
-          "sha256": "cbb8cfa41ca06e8b616e252c0078692d88c09e6f3c7da05833ee633159a83524",
-          "bytes": 12241
+          "sha256": "af7e2b578143dcd5d710815aa36786865807d2dbfa24c01a678a67a88b8940b2",
+          "bytes": 13636
         },
         {
           "path": "references/stack-pwn.md",
           "source_path": "references/stack-pwn.md",
-          "sha256": "a342605f4c10048d62a9ff25321453d26a3ce397b7c10adde00964881a4cabcd",
-          "bytes": 8823
+          "sha256": "09cc72fe3fe0a2ec677da03f1d6797a992285499ce95573b232727944cf40c65",
+          "bytes": 9779
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
         }
       ]
     },
@@ -27930,46 +27936,46 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-radare2/SKILL.md",
-      "sha256": "c2e8941d7712070af8503e9b07d6e1eb527afaec069f8451f8e35fc5ce2fd0ec",
-      "bytes": 14270,
+      "sha256": "b46792779dd8dbd3a54ed03c656f67b1f6be82f9b8e67c6e8d22744398977b3a",
+      "bytes": 17083,
       "source_path": "skills/radare2/SKILL.md",
       "source_sha256": "850c50bae1d59bfcf732f3f452bd19baefac73870a76c95a3aac6e89a4bdffe8",
       "support_files": [
         {
           "path": "references/cheatsheet.md",
           "source_path": "references/cheatsheet.md",
-          "sha256": "809bcbc5f5ff098acce96600abf4a94b7b8f54a7388fea71eab66f685f0e2d77",
-          "bytes": 1629
-        },
-        {
-          "path": "scripts/recon.ps1",
-          "source_path": "scripts/recon.ps1",
-          "sha256": "30e5575b63c00cf151277bcf23ebd0c751a02584b9f36c8860634384ce4bab7c",
-          "bytes": 2702
+          "sha256": "1cf2e6bb9ac26fd25fbfd5ded3b5e5bc50c7697061d6190ab846f92ca488c684",
+          "bytes": 1705
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/reverse-engineering/references/re-agent-workflow.md",
           "source_path": "support/reverse-engineering/references/re-agent-workflow.md",
-          "sha256": "b94ab671a3950b9256996e15255a4eb60b8da1d202948511248615c5d4114b7b",
-          "bytes": 16942
+          "sha256": "4f1875d8ab27a4a5eaf285f1c832d786a2c86d726c7b82f127ce25b38c569f2b",
+          "bytes": 20128
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
+        },
+        {
+          "path": "templates/recon.sh",
+          "source_path": "templates/recon.sh",
+          "sha256": "25dab469e8983284c9ef382ebe3ff8876b9db4802c88113e99fcaf842eab9641",
+          "bytes": 280
         }
       ]
     },
@@ -27980,16 +27986,16 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-radio-sdr/SKILL.md",
-      "sha256": "0c32ec6f2f8064d2b0d2d79a852b4b30909bbebb28507746822b8ef608489200",
-      "bytes": 1420,
+      "sha256": "4786e399c8649ec22717f85a672f30c5768e5212fb4b6ecab1631dcfb0bd89fe",
+      "bytes": 1931,
       "source_path": "skills/radio-sdr/SKILL.md",
       "source_sha256": "2bd539bcea3cc477b15e2583634aff9f9497cd55d826443960979e945d4cad07",
       "support_files": [
         {
           "path": "references/sdr-lab-rules.md",
           "source_path": "references/sdr-lab-rules.md",
-          "sha256": "74a8e9a7a4c8b62bae47963cd2d34ed6e0e150c327e0b9712ba17189eff10d6e",
-          "bytes": 191
+          "sha256": "db3007a3334426a2ab17ae45f26cd634a0e373b926d03cf70e09406d575bf490",
+          "bytes": 287
         }
       ]
     },
@@ -28000,28 +28006,28 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-reverse-engineering/SKILL.md",
-      "sha256": "5f1fea8f141281fe7674c49e68bf1f517ad7e94ef6a75242559952f21796a37f",
-      "bytes": 13950,
+      "sha256": "7eb30d0678f5d613f2b42b1a11803ce0de020b45202802d130714f5acc213cd7",
+      "bytes": 14520,
       "source_path": "skills/reverse-engineering/SKILL.md",
       "source_sha256": "7128b8445c61d41917eb28eb56c24c8ca2a3518b8b5b46c83137bf5e0b4935af",
       "support_files": [
         {
           "path": "anti-analysis.md",
           "source_path": "anti-analysis.md",
-          "sha256": "338417bde3a4473cf0b8238d7d32b5895fb98a25625776bf83752c3fb9844b9e",
-          "bytes": 33167
+          "sha256": "c4695c6130bdcca2e779e7154e2f08d880e504cb9210462b7248a90fefb27f47",
+          "bytes": 34678
         },
         {
           "path": "field-notes.md",
           "source_path": "field-notes.md",
-          "sha256": "0f47426788f1cc8e9515a1f656a3e08091d2bd104941c45cfccf37ce20de2e43",
-          "bytes": 39059
+          "sha256": "cd38ff1ce46c4bc1fc76bf3a14cdc6d4f46d840f5a622e6ec76278479e8cdc25",
+          "bytes": 39766
         },
         {
           "path": "languages-compiled.md",
           "source_path": "languages-compiled.md",
-          "sha256": "26aecb4f27d050bb99fc646858df80c3773cf6e0bf42fa64a1ed18f911b1c7fb",
-          "bytes": 22928
+          "sha256": "e3130371ad7f4920204e0bac35ab62ab685d889c30943949e70325105cb3f41c",
+          "bytes": 23047
         },
         {
           "path": "languages-platforms.md",
@@ -28074,32 +28080,32 @@
         {
           "path": "references/ai-assisted-re.md",
           "source_path": "references/ai-assisted-re.md",
-          "sha256": "f8fabe6926483dd9eae681e85edf2584856b5950054f7318b53230ca4dbd3cb2",
-          "bytes": 4782
+          "sha256": "b9b3a8b9f4633a332146bf3b1986d850f16e244bbd9925be8e741f06e41b1da2",
+          "bytes": 5606
         },
         {
           "path": "references/nonpe-format-cookbook.md",
           "source_path": "references/nonpe-format-cookbook.md",
-          "sha256": "6e5fd5f6cdef266ff0c5951d6cdddb9c4711610e0372f269425796f36c36c5ad",
-          "bytes": 30309
+          "sha256": "abc7b6ff083dc7b5809cb4bde41347a45238322101df228eb2b7de39f3d290cc",
+          "bytes": 35725
         },
         {
           "path": "references/ollvm-deobfuscation.md",
           "source_path": "references/ollvm-deobfuscation.md",
-          "sha256": "9bc48a802ec429ad1d7a1b097581c3c4988581576c6ef68e4e16f60e4b5afeed",
-          "bytes": 23426
+          "sha256": "8a7b183b2c6cafad08ba640006c8f23ecb2dcf5d7c04bd89ac690a8e41098525",
+          "bytes": 27451
         },
         {
           "path": "references/re-agent-workflow.md",
           "source_path": "references/re-agent-workflow.md",
-          "sha256": "b94ab671a3950b9256996e15255a4eb60b8da1d202948511248615c5d4114b7b",
-          "bytes": 16942
+          "sha256": "4f1875d8ab27a4a5eaf285f1c832d786a2c86d726c7b82f127ce25b38c569f2b",
+          "bytes": 20128
         },
         {
           "path": "support/field-journal/precedent-reverse.md",
           "source_path": "support/field-journal/precedent-reverse.md",
-          "sha256": "48dc691f86ba39aa97c375850da977867e4f5bb74c56861cdcae22994357307a",
-          "bytes": 13545
+          "sha256": "0efd791a0e4c21887a7ebd0367701ec028d6292677c6317fc4a3ec03bd4e36cf",
+          "bytes": 14716
         },
         {
           "path": "support/ops/analysis-decision-framework.md",
@@ -28110,26 +28116,26 @@
         {
           "path": "support/references/community-security-skills.md",
           "source_path": "support/references/community-security-skills.md",
-          "sha256": "21f980cc0105917f52a4377a89b7aa702589a90b225d28f97b9be0a7bbd50e04",
-          "bytes": 7679
+          "sha256": "8b9c830d0e3cfdc91e3c5a50ee6f518b767a402a939106118bbe48986e3edc76",
+          "bytes": 9348
         },
         {
           "path": "support/routing.md",
           "source_path": "support/routing.md",
-          "sha256": "4e6b76b1f34e3b8c44597157289ecd312cfbc2b80ca3847342e2a58d55065050",
-          "bytes": 27758
+          "sha256": "bc4a08d9a01683734c340498709b161eab23d1ebf90b67309788b725f787f97b",
+          "bytes": 28092
         },
         {
           "path": "support/SKILL.md",
           "source_path": "support/SKILL.md",
-          "sha256": "bdc1b4cf295089399ce007b03652ab2349c0b379d8be3edfc01dac16e027755e",
-          "bytes": 13245
+          "sha256": "4545e2e6ed5e6cabc53ee35c15e8a4bbf11ccc84c18747e4120a1714b402f234",
+          "bytes": 16308
         },
         {
           "path": "tools-advanced.md",
           "source_path": "tools-advanced.md",
-          "sha256": "948f9a19fda1b922ddf526b74ffca50c441aca5b0c1dd777fab9c70f6f42e770",
-          "bytes": 26514
+          "sha256": "5030ed38bd302bbb43f77ea92a108886390f5f23f52269f48c756ef67fafc851",
+          "bytes": 26908
         },
         {
           "path": "tools-dynamic.md",
@@ -28152,28 +28158,28 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-supply-chain-security/SKILL.md",
-      "sha256": "fcee57a20a083fff4c59671f0e096ab96c0ffda25b261b7cc5e40213ddb98aa2",
-      "bytes": 5917,
+      "sha256": "5a9e491a82cdc4725bc75db37b3af389ccf49be662143f883a363942d650fb14",
+      "bytes": 6962,
       "source_path": "skills/supply-chain-security/SKILL.md",
       "source_sha256": "21071161959f58aadfec2a0c6ccb4bdec6837af3df34fcaa988c7e6ccae42a33",
       "support_files": [
         {
           "path": "references/cicd-pipeline-security.md",
           "source_path": "references/cicd-pipeline-security.md",
-          "sha256": "6e8dbec4e75b25b293aa20cd3e2b910cf268b8d4f3975aef0d3960addfccf518",
-          "bytes": 3489
+          "sha256": "82101c2e413bb59bf2507d2c1c8bf2cc00d99cf3d140820892493c5c8292355b",
+          "bytes": 3766
         },
         {
           "path": "references/sbom-sca-methodology.md",
           "source_path": "references/sbom-sca-methodology.md",
-          "sha256": "97c54111804c7539f1ddb5e9c06cd0fc6287c825a5dfb5abce3416d951ee8722",
-          "bytes": 2046
+          "sha256": "c9f4f62b817c1534bccdd4dbeae802194d600e1ee7d962f178196788f1c161b1",
+          "bytes": 2302
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         }
       ]
     },
@@ -28184,22 +28190,22 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-thick-client/SKILL.md",
-      "sha256": "5af52810f7f223cc3fec50fb8f3de6f846fdc7e69c1b79dc18baba9d5ca2a6d7",
-      "bytes": 2213,
+      "sha256": "5fc9923fc751178ed0330b4abb34d2390be3e345dbffa7e3784690e7adfc7888",
+      "bytes": 2644,
       "source_path": "skills/thick-client/SKILL.md",
       "source_sha256": "714f7e2499b52b2f39a9973fbe6aafa2691454c3f36c7a3374b667aa25b2bfb5",
       "support_files": [
         {
           "path": "references/thick-client-checklist.md",
           "source_path": "references/thick-client-checklist.md",
-          "sha256": "c9e593a932ffa3f45b5a183ca9c0f0852a607ca69dd44589bb73900c12e56682",
-          "bytes": 265
+          "sha256": "8a2adfe8e74896332f813679fcfc325e3d3ed6c77feb2681f9e91f58bcfe4053",
+          "bytes": 330
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         }
       ]
     },
@@ -28210,22 +28216,22 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-threat-hunting/SKILL.md",
-      "sha256": "a3d019d0d8a0c065816ec0fd2fd4fce0fc3dca437f61acb1655bd04746017b27",
-      "bytes": 2177,
+      "sha256": "f9d9b8f41c5037b9e9e9e321b13cbf4614d454951add619635d1552a583fb818",
+      "bytes": 2669,
       "source_path": "skills/threat-hunting/SKILL.md",
       "source_sha256": "b14ecc481830186bd8780e529f57d64d8e6bb6568df3b2fdc58b3b1c7e2b01c9",
       "support_files": [
         {
           "path": "references/hunting-loop.md",
           "source_path": "references/hunting-loop.md",
-          "sha256": "dc240430b3f5574b1852125940848efa459af069f90c5d0c29aed8eba4d1252a",
-          "bytes": 181
+          "sha256": "cdb8a606f0e70ba43907976145704f44ab038b4c63683c37ae241a7fb5f97b8b",
+          "bytes": 189
         },
         {
           "path": "support/malware-analysis/references/yara-sigma-rules.md",
           "source_path": "support/malware-analysis/references/yara-sigma-rules.md",
-          "sha256": "5369e6177e14518b8752696028fe869baa1b8ae96dbc7dc7d88b65a6ac4a1a76",
-          "bytes": 6464
+          "sha256": "1e37df524f07a4dbbc4df69e3c5038a21da151d29eeb87e07e6d15c978b074e8",
+          "bytes": 6849
         }
       ]
     },
@@ -28236,8 +28242,8 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-threat-intelligence/SKILL.md",
-      "sha256": "bd72fecc7b31c78590efba16a8110a0e6a5cacbf88a0c85e7fe94fad3300c462",
-      "bytes": 7329,
+      "sha256": "c9d769131f74fd37e67101697d4156e900ed0300ed7fbab7ef133c5d6414f823",
+      "bytes": 8885,
       "source_path": "skills/threat-intelligence/SKILL.md",
       "source_sha256": "dddfe7fd828f7602fa6d5db60e11ef2ceb77bc97e56fba5c49c4053a2fe08a27",
       "support_files": [
@@ -28250,14 +28256,14 @@
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         },
         {
           "path": "support/ops/scope-contract.md",
           "source_path": "support/ops/scope-contract.md",
-          "sha256": "cf7e170d6796155e43b59bf153c02355852bb414bd0b7d04cd7e3f8bde9cfec0",
-          "bytes": 4011
+          "sha256": "034289dd4676d78946204cf20f84dc5300be439cdea6c4e8d0e56344f7d3c51e",
+          "bytes": 4503
         }
       ]
     },
@@ -28268,16 +28274,16 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-wifi-wireless/SKILL.md",
-      "sha256": "1489b7856b9b25b8a3a11adc95961f3440eff3ff4b3285bbd335d75d5d1ed83c",
-      "bytes": 1573,
+      "sha256": "ac0b4d0bbb2f025857bcd60dacf2473b4fd06c181fda74fe789a9d7dd73eae89",
+      "bytes": 1958,
       "source_path": "skills/wifi-wireless/SKILL.md",
       "source_sha256": "f73acb19e6e002450956ecbc90261d28081dcce85eaee8ae6c4568a9c92def22",
       "support_files": [
         {
           "path": "references/wireless-lab-rules.md",
           "source_path": "references/wireless-lab-rules.md",
-          "sha256": "352cf65ea6fd0c1d959749da7c0d0bfe32a1a698d92c7d44877c6f94f15a5dae",
-          "bytes": 181
+          "sha256": "5013f6a2911373a1da4fe0fa062379793f9e5d3727877f4c7ae04e33bc6a4a04",
+          "bytes": 270
         }
       ]
     },
@@ -28288,46 +28294,46 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/red-windows-ad/SKILL.md",
-      "sha256": "985130a3ecb824c45d5845e349df7defeb2c745eec8138d795904c18be44d3c4",
-      "bytes": 2671,
+      "sha256": "650d79ca956f1b835560a101aafb8ee908ad9f35f1f5c25e359bfec74c31c8ef",
+      "bytes": 3462,
       "source_path": "skills/windows-ad/SKILL.md",
       "source_sha256": "5670e104212f7ca2b86bd7585df70e3850cd163fc5faed586f4412c88691cc5c",
       "support_files": [
         {
           "path": "references/ad-attack-paths.md",
           "source_path": "references/ad-attack-paths.md",
-          "sha256": "effab5e97278f30d54285372d9b2e76678665645b732b5772428275042cc12bc",
-          "bytes": 473
+          "sha256": "3085653abb82a130e9b2d3ce68266435c3fd782cb3e8ab1304e2b841e062f569",
+          "bytes": 548
         },
         {
           "path": "support/field-journal/precedent-pentest.md",
           "source_path": "support/field-journal/precedent-pentest.md",
-          "sha256": "80fabd62390057329c48334f3b5987b265b9864a5a6c029419865247b0dadca5",
-          "bytes": 25617
+          "sha256": "57bf01c83f77acdef4eac70946ea49ac387312f886503a579a449dbefeca2f3a",
+          "bytes": 22386
         },
         {
           "path": "support/field-journal/seed-005_ad-certipy-esc1.md",
           "source_path": "support/field-journal/seed-005_ad-certipy-esc1.md",
-          "sha256": "1e71c2ea90facf6ad4809a0d6b282e5dcfaaa66a84ee874cea5d7b89da65a607",
-          "bytes": 2040
+          "sha256": "fa259f6a085c620195f9720e30dcea41c11464afe8a64f7616e14b32b284ab0e",
+          "bytes": 436
         },
         {
           "path": "support/field-journal/seed-007_ntlm-relay-coercer.md",
           "source_path": "support/field-journal/seed-007_ntlm-relay-coercer.md",
-          "sha256": "030095adb01de5de88e388c095020df6d5b59eb9d198ee13e414263b27caa2cc",
-          "bytes": 2987
+          "sha256": "6f95a847168723b67d3a9381dafb84a7839ad74bbeb51bd39926b747cd1accd5",
+          "bytes": 421
         },
         {
           "path": "support/field-journal/seed-013_kerberoasting-spn.md",
           "source_path": "support/field-journal/seed-013_kerberoasting-spn.md",
-          "sha256": "dff44be83624c767ff30175ac06983ee5d7b23d0efba5b6d69c1b174f04b86c9",
-          "bytes": 4725
+          "sha256": "a81524133e7401f84b1ab82939bd0e92aa62a5eb3523b6867c2e6c47e34886be",
+          "bytes": 5723
         },
         {
           "path": "support/pentest-tools/references/network-attack-defense.md",
           "source_path": "support/pentest-tools/references/network-attack-defense.md",
-          "sha256": "3bccbb98b195bc0b5a1dd92869af65660b4dd2d493e30c432381b9831dc71f8c",
-          "bytes": 10119
+          "sha256": "4b2cec68d833c23e7a0c8f61508472106bf7a0fb5b8fef04b30b8b020775c20c",
+          "bytes": 11636
         }
       ]
     },
@@ -29388,8 +29394,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-analyzing-cloud-storage-access-patterns/SKILL.md",
-      "sha256": "48a60260d9148003de7952eb6df5d5309456d9f893017e2db8db07740c9240f9",
-      "bytes": 3832,
+      "sha256": "145914a626780f585c43d9a293ca32a0936f5d8252ecf680813608a97653cac4",
+      "bytes": 3495,
       "source_path": "threat-hunting/analyzing-cloud-storage-access-patterns/SKILL.md",
       "source_sha256": "d5b39aa04d15e204e324cba2d26f76daf593cecebd369f1967b4d8dc966468b8"
     },
@@ -30336,8 +30342,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-analyzing-threat-landscape-with-misp/SKILL.md",
-      "sha256": "a8f68bed30cff9f30293968ddf0eb8573995a2896429148b45105b27fb601227",
-      "bytes": 3688,
+      "sha256": "78d877957e5970146564a34e613ba5e5cc542e0a838f24e2a08ef381d63fba91",
+      "bytes": 3351,
       "source_path": "threat-intelligence/analyzing-threat-landscape-with-misp/SKILL.md",
       "source_sha256": "41886932d873b7ccc1405f72aa9ff877c533dd7de6a9b9868f284d7233af78ef"
     },
@@ -30932,8 +30938,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-triaging-vulnerabilities-with-ssvc-framework/SKILL.md",
-      "sha256": "69f1ad4d91b534091b0b361a2b9f4090a882d1cc33e9a1b12e96d055b11795ac",
-      "bytes": 7456,
+      "sha256": "4568327fa17944c03225b5a3fd590e6e3c1bea24dd8529d293ffd2a57f3fe3fb",
+      "bytes": 7462,
       "source_path": "triaging-vulnerabilities-with-ssvc-framework/SKILL.md",
       "source_sha256": "7ca9a3eae6dfe62746476dbd6104202951829e273714cb18411e9a13a33378de",
       "support_files": [
@@ -30956,8 +30962,8 @@
           "bytes": 4350
         },
         {
-          "path": "scripts/process.py",
-          "source_path": "scripts/process.py",
+          "path": "templates/process.py",
+          "source_path": "templates/process.py",
           "sha256": "6bc8db23a4936ab887288798f565a5b61b9adb4afc13328266044856e7b2d7e3",
           "bytes": 12187
         }
@@ -31040,8 +31046,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-validating-tpm-measured-boot-attestation/SKILL.md",
-      "sha256": "f5e3776945c7c1dc675b0186366f4d6c4e454a8a82261ad87a4339f2644a0515",
-      "bytes": 9475,
+      "sha256": "16c89cc8dd703a15e0bcbaafee8ffc81d74062cc246c6137abb09197537500da",
+      "bytes": 9465,
       "source_path": "validating-tpm-measured-boot-attestation/SKILL.md",
       "source_sha256": "844d5b952f41e382a5fc474976235da93cb5826c132a0085c8231c05b8c14b05",
       "support_files": [
@@ -31128,8 +31134,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-building-vulnerability-exception-tracking-system/SKILL.md",
-      "sha256": "14131f38944b51fd2e475844ac241f2b3d30a94e3d4727f2e0dd3806f92a897a",
-      "bytes": 7916,
+      "sha256": "d4fffa9df27b1ee573250065375f8070edc67dacc61e57dd0a459db154c61e47",
+      "bytes": 7685,
       "source_path": "vulnerability-management/building-vulnerability-exception-tracking-system/SKILL.md",
       "source_sha256": "ea0ef1e9426dc5273575bdef8a5e123cfdcd920b6281da3baf281c4d22acfd96"
     },
@@ -31248,8 +31254,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-vulnerability-sla-breach-alerting/SKILL.md",
-      "sha256": "dfa5fc8ccf372430db0e314acfca984aa2c13c3d4c3c6ef4b290e9a082d2612f",
-      "bytes": 11121,
+      "sha256": "ca1738a7733db4d8e40a1f577900c99f65690429f3dfa9b1118cf08fa2347798",
+      "bytes": 10875,
       "source_path": "vulnerability-management/implementing-vulnerability-sla-breach-alerting/SKILL.md",
       "source_sha256": "5e4d367661be422bb6ee5e6e2dfe78f7e4bb4933dda3296a7d00f52f628ef4a1"
     },
@@ -31344,8 +31350,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-performing-web-application-vulnerability-triage/SKILL.md",
-      "sha256": "915bd584646a93830fd1f2abe67d72b7376fe702dc85c5dfc671e797029b6a70",
-      "bytes": 9775,
+      "sha256": "a4540ef16a6cae488981297a7575a97a2d04b54e9f3caa60b2ab599f59f1cd4f",
+      "bytes": 9563,
       "source_path": "vulnerability-management/performing-web-application-vulnerability-triage/SKILL.md",
       "source_sha256": "6fd083eaa021179655636ce1f7eda8352c0e95106d59c9e01d7e976678781764"
     },
@@ -31380,8 +31386,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-triaging-vulnerabilities-with-ssvc-framework/SKILL.md",
-      "sha256": "8d076378393cf08292127b81fe145ae77bd01232cfaa3208a22098f7cb94da08",
-      "bytes": 8629,
+      "sha256": "1d5af4888b79197be242842ffdb346194c95bfe676a17454d808aaa026c45d63",
+      "bytes": 8384,
       "source_path": "vulnerability-management/triaging-vulnerabilities-with-ssvc-framework/SKILL.md",
       "source_sha256": "e52a26b09655b0f0271e8c1439fff93ae3dabd9e35bc14d54d31705568aaf053"
     },
@@ -32136,8 +32142,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-testing-for-open-redirect-vulnerabilities/SKILL.md",
-      "sha256": "a25753272488c48a376be84865670eed09d9bea1c4ae9849bba52532585be698",
-      "bytes": 9874,
+      "sha256": "44cc3796d4c30a43b05581666174267189d94eab021c5815b0e47f8d9c63ac5f",
+      "bytes": 9873,
       "source_path": "web-application-security/testing-for-open-redirect-vulnerabilities/SKILL.md",
       "source_sha256": "a40a3ee9e4352952e08a46d3114543c63b65faefbcabf421375eadedb7a121de"
     },
@@ -32436,8 +32442,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-bluetooth-low-energy-attacks/SKILL.md",
-      "sha256": "76f4fe93390455892160d0353e6d8dc5f52d3e76a8d393be64d3ac0c5b30b84c",
-      "bytes": 15104,
+      "sha256": "20cd39d9173173384b9f94aa4735655b89d15bc4d74566e1a353f7f673a54c1f",
+      "bytes": 14777,
       "source_path": "wireless-security/detecting-bluetooth-low-energy-attacks/SKILL.md",
       "source_sha256": "f24052dfc1fb673d73d833ab7e93dab52b7c3ea6d56d8b28854788cb3f23cee4"
     },

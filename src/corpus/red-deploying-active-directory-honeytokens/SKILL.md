@@ -77,7 +77,7 @@ Create a honeytoken account that mimics a legacy privileged service account.
 
 ```powershell
 # Import the deployment module
-Import-Module .\scripts\Deploy-ADHoneytokens.sh
+Import-Module templates/Deploy-ADHoneytokens.sh
 
 # Create a honeytoken admin account
 $honeyAdmin = New-HoneytokenAdmin `
@@ -188,7 +188,7 @@ $validation | Format-Table Check, Status, Details -AutoSize
 ### Full Deployment Pipeline
 
 ```powershell
-Import-Module .\scripts\Deploy-ADHoneytokens.sh
+Import-Module templates/Deploy-ADHoneytokens.sh
 
 # Deploy complete honeytoken suite
 $deployment = Deploy-FullHoneytokenSuite `

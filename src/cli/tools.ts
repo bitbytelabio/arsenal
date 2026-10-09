@@ -8,6 +8,8 @@ import * as path from "node:path";
 import { EXIT_CODES, createJsonEnvelope, emitJson } from "../../bin/arsenal.ts";
 import type { CommandContext } from "./router.ts";
 import { safeWriteFile } from "../core/fs-safe.ts";
+import { inspectApk } from "../../plugin/tools/apk-inspect.ts";
+import { LedgerActor } from "../core/ledger.ts";
 
 export interface ToolEntry {
   id: string;
@@ -132,6 +134,57 @@ export async function handleTools(ctx: CommandContext): Promise<number> {
       }
     }
     return exitCode;
+  }
+
+  if (subCommand === "exec") {
+    const toolName = ctx.positionals[0];
+    if (toolName === "apk_inspect") {
+      const apkPath = (ctx.values.apk as string) ?? ctx.positionals[1];
+      if (!apkPath) {
+        console.error("Error: --apk <path> is required for apk_inspect");
+        return EXIT_CODES.CLI_USAGE_ERROR;
+      }
+      try {
+        const result = await inspectApk({ apk_path: apkPath });
+
+        // Log to evidence ledger if evidence dir exists
+        const evidenceDir = path.join(ctx.repoRoot, "evidence");
+        if (fs.existsSync(evidenceDir)) {
+          const ledger = new LedgerActor(evidenceDir);
+          await ledger.appendEvent({
+            engagement_id: "eng-default",
+            event_key: `tool:apk_inspect:${Date.now()}:${Math.random().toString(36).slice(2, 8)}`,
+            kind: "tool_result",
+            session_id: "sess-cli",
+            actor: "operator",
+            data: result,
+          });
+        }
+
+        if (ctx.isJson) {
+          emitJson(createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.SUCCESS, "check", result));
+        } else {
+          console.log(`[apk_inspect] Package: ${result.packageName} (v${result.versionCode ?? "?"})`);
+          console.log(`Permissions: ${result.permissions.join(", ") || "none"}`);
+          console.log(`Exported Components: ${result.exportedComponents.length}`);
+          for (const c of result.exportedComponents) {
+            console.log(`  - [${c.type}] ${c.name}`);
+          }
+          if (result.dangerousFlags.length > 0) {
+            console.log(`Dangerous Flags: ${result.dangerousFlags.join(", ")}`);
+          }
+        }
+        return EXIT_CODES.SUCCESS;
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        if (ctx.isJson) {
+          emitJson(createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.CHECK_FAILURE, "check", { error: msg }));
+        } else {
+          console.error(`[apk_inspect] Error: ${msg}`);
+        }
+        return EXIT_CODES.CHECK_FAILURE;
+      }
+    }
   }
 
   return EXIT_CODES.CLI_USAGE_ERROR;

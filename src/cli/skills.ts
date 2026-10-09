@@ -69,6 +69,8 @@ import {
   readCorpusManifest,
   validateSupportFileIntegrity,
 } from "../core/skill-manifest.ts";
+import { resolveSkillUri } from "../core/reference-resolver.ts";
+import { safeReadBoundedFile } from "../core/fs-safe.ts";
 
 function findMarkdownFilesRecursively(dir: string): string[] {
   const results: string[] = [];
@@ -97,14 +99,56 @@ export interface SkillIndexEntry {
 
 export async function handleSkills(ctx: CommandContext): Promise<number> {
   const subCommand = ctx.subCommand ?? "check";
-  const pluginDir = path.resolve(ctx.repoRoot, "plugin");
+  const fallbackRepoRoot = fs.existsSync(path.join(ctx.repoRoot, "src/corpus"))
+    ? ctx.repoRoot
+    : path.resolve(import.meta.dir, "../..");
+  const pluginDir = path.resolve(fallbackRepoRoot, "plugin");
   const skillsDir = path.join(pluginDir, "skills");
   const catalogDir = path.join(pluginDir, "catalog");
   const indexFile = path.join(catalogDir, "skills.index.jsonl");
-  const corpusDir = path.resolve(ctx.repoRoot, "src/corpus");
+  const corpusDir = path.resolve(fallbackRepoRoot, "src/corpus");
   const manifestPath = path.join(corpusDir, "MANIFEST.json");
   const isWrite = Boolean(ctx.values.write);
 
+
+  // skills read-asset
+  if (subCommand === "read-asset") {
+    const rawUri = (ctx.values.uri as string) ?? ctx.positionals[0];
+    if (!rawUri) {
+      console.error("Error: --uri <skill://...> is required");
+      return EXIT_CODES.CLI_USAGE_ERROR;
+    }
+    const res = resolveSkillUri(rawUri, corpusDir);
+    if (!res.exists || !res.resolvedPath) {
+      if (ctx.isJson) {
+        emitJson(
+          createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.CHECK_FAILURE, "check", {
+            error: res.error,
+            uri: rawUri,
+          })
+        );
+      } else {
+        console.error(`Error: ${res.error}`);
+      }
+      return EXIT_CODES.CHECK_FAILURE;
+    }
+
+    const bounded = safeReadBoundedFile(res.resolvedPath);
+    const output = {
+      uri: rawUri,
+      path: res.resolvedPath,
+      content: bounded.content,
+      sizeBytes: bounded.sizeBytes,
+      truncated: bounded.truncated,
+    };
+
+    if (ctx.isJson) {
+      emitJson(createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.SUCCESS, "preview", output));
+    } else {
+      console.log(bounded.content);
+    }
+    return EXIT_CODES.SUCCESS;
+  }
   // 1. skills index
   if (subCommand === "index") {
     if (!fs.existsSync(skillsDir)) {

@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized routine procedures.
+1. `NOW`: Read `skill://re-ida-reverse/support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized routine procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -25,17 +25,17 @@ metadata:
 1. **Do not rely on certain AI client MCP calls directly for `idb_open` (formerly `idalib_open`)**
    - Certain coding AI clients have a bug regarding MCP output schema validation for open-type tools.
    - Error: `Structured content does not match the tool's output schema`
-   - **Workaround**: Use the `scripts/open.sh` script to call the HTTP API directly, bypassing the MCP validation layer.
+   - **Workaround**: Use the `templates/open.sh` script to call the HTTP API directly, bypassing the MCP validation layer.
    - The current ida-pro-mcp 2.x tool names are `idb_open` / `idb_list` / `idb_save` (no longer `idalib_*`).
    - Opening a file returns a `session_id` (database); subsequent tool calls must include this session parameter.
 
 2. **Permission denied when opening files in `C:\Windows\System32\`**
    - idalib cannot directly read files under the System32 directory.
-   - **Workaround**: `scripts/open.sh` automatically detects this and copies the file to the temp directory before opening it.
+   - **Workaround**: `templates/open.sh` automatically detects this and copies the file to the temp directory before opening it.
 
 3. **Server startup command blocks the conversation**
    - After startup, `idalib-mcp` continuously outputs INFO logs to the console.
-   - **Workaround**: Use `scripts/start.sh` (starts silently in the background with `-WindowStyle Hidden`).
+   - **Workaround**: Use `templates/start.sh` (starts silently in the background with `-WindowStyle Hidden`).
    - The script exits automatically once the service is ready, without blocking the conversation.
 
 4. **MCP server name cannot contain hyphens**
@@ -53,36 +53,36 @@ metadata:
    - The latest `main` branch version has been installed.
 
 7. **idalib timeout leaves orphaned worker process file locks**
-   - After the first `scripts/open.sh` timeout, the idalib Python worker child process may become orphaned, holding locks on `.id0`/`.id1`/`.nam`.
+   - After the first `templates/open.sh` timeout, the idalib Python worker child process may become orphaned, holding locks on `.id0`/`.id1`/`.nam`.
    - Subsequent tool executions or manual drag-and-drop into IDA GUI will report "Access is denied".
    - **DO NOT** kill the process tree with `taskkill /F /T` — `/T` will terminate the GUI `ida.exe` child process as well.
-   - **Workaround**: `scripts/start.sh` only replaces the managed supervisor when no process is listening on the port, or when `tools/list` returns quickly but lacks `py_eval` (an outdated supervisor); an RPC timeout while 13337 is still listening is treated as busy and will not be killed. When opening a database, `scripts/open.sh` writes `opening.lock`, and the watchdog must not use `-Force`.
+   - **Workaround**: `templates/start.sh` only replaces the managed supervisor when no process is listening on the port, or when `tools/list` returns quickly but lacks `py_eval` (an outdated supervisor); an RPC timeout while 13337 is still listening is treated as busy and will not be killed. When opening a database, `templates/open.sh` writes `opening.lock`, and the watchdog must not use `-Force`.
    - **Deadlock exception**: Only when `tools/list` **fails continuously for more than 3 minutes** (based on the last-healthy timestamp, not process creation time), there is no in-flight `opening.lock`, and the GUI is not occupying the port, use `-Force` to replace the supervisor without killing `ida.exe`.
-   - **Fallback**: When `scripts/open.sh` detects that the old database is locked, it automatically copies it to Temp with a GUID prefix.
+   - **Fallback**: When `templates/open.sh` detects that the old database is locked, it automatically copies it to Temp with a GUID prefix.
 
 8. **Opening with auto-analysis enabled looks like a freeze**
    - `idalib_open(run_auto_analysis=true)` may take a long time to return a response, but the backend is actually continuing to open and analyze.
    - Previously, the user side saw "PowerShell has no output for a long time", which was easily misdiagnosed as a script freeze.
-   - **Current workaround**: `scripts/open.sh` adds `-TimeoutSeconds`, shifting to background requests + foreground polling + periodic progress output.
+   - **Current workaround**: `templates/open.sh` adds `-TimeoutSeconds`, shifting to background requests + foreground polling + periodic progress output.
    - When polling detects that the session is ready, it returns `OK:filename:session_id` early; on timeout, it returns `ERR:open_timeout_xxs`.
 
 9. **HTTP MCP exits silently after login**
    - Cursor/Claude with `type: http` does not launch processes on your behalf; legacy scheduled tasks only run once at logon.
    - `pythonw` has no console; when it crashes, the Application event log is also empty.
-   - **Workaround**: `scripts/start.sh` reuses the instance if healthy by default; `watchdog.ps1` inspects every minute; logs are stored in `%LOCALAPPDATA%\arsenal\ida-mcp\`.
-   - Installation: `scripts/install-autostart.sh`. If the port is not up yet when the HTTP client starts, you still need to refresh manually once in the MCP panel.
+   - **Workaround**: `templates/start.sh` reuses the instance if healthy by default; `watchdog.ps1` inspects every minute; logs are stored in `%LOCALAPPDATA%\arsenal\ida-mcp\`.
+   - Installation: `templates/install-autostart.sh`. If the port is not up yet when the HTTP client starts, you still need to refresh manually once in the MCP panel.
 
 10. **Streamable HTTP GET `/mcp` hangs single-threaded supervisor**
     - Some HTTP MCP clients send persistent long-polling GET requests (SSE) to `/mcp`. The stock `idalib_supervisor` uses `HTTPServer` with `background=False`, handling only one request at a time.
     - Result: `tools/list` times out, and the client marks `idapro` as an error.
-    - **Workaround**: `run-supervisor.py` replaces HTTP with `ThreadingHTTPServer` and accepts GET `/mcp`; if patching fails, it skips and still starts the supervisor. When hung, use `scripts/recover.sh` (immediate `-Force`).
+    - **Workaround**: `run-supervisor.py` replaces HTTP with `ThreadingHTTPServer` and accepts GET `/mcp`; if patching fails, it skips and still starts the supervisor. When hung, use `templates/recover.sh` (immediate `-Force`).
 
 ### Workflow Principles
 
 | Step | Action | Tool / Script |
 |------|--------|---------------|
-| 1 | Ensure the HTTP server is running | `scripts/start.sh` (no parameters) |
-| 2 | Open the target binary | `scripts/open.sh -Path "xxx.exe"` |
+| 1 | Ensure the HTTP server is running | `templates/start.sh` (no parameters) |
+| 2 | Open the target binary | `templates/open.sh -Path "xxx.exe"` |
 | 3 | Use MCP analysis tools | Call `idapro_*` / HTTP tools directly (~65 tools, version dependent) |
 | 4 | Complete analysis | Tools are ready automatically |
 
@@ -90,7 +90,7 @@ metadata:
 
 ### start.sh — Start MCP HTTP Server
 
-Path: `scripts/start.sh`
+Path: `templates/start.sh`
 
 - Automatically resolves `IDADIR` (environment variable / portable desktop path / common installation paths).
 - Prefers IDA's built-in `Python314\python.exe -m ida_pro_mcp.idalib_supervisor`.
@@ -105,19 +105,19 @@ Path: `scripts/start.sh`
 
 **Usage**:
 ```
-powershell -File "<skill-root>\ida-reverse\scripts\start.sh"
+powershell -File "<skill-root>\ida-reverse\templates/start.sh"
 ```
 
 ### watchdog.ps1 / recover.sh / install-autostart.sh — Keepalive
 
-- `watchdog.ps1`: Probes 13337; reuses if healthy (and refreshes last-healthy); GUI / `scripts/open.sh` database opening lock / busy states within 3 minutes of last-healthy → reuse; only executes `start.sh -Force` when `tools/list` fails continuously for over 3 minutes.
-- `scripts/recover.sh`: Executes `start.sh -Force` immediately (without killing `ida.exe`). Use this when the HTTP client marks `idapro` as an error.
-- `scripts/install-autostart.sh`: Registers scheduled task `arsenal-ida-mcp` (at logon + every minute).
+- `watchdog.ps1`: Probes 13337; reuses if healthy (and refreshes last-healthy); GUI / `templates/open.sh` database opening lock / busy states within 3 minutes of last-healthy → reuse; only executes `start.sh -Force` when `tools/list` fails continuously for over 3 minutes.
+- `templates/recover.sh`: Executes `start.sh -Force` immediately (without killing `ida.exe`). Use this when the HTTP client marks `idapro` as an error.
+- `templates/install-autostart.sh`: Registers scheduled task `arsenal-ida-mcp` (at logon + every minute).
 - Log: `%LOCALAPPDATA%\arsenal\ida-mcp\watchdog.log`
 
 ### open.sh — Open Binary File
 
-Path: `scripts/open.sh`
+Path: `templates/open.sh`
 
 - Calls `idb_open` directly via HTTP API, bypassing MCP schema validation.
 - Automatically detects System32 paths and copies files to a temporary directory.
@@ -131,19 +131,19 @@ Path: `scripts/open.sh`
 
 **Usage**:
 ```
-powershell -File "<skill-root>\ida-reverse\scripts\open.sh" -Path "C:\path\to\file.exe"
+powershell -File "<skill-root>\ida-reverse\templates/open.sh" -Path "C:\path\to\file.exe"
 ```
 
 **Optional Parameters**:
 ```
 # Specify SessionId
-powershell -File "scripts\open.sh" -Path "file.exe" -SessionId "my_session"
+powershell -File "templates/open.sh" -Path "file.exe" -SessionId "my_session"
 
 # Skip auto-analysis (recommended for large files)
-powershell -File "scripts\open.sh" -Path "large.exe" -NoAutoAnalysis
+powershell -File "templates/open.sh" -Path "large.exe" -NoAutoAnalysis
 
 # Set timeout to prevent hanging during lengthy auto-analysis
-powershell -File "scripts\open.sh" -Path "file.exe" -TimeoutSeconds 600
+powershell -File "templates/open.sh" -Path "file.exe" -TimeoutSeconds 600
 ```
 
 **Output Conventions**:
@@ -232,10 +232,10 @@ ERR:open_timeout_600s
 - Debugger tools are hidden by default; enable via URL parameter `?ext=dbg`.
 
 ### Session Management (ida-pro-mcp 2.x)
-- `idapro_idb_open` / HTTP `idb_open` — ⚠️ Recommended to open via `scripts/open.sh`.
+- `idapro_idb_open` / HTTP `idb_open` — ⚠️ Recommended to open via `templates/open.sh`.
 - `idapro_idb_list` / HTTP `idb_list` — List all active sessions.
 - `idapro_idb_save` / HTTP `idb_save` — Save database.
-- Most analysis tools require the `database=<session_id>` parameter (session returned by `scripts/open.sh`).
+- Most analysis tools require the `database=<session_id>` parameter (session returned by `templates/open.sh`).
 
 ### Miscellaneous
 - `idapro_int_convert(inputs)` — Radix conversion (**MUST use this; do not calculate bases manually!**).
@@ -250,13 +250,13 @@ ERR:open_timeout_600s
 
 **Path A — Headless idalib (Requires valid license)**
 ```
-powershell -File "scripts/start.sh"
+powershell -File "templates/start.sh"
 ```
 Output `OK:<tool_count>` (currently ~65) indicates readiness.
 
 **Path B — GUI + Plugin (Fallback when idalib license fails or interactive analysis is required)**
 ```
-powershell -File "scripts/start-gui.sh" -Path "C:\target.exe"
+powershell -File "templates/start-gui.sh" -Path "C:\target.exe"
 ```
 Or double-click the portable `Launch-IDA-Pro.cmd` and open the sample inside IDA.
 
@@ -268,13 +268,13 @@ For general setup procedures, see `LOCAL-SETUP.md`.
 
 Headless:
 ```
-powershell -File "scripts/open.sh" -Path "C:\target.exe" -TimeoutSeconds 600
+powershell -File "templates/open.sh" -Path "C:\target.exe" -TimeoutSeconds 600
 ```
 Output `OK:filename:session_id` indicates success (suffixed with `(temp copy)` if degraded to a temporary copy).
 
-If `ERR:idalib_license:...` appears, switch to Path B (GUI mode); do not retry `scripts/open.sh` repeatedly.
+If `ERR:idalib_license:...` appears, switch to Path B (GUI mode); do not retry `templates/open.sh` repeatedly.
 
-GUI mode: Open the sample directly inside IDA; `scripts/open.sh` is not required.
+GUI mode: Open the sample directly inside IDA; `templates/open.sh` is not required.
 
 ### Step 3: Global Overview (Including Import Table Hard Gate)
 ```
@@ -327,15 +327,15 @@ After completing the analysis, generate `report.md` documenting findings and ste
 5. **Handling obfuscated code** — Prioritize string decryption, import de-hashing, and control-flow de-flattening preprocessing first.
 6. **C++ STL code** — Use FLIRT/Lumina to identify standard library functions before analyzing business logic.
 7. **Do not brute-force** — Derive logic from disassembly, leveraging lightweight Python scripts for auxiliary math.
-8. **When seeing "No database bound"** — No binary file is loaded yet; execute `scripts/open.sh` first.
-9. **When seeing "Failed to open database"** — An old database file may be locked; `scripts/open.sh` will automatically degrade to a Temp copy (output will contain `(temp copy)`).
+8. **When seeing "No database bound"** — No binary file is loaded yet; execute `templates/open.sh` first.
+9. **When seeing "Failed to open database"** — An old database file may be locked; `templates/open.sh` will automatically degrade to a Temp copy (output will contain `(temp copy)`).
 10. **Opening GUI/complex samples with auto-analysis** — Add `-TimeoutSeconds 600` by default; do not mistake prolonged `INFO:opening:...` logs for script freezes.
 
 ---
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://re-ida-reverse/support/SKILL.md` (Master Controller), `skill://re-ida-reverse/support/routing.md`
 **Upstream Alternatives**: `radare2/` (For fast initial reconnaissance if IDA startup is deferred)
 **Downstream Exit**:
 - Dynamic verification via Frida required → `arsenal skill_load re-reverse-engineering/tools-dynamic.md`
@@ -354,7 +354,7 @@ Entry scripts for this skill are integrated into the unified bootstrap system.
 
 | Tool | Auto-installable | Installation Method | Notes |
 |------|------------------|---------------------|-------|
-| idalib-mcp | ✓ | pip install (from GitHub) | Automatically installed via `scripts/start.sh` when missing |
+| idalib-mcp | ✓ | pip install (from GitHub) | Automatically installed via `templates/start.sh` when missing |
 | IDA Pro Core | ✗ | Commercial software, requires manual installation | Set `IDADIR` environment variable pointing to installation directory |
 
 ### Installation Steps (Verified)
@@ -381,7 +381,7 @@ ida-pro-mcp --config
 
 ### Bootstrap Triggers
 
-- `scripts/start.sh`: Automatically invokes `bootstrap-reverse.ps1` when `idalib-mcp` is missing.
+- `templates/start.sh`: Automatically invokes `bootstrap-reverse.ps1` when `idalib-mcp` is missing.
 - MCP Registration: Bootstrap automatically writes `idapro` into Claude MCP configuration.
 
 ### Prerequisites
@@ -399,5 +399,5 @@ ida-pro-mcp --config
 - [ ] Have survey/imports been recorded into Evidence (E-imports or equivalent)? Does DLL/SYS contain E-exports? Was E-iat-repair-fail logged on IAT failure?
 - [ ] If the user requested re-running the import table/IAT inspection, did I re-execute that exact step?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

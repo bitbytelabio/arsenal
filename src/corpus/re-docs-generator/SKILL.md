@@ -34,16 +34,16 @@ When a reverse engineering, penetration testing, CTF, or security analysis task 
 
 | Task Type | Template to Use |
 |-----------|-----------------|
-| APK / Binary / SO Reverse Engineering | `references/security-report-templates.md` → Reverse Engineering Report |
-| Penetration Testing / Vulnerability Hunting | `references/security-report-templates.md` → Penetration Testing Report |
-| CTF Solution | `references/security-report-templates.md` → CTF Writeup |
-| JS / Web Signature Reverse Engineering | `references/security-report-templates.md` → Signature Reverse Engineering Report |
-| Malware / APT / Virus Analysis Report | `references/security-report-templates.md` + **`references/vendor-report-rules.md`** |
-| General Technical Documentation | `references/templates.md` → README / API Documentation |
+| APK / Binary / SO Reverse Engineering | `skill://re-docs-generator/references/security-report-templates.md` → Reverse Engineering Report |
+| Penetration Testing / Vulnerability Hunting | `skill://re-docs-generator/references/security-report-templates.md` → Penetration Testing Report |
+| CTF Solution | `skill://re-docs-generator/references/security-report-templates.md` → CTF Writeup |
+| JS / Web Signature Reverse Engineering | `skill://re-docs-generator/references/security-report-templates.md` → Signature Reverse Engineering Report |
+| Malware / APT / Virus Analysis Report | `skill://re-docs-generator/references/security-report-templates.md` + **`skill://re-docs-generator/references/vendor-report-rules.md`** |
+| General Technical Documentation | `skill://re-docs-generator/references/templates.md` → README / API Documentation |
 
 ### Vendor Report Structure (Issue #65)
 
-Formal security reports **MUST** read `references/vendor-report-rules.md` (adopt the structure only; do not copy vendor text). Select a vendor flavor only when task evidence supports it or when explicitly requested by the user; for general reverse engineering and other tasks, use `flavor = null`.
+Formal security reports **MUST** read `skill://re-docs-generator/references/vendor-report-rules.md` (adopt the structure only; do not copy vendor text). Select a vendor flavor only when task evidence supports it or when explicitly requested by the user; for general reverse engineering and other tasks, use `flavor = null`.
 
 | Flavor / Overlay | When to Use | Primary Reference Skeleton |
 |------------------|-------------|----------------------------|
@@ -70,9 +70,9 @@ Takes effect **concurrently** with §0 Evidence→Finding→Path; in case of con
 - Key findings must be supported by evidence.
 - Reproduction steps must allow third parties to independently reproduce results.
 - Replace sensitive information (real tokens, passwords, internal URLs) with placeholders.
-- **MUST** include an Evidence → Finding → Path chain (see `support/ops/evidence-finding-path.md` and template §0).
-- **MUST** read `references/vendor-report-rules.md`: Select `malware` / `apt` or `flavor = null` (thin `vuln` can be overlaid for vulnerability tasks); when no flavor is set, only output the original task template and applicable Base elements without forcing IOC/ATT&CK.
-- **SHOULD** reference case `scope.md` / `timeline.md` (`support/scripts/case-init.sh`).
+- **MUST** include an Evidence → Finding → Path chain (see `skill://re-docs-generator/support/ops/evidence-finding-path.md` and template §0).
+- **MUST** read `skill://re-docs-generator/references/vendor-report-rules.md`: Select `malware` / `apt` or `flavor = null` (thin `vuln` can be overlaid for vulnerability tasks); when no flavor is set, only output the original task template and applicable Base elements without forcing IOC/ATT&CK.
+- **SHOULD** reference case `scope.md` / `timeline.md` (`skill://re-docs-generator/support/templates/case-init.sh`).
 
 ### Diagram Integration
 
@@ -146,7 +146,7 @@ Every concept needs a concrete example.
 
 ## Templates
 
-For README, API endpoint, and file organization templates, see [references/templates.md](references/templates.md).
+For README, API endpoint, and file organization templates, see [references/templates.md](skill://re-docs-generator/references/templates.md).
 
 ## Related Skills
 
@@ -179,15 +179,15 @@ If rendering diagrams to embed in reports is required, invoke the `diagram-gener
 - `reverse-engineering/` — Generates reverse engineering report after general reverse engineering is complete
 - `field-journal/` — Report content simultaneously serves as a data source for the evolution journal
 
-**Security Report Templates**: `references/security-report-templates.md`
-**Vendor Report Rules**: `references/vendor-report-rules.md` (flavor: malware | apt | null; optional overlay: vuln)
-**General Documentation Templates**: `references/templates.md`
+**Security Report Templates**: `skill://re-docs-generator/references/security-report-templates.md`
+**Vendor Report Rules**: `skill://re-docs-generator/references/vendor-report-rules.md` (flavor: malware | apt | null; optional overlay: vuln)
+**General Documentation Templates**: `skill://re-docs-generator/references/templates.md`
 
 
 ## Task Completion Self-Check (MUST pass before claiming completion)
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Does the report contain Evidence / Finding / Path (ops contract)?
 - [ ] Were the Checklist items required by RULES completed and written back?

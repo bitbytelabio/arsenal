@@ -8,6 +8,36 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { DOMAINS, loadRoutingTables, type SkillDomain } from "./skill-routing.ts";
+import { validateSchema } from "../schemas/validator.ts";
+import type { SpecialistHandoff } from "./types.ts";
+
+export interface HandoffValidationResult {
+  valid: boolean;
+  handoff: SpecialistHandoff | null;
+  errors: string[];
+  retryPrompt: string | null;
+}
+
+export function validateSpecialistHandoff(rawPayload: unknown): HandoffValidationResult {
+  const schemaId = "https://arsenal.security/schemas/specialist-handoff.json";
+  const res = validateSchema<SpecialistHandoff>(schemaId, rawPayload);
+  if (res.valid) {
+    return {
+      valid: true,
+      handoff: rawPayload as SpecialistHandoff,
+      errors: [],
+      retryPrompt: null,
+    };
+  }
+  const errorDetails = res.errors.join("; ");
+  const retryPrompt = `Your task handoff failed schema validation with the following errors: ${errorDetails}. Please correct the payload and resubmit valid JSON conforming to the Specialist Handoff Schema.`;
+  return {
+    valid: false,
+    handoff: null,
+    errors: res.errors,
+    retryPrompt,
+  };
+}
 
 export const SPECIALIST_FILE: Readonly<Record<SkillDomain, string>> = Object.freeze({
   re: "sec-re.md",

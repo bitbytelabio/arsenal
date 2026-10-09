@@ -8884,6 +8884,63 @@ var VERIFICATION_ORACLE_SCHEMA = {
   },
   additionalProperties: false
 };
+var SPECIALIST_HANDOFF_SCHEMA = {
+  $id: "https://arsenal.security/schemas/specialist-handoff.json",
+  $schema: "https://json-schema.org/draft/2020-12/schema",
+  type: "object",
+  properties: {
+    taskId: { type: "string", minLength: 1 },
+    role: { type: "string", enum: ["sec-re", "sec-webapp", "sec-mobile", "sec-red", "sec-verifier"] },
+    findings: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          id: { type: "string", pattern: "^F-[0-9]{3,}$" },
+          title: { type: "string", minLength: 5, maxLength: 150 },
+          severity: { type: "string", enum: ["info", "low", "medium", "high", "critical"] },
+          location: { type: "string", minLength: 1 },
+          cwe: { type: "string", pattern: "^CWE-[0-9]+$" },
+          evidenceReceipts: { type: "array", minItems: 1, items: { type: "string" } },
+          epistemicStatus: { type: "string", enum: ["E", "P"] }
+        },
+        required: ["id", "title", "severity", "location", "cwe", "evidenceReceipts", "epistemicStatus"],
+        additionalProperties: false
+      }
+    },
+    coverageJudgement: { type: "string", enum: ["covered", "partial", "uncovered"] },
+    unresolvedVariables: {
+      type: "array",
+      items: { type: "string", pattern: "^unk-.*$" }
+    },
+    capabilityGap: { type: ["string", "null"] }
+  },
+  required: ["taskId", "role", "findings", "coverageJudgement", "unresolvedVariables", "capabilityGap"],
+  additionalProperties: false
+};
+var APK_INSPECT_TOOL_SCHEMA = {
+  $id: "https://arsenal.security/schemas/apk-inspect.json",
+  $schema: "https://json-schema.org/draft/2020-12/schema",
+  type: "object",
+  properties: {
+    apk_path: { type: "string" },
+    extract_components: { type: "boolean", default: true },
+    extract_permissions: { type: "boolean", default: true }
+  },
+  required: ["apk_path"],
+  additionalProperties: false
+};
+var SKILL_ASSET_LOAD_SCHEMA = {
+  $id: "https://arsenal.security/schemas/skill-asset-load.json",
+  $schema: "https://json-schema.org/draft/2020-12/schema",
+  type: "object",
+  properties: {
+    skill_name: { type: "string" },
+    asset_path: { type: "string" }
+  },
+  required: ["skill_name", "asset_path"],
+  additionalProperties: false
+};
 ajv.addSchema(SCOPE_SCHEMA);
 ajv.addSchema(ENGAGEMENT_SCHEMA);
 ajv.addSchema(ENVIRONMENT_SCHEMA);
@@ -8899,6 +8956,9 @@ ajv.addSchema(ROUTING_TABLE_SCHEMA);
 ajv.addSchema(COVERAGE_BASELINE_SCHEMA);
 ajv.addSchema(EXTENSION_BUNDLE_ARTIFACT_SCHEMA);
 ajv.addSchema(VERIFICATION_ORACLE_SCHEMA);
+ajv.addSchema(SPECIALIST_HANDOFF_SCHEMA);
+ajv.addSchema(APK_INSPECT_TOOL_SCHEMA);
+ajv.addSchema(SKILL_ASSET_LOAD_SCHEMA);
 function formatErrors(errors) {
   if (!errors || errors.length === 0)
     return [];

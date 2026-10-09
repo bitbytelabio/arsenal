@@ -690,7 +690,7 @@ Patch‑diffing Linux kernels is often faster at the source level, but for binar
 
    ```bash
    # If only vmlinuz is present, use the upstream helper
-   /usr/src/linux-headers-<ver>/scripts/extract-vmlinux /boot/vmlinuz-<ver> > vmlinux-<ver>
+   /usr/src/linux-headers-<ver>/templates/extract-vmlinux /boot/vmlinuz-<ver> > vmlinux-<ver>
    # Or take vmlinux directly from debuginfo package tree
    ```
 
@@ -717,7 +717,7 @@ Patch‑diffing Linux kernels is often faster at the source level, but for binar
 
    ```bash
    # Decode kernel oops backtraces to lines
-   ./scripts/decode_stacktrace.sh vmlinux /lib/modules/<ver>/build < dmesg.log
+   ./templates/decode_stacktrace.sh vmlinux /lib/modules/<ver>/build < dmesg.log
    # Map PC to file:line quickly
    addr2line -e vmlinux-<ver> 0xffffffff81234567
    ```

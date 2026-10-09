@@ -16,14 +16,18 @@ export const CANONICAL_MCP_BRIDGES: Record<
     command?: string;
     args?: string[];
     url?: string;
+    runner?: "uv" | "node" | "none";
     binaryPrereq?: string;
+    description: string;
   }
 > = {
-  "ida-pro": { transport: "stdio", command: "python3", args: ["-m", "ida_mcp"], binaryPrereq: "ida64" },
-  ghidra: { transport: "stdio", command: "python3", args: ["-m", "ghidra_mcp"], binaryPrereq: "ghidra" },
-  frida: { transport: "stdio", command: "frida-mcp", binaryPrereq: "frida" },
-  jshook: { transport: "stdio", command: "jshookmcp", binaryPrereq: "jshookmcp" },
-  "burp-ultra": { transport: "sse", url: "http://127.0.0.1:8080/mcp" },
+  "ida-pro": { transport: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], runner: "uv", binaryPrereq: "ida64", description: "IDA Pro disassembler bridge" },
+  ghidra: { transport: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], runner: "uv", binaryPrereq: "ghidra", description: "Ghidra headless decompiler bridge" },
+  frida: { transport: "stdio", command: "uv", args: ["run", "frida-mcp"], runner: "uv", binaryPrereq: "frida", description: "Frida dynamic instrumentation bridge" },
+  jshook: { transport: "stdio", command: "node", args: ["jshookmcp.js"], runner: "node", binaryPrereq: "node", description: "JavaScript runtime function hooking bridge" },
+  "burp-ultra": { transport: "sse", url: "http://127.0.0.1:8080/mcp", runner: "none", description: "Burp Suite professional HTTP/S interception bridge" },
+  playwright: { transport: "stdio", command: "npx", args: ["-y", "@playwright/mcp-server"], runner: "node", binaryPrereq: "node", description: "Headless browser automation bridge" },
+  semgrep: { transport: "stdio", command: "uv", args: ["run", "semgrep-mcp"], runner: "uv", binaryPrereq: "semgrep", description: "Semgrep SAST rule-based code inspection bridge" },
 };
 
 export async function handleMcp(ctx: CommandContext): Promise<number> {
@@ -160,6 +164,56 @@ export async function handleMcp(ctx: CommandContext): Promise<number> {
     return EXIT_CODES.SUCCESS;
   }
 
+  if (subCommand === "enable" || subCommand === "disable") {
+    const bridgeName = ctx.positionals[0] ?? (ctx.values.server as string);
+    if (!bridgeName) {
+      console.error(`Error: Bridge name is required for mcp ${subCommand}`);
+      return EXIT_CODES.CLI_USAGE_ERROR;
+    }
+    const def = CANONICAL_MCP_BRIDGES[bridgeName];
+    if (!def) {
+      const err = `Unknown tool bridge '${bridgeName}'. Available: ${Object.keys(CANONICAL_MCP_BRIDGES).join(", ")}`;
+      if (ctx.isJson) {
+        emitJson(createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.CLI_USAGE_ERROR, "write", {}, [], [err]));
+      } else {
+        console.error(`Error: ${err}`);
+      }
+      return EXIT_CODES.CLI_USAGE_ERROR;
+    }
+
+    const enabled = subCommand === "enable";
+    const targetPaths = [repoMcpPath, profileMcpPath].filter((p) => fs.existsSync(path.dirname(p)));
+    if (targetPaths.length === 0) {
+      fs.mkdirSync(path.dirname(repoMcpPath), { recursive: true });
+      targetPaths.push(repoMcpPath);
+    }
+
+    const updatedPaths: string[] = [];
+
+    for (const mcpFile of targetPaths) {
+      let cfg: { mcpServers: Record<string, unknown> } = { mcpServers: {} };
+      if (fs.existsSync(mcpFile)) {
+        try {
+          cfg = JSON.parse(fs.readFileSync(mcpFile, "utf-8"));
+          if (!cfg.mcpServers) cfg.mcpServers = {};
+        } catch {
+          cfg = { mcpServers: {} };
+        }
+      }
+      const current = (cfg.mcpServers[bridgeName] as Record<string, unknown>) ?? { ...def };
+      cfg.mcpServers[bridgeName] = { ...current, enabled };
+      safeWriteFile(mcpFile, JSON.stringify(cfg, null, 2), { write: true, force: true, mode: 0o600 });
+      updatedPaths.push(mcpFile);
+    }
+
+    if (ctx.isJson) {
+      emitJson(createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.SUCCESS, "write", { bridge: bridgeName, enabled, updatedPaths }));
+    } else {
+      console.log(`[mcp ${subCommand}] Successfully set '${bridgeName}' to enabled: ${enabled}`);
+    }
+    return EXIT_CODES.SUCCESS;
+  }
+
   if (subCommand === "verify") {
     const isLive = Boolean(ctx.values.live);
     const errors: string[] = [];
@@ -183,6 +237,9 @@ export async function handleMcp(ctx: CommandContext): Promise<number> {
               const def = CANONICAL_MCP_BRIDGES[id];
               if (def?.binaryPrereq && !Bun.which(def.binaryPrereq)) {
                 errors.push(`PREREQUISITE_MISSING: '${id}' requires binary '${def.binaryPrereq}' in PATH.`);
+              }
+              if (def?.runner === "uv" && !Bun.which("uv")) {
+                errors.push(`RUNNER_MISSING: '${id}' requires runner 'uv' in PATH. Install via curl -LsSf https://astral.sh/uv/install.sh`);
               }
               if (isLive && s.url) {
                 // In live mode, probe endpoint

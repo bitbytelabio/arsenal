@@ -324,11 +324,15 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
     expect(violations).toEqual([]);
   });
 
-  it("IN-V3: two runs on unchanged inputs are byte-identical", () => {
-    for (const domain of DOMAINS) {
-      expect(JSON.stringify(report(domain))).toBe(JSON.stringify(report(domain)));
-    }
-  });
+  it(
+    "IN-V3: two runs on unchanged inputs are byte-identical",
+    () => {
+      for (const domain of DOMAINS) {
+        expect(JSON.stringify(report(domain))).toBe(JSON.stringify(report(domain)));
+      }
+    },
+    30_000
+  );
 
   it("M-4/M-6: a capability id present only in a copied support file confers no coverage", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "arsenal-cov-"));

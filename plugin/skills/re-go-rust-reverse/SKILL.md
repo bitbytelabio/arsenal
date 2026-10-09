@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md`
+1. `NOW`: Read `skill://re-go-rust-reverse/support/field-journal/precedent-reverse.md`
 2. `NOW`: Confirm the sample is a Go/Rust compiled artifact (`file`/strings/runtime signatures)
 3. `NEXT`: Check if GoReSym / related plugins are available
 4. `ACT`: Runtime identification → Symbol/metadata recovery → Business logic
@@ -60,9 +60,9 @@ metadata:
 
 ## References
 
-- `references/go-rust-notes.md`
-- `support/reverse-engineering/go-reverse.md` `../ida-reverse/` `../ghidra-reverse/`
-- seed: `support/field-journal/seed-002_go-malware-stripped.md`
+- `skill://re-go-rust-reverse/references/go-rust-notes.md`
+- `skill://re-go-rust-reverse/support/reverse-engineering/go-reverse.md` `../ida-reverse/` `../ghidra-reverse/`
+- seed: `skill://re-go-rust-reverse/support/field-journal/seed-002_go-malware-stripped.md`
 
 ## Routing Context
 

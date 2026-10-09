@@ -46,7 +46,7 @@ metadata:
 
 ## References
 
-- `references/db-misconfig-checklist.md`
+- `skill://webapp-database-security/references/db-misconfig-checklist.md`
 - `../pentest-tools/` `../cloud-k8s/`
 
 ## Routing Context

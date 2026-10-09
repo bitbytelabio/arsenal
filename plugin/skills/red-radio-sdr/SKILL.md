@@ -42,7 +42,7 @@ metadata:
 
 ## References
 
-- `references/sdr-lab-rules.md`
+- `skill://red-radio-sdr/references/sdr-lab-rules.md`
 - `../wifi-wireless/` `../ot-ics/` `../hardware-security/`
 
 ## Routing Context

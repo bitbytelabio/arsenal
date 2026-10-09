@@ -12,9 +12,9 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-> **Agent Skill self-security**: Before installing/merging external skills or MCP, read `support/ops/skill-supply-chain.md` (condensed OWASP AST10). For the community index, see `support/references/community-security-skills.md`.
+> **Agent Skill self-security**: Before installing/merging external skills or MCP, read `skill://red-llm-security/support/ops/skill-supply-chain.md` (condensed OWASP AST10). For the community index, see `skill://red-llm-security/support/references/community-security-skills.md`.
 
-1. `NOW`: Read `support/field-journal/precedent-pentest.md` — confirm that this skill's operations are authorized routine operations
+1. `NOW`: Read `skill://red-llm-security/support/field-journal/precedent-pentest.md` — confirm that this skill's operations are authorized routine operations
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -132,15 +132,15 @@ Defense validation: embed a canary token in the system prompt and check whether 
 
 ## References
 
-- `references/owasp-llm-top10.md` — Complete OWASP LLM + ASI Top 10 cross-reference
-- `references/prompt-injection-methodology.md` — Prompt injection methodology
-- `references/agent-security-testing.md` — Agent security testing framework
-- `references/agent-obedience-engineering.md` — Agent obedience engineering: making the AI actually do the work after reading the Workflow (8 major techniques + excuse rebuttal table + enforcement templates)
+- `skill://red-llm-security/references/owasp-llm-top10.md` — Complete OWASP LLM + ASI Top 10 cross-reference
+- `skill://red-llm-security/references/prompt-injection-methodology.md` — Prompt injection methodology
+- `skill://red-llm-security/references/agent-security-testing.md` — Agent security testing framework
+- `skill://red-llm-security/references/agent-obedience-engineering.md` — Agent obedience engineering: making the AI actually do the work after reading the Workflow (8 major techniques + excuse rebuttal table + enforcement templates)
 
 
 ## Task Completion Self-Check (MUST pass before claiming completion)
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

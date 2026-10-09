@@ -131,7 +131,7 @@ CloudFox writes per-command CSV/TXT plus a `loot` directory of pivot commands.
 ls -R ./loot/cloudfox-output/
 # Loot files contain ready-to-run follow-ups, e.g. aws s3 ls / ssm start-session lines
 ```
-See `support/enumerating-cloud-with-cloudfox/scripts/agent.py` to run a curated set of commands and summarize output files.
+See `skill://red-enumerating-cloud-with-cloudfox/support/enumerating-cloud-with-cloudfox/templates/agent.py` to run a curated set of commands and summarize output files.
 
 ## Tools and Resources
 

@@ -12,6 +12,9 @@ import { executeEvidenceCommand, type EvidenceExecInput } from "../tools/evidenc
 import { consolidateEvidence, type ConsolidateEvidenceInput } from "../tools/consolidate-evidence.ts";
 import { caseReview, type CaseReviewInput } from "../tools/case-review.ts";
 import { handleVerifyOracle, type VerifyOracleArgs } from "../tools/verify-oracle.ts";
+import { inspectApk } from "../tools/apk-inspect.ts";
+import { safeReadBoundedFile } from "../../src/core/fs-safe.ts";
+import type { SkillAssetLoadResult } from "../../src/core/types.ts";
 
 export interface SkillSearchResultItem {
   name: string;
@@ -261,6 +264,30 @@ export class SkillCatalogManager {
       sha256: computedHash,
     };
   }
+
+  public loadAsset(skillName: string, assetPath: string): SkillAssetLoadResult {
+    const skillDir = path.join(this.skillsDir, skillName);
+    if (!fs.existsSync(skillDir)) {
+      throw new Error(`Skill '${skillName}' not found`);
+    }
+    const cleanSubpath = assetPath.replace(/^(\.\/|\/)+/, "");
+    const targetPath = path.resolve(skillDir, cleanSubpath);
+    if (!targetPath.startsWith(skillDir)) {
+      throw new Error(`Path traversal denied: '${assetPath}' escapes skill directory`);
+    }
+    if (!fs.existsSync(targetPath)) {
+      throw new Error(`Asset '${cleanSubpath}' not found in skill '${skillName}'`);
+    }
+    const bounded = safeReadBoundedFile(targetPath);
+    return {
+      skill: skillName,
+      assetPath: cleanSubpath,
+      resolvedUri: `skill://${skillName}/${cleanSubpath}`,
+      content: bounded.content,
+      sizeBytes: bounded.sizeBytes,
+      truncated: bounded.truncated,
+    };
+  }
 }
 
 // OMP extension entrypoint
@@ -393,12 +420,34 @@ export default function routingExtension(pi: ExtensionContext): void {
       type: "object",
       properties: {
         name: { type: "string" },
+        asset_path: { type: "string", description: "Optional relative path to support asset inside skill directory" },
       },
       required: ["name"],
     },
     handler: async (args: unknown) => {
-      const { name } = (args || {}) as { name: string };
+      const { name, asset_path } = (args || {}) as { name: string; asset_path?: string };
+      if (asset_path) {
+        return manager.loadAsset(name, asset_path);
+      }
       return manager.load(name);
+    },
+  });
+
+  registerTool(pi, {
+    name: "skill_asset_load",
+    description:
+      "Retrieve an auxiliary support asset (reference, template, or field journal) from a registered canonical skill.",
+    parameters: {
+      type: "object",
+      properties: {
+        skill_name: { type: "string", description: "Canonical identifier of the skill." },
+        asset_path: { type: "string", description: "Relative path to the support asset inside the skill directory." },
+      },
+      required: ["skill_name", "asset_path"],
+    },
+    handler: async (args: unknown) => {
+      const { skill_name, asset_path } = (args || {}) as { skill_name: string; asset_path: string };
+      return manager.loadAsset(skill_name, asset_path);
     },
   });
 
@@ -500,6 +549,29 @@ export default function routingExtension(pi: ExtensionContext): void {
     },
     handler: async (args: unknown) => {
       return handleVerifyOracle((args || {}) as VerifyOracleArgs);
+    },
+  });
+
+  registerTool(pi, {
+    name: "apk_inspect",
+    description:
+      "Natively inspect an Android APK archive and extract structured manifest metadata, permissions, components, and security flags.",
+    parameters: {
+      type: "object",
+      properties: {
+        apk_path: { type: "string", description: "Path to the APK file on the filesystem." },
+        extract_components: { type: "boolean", default: true },
+        extract_permissions: { type: "boolean", default: true },
+      },
+      required: ["apk_path"],
+    },
+    handler: async (args: unknown) => {
+      const { apk_path, extract_components, extract_permissions } = (args || {}) as {
+        apk_path: string;
+        extract_components?: boolean;
+        extract_permissions?: boolean;
+      };
+      return inspectApk({ apk_path, extract_components, extract_permissions });
     },
   });
 }

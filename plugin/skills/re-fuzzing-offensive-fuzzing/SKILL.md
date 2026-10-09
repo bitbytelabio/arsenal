@@ -204,7 +204,7 @@ MSAN_OPTIONS=poison_in_dtor=1:track_origins=2
 - Enable `CONFIG_KASAN=y`, `CONFIG_KCFI=y`, `CONFIG_DEBUG_INFO_BTF=y`
 - Use `kcov` filters and `syz_cover_filter` to direct coverage
 - Network fuzzing: inject via `TUN/TAP` + pseudo-syscalls (`syz_emit_ethernet`)
-- Crash decode: `./scripts/decode_stacktrace.sh vmlinux ... < dmesg.log`
+- Crash decode: `./templates/decode_stacktrace.sh vmlinux ... < dmesg.log`
 
 **syzkaller repro:**
 ```bash
@@ -315,7 +315,7 @@ gflags /p /enable target.exe /full
 **Kernel KASAN/KMSAN:**
 ```bash
 dmesg -T | egrep -i 'kasan|kmsan' -A 60
-./scripts/decode_stacktrace.sh vmlinux /lib/modules/$(uname -r)/build < dmesg.log
+./templates/decode_stacktrace.sh vmlinux /lib/modules/$(uname -r)/build < dmesg.log
 ```
 
 **Reproducibility:** pin CPU governor, disable ASLR only where safe, fix RNG seeds, save input sequences in persistent mode, record binary hashes and sanitizer options with every crash.

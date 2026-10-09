@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md`
+1. `NOW`: Read `skill://re-macos-reverse/support/field-journal/precedent-reverse.md`
 2. `NOW`: Confirm target is macOS/Mach-O/App bundle (iOS IPA → `mobile-reverse/`)
 3. `NEXT`: Consult tool-index; jtool2/lldb, etc.
 4. `ACT`: Signature and loading information → Static analysis → Dynamic analysis (lldb/Frida)
@@ -64,7 +64,7 @@ otool -L target
 
 ## References
 
-- `references/macho-triage.md`
+- `skill://re-macos-reverse/references/macho-triage.md`
 - `../mobile-reverse/` (iOS) `../ghidra-reverse/` `../malware-analysis/`
 
 ## Routing Context

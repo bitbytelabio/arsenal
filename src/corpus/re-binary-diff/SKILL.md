@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized standard procedures.
+1. `NOW`: Read `skill://re-binary-diff/support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -298,7 +298,7 @@ The core mechanism of this skill does not depend on installing heavy tools. It p
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://re-binary-diff/support/SKILL.md` (Master Controller), `skill://re-binary-diff/support/routing.md`
 **Trigger Condition**: Prior version symbols/reverse-engineering results exist and need migration to a new version.
 **Downstream Exit**:
 - Need to open binaries first → `ida-reverse/`
@@ -311,5 +311,5 @@ The core mechanism of this skill does not depend on installing heavy tools. It p
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

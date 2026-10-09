@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md`
+1. `NOW`: Read `skill://re-ghidra-reverse/support/field-journal/precedent-reverse.md`
 2. `NOW`: Confirm **Ghidra** is needed (no IDA / open-source preference / batch headless)
 3. `NEXT`: Read `../tool-index.md` to check ghidra / ghidra-mcp paths
 4. `NEXT`: Missing tool → bootstrap `ghidra-mcp` (if manifest supports it) or install Ghidra following manual steps
@@ -76,7 +76,7 @@ analyzeHeadless /path/to/project Proj -import sample.bin -postScript ExportDecom
 
 ## References
 
-- `references/ghidra-cheatsheet.md`
+- `skill://re-ghidra-reverse/references/ghidra-cheatsheet.md`
 - `../ida-reverse/` `../radare2/` `../binary-diff/`
 
 ## Routing Context

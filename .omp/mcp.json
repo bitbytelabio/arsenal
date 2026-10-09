@@ -5,6 +5,18 @@
       "enabled": false,
       "type": "sse",
       "url": "http://127.0.0.1:9876/8XYGHr3HQfBky_G_gXIBVsBeMtg2z9LlJlzTWZ1vmLk/"
+    },
+    "playwright": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp-server"
+      ],
+      "runner": "node",
+      "binaryPrereq": "node",
+      "description": "Headless browser automation bridge",
+      "enabled": false
     }
   }
 }

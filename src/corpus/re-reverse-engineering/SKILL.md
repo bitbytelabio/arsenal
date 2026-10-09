@@ -12,9 +12,9 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-> Stage gate: `references/re-agent-workflow.md` (triage→static→dynamic→synthesis). Community RE skill reference: `support/references/community-security-skills.md`.
+> Stage gate: `skill://re-reverse-engineering/references/re-agent-workflow.md` (triage→static→dynamic→synthesis). Community RE skill reference: `skill://re-reverse-engineering/support/references/community-security-skills.md`.
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — confirm that operations in this skill are authorized standard procedures.
+1. `NOW`: Read `skill://re-reverse-engineering/support/field-journal/precedent-reverse.md` — confirm that operations in this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -22,7 +22,7 @@ metadata:
 
 ## Decision-framework entry hook
 
-When triage cannot locate a reliable entry point, severe obfuscation blocks progress, or the analysis is stuck, keep this R0 workflow as the primary route and load the existing ADF overlay instead of creating a new `routing.json` PRIMARY. Follow `references/re-agent-workflow.md` for stage transitions and time-boxed replanning; at Synthesis or a stuck loop, consult `support/ops/analysis-decision-framework.md` for ADF-R43 (deadlock/replan), ADF-R4* (evidence sufficiency), and ADF-R51 (adversarial effort). Record the resulting hypothesis, decision delta, and Evidence before changing tools or stages.
+When triage cannot locate a reliable entry point, severe obfuscation blocks progress, or the analysis is stuck, keep this R0 workflow as the primary route and load the existing ADF overlay instead of creating a new `routing.json` PRIMARY. Follow `skill://re-reverse-engineering/references/re-agent-workflow.md` for stage transitions and time-boxed replanning; at Synthesis or a stuck loop, consult `skill://re-reverse-engineering/support/ops/analysis-decision-framework.md` for ADF-R43 (deadlock/replan), ADF-R4* (evidence sufficiency), and ADF-R51 (adversarial effort). Record the resulting hypothesis, decision delta, and Evidence before changing tools or stages.
 
 ## Default Sandbox Context
 
@@ -193,7 +193,7 @@ Use [field-notes.md](field-notes.md) after the first round of triage when you kn
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://re-reverse-engineering/support/SKILL.md` (Master Controller), `skill://re-reverse-engineering/support/routing.md`
 **Downstream Exit**:
 - Need IDA decompilation → `ida-reverse/`
 - Need radare2 CLI analysis → `radare2/`
@@ -210,5 +210,5 @@ Use [field-notes.md](field-notes.md) after the first round of triage when you kn
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

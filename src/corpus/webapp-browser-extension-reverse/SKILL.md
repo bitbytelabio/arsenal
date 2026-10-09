@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md`
+1. `NOW`: Read `skill://webapp-browser-extension-reverse/support/field-journal/precedent-reverse.md`
 2. `NOW`: Confirm target is a **browser extension** (crx/xpi/unpacked directory), not standard web page JS (standard → `js-reverse/`)
 3. `NEXT`: Unpack the extension; read manifest
 4. `ACT`: Permission surface → Background scripts → Network/storage hooks
@@ -63,7 +63,7 @@ metadata:
 
 ## References
 
-- `references/extension-analysis.md`
+- `skill://webapp-browser-extension-reverse/references/extension-analysis.md`
 - Field-journal extension recovery entries
 - `../js-reverse/` `../malware-analysis/`
 

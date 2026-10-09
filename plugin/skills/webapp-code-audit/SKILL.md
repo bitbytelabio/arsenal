@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-pentest.md` or code audit authorization.
+1. `NOW`: Read `skill://webapp-code-audit/support/field-journal/precedent-pentest.md` or code audit authorization.
 2. `NOW`: Confirm **source code/repository access** (binary without source code → redirect to RE skill).
 3. `NOW`: Clarify language stack and scope (directories/services/PR diff).
 4. `NEXT`: tool-index; semgrep, etc.
@@ -70,13 +70,13 @@ Optional ATT&CK / CWE identifiers
 
 ## References
 
-- `references/sast-review-checklist.md`
+- `skill://webapp-code-audit/references/sast-review-checklist.md`
 - `../supply-chain-security/` `../api-security/` `../llm-security/` (Agent code)
 
 ## Routing Context
 
 **Upstream**: MASTER R26  
-**Role**: `support/ops/role-map.md` cae  
+**Role**: `skill://webapp-code-audit/support/ops/role-map.md` cae  
 **Downstream**: Dependency vulnerabilities → supply-chain; Runtime verification → pentest-tools
 
 ## Task Completion Checklist

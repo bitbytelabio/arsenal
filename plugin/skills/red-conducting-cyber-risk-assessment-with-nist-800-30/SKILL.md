@@ -24,7 +24,7 @@ metadata:
 - Access to threat intelligence (internal incident history, sector ISAC feeds, MITRE ATT&CK) to ground threat-event likelihood in observed behavior.
 - Vulnerability data (scan results, pen-test findings, configuration/architecture review) for the in-scope systems.
 - Business context: which missions/processes the systems support, and what impact to confidentiality, integrity, or availability would mean in business terms.
-- Agreement on the **risk model and scales** before scoring, so results are comparable and repeatable (see `support/conducting-cyber-risk-assessment-with-nist-800-30/references/standards.md`).
+- Agreement on the **risk model and scales** before scoring, so results are comparable and repeatable (see `skill://red-conducting-cyber-risk-assessment-with-nist-800-30/support/conducting-cyber-risk-assessment-with-nist-800-30/references/standards.md`).
 - Familiarity with the three-tier risk-management context from NIST SP 800-39 (organization, mission/business process, information system).
 
 ## Workflow
@@ -98,7 +98,7 @@ Hand the ranked register to risk owners. For each risk choose a treatment — **
 
 ## Output Format
 
-Produce a **Risk Assessment Report** using `support/conducting-cyber-risk-assessment-with-nist-800-30/assets/template.md`, containing:
+Produce a **Risk Assessment Report** using `skill://red-conducting-cyber-risk-assessment-with-nist-800-30/support/conducting-cyber-risk-assessment-with-nist-800-30/assets/template.md`, containing:
 
 1. **Purpose, scope, and tier** — what was assessed and why.
 2. **Assumptions, constraints, and risk model** — the factors and scales used (so results are reproducible).
@@ -109,4 +109,4 @@ Produce a **Risk Assessment Report** using `support/conducting-cyber-risk-assess
 7. **Top risks summary** — ranked, in business terms, for leadership.
 8. **Maintenance plan** — refresh cadence and re-assessment triggers.
 
-Use `support/conducting-cyber-risk-assessment-with-nist-800-30/scripts/process.py` to score the register from a risk-input JSON (likelihood × impact → risk level on a configurable matrix), rank risks, and emit the register table.
+Use `skill://red-conducting-cyber-risk-assessment-with-nist-800-30/support/conducting-cyber-risk-assessment-with-nist-800-30/templates/process.py` to score the register from a risk-input JSON (likelihood × impact → risk level on a configurable matrix), rank risks, and emit the register table.

@@ -318,7 +318,7 @@ NEW FINDINGS (blocking):
 
   [2] GitHub Personal Access Token
       Rule: github-pat
-      File: <scanned-repo>/scripts/deploy.sh:15
+      File: <scanned-repo>/templates/deploy.sh:15
       Commit: d4e5f6g (2026-02-21, ops@company.com)
       Secret: ghp_...REDACTED
       Entropy: 4.2

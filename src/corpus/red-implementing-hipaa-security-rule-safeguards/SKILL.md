@@ -26,7 +26,7 @@ metadata:
 - A clear determination of the organization's **role** (covered entity vs business associate) and where ePHI lives, flows, and is stored (an ePHI data map).
 - An **asset inventory** of systems that create, receive, maintain, or transmit ePHI.
 - Knowledge of the current rule's structure (45 CFR §§164.302–318) and the **required vs addressable** distinction.
-- Awareness that a **2025 NPRM** proposes significant changes (see Workflow step 7 and `support/implementing-hipaa-security-rule-safeguards/references/standards.md`) — track but do not assume them as in force.
+- Awareness that a **2025 NPRM** proposes significant changes (see Workflow step 7 and `skill://red-implementing-hipaa-security-rule-safeguards/support/implementing-hipaa-security-rule-safeguards/references/standards.md`) — track but do not assume them as in force.
 
 ## Workflow
 
@@ -91,7 +91,7 @@ Maintain policies, procedures, and records of actions/decisions in writing, **re
 
 ## Output Format
 
-Produce a **HIPAA Security Rule Gap Assessment** using `support/implementing-hipaa-security-rule-safeguards/assets/template.md`, containing:
+Produce a **HIPAA Security Rule Gap Assessment** using `skill://red-implementing-hipaa-security-rule-safeguards/support/implementing-hipaa-security-rule-safeguards/assets/template.md`, containing:
 
 1. **Role & ePHI scope** — covered entity vs BA; ePHI data map and systems.
 2. **Risk analysis summary** — top risks to ePHI with likelihood/impact (feeds risk management).
@@ -101,4 +101,4 @@ Produce a **HIPAA Security Rule Gap Assessment** using `support/implementing-hip
 6. **2025 NPRM gap view** — readiness against the proposed mandates (clearly labeled proposed).
 7. **Remediation plan** — prioritized, with owners and dates; required specs and risk-analysis gaps first.
 
-Use `support/implementing-hipaa-security-rule-safeguards/scripts/process.py` to score a safeguard-status JSON across the §164.308/310/312 standards, weight required gaps above addressable ones, and emit the gap table plus a remediation-priority list.
+Use `skill://red-implementing-hipaa-security-rule-safeguards/support/implementing-hipaa-security-rule-safeguards/templates/process.py` to score a safeguard-status JSON across the §164.308/310/312 standards, weight required gaps above addressable ones, and emit the gap table plus a remediation-priority list.

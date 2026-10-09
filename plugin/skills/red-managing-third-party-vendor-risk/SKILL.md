@@ -98,7 +98,7 @@ On termination: revoke access and credentials, confirm **data return or certifie
 
 ## Output Format
 
-Produce a **Vendor Risk Assessment** using `support/managing-third-party-vendor-risk/assets/template.md`, containing:
+Produce a **Vendor Risk Assessment** using `skill://red-managing-third-party-vendor-risk/support/managing-third-party-vendor-risk/assets/template.md`, containing:
 
 1. **Vendor profile** — service, data handled, access type, business criticality, regulatory scope.
 2. **Inherent-risk tier** — score and resulting tier, with rationale.
@@ -109,4 +109,4 @@ Produce a **Vendor Risk Assessment** using `support/managing-third-party-vendor-
 7. **Monitoring & reassessment plan** — cadence, signals watched, re-tier triggers.
 8. **Nth-party notes** — critical subprocessors and concentration risk.
 
-Use `support/managing-third-party-vendor-risk/scripts/process.py` to compute a vendor's inherent-risk tier from a profile JSON, set the assessment depth and reassessment cadence, and flag missing evidence for the assigned tier.
+Use `skill://red-managing-third-party-vendor-risk/support/managing-third-party-vendor-risk/templates/process.py` to compute a vendor's inherent-risk tier from a profile JSON, set the assessment depth and reassessment cadence, and flag missing evidence for the assigned tier.

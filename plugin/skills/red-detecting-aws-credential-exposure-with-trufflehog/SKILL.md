@@ -39,7 +39,7 @@ Install TruffleHog v3 and verify it can detect the AWS credential patterns.
 pip install trufflehog
 
 # Or install from binary release
-curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin
+curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/templates/install.sh | sh -s -- -b /usr/local/bin
 
 # Verify installation
 trufflehog --version
@@ -242,7 +242,7 @@ VERIFIED FINDINGS (Active Credentials):
 
 [CRED-002] AWS Secret Key - VERIFIED ACTIVE
   Repository: acme-corp/data-pipeline
-  File: acme-corp/data-pipeline/scripts/etl_config.py
+  File: acme-corp/data-pipeline/templates/etl_config.py
   Commit: d4e5f6g (2025-11-22)
   Author: data-engineer@acme.com
   Status: HIGH - Key active, last used 2 days ago

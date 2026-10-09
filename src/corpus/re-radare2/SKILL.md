@@ -14,7 +14,7 @@ Binary analysis skill oriented toward the `radare2` CLI. The focus is performing
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized standard procedures.
+1. `NOW`: Read `skill://re-radare2/support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -56,7 +56,7 @@ Common Windows executables:
 
 This skill includes two built-in resources. Prioritize reusing them instead of assembling duplicate commands ad hoc every time.
 
-### `scripts/recon.sh`
+### `templates/recon.sh`
 
 Standard reconnaissance script, suitable for performing an initial overview analysis. Outputs:
 
@@ -79,7 +79,7 @@ If automated analysis via `r2` is needed as well:
 powershell -File "<skill-root>\radare2\scripts\recon.sh" -TargetPath "C:\path\to\sample.exe" -RunAnalysis
 ```
 
-### `references/cheatsheet.md`
+### `skill://re-radare2/references/cheatsheet.md`
 
 Read this cheatsheet when more command details, common scenario templates, or quick syntax references are needed, rather than guessing from memory.
 
@@ -135,7 +135,7 @@ For binaries containing import tables such as PE/ELF/Mach-O, the import table in
    - If the import table is empty, parsing fails, or tooling errors: The failure phenomenon and raw output **MUST** still be recorded as Evidence; **do not silently skip**
    - If the import table is "too clean" (only base DLLs): Suspicion of dynamic loading **MUST** be noted, and execution **SHOULD** transition to dynamic API capture
 3. For targets without traditional IAT such as .NET: An equivalent anchor (dnSpy/IL/metadata summary) **MUST** be written to the same Evidence semantic slot; skipping is prohibited
-4. Packed sample IAT repair: Use ImportREC (or equivalent) for x86, and Scylla (or equivalent) for x64. If repair fails, log `E-iat-repair-fail` and transition to dynamic API breakpoints; obsessing endlessly over static IAT is **PROHIBITED** (see `support/reverse-engineering/references/re-agent-workflow.md` §1.2)
+4. Packed sample IAT repair: Use ImportREC (or equivalent) for x86, and Scylla (or equivalent) for x64. If repair fails, log `E-iat-repair-fail` and transition to dynamic API breakpoints; obsessing endlessly over static IAT is **PROHIBITED** (see `skill://re-radare2/support/reverse-engineering/references/re-agent-workflow.md` §1.2)
 5. When the user explicitly requests to "redo import table check / re-inspect import table / redo IAT": The specified step itself **MUST** be redone (if blocked, proceed with the feasibility latch first: Note prerequisites + request confirmation; if forced, mark quality=unreadable); substituting an unrelated step to fake completion is **PROHIBITED**
 
 Before recording import table (or legitimate equivalent anchor / IAT failure bypass) Evidence: You **MUST NOT** claim that "basic reconnaissance is complete", and you **MUST NOT** advance to Workflow 2+ deep-dive conclusions.
@@ -382,8 +382,8 @@ Procedure:
 
 ## References
 
-- Command Cheatsheet: `references/cheatsheet.md`
-- Standard Recon Script: `scripts/recon.sh`
+- Command Cheatsheet: `skill://re-radare2/references/cheatsheet.md`
+- Standard Recon Script: `templates/recon.sh`
 
 ## radare2-skills Ecosystem
 
@@ -410,7 +410,7 @@ This skill maintains existing hard gates and evidence chain integrity; skipping 
 
 ## Routing Context
 
-**Upstream Entry**: `support/SKILL.md` (Master Controller), `support/routing.md`
+**Upstream Entry**: `skill://re-radare2/support/SKILL.md` (Master Controller), `skill://re-radare2/support/routing.md`
 **Upstream Alternative**: `ida-reverse/` (Escalate to IDA when decompilation/pseudocode is required)
 **Downstream Exit**:
 - Dynamic analysis needed → `arsenal skill_load re-reverse-engineering/tools-dynamic.md` (Frida/GDB)
@@ -436,7 +436,7 @@ The entry scripts for this skill are integrated into the unified bootstrap syste
 
 ### Bootstrap Trigger Points
 
-- `scripts/recon.sh`: Automatically invokes `bootstrap-reverse.ps1` when `rabin2` or `r2` is missing
+- `templates/recon.sh`: Automatically invokes `bootstrap-reverse.ps1` when `rabin2` or `r2` is missing
 
 ### On Bootstrap Failure
 
@@ -450,5 +450,5 @@ Manual installation: Download `radare2-*-w64.zip` from https://github.com/radare
 - [ ] Was the import table check executed and recorded into Evidence (E-imports / E-triage-imports or .NET equivalent)? Does DLL/SYS include E-exports?
 - [ ] If IAT repair failed, was E-iat-repair-fail recorded and did execution transition to dynamic analysis? Did redo requests return to the exact same step?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

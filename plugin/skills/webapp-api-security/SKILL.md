@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-pentest.md` — Confirm that operations in this skill are authorized routine operations.
+1. `NOW`: Read `skill://webapp-api-security/support/field-journal/precedent-pentest.md` — Confirm that operations in this skill are authorized routine operations.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
 3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
@@ -177,13 +177,13 @@ Tools: FireTail, Escape DAST, api.sh (Phases 1-3)
 
 ## References
 
-- `references/rest-graphql-testing.md` — In-depth REST + GraphQL testing
-- `references/jwt-oauth-testing.md` — JWT + OAuth security testing
+- `skill://webapp-api-security/references/rest-graphql-testing.md` — In-depth REST + GraphQL testing
+- `skill://webapp-api-security/references/jwt-oauth-testing.md` — JWT + OAuth security testing
 
 
 ## Task Completion Self-Check (MUST pass before claiming completion)
 
 - [ ] Did I execute each step in the workflow (rather than only reading)?
 - [ ] Did I use verified tool paths based on `tool-index`?
-- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I produce reproducible evidence (commands/templates/screenshots/reports)?
 - [ ] Did I complete and verify the Checklist items required by RULES?

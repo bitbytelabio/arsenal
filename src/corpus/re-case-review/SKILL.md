@@ -27,10 +27,10 @@ It MUST NOT perform reconnaissance, exploitation, dynamic instrumentation, or ta
 
 ## ACTION REQUIRED
 
-1. `NOW`: read `support/field-journal/precedent-reverse.md` and confirm that this is a review of an existing authorized case package.
+1. `NOW`: read `skill://re-case-review/support/field-journal/precedent-reverse.md` and confirm that this is a review of an existing authorized case package.
 2. `NOW`: confirm the case path and choose read-only review mode.
 3. `NEXT`: read `../tool-index.md`; this skill uses only Python 3 standard library and does not require bootstrap.
-4. `NEXT`: run `python3 scripts/review_case.py <case-root> --format markdown`.
+4. `NEXT`: run `bun run bin/arsenal.ts case review <case-root> --format markdown`.
 5. `ACT`: resolve every error, then rerun the review before claiming a handoff is complete.
 
 ## Tool dependencies
@@ -48,7 +48,7 @@ No network access or third-party package is required.
 Run the review against the existing case directory:
 
 ```bash
-python3 skills/case-review/scripts/review_case.py work/<case> --format markdown
+python3 case review work/<case> --format markdown
 ```
 
 Confirm that `scope.md`, `timeline.md`, `workitems.md`, and `evidence/` are present. A non-strict review reports scope warnings while a strict review treats warnings as handoff blockers.
@@ -77,7 +77,7 @@ An offline observation may use `repro_command: n/a` only when its `notes` field 
 Use JSON when another tool needs stable fields:
 
 ```bash
-python3 skills/case-review/scripts/review_case.py work/<case> --format json
+python3 case review work/<case> --format json
 ```
 
 ## Recommended Next Steps (Select one)
@@ -93,7 +93,7 @@ python3 skills/case-review/scripts/review_case.py work/<case> --format json
 When an Evidence record contains both `content_hash` and `artifact_path`, verify the case-local artifact:
 
 ```bash
-python3 skills/case-review/scripts/review_case.py work/<case> --verify-hashes --strict
+python3 case review work/<case> --verify-hashes --strict
 ```
 
 The script accepts `sha256:<64 hex characters>` and checks that the artifact remains inside the case root. A hash mismatch is a hard failure.
@@ -101,7 +101,7 @@ The script accepts `sha256:<64 hex characters>` and checks that the artifact rem
 The PowerShell Evidence helper can record a hash while appending a record:
 
 ```powershell
-powershell -File skills/scripts/append-evidence.sh -CaseRoot work\<case> -Id E-001 -Title "Sample hash" -ReproCommand "sha256sum evidence/sample.bin" -ArtifactPath "evidence\sample.bin"
+powershell -File skills/templates/append-evidence.sh -CaseRoot work\<case> -Id E-001 -Title "Sample hash" -ReproCommand "sha256sum evidence/sample.bin" -ArtifactPath "evidence\sample.bin"
 ```
 
 ## Recommended Next Steps (Select one)
@@ -117,7 +117,7 @@ powershell -File skills/scripts/append-evidence.sh -CaseRoot work\<case> -Id E-0
 Use strict mode before a final report or specialist handoff:
 
 ```bash
-python3 skills/case-review/scripts/review_case.py work/<case> --strict --format markdown > work/<case>/report/case-review.md
+python3 case review work/<case> --strict --format markdown > work/<case>/report/case-review.md
 ```
 
 The command is read-only with respect to the case unless shell redirection is explicitly used to save its output. The review is not legal advice and does not replace organizational evidence handling procedures.
@@ -145,7 +145,7 @@ This skill has no third-party dependency. If Python 3 is unavailable, the only a
 
 **Downstream exit**: `docs-generator/` for a formal report, or the original PRIMARY skill when the graph is incomplete.
 
-**Related modules**: `support/ops/evidence-finding-path.md`, `support/ops/timeline-workitem.md`, `digital-forensics/`, `reverse-engineering/`, and `docs-generator/`.
+**Related modules**: `skill://re-case-review/support/ops/evidence-finding-path.md`, `skill://re-case-review/support/ops/timeline-workitem.md`, `digital-forensics/`, `reverse-engineering/`, and `docs-generator/`.
 
 ## References
 

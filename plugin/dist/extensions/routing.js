@@ -7684,8 +7684,8 @@ var require_dist = __commonJS(function(exports, module) {
 });
 
 // plugin/extensions/routing.ts
-import * as fs6 from "fs";
-import * as path5 from "path";
+import * as fs8 from "fs";
+import * as path7 from "path";
 
 // src/core/hash.ts
 import * as fs from "fs";
@@ -8618,6 +8618,63 @@ var VERIFICATION_ORACLE_SCHEMA = {
   },
   additionalProperties: false
 };
+var SPECIALIST_HANDOFF_SCHEMA = {
+  $id: "https://arsenal.security/schemas/specialist-handoff.json",
+  $schema: "https://json-schema.org/draft/2020-12/schema",
+  type: "object",
+  properties: {
+    taskId: { type: "string", minLength: 1 },
+    role: { type: "string", enum: ["sec-re", "sec-webapp", "sec-mobile", "sec-red", "sec-verifier"] },
+    findings: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          id: { type: "string", pattern: "^F-[0-9]{3,}$" },
+          title: { type: "string", minLength: 5, maxLength: 150 },
+          severity: { type: "string", enum: ["info", "low", "medium", "high", "critical"] },
+          location: { type: "string", minLength: 1 },
+          cwe: { type: "string", pattern: "^CWE-[0-9]+$" },
+          evidenceReceipts: { type: "array", minItems: 1, items: { type: "string" } },
+          epistemicStatus: { type: "string", enum: ["E", "P"] }
+        },
+        required: ["id", "title", "severity", "location", "cwe", "evidenceReceipts", "epistemicStatus"],
+        additionalProperties: false
+      }
+    },
+    coverageJudgement: { type: "string", enum: ["covered", "partial", "uncovered"] },
+    unresolvedVariables: {
+      type: "array",
+      items: { type: "string", pattern: "^unk-.*$" }
+    },
+    capabilityGap: { type: ["string", "null"] }
+  },
+  required: ["taskId", "role", "findings", "coverageJudgement", "unresolvedVariables", "capabilityGap"],
+  additionalProperties: false
+};
+var APK_INSPECT_TOOL_SCHEMA = {
+  $id: "https://arsenal.security/schemas/apk-inspect.json",
+  $schema: "https://json-schema.org/draft/2020-12/schema",
+  type: "object",
+  properties: {
+    apk_path: { type: "string" },
+    extract_components: { type: "boolean", default: true },
+    extract_permissions: { type: "boolean", default: true }
+  },
+  required: ["apk_path"],
+  additionalProperties: false
+};
+var SKILL_ASSET_LOAD_SCHEMA = {
+  $id: "https://arsenal.security/schemas/skill-asset-load.json",
+  $schema: "https://json-schema.org/draft/2020-12/schema",
+  type: "object",
+  properties: {
+    skill_name: { type: "string" },
+    asset_path: { type: "string" }
+  },
+  required: ["skill_name", "asset_path"],
+  additionalProperties: false
+};
 ajv.addSchema(SCOPE_SCHEMA);
 ajv.addSchema(ENGAGEMENT_SCHEMA);
 ajv.addSchema(ENVIRONMENT_SCHEMA);
@@ -8633,6 +8690,9 @@ ajv.addSchema(ROUTING_TABLE_SCHEMA);
 ajv.addSchema(COVERAGE_BASELINE_SCHEMA);
 ajv.addSchema(EXTENSION_BUNDLE_ARTIFACT_SCHEMA);
 ajv.addSchema(VERIFICATION_ORACLE_SCHEMA);
+ajv.addSchema(SPECIALIST_HANDOFF_SCHEMA);
+ajv.addSchema(APK_INSPECT_TOOL_SCHEMA);
+ajv.addSchema(SKILL_ASSET_LOAD_SCHEMA);
 function formatErrors(errors) {
   if (!errors || errors.length === 0)
     return [];
@@ -10013,36 +10073,286 @@ async function handleVerifyOracle(args) {
   }
 }
 
+// plugin/tools/apk-inspect.ts
+import * as fs6 from "fs";
+import * as path5 from "path";
+import * as zlib from "zlib";
+function extractFromZip(zipPath, targetFileName) {
+  const buf = fs6.readFileSync(zipPath);
+  let eocdOffset = -1;
+  const searchLimit = Math.max(0, buf.length - 65536);
+  for (let i = buf.length - 22;i >= searchLimit; i--) {
+    if (buf.readUInt32LE(i) === 101010256) {
+      eocdOffset = i;
+      break;
+    }
+  }
+  if (eocdOffset === -1) {
+    throw new Error(`Invalid ZIP/APK archive: EOCD record not found in ${zipPath}`);
+  }
+  const cdCount = buf.readUInt16LE(eocdOffset + 10);
+  const cdOffset = buf.readUInt32LE(eocdOffset + 16);
+  let pos = cdOffset;
+  for (let i = 0;i < cdCount; i++) {
+    if (pos + 46 > buf.length || buf.readUInt32LE(pos) !== 33639248)
+      break;
+    const compression = buf.readUInt16LE(pos + 10);
+    const compressedSize = buf.readUInt32LE(pos + 20);
+    const nameLen = buf.readUInt16LE(pos + 28);
+    const extraLen = buf.readUInt16LE(pos + 30);
+    const commentLen = buf.readUInt16LE(pos + 32);
+    const localHeaderOffset = buf.readUInt32LE(pos + 42);
+    const fileName = buf.toString("utf-8", pos + 46, pos + 46 + nameLen);
+    pos += 46 + nameLen + extraLen + commentLen;
+    if (fileName === targetFileName) {
+      if (localHeaderOffset + 30 > buf.length) {
+        throw new Error(`Corrupted ZIP entry offset for ${targetFileName}`);
+      }
+      const localNameLen = buf.readUInt16LE(localHeaderOffset + 26);
+      const localExtraLen = buf.readUInt16LE(localHeaderOffset + 28);
+      const dataStart = localHeaderOffset + 30 + localNameLen + localExtraLen;
+      if (dataStart + compressedSize > buf.length) {
+        throw new Error(`Unexpected EOF while reading ${targetFileName}`);
+      }
+      const rawData = buf.subarray(dataStart, dataStart + compressedSize);
+      if (compression === 0) {
+        return Buffer.from(rawData);
+      } else if (compression === 8) {
+        return zlib.inflateRawSync(rawData);
+      } else {
+        throw new Error(`Unsupported compression method (${compression}) in ${zipPath}`);
+      }
+    }
+  }
+  throw new Error(`File '${targetFileName}' not found in APK: ${zipPath}`);
+}
+function parseTextManifest(xmlText) {
+  const packageMatch = xmlText.match(/package\s*=\s*["']([^"']+)["']/i);
+  const packageName = packageMatch ? packageMatch[1] : "unknown.package";
+  const vCodeMatch = xmlText.match(/versionCode\s*=\s*["']([^"']+)["']/i);
+  const versionCode = vCodeMatch ? parseInt(vCodeMatch[1], 10) : undefined;
+  const vNameMatch = xmlText.match(/versionName\s*=\s*["']([^"']+)["']/i);
+  const versionName = vNameMatch ? vNameMatch[1] : undefined;
+  const minSdkMatch = xmlText.match(/minSdkVersion\s*=\s*["']([^"']+)["']/i);
+  const minSdkVersion = minSdkMatch ? parseInt(minSdkMatch[1], 10) : undefined;
+  const targetSdkMatch = xmlText.match(/targetSdkVersion\s*=\s*["']([^"']+)["']/i);
+  const targetSdkVersion = targetSdkMatch ? parseInt(targetSdkMatch[1], 10) : undefined;
+  const permissions = [];
+  const permRegex = /<uses-permission[^>]*android:name\s*=\s*["']([^"']+)["'][^>]*>/gi;
+  let permMatch;
+  while ((permMatch = permRegex.exec(xmlText)) !== null) {
+    if (permMatch[1] && !permissions.includes(permMatch[1])) {
+      permissions.push(permMatch[1]);
+    }
+  }
+  const debuggableMatch = xmlText.match(/android:debuggable\s*=\s*["']true["']/i);
+  const debuggable = Boolean(debuggableMatch);
+  const allowBackupMatch = xmlText.match(/android:allowBackup\s*=\s*["']true["']/i);
+  const allowBackup = Boolean(allowBackupMatch);
+  const dangerousFlags = [];
+  if (debuggable)
+    dangerousFlags.push("debuggable");
+  if (allowBackup)
+    dangerousFlags.push("allowBackup");
+  if (/android:usesCleartextTraffic\s*=\s*["']true["']/i.test(xmlText)) {
+    dangerousFlags.push("usesCleartextTraffic");
+  }
+  if (/android:testOnly\s*=\s*["']true["']/i.test(xmlText)) {
+    dangerousFlags.push("testOnly");
+  }
+  const exportedComponents = [];
+  const componentTypes = [
+    { tag: "activity", type: "activity" },
+    { tag: "service", type: "service" },
+    { tag: "receiver", type: "receiver" },
+    { tag: "provider", type: "provider" }
+  ];
+  for (const { tag, type } of componentTypes) {
+    const tagRegex = new RegExp(`<${tag}\\b([\\s\\S]*?)(?:\\/>|>([\\s\\S]*?)<\\/${tag}>)`, "gi");
+    let match;
+    while ((match = tagRegex.exec(xmlText)) !== null) {
+      const attrs = match[1] || "";
+      const inner = match[2] || "";
+      const nameMatch = attrs.match(/android:name\s*=\s*["']([^"']+)["']/i);
+      if (!nameMatch || !nameMatch[1])
+        continue;
+      const name = nameMatch[1];
+      const exportedExplicitMatch = attrs.match(/android:exported\s*=\s*["'](true|false)["']/i);
+      let exported = false;
+      if (exportedExplicitMatch) {
+        exported = exportedExplicitMatch[1].toLowerCase() === "true";
+      } else {
+        exported = /<intent-filter\b/i.test(inner);
+      }
+      if (exported) {
+        const permAttrMatch = attrs.match(/android:permission\s*=\s*["']([^"']+)["']/i);
+        const permission = permAttrMatch ? permAttrMatch[1] : null;
+        exportedComponents.push({ type, name, permission });
+      }
+    }
+  }
+  return {
+    packageName,
+    versionCode,
+    versionName,
+    minSdkVersion,
+    targetSdkVersion,
+    debuggable,
+    allowBackup,
+    permissions,
+    exportedComponents,
+    dangerousFlags
+  };
+}
+function parseBinaryManifest(rawBuf) {
+  const magic = rawBuf.readUInt32LE(0);
+  if (magic !== 524291) {
+    return parseTextManifest(rawBuf.toString("utf-8"));
+  }
+  let stringPoolOffset = 8;
+  const poolType = rawBuf.readUInt16LE(stringPoolOffset);
+  if (poolType !== 1) {
+    throw new Error("Invalid AXML: Expected StringPool chunk at offset 8");
+  }
+  const stringCount = rawBuf.readUInt32LE(stringPoolOffset + 8);
+  const flags = rawBuf.readUInt32LE(stringPoolOffset + 16);
+  const stringsStart = stringPoolOffset + rawBuf.readUInt32LE(stringPoolOffset + 20);
+  const isUtf8 = (flags & 1 << 8) !== 0;
+  const strings = [];
+  const offsetTableStart = stringPoolOffset + 28;
+  for (let i = 0;i < stringCount; i++) {
+    const strOffset = stringsStart + rawBuf.readUInt32LE(offsetTableStart + i * 4);
+    if (strOffset >= rawBuf.length)
+      continue;
+    if (isUtf8) {
+      let lenOffset = strOffset;
+      let len = rawBuf.readUInt8(lenOffset++);
+      if ((len & 128) !== 0) {
+        len = (len & 127) << 8 | rawBuf.readUInt8(lenOffset++);
+      }
+      let byteLen = rawBuf.readUInt8(lenOffset++);
+      if ((byteLen & 128) !== 0) {
+        byteLen = (byteLen & 127) << 8 | rawBuf.readUInt8(lenOffset++);
+      }
+      strings.push(rawBuf.toString("utf-8", lenOffset, lenOffset + byteLen));
+    } else {
+      let lenOffset = strOffset;
+      let len = rawBuf.readUInt16LE(lenOffset);
+      lenOffset += 2;
+      if ((len & 32768) !== 0) {
+        len = (len & 32767) << 16 | rawBuf.readUInt16LE(lenOffset);
+        lenOffset += 2;
+      }
+      strings.push(rawBuf.toString("utf16le", lenOffset, lenOffset + len * 2));
+    }
+  }
+  let packageName = "unknown.package";
+  const permissions = [];
+  const exportedComponents = [];
+  const dangerousFlags = [];
+  let debuggable = false;
+  let allowBackup = false;
+  for (const s of strings) {
+    if (s.startsWith("android.permission.")) {
+      if (!permissions.includes(s))
+        permissions.push(s);
+    }
+    if (s === "debuggable") {
+      debuggable = true;
+      if (!dangerousFlags.includes("debuggable"))
+        dangerousFlags.push("debuggable");
+    }
+    if (s === "allowBackup") {
+      allowBackup = true;
+      if (!dangerousFlags.includes("allowBackup"))
+        dangerousFlags.push("allowBackup");
+    }
+    if (s === "usesCleartextTraffic") {
+      if (!dangerousFlags.includes("usesCleartextTraffic"))
+        dangerousFlags.push("usesCleartextTraffic");
+    }
+  }
+  const candidatePkg = strings.find((s) => s.includes(".") && !s.startsWith("android.") && !s.includes("/") && !s.endsWith(".xml"));
+  if (candidatePkg) {
+    packageName = candidatePkg;
+  }
+  return {
+    packageName,
+    debuggable,
+    allowBackup,
+    permissions,
+    exportedComponents,
+    dangerousFlags
+  };
+}
+async function inspectApk(input) {
+  const resolvedPath = path5.resolve(input.apk_path);
+  if (!fs6.existsSync(resolvedPath)) {
+    throw new Error(`APK file not found: ${resolvedPath}`);
+  }
+  const manifestBuf = extractFromZip(resolvedPath, "AndroidManifest.xml");
+  if (manifestBuf.length >= 4 && manifestBuf.readUInt32LE(0) === 524291) {
+    return parseBinaryManifest(manifestBuf);
+  }
+  return parseTextManifest(manifestBuf.toString("utf-8"));
+}
+
+// src/core/fs-safe.ts
+import * as fs7 from "fs";
+import * as path6 from "path";
+function safeReadBoundedFile(filePath, maxBytes = BOUNDING_LIMITS.MAX_DELIVERED_BYTES) {
+  const resolved = path6.resolve(filePath);
+  if (!fs7.existsSync(resolved)) {
+    throw new Error(`File not found: ${resolved}`);
+  }
+  const rawBytes = fs7.readFileSync(resolved);
+  const sizeBytes = rawBytes.length;
+  const rawStr = new TextDecoder("utf-8", { fatal: false }).decode(rawBytes);
+  if (sizeBytes <= maxBytes) {
+    return {
+      content: rawStr,
+      sizeBytes,
+      truncated: false
+    };
+  }
+  const boundedStr = truncateTailToByteBudget(rawStr, maxBytes);
+  return {
+    content: boundedStr,
+    sizeBytes,
+    truncated: true
+  };
+}
+
 // plugin/extensions/routing.ts
 function resolvePluginRoot(baseDir) {
   if (baseDir) {
-    const resolved = path5.resolve(baseDir);
-    if (fs6.existsSync(path5.join(resolved, "catalog/skills.index.jsonl"))) {
+    const resolved = path7.resolve(baseDir);
+    if (fs8.existsSync(path7.join(resolved, "catalog/skills.index.jsonl"))) {
       return resolved;
     }
-    if (fs6.existsSync(path5.join(resolved, "plugin/catalog/skills.index.jsonl"))) {
-      return path5.join(resolved, "plugin");
+    if (fs8.existsSync(path7.join(resolved, "plugin/catalog/skills.index.jsonl"))) {
+      return path7.join(resolved, "plugin");
     }
-    if (fs6.existsSync(path5.join(resolved, "plugin"))) {
-      return path5.join(resolved, "plugin");
+    if (fs8.existsSync(path7.join(resolved, "plugin"))) {
+      return path7.join(resolved, "plugin");
     }
     return resolved;
   }
   const metaDir = typeof import.meta !== "undefined" && import.meta.dir ? import.meta.dir : process.cwd();
-  const distRoot = path5.resolve(metaDir, "../..");
-  if (fs6.existsSync(path5.join(distRoot, "catalog/skills.index.jsonl"))) {
+  const distRoot = path7.resolve(metaDir, "../..");
+  if (fs8.existsSync(path7.join(distRoot, "catalog/skills.index.jsonl"))) {
     return distRoot;
   }
-  const sourceRoot = path5.resolve(metaDir, "..");
-  if (fs6.existsSync(path5.join(sourceRoot, "catalog/skills.index.jsonl"))) {
+  const sourceRoot = path7.resolve(metaDir, "..");
+  if (fs8.existsSync(path7.join(sourceRoot, "catalog/skills.index.jsonl"))) {
     return sourceRoot;
   }
-  const cwdPlugin = path5.resolve(process.cwd(), "plugin");
-  if (fs6.existsSync(path5.join(cwdPlugin, "catalog/skills.index.jsonl"))) {
+  const cwdPlugin = path7.resolve(process.cwd(), "plugin");
+  if (fs8.existsSync(path7.join(cwdPlugin, "catalog/skills.index.jsonl"))) {
     return cwdPlugin;
   }
-  if (fs6.existsSync(path5.resolve(process.cwd(), "catalog/skills.index.jsonl"))) {
-    return path5.resolve(process.cwd());
+  if (fs8.existsSync(path7.resolve(process.cwd(), "catalog/skills.index.jsonl"))) {
+    return path7.resolve(process.cwd());
   }
   return distRoot;
 }
@@ -10053,21 +10363,21 @@ class SkillCatalogManager {
   routingDir;
   constructor(baseDir) {
     const root = resolvePluginRoot(baseDir);
-    this.catalogPath = path5.resolve(root, "catalog/skills.index.jsonl");
-    this.skillsDir = path5.resolve(root, "skills");
-    this.routingDir = path5.resolve(root, "catalog/routing");
+    this.catalogPath = path7.resolve(root, "catalog/skills.index.jsonl");
+    this.skillsDir = path7.resolve(root, "skills");
+    this.routingDir = path7.resolve(root, "catalog/routing");
   }
   loadRoutingTables() {
     const domains = ["re", "webapp", "mobile", "red"];
     const tables = {};
     for (const domain of domains) {
-      const file = path5.join(this.routingDir, `${domain}.json`);
-      if (!fs6.existsSync(file)) {
+      const file = path7.join(this.routingDir, `${domain}.json`);
+      if (!fs8.existsSync(file)) {
         tables[domain] = null;
         continue;
       }
       try {
-        tables[domain] = JSON.parse(fs6.readFileSync(file, "utf-8"));
+        tables[domain] = JSON.parse(fs8.readFileSync(file, "utf-8"));
       } catch {
         tables[domain] = null;
       }
@@ -10078,10 +10388,10 @@ class SkillCatalogManager {
     return routeHint(hint, domain, this.loadRoutingTables());
   }
   loadCatalog() {
-    if (!fs6.existsSync(this.catalogPath)) {
+    if (!fs8.existsSync(this.catalogPath)) {
       return [];
     }
-    const raw = fs6.readFileSync(this.catalogPath, "utf-8");
+    const raw = fs8.readFileSync(this.catalogPath, "utf-8");
     return raw.split(`
 `).filter((l) => l.trim().length > 0).map((l) => JSON.parse(l));
   }
@@ -10161,11 +10471,11 @@ class SkillCatalogManager {
     };
   }
   load(name) {
-    const skillPath = path5.join(this.skillsDir, name, "SKILL.md");
-    if (!fs6.existsSync(skillPath)) {
+    const skillPath = path7.join(this.skillsDir, name, "SKILL.md");
+    if (!fs8.existsSync(skillPath)) {
       return { error: "SKILL_NOT_FOUND", name };
     }
-    const raw = fs6.readFileSync(skillPath, "utf-8");
+    const raw = fs8.readFileSync(skillPath, "utf-8");
     const computedHash = sha256String(raw);
     const catalog = this.loadCatalog();
     const entry = catalog.find((c) => c.name === name);
@@ -10181,6 +10491,29 @@ class SkillCatalogManager {
       name,
       content: raw,
       sha256: computedHash
+    };
+  }
+  loadAsset(skillName, assetPath) {
+    const skillDir = path7.join(this.skillsDir, skillName);
+    if (!fs8.existsSync(skillDir)) {
+      throw new Error(`Skill '${skillName}' not found`);
+    }
+    const cleanSubpath = assetPath.replace(/^(\.\/|\/)+/, "");
+    const targetPath = path7.resolve(skillDir, cleanSubpath);
+    if (!targetPath.startsWith(skillDir)) {
+      throw new Error(`Path traversal denied: '${assetPath}' escapes skill directory`);
+    }
+    if (!fs8.existsSync(targetPath)) {
+      throw new Error(`Asset '${cleanSubpath}' not found in skill '${skillName}'`);
+    }
+    const bounded = safeReadBoundedFile(targetPath);
+    return {
+      skill: skillName,
+      assetPath: cleanSubpath,
+      resolvedUri: `skill://${skillName}/${cleanSubpath}`,
+      content: bounded.content,
+      sizeBytes: bounded.sizeBytes,
+      truncated: bounded.truncated
     };
   }
 }
@@ -10260,13 +10593,33 @@ function routingExtension(pi) {
     parameters: {
       type: "object",
       properties: {
-        name: { type: "string" }
+        name: { type: "string" },
+        asset_path: { type: "string", description: "Optional relative path to support asset inside skill directory" }
       },
       required: ["name"]
     },
     handler: async (args) => {
-      const { name } = args || {};
+      const { name, asset_path } = args || {};
+      if (asset_path) {
+        return manager.loadAsset(name, asset_path);
+      }
       return manager.load(name);
+    }
+  });
+  registerTool(pi, {
+    name: "skill_asset_load",
+    description: "Retrieve an auxiliary support asset (reference, template, or field journal) from a registered canonical skill.",
+    parameters: {
+      type: "object",
+      properties: {
+        skill_name: { type: "string", description: "Canonical identifier of the skill." },
+        asset_path: { type: "string", description: "Relative path to the support asset inside the skill directory." }
+      },
+      required: ["skill_name", "asset_path"]
+    },
+    handler: async (args) => {
+      const { skill_name, asset_path } = args || {};
+      return manager.loadAsset(skill_name, asset_path);
     }
   });
   registerTool(pi, {
@@ -10299,7 +10652,7 @@ function routingExtension(pi) {
       required: ["argv"]
     },
     handler: async (args) => {
-      const evidenceDir = path5.resolve(process.cwd(), "evidence");
+      const evidenceDir = path7.resolve(process.cwd(), "evidence");
       return executeEvidenceCommand(args || {}, evidenceDir);
     }
   });
@@ -10362,6 +10715,23 @@ function routingExtension(pi) {
     },
     handler: async (args) => {
       return handleVerifyOracle(args || {});
+    }
+  });
+  registerTool(pi, {
+    name: "apk_inspect",
+    description: "Natively inspect an Android APK archive and extract structured manifest metadata, permissions, components, and security flags.",
+    parameters: {
+      type: "object",
+      properties: {
+        apk_path: { type: "string", description: "Path to the APK file on the filesystem." },
+        extract_components: { type: "boolean", default: true },
+        extract_permissions: { type: "boolean", default: true }
+      },
+      required: ["apk_path"]
+    },
+    handler: async (args) => {
+      const { apk_path, extract_components, extract_permissions } = args || {};
+      return inspectApk({ apk_path, extract_components, extract_permissions });
     }
   });
 }

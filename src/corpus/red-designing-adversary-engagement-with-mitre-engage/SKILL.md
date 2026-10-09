@@ -68,7 +68,7 @@ For each technique your target adversary uses, find the Engage Activity that exp
 Pull the authoritative Activity list and IDs from the live matrix; Engage IDs use the prefixes **SGO/EGO** (Goals), **SAP/EAP** (Approaches), and **SAC/EAC** (Activities).
 
 ### 5. Design the engagement environment
-Decide realism and isolation. Choose between standalone, connected, or integrated decoy environments (see D3FEND honeynet types in `support/designing-adversary-engagement-with-mitre-engage/references/standards.md`). Populate it with diverse, believable artifacts — Persona Creation, Pocket Litter, Artifact Diversity, Application Diversity — so the environment survives adversary scrutiny.
+Decide realism and isolation. Choose between standalone, connected, or integrated decoy environments (see D3FEND honeynet types in `skill://red-designing-adversary-engagement-with-mitre-engage/support/designing-adversary-engagement-with-mitre-engage/references/standards.md`). Populate it with diverse, believable artifacts — Persona Creation, Pocket Litter, Artifact Diversity, Application Diversity — so the environment survives adversary scrutiny.
 
 ### 6. Define gating criteria and rules of engagement
 Document, before deployment: what the adversary is allowed to reach, the maximum blast radius, the trigger for tear-down or hand-off to IR, evidence preservation steps, and who has authority to escalate. **Affect Activities are limited to the defender's own network** — never act on infrastructure you do not own.
@@ -117,7 +117,7 @@ Score the operation against the Operational Objectives from Step 2. Capture what
 
 ## Output Format
 
-Produce an **Adversary Engagement Operation Plan** using `support/designing-adversary-engagement-with-mitre-engage/assets/template.md`, containing:
+Produce an **Adversary Engagement Operation Plan** using `skill://red-designing-adversary-engagement-with-mitre-engage/support/designing-adversary-engagement-with-mitre-engage/assets/template.md`, containing:
 
 1. **Strategic context** — where DD&AE fits the cyber strategy; executive sponsor; legal sign-off reference.
 2. **Engagement Goals + Operational Objectives** — each objective falsifiable and time-bound.
@@ -128,4 +128,4 @@ Produce an **Adversary Engagement Operation Plan** using `support/designing-adve
 7. **Measurement plan** — metrics per objective (alert latency, dwell time, indicators gained, samples obtained).
 8. **After-action report** — objectives met/missed, intel produced, detections promoted to production, threat-model updates.
 
-Use `support/designing-adversary-engagement-with-mitre-engage/scripts/process.py` to validate technique→Activity coverage and generate the operation-plan skeleton from a threat-model input.
+Use `skill://red-designing-adversary-engagement-with-mitre-engage/support/designing-adversary-engagement-with-mitre-engage/templates/process.py` to validate technique→Activity coverage and generate the operation-plan skeleton from a threat-model input.

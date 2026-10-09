@@ -12,8 +12,8 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/ops/scope-contract.md` to confirm public sources, target entities, time windows, and delivery purposes.
-2. `NOW`: Read `support/field-journal/precedent-pentest.md` only when operational precedents are needed. Precedents do not grant authorization.
+1. `NOW`: Read `skill://red-threat-intelligence/support/ops/scope-contract.md` to confirm public sources, target entities, time windows, and delivery purposes.
+2. `NOW`: Read `skill://red-threat-intelligence/support/field-journal/precedent-pentest.md` only when operational precedents are needed. Precedents do not grant authorization.
 3. `NOW`: Formulate falsifiable intelligence questions along with candidate conclusions that must be independently verified.
 4. `NEXT`: Read `tool-index.md`. Inspect `xquik-mcp` when public X data is needed.
 5. `ACT`: Start with the narrowest read-only queries, preserve source metadata, and then proceed to correlation and verification.
@@ -72,7 +72,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File skills\scripts\bootstrap-rev
 ```
 
 ```bash
-bash skills/scripts/bootstrap-reverse.sh xquik-mcp --mcp-host=codex
+bash skills/templates/bootstrap-reverse.sh xquik-mcp --mcp-host=codex
 ```
 
 Complete OAuth subsequently within the client. If falling back to REST, read `XQUIK_API_KEY` only from the environment or an approved secrets store. Writing secrets into command lines, configurations, reports, or evidence text is prohibited.
@@ -149,7 +149,7 @@ Stage Exits:
 | OAuth Unavailable | Switch to REST and read the API key from an approved secrets store |
 | Service Unreachable | Log that the external dependency is unavailable; do not forge results or failover to unknown proxies |
 
-Refer to `references/x-public-intelligence.md` for detailed request and evidence contracts.
+Refer to `skill://red-threat-intelligence/references/x-public-intelligence.md` for detailed request and evidence contracts.
 
 ## Routing Context
 

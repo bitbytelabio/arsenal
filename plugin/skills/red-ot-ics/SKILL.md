@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-pentest.md` — **Mishandling industrial control environments can cause physical harm**
+1. `NOW`: Read `skill://red-ot-ics/support/field-journal/precedent-pentest.md` — **Mishandling industrial control environments can cause physical harm**
 2. `NOW`: Written authorization must explicitly define: sites, subnets, and whether active scanning/register writing is permitted
 3. `NOW`: case-init; default to **passive-first**; PLC write operations are forbidden prior to `ready_for_act`
 4. `NEXT`: tool-index; most ICS tools require manual operation and an isolated lab network
@@ -81,7 +81,7 @@ Priority: Read-only identification, traffic mirroring, offline firmware/configur
 
 ## References
 
-- `references/ot-safe-assessment.md`
+- `skill://red-ot-ics/references/ot-safe-assessment.md`
 - `../firmware-pentest/` `../protocol-reverse/` network assessment via pentest-tools
 
 ## Routing Context

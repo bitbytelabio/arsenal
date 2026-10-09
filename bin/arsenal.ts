@@ -4,6 +4,7 @@
  * Entrypoint: bin/arsenal.ts
  */
 
+import * as fs from "node:fs";
 import { parseArgs } from "node:util";
 import * as path from "node:path";
 import * as process from "node:process";
@@ -98,6 +99,27 @@ const globalOptions = {
   strict: { type: "boolean", default: false },
   "verify-hashes": { type: "boolean", default: false },
   format: { type: "string" },
+  apk: { type: "string" },
+  uri: { type: "string" },
+  dir: { type: "string" },
+  "min-severity": { type: "string" },
+  exclude: { type: "string" },
+  auth: { type: "string" },
+  expire: { type: "string" },
+  depth: { type: "string" },
+  phase: { type: "string" },
+  finding: { type: "string" },
+  oracle: { type: "string" },
+  evidence: { type: "string" },
+  title: { type: "string" },
+  severity: { type: "string" },
+  location: { type: "string" },
+  cwe: { type: "string" },
+  remediation: { type: "string" },
+  output: { type: "string" },
+  "safe-mode": { type: "boolean", default: true },
+  verbose: { type: "boolean", default: false },
+  show: { type: "boolean", default: false },
 } as const;
 
 async function main(): Promise<void> {
@@ -132,11 +154,18 @@ async function main(): Promise<void> {
 
   const { values, positionals } = parsed;
   const isJson = Boolean(values.json);
-  const repoRoot = typeof values.repo === "string" ? path.resolve(values.repo) : process.cwd();
+  const repoRoot =
+    typeof values.repo === "string"
+      ? path.resolve(values.repo)
+      : fs.existsSync(path.join(process.cwd(), "src/corpus"))
+        ? process.cwd()
+        : path.resolve(import.meta.dir, "..");
   const profileDir =
     typeof values.profile === "string"
       ? path.resolve(values.profile)
-      : path.join(process.env.HOME ?? "~", ".omp/profiles/arsenal/agent");
+      : typeof values.dir === "string"
+        ? path.resolve(values.dir)
+        : path.join(process.env.HOME ?? "~", ".omp/profiles/arsenal/agent");
   const mode: "preview" | "write" | "check" = values.check
     ? "check"
     : values.write

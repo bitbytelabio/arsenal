@@ -27,45 +27,41 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 - [Feature Specifications](docs/specs/): Các hồ sơ đặc tả kỹ thuật và kế hoạch thực thi theo phương pháp SpecKit.
 
 
-## Hardened Runtime Features
+## Modernized OMP Harness Features
 
-### 1. Standalone Plugin Packaging & Distribution
-- Extensions in `plugin/extensions/*.ts` compile into standalone, self-contained ESM JavaScript bundles in `plugin/dist/extensions/{bounding,ledger,budget,routing}.js` via `Bun.build()`.
-- Bundled modules eliminate external relative imports outside `plugin/`.
-- Catalog path discovery anchors portably to `import.meta.dir`, ensuring seamless operation when invoked from any arbitrary directory.
-- Extension bundling is covered by byte-for-byte build determinism checks (`arsenal build --check-determinism`).
+### 1. Native TypeScript Security Tooling (`apk_inspect`)
+- Core analysis tasks (including Android APK inspection and binary manifest analysis) execute directly inside the plugin runtime via native Bun/TS tools without relying on host Python or unmanaged dependencies.
+- Ad-hoc standalone scripts in the corpus are eliminated, replaced with managed template assets and monitored `evidence_exec` tool invocations.
 
-### 2. Concurrency-Safe Append-Only Evidence Ledger
-- Concurrent multi-agent writes to `LedgerActor.appendEvent()` are serialized through a FIFO `AsyncMutex`.
-- Sequence allocation, head retrieval, file append, and journal commits execute in an atomic critical section.
-- Guarantees strictly monotonic sequences and unbroken SHA-256 hash chains under high-concurrency workloads (tested with 100 simultaneous asynchronous writes).
+### 2. Canonical `skill://` URI Scheme & Dynamic Asset Loading
+- All 3,288 references and support citations across 1,647 playbooks use canonical platform URIs (`skill://<skill-id>/references/...` or `skill://<skill-id>/support/...`).
+- Dynamic asset loading (`skill_asset_load`, `skills read-asset`) resolves auxiliary reference materials, checklists, and payload blueprints regardless of the agent's current working directory, with character-safe output bounds ($\le 4096$ bytes).
 
-### 3. Execution Deadlines & Character-Safe Output Bounding
-- Subprocess execution via `evidence_exec` enforces strict deadlines using `timeout_ms`. Commands exceeding limits are cleanly terminated via `SIGTERM`/`SIGKILL` with POSIX exit code `124`, retaining partial stdout/stderr buffers.
-- Output bounding (`boundOutput()`, `boundAndStore()`) enforces a strict 4096-byte delivered budget using codepoint-aligned truncation, eliminating multi-byte UTF-8 replacement character corruption (`\uFFFD`) across Vietnamese diacritics, CJK ideographs, and emoji.
+### 3. Subagent Governance & Profile Provisioning
+- All 5 specialist agent prompts (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) inline Operational Security (OpSec) safety gates and Epistemic evaluation constraints (`E-*` empirical observations vs `P-*` analytical inferences vs `unk-*` variables).
+- Enforces typed JSON schema task handoffs with single-retry recovery logic.
+- `arsenal profile install` deploys all 5 specialist definitions into `<profileDir>/agent/agents/` alongside primary templates.
 
-### 4. Authenticated Target Scope Attribution
-- Evidence records probe `.omp/scope.json` (or `ARSENAL_SCOPE_FILE`) and compute genuine SHA-256 revision hashes.
-- Targets are dynamically evaluated as `in_scope`, `out_of_scope`, or `unknown`.
-- Synthetic placeholder hashes (`"0".repeat(64)`) and blanket in-scope assumptions are strictly forbidden.
+### 4. Dynamic MCP Lifecycle Management & Isolated `uv` Runner
+- CLI subcommands `arsenal mcp enable <name>` and `arsenal mcp disable <name>` dynamically toggle tool bridges under strict opt-in control.
+- Official catalog supports 7 canonical bridges: `ida-pro`, `ghidra`, `frida`, `jshook`, `burp-ultra`, `playwright`, and `semgrep` (all initialized to `enabled: false`).
+- Python-based bridges execute via isolated `uv` environments, with fail-fast diagnostics if `uv` is not present on the host.
 
-### 5. Technical English Corpus & Cross-Platform Script Hygiene
-- 100% of playbook documentation across `src/corpus/` (including all nested `references/`, `assets/`, and `support/` files) is audited and harmonized in technical English.
-- All legacy Windows-only `.ps1` scripts have been replaced with cross-platform POSIX shell and TypeScript scripts.
-- Verified zero dangling script citations (`arsenal skills scripts-audit`).
+### 5. Complete Operational Slash Command Suite
+- 8 comprehensive slash commands guiding multi-stage security engagements:
+  - `/sec-scope`: Scope manager enforcing in-scope targets and exclusions.
+  - `/sec-recon`: Surface reconnaissance coordinator with interactive authorization prompt on un-scoped targets.
+  - `/sec-engage`: 5-phase end-to-end security assessment orchestrator.
+  - `/sec-verify`: Direct dispatch to `sec-verifier` running deterministic oracles (`verify_oracle`).
+  - `/sec-finding`: Structured finding logger linking directly to SHA-256 evidence ledger receipts.
+  - `/sec-review`: Case review auditor asserting evidence continuity across all 37 validation codes.
+  - `/sec-report`: Deliverable compiler supporting Markdown, JSON, and SARIF exports (defaulting to `.omp/arsenal/reports/report-<timestamp>.md` with terminal summary).
+  - `/sec-doctor`: Platform diagnostic checker verifying plugin health, bridges, and manifests.
 
-### 6. Standards-Based Capability Baseline Accounting
-- Accounted for 100% of capabilities across all four security domains (`re`, `webapp`, `mobile`, `red`).
-- Cross-domain duplicates are mapped to canonical owners via `presets/skills/dedup-aliases.json`.
-- High-confidence playbooks are promoted to verified coverage mappings in `presets/baselines/coverage-map.json`.
-
-### 7. Objective Verification Oracles & Empirical Benchmarking
-- Registered `verify_oracle` tool for independent finding evaluation:
-  - `timing_differential`: Statistical separation analysis for time-based vulnerabilities.
-  - `authz_matrix`: Multi-identity access replay for BOLA / IDOR detection.
-  - `path_traversal`: Marker verification and root escape confirmation.
-- Includes `Arsenal-Bench` empirical benchmark scenarios (`tests/fixtures/benchmark/scenarios.json`) evaluated by `tests/benchmark.test.ts` with 100% precision and recall.
-
+### 6. Evidence-Based Technique Coverage & Manifest Integrity
+- 496 empirically verified technique mappings enrolled into `presets/baselines/coverage-map.json` using verified markdown heading locators in target `SKILL.md` playbooks.
+- Artificial `accepted-gaps.json` reduced by > 50% in strict adherence to Principle III (Evidence Rigor) and rule CM-4.
+- 100% clean corpus manifest integrity verified via `arsenal skills check --domains` (0 errors).
 ---
 
 ## CLI Usage

@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-pentest.md`
+1. `NOW`: Read `skill://red-windows-ad/support/field-journal/precedent-pentest.md`
 2. `NOW`: **Domain/AD testing must have an explicitly defined authorized scope** (including DCs, whether poisoning/relaying is permitted)
 3. `NOW`: Execute case-init; explicitly document network_profile and prohibited actions
 4. `NEXT`: Consult tool-index (impacket/certipy/bloodhound, etc., often executed manually)
@@ -71,10 +71,10 @@ bloodhound-python -d domain.local -u user -p pass -c All -ns <DC>
 
 ## References
 
-- `references/ad-attack-paths.md`
-- `support/pentest-tools/references/network-attack-defense.md`
+- `skill://red-windows-ad/references/ad-attack-paths.md`
+- `skill://red-windows-ad/support/pentest-tools/references/network-attack-defense.md`
 - `../attack-chain/`
-- seeds: `support/field-journal/seed-005_ad-certipy-esc1.md` `support/field-journal/seed-007_ntlm-relay-coercer.md` `support/field-journal/seed-013_kerberoasting-spn.md`
+- seeds: `skill://red-windows-ad/support/field-journal/seed-005_ad-certipy-esc1.md` `skill://red-windows-ad/support/field-journal/seed-007_ntlm-relay-coercer.md` `skill://red-windows-ad/support/field-journal/seed-013_kerberoasting-spn.md`
 
 ## Routing Context
 

@@ -116,6 +116,15 @@ export async function handleDoctor(ctx: CommandContext): Promise<number> {
     }
   }
 
+    const hasUv = Bun.which("uv") !== null;
+    checks.push({
+      name: "uv_runner",
+      passed: true,
+      message: hasUv
+        ? `uv package runner detected: ${Bun.which("uv")}`
+        : "uv package runner not found (optional for Python MCP bridges; install via https://astral.sh/uv/install.sh)",
+    });
+
   // 5. Smoke Check
   if (runAll || isSmoke) {
     checks.push({ name: "smoke", passed: true, message: "Runtime extension hooks and node APIs viable." });

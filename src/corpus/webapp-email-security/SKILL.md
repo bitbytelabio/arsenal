@@ -45,7 +45,7 @@ metadata:
 
 ## References
 
-- `references/email-auth-checklist.md`
+- `skill://webapp-email-security/references/email-auth-checklist.md`
 - `../malware-analysis/` `../attack-chain/` (Phishing stage) `../windows-ad/` (Tokens)
 
 ## Routing Context

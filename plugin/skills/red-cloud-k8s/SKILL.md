@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-pentest.md` — **Cloud/K8s testing strictly requires written authorization**
+1. `NOW`: Read `skill://red-cloud-k8s/support/field-journal/precedent-pentest.md` — **Cloud/K8s testing strictly requires written authorization**
 2. `NOW`: case-init + scope; clearly define account boundaries and prohibit destructive operations
 3. `NOW`: Confirm focus is cloud metadata/containers/K8s/IAM, rather than generic web scanning (the latter belongs to `pentest-tools/`)
 4. `NEXT`: tool-index; tools such as kubectl/aws/gcloud mostly require manual installation
@@ -87,7 +87,7 @@ kubectl get clusterrolebindings
 
 ## References
 
-- `references/k8s-cloud-checklist.md`
+- `skill://red-cloud-k8s/references/k8s-cloud-checklist.md`
 - CTF Cross-reference: `../../CTF-Sandbox-Orchestrator/competition-agent-cloud/`
 - `../supply-chain-security/` `../pentest-tools/`
 

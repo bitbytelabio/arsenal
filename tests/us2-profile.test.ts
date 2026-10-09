@@ -58,6 +58,17 @@ describe("User Story 2: Profile Installation & Verification", () => {
     expect(fs.existsSync(path.join(scratchProfile, "config.yml"))).toBe(true);
     expect(fs.existsSync(path.join(scratchProfile, "models.yml"))).toBe(true);
 
+
+    // Verify all 5 specialist agent definitions created in agent/agents/
+    const agentAgentsDir = path.join(scratchProfile, "agent", "agents");
+    for (const spec of ["sec-re.md", "sec-webapp.md", "sec-mobile.md", "sec-red.md", "sec-verifier.md"]) {
+      const specFile = path.join(agentAgentsDir, spec);
+      expect(fs.existsSync(specFile)).toBe(true);
+      const specContent = fs.readFileSync(specFile, "utf-8");
+      expect(specContent).toContain("## Operational Security (OpSec) Rules");
+      expect(specContent).toContain("## Epistemic Rules");
+      expect(specContent).toContain("## Handoff");
+    }
     // Verify AGENTS.md contract: 7 required markers, 5 specialists, resolved includes, no vendor tokens
     const agentsContent = fs.readFileSync(path.join(scratchProfile, "AGENTS.md"), "utf-8");
     const requiredMarkers = [

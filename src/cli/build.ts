@@ -240,6 +240,8 @@ export async function executeBuild(
           "consolidate_evidence",
           "case_review",
           "verify_oracle",
+          "apk_inspect",
+          "skill_asset_load",
         ],
       },
     },
@@ -251,11 +253,13 @@ export async function executeBuild(
   const mcpCatalogContent = JSON.stringify(
     {
       mcpServers: {
-        "ida-pro": { transport: "stdio", command: "python3", args: ["-m", "ida_mcp"], enabled: false },
-        ghidra: { transport: "stdio", command: "python3", args: ["-m", "ghidra_mcp"], enabled: false },
-        frida: { transport: "stdio", command: "frida-mcp", enabled: false },
-        jshook: { transport: "stdio", command: "jshookmcp", enabled: false },
+        "ida-pro": { transport: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], enabled: false },
+        ghidra: { transport: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], enabled: false },
+        frida: { transport: "stdio", command: "uv", args: ["run", "frida-mcp"], enabled: false },
+        jshook: { transport: "stdio", command: "node", args: ["jshookmcp.js"], enabled: false },
         "burp-ultra": { transport: "sse", url: "http://127.0.0.1:8080/mcp", enabled: false },
+        playwright: { transport: "stdio", command: "npx", args: ["-y", "@playwright/mcp-server"], enabled: false },
+        semgrep: { transport: "stdio", command: "uv", args: ["run", "semgrep-mcp"], enabled: false },
       },
     },
     null,

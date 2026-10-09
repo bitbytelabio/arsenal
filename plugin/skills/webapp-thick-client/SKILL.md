@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-pentest.md`
+1. `NOW`: Read `skill://webapp-thick-client/support/field-journal/precedent-pentest.md`
 2. `NOW`: Confirm the target is a **desktop thick client** (Win/macOS/Linux GUI or companion service), not pure Web
 3. `NOW`: case-init; write the installer package source and test accounts into scope
 4. `NEXT`: Tools (Burp upstream proxy, process monitoring, reverse engineering tools)
@@ -70,7 +70,7 @@ metadata:
 
 ## References
 
-- `references/thick-client-checklist.md`
+- `skill://webapp-thick-client/references/thick-client-checklist.md`
 - `../dotnet-reverse/` `../ida-reverse/` `../js-reverse/` `../api-security/`
 
 ## Routing Context

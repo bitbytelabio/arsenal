@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute immediately upon reading)
 
-1. `NOW`: Read `support/field-journal/precedent-pentest.md` or organizational IR authorization notes
+1. `NOW`: Read `skill://re-digital-forensics/support/field-journal/precedent-pentest.md` or organizational IR authorization notes
 2. `NOW`: Confirm this is **forensics/attribution** rather than offensive scanning
 3. `NOW`: Establish case; prioritize read-only evidence copies (write-protect original media)
 4. `NEXT`: Consult tool-index; tools like Volatility are frequently manual
@@ -72,7 +72,7 @@ vol -f mem.dmp windows.cmdline
 
 ## References
 
-- `references/forensics-triage.md`
+- `skill://re-digital-forensics/references/forensics-triage.md`
 - `../malware-analysis/` `../threat-hunting/` `../protocol-reverse/`
 
 ## Routing Context
