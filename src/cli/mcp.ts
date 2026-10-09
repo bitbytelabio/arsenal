@@ -12,6 +12,7 @@ import { safeWriteFile } from "../core/fs-safe.ts";
 export const CANONICAL_MCP_BRIDGES: Record<
   string,
   {
+    type: "stdio" | "sse";
     transport: "stdio" | "sse";
     command?: string;
     args?: string[];
@@ -21,13 +22,13 @@ export const CANONICAL_MCP_BRIDGES: Record<
     description: string;
   }
 > = {
-  "ida-pro": { transport: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], runner: "uv", binaryPrereq: "ida64", description: "IDA Pro disassembler bridge" },
-  ghidra: { transport: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], runner: "uv", binaryPrereq: "ghidra", description: "Ghidra headless decompiler bridge" },
-  frida: { transport: "stdio", command: "uv", args: ["run", "frida-mcp"], runner: "uv", binaryPrereq: "frida", description: "Frida dynamic instrumentation bridge" },
-  jshook: { transport: "stdio", command: "node", args: ["jshookmcp.js"], runner: "node", binaryPrereq: "node", description: "JavaScript runtime function hooking bridge" },
-  "burp-ultra": { transport: "sse", url: "http://127.0.0.1:8080/mcp", runner: "none", description: "Burp Suite professional HTTP/S interception bridge" },
-  playwright: { transport: "stdio", command: "npx", args: ["-y", "@playwright/mcp-server"], runner: "node", binaryPrereq: "node", description: "Headless browser automation bridge" },
-  semgrep: { transport: "stdio", command: "uv", args: ["run", "semgrep-mcp"], runner: "uv", binaryPrereq: "semgrep", description: "Semgrep SAST rule-based code inspection bridge" },
+  "ida-pro": { type: "stdio", transport: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], runner: "uv", binaryPrereq: "ida64", description: "IDA Pro disassembler bridge" },
+  ghidra: { type: "stdio", transport: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], runner: "uv", binaryPrereq: "ghidra", description: "Ghidra headless decompiler bridge" },
+  frida: { type: "stdio", transport: "stdio", command: "uv", args: ["run", "frida-mcp"], runner: "uv", binaryPrereq: "frida", description: "Frida dynamic instrumentation bridge" },
+  jshook: { type: "stdio", transport: "stdio", command: "node", args: ["jshookmcp.js"], runner: "node", binaryPrereq: "node", description: "JavaScript runtime function hooking bridge" },
+  "burp-ultra": { type: "sse", transport: "sse", url: "http://127.0.0.1:8080/mcp", runner: "none", description: "Burp Suite professional HTTP/S interception bridge" },
+  playwright: { type: "stdio", transport: "stdio", command: "bunx", args: ["-y", "@playwright/mcp-server"], runner: "node", binaryPrereq: "bunx", description: "Headless browser automation bridge" },
+  semgrep: { type: "stdio", transport: "stdio", command: "uv", args: ["run", "semgrep-mcp"], runner: "uv", binaryPrereq: "semgrep", description: "Semgrep SAST rule-based code inspection bridge" },
 };
 
 export async function handleMcp(ctx: CommandContext): Promise<number> {

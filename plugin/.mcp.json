@@ -1,6 +1,7 @@
 {
   "mcpServers": {
     "ida-pro": {
+      "type": "stdio",
       "transport": "stdio",
       "command": "uv",
       "args": [
@@ -11,6 +12,7 @@
       "enabled": false
     },
     "ghidra": {
+      "type": "stdio",
       "transport": "stdio",
       "command": "uv",
       "args": [
@@ -21,6 +23,7 @@
       "enabled": false
     },
     "frida": {
+      "type": "stdio",
       "transport": "stdio",
       "command": "uv",
       "args": [
@@ -30,6 +33,7 @@
       "enabled": false
     },
     "jshook": {
+      "type": "stdio",
       "transport": "stdio",
       "command": "node",
       "args": [
@@ -38,13 +42,15 @@
       "enabled": false
     },
     "burp-ultra": {
+      "type": "sse",
       "transport": "sse",
       "url": "http://127.0.0.1:8080/mcp",
       "enabled": false
     },
     "playwright": {
+      "type": "stdio",
       "transport": "stdio",
-      "command": "npx",
+      "command": "bunx",
       "args": [
         "-y",
         "@playwright/mcp-server"
@@ -52,6 +58,7 @@
       "enabled": false
     },
     "semgrep": {
+      "type": "stdio",
       "transport": "stdio",
       "command": "uv",
       "args": [
