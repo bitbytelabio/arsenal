@@ -1,0 +1,256 @@
+[
+  {
+    "id": "BENCH-001",
+    "title": "Time-based Blind SQL Injection on Authentication Endpoint",
+    "domain": "webapp",
+    "category": "sqli_timing",
+    "groundTruth": "vulnerable",
+    "context": {
+      "endpoint": "/api/v1/auth/login",
+      "parameter": "username",
+      "payload": "' OR (SELECT SLEEP(5))=0 --"
+    },
+    "expectedFinding": {
+      "cwe": "CWE-89",
+      "severity": "critical"
+    },
+    "oracleCheck": {
+      "oracle_type": "timing_differential",
+      "parameters": {
+        "expectedDelayMs": 5000,
+        "pairs": [
+          { "baselineMs": 95, "probeMs": 5120 },
+          { "baselineMs": 102, "probeMs": 5090 },
+          { "baselineMs": 98, "probeMs": 5110 },
+          { "baselineMs": 105, "probeMs": 5085 }
+        ]
+      }
+    }
+  },
+  {
+    "id": "BENCH-002",
+    "title": "Benign Heavy Query with Normal Fluctuating Latency (Negative Control)",
+    "domain": "webapp",
+    "category": "sqli_timing",
+    "groundTruth": "benign",
+    "context": {
+      "endpoint": "/api/v1/analytics/report",
+      "parameter": "query",
+      "payload": "complex query without injection"
+    },
+    "oracleCheck": {
+      "oracle_type": "timing_differential",
+      "parameters": {
+        "expectedDelayMs": 5000,
+        "pairs": [
+          { "baselineMs": 350, "probeMs": 420 },
+          { "baselineMs": 400, "probeMs": 390 },
+          { "baselineMs": 380, "probeMs": 410 },
+          { "baselineMs": 360, "probeMs": 395 }
+        ]
+      }
+    }
+  },
+  {
+    "id": "BENCH-003",
+    "title": "Broken Object Level Authorization (BOLA/IDOR) on User Profile",
+    "domain": "webapp",
+    "category": "authz",
+    "groundTruth": "vulnerable",
+    "context": {
+      "endpoint": "/api/v1/users/42/profile",
+      "method": "GET"
+    },
+    "expectedFinding": {
+      "cwe": "CWE-639",
+      "severity": "high"
+    },
+    "oracleCheck": {
+      "oracle_type": "authz_matrix",
+      "parameters": {
+        "endpoint": "/api/v1/users/42/profile",
+        "observations": [
+          { "role": "authorized", "statusCode": 200, "isBusinessDataPresent": true, "body": "{\"id\":42,\"email\":\"victim@target.com\"}" },
+          { "role": "unauthorized", "statusCode": 200, "isBusinessDataPresent": true, "body": "{\"id\":42,\"email\":\"victim@target.com\"}" },
+          { "role": "anonymous", "statusCode": 401, "isBusinessDataPresent": false, "body": "{\"error\":\"unauthorized\"}" }
+        ]
+      }
+    }
+  },
+  {
+    "id": "BENCH-004",
+    "title": "Properly Enforced Role-Based Access Control on Administrative Settings (Negative Control)",
+    "domain": "webapp",
+    "category": "authz",
+    "groundTruth": "benign",
+    "context": {
+      "endpoint": "/api/v1/admin/settings",
+      "method": "GET"
+    },
+    "oracleCheck": {
+      "oracle_type": "authz_matrix",
+      "parameters": {
+        "endpoint": "/api/v1/admin/settings",
+        "observations": [
+          { "role": "authorized", "statusCode": 200, "isBusinessDataPresent": true, "body": "{\"settings\":{\"mfa\":true}}" },
+          { "role": "unauthorized", "statusCode": 403, "isBusinessDataPresent": false, "body": "{\"error\":\"Forbidden\"}" },
+          { "role": "anonymous", "statusCode": 401, "isBusinessDataPresent": false, "body": "{\"error\":\"Unauthorized\"}" }
+        ]
+      }
+    }
+  },
+  {
+    "id": "BENCH-005",
+    "title": "Path Traversal Arbitrary File Read in Document Viewer",
+    "domain": "webapp",
+    "category": "path_traversal",
+    "groundTruth": "vulnerable",
+    "context": {
+      "endpoint": "/download",
+      "parameter": "filename",
+      "payload": "../../../../etc/passwd"
+    },
+    "expectedFinding": {
+      "cwe": "CWE-22",
+      "severity": "high"
+    },
+    "oracleCheck": {
+      "oracle_type": "path_traversal",
+      "parameters": {
+        "baselineStatusCode": 404,
+        "baselineBody": "File not found",
+        "probeResponses": [
+          { "depth": 1, "statusCode": 404, "body": "File not found" },
+          { "depth": 2, "statusCode": 404, "body": "File not found" },
+          { "depth": 4, "statusCode": 200, "body": "root:x:0:0:root:/root:/bin/bash\ndaemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin" }
+        ]
+      }
+    }
+  },
+  {
+    "id": "BENCH-006",
+    "title": "Path Traversal Blocked by Path Normalization Guard (Negative Control)",
+    "domain": "webapp",
+    "category": "path_traversal",
+    "groundTruth": "benign",
+    "context": {
+      "endpoint": "/download",
+      "parameter": "filename",
+      "payload": "../../../../etc/passwd"
+    },
+    "oracleCheck": {
+      "oracle_type": "path_traversal",
+      "parameters": {
+        "baselineStatusCode": 404,
+        "baselineBody": "File not found",
+        "probeResponses": [
+          { "depth": 1, "statusCode": 400, "body": "Invalid file path traversal detected" },
+          { "depth": 2, "statusCode": 400, "body": "Invalid file path traversal detected" },
+          { "depth": 4, "statusCode": 400, "body": "Invalid file path traversal detected" }
+        ]
+      }
+    }
+  },
+  {
+    "id": "BENCH-007",
+    "title": "Timing Differential in Cryptographic HMAC Verification",
+    "domain": "re",
+    "category": "crypto_timing",
+    "groundTruth": "vulnerable",
+    "context": {
+      "endpoint": "/verify-signature",
+      "parameter": "signature",
+      "target": "firmware verification routine"
+    },
+    "expectedFinding": {
+      "cwe": "CWE-208",
+      "severity": "medium"
+    },
+    "oracleCheck": {
+      "oracle_type": "timing_differential",
+      "parameters": {
+        "expectedDelayMs": 1000,
+        "pairs": [
+          { "baselineMs": 12, "probeMs": 1018 },
+          { "baselineMs": 15, "probeMs": 1022 },
+          { "baselineMs": 14, "probeMs": 1015 },
+          { "baselineMs": 11, "probeMs": 1020 }
+        ]
+      }
+    }
+  },
+  {
+    "id": "BENCH-008",
+    "title": "Constant-Time Signature Comparison (Negative Control)",
+    "domain": "re",
+    "category": "crypto_timing",
+    "groundTruth": "benign",
+    "context": {
+      "endpoint": "/verify-token",
+      "parameter": "token"
+    },
+    "oracleCheck": {
+      "oracle_type": "timing_differential",
+      "parameters": {
+        "expectedDelayMs": 1000,
+        "pairs": [
+          { "baselineMs": 25, "probeMs": 26 },
+          { "baselineMs": 24, "probeMs": 25 },
+          { "baselineMs": 26, "probeMs": 26 },
+          { "baselineMs": 25, "probeMs": 24 }
+        ]
+      }
+    }
+  },
+  {
+    "id": "BENCH-009",
+    "title": "Horizontal Privilege Escalation in Mobile Banking Account Lookup",
+    "domain": "mobile",
+    "category": "authz",
+    "groundTruth": "vulnerable",
+    "context": {
+      "endpoint": "/mobile/api/v2/account/details",
+      "parameter": "account_id"
+    },
+    "expectedFinding": {
+      "cwe": "CWE-862",
+      "severity": "high"
+    },
+    "oracleCheck": {
+      "oracle_type": "authz_matrix",
+      "parameters": {
+        "endpoint": "/mobile/api/v2/account/details",
+        "observations": [
+          { "role": "authorized", "statusCode": 200, "isBusinessDataPresent": true, "body": "{\"account\":1001,\"balance\":50000}" },
+          { "role": "unauthorized", "statusCode": 200, "isBusinessDataPresent": true, "body": "{\"account\":1001,\"balance\":50000}" }
+        ]
+      }
+    }
+  },
+  {
+    "id": "BENCH-010",
+    "title": "Local File Inclusion via Export Template Parameter",
+    "domain": "red",
+    "category": "path_traversal",
+    "groundTruth": "vulnerable",
+    "context": {
+      "endpoint": "/admin/export",
+      "parameter": "template"
+    },
+    "expectedFinding": {
+      "cwe": "CWE-98",
+      "severity": "high"
+    },
+    "oracleCheck": {
+      "oracle_type": "path_traversal",
+      "parameters": {
+        "baselineStatusCode": 404,
+        "baselineBody": "Default Template",
+        "probeResponses": [
+          { "depth": 1, "statusCode": 404, "body": "Default Template" },
+          { "depth": 3, "statusCode": 200, "body": "root:x:0:0:root:/root:/bin/bash\nmail:x:8:8:mail:/var/mail:/usr/sbin/nologin" }
+        ]
+      }
+    }
+  }
+]

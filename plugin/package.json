@@ -1,0 +1,14 @@
+{
+  "name": "arsenal",
+  "version": "3.0.0",
+  "description": "Arsenal Security Engagement Harness Plugin",
+  "type": "module",
+  "omp": {
+    "extensions": [
+      "./dist/extensions/bounding.js",
+      "./dist/extensions/ledger.js",
+      "./dist/extensions/budget.js",
+      "./dist/extensions/routing.js"
+    ]
+  }
+}

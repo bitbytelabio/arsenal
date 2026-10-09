@@ -1,0 +1,131 @@
+# Evidence → Finding → Path Chain of Custody
+
+> Inspired by the Z3r0 Evidence Plane, implemented as a **Markdown field contract**.  
+> reverse-skill features: Bound to `docs-generator` report templates, `field-journal` sanitized write-backs, and reproducible commands.
+
+## 1. Evidence (Immutable Observation)
+
+Each evidence item is an independent paragraph or table row:
+
+```markdown
+### E-{nnn}
+- title:
+- observed_at:
+- source_type: command | screenshot | file | log | memory | network | manual
+- source_ref: {path or command id}
+- content_hash: {sha256 of artifact if file, else n/a}
+- artifact_path: {relative path under case root when content_hash is recorded, else n/a}
+- repro_command: |
+    {exact command}
+- raw_excerpt: |
+    {sanitized excerpt}
+- linked_workitem: WI-{nnn} | n/a
+- supersedes: E-{nnn} | none
+```
+
+**MUST**: A Finding must reference at least 1 Evidence item; `repro_command` must be executable by third parties or explicitly state offline limitations.
+
+**CLI helper** (writes to `work/<case>/evidence/E-*.md`):
+
+```powershell
+powershell -File skills/scripts/append-evidence.sh -CaseRoot work/<case> `
+  -Id E-001 -Title "..." -ReproCommand "..." -Severity info -Status observed
+```
+
+When the evidence is a case-local file, pass `-ArtifactPath` to record a SHA-256 fixity value and a relative artifact path. Review the complete case graph before handoff:
+
+```bash
+python3 skills/case-review/scripts/review_case.py work/<case> --verify-hashes --strict
+```
+
+The review is read-only and checks scope fields, Evidence records, work item and timeline references, structured Findings, Paths, and artifact hash matches.
+
+## 2. Finding (Security / Reverse Engineering Conclusion)
+
+```markdown
+### F-{nnn}
+- title:
+- severity: critical | high | medium | low | info | n/a_re
+- category: vuln | misconfig | design | reverse_algo | bypass | other
+- status: candidate | validated | false_positive | accepted_risk
+- evidence_ids: [E-001, E-002]
+- location: {file:line | addr | url | class.method}
+- impact:
+- confidence: high | medium | low
+- repro_steps:
+  1.
+  2.
+- remediation: {or n/a for pure RE}
+- optional_attack: {ATT&CK ID or empty}
+```
+
+**MUST**: `evidence_ids` cannot be empty; when `status=validated`, confidence must not be low (unless residual risk is explicitly noted).
+
+## 3. Path (Attack Path / Call Flow / Solve Path)
+
+Standardized as **Path**, interpreted by task type:
+
+| Task | Path Definition |
+|------|-----------------|
+| Penetration Testing / Attack Chain | Attack path steps |
+| Reverse Engineering | Critical call / data flow steps |
+| CTF | Challenge solution steps |
+
+```markdown
+### P-{nnn}
+- title:
+- path_type: attack | callflow | solve
+- start:
+- goal:
+- steps:
+  1. action: — evidence: E-xxx — finding: F-xxx | none
+  2. action: — evidence: E-xxx — finding: F-yyy | none
+- residual_risks:
+```
+
+**MUST**: Each step must be linkable to an Evidence item; if an attack path terminal Finding claims "privilege/data acquired", it must have validated evidence.
+
+## 4. Placement in Reports
+
+`docs-generator` security reports **MUST** include:
+
+1. Scope summary (linked to case `scope.md`)  
+2. Evidence table or section  
+3. Findings list (including evidence_ids)  
+4. At least 1 Path (attack / call flow / solution)  
+5. Timeline summary (optional full-text link to `timeline.md`)
+
+For details, refer to the **Evidence Chain** section in `docs-generator/references/security-report-templates.md`.
+
+## 5. field-journal Integration
+
+When writing back to the journal, you **SHOULD** extract:
+
+- Up to 3 key Evidence IDs + commands  
+- 1 core Finding  
+- A one-sentence reusable Path pattern  
+
+Complete sensitive content remains exclusively within the user project report; journal entries **MUST** be sanitized (`anonymization.md`).
+
+## 6. Differences from Z3r0 (Key Highlights)
+
+| Z3r0 | reverse-skill |
+|------|----------------|
+| PG immutable rows + API | Markdown files + hash fields |
+| UI review queue | Report + next-step menu + journal |
+| Strict ATT&CK binding | Optional tags, no forced UI |
+
+
+## Validated sufficiency (Issue #77 / R4*)
+
+Global bind rule remains: every Finding references **>=1** Evidence.
+
+Promotion to status=validated is stricter (decision cookbook):
+
+| status | Evidence bar |
+|--------|----------------|
+| preliminary / candidate | >=1 (unchanged) |
+| **validated** | **SHOULD >=2 independent** Evidence (best: 1 static + 1 dynamic). A single Evidence item alone MUST NOT silently promote to validated — keep candidate/preliminary, or record residual_risk + human confirm. |
+| blocked promotion | record Evidence E-insufficient-evidence |
+
+Full recipes: [analysis-decision-framework.md](analysis-decision-framework.md) (R4*, R1, R41, R44).

@@ -1,0 +1,31 @@
+---
+name: arsenal-red-router
+description: "Red team and network penetration routing table covering Active Directory, cloud, C2 operations, credential access, and evasion."
+domain: red
+hide: false
+license: MIT
+---
+# Arsenal Red Team & Active Directory Router
+
+## Role & Guidance
+Use for authorized red team operations, Active Directory attacks, Kerberoasting, Linux/Windows privilege escalation, EDR bypass analysis, and network assessments.
+
+## On-Demand Playbook Retrieval
+Leaf playbooks are hidden from the base prompt. Use runtime tools:
+- `skill_search(query: "kerberoasting active directory", domain: "red")`
+- `skill_route(hint: "kerberoasting active directory", domain: "red")`
+- `skill_load(name: "red-windows-ad")`
+
+## Declared Categories
+- `active-directory` → `A1` (red-windows-ad)
+- `credential-access` → `A2` (red-performing-kerberoasting-attack)
+- `privesc` → `A3` (red-privesc-offensive-linux-privesc)
+- `evasion` → `A4` (red-edr-bypass-re)
+- `network` → `A5` (red-conducting-network-penetration-test)
+- `cloud-security` → `A6` (red-aws-cloud-pentesting)
+- `wireless` → `A7` (red-conducting-wireless-network-penetration-test)
+- `threat-intelligence` → `A8` (red-collecting-threat-intelligence-with-misp)
+- `c2-operations` → `A9` (red-building-c2-infrastructure-with-sliver-framework)
+- `social-engineering` → `A10` (red-conducting-social-engineering-penetration-test)
+- `persistence` → `A12` (red-analyzing-persistence-mechanisms-in-linux)
+- `reconnaissance` → `A13` (red-conducting-external-reconnaissance-with-osint)

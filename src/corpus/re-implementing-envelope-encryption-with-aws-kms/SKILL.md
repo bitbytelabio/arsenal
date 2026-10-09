@@ -1,0 +1,93 @@
+---
+name: re-implementing-envelope-encryption-with-aws-kms
+description: Envelope encryption is a strategy where data is encrypted with a data encryption key (DEK), and the DEK itself is encrypted with a master key (KEK) managed by AWS KMS.
+domain: re
+category: cryptography
+hide: true
+license: Apache-2.0
+metadata:
+  manifest_entry: src/corpus/re-implementing-envelope-encryption-with-aws-kms/SKILL.md
+---
+# Implementing Envelope Encryption with AWS KMS
+
+## Overview
+
+Envelope encryption is a strategy where data is encrypted with a data encryption key (DEK), and the DEK itself is encrypted with a master key (KEK) managed by AWS KMS. This approach allows encrypting large volumes of data locally while keeping the master key secure in a hardware security module (HSM) managed by AWS. This skill covers implementing envelope encryption using AWS KMS GenerateDataKey API.
+
+
+## When to Use
+
+- When deploying or configuring implementing envelope encryption with aws kms capabilities in your environment
+- When establishing security controls aligned to compliance requirements
+- When building or improving security architecture for this domain
+- When conducting security assessments that require this implementation
+
+## Common Misconfigurations & Verification
+
+- **KMS key policy / IAM too broad:** granting `kms:Decrypt` on `Resource: *` or to a wide principal lets any compromised role decrypt every DEK. Scope policies to specific key ARNs and principals, and prefer time-bound, constrained **grants** (`CreateGrant` with `Constraints`) over standing permissions.
+- **No encryption context:** without an `EncryptionContext`, a ciphertext+encrypted-DEK can be replayed against another object. Bind a context (e.g. `{"table":"users","id":"123"}`) on `GenerateDataKey`/`Decrypt` and verify decryption **fails** when the context does not match.
+- **Plaintext DEK persisted or logged:** store ONLY the encrypted DEK; wipe the plaintext DEK from memory right after local AES-256-GCM encryption. Never log it.
+- **DEK encrypting data without authentication:** use AES-256-GCM for the local payload, not ECB/CBC-without-MAC.
+- **No CloudTrail / no key rotation:** enable CloudTrail on all KMS calls and enable automatic CMK rotation; re-wrap DEKs on rotation.
+- **Verification:** confirm `GenerateDataKey` returns both `Plaintext` and `CiphertextBlob`; round-trip decrypt recovers data; a **wrong/altered encryption context is REJECTED**; a tampered local ciphertext fails the GCM tag; and a principal lacking the key grant gets `AccessDenied`.
+
+## Prerequisites
+
+- Familiarity with cryptography concepts and tools
+- Access to a test or lab environment for safe execution
+- Python 3.8+ with required dependencies installed
+- Appropriate authorization for any testing activities
+
+## Objectives
+
+- Understand the envelope encryption pattern and its advantages
+- Generate data encryption keys using AWS KMS GenerateDataKey
+- Encrypt/decrypt data locally using DEKs
+- Store encrypted DEK alongside ciphertext
+- Implement key caching to reduce KMS API calls
+- Handle key rotation with automatic re-encryption
+- Implement multi-region encryption for disaster recovery
+
+## Key Concepts
+
+### Envelope Encryption Flow
+
+1. Call `kms:GenerateDataKey` to get plaintext DEK + encrypted DEK
+2. Use plaintext DEK to encrypt data locally (AES-256-GCM)
+3. Store encrypted DEK alongside ciphertext
+4. Discard plaintext DEK from memory
+5. For decryption: call `kms:Decrypt` on encrypted DEK, then decrypt data
+
+### Advantages Over Direct KMS Encryption
+
+| Aspect | Direct KMS | Envelope Encryption |
+|--------|-----------|-------------------|
+| Max data size | 4 KB | Unlimited |
+| Latency | Network round-trip per operation | Local encryption |
+| Cost | $0.03/10,000 requests | Fewer KMS requests |
+| Offline | Not possible | Yes (with cached DEKs) |
+
+### KMS Key Types
+
+- **AWS Managed**: AWS creates and manages (`aws/s3`, `aws/ebs`)
+- **Customer Managed**: You create and manage policies
+- **Custom Key Store**: Backed by CloudHSM cluster
+
+## Security Considerations
+
+- Never store plaintext DEK; only keep encrypted DEK
+- Use key policies to restrict who can call GenerateDataKey and Decrypt
+- Enable AWS CloudTrail logging for all KMS API calls
+- Implement key rotation (automatic annual rotation for CMKs)
+- Use encryption context for authenticated encryption metadata
+- Handle KMS throttling with exponential backoff
+
+## Validation Criteria
+
+- [ ] GenerateDataKey returns plaintext and encrypted DEK
+- [ ] Data encrypts correctly with plaintext DEK using AES-256-GCM
+- [ ] Encrypted DEK can be decrypted via KMS Decrypt API
+- [ ] Decrypted DEK recovers the original data
+- [ ] Plaintext DEK is wiped from memory after use
+- [ ] Encryption context is validated during decryption
+- [ ] Key rotation re-encrypts DEKs with new master key

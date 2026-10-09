@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "1.1",
+  "meta": {
+    "domain": "webapp",
+    "description": "Web application security domain routing table covering injection, traversal, authz, API, client-side, and application security capabilities."
+  },
+  "categories": [
+    "ai-security",
+    "api",
+    "application-security",
+    "authz",
+    "client-side",
+    "compliance",
+    "container-security",
+    "devsecops",
+    "endpoint-security",
+    "injection",
+    "ot-ics",
+    "reconnaissance",
+    "security-operations",
+    "threat-intelligence",
+    "traversal",
+    "vulnerability-management"
+  ],
+  "priority": [
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5",
+    "W6",
+    "W7",
+    "W8",
+    "W9",
+    "W10",
+    "W11",
+    "W12",
+    "W13",
+    "W14",
+    "W15",
+    "W16",
+    "W17",
+    "W18",
+    "W19",
+    "W20",
+    "W21",
+    "W22",
+    "W23",
+    "W24",
+    "W25",
+    "W26"
+  ],
+  "routes": {
+    "W1": {
+      "id": "W1",
+      "leaf": "webapp-exploiting-sql-injection-vulnerabilities",
+      "category": "injection",
+      "must": "sql.*injection|sqli|blind.*sql|timing.*sqli|sqlmap",
+      "note": "Statistical timing and differential SQL injection testing"
+    },
+    "W2": {
+      "id": "W2",
+      "leaf": "webapp-performing-directory-traversal-testing",
+      "category": "traversal",
+      "must": "path.*traversal|directory.*traversal|lfi|local.*file.*inclusion|arbitrary.*file.*read",
+      "note": "Path traversal and arbitrary file read testing"
+    },
+    "W3": {
+      "id": "W3",
+      "leaf": "webapp-exploiting-idor-vulnerabilities",
+      "category": "authz",
+      "must": "idor|bola|insecure.*direct.*object|broken.*object.*level",
+      "note": "Insecure Direct Object Reference and horizontal privilege escalation"
+    },
+    "W4": {
+      "id": "W4",
+      "leaf": "webapp-api-security",
+      "category": "api",
+      "must": "api.*security|rest.*api|graphql.*security|jwt.*token|swagger.*audit",
+      "note": "REST and GraphQL API security assessment"
+    },
+    "W5": {
+      "id": "W5",
+      "leaf": "webapp-js-reverse",
+      "category": "client-side",
+      "must": "js.*reverse|javascript.*decrypt|front-?end.*sign|webpack",
+      "note": "Front-end JavaScript reverse engineering"
+    },
+    "W6": {
+      "id": "W6",
+      "leaf": "webapp-performing-web-application-penetration-test",
+      "category": "application-security",
+      "must": "web.*application.*penetration|webapp.*pentest|full.*web.*assessment",
+      "note": "End-to-end web application penetration testing"
+    },
+    "W7": {
+      "id": "W7",
+      "leaf": "webapp-implementing-application-whitelisting-with-applocker",
+      "category": "application-security",
+      "must": "applocker|application.*whitelist|application.*allowlist",
+      "note": "Application allowlisting and control enforcement"
+    },
+    "W8": {
+      "id": "W8",
+      "leaf": "webapp-performing-container-security-scanning-with-trivy",
+      "category": "container-security",
+      "must": "trivy|container.*scan|image.*vulnerabilit",
+      "note": "Container image vulnerability scanning"
+    },
+    "W9": {
+      "id": "W9",
+      "leaf": "webapp-hardening-docker-containers-for-production",
+      "category": "container-security",
+      "must": "docker.*harden|container.*harden|dockerfile.*security",
+      "note": "Container runtime hardening for production"
+    },
+    "W10": {
+      "id": "W10",
+      "leaf": "webapp-performing-ot-network-security-assessment",
+      "category": "ot-ics",
+      "must": "\\bot\\b.*security|ics.*security|scada|modbus|plc",
+      "note": "OT/ICS network security assessment"
+    },
+    "W11": {
+      "id": "W11",
+      "leaf": "webapp-implementing-iec-62443-security-zones",
+      "category": "ot-ics",
+      "must": "iec.*62443|purdue.*model|industrial.*control.*zone",
+      "note": "IEC 62443 security zone and conduit design"
+    },
+    "W12": {
+      "id": "W12",
+      "leaf": "webapp-performing-osint-with-spiderfoot",
+      "category": "reconnaissance",
+      "must": "spiderfoot|osint.*recon|open.*source.*intelligence.*gather",
+      "note": "OSINT collection and correlation"
+    },
+    "W13": {
+      "id": "W13",
+      "leaf": "webapp-performing-subdomain-enumeration-with-subfinder",
+      "category": "reconnaissance",
+      "must": "subdomain.*enum|subfinder|attack.*surface.*discovery",
+      "note": "Subdomain and attack surface enumeration"
+    },
+    "W14": {
+      "id": "W14",
+      "leaf": "webapp-implementing-devsecops-security-scanning",
+      "category": "devsecops",
+      "must": "devsecops|pipeline.*security.*scan|shift.*left",
+      "note": "DevSecOps pipeline security scanning"
+    },
+    "W15": {
+      "id": "W15",
+      "leaf": "webapp-integrating-sast-into-github-actions-pipeline",
+      "category": "devsecops",
+      "must": "sast.*pipeline|github.*actions.*scan|static.*analysis.*ci",
+      "note": "SAST integration into CI pipelines"
+    },
+    "W16": {
+      "id": "W16",
+      "leaf": "webapp-performing-vulnerability-scanning-with-nessus",
+      "category": "vulnerability-management",
+      "must": "nessus|authenticated.*vulnerability.*scan|vulnerability.*scanner",
+      "note": "Authenticated vulnerability scanning"
+    },
+    "W17": {
+      "id": "W17",
+      "leaf": "webapp-implementing-vulnerability-management-with-greenbone",
+      "category": "vulnerability-management",
+      "must": "greenbone|openvas|vulnerability.*management.*program",
+      "note": "Vulnerability management lifecycle"
+    },
+    "W18": {
+      "id": "W18",
+      "leaf": "webapp-performing-nist-csf-maturity-assessment",
+      "category": "compliance",
+      "must": "nist.*csf|maturity.*assessment|framework.*maturity",
+      "note": "NIST CSF maturity assessment"
+    },
+    "W19": {
+      "id": "W19",
+      "leaf": "webapp-implementing-iso-27001-information-security-management",
+      "category": "compliance",
+      "must": "iso.*27001|isms|information.*security.*management.*system",
+      "note": "ISO 27001 ISMS implementation"
+    },
+    "W20": {
+      "id": "W20",
+      "leaf": "webapp-hunting-advanced-persistent-threats",
+      "category": "threat-intelligence",
+      "must": "advanced.*persistent.*threat|apt.*hunt|threat.*hunting.*campaign",
+      "note": "Threat hunting against advanced persistent threats"
+    },
+    "W21": {
+      "id": "W21",
+      "leaf": "webapp-building-threat-intelligence-platform",
+      "category": "threat-intelligence",
+      "must": "threat.*intelligence.*platform|tip.*deploy|cti.*platform",
+      "note": "Threat intelligence platform operation"
+    },
+    "W22": {
+      "id": "W22",
+      "leaf": "webapp-implementing-endpoint-detection-with-wazuh",
+      "category": "endpoint-security",
+      "must": "wazuh|endpoint.*detection.*response|\\bedr\\b.*deploy",
+      "note": "Endpoint detection and response deployment"
+    },
+    "W23": {
+      "id": "W23",
+      "leaf": "webapp-hardening-linux-endpoint-with-cis-benchmark",
+      "category": "endpoint-security",
+      "must": "cis.*benchmark.*linux|linux.*endpoint.*harden|endpoint.*baseline",
+      "note": "Endpoint hardening to a CIS benchmark"
+    },
+    "W24": {
+      "id": "W24",
+      "leaf": "webapp-implementing-siem-use-cases-for-detection",
+      "category": "security-operations",
+      "must": "siem.*use.*case|detection.*engineering|security.*operations.*center",
+      "note": "SIEM detection use case engineering"
+    },
+    "W25": {
+      "id": "W25",
+      "leaf": "webapp-triaging-security-alerts-in-splunk",
+      "category": "security-operations",
+      "must": "splunk.*triage|alert.*triage|soc.*alert",
+      "note": "Security alert triage and escalation"
+    },
+    "W26": {
+      "id": "W26",
+      "leaf": "webapp-testing-llm-prompt-injection-and-jailbreaks",
+      "category": "ai-security",
+      "must": "prompt.*injection|llm.*jailbreak|ai.*red.*team|genai.*security",
+      "note": "LLM prompt injection and jailbreak testing"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+---
+name: red-implementing-container-network-policies-with-calico
+description: Uses Calico's own policy CRDs beyond the upstream Kubernetes API - GlobalNetworkPolicy, HostEndpoint, NetworkSet, policy tiers, and DNS-based egress rules - applied and audited with calicoctl.
+domain: red
+category: evasion
+hide: true
+license: Apache-2.0
+metadata:
+  manifest_entry: src/corpus/red-implementing-container-network-policies-with-calico/SKILL.md
+---
+# Implementing Container Network Policies with Calico
+
+## Overview
+
+Calico provides Kubernetes-native and extended network policy enforcement through its CNI plugin. This skill covers creating and auditing Calico NetworkPolicy and GlobalNetworkPolicy resources to implement pod-to-pod traffic control, namespace isolation, egress restrictions, and DNS-based policy rules using calicoctl and the Kubernetes API.
+
+
+## When to Use
+
+- When deploying or configuring implementing container network policies with calico capabilities in your environment
+- When establishing security controls aligned to compliance requirements
+- When building or improving security architecture for this domain
+- When conducting security assessments that require this implementation
+
+## Prerequisites
+
+- Kubernetes cluster with Calico CNI installed
+- Python 3.9+ with `kubernetes` client library
+- calicoctl CLI tool installed and configured
+- kubectl access with RBAC permissions for network policy management
+
+## Steps
+
+### Step 1: Audit Existing Network Policies
+Use calicoctl and kubectl to inventory current network policies and identify unprotected namespaces.
+
+### Step 2: Implement Default-Deny Policies
+Create default-deny ingress and egress policies per namespace as a zero-trust baseline.
+
+### Step 3: Create Workload-Specific Allow Rules
+Define granular allow rules for legitimate pod-to-pod and pod-to-service communication.
+
+### Step 4: Validate Policy Enforcement
+Test connectivity between pods to verify policies are correctly enforced.
+
+## Expected Output
+
+JSON audit report listing all network policies, unprotected namespaces, policy rule counts, and connectivity test results.

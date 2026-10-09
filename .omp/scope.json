@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "engagement_id": "ENG-2026-TEST-RE",
+  "name": "Test-re",
+  "created_at": "2026-10-08T07:10:30.658Z",
+  "domain": "re",
+  "auth": {
+    "status": "incomplete",
+    "basis": null,
+    "reference": null,
+    "ready_for_act": false
+  },
+  "in_scope": [],
+  "out_of_scope": [],
+  "disallowed_actions": [
+    "dos",
+    "unauthorized_data_destruction"
+  ],
+  "window": {
+    "start": "2026-10-08T07:10:30.658Z",
+    "end": "2026-10-15T07:10:30.660Z",
+    "timezone": "UTC"
+  },
+  "environment_id": "env-local-1",
+  "charter_path": ".omp/charter.md",
+  "charter_sha256": "2c9f59e84200403b6a66d703e396916b656612d827e258405d53149788803266",
+  "budget_usd": null
+}

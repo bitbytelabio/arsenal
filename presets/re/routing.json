@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.1",
+  "meta": {
+    "domain": "re",
+    "description": "Reverse engineering domain routing table for binary analysis, decompilation, exploitation, forensics, firmware, and cryptography."
+  },
+  "categories": [
+    "binary-analysis",
+    "cryptography",
+    "decompilation",
+    "exploitation",
+    "firmware",
+    "forensics"
+  ],
+  "priority": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8",
+    "R9",
+    "R10"
+  ],
+  "routes": {
+    "R1": {
+      "id": "R1",
+      "leaf": "re-ida-reverse",
+      "category": "decompilation",
+      "must": "\\bida\\b|\\bidalib\\b|idapro|idb|decompile.*ida",
+      "note": "IDA Pro disassembly and decompilation triage"
+    },
+    "R2": {
+      "id": "R2",
+      "leaf": "re-ghidra-reverse",
+      "category": "decompilation",
+      "must": "ghidra|headless.*ghidra|pyghidra",
+      "note": "Ghidra open-source reverse engineering and decompilation"
+    },
+    "R3": {
+      "id": "R3",
+      "leaf": "re-radare2",
+      "category": "binary-analysis",
+      "must": "radare2|\\br2\\b|r2pipe|rabin2",
+      "note": "radare2 command-line binary analysis and triage"
+    },
+    "R4": {
+      "id": "R4",
+      "leaf": "re-patch-diff-exploit",
+      "category": "binary-analysis",
+      "must": "patch.*diff|bindiff|n-day.*patch|diff.*exploit",
+      "note": "Binary patch differential analysis for 1-day/n-day vulnerabilities"
+    },
+    "R5": {
+      "id": "R5",
+      "leaf": "re-pwn-chain",
+      "category": "exploitation",
+      "must": "buffer.*overflow|format.*string|rop.*chain|pwn.*exploit",
+      "note": "Binary exploitation engineering and memory corruption"
+    },
+    "R6": {
+      "id": "R6",
+      "leaf": "re-conducting-memory-forensics-with-volatility",
+      "category": "forensics",
+      "must": "memory.*forensic|volatility|lime|memory.*dump.*analys",
+      "note": "Memory forensics acquisition and volatility analysis"
+    },
+    "R7": {
+      "id": "R7",
+      "leaf": "re-analyzing-disk-image-with-autopsy",
+      "category": "forensics",
+      "must": "disk.*image|autopsy|filesystem.*forensic|file.*recovery|dd\\b.*image",
+      "note": "Disk image acquisition and filesystem artifact analysis"
+    },
+    "R8": {
+      "id": "R8",
+      "leaf": "re-auditing-uefi-firmware-with-chipsec",
+      "category": "firmware",
+      "must": "firmware|uefi|chipsec|bios|bootkit",
+      "note": "Firmware and UEFI security auditing"
+    },
+    "R9": {
+      "id": "R9",
+      "leaf": "re-crypto-offensive-crypto-attacks",
+      "category": "cryptography",
+      "must": "crypto|aes|rsa|hashcat|cipher|key.*deriv",
+      "note": "Cryptographic primitive analysis and attack engineering"
+    },
+    "R10": {
+      "id": "R10",
+      "leaf": "re-configuring-certificate-authority-with-openssl",
+      "category": "cryptography",
+      "must": "certificate.*authority|openssl.*ca\\b|pki|x509|hsm",
+      "note": "PKI, certificate authority, and key storage configuration"
+    }
+  }
+}

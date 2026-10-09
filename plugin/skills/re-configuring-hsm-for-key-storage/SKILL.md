@@ -1,0 +1,95 @@
+---
+name: re-configuring-hsm-for-key-storage
+description: Hardware Security Modules (HSMs) are tamper-resistant physical devices that safeguard cryptographic keys and perform cryptographic operations in a hardened environment.
+domain: re
+category: cryptography
+hide: true
+license: Apache-2.0
+metadata:
+  manifest_entry: src/corpus/re-configuring-hsm-for-key-storage/SKILL.md
+---
+# Configuring HSM for Key Storage
+
+## Overview
+
+Hardware Security Modules (HSMs) are tamper-resistant physical devices that safeguard cryptographic keys and perform cryptographic operations in a hardened environment. Keys stored in an HSM never leave the device boundary, providing the highest level of key protection. This skill covers configuring HSMs using the PKCS#11 standard interface, including key generation, signing, encryption, and key management using both physical HSMs and SoftHSM2 for development.
+
+
+## When to Use
+
+- When deploying or configuring configuring hsm for key storage capabilities in your environment
+- When establishing security controls aligned to compliance requirements
+- When building or improving security architecture for this domain
+- When conducting security assessments that require this implementation
+
+## Common Misconfigurations & Verification
+
+- **Keys generated with `CKA_EXTRACTABLE=True` (or `CKA_SENSITIVE=False`):** this defeats the entire purpose of an HSM since the private key can be exported in the clear. Set `CKA_EXTRACTABLE=False`, `CKA_SENSITIVE=True`, `CKA_TOKEN=True` and verify by attempting `C_GetAttributeValue` / `pkcs11-tool --read-object` on the private key — it MUST fail.
+- **Key generated in software then imported (wrapped/unwrapped) into the HSM:** the plaintext key existed outside the boundary. Always use `C_GenerateKeyPair` on-device; confirm with `CKA_LOCAL=True`.
+- **Single SO/user PIN shared, no key ceremony, weak/default PIN:** use distinct SO and user PINs, enforce a quorum (M-of-N) for CA root keys, and enable login retry lockout.
+- **No per-application slot/partition isolation:** separate tokens per app so a compromise of one PIN cannot use another app's keys.
+- **Audit logging disabled:** every `C_Sign`/`C_Decrypt`/key-management op should be logged.
+- **Verify non-extractability concretely:** run `pkcs11-tool --list-objects --type privkey` and confirm `Access: sensitive, always sensitive, never extractable`. A sign/verify round-trip must succeed while a key-export attempt is **rejected** by the token.
+
+## Prerequisites
+
+- Familiarity with cryptography concepts and tools
+- Access to a test or lab environment for safe execution
+- Python 3.8+ with required dependencies installed
+- Appropriate authorization for any testing activities
+
+## Objectives
+
+- Configure SoftHSM2 as a development PKCS#11 provider
+- Generate and manage keys inside the HSM via PKCS#11
+- Perform cryptographic operations (sign, verify, encrypt, decrypt) using HSM-resident keys
+- Implement HSM-backed certificate authority operations
+- Configure key access policies and user authentication
+- Interface with cloud HSM services (AWS CloudHSM, Azure)
+
+## Key Concepts
+
+### HSM Compliance Levels
+
+| FIPS Level | Protection | Use Case |
+|-----------|-----------|----------|
+| FIPS 140-2 Level 1 | Software only | Development |
+| FIPS 140-2 Level 2 | Tamper-evident, role-based auth | General production |
+| FIPS 140-2 Level 3 | Tamper-resistant, identity-based auth | Financial, government |
+| FIPS 140-2 Level 4 | Physical tamper response | Military, classified |
+
+### PKCS#11 Architecture
+
+```
+Application --> PKCS#11 API --> HSM Provider --> Hardware HSM
+                                    |
+                              (SoftHSM2 for dev)
+```
+
+### Key Objects in PKCS#11
+
+| Object Type | Description | Operations |
+|-------------|-------------|-----------|
+| CKO_SECRET_KEY | Symmetric keys (AES) | Encrypt, Decrypt, Wrap |
+| CKO_PUBLIC_KEY | Public keys (RSA, EC) | Verify, Encrypt, Wrap |
+| CKO_PRIVATE_KEY | Private keys (RSA, EC) | Sign, Decrypt, Unwrap |
+| CKO_CERTIFICATE | X.509 certificates | Storage, retrieval |
+
+## Security Considerations
+
+- Never export private keys from HSM (use CKA_EXTRACTABLE=False)
+- Use separate slots/partitions for different applications
+- Implement multi-person key ceremony for CA root keys
+- Enable audit logging for all HSM operations
+- Implement HSM backup and disaster recovery
+- Use strong PINs and enable SO (Security Officer) PIN
+
+## Validation Criteria
+
+- [ ] SoftHSM2 initializes with token and user PIN
+- [ ] AES key generates inside HSM
+- [ ] RSA key pair generates inside HSM
+- [ ] Encryption/decryption uses HSM-resident keys
+- [ ] Signing/verification uses HSM-resident keys
+- [ ] Keys cannot be exported (non-extractable)
+- [ ] Key listing shows all HSM-stored objects

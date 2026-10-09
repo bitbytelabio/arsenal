@@ -1,0 +1,6 @@
+[install]
+lockfile = true
+production = false
+
+[test]
+root = "tests"

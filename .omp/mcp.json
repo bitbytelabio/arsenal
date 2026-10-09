@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
+  "mcpServers": {
+    "burp": {
+      "type": "sse",
+      "url": "http://127.0.0.1:9876/8XYGHr3HQfBky_G_gXIBVsBeMtg2z9LlJlzTWZ1vmLk/"
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "1.1",
+  "meta": {
+    "domain": "red",
+    "description": "Red team and network penetration routing table covering Active Directory, cloud, C2 operations, credential access, and evasion."
+  },
+  "categories": [
+    "active-directory",
+    "c2-operations",
+    "cloud-security",
+    "credential-access",
+    "evasion",
+    "network",
+    "persistence",
+    "privesc",
+    "reconnaissance",
+    "social-engineering",
+    "threat-intelligence",
+    "wireless"
+  ],
+  "priority": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "A11",
+    "A12",
+    "A13"
+  ],
+  "routes": {
+    "A1": {
+      "id": "A1",
+      "leaf": "red-windows-ad",
+      "category": "active-directory",
+      "must": "active.*directory|domain.*controller|bloodhound|ad.*enum",
+      "note": "Active Directory enumeration and domain attack path modeling"
+    },
+    "A2": {
+      "id": "A2",
+      "leaf": "red-performing-kerberoasting-attack",
+      "category": "credential-access",
+      "must": "kerberoast|spn.*ticket|as-rep.*roast|tgt|tgs",
+      "note": "Kerberos ticket extraction and offline cracking"
+    },
+    "A3": {
+      "id": "A3",
+      "leaf": "red-privesc-offensive-linux-privesc",
+      "category": "privesc",
+      "must": "linux.*privesc|suid.*binary|kernel.*exploit|sudo.*abuse",
+      "note": "Linux local privilege escalation and SUID inspection"
+    },
+    "A4": {
+      "id": "A4",
+      "leaf": "red-edr-bypass-re",
+      "category": "evasion",
+      "must": "edr.*bypass|amsi.*bypass|etw.*patch|unhook.*ntdll",
+      "note": "Endpoint detection sensor reversing and hook bypass analysis"
+    },
+    "A5": {
+      "id": "A5",
+      "leaf": "red-conducting-network-penetration-test",
+      "category": "network",
+      "must": "network.*penetration|internal.*pentest|network.*pivot|service.*exploit",
+      "note": "Internal network penetration testing"
+    },
+    "A6": {
+      "id": "A6",
+      "leaf": "red-aws-cloud-pentesting",
+      "category": "cloud-security",
+      "must": "aws.*pentest|cloud.*pentest|iam.*escalat|cloud.*attack",
+      "note": "Cloud provider penetration testing"
+    },
+    "A7": {
+      "id": "A7",
+      "leaf": "red-conducting-wireless-network-penetration-test",
+      "category": "wireless",
+      "must": "wireless.*penetration|wifi.*attack|wpa2|wlan|rogue.*ap",
+      "note": "Wireless network penetration testing"
+    },
+    "A8": {
+      "id": "A8",
+      "leaf": "red-collecting-threat-intelligence-with-misp",
+      "category": "threat-intelligence",
+      "must": "misp|threat.*intel|cti.*collect|stix.*taxii",
+      "note": "Threat intelligence collection and sharing"
+    },
+    "A9": {
+      "id": "A9",
+      "leaf": "red-building-c2-infrastructure-with-sliver-framework",
+      "category": "c2-operations",
+      "must": "command.*and.*control|c2.*infrastructure|sliver|redirector|beacon",
+      "note": "Command and control infrastructure engineering"
+    },
+    "A10": {
+      "id": "A10",
+      "leaf": "red-conducting-social-engineering-penetration-test",
+      "category": "social-engineering",
+      "must": "social.*engineering|pretext.*campaign|phishing.*simulation|se.*penetration",
+      "note": "Social engineering assessment"
+    },
+    "A11": {
+      "id": "A11",
+      "leaf": "red-conducting-pass-the-ticket-attack",
+      "category": "credential-access",
+      "must": "pass.*the.*ticket|pass.*the.*hash|ntlm.*relay|credential.*dump",
+      "note": "Credential access via ticket and hash abuse"
+    },
+    "A12": {
+      "id": "A12",
+      "leaf": "red-analyzing-persistence-mechanisms-in-linux",
+      "category": "persistence",
+      "must": "persistence.*mechanism|establish.*persistence|cron.*persistence|systemd.*persist",
+      "note": "Persistence mechanism establishment and analysis"
+    },
+    "A13": {
+      "id": "A13",
+      "leaf": "red-conducting-external-reconnaissance-with-osint",
+      "category": "reconnaissance",
+      "must": "external.*recon|osint.*engagement|footprint|open.*source.*recon",
+      "note": "External reconnaissance and footprinting"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# Ignore build artifacts except compiled extensions
+dist/*
+!dist/extensions/
+dist/extensions/*
+!dist/extensions/*.js
+!dist/extensions/.gitkeep

@@ -1,0 +1,37 @@
+# Dependencies & Build
+node_modules/
+dist/
+!plugin/dist/
+build/
+*.log
+*.tsbuildinfo
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Environment & Credentials
+.env
+.env.*
+!.env.example
+
+# Engagement Evidence & Local State
+evidence/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+# Upstream & Vendor Quarantine
+vendor/
+upstream/
+
+# Backup & Temporary files
+*.bak.*
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+tmp

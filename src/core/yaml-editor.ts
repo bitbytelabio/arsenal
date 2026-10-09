@@ -1,0 +1,67 @@
+/**
+ * Document-Preserving YAML Editor
+ * Implements non-destructive YAML modification via yaml@2 Document API
+ */
+
+import * as fs from "node:fs";
+import * as path from "node:path";
+import { parseDocument } from "yaml";
+import type { Document } from "yaml";
+
+export interface YamlUpdateResult {
+  changed: boolean;
+  content: string;
+  backupPath?: string;
+}
+
+export function updateYamlFile(
+  filePath: string,
+  mutator: (doc: Document) => boolean | void,
+  write: boolean = false
+): YamlUpdateResult {
+  const resolvedPath = path.resolve(filePath);
+  const exists = fs.existsSync(resolvedPath);
+  const rawContent = exists ? fs.readFileSync(resolvedPath, "utf-8") : "";
+
+  const doc = parseDocument(rawContent);
+  const userResult = mutator(doc);
+  const newContent = doc.toString();
+
+  const changed = rawContent !== newContent || userResult === true;
+
+  let backupPath: string | undefined;
+  if (changed && write) {
+    if (exists) {
+      const timestamp = Date.now();
+      backupPath = `${resolvedPath}.bak.${timestamp}`;
+      fs.copyFileSync(resolvedPath, backupPath);
+    }
+    fs.mkdirSync(path.dirname(resolvedPath), { recursive: true });
+    fs.writeFileSync(resolvedPath, newContent, "utf-8");
+  }
+
+  return {
+    changed,
+    content: newContent,
+    backupPath,
+  };
+}
+
+export function mergeYamlPreservingComments(
+  existingContent: string,
+  incomingContent: string
+): string {
+  const targetDoc = parseDocument(existingContent);
+  const incomingDoc = parseDocument(incomingContent);
+
+  const incomingObj = incomingDoc.toJS() as unknown;
+  if (incomingObj && typeof incomingObj === "object") {
+    for (const [key, val] of Object.entries(incomingObj as Record<string, unknown>)) {
+      if (!targetDoc.has(key)) {
+        targetDoc.set(key, val);
+      }
+    }
+  }
+
+  return targetDoc.toString();
+}

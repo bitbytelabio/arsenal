@@ -1,0 +1,1850 @@
+{
+  "schemaVersion": "1.0",
+  "entries": [
+    {
+      "capability_id": "MASTG-TEST-0001",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-exploiting-insecure-data-storage-in-mobile",
+          "evidence": {
+            "locator": "### Step 1: Map Application Data Storage Locations",
+            "note": "Maps and tests local storage locations for sensitive data exposure."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0003",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-exploiting-insecure-data-storage-in-mobile",
+          "evidence": {
+            "locator": "### Step 2: Extract and Analyze SharedPreferences (Android)",
+            "note": "Extracts logs and shared preferences to identify sensitive plaintext data."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0007",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-testing-android-intents-for-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests for IPC data leakage and intent injection."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0009",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-exploiting-insecure-data-storage-in-mobile",
+          "evidence": {
+            "locator": "### Step 5: Assess External Storage and Backup Exposure",
+            "note": "Assesses backup configurations and sensitive data persistence in backups."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0011",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-exploiting-insecure-data-storage-in-mobile",
+          "evidence": {
+            "locator": "### Step 6: Runtime Memory Analysis",
+            "note": "Analyzes application runtime memory for unencrypted secrets."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0018",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-conducting-mobile-app-penetration-test",
+          "evidence": {
+            "locator": "## Finding: Biometric Authentication Bypass via Frida Instrumentation",
+            "note": "Tests biometric authentication controls and instrumentation bypasses."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0019",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-intercepting-mobile-traffic-with-burpsuite",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Intercepts network traffic to test data encryption and transmission security."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0022",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-performing-mobile-app-certificate-pinning-bypass",
+          "evidence": {
+            "locator": "### Step 1: Identify Pinning Implementation",
+            "note": "Step 1 walks the custom certificate store and pinning implementation to identify what must be bypassed; the playbook is dedicated to certificate pinning."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0026",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-testing-android-intents-for-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests implicit intents for interception and unauthorized invocation."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0028",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-exploiting-deeplink-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests deep link handling and parameter validation."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0038",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "re-apk-reverse",
+          "evidence": {
+            "locator": "- Repackaging APKs",
+            "note": "Verifies APK signature schemes, alignment, and resigning behavior."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0045",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-conducting-mobile-app-penetration-test",
+          "evidence": {
+            "locator": "### Step 5: Runtime Manipulation",
+            "note": "Tests and bypasses root detection mechanisms."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0053",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-exploiting-insecure-data-storage-in-mobile",
+          "evidence": {
+            "locator": "### Step 4: Inspect iOS Keychain Storage",
+            "note": "Inspects iOS Keychain storage security and item protection classes."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0055",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-performing-ios-app-security-assessment",
+          "evidence": {
+            "locator": "### Step 6: Data Storage Assessment",
+            "note": "Assesses iOS keyboard caching and data protection mechanisms."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0064",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-conducting-mobile-app-penetration-test",
+          "evidence": {
+            "locator": "## Finding: Biometric Authentication Bypass via Frida Instrumentation",
+            "note": "Assesses iOS biometric authentication enforcement and bypass resistance."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0065",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-intercepting-mobile-traffic-with-burpsuite",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Validates iOS TLS settings and network data encryption in transit."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0068",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-performing-mobile-app-certificate-pinning-bypass",
+          "evidence": {
+            "locator": "### Step 1: Identify Pinning Implementation",
+            "note": "Step 1 walks the custom certificate store and pinning implementation to identify what must be bypassed; the playbook is dedicated to certificate pinning."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0070",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-exploiting-deeplink-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests iOS Universal Links configuration and redirection safety."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0075",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-exploiting-deeplink-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests custom URL schemes for input injection and parameter abuse."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0081",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "re-apk-reverse",
+          "evidence": {
+            "locator": "- Repackaging APKs",
+            "note": "Verifies application code signing and signature verification."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "MASTG-TEST-0088",
+      "domain": "mobile",
+      "skills": [
+        {
+          "id": "mobile-analyzing-ios-app-security-with-objection",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests iOS jailbreak detection and evasion techniques."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-alternate-disassembly",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-binary-ninja-reverse",
+          "evidence": {
+            "locator": "## Start safely",
+            "note": "Alternate disassembler workspace and function recovery."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-binary-diffing",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-binary-diff",
+          "evidence": {
+            "locator": "## ACTION REQUIRED (Execute immediately upon reading)",
+            "note": "Cross-version symbol migration and binary differential analysis."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-cli-binary-triage",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-radare2",
+          "evidence": {
+            "locator": "## ACTION REQUIRED (Execute immediately upon reading)",
+            "note": "CLI disassembly, function recovery and binary triage with r2/rabin2."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-crypto-primitive-analysis",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-crypto-offensive-crypto-attacks",
+          "evidence": {
+            "locator": "## Quick Workflow",
+            "note": "Cryptographic primitive analysis and attack engineering."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-decompiler-analysis",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-ghidra-reverse",
+          "evidence": {
+            "locator": "## ACTION REQUIRED (Execute immediately upon reading)",
+            "note": "Ghidra GUI and headless decompiler analysis."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-disk-image-analysis",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-analyzing-disk-image-with-autopsy",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Disk image analysis and deleted-file recovery."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-dotnet-decompilation",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-dotnet-reverse",
+          "evidence": {
+            "locator": "## ACTION REQUIRED (Execute Immediately After Reading)",
+            "note": "Managed .NET assembly decompilation workflow."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-firmware-audit",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-auditing-uefi-firmware-with-chipsec",
+          "evidence": {
+            "locator": "## Overview",
+            "note": "Firmware and UEFI security auditing with CHIPSEC."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-golang-analysis",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-analyzing-golang-malware-with-ghidra",
+          "evidence": {
+            "locator": "## Overview",
+            "note": "Go binary analysis and symbol recovery with Ghidra."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-gui-disassembly",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-ida-reverse",
+          "evidence": {
+            "locator": "## ACTION REQUIRED (Execute immediately upon reading)",
+            "note": "Interactive disassembly and decompilation triage in IDA Pro."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-hsm-key-storage",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-configuring-hsm-for-key-storage",
+          "evidence": {
+            "locator": "## Overview",
+            "note": "Hardware security module key storage configuration."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-linux-artifact-analysis",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-analyzing-linux-system-artifacts",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Linux system artifact forensic analysis."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-malware-triage",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-analyzing-linux-elf-malware",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Malware sample static triage of ELF binaries."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-memory-corruption-exploit",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-pwn-chain",
+          "evidence": {
+            "locator": "## ACTION REQUIRED (Execute immediately upon reading)",
+            "note": "End-to-end memory-corruption exploit engineering."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-memory-forensics",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-conducting-memory-forensics-with-volatility",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Memory image acquisition and Volatility analysis."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-mitigation-bypass",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-bypassing-binary-exploitation-mitigations",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Mitigation bypass engineering for hardened binaries."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-patch-diff-n-day",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-patch-diff-exploit",
+          "evidence": {
+            "locator": "## ACTION REQUIRED (Execute immediately upon reading)",
+            "note": "Patch-differential n-day vulnerability analysis and PoC."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-pki-configuration",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-configuring-certificate-authority-with-openssl",
+          "evidence": {
+            "locator": "## Overview",
+            "note": "PKI and certificate authority configuration review."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-tls-attack",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-crypto-offensive-tls-attacks",
+          "evidence": {
+            "locator": "## Quick Workflow",
+            "note": "TLS protocol attack analysis."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "re-windows-artifact-analysis",
+      "domain": "re",
+      "skills": [
+        {
+          "id": "re-analyzing-windows-registry-for-artifacts",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Windows registry artifact forensic analysis."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-APIT-01",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-api-inventory-and-discovery",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "API inventory and discovery methodology."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-APIT-02",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-api-for-broken-object-level-authorization",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "BOLA / IDOR testing for APIs."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-APIT-03",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-sensitive-data-exposure",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Excessive data exposure testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-APIT-04",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-api-security",
+          "evidence": {
+            "locator": "## ACTION REQUIRED (Execute immediately upon reading)",
+            "note": "REST/GraphQL API authorization and parameter tampering."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-APIT-99",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-graphql-api-security",
+          "evidence": {
+            "locator": "## Purpose",
+            "note": "GraphQL-specific security assessment."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-ATHN-02",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-api-security-misconfiguration",
+          "evidence": {
+            "locator": "### Default Credentials",
+            "note": "Tests for default vendor and administrative credentials."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-ATHN-04",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-bypassing-authentication-with-forced-browsing",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Authentication schema bypass via forced browsing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-ATHN-09",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-password-reset-flaws",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Password change and reset flaw testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-ATHN-11",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-bypassing-two-factor-and-otp",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests MFA and OTP enforcement and bypass vectors."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-ATHZ-01",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-directory-traversal-testing",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Directory traversal and local file inclusion testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-ATHZ-02",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-authorization-testing",
+          "evidence": {
+            "locator": "## Purpose",
+            "note": "Methodology for testing horizontal and vertical authorization bypasses."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-ATHZ-03",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-detecting-privilege-escalation-attempts",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Detection and validation of privilege-escalation attempts."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-ATHZ-04",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-idor-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Insecure direct object reference exploitation."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-ATHZ-05",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-oauth-oidc-security",
+          "evidence": {
+            "locator": "## Purpose",
+            "note": "OAuth 2.0 / OIDC weakness assessment."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-BUSL-01",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-business-logic-testing",
+          "evidence": {
+            "locator": "## Purpose",
+            "note": "Business logic data validation and abuse testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-BUSL-04",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-offensive-race-condition",
+          "evidence": {
+            "locator": "## Description",
+            "note": "Tests race conditions and process timing windows."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-BUSL-05",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-api-rate-limiting-bypass",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests API rate limiting and function invocation throttling."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-BUSL-06",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-workflow-state-machine-testing",
+          "evidence": {
+            "locator": "## Purpose",
+            "note": "Workflow circumvention and state machine testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-BUSL-08",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-offensive-file-upload",
+          "evidence": {
+            "locator": "## Metadata",
+            "note": "Unexpected file type upload testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-BUSL-09",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-offensive-file-upload",
+          "evidence": {
+            "locator": "## Metadata",
+            "note": "Malicious file upload testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-BUSL-10",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-ecommerce-and-payment-logic",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Payment functionality and business logic testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-01",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-xss-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "DOM-based XSS testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-02",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-javascript-analysis",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Client-side JavaScript execution analysis."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-03",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-dangling-markup-injection",
+          "evidence": {
+            "locator": "### Step 1: Confirm HTML Injection Without JS",
+            "note": "Tests HTML injection and dangling markup exfiltration."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-04",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-open-redirect-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Identifies and exploits open redirect and client URL redirection flaws."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-05",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-content-security-policy-bypass",
+          "evidence": {
+            "locator": "### Step 6 — Exploit Data Exfiltration Without script-src",
+            "note": "Tests data exfiltration via CSS injection."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-06",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-client-side-path-traversal",
+          "evidence": {
+            "locator": "## Critical: Variants Most Often Missed",
+            "note": "Tests client-side path traversal and resource manipulation."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-07",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-cors-misconfiguration",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Cross-origin resource sharing misconfiguration."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-09",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-clickjacking-attack-test",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Clickjacking / frame-ancestors testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-10",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-websocket-api-security",
+          "evidence": {
+            "locator": "## Purpose",
+            "note": "WebSocket channel security testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-11",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-postmessage-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests cross-window postMessage handling and origin validation."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-12",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-sensitive-data-exposure",
+          "evidence": {
+            "locator": "### Step 4: Examine Browser Storage for Sensitive Data",
+            "note": "Inspects local and session browser storage for sensitive data."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-13",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-cross-site-script-inclusion-xssi",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Cross-site script inclusion (XSSI) testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-14",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-reverse-tab-nabbing",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests links for target=_blank reverse tabnabbing vulnerabilities."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CLNT-15",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-client-side-template-injection",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Client-side template injection testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CONF-04",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-bypassing-authentication-with-forced-browsing",
+          "evidence": {
+            "locator": "### Step 6: Discover Backup and Configuration Files",
+            "note": "Discovers old backups, unreferenced files, and exposed configs."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CONF-05",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-bypassing-authentication-with-forced-browsing",
+          "evidence": {
+            "locator": "### Step 2: Discover Administrative and Debug Interfaces",
+            "note": "Enumerates administrative, management, and debug interfaces."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CONF-06",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-api-security-misconfiguration",
+          "evidence": {
+            "locator": "### Dangerous HTTP Methods",
+            "note": "Tests for dangerous and unauthorized HTTP methods."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CONF-07",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-security-headers-audit",
+          "evidence": {
+            "locator": "### Step 2: Assess Transport Security (HSTS)",
+            "note": "Audits HTTP Strict Transport Security configuration."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CONF-10",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-subdomain-takeover-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Subdomain takeover testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CONF-11",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-analyzing-cloud-storage-access-patterns",
+          "evidence": {
+            "locator": "## Helper prerequisites",
+            "note": "Cloud storage exposure and access-pattern review."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CONF-12",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-content-security-policy-bypass",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Content Security Policy bypass testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CONF-14",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-security-headers-audit",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "HTTP security header misconfiguration audit."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CRYP-01",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-security-headers-audit",
+          "evidence": {
+            "locator": "### Scenario 4: Missing HSTS Enabling SSL Stripping",
+            "note": "Evaluates transport layer security and SSL stripping protection."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-CRYP-02",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-cookie-based-vulnerabilities",
+          "evidence": {
+            "locator": "### Step 5: Attack Crypto-Weak Session Cookies",
+            "note": "Exploits CBC padding oracle in encrypted session cookies."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-IDNT-02",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-registration-and-account-flaws",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "User registration process flaw testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-IDNT-04",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-api-authentication-session",
+          "evidence": {
+            "locator": "### Step 5: Account Enumeration (differential evidence required)",
+            "note": "Tests differential error responses for user account enumeration."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INFO-04",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-surface-discovery",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Attack surface identification."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INFO-08",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-technology-fingerprinting",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Web application framework fingerprinting."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INFO-10",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-surface-discovery",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Application architecture and execution path mapping."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-01",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-xss-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Reflected XSS testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-02",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-xss-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Stored XSS testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-03",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-api-offensive-api-security",
+          "evidence": {
+            "locator": "## REST Verb Tampering and Content-Type Switching",
+            "note": "Tests HTTP verb tampering and method override injection."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-04",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-http-parameter-pollution-attack",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "HTTP parameter pollution testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-05",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-sql-injection-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "SQL injection verification."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-06",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-ldap-injection",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "LDAP injection testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-07",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-xml-injection-vulnerabilities",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "XML injection testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-08",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-server-side-includes-esi-injection",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Tests and exploits Server-Side Includes (SSI) injection."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-09",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-xpath-injection",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "XPath injection testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-10",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-email-header-injection",
+          "evidence": {
+            "locator": "### Step 4 — Test IMAP/SMTP Injection",
+            "note": "Tests for IMAP and SMTP command/header injection."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-11",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-offensive-rce",
+          "evidence": {
+            "locator": "## Metadata",
+            "note": "Code injection and remote code execution."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-12",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-offensive-rce",
+          "evidence": {
+            "locator": "## Metadata",
+            "note": "Command injection testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-15",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-crlf-injection",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "HTTP response splitting via CRLF injection."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-16",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-offensive-request-smuggling",
+          "evidence": {
+            "locator": "## Metadata",
+            "note": "HTTP request smuggling testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-17",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-for-host-header-injection",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Host header injection testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-18",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-offensive-ssti",
+          "evidence": {
+            "locator": "## Quick Workflow",
+            "note": "Server-side template injection testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-19",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-ssrf-vulnerability-exploitation",
+          "evidence": {
+            "locator": "## Helper prerequisites",
+            "note": "Server-side request forgery testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-20",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-testing-api-for-mass-assignment-vulnerability",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Mass assignment testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-21",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-csv-formula-injection",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "CSV formula injection testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-22",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-prototype-pollution-in-javascript",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Prototype pollution testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-INJT-23",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-web-offensive-deserialization",
+          "evidence": {
+            "locator": "## Quick Workflow",
+            "note": "Insecure deserialization testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-SESS-01",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-web-application-penetration-test",
+          "evidence": {
+            "locator": "### Step 5: Session Management Testing",
+            "note": "Audits session tokens and lifecycle management schema."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-SESS-02",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-cookie-based-vulnerabilities",
+          "evidence": {
+            "locator": "### Step 1: Inventory Cookies and Attributes",
+            "note": "Audits cookie flags and security attributes."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-SESS-03",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-exploiting-cookie-based-vulnerabilities",
+          "evidence": {
+            "locator": "### Step 6: Cookie Tossing & Session Fixation",
+            "note": "Tests session fixation and cookie rotation on authentication."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-SESS-05",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-performing-csrf-attack-simulation",
+          "evidence": {
+            "locator": "## When to Use",
+            "note": "Cross-site request forgery testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-SESS-06",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-authentication-session-testing",
+          "evidence": {
+            "locator": "## Session Lifecycle Matrix",
+            "note": "Validates server-side session revocation upon logout."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-SESS-07",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-api-authentication-session",
+          "evidence": {
+            "locator": "### Step 3: Token Lifecycle",
+            "note": "Tests session inactivity and absolute timeout controls."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "WSTG-SESS-10",
+      "domain": "webapp",
+      "skills": [
+        {
+          "id": "webapp-jwt-security-testing",
+          "evidence": {
+            "locator": "## Purpose",
+            "note": "JSON Web Token weakness testing."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "T1611",
+      "domain": "red",
+      "skills": [
+        {
+          "id": "red-container-offensive-container-escape",
+          "evidence": {
+            "locator": "## Quick Workflow",
+            "note": "Container escape techniques and host isolation breakout."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "T1620",
+      "domain": "red",
+      "skills": [
+        {
+          "id": "red-operating-sliver-c2",
+          "evidence": {
+            "locator": "## Overview",
+            "note": "Reflective code loading and in-memory execution via BOFs and assemblies."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "T1649",
+      "domain": "red",
+      "skills": [
+        {
+          "id": "red-exploiting-adcs-with-certipy",
+          "evidence": {
+            "locator": "## Overview",
+            "note": "AD CS certificate theft, forgery, and PKINIT authentication abuse."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "capability_id": "T1598.003",
+      "domain": "red",
+      "skills": [
+        {
+          "id": "red-conducting-spearphishing-simulation-campaign",
+          "evidence": {
+            "locator": "## Overview",
+            "note": "Spearphishing simulation and payload delivery link infrastructure."
+          }
+        }
+      ],
+      "reviewer": "security-engineering",
+      "reviewed_at": "2026-10-09"
+    }
+  ]
+}

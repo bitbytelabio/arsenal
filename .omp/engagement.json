@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "engagement_id": "ENG-2026-TEST-RE",
+  "name": "Test-re",
+  "domain": "re",
+  "created_at": "2026-10-08T07:10:30.658Z",
+  "auth": {
+    "status": "incomplete",
+    "basis": null,
+    "reference": null,
+    "ready_for_act": false
+  },
+  "status": "prepared"
+}

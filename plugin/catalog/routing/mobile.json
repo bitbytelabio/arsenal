@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.1",
+  "meta": {
+    "domain": "mobile",
+    "description": "Mobile security domain routing table covering Android and APK analysis, iOS analysis, instrumentation, and repackaging."
+  },
+  "categories": [
+    "apk-analysis",
+    "instrumentation",
+    "ios-analysis",
+    "repackaging"
+  ],
+  "priority": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "routes": {
+    "M1": {
+      "id": "M1",
+      "leaf": "re-apk-reverse",
+      "category": "apk-analysis",
+      "must": "apk|smali|apktool|jadx|android.*repackage",
+      "note": "Android APK decompilation, smali modification, and repackaging",
+      "crossDomain": {
+        "reason": "APK repackaging is owned by the re playbook re-apk-reverse; mobile declares the dependency explicitly."
+      }
+    },
+    "M2": {
+      "id": "M2",
+      "leaf": "mobile-reverse",
+      "category": "ios-analysis",
+      "must": "ipa|ios|macho.*dump|keychain",
+      "note": "iOS application inspection, Mach-O dumping, and keychain analysis"
+    },
+    "M3": {
+      "id": "M3",
+      "leaf": "mobile-reverse-engineering-ios-app-with-frida",
+      "category": "instrumentation",
+      "must": "frida|objection|dynamic.*hook|ssl.*pinning.*bypass",
+      "note": "Runtime dynamic instrumentation and Frida hook scripts"
+    },
+    "M4": {
+      "id": "M4",
+      "leaf": "mobile-performing-mobile-app-certificate-pinning-bypass",
+      "category": "instrumentation",
+      "must": "certificate.*pinning|pinning.*bypass|ssl.*pin",
+      "note": "Certificate pinning bypass and dynamic traffic interception"
+    },
+    "M5": {
+      "id": "M5",
+      "leaf": "re-apk-reverse",
+      "category": "repackaging",
+      "must": "repackage|re-sign|resign|zipalign|smali.*modif",
+      "note": "Android repackaging, resigning, and installation",
+      "crossDomain": {
+        "reason": "APK repackaging is owned by the re playbook re-apk-reverse; mobile declares the dependency explicitly."
+      }
+    }
+  }
+}

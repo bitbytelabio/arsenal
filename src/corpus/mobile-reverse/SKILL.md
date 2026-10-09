@@ -1,0 +1,206 @@
+---
+name: mobile-reverse
+description: Use for authorized Android or iOS application reverse engineering and security testing, including APK or IPA analysis, runtime instrumentation, SSL pinning, and platform protection checks.
+domain: mobile
+category: apk-analysis
+hide: true
+license: MIT
+metadata:
+  manifest_entry: src/corpus/mobile-reverse/SKILL.md
+---
+# Mobile Reverse Engineering
+
+## ACTION REQUIRED (Execute immediately upon reading)
+
+1. `NOW`: Read `support/field-journal/precedent-reverse.md` — Verify that operations in this skill are authorized standard procedures.
+2. `NOW`: Confirm whether the current task falls within the scope of this skill.
+3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
+5. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
+
+> Unified Android + iOS Reverse Engineering Methodology
+> Frida / Objection / OWASP MSTG / SSL Pinning Bypass
+
+## Applicable Scenarios
+
+- Android APK reverse engineering and security testing
+- iOS IPA reverse engineering and security testing
+- Mobile application runtime dynamic instrumentation
+- SSL Pinning / Root detection / Jailbreak detection bypass
+- Mobile cryptographic algorithm extraction (AES/RSA/HMAC keys)
+- Mobile application penetration testing (OWASP MASTG)
+- Application testing in non-Root/Jailbroken environments
+
+## Four-Phase Workflow
+
+### Phase 1: Information Gathering
+
+```text
+Android:
+□ APK Acquisition (Google Play / APKMirror / adb pull)
+□ Manifest Analysis: Permissions, exported components, Intent Filters, backup flags
+□ androguard: androguard analyze APK → Components/Permissions/Signatures
+□ APKLeaks: Hardcoded API Key / Token / Secret scanning
+□ Hardening Detection: Check for packers/protectors (Qihoo 360/Tencent/Bangcle/Ijiami)
+
+iOS:
+□ IPA Acquisition (App Store / ipatool / Apple Configurator)
+□ Decrypt App Store Binaries: frida-ios-dump / Clutch
+□ Info.plist Analysis: ATS configuration, URL Schemes, Queries Schemes
+□ class-dump: Export ObjC class structures
+□ Hardening Detection: Check for Swift/ObjC obfuscation
+```
+
+### Phase 2: Static Analysis
+
+```text
+Cross-Platform:
+□ JADX-GUI: APK → Java source code (Android)
+□ Ghidra / Hopper: .so / Mach-O decompilation
+□ radare2 / Cutter: CLI rapid reconnaissance
+
+Android Specific:
+□ apktool d app.apk → smali code + resources
+□ dex2jar: DEX → JAR → JD-GUI
+□ smali/baksmali: Dalvik bytecode modification
+
+iOS Specific:
+□ class-dump: Export ObjC header files
+□ Swift Symbol Recovery: swift-demangle
+□ dsymutil: Debug symbol extraction
+□ otool -L: Inspect dynamic library dependencies
+□ jtool2: Mach-O analysis
+```
+
+### Phase 3: Dynamic Analysis
+
+```text
+Frida — Universal Dynamic Instrumentation:
+□ frida-ps -U: List device processes
+□ frida-trace -U -i "open*" com.app: Trace function calls
+□ Custom Hook Scripts: Modify parameters/return values, invoke private methods
+
+Objection — Frida Enhancement Layer (No scripting required):
+□ objection -g "com.app" explore
+□ android root disable / ios jailbreak disable
+□ android sslpinning disable / ios sslpinning disable
+□ android keystore list / ios keychain dump
+□ env / ls / sqlite connect
+
+Frida Gadget (Rootless / Non-Jailbroken):
+□ Inject frida-gadget.so / FridaGadget.dylib into APK/IPA
+□ Resign → Install → Hook without device root privileges
+□ objection patchapk --source app.apk (Fully automated)
+```
+
+### Phase 4: Network Analysis
+
+```text
+□ Burp Suite: Intercept HTTP/HTTPS, modify requests/responses
+□ mitmproxy: Scriptable proxy (Python API)
+□ Wireshark: PCAP packet capture and analysis
+□ Certificate Installation: Android user cert → System cert (Magisk + MoveCert)
+□ SSL Pinning Bypass: Frida/Objection/Xposed/SSL Kill Switch 2
+□ WebSocket / gRPC traffic analysis
+```
+
+## Common Bypass Quick Reference
+
+### SSL Pinning
+
+```bash
+# Objection (Simplest)
+objection -g "com.app" explore
+android sslpinning disable
+
+# Universal Frida Script
+frida -U -l ssl_pinning_bypass.js -f com.app
+
+# Xposed (Android)
+TrustMeAlready module → Globally disable certificate validation
+```
+
+### Root / Jailbreak Detection
+
+```bash
+# Objection
+android root disable
+ios jailbreak disable
+
+# Custom Frida (Multi-layer detection)
+Java.perform(function() {
+    var RootBeer = Java.use("com.scottyab.rootbeer.RootBeer");
+    RootBeer.isRooted.implementation = function() { return false; };
+    // Additional bypasses: Magisk su detection, frida-server detection, /proc/self/maps detection
+});
+```
+
+### Anti-Debugging
+
+```bash
+# Android
+frida -U -l anti_debug_bypass.js -f com.app
+# Bypasses: ptrace(TracerPid), /proc/self/status, isDebuggerConnected()
+
+# iOS
+# Bypasses: PT_DENY_ATTACH, sysctl CTL_KERN/KERN_PROC/KERN_PROC_PID
+frida -U -l ios_anti_debug.js -f com.app
+```
+
+## Mobile Cryptographic Extraction
+
+```javascript
+// Android — Hook Cipher.getInstance to capture key + algorithm
+Java.perform(function() {
+    var Cipher = Java.use("javax.crypto.Cipher");
+    Cipher.getInstance.overload('java.lang.String').implementation = function(algo) {
+        console.log("[Cipher] Algorithm: " + algo);
+        return this.getInstance(algo);
+    };
+    Cipher.init.overload('int', 'java.security.Key').implementation = function(mode, key) {
+        console.log("[Cipher] Key: " + bytesToHex(key.getEncoded()));
+        return this.init(mode, key);
+    };
+});
+
+// iOS — Hook CCCrypt
+Interceptor.attach(Module.findExportByName("libcommonCrypto.dylib", "CCCrypt"), {
+    onEnter: function(args) {
+        console.log("CCCrypt op: " + args[0] + " alg: " + args[1]);
+        console.log("Key: " + hexdump(args[3], { length: args[4].toInt32() }));
+    }
+});
+```
+
+## Toolchain
+
+| Tool | Platform | Purpose |
+|------|:--:|------|
+| JADX-GUI | A | Java decompilation |
+| apktool | A | APK unpacking/rebuilding |
+| Ghidra | A+I | Multi-architecture decompilation |
+| Hopper | I | Dedicated iOS disassembly |
+| Frida | A+I | Dynamic instrumentation |
+| Objection | A+I | Frida REPL enhancement |
+| MobSF | A+I | Automated SAST+DAST |
+| class-dump | I | ObjC class exporting |
+| frida-ios-dump | I | IPA decryption |
+| jtool2 | I | Mach-O analysis |
+| Burp Suite | A+I | HTTP interception |
+| mitmproxy | A+I | Scriptable proxy |
+
+> A=Android, I=iOS
+
+## References
+
+- `references/frida-objection-deep.md` — Advanced Frida + Objection usage
+- `references/ios-reverse-guide.md` — Dedicated iOS reverse engineering guide
+- `references/anti-detection-bypass.md` — Root/Jailbreak/Anti-debug/SSL Pinning bypass
+
+
+## Task Completion Self-Check (MUST pass before claiming completion)
+
+- [ ] Did I execute each step in the workflow (rather than only reading)?
+- [ ] Did I use verified tool paths based on `tool-index`?
+- [ ] Did I produce reproducible evidence (commands/scripts/screenshots/reports)?
+- [ ] Did I complete and verify the Checklist items required by RULES?

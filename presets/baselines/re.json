@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0",
+  "domain": "re",
+  "standard": {
+    "name": "arsenal-re-capability-taxonomy",
+    "url": "https://github.com/arsenal/arsenal",
+    "revision": "5a66292762d75ce3ea778d94b8acd2b501ff8c5a",
+    "version": null
+  },
+  "extracted_from": {
+    "path": "presets/baselines/re.json#capabilities (canonical: JSON.stringify(capabilities sorted by id, indent=2))",
+    "sha256": "11d7df8b61243817d9abf67cd09ffcfd77497317e044ac4a8528c94d3312d2d4"
+  },
+  "license": "Apache-2.0",
+  "capabilities": [
+    {
+      "id": "re-alternate-disassembly",
+      "title": "Alternate disassembler workspace and function recovery",
+      "category": "binary-analysis",
+      "source_ref": "reviewed taxonomy: binary-analysis"
+    },
+    {
+      "id": "re-binary-diffing",
+      "title": "Cross-version binary differential analysis",
+      "category": "binary-analysis",
+      "source_ref": "reviewed taxonomy: binary-analysis"
+    },
+    {
+      "id": "re-cli-binary-triage",
+      "title": "Command-line binary triage and disassembly",
+      "category": "binary-analysis",
+      "source_ref": "reviewed taxonomy: binary-analysis"
+    },
+    {
+      "id": "re-crypto-primitive-analysis",
+      "title": "Cryptographic primitive analysis and attack engineering",
+      "category": "cryptography",
+      "source_ref": "reviewed taxonomy: cryptography"
+    },
+    {
+      "id": "re-decompiler-analysis",
+      "title": "Decompiler-assisted static analysis",
+      "category": "decompilation",
+      "source_ref": "reviewed taxonomy: decompilation"
+    },
+    {
+      "id": "re-disk-image-analysis",
+      "title": "Disk image analysis and file recovery",
+      "category": "forensics",
+      "source_ref": "reviewed taxonomy: forensics"
+    },
+    {
+      "id": "re-dotnet-decompilation",
+      "title": "Managed .NET assembly decompilation",
+      "category": "decompilation",
+      "source_ref": "reviewed taxonomy: decompilation"
+    },
+    {
+      "id": "re-firmware-audit",
+      "title": "Firmware and UEFI security auditing",
+      "category": "firmware",
+      "source_ref": "reviewed taxonomy: firmware"
+    },
+    {
+      "id": "re-golang-analysis",
+      "title": "Go binary analysis and symbol recovery",
+      "category": "decompilation",
+      "source_ref": "reviewed taxonomy: decompilation"
+    },
+    {
+      "id": "re-gui-disassembly",
+      "title": "GUI disassembly and interactive decompilation triage",
+      "category": "decompilation",
+      "source_ref": "reviewed taxonomy: decompilation"
+    },
+    {
+      "id": "re-hsm-key-storage",
+      "title": "Hardware security module key storage configuration",
+      "category": "cryptography",
+      "source_ref": "reviewed taxonomy: cryptography"
+    },
+    {
+      "id": "re-linux-artifact-analysis",
+      "title": "Linux system artifact forensic analysis",
+      "category": "forensics",
+      "source_ref": "reviewed taxonomy: forensics"
+    },
+    {
+      "id": "re-malware-triage",
+      "title": "Malware sample static triage",
+      "category": "binary-analysis",
+      "source_ref": "reviewed taxonomy: binary-analysis"
+    },
+    {
+      "id": "re-memory-corruption-exploit",
+      "title": "Memory-corruption exploit engineering",
+      "category": "exploitation",
+      "source_ref": "reviewed taxonomy: exploitation"
+    },
+    {
+      "id": "re-memory-forensics",
+      "title": "Memory image acquisition and forensic analysis",
+      "category": "forensics",
+      "source_ref": "reviewed taxonomy: forensics"
+    },
+    {
+      "id": "re-mitigation-bypass",
+      "title": "Binary mitigation bypass engineering",
+      "category": "exploitation",
+      "source_ref": "reviewed taxonomy: exploitation"
+    },
+    {
+      "id": "re-patch-diff-n-day",
+      "title": "Patch-differential n-day vulnerability analysis",
+      "category": "exploitation",
+      "source_ref": "reviewed taxonomy: exploitation"
+    },
+    {
+      "id": "re-pki-configuration",
+      "title": "PKI and certificate authority configuration review",
+      "category": "cryptography",
+      "source_ref": "reviewed taxonomy: cryptography"
+    },
+    {
+      "id": "re-tls-attack",
+      "title": "TLS protocol attack analysis",
+      "category": "cryptography",
+      "source_ref": "reviewed taxonomy: cryptography"
+    },
+    {
+      "id": "re-windows-artifact-analysis",
+      "title": "Windows registry and artifact forensic analysis",
+      "category": "forensics",
+      "source_ref": "reviewed taxonomy: forensics"
+    }
+  ]
+}

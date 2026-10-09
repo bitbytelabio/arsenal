@@ -1,0 +1,569 @@
+{
+  "schemaVersion": "1.0",
+  "domain": "mobile",
+  "standard": {
+    "name": "OWASP Mobile Application Security Testing Guide",
+    "url": "https://mas.owasp.org/MASTG/",
+    "revision": "02ffd85fb74383ec2a30b42866d38f89d72c0ead",
+    "version": null
+  },
+  "extracted_from": {
+    "path": "upstream/mastg/tests",
+    "sha256": "9a29c57c8146b299580e296848efabb9ad034e3432b86bb16e5694916d40ab49"
+  },
+  "license": "CC-BY-SA-4.0",
+  "capabilities": [
+    {
+      "id": "MASTG-TEST-0001",
+      "title": "Testing Local Storage for Sensitive Data",
+      "category": "MASVS-STORAGE",
+      "source_ref": "android/MASVS-STORAGE/MASTG-TEST-0001.md"
+    },
+    {
+      "id": "MASTG-TEST-0002",
+      "title": "Testing Local Storage for Input Validation",
+      "category": "MASVS-CODE",
+      "source_ref": "android/MASVS-CODE/MASTG-TEST-0002.md"
+    },
+    {
+      "id": "MASTG-TEST-0003",
+      "title": "Testing Logs for Sensitive Data",
+      "category": "MASVS-STORAGE",
+      "source_ref": "android/MASVS-STORAGE/MASTG-TEST-0003.md"
+    },
+    {
+      "id": "MASTG-TEST-0004",
+      "title": "Determining Whether Sensitive Data Is Shared with Third Parties via Embedded Services",
+      "category": "MASVS-STORAGE",
+      "source_ref": "android/MASVS-STORAGE/MASTG-TEST-0004.md"
+    },
+    {
+      "id": "MASTG-TEST-0005",
+      "title": "Determining Whether Sensitive Data Is Shared with Third Parties via Notifications",
+      "category": "MASVS-STORAGE",
+      "source_ref": "android/MASVS-STORAGE/MASTG-TEST-0005.md"
+    },
+    {
+      "id": "MASTG-TEST-0006",
+      "title": "Determining Whether the Keyboard Cache Is Disabled for Text Input Fields",
+      "category": "MASVS-STORAGE",
+      "source_ref": "android/MASVS-STORAGE/MASTG-TEST-0006.md"
+    },
+    {
+      "id": "MASTG-TEST-0007",
+      "title": "Determining Whether Sensitive Stored Data Has Been Exposed via IPC Mechanisms",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0007.md"
+    },
+    {
+      "id": "MASTG-TEST-0008",
+      "title": "Checking for Sensitive Data Disclosure Through the User Interface",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0008.md"
+    },
+    {
+      "id": "MASTG-TEST-0009",
+      "title": "Testing Backups for Sensitive Data",
+      "category": "MASVS-STORAGE",
+      "source_ref": "android/MASVS-STORAGE/MASTG-TEST-0009.md"
+    },
+    {
+      "id": "MASTG-TEST-0010",
+      "title": "Finding Sensitive Information in Auto-Generated Screenshots",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0010.md"
+    },
+    {
+      "id": "MASTG-TEST-0011",
+      "title": "Testing Memory for Sensitive Data",
+      "category": "MASVS-STORAGE",
+      "source_ref": "android/MASVS-STORAGE/MASTG-TEST-0011.md"
+    },
+    {
+      "id": "MASTG-TEST-0012",
+      "title": "Testing the Device-Access-Security Policy",
+      "category": "MASVS-STORAGE",
+      "source_ref": "android/MASVS-STORAGE/MASTG-TEST-0012.md"
+    },
+    {
+      "id": "MASTG-TEST-0013",
+      "title": "Testing Symmetric Cryptography",
+      "category": "MASVS-CRYPTO",
+      "source_ref": "android/MASVS-CRYPTO/MASTG-TEST-0013.md"
+    },
+    {
+      "id": "MASTG-TEST-0014",
+      "title": "Testing the Configuration of Cryptographic Standard Algorithms",
+      "category": "MASVS-CRYPTO",
+      "source_ref": "android/MASVS-CRYPTO/MASTG-TEST-0014.md"
+    },
+    {
+      "id": "MASTG-TEST-0015",
+      "title": "Testing the Purposes of Keys",
+      "category": "MASVS-CRYPTO",
+      "source_ref": "android/MASVS-CRYPTO/MASTG-TEST-0015.md"
+    },
+    {
+      "id": "MASTG-TEST-0016",
+      "title": "Testing Random Number Generation",
+      "category": "MASVS-CRYPTO",
+      "source_ref": "android/MASVS-CRYPTO/MASTG-TEST-0016.md"
+    },
+    {
+      "id": "MASTG-TEST-0017",
+      "title": "Testing Confirm Credentials",
+      "category": "MASVS-AUTH",
+      "source_ref": "android/MASVS-AUTH/MASTG-TEST-0017.md"
+    },
+    {
+      "id": "MASTG-TEST-0018",
+      "title": "Testing Biometric Authentication",
+      "category": "MASVS-AUTH",
+      "source_ref": "android/MASVS-AUTH/MASTG-TEST-0018.md"
+    },
+    {
+      "id": "MASTG-TEST-0019",
+      "title": "Testing Data Encryption on the Network",
+      "category": "MASVS-NETWORK",
+      "source_ref": "android/MASVS-NETWORK/MASTG-TEST-0019.md"
+    },
+    {
+      "id": "MASTG-TEST-0020",
+      "title": "Testing the TLS Settings",
+      "category": "MASVS-NETWORK",
+      "source_ref": "android/MASVS-NETWORK/MASTG-TEST-0020.md"
+    },
+    {
+      "id": "MASTG-TEST-0021",
+      "title": "Testing Endpoint Identify Verification",
+      "category": "MASVS-NETWORK",
+      "source_ref": "android/MASVS-NETWORK/MASTG-TEST-0021.md"
+    },
+    {
+      "id": "MASTG-TEST-0022",
+      "title": "Testing Custom Certificate Stores and Certificate Pinning",
+      "category": "MASVS-NETWORK",
+      "source_ref": "android/MASVS-NETWORK/MASTG-TEST-0022.md"
+    },
+    {
+      "id": "MASTG-TEST-0023",
+      "title": "Testing the Security Provider",
+      "category": "MASVS-NETWORK",
+      "source_ref": "android/MASVS-NETWORK/MASTG-TEST-0023.md"
+    },
+    {
+      "id": "MASTG-TEST-0024",
+      "title": "Testing for App Permissions",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0024.md"
+    },
+    {
+      "id": "MASTG-TEST-0025",
+      "title": "Testing for Injection Flaws",
+      "category": "MASVS-CODE",
+      "source_ref": "android/MASVS-CODE/MASTG-TEST-0025.md"
+    },
+    {
+      "id": "MASTG-TEST-0026",
+      "title": "Testing Implicit Intents",
+      "category": "MASVS-CODE",
+      "source_ref": "android/MASVS-CODE/MASTG-TEST-0026.md"
+    },
+    {
+      "id": "MASTG-TEST-0027",
+      "title": "Testing for URL Loading in WebViews",
+      "category": "MASVS-CODE",
+      "source_ref": "android/MASVS-CODE/MASTG-TEST-0027.md"
+    },
+    {
+      "id": "MASTG-TEST-0028",
+      "title": "Testing Deep Links",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0028.md"
+    },
+    {
+      "id": "MASTG-TEST-0029",
+      "title": "Testing for Sensitive Functionality Exposure Through IPC",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0029.md"
+    },
+    {
+      "id": "MASTG-TEST-0030",
+      "title": "Testing for Vulnerable Implementation of PendingIntent",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0030.md"
+    },
+    {
+      "id": "MASTG-TEST-0031",
+      "title": "Testing JavaScript Execution in WebViews",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0031.md"
+    },
+    {
+      "id": "MASTG-TEST-0032",
+      "title": "Testing WebView Protocol Handlers",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0032.md"
+    },
+    {
+      "id": "MASTG-TEST-0033",
+      "title": "Testing for Java Objects Exposed Through WebViews",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0033.md"
+    },
+    {
+      "id": "MASTG-TEST-0034",
+      "title": "Testing Object Persistence",
+      "category": "MASVS-CODE",
+      "source_ref": "android/MASVS-CODE/MASTG-TEST-0034.md"
+    },
+    {
+      "id": "MASTG-TEST-0035",
+      "title": "Testing for Overlay Attacks",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0035.md"
+    },
+    {
+      "id": "MASTG-TEST-0036",
+      "title": "Testing Enforced Updating",
+      "category": "MASVS-CODE",
+      "source_ref": "android/MASVS-CODE/MASTG-TEST-0036.md"
+    },
+    {
+      "id": "MASTG-TEST-0037",
+      "title": "Testing WebViews Cleanup",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "android/MASVS-PLATFORM/MASTG-TEST-0037.md"
+    },
+    {
+      "id": "MASTG-TEST-0038",
+      "title": "Making Sure that the App is Properly Signed",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0038.md"
+    },
+    {
+      "id": "MASTG-TEST-0039",
+      "title": "Testing whether the App is Debuggable",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0039.md"
+    },
+    {
+      "id": "MASTG-TEST-0040",
+      "title": "Testing for Debugging Symbols",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0040.md"
+    },
+    {
+      "id": "MASTG-TEST-0041",
+      "title": "Testing for Debugging Code and Verbose Error Logging",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0041.md"
+    },
+    {
+      "id": "MASTG-TEST-0042",
+      "title": "Checking for Weaknesses in Third Party Libraries",
+      "category": "MASVS-CODE",
+      "source_ref": "android/MASVS-CODE/MASTG-TEST-0042.md"
+    },
+    {
+      "id": "MASTG-TEST-0043",
+      "title": "Memory Corruption Bugs",
+      "category": "MASVS-CODE",
+      "source_ref": "android/MASVS-CODE/MASTG-TEST-0043.md"
+    },
+    {
+      "id": "MASTG-TEST-0044",
+      "title": "Make Sure That Free Security Features Are Activated",
+      "category": "MASVS-CODE",
+      "source_ref": "android/MASVS-CODE/MASTG-TEST-0044.md"
+    },
+    {
+      "id": "MASTG-TEST-0045",
+      "title": "Testing Root Detection",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0045.md"
+    },
+    {
+      "id": "MASTG-TEST-0046",
+      "title": "Testing Anti-Debugging Detection",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0046.md"
+    },
+    {
+      "id": "MASTG-TEST-0047",
+      "title": "Testing File Integrity Checks",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0047.md"
+    },
+    {
+      "id": "MASTG-TEST-0048",
+      "title": "Testing Reverse Engineering Tools Detection",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0048.md"
+    },
+    {
+      "id": "MASTG-TEST-0049",
+      "title": "Testing Emulator Detection",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0049.md"
+    },
+    {
+      "id": "MASTG-TEST-0050",
+      "title": "Testing Runtime Integrity Checks",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0050.md"
+    },
+    {
+      "id": "MASTG-TEST-0051",
+      "title": "Testing Obfuscation",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "android/MASVS-RESILIENCE/MASTG-TEST-0051.md"
+    },
+    {
+      "id": "MASTG-TEST-0052",
+      "title": "Testing Local Data Storage",
+      "category": "MASVS-STORAGE",
+      "source_ref": "ios/MASVS-STORAGE/MASTG-TEST-0052.md"
+    },
+    {
+      "id": "MASTG-TEST-0053",
+      "title": "Checking Logs for Sensitive Data",
+      "category": "MASVS-STORAGE",
+      "source_ref": "ios/MASVS-STORAGE/MASTG-TEST-0053.md"
+    },
+    {
+      "id": "MASTG-TEST-0054",
+      "title": "Determining Whether Sensitive Data Is Shared with Third Parties",
+      "category": "MASVS-STORAGE",
+      "source_ref": "ios/MASVS-STORAGE/MASTG-TEST-0054.md"
+    },
+    {
+      "id": "MASTG-TEST-0055",
+      "title": "Finding Sensitive Data in the Keyboard Cache",
+      "category": "MASVS-STORAGE",
+      "source_ref": "ios/MASVS-STORAGE/MASTG-TEST-0055.md"
+    },
+    {
+      "id": "MASTG-TEST-0056",
+      "title": "Determining Whether Sensitive Data Is Exposed via IPC Mechanisms",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0056.md"
+    },
+    {
+      "id": "MASTG-TEST-0057",
+      "title": "Checking for Sensitive Data Disclosed Through the User Interface",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0057.md"
+    },
+    {
+      "id": "MASTG-TEST-0058",
+      "title": "Testing Backups for Sensitive Data",
+      "category": "MASVS-STORAGE",
+      "source_ref": "ios/MASVS-STORAGE/MASTG-TEST-0058.md"
+    },
+    {
+      "id": "MASTG-TEST-0059",
+      "title": "Testing Auto-Generated Screenshots for Sensitive Information",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0059.md"
+    },
+    {
+      "id": "MASTG-TEST-0060",
+      "title": "Testing Memory for Sensitive Data",
+      "category": "MASVS-STORAGE",
+      "source_ref": "ios/MASVS-STORAGE/MASTG-TEST-0060.md"
+    },
+    {
+      "id": "MASTG-TEST-0061",
+      "title": "Verifying the Configuration of Cryptographic Standard Algorithms",
+      "category": "MASVS-CRYPTO",
+      "source_ref": "ios/MASVS-CRYPTO/MASTG-TEST-0061.md"
+    },
+    {
+      "id": "MASTG-TEST-0062",
+      "title": "Testing Key Management",
+      "category": "MASVS-CRYPTO",
+      "source_ref": "ios/MASVS-CRYPTO/MASTG-TEST-0062.md"
+    },
+    {
+      "id": "MASTG-TEST-0063",
+      "title": "Testing Random Number Generation",
+      "category": "MASVS-CRYPTO",
+      "source_ref": "ios/MASVS-CRYPTO/MASTG-TEST-0063.md"
+    },
+    {
+      "id": "MASTG-TEST-0064",
+      "title": "Testing Biometric Authentication",
+      "category": "MASVS-AUTH",
+      "source_ref": "ios/MASVS-AUTH/MASTG-TEST-0064.md"
+    },
+    {
+      "id": "MASTG-TEST-0065",
+      "title": "Testing Data Encryption on the Network",
+      "category": "MASVS-NETWORK",
+      "source_ref": "ios/MASVS-NETWORK/MASTG-TEST-0065.md"
+    },
+    {
+      "id": "MASTG-TEST-0066",
+      "title": "Testing the TLS Settings",
+      "category": "MASVS-NETWORK",
+      "source_ref": "ios/MASVS-NETWORK/MASTG-TEST-0066.md"
+    },
+    {
+      "id": "MASTG-TEST-0067",
+      "title": "Testing Endpoint Identity Verification",
+      "category": "MASVS-NETWORK",
+      "source_ref": "ios/MASVS-NETWORK/MASTG-TEST-0067.md"
+    },
+    {
+      "id": "MASTG-TEST-0068",
+      "title": "Testing Custom Certificate Stores and Certificate Pinning",
+      "category": "MASVS-NETWORK",
+      "source_ref": "ios/MASVS-NETWORK/MASTG-TEST-0068.md"
+    },
+    {
+      "id": "MASTG-TEST-0069",
+      "title": "Testing App Permissions",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0069.md"
+    },
+    {
+      "id": "MASTG-TEST-0070",
+      "title": "Testing Universal Links",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0070.md"
+    },
+    {
+      "id": "MASTG-TEST-0071",
+      "title": "Testing UIActivity Sharing",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0071.md"
+    },
+    {
+      "id": "MASTG-TEST-0072",
+      "title": "Testing App Extensions",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0072.md"
+    },
+    {
+      "id": "MASTG-TEST-0073",
+      "title": "Testing UIPasteboard",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0073.md"
+    },
+    {
+      "id": "MASTG-TEST-0075",
+      "title": "Testing Custom URL Schemes",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0075.md"
+    },
+    {
+      "id": "MASTG-TEST-0076",
+      "title": "Testing iOS WebViews",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0076.md"
+    },
+    {
+      "id": "MASTG-TEST-0077",
+      "title": "Testing WebView Protocol Handlers",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0077.md"
+    },
+    {
+      "id": "MASTG-TEST-0078",
+      "title": "Determining Whether Native Methods Are Exposed Through WebViews",
+      "category": "MASVS-PLATFORM",
+      "source_ref": "ios/MASVS-PLATFORM/MASTG-TEST-0078.md"
+    },
+    {
+      "id": "MASTG-TEST-0079",
+      "title": "Testing Object Persistence",
+      "category": "MASVS-CODE",
+      "source_ref": "ios/MASVS-CODE/MASTG-TEST-0079.md"
+    },
+    {
+      "id": "MASTG-TEST-0080",
+      "title": "Testing Enforced Updating",
+      "category": "MASVS-CODE",
+      "source_ref": "ios/MASVS-CODE/MASTG-TEST-0080.md"
+    },
+    {
+      "id": "MASTG-TEST-0081",
+      "title": "Making Sure that the App Is Properly Signed",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0081.md"
+    },
+    {
+      "id": "MASTG-TEST-0082",
+      "title": "Testing whether the App is Debuggable",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0082.md"
+    },
+    {
+      "id": "MASTG-TEST-0083",
+      "title": "Testing for Debugging Symbols",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0083.md"
+    },
+    {
+      "id": "MASTG-TEST-0084",
+      "title": "Testing for Debugging Code and Verbose Error Logging",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0084.md"
+    },
+    {
+      "id": "MASTG-TEST-0085",
+      "title": "Checking for Weaknesses in Third Party Libraries",
+      "category": "MASVS-CODE",
+      "source_ref": "ios/MASVS-CODE/MASTG-TEST-0085.md"
+    },
+    {
+      "id": "MASTG-TEST-0086",
+      "title": "Memory Corruption Bugs",
+      "category": "MASVS-CODE",
+      "source_ref": "ios/MASVS-CODE/MASTG-TEST-0086.md"
+    },
+    {
+      "id": "MASTG-TEST-0087",
+      "title": "Make Sure That Free Security Features Are Activated",
+      "category": "MASVS-CODE",
+      "source_ref": "ios/MASVS-CODE/MASTG-TEST-0087.md"
+    },
+    {
+      "id": "MASTG-TEST-0088",
+      "title": "Testing Jailbreak Detection",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0088.md"
+    },
+    {
+      "id": "MASTG-TEST-0089",
+      "title": "Testing Anti-Debugging Detection",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0089.md"
+    },
+    {
+      "id": "MASTG-TEST-0090",
+      "title": "Testing File Integrity Checks",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0090.md"
+    },
+    {
+      "id": "MASTG-TEST-0091",
+      "title": "Testing Reverse Engineering Tools Detection",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0091.md"
+    },
+    {
+      "id": "MASTG-TEST-0092",
+      "title": "Testing Emulator Detection",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0092.md"
+    },
+    {
+      "id": "MASTG-TEST-0093",
+      "title": "Testing Obfuscation",
+      "category": "MASVS-RESILIENCE",
+      "source_ref": "ios/MASVS-RESILIENCE/MASTG-TEST-0093.md"
+    }
+  ]
+}

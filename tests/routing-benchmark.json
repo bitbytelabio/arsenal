@@ -1,0 +1,302 @@
+[
+  {
+    "id": "re-01",
+    "domain": "re",
+    "task": "Need to decompile a binary using IDA Pro idb file",
+    "expected": "re-ida-reverse"
+  },
+  {
+    "id": "re-02",
+    "domain": "re",
+    "task": "Analyze binary functions with IDA Pro",
+    "expected": "re-ida-reverse"
+  },
+  {
+    "id": "re-03",
+    "domain": "re",
+    "task": "Open idb database with idapro and inspect functions",
+    "expected": "re-ida-reverse"
+  },
+  {
+    "id": "re-04",
+    "domain": "re",
+    "task": "Decompile stripped ELF with Ghidra headless analyzer",
+    "expected": "re-ghidra-reverse"
+  },
+  {
+    "id": "re-05",
+    "domain": "re",
+    "task": "Analyze binary in Ghidra and export decompiled C",
+    "expected": "re-ghidra-reverse"
+  },
+  {
+    "id": "re-06",
+    "domain": "re",
+    "task": "Run pyghidra script to parse symbols in Ghidra",
+    "expected": "re-ghidra-reverse"
+  },
+  {
+    "id": "re-07",
+    "domain": "re",
+    "task": "Disassemble binary using radare2 CLI",
+    "expected": "re-radare2"
+  },
+  {
+    "id": "re-08",
+    "domain": "re",
+    "task": "Inspect r2 rabin2 information on PE binary",
+    "expected": "re-radare2"
+  },
+  {
+    "id": "re-09",
+    "domain": "re",
+    "task": "Debug binary with radare2 command-line tool",
+    "expected": "re-radare2"
+  },
+  {
+    "id": "re-10",
+    "domain": "re",
+    "task": "Compare vendor security update with patch diff analysis",
+    "expected": "re-patch-diff-exploit"
+  },
+  {
+    "id": "re-11",
+    "domain": "re",
+    "task": "Run bindiff on two binary versions to find n-day patch",
+    "expected": "re-patch-diff-exploit"
+  },
+  {
+    "id": "re-12",
+    "domain": "re",
+    "task": "Reverse patch difference to construct proof of concept",
+    "expected": "re-patch-diff-exploit"
+  },
+  {
+    "id": "re-13",
+    "domain": "re",
+    "task": "Develop buffer overflow exploit chain with ROP gadgets",
+    "expected": "re-pwn-chain"
+  },
+  {
+    "id": "re-14",
+    "domain": "re",
+    "task": "Analyze format string memory corruption vulnerability",
+    "expected": "re-pwn-chain"
+  },
+  {
+    "id": "re-15",
+    "domain": "re",
+    "task": "Craft ROP chain binary exploit payload",
+    "expected": "re-pwn-chain"
+  },
+  {
+    "id": "web-01",
+    "domain": "webapp",
+    "task": "Test blind SQL injection vulnerability with time delay",
+    "expected": "webapp-exploiting-sql-injection-vulnerabilities"
+  },
+  {
+    "id": "web-02",
+    "domain": "webapp",
+    "task": "Verify sqli on search parameter using sqlmap",
+    "expected": "webapp-exploiting-sql-injection-vulnerabilities"
+  },
+  {
+    "id": "web-03",
+    "domain": "webapp",
+    "task": "Perform timing differential SQL injection testing",
+    "expected": "webapp-exploiting-sql-injection-vulnerabilities"
+  },
+  {
+    "id": "web-04",
+    "domain": "webapp",
+    "task": "Probe path traversal on download parameter",
+    "expected": "webapp-performing-directory-traversal-testing"
+  },
+  {
+    "id": "web-05",
+    "domain": "webapp",
+    "task": "Test local file inclusion lfi vulnerability",
+    "expected": "webapp-performing-directory-traversal-testing"
+  },
+  {
+    "id": "web-06",
+    "domain": "webapp",
+    "task": "Verify arbitrary file read via directory traversal",
+    "expected": "webapp-performing-directory-traversal-testing"
+  },
+  {
+    "id": "web-07",
+    "domain": "webapp",
+    "task": "Test idor horizontal authorization flaw on user profile",
+    "expected": "webapp-exploiting-idor-vulnerabilities"
+  },
+  {
+    "id": "web-08",
+    "domain": "webapp",
+    "task": "Probe broken object level authorization bola on invoice endpoint",
+    "expected": "webapp-exploiting-idor-vulnerabilities"
+  },
+  {
+    "id": "web-09",
+    "domain": "webapp",
+    "task": "Verify insecure direct object reference vulnerability",
+    "expected": "webapp-exploiting-idor-vulnerabilities"
+  },
+  {
+    "id": "web-10",
+    "domain": "webapp",
+    "task": "Audit REST API endpoints and swagger specification",
+    "expected": "webapp-api-security"
+  },
+  {
+    "id": "web-11",
+    "domain": "webapp",
+    "task": "Inspect GraphQL security schema for query introspection",
+    "expected": "webapp-api-security"
+  },
+  {
+    "id": "web-12",
+    "domain": "webapp",
+    "task": "Audit JWT token signature and algorithm confusion in API",
+    "expected": "webapp-api-security"
+  },
+  {
+    "id": "web-13",
+    "domain": "webapp",
+    "task": "Reverse webpack bundle for front-end signature logic",
+    "expected": "webapp-js-reverse"
+  },
+  {
+    "id": "web-14",
+    "domain": "webapp",
+    "task": "Deobfuscate frontend javascript decrypt routine",
+    "expected": "webapp-js-reverse"
+  },
+  {
+    "id": "web-15",
+    "domain": "webapp",
+    "task": "Analyze client-side js reverse code and API keys",
+    "expected": "webapp-js-reverse"
+  },
+  {
+    "id": "mob-01",
+    "domain": "mobile",
+    "task": "Decompile Android APK and inspect smali code",
+    "expected": "re-apk-reverse"
+  },
+  {
+    "id": "mob-02",
+    "domain": "mobile",
+    "task": "Disassemble APK with apktool and patch manifest",
+    "expected": "re-apk-reverse"
+  },
+  {
+    "id": "mob-03",
+    "domain": "mobile",
+    "task": "Decompile Java classes from APK using jadx",
+    "expected": "re-apk-reverse"
+  },
+  {
+    "id": "mob-04",
+    "domain": "mobile",
+    "task": "Modify smali instructions and android repackage application",
+    "expected": "re-apk-reverse"
+  },
+  {
+    "id": "mob-05",
+    "domain": "mobile",
+    "task": "Inspect decrypted iOS IPA package and Mach-O binary",
+    "expected": "mobile-reverse"
+  },
+  {
+    "id": "mob-06",
+    "domain": "mobile",
+    "task": "Perform iOS reverse engineering on target Mach-O",
+    "expected": "mobile-reverse"
+  },
+  {
+    "id": "mob-07",
+    "domain": "mobile",
+    "task": "Audit iOS keychain data storage security",
+    "expected": "mobile-reverse"
+  },
+  {
+    "id": "mob-08",
+    "domain": "mobile",
+    "task": "Inject Frida dynamic hook script to bypass certificate pinning",
+    "expected": "mobile-reverse-engineering-ios-app-with-frida"
+  },
+  {
+    "id": "mob-09",
+    "domain": "mobile",
+    "task": "Hook mobile runtime methods using Frida and Objection",
+    "expected": "mobile-reverse-engineering-ios-app-with-frida"
+  },
+  {
+    "id": "mob-10",
+    "domain": "mobile",
+    "task": "Bypass ssl pinning with frida script",
+    "expected": "mobile-reverse-engineering-ios-app-with-frida"
+  },
+  {
+    "id": "red-01",
+    "domain": "red",
+    "task": "Enumerate Active Directory domain controller and trusts",
+    "expected": "red-windows-ad"
+  },
+  {
+    "id": "red-02",
+    "domain": "red",
+    "task": "Map AD domain attack paths with BloodHound",
+    "expected": "red-windows-ad"
+  },
+  {
+    "id": "red-03",
+    "domain": "red",
+    "task": "Perform Active Directory enumeration on domain user accounts",
+    "expected": "red-windows-ad"
+  },
+  {
+    "id": "red-04",
+    "domain": "red",
+    "task": "Extract Kerberos SPN tickets for kerberoasting attack",
+    "expected": "red-performing-kerberoasting-attack"
+  },
+  {
+    "id": "red-05",
+    "domain": "red",
+    "task": "Request TGS ticket and crack kerberoast hash offline",
+    "expected": "red-performing-kerberoasting-attack"
+  },
+  {
+    "id": "red-06",
+    "domain": "red",
+    "task": "Audit Linux machine for SUID binary privilege escalation",
+    "expected": "red-privesc-offensive-linux-privesc"
+  },
+  {
+    "id": "red-07",
+    "domain": "red",
+    "task": "Exploit misconfigured sudo permissions for Linux privesc",
+    "expected": "red-privesc-offensive-linux-privesc"
+  },
+  {
+    "id": "red-08",
+    "domain": "red",
+    "task": "Inspect Linux system for kernel privesc exploit vectors",
+    "expected": "red-privesc-offensive-linux-privesc"
+  },
+  {
+    "id": "red-09",
+    "domain": "red",
+    "task": "Reverse EDR sensor driver to analyze hook bypass",
+    "expected": "red-edr-bypass-re"
+  },
+  {
+    "id": "red-10",
+    "domain": "red",
+    "task": "Patch AMSI and ETW to bypass EDR detection",
+    "expected": "red-edr-bypass-re"
+  }
+]
