@@ -195,6 +195,16 @@ export async function executeBuild(
           "./dist/extensions/budget.js",
           "./dist/extensions/routing.js",
         ],
+        skills: ["./skills"],
+      },
+      pi: {
+        extensions: [
+          "./dist/extensions/bounding.js",
+          "./dist/extensions/ledger.js",
+          "./dist/extensions/budget.js",
+          "./dist/extensions/routing.js",
+        ],
+        skills: ["./skills"],
       },
     },
     null,
@@ -208,7 +218,9 @@ export async function executeBuild(
       name: "arsenal",
       version: "3.0.0",
       description: "Arsenal Security Engagement Harness Plugin for Oh My Pi",
-      author: "arsenal",
+      author: {
+        name: "arsenal",
+      },
       license: "MIT",
       capabilities: {
         roles: ["master", "sec-re", "sec-webapp", "sec-mobile", "sec-red", "sec-verifier"],

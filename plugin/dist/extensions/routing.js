@@ -10184,9 +10184,43 @@ class SkillCatalogManager {
     };
   }
 }
+function registerTool(pi, tool) {
+  const executeFn = async (toolCallIdOrParams, maybeParams) => {
+    try {
+      const params = maybeParams !== undefined ? maybeParams : toolCallIdOrParams;
+      const rawResult = await tool.handler(params);
+      const textResult = typeof rawResult === "string" ? rawResult : JSON.stringify(rawResult, null, 2);
+      return {
+        content: [{ type: "text", text: textResult }],
+        details: rawResult
+      };
+    } catch (err) {
+      const errMsg = err instanceof Error ? err.message : String(err);
+      return {
+        content: [{ type: "text", text: `Error: ${errMsg}` }],
+        details: { error: errMsg },
+        isError: true
+      };
+    }
+  };
+  const toolObj = {
+    name: tool.name,
+    description: tool.description,
+    parameters: tool.parameters,
+    execute: executeFn
+  };
+  if (typeof pi.registerTool === "function") {
+    if (pi.registerTool.length >= 3) {
+      pi.registerTool(tool.name, { description: tool.description, parameters: tool.parameters }, (args) => tool.handler(args));
+    } else {
+      pi.registerTool(toolObj);
+    }
+  }
+}
 function routingExtension(pi) {
   const manager = new SkillCatalogManager;
-  pi.registerTool("skill_search", {
+  registerTool(pi, {
+    name: "skill_search",
     description: "Search machine-readable skill catalog index for relevant security playbooks.",
     parameters: {
       type: "object",
@@ -10197,12 +10231,14 @@ function routingExtension(pi) {
         limit: { type: "integer" }
       },
       required: ["query"]
+    },
+    handler: async (args) => {
+      const { query, domain, category, limit } = args || {};
+      return manager.search(query, domain, category, limit);
     }
-  }, async (args) => {
-    const { query, domain, category, limit } = args;
-    return manager.search(query, domain, category, limit);
   });
-  pi.registerTool("skill_list", {
+  registerTool(pi, {
+    name: "skill_list",
     description: "List available playbooks scoped by domain or category.",
     parameters: {
       type: "object",
@@ -10212,12 +10248,14 @@ function routingExtension(pi) {
         offset: { type: "integer" },
         limit: { type: "integer" }
       }
+    },
+    handler: async (args) => {
+      const { domain, category, offset, limit } = args || {};
+      return manager.list(domain, category, offset, limit);
     }
-  }, async (args) => {
-    const { domain, category, offset, limit } = args;
-    return manager.list(domain, category, offset, limit);
   });
-  pi.registerTool("skill_load", {
+  registerTool(pi, {
+    name: "skill_load",
     description: "Load complete verified markdown body of an on-demand leaf skill.",
     parameters: {
       type: "object",
@@ -10225,12 +10263,14 @@ function routingExtension(pi) {
         name: { type: "string" }
       },
       required: ["name"]
+    },
+    handler: async (args) => {
+      const { name } = args || {};
+      return manager.load(name);
     }
-  }, async (args) => {
-    const { name } = args;
-    return manager.load(name);
   });
-  pi.registerTool("skill_route", {
+  registerTool(pi, {
+    name: "skill_route",
     description: "Deterministic read-only routing lookup: match a task hint against the domain routing tables and return the owning route, category, and leaf playbook.",
     parameters: {
       type: "object",
@@ -10239,12 +10279,14 @@ function routingExtension(pi) {
         domain: { enum: ["re", "webapp", "mobile", "red"] }
       },
       required: ["hint"]
+    },
+    handler: async (args) => {
+      const { hint, domain } = args || {};
+      return manager.route(hint, domain);
     }
-  }, async (args) => {
-    const { hint, domain } = args;
-    return manager.route(hint, domain);
   });
-  pi.registerTool("evidence_exec", {
+  registerTool(pi, {
+    name: "evidence_exec",
     description: "Execute a command directly without shell interpolation and record raw evidence artifacts.",
     parameters: {
       type: "object",
@@ -10255,12 +10297,14 @@ function routingExtension(pi) {
         timeout_ms: { type: "integer", description: "Maximum execution duration in ms" }
       },
       required: ["argv"]
+    },
+    handler: async (args) => {
+      const evidenceDir = path5.resolve(process.cwd(), "evidence");
+      return executeEvidenceCommand(args || {}, evidenceDir);
     }
-  }, async (args) => {
-    const evidenceDir = path5.resolve(process.cwd(), "evidence");
-    return executeEvidenceCommand(args, evidenceDir);
   });
-  pi.registerTool("consolidate_evidence", {
+  registerTool(pi, {
+    name: "consolidate_evidence",
     description: "Consolidate evidence receipts into a formal finding and append to case report.",
     parameters: {
       type: "object",
@@ -10277,11 +10321,13 @@ function routingExtension(pi) {
         write: { type: "boolean" }
       },
       required: ["title", "description"]
+    },
+    handler: async (args) => {
+      return consolidateEvidence(args || {});
     }
-  }, async (args) => {
-    return consolidateEvidence(args);
   });
-  pi.registerTool("case_review", {
+  registerTool(pi, {
+    name: "case_review",
     description: "Review engagement case consistency across evidence, workitems, scope, and timeline.",
     parameters: {
       type: "object",
@@ -10291,11 +10337,13 @@ function routingExtension(pi) {
         verify_hashes: { type: "boolean" }
       },
       required: ["case_root"]
+    },
+    handler: async (args) => {
+      return caseReview(args || {});
     }
-  }, async (args) => {
-    return caseReview(args);
   });
-  pi.registerTool("verify_oracle", {
+  registerTool(pi, {
+    name: "verify_oracle",
     description: "Execute deterministic mathematical and logical verification oracles to independently validate candidate security findings.",
     parameters: {
       type: "object",
@@ -10311,9 +10359,10 @@ function routingExtension(pi) {
         }
       },
       required: ["oracle_type", "parameters"]
+    },
+    handler: async (args) => {
+      return handleVerifyOracle(args || {});
     }
-  }, async (args) => {
-    return handleVerifyOracle(args);
   });
 }
 export {

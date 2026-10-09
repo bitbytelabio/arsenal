@@ -12,5 +12,23 @@
     "upstream:update": "bun --no-env-file run tools/sync-upstreams.ts --write"
   },
   "dependencies": { "ajv": "^8.17.1", "ajv-formats": "^3.0.1", "yaml": "^2.7.0" },
-  "devDependencies": { "@types/bun": "latest", "@types/node": "^22.13.9", "typescript": "^5.8.2" }
+  "devDependencies": { "@types/bun": "latest", "@types/node": "^22.13.9", "typescript": "^5.8.2" },
+  "omp": {
+    "extensions": [
+      "./plugin/dist/extensions/bounding.js",
+      "./plugin/dist/extensions/ledger.js",
+      "./plugin/dist/extensions/budget.js",
+      "./plugin/dist/extensions/routing.js"
+    ],
+    "skills": ["./plugin/skills"]
+  },
+  "pi": {
+    "extensions": [
+      "./plugin/dist/extensions/bounding.js",
+      "./plugin/dist/extensions/ledger.js",
+      "./plugin/dist/extensions/budget.js",
+      "./plugin/dist/extensions/routing.js"
+    ],
+    "skills": ["./plugin/skills"]
+  }
 }
