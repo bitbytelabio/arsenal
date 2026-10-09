@@ -110,13 +110,13 @@ approvalMode: "yolo"
     const mcpTemplate = JSON.stringify(
       {
         mcpServers: {
-          "ida-pro": { type: "stdio", transport: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], enabled: false },
-          ghidra: { type: "stdio", transport: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], enabled: false },
-          frida: { type: "stdio", transport: "stdio", command: "uv", args: ["run", "frida-mcp"], enabled: false },
-          jshook: { type: "stdio", transport: "stdio", command: "node", args: ["jshookmcp.js"], enabled: false },
-          "burp-ultra": { type: "sse", transport: "sse", url: "http://127.0.0.1:8080/mcp", enabled: false },
-          playwright: { type: "stdio", transport: "stdio", command: "bunx", args: ["-y", "@playwright/mcp-server"], enabled: false },
-          semgrep: { type: "stdio", transport: "stdio", command: "uv", args: ["run", "semgrep-mcp"], enabled: false },
+          "ida-pro": { type: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], enabled: false },
+          ghidra: { type: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], enabled: false },
+          frida: { type: "stdio", command: "uv", args: ["run", "frida-mcp"], enabled: false },
+          jshook: { type: "stdio", command: "node", args: ["jshookmcp.js"], enabled: false },
+          "burp-ultra": { type: "sse", url: "http://127.0.0.1:8080/mcp", enabled: false },
+          playwright: { type: "stdio", command: "bunx", args: ["-y", "@playwright/mcp-server"], enabled: false },
+          semgrep: { type: "stdio", command: "uv", args: ["run", "semgrep-mcp"], enabled: false },
         },
       },
       null,

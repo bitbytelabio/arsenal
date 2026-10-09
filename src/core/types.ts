@@ -57,7 +57,7 @@ export interface SpecialistHandoff {
 
 export interface McpBridgeConfig {
   name: string;
-  transport: "stdio" | "sse";
+  type: "stdio" | "sse";
   command?: string;
   args?: string[];
   url?: string;

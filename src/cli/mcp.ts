@@ -13,7 +13,6 @@ export const CANONICAL_MCP_BRIDGES: Record<
   string,
   {
     type: "stdio" | "sse";
-    transport: "stdio" | "sse";
     command?: string;
     args?: string[];
     url?: string;
@@ -22,13 +21,13 @@ export const CANONICAL_MCP_BRIDGES: Record<
     description: string;
   }
 > = {
-  "ida-pro": { type: "stdio", transport: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], runner: "uv", binaryPrereq: "ida64", description: "IDA Pro disassembler bridge" },
-  ghidra: { type: "stdio", transport: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], runner: "uv", binaryPrereq: "ghidra", description: "Ghidra headless decompiler bridge" },
-  frida: { type: "stdio", transport: "stdio", command: "uv", args: ["run", "frida-mcp"], runner: "uv", binaryPrereq: "frida", description: "Frida dynamic instrumentation bridge" },
-  jshook: { type: "stdio", transport: "stdio", command: "node", args: ["jshookmcp.js"], runner: "node", binaryPrereq: "node", description: "JavaScript runtime function hooking bridge" },
-  "burp-ultra": { type: "sse", transport: "sse", url: "http://127.0.0.1:8080/mcp", runner: "none", description: "Burp Suite professional HTTP/S interception bridge" },
-  playwright: { type: "stdio", transport: "stdio", command: "bunx", args: ["-y", "@playwright/mcp-server"], runner: "node", binaryPrereq: "bunx", description: "Headless browser automation bridge" },
-  semgrep: { type: "stdio", transport: "stdio", command: "uv", args: ["run", "semgrep-mcp"], runner: "uv", binaryPrereq: "semgrep", description: "Semgrep SAST rule-based code inspection bridge" },
+  "ida-pro": { type: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], runner: "uv", binaryPrereq: "ida64", description: "IDA Pro disassembler bridge" },
+  ghidra: { type: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], runner: "uv", binaryPrereq: "ghidra", description: "Ghidra headless decompiler bridge" },
+  frida: { type: "stdio", command: "uv", args: ["run", "frida-mcp"], runner: "uv", binaryPrereq: "frida", description: "Frida dynamic instrumentation bridge" },
+  jshook: { type: "stdio", command: "node", args: ["jshookmcp.js"], runner: "node", binaryPrereq: "node", description: "JavaScript runtime function hooking bridge" },
+  "burp-ultra": { type: "sse", url: "http://127.0.0.1:8080/mcp", runner: "none", description: "Burp Suite professional HTTP/S interception bridge" },
+  playwright: { type: "stdio", command: "bunx", args: ["-y", "@playwright/mcp-server"], runner: "node", binaryPrereq: "bunx", description: "Headless browser automation bridge" },
+  semgrep: { type: "stdio", command: "uv", args: ["run", "semgrep-mcp"], runner: "uv", binaryPrereq: "semgrep", description: "Semgrep SAST rule-based code inspection bridge" },
 };
 
 export async function handleMcp(ctx: CommandContext): Promise<number> {
@@ -55,10 +54,14 @@ export async function handleMcp(ctx: CommandContext): Promise<number> {
     for (const name of serversToInstall) {
       const def = CANONICAL_MCP_BRIDGES[name];
       if (def) {
-        existingConfig.mcpServers[name] = {
-          ...def,
-          enabled: false, // Default disabled per Principle V
+        const serverEntry: Record<string, unknown> = {
+          type: def.type,
+          enabled: false,
         };
+        if (def.command) serverEntry.command = def.command;
+        if (def.args) serverEntry.args = def.args;
+        if (def.url) serverEntry.url = def.url;
+        existingConfig.mcpServers[name] = serverEntry;
       }
     }
 
@@ -115,7 +118,7 @@ export async function handleMcp(ctx: CommandContext): Promise<number> {
 
     const bridgeStates: Array<{
       id: string;
-      transport: string;
+      type: string;
       effectiveState: "enabled" | "disabled" | "denied";
       originLayer: "profile" | "project" | "preset";
       reason?: string;
@@ -141,7 +144,7 @@ export async function handleMcp(ctx: CommandContext): Promise<number> {
 
       bridgeStates.push({
         id,
-        transport: def.transport,
+        type: def.type,
         effectiveState: state,
         originLayer: origin,
         reason,
@@ -158,7 +161,7 @@ export async function handleMcp(ctx: CommandContext): Promise<number> {
       console.log(`================================================================================`);
       for (const b of bridgeStates) {
         const tag = b.effectiveState.toUpperCase().padEnd(8);
-        console.log(` [${tag}] ${b.id.padEnd(14)} (${b.transport}) [Layer: ${b.originLayer}] ${b.reason ? "-> " + b.reason : ""}`);
+        console.log(` [${tag}] ${b.id.padEnd(14)} (${b.type}) [Layer: ${b.originLayer}] ${b.reason ? "-> " + b.reason : ""}`);
       }
       console.log(`================================================================================`);
     }
@@ -201,7 +204,13 @@ export async function handleMcp(ctx: CommandContext): Promise<number> {
           cfg = { mcpServers: {} };
         }
       }
-      const current = (cfg.mcpServers[bridgeName] as Record<string, unknown>) ?? { ...def };
+      let current = cfg.mcpServers[bridgeName] as Record<string, unknown> | undefined;
+      if (!current) {
+        current = { type: def.type };
+        if (def.command) current.command = def.command;
+        if (def.args) current.args = def.args;
+        if (def.url) current.url = def.url;
+      }
       cfg.mcpServers[bridgeName] = { ...current, enabled };
       safeWriteFile(mcpFile, JSON.stringify(cfg, null, 2), { write: true, force: true, mode: 0o600 });
       updatedPaths.push(mcpFile);

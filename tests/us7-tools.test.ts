@@ -89,7 +89,7 @@ describe("User Story 7: Tools & Selective Bridge Provisioning", () => {
     const mcpFile = path.join(scratchRepo, ".omp", "mcp.json");
     expect(fs.existsSync(mcpFile)).toBe(true);
     const parsed = JSON.parse(fs.readFileSync(mcpFile, "utf-8")) as {
-      mcpServers: Record<string, { enabled: boolean; transport: string }>;
+      mcpServers: Record<string, { enabled: boolean; type?: string }>;
     };
     expect(parsed.mcpServers["burp-ultra"]).toBeDefined();
     expect(parsed.mcpServers["burp-ultra"]!.enabled).toBe(false); // Default disabled!
