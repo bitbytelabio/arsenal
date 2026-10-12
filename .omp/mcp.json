@@ -9,19 +9,17 @@
     "playwright": {
       "type": "stdio",
       "command": "bunx",
-      "args": [
-        "-y",
-        "@playwright/mcp-server"
-      ],
+      "args": ["-y", "@playwright/mcp-server"],
       "enabled": false
     },
     "rea": {
       "type": "stdio",
       "command": "bunx",
-      "args": [
-        "rea-agents@6.4.0",
-        "mcp"
-      ],
+      "args": ["rea-agents@6.4.0", "mcp"],
+      "env": {
+        "GHIDRA_INSTALL_DIR": "/opt/homebrew/opt/ghidra/libexec",
+        "REA_IDA_MCP_CONFIG": "/Users/datnguyen/.idapro/ida-mcp.json"
+      },
       "enabled": true
     }
   }

@@ -151,9 +151,25 @@ operator/host và yêu cầu ổn định của target. Không hỏi lại cho t
 
 Master truyền workflow, tier và phạm vi cho specialist. Các prompt `sec-re`,
 `sec-mobile` và `sec-webapp` áp dụng cùng lựa chọn theo mục tiêu; mobile API
-security có thể dùng Burp trực tiếp, không bắt buộc qua RE. Không mặc định nối
-hai proxy, bypass pinning, cài CA hay bật hook toàn cục. Khởi động phiên OMP mới
-để nạp rule và prompt đã cập nhật.
+security có thể dùng Burp trực tiếp, không bắt buộc qua RE.
+
+**Capture HTTPS trên Android và iOS:** khi SSL/TLS pinning cản interception, được dùng
+bypass có phạm vi đúng target (test build hoặc hook Frida/debugger tại điểm kiểm tra
+pinning Java/Kotlin/native trên Android hoặc Objective-C/Swift/native trên iOS)
+ở mọi tier trong phạm vi đã được phép, không cần hỏi lại.
+Phân biệt lỗi routing, CA trust và pinning; cài CA không tự bypass pinning.
+Giữ lần chạy trước bypass kể cả khi chỉ có lỗi handshake, rồi lặp lại cùng thao tác
+sau bypass. Ghi app version, package/bundle ID, APK/IPA hoặc app-binary hash,
+OS/device, cấu hình proxy/CA, script/hash và điểm hook; ghi khác biệt về signing,
+root/jailbreak hoặc emulator/simulator nếu có;
+đối chiếu flow đã giải mã với runtime và kết quả trên app. Dữ liệu chỉ quan sát qua
+hook phải được ghi rõ là runtime-only, không gọi là wire capture.
+
+Bypass giúp tăng khả năng quan sát, không tự chứng minh hành vi nguyên bản hoặc
+lỗ hổng. Tách evidence sau can thiệp khỏi baseline và ghi rõ giới hạn còn lại.
+Không mặc định nối hai proxy, bypass mọi app, cài CA hay bật hook toàn cục;
+hoàn nguyên các thay đổi của phiên sau capture. Khởi động phiên OMP mới để nạp
+rule và prompt đã cập nhật.
 
 ### REA (Reverse Engineer Anything)
 
