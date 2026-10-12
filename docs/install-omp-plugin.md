@@ -2,6 +2,37 @@
 
 Tài liệu này hướng dẫn cách kết nối và nạp plugin `arsenal` vào môi trường Oh My Pi (OMP) từ mã nguồn repository cục bộ.
 
+## Cài local và test bằng Just
+
+Yêu cầu `just`, Bun và OMP có trong `PATH`. Chạy từ repository:
+
+```bash
+just                       # Liệt kê các recipe, không tự cài đặt
+just preview               # Preview profile và plugin link, không ghi cấu hình
+just install-local         # Cài dependencies → build → cài/verify profile → link OMP
+just test-local            # Test profile, MCP, specialist parity và slash commands
+just test                  # Toàn bộ test suite
+just test tests/mcp-lifecycle.test.ts
+just typecheck
+just determinism
+```
+
+`install-local` dùng `bun install --frozen-lockfile`, không truyền `--force`
+cho cài profile. Plugin được link ở scope `user`; profile mặc định là
+`~/.omp/profiles/arsenal/agent`.
+
+```bash
+# Cài/verify profile thử nghiệm, không link plugin hay sửa profile đang dùng
+ARSENAL_PROFILE=/tmp/arsenal-test/agent just profile-install
+ARSENAL_PROFILE=/tmp/arsenal-test/agent just verify
+
+# Chọn scope project cho bước link (độc lập với đường dẫn profile)
+ARSENAL_SCOPE=project just install-local
+```
+
+`just build`, `just profile-install` và `just link` cũng chạy độc lập được.
+Recipe giữ nguyên hành vi merge/conflict của CLI; không tự ép ghi đè file.
+
 ---
 
 ## 1. Bản chất kiến trúc phân phối
