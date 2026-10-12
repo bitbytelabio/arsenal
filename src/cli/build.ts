@@ -13,6 +13,7 @@ import { generateSkillIndex } from "../../tools/generate-skill-index.ts";
 import { safeWriteFile } from "../core/fs-safe.ts";
 import { sha256File } from "../core/hash.ts";
 import { parseSkillFrontmatter } from "../core/skill-frontmatter.ts";
+import { createCanonicalMcpCatalog } from "../core/mcp.ts";
 
 /**
  * Extracts an explicit override reason from local skill frontmatter.
@@ -250,20 +251,7 @@ export async function executeBuild(
   );
   safeWriteFile(path.join(targetDir, "plugin.json"), pluginJsonContent, { write: true, force: true });
 
-  const mcpCatalogContent = JSON.stringify(
-    {
-      mcpServers: {
-        "ida-pro": { type: "stdio", command: "uvx", args: ["ida-pro-mcp"], enabled: false },
-        ghidra: { type: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], enabled: false },
-        jshook: { type: "stdio", command: "node", args: ["jshookmcp.js"], enabled: false },
-        "burp-ultra": { type: "sse", url: "http://127.0.0.1:8080/mcp", enabled: false },
-        playwright: { type: "stdio", command: "bunx", args: ["@playwright/mcp@latest"], enabled: false },
-        rea: { type: "stdio", command: "bunx", args: ["rea-agents@6.4.0", "mcp"], enabled: false },
-      },
-    },
-    null,
-    2
-  );
+  const mcpCatalogContent = JSON.stringify(createCanonicalMcpCatalog(), null, 2);
   safeWriteFile(path.join(targetDir, ".mcp.json"), mcpCatalogContent, { write: true, force: true });
 
   // 6. Bundle OMP runtime extensions into standalone JavaScript artifacts

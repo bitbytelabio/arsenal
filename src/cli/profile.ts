@@ -14,12 +14,17 @@ import * as yaml from "yaml";
 import { FORBIDDEN_VENDOR_SEGMENTS } from "../core/skill-naming.ts";
 import { evaluateSpecialistParity } from "../core/specialist-parity.ts";
 import { detectIdaInstallation } from "../core/ida-detector.ts";
+import {
+  createCanonicalMcpCatalog,
+  parseAndValidateMcpConfig,
+  mergeMcpConfigWithDefaults,
+} from "../core/mcp.ts";
 export async function handleProfile(ctx: CommandContext): Promise<number> {
   const subCommand = ctx.subCommand ?? "verify";
   const profileDir = ctx.profileDir;
 
   if (subCommand === "install") {
-    const isWrite = Boolean(ctx.values.write);
+    const isWrite = Boolean(ctx.values.write) && !Boolean(ctx.values.check) && ctx.mode !== "check";
     const isForce = Boolean(ctx.values.force);
 
     // Operator-owned protected files that must never be clobbered
@@ -30,6 +35,31 @@ export async function handleProfile(ctx: CommandContext): Promise<number> {
         // Protected state exists and will be preserved
       }
     }
+    // Preflight check: malformed or corrupt profile mcp.json fails without writes
+    const profileMcpFile = path.join(profileDir, "mcp.json");
+    if (fs.existsSync(profileMcpFile)) {
+      const mcpRaw = fs.readFileSync(profileMcpFile, "utf-8");
+      const parseRes = parseAndValidateMcpConfig(mcpRaw);
+      if (!parseRes.ok) {
+        const errorMsg = `CONFIG_INVALID: Operator profile mcp.json at '${profileMcpFile}' is malformed or corrupt: ${parseRes.error}`;
+        if (ctx.isJson) {
+          emitJson(
+            createJsonEnvelope(
+              ctx.rawArgs.join(" "),
+              EXIT_CODES.MUTATION_REFUSED,
+              ctx.mode,
+              { profileDir },
+              [],
+              [errorMsg]
+            )
+          );
+        } else {
+          console.error(`Error: ${errorMsg}`);
+        }
+        return EXIT_CODES.MUTATION_REFUSED;
+      }
+    }
+
 
     // Default template contents
     const agentsTemplate = `<!-- arsenal:start -->
@@ -163,20 +193,7 @@ task:
 providers: {}
 `;
 
-    const mcpTemplate = JSON.stringify(
-      {
-        mcpServers: {
-          "ida-pro": { type: "stdio", command: "uvx", args: ["ida-pro-mcp"], enabled: false },
-          ghidra: { type: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], enabled: false },
-          jshook: { type: "stdio", command: "node", args: ["jshookmcp.js"], enabled: false },
-          "burp-ultra": { type: "sse", url: "http://127.0.0.1:8080/mcp", enabled: false },
-          playwright: { type: "stdio", command: "bunx", args: ["@playwright/mcp@latest"], enabled: false },
-          rea: { type: "stdio", command: "bunx", args: ["rea-agents@6.4.0", "mcp"], enabled: false },
-        },
-      },
-      null,
-      2
-    );
+    const mcpTemplate = JSON.stringify(createCanonicalMcpCatalog(), null, 2);
 
     const templates: Array<{ relPath: string; content: string }> = [
       { relPath: "AGENTS.md", content: agentsTemplate },
@@ -245,26 +262,9 @@ providers: {}
       }
       // Non-destructive merge for MCP JSON configuration
       if (fs.existsSync(fullPath) && t.relPath.endsWith("mcp.json")) {
-        try {
-          const existing = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
-          const template = JSON.parse(t.content);
-          if (existing.mcpServers) {
-            delete existing.mcpServers.frida;
-            delete existing.mcpServers.semgrep;
-          }
-          const merged = {
-            $schema: existing.$schema ?? template.$schema,
-            mcpServers: {
-              ...(template.mcpServers ?? {}),
-              ...(existing.mcpServers ?? {}),
-            },
-            ...(existing.disabledServers ? { disabledServers: existing.disabledServers } : {}),
-            ...(existing.enabledServers ? { enabledServers: existing.enabledServers } : {}),
-          };
-          contentToWrite = JSON.stringify(merged, null, 2);
-        } catch {
-          // fallback to template if corrupted
-        }
+        const existing = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
+        const merged = mergeMcpConfigWithDefaults(existing);
+        contentToWrite = JSON.stringify(merged, null, 2);
       }
 
       const isPremerged =

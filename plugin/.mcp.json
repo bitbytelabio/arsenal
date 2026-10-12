@@ -1,52 +1,56 @@
 {
+  "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
   "mcpServers": {
     "ida-pro": {
       "type": "stdio",
+      "enabled": false,
       "command": "uvx",
       "args": [
         "ida-pro-mcp"
-      ],
-      "enabled": false
+      ]
     },
     "ghidra": {
       "type": "stdio",
+      "enabled": false,
       "command": "uv",
       "args": [
         "run",
         "-m",
         "ghidra_mcp"
-      ],
-      "enabled": false
+      ]
     },
     "jshook": {
       "type": "stdio",
+      "enabled": false,
       "command": "node",
       "args": [
         "jshookmcp.js"
-      ],
-      "enabled": false
+      ]
     },
     "burp-ultra": {
       "type": "sse",
-      "url": "http://127.0.0.1:8080/mcp",
-      "enabled": false
+      "enabled": false,
+      "url": "${BURP_MCP_URL:-http://127.0.0.1:9876/}",
+      "headers": {
+        "Authorization": "Bearer ${BURP_MCP_TOKEN}"
+      }
     },
     "playwright": {
       "type": "stdio",
+      "enabled": false,
       "command": "bunx",
       "args": [
         "@playwright/mcp@latest"
-      ],
-      "enabled": false
+      ]
     },
     "rea": {
       "type": "stdio",
+      "enabled": false,
       "command": "bunx",
       "args": [
         "rea-agents@6.4.0",
         "mcp"
-      ],
-      "enabled": false
+      ]
     }
   }
 }

@@ -356,6 +356,70 @@ modelRoles:
     fs.rmSync(scratchMerge, { recursive: true, force: true });
   });
 
+  it("preflights mcp.json and fails before writes on corrupt config, and preserves operator mcp entries on merge", () => {
+    const scratchCorrupt = path.resolve("tests/fixtures/us2-corrupt-mcp");
+    fs.rmSync(scratchCorrupt, { recursive: true, force: true });
+    fs.mkdirSync(scratchCorrupt, { recursive: true });
+
+    // 1. Write corrupt mcp.json
+    fs.writeFileSync(path.join(scratchCorrupt, "mcp.json"), "corrupt-scalar-string", "utf-8");
+
+    // Profile install must fail preflight without writing other templates
+    const corruptProc = Bun.spawnSync([
+      "bun",
+      "--no-env-file",
+      "run",
+      "bin/arsenal.ts",
+      "profile",
+      "install",
+      "--profile",
+      scratchCorrupt,
+      "--write",
+      "--force",
+      "--json",
+    ]);
+    expect(corruptProc.exitCode).not.toBe(0);
+    expect(fs.existsSync(path.join(scratchCorrupt, "AGENTS.md"))).toBe(false); // No writes occurred!
+
+    // 2. Test operator server preservation on valid merge
+    const scratchPreserve = path.resolve("tests/fixtures/us2-preserve-mcp");
+    fs.rmSync(scratchPreserve, { recursive: true, force: true });
+    fs.mkdirSync(scratchPreserve, { recursive: true });
+
+    const operatorMcp = {
+      mcpServers: {
+        frida: { type: "stdio", command: "uv", args: ["run", "frida-mcp"], enabled: true },
+        semgrep: { type: "stdio", command: "uv", args: ["run", "semgrep-mcp"] },
+      },
+      disabledServers: ["rea"],
+    };
+    fs.writeFileSync(path.join(scratchPreserve, "mcp.json"), JSON.stringify(operatorMcp, null, 2), "utf-8");
+
+    const preserveProc = Bun.spawnSync([
+      "bun",
+      "--no-env-file",
+      "run",
+      "bin/arsenal.ts",
+      "profile",
+      "install",
+      "--profile",
+      scratchPreserve,
+      "--write",
+      "--json",
+    ]);
+    expect(preserveProc.exitCode).toBe(0);
+
+    const merged = JSON.parse(fs.readFileSync(path.join(scratchPreserve, "mcp.json"), "utf-8"));
+    expect(merged.mcpServers["frida"]).toBeDefined();
+    expect(merged.mcpServers["semgrep"]).toBeDefined();
+    expect(merged.disabledServers).toContain("rea");
+    expect(merged.mcpServers["ida-pro"]).toBeDefined();
+    expect(merged.mcpServers["ida-pro"].enabled).toBe(false);
+
+    fs.rmSync(scratchCorrupt, { recursive: true, force: true });
+    fs.rmSync(scratchPreserve, { recursive: true, force: true });
+  });
+
 
   // The distribution archive now contains the full shipped corpus (1,647 playbooks
   // plus ~1,646 materialized support files); the tar walk is filesystem-bound, so

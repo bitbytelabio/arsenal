@@ -81,6 +81,8 @@ describe("User Story 7: Tools & Selective Bridge Provisioning", () => {
       "burp-ultra",
       "--repo",
       scratchRepo,
+      "--scope",
+      "project",
       "--write",
       "--json",
     ]);
@@ -89,10 +91,14 @@ describe("User Story 7: Tools & Selective Bridge Provisioning", () => {
     const mcpFile = path.join(scratchRepo, ".omp", "mcp.json");
     expect(fs.existsSync(mcpFile)).toBe(true);
     const parsed = JSON.parse(fs.readFileSync(mcpFile, "utf-8")) as {
-      mcpServers: Record<string, { enabled: boolean; type?: string }>;
+      mcpServers: Record<string, { enabled: boolean; type?: string; url?: string; headers?: Record<string, string> }>;
     };
     expect(parsed.mcpServers["burp-ultra"]).toBeDefined();
     expect(parsed.mcpServers["burp-ultra"]!.enabled).toBe(false); // Default disabled!
+    expect(parsed.mcpServers["burp-ultra"]!.url).toBe("${BURP_MCP_URL:-http://127.0.0.1:9876/}");
+    expect(parsed.mcpServers["burp-ultra"]!.headers).toEqual({
+      Authorization: "Bearer ${BURP_MCP_TOKEN}",
+    });
   });
 
   it("verifies MCP configuration and catches git tracking protection violation", () => {
@@ -106,6 +112,8 @@ describe("User Story 7: Tools & Selective Bridge Provisioning", () => {
       "verify",
       "--repo",
       scratchRepo,
+      "--scope",
+      "project",
       "--json",
     ]);
     expect(verProc.exitCode).toBe(0);

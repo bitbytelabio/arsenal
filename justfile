@@ -1,8 +1,8 @@
 set shell := ["bash", "-euo", "pipefail", "-c"]
 set positional-arguments
 
-export ARSENAL_PROFILE := env("ARSENAL_PROFILE", home_directory() / ".omp/profiles/arsenal/agent")
-export ARSENAL_SCOPE := env("ARSENAL_SCOPE", "user")
+export ARSENAL_OMP_PROFILE := env("ARSENAL_OMP_PROFILE", "arsenal")
+export ARSENAL_PROFILE := env("ARSENAL_PROFILE", home_directory() / ".omp/profiles" / ARSENAL_OMP_PROFILE / "agent")
 
 # List available commands; never install implicitly.
 default:
@@ -16,23 +16,21 @@ deps:
 build:
     bun --no-env-file run bin/arsenal.ts build --write
 
-# Preview profile changes and plugin linking without writing either.
+# Preview plugin linking without writing configuration.
 preview:
-    bun --no-env-file run bin/arsenal.ts profile install --profile "$ARSENAL_PROFILE"
-    omp plugin link ./plugin --scope "$ARSENAL_SCOPE" --dry-run --json
+    OMP_PROFILE="$ARSENAL_OMP_PROFILE" omp plugin link ./plugin --dry-run --json
 
-# Install/update the selected profile, then verify it (no --force).
+# Install/update the selected profile, then verify it (optional custom profile/prompt templates).
 profile-install:
     bun --no-env-file run bin/arsenal.ts profile install --profile "$ARSENAL_PROFILE" --write
     bun --no-env-file run bin/arsenal.ts profile verify --profile "$ARSENAL_PROFILE"
 
-# Link the built plugin into OMP; scope defaults to user.
+# Link the built plugin into OMP (user-scoped local link under selected profile context).
 link:
-    omp plugin link ./plugin --scope "$ARSENAL_SCOPE"
+    OMP_PROFILE="$ARSENAL_OMP_PROFILE" omp plugin link ./plugin
 
-# Install dependencies, build, install the profile, and link into OMP.
-install-local: deps build profile-install link
-
+# Install dependencies, build plugin distribution, and link into OMP.
+install-local: deps build link
 # Verify the selected profile without modifying it.
 verify:
     bun --no-env-file run bin/arsenal.ts profile verify --profile "$ARSENAL_PROFILE"

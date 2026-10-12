@@ -21,11 +21,10 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 
 ## Documentation & Installation
 
-- [OMP Plugin Installation Guide](docs/install-omp-plugin.md): Hướng dẫn liên kết và nạp plugin vào Oh My Pi (`omp plugin link ./plugin`).
+- [OMP Plugin Installation Guide](docs/install-omp-plugin.md): Hướng dẫn cài đặt qua cơ chế Marketplace theo tài liệu OMP (`OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal`, `OMP_PROFILE=arsenal omp plugin install arsenal@arsenal`), liên kết phát triển cục bộ (`OMP_PROFILE=arsenal omp plugin link ./plugin`), và quản lý cấu hình MCP bridges theo profile / project.
 - [System Architecture & Design Specification (v3)](docs/DESIGN.md): Đặc tả kiến trúc SSOT và hợp đồng runtime.
 - [Hardening & Improvement Findings](docs/IMPROVE.md): Kế hoạch nâng cấp và đối chiếu kiến trúc thực nghiệm.
 - [Feature Specifications](docs/specs/): Các hồ sơ đặc tả kỹ thuật và kế hoạch thực thi theo phương pháp SpecKit.
-
 
 ## Modernized OMP Harness Features
 
@@ -40,14 +39,13 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 ### 3. Subagent Governance & Profile Provisioning
 - All 5 specialist agent prompts (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) inline Operational Security (OpSec) safety gates and Epistemic evaluation constraints (`E-*` empirical observations vs `P-*` analytical inferences vs `unk-*` variables).
 - Enforces typed JSON schema task handoffs with single-retry recovery logic.
-- `arsenal profile install` deploys all 5 specialist definitions into `<profileDir>/agent/agents/` alongside primary templates.
+- Installing the plugin supplies `master`, all 5 specialists, rules, commands, and MCP definitions automatically. `arsenal profile install` is optional for operator templates; it writes specialist overrides to `<profileDir>/agents/`.
 
 ### 4. Dynamic MCP Lifecycle Management & Isolated `uv` Runner
-- CLI subcommands `arsenal mcp enable <name>` and `arsenal mcp disable <name>` dynamically toggle tool bridges under strict opt-in control.
+- CLI subcommands `arsenal mcp enable <name>` and `arsenal mcp disable <name>` dynamically toggle tool bridges under strict opt-in control with profile (`--scope profile`, default) or project (`--scope project`) isolation.
 - Official catalog supports 6 canonical bridges: `ida-pro`, `ghidra`, `jshook`, `burp-ultra`, `playwright`, and `rea` (all initialized to `enabled: false`).
 - Python-based bridges execute via isolated `uv` environments, with fail-fast diagnostics if `uv` is not present on the host.
-- REA runs through `bunx rea-agents@6.4.0 mcp`. Its matching `re-reverse-engineer-anything` skill, six references, and MIT license ship with the plugin; see [REA installation](docs/install-omp-plugin.md#rea-reverse-engineer-anything).
-
+- REA runs through `bunx rea-agents@6.4.0 mcp`. Its matching `re-reverse-engineer-anything` skill, six references, and MIT license ship with the plugin; see [REA installation](docs/install-omp-plugin.md#6-rea-reverse-engineer-anything).
 ### 5. Complete Operational Slash Command Suite
 - 8 comprehensive slash commands guiding multi-stage security engagements:
   - `/sec-scope`: Scope manager enforcing in-scope targets and exclusions.

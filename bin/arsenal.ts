@@ -64,6 +64,7 @@ const globalOptions = {
   write: { type: "boolean", default: false },
   force: { type: "boolean", default: false },
   check: { type: "boolean", default: false },
+  scope: { type: "string" },
   profile: { type: "string" },
   repo: { type: "string" },
   preset: { type: "string" },
@@ -219,6 +220,7 @@ Global Options:
   --check                 Report-only check mode (never mutates)
   --profile <path>        Path to operator profile directory
   --repo <path>           Path to engagement target repository
+  --scope <profile|project> Target configuration scope (profile or project; default profile)
   --preset <preset>       Filter/scope by preset or domain
   --target <id>           Target skill identifier or domain:slug group
   --from <path>           Input file path for skill creation/update
