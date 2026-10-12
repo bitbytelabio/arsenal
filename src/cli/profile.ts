@@ -9,9 +9,11 @@ import { EXIT_CODES, createJsonEnvelope, emitJson } from "../../bin/arsenal.ts";
 import type { CommandContext } from "./router.ts";
 import { safeWriteFile } from "../core/fs-safe.ts";
 import { mergeYamlPreservingComments } from "../core/yaml-editor.ts";
+import { mergeAgentsMarkdown, mergeRulesMarkdown } from "../core/markdown-editor.ts";
 import * as yaml from "yaml";
 import { FORBIDDEN_VENDOR_SEGMENTS } from "../core/skill-naming.ts";
 import { evaluateSpecialistParity } from "../core/specialist-parity.ts";
+import { detectIdaInstallation } from "../core/ida-detector.ts";
 export async function handleProfile(ctx: CommandContext): Promise<number> {
   const subCommand = ctx.subCommand ?? "verify";
   const profileDir = ctx.profileDir;
@@ -30,10 +32,10 @@ export async function handleProfile(ctx: CommandContext): Promise<number> {
     }
 
     // Default template contents
-    const agentsTemplate = `# Arsenal Master Orchestrator
+    const agentsTemplate = `<!-- arsenal:start -->
+# Arsenal Master Orchestrator
 
 The \`master\` role is the default, always-selected orchestrator for the Arsenal security harness profile. It coordinates engagement planning, threat modeling, task delegation, and evidence synthesis rather than executing raw technical exploits directly.
-
 @path ./RULES.md
 
 ## Specialist Roster
@@ -74,6 +76,7 @@ Technical execution is performed by exactly five domain specialists:
 
 - Tool execution authorization belongs exclusively to host configuration (\`approvalMode\`).
 - Engagement scope in \`.omp/arsenal/scope.json\` provides declarative boundary metadata for orientation and post-session audit; it is not an execution gate.
+<!-- arsenal:end -->
 `;
 
     const rulesTemplate = `# Arsenal Operating Rules
@@ -91,25 +94,63 @@ Technical execution is performed by exactly five domain specialists:
     const hasExistingYaml = fs.existsSync(path.join(profileDir, "config.yaml"));
     const configRelPath = hasExistingYaml ? "config.yaml" : "config.yml";
 
-    const configTemplate = `tools:
+    const detectedIda = detectIdaInstallation();
+    let idaSection = "";
+    if (detectedIda.found && detectedIda.installDir && detectedIda.python) {
+      idaSection = `ida:
+  enabled: true
+  python: "${detectedIda.python}"
+  installDir: "${detectedIda.installDir}"
+  maxOpen: 4
+  idleCloseSec: 900
+`;
+    }
+
+    const configTemplate = `${idaSection}tools:
   approvalMode: "yolo"
 modelRoles:
   default: "deepseek/deepseek-flash"
-  lead: "deepseek/deepseek-flash"
-  reasoning: "deepseek/deepseek-flash"
-  plan: "deepseek/deepseek-flash"
-  slow: "deepseek/deepseek-flash"
-  task: "deepseek/deepseek-flash"
-  fast: "deepseek/deepseek-flash"
-  smol: "deepseek/deepseek-flash"
-  verifier: "deepseek/deepseek-flash"
+  lead: "google-antigravity/claude-opus-4-6:high"
+  reasoning: "google-antigravity/claude-opus-4-6:high"
+  plan: "google-antigravity/claude-opus-4-6:high"
+  slow: "google-antigravity/claude-opus-4-6:high"
+  architect: "google-antigravity/claude-sonnet-4-6:high"
+  verifier: "google-antigravity/claude-sonnet-4-6:high"
+  qa: "google-antigravity/claude-sonnet-4-6:medium"
+  security-reviewer: "google-antigravity/claude-sonnet-4-6:high"
+  mechanic: "google-antigravity/claude-sonnet-4-6:medium"
+  task: "google-antigravity/gemini-3.8-flash:high"
+  fast: "google-antigravity/gemini-3.8-flash:high"
+  implementer: "google-antigravity/gemini-3.8-flash:high"
+  debugger: "google-antigravity/gemini-3.8-flash:high"
+  scout: "google-antigravity/gemini-3.8-flash:high"
+  research: "google-antigravity/gemini-3.8-flash:high"
+  advisor: "google-antigravity/gemini-3.8-flash:high"
+  devops: "google-antigravity/gemini-3.8-flash:high"
+  codebase-memory: "google-antigravity/gemini-3.8-flash:high"
+  vision: "google-antigravity/gemini-3.8-flash:high"
+  designer: "google-antigravity/gemini-3.8-flash:high"
+  smol: "google-antigravity/gpt-oss-120b:medium"
+  commit: "google-antigravity/gpt-oss-120b:medium"
+  tiny: "google-antigravity/gpt-oss-120b:medium"
   sec-re: "deepseek/deepseek-flash"
   sec-webapp: "deepseek/deepseek-flash"
   sec-mobile: "deepseek/deepseek-flash"
   sec-red: "deepseek/deepseek-flash"
   sec-verifier: "deepseek/deepseek-flash"
+  web: "web/exa"
+  image: "google-antigravity/gemini-3-pro-image"
 task:
   agentModelOverrides:
+    scout: "@scout"
+    codebase-memory-scout: "@codebase-memory"
+    codebase-memory: "@codebase-memory"
+    codebase-memory-auditor: "@codebase-memory"
+    reviewer: "@qa"
+    security-reviewer: "@security-reviewer"
+    task: "@implementer"
+    sonic: "@mechanic"
+    devops: "@devops"
     sec-re: "deepseek/deepseek-flash"
     sec-webapp: "deepseek/deepseek-flash"
     sec-mobile: "deepseek/deepseek-flash"
@@ -124,13 +165,11 @@ providers: {}
     const mcpTemplate = JSON.stringify(
       {
         mcpServers: {
-          "ida-pro": { type: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], enabled: false },
+          "ida-pro": { type: "stdio", command: "uvx", args: ["ida-pro-mcp"], enabled: false },
           ghidra: { type: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], enabled: false },
-          frida: { type: "stdio", command: "uv", args: ["run", "frida-mcp"], enabled: false },
           jshook: { type: "stdio", command: "node", args: ["jshookmcp.js"], enabled: false },
           "burp-ultra": { type: "sse", url: "http://127.0.0.1:8080/mcp", enabled: false },
           playwright: { type: "stdio", command: "bunx", args: ["-y", "@playwright/mcp-server"], enabled: false },
-          semgrep: { type: "stdio", command: "uv", args: ["run", "semgrep-mcp"], enabled: false },
         },
       },
       null,
@@ -174,6 +213,16 @@ providers: {}
       const fullPath = path.join(profileDir, t.relPath);
       let contentToWrite = t.content;
 
+      // Non-destructive merge for AGENTS.md
+      if (fs.existsSync(fullPath) && t.relPath === "AGENTS.md") {
+        const existing = fs.readFileSync(fullPath, "utf-8");
+        contentToWrite = mergeAgentsMarkdown(existing, t.content);
+      }
+      // Non-destructive merge for RULES.md
+      if (fs.existsSync(fullPath) && t.relPath === "RULES.md") {
+        const existing = fs.readFileSync(fullPath, "utf-8");
+        contentToWrite = mergeRulesMarkdown(existing, t.content);
+      }
       // Non-destructive merge for YAML config files
       if (fs.existsSync(fullPath) && (t.relPath.endsWith(".yml") || t.relPath.endsWith(".yaml"))) {
         const existing = fs.readFileSync(fullPath, "utf-8");
@@ -184,6 +233,10 @@ providers: {}
         try {
           const existing = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
           const template = JSON.parse(t.content);
+          if (existing.mcpServers) {
+            delete existing.mcpServers.frida;
+            delete existing.mcpServers.semgrep;
+          }
           const merged = {
             $schema: existing.$schema ?? template.$schema,
             mcpServers: {
@@ -199,11 +252,18 @@ providers: {}
         }
       }
 
+      const isPremerged =
+        t.relPath === "AGENTS.md" ||
+        t.relPath === "RULES.md" ||
+        t.relPath.endsWith(".yml") ||
+        t.relPath.endsWith(".yaml") ||
+        t.relPath.endsWith("mcp.json");
+
       const res = safeWriteFile(fullPath, contentToWrite, {
         write: isWrite,
         force: isForce,
+        allowUpdate: isPremerged,
       });
-
       if (res.action === "refused") {
         refused = true;
       }

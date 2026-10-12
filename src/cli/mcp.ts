@@ -21,13 +21,11 @@ export const CANONICAL_MCP_BRIDGES: Record<
     description: string;
   }
 > = {
-  "ida-pro": { type: "stdio", command: "uv", args: ["run", "-m", "ida_mcp"], runner: "uv", binaryPrereq: "ida64", description: "IDA Pro disassembler bridge" },
+  "ida-pro": { type: "stdio", command: "uvx", args: ["ida-pro-mcp"], runner: "uv", binaryPrereq: "uvx", description: "IDA Pro MCP bridge (mrexodia/ida-pro-mcp)" },
   ghidra: { type: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], runner: "uv", binaryPrereq: "ghidra", description: "Ghidra headless decompiler bridge" },
-  frida: { type: "stdio", command: "uv", args: ["run", "frida-mcp"], runner: "uv", binaryPrereq: "frida", description: "Frida dynamic instrumentation bridge" },
   jshook: { type: "stdio", command: "node", args: ["jshookmcp.js"], runner: "node", binaryPrereq: "node", description: "JavaScript runtime function hooking bridge" },
   "burp-ultra": { type: "sse", url: "http://127.0.0.1:8080/mcp", runner: "none", description: "Burp Suite professional HTTP/S interception bridge" },
   playwright: { type: "stdio", command: "bunx", args: ["-y", "@playwright/mcp-server"], runner: "node", binaryPrereq: "bunx", description: "Headless browser automation bridge" },
-  semgrep: { type: "stdio", command: "uv", args: ["run", "semgrep-mcp"], runner: "uv", binaryPrereq: "semgrep", description: "Semgrep SAST rule-based code inspection bridge" },
 };
 
 export async function handleMcp(ctx: CommandContext): Promise<number> {

@@ -18,6 +18,7 @@ export interface SafeWriteOptions {
   write: boolean;
   force: boolean;
   mode?: number;
+  allowUpdate?: boolean;
 }
 
 export interface SafeWriteResult {
@@ -60,11 +61,11 @@ export function safeWriteFile(
         written: false,
         action: "preview",
         targetPath: resolved,
-        conflict: true,
+        conflict: !options.allowUpdate,
       };
     }
 
-    if (!options.force) {
+    if (!options.force && !options.allowUpdate) {
       return {
         written: false,
         action: "refused",

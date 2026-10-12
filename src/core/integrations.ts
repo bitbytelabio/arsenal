@@ -3,7 +3,7 @@
  * Implements data-model.md §IntegrationConfiguration and ReadinessObservation & T065
  */
 
-export type CanonicalIntegrationId = "ida-pro" | "ghidra" | "frida" | "jshook" | "burp-ultra";
+export type CanonicalIntegrationId = "ida-pro" | "ghidra" | "jshook" | "burp-ultra" | "playwright";
 
 export type ReadinessState =
   | "disabled"

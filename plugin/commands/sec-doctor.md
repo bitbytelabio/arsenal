@@ -21,7 +21,7 @@ Runs end-to-end diagnostics across the entire Arsenal system, verifying runtime 
    - Output bounding bounds ($\le 4096$ bytes) and ledger lock responsiveness.
 
 2. **Tool Bridge Readiness**:
-   - Status of all 7 canonical bridges (`ida-pro`, `ghidra`, `frida`, `jshook`, `burp-ultra`, `playwright`, `semgrep`).
+   - Status of all 5 canonical bridges (`ida-pro`, `ghidra`, `jshook`, `burp-ultra`, `playwright`).
    - Runner availability for enabled bridges.
 
 3. **Specialist Profiles**:

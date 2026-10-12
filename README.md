@@ -44,7 +44,7 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 
 ### 4. Dynamic MCP Lifecycle Management & Isolated `uv` Runner
 - CLI subcommands `arsenal mcp enable <name>` and `arsenal mcp disable <name>` dynamically toggle tool bridges under strict opt-in control.
-- Official catalog supports 7 canonical bridges: `ida-pro`, `ghidra`, `frida`, `jshook`, `burp-ultra`, `playwright`, and `semgrep` (all initialized to `enabled: false`).
+- Official catalog supports 5 canonical bridges: `ida-pro`, `ghidra`, `jshook`, `burp-ultra`, and `playwright` (all initialized to `enabled: false`).
 - Python-based bridges execute via isolated `uv` environments, with fail-fast diagnostics if `uv` is not present on the host.
 
 ### 5. Complete Operational Slash Command Suite

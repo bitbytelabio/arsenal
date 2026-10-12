@@ -55,12 +55,26 @@ export function mergeYamlPreservingComments(
   const incomingDoc = parseDocument(incomingContent);
 
   const incomingObj = incomingDoc.toJS() as unknown;
-  if (incomingObj && typeof incomingObj === "object") {
-    for (const [key, val] of Object.entries(incomingObj as Record<string, unknown>)) {
-      if (!targetDoc.has(key)) {
-        targetDoc.set(key, val);
+
+  function mergeRecursive(
+    doc: Document,
+    obj: unknown,
+    path: string[] = []
+  ): void {
+    if (obj && typeof obj === "object" && !Array.isArray(obj)) {
+      for (const [k, v] of Object.entries(obj as Record<string, unknown>)) {
+        const currentPath = [...path, k];
+        if (!doc.hasIn(currentPath)) {
+          doc.setIn(currentPath, v);
+        } else if (v && typeof v === "object" && !Array.isArray(v)) {
+          mergeRecursive(doc, v, currentPath);
+        }
       }
     }
+  }
+
+  if (incomingObj && typeof incomingObj === "object") {
+    mergeRecursive(targetDoc, incomingObj);
   }
 
   return targetDoc.toString();

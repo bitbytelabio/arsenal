@@ -2,11 +2,9 @@
   "mcpServers": {
     "ida-pro": {
       "type": "stdio",
-      "command": "uv",
+      "command": "uvx",
       "args": [
-        "run",
-        "-m",
-        "ida_mcp"
+        "ida-pro-mcp"
       ],
       "enabled": false
     },
@@ -17,15 +15,6 @@
         "run",
         "-m",
         "ghidra_mcp"
-      ],
-      "enabled": false
-    },
-    "frida": {
-      "type": "stdio",
-      "command": "uv",
-      "args": [
-        "run",
-        "frida-mcp"
       ],
       "enabled": false
     },
@@ -48,15 +37,6 @@
       "args": [
         "-y",
         "@playwright/mcp-server"
-      ],
-      "enabled": false
-    },
-    "semgrep": {
-      "type": "stdio",
-      "command": "uv",
-      "args": [
-        "run",
-        "semgrep-mcp"
       ],
       "enabled": false
     }
