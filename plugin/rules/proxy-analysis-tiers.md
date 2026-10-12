@@ -7,6 +7,12 @@ description: Route web/API testing to Burp and application reverse engineering t
 
 Apply when inspecting application traffic, reconstructing a protocol, correlating network behavior with code, or testing HTTP/API security. Choose the workflow by the investigation objective, not the file extension or tool availability alone.
 
+## Active Harness Execution
+
+- Tiers describe analysis depth and evidence quality, not tool permissions or mandatory sequential phases. Start at the tier that fits the task; replay, scanning, fuzzing, request/response modification, and runtime hooks are available at every tier when relevant to the authorized objective.
+- Act within the existing engagement authorization and host approval mode. Do not require tier promotion or repeated confirmation for already-authorized actions.
+- Do not invent per-tier capture windows, request-count quotas, or rate/concurrency caps. Capture and exercise the workflows needed to answer the task; honor actual operator-configured limits, host resource constraints, and target stability requirements.
+
 ## Tool Selection
 
 - **Web/API security testing — Burp first.** Use Proxy history for discovery and Repeater for authorized, focused request experiments. Use mitmproxy instead when scripted capture, transformation, or reproducible batch processing is the actual requirement.
@@ -18,14 +24,14 @@ Apply when inspecting application traffic, reconstructing a protocol, correlatin
 - Apply these objective-based defaults before selecting a leaf playbook; a Burp-specific recipe does not make Burp the default for all mobile reverse engineering. Select a matching playbook rather than blindly translating tool-specific commands.
 - The master MUST pass the selected proxy workflow, tier, applicable rule constraints, and capture/attachment scope to delegated specialists, including independent verifiers. The workflow choice does not expand the handoff's authorization.
 
-## Tier 1 — Bounded Traffic Triage
+## Tier 1 — Active Traffic Discovery
 
-**Goal:** Establish a reproducible baseline and identify the smallest unanswered question.
+**Goal:** Establish a reproducible baseline and actively explore the traffic and behavior relevant to the investigation.
 
-- Inspect existing HAR, Burp history, or mitmproxy flow files before generating new traffic. Saved captures do not prove current server behavior.
-- For an authorized live capture, identify the exact target process/device, endpoints, test account, action, capture interval, and output location. Limit capture at the source where possible; a display filter is not a network authorization boundary.
-- Keep Burp interception off during observation unless pausing a specific request is necessary. Do not turn on scanning, fuzzing, replay, or request modification as part of triage.
-- For reverse engineering, capture one bounded app action with mitmproxy first. Identify request/response shapes, timing, redirects, authentication boundaries, and missing visibility; escalate to the focused hook stage rather than guessing from encrypted or encoded bytes.
+- Reuse existing HAR, Burp history, or mitmproxy flows when useful, and generate fresh traffic when needed. Saved captures do not prove current server behavior.
+- Identify the target process/device, endpoints, test account, actions, and output location. Capture the required sessions and workflows rather than restricting discovery to one action or an arbitrary time window. A display filter is not a network authorization boundary.
+- Use Burp interception, available scanners/fuzzers, replay, and request/response modification during discovery when they advance the authorized objective. Retain original traffic and label generated or modified requests so the baseline remains distinguishable from active probes.
+- For reverse engineering, combine mitmproxy with runtime hooks as soon as traffic/code correlation is useful. Explore request/response shapes, redirects, authentication boundaries, and encoded or encrypted data without waiting for another tier.
 - Missing traffic is not evidence that the app made no request. Check routing, proxy bypass, caching, unsupported transports, certificate trust, and pinning. Record unobserved paths explicitly.
 
 ## Tier 2 — Focused Correlation (Default for Reverse Engineering)
@@ -41,9 +47,9 @@ Apply when inspecting application traffic, reconstructing a protocol, correlatin
 
 ## Tier 3 — Reproducible Verification
 
-**Goal:** Validate a bounded protocol or security claim without expanding the authorized target or action.
+**Goal:** Validate protocol or security claims with reproducible evidence within the authorized target and action scope.
 
-- Preserve the exact mitmproxy addon/hook script, configuration, tool versions, sanitized inputs, and capture selectors needed to reproduce the observation. Bound automation by target scope, duration, request count, concurrency, and rate.
+- Preserve the exact mitmproxy addon/hook script, configuration, tool versions, sanitized inputs, capture selectors, and execution parameters needed to reproduce the observation. Apply operator-configured execution limits and adapt to observed resource or target-stability constraints; do not introduce tier-specific quotas.
 - Compare a baseline with one controlled variation. For replay, first account for session state, nonces, timestamps, signatures, and server-side mutations; do not infer equivalence from status codes alone.
 - Use Burp for focused manual web/API confirmation, or mitmproxy addons plus hooks for repeatable application/protocol experiments. Escalation does not require using both tools.
 - Corroborate a reported behavior with both network and runtime evidence when the claim depends on their relationship. State coverage gaps and instrumentation effects; do not label the whole protocol or application understood from one successful path.
@@ -53,7 +59,7 @@ Apply when inspecting application traffic, reconstructing a protocol, correlatin
 
 - Store immutable raw captures and hook logs as access-restricted evidence with hashes. Use redacted derivatives for reports; do not copy credentials, session tokens, personal data, or key material into chat or general logs.
 - Stop only the listeners/hooks started for the investigation. Restore any proxy, routing, or target trust changes made by the session, detach hooks, and leave user-owned processes/configuration intact.
-- This rule selects workflows; it does not authorize traffic interception, replay, scanning, process attachment, certificate installation, or actions outside the engagement scope.
+- Authorization comes from the engagement and host configuration, not the tier label. Execute relevant in-scope actions without additional rule-imposed approval gates; do not expand target scope or bypass host approval controls.
 
 ## Tool References
 

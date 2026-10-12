@@ -121,6 +121,10 @@ Trong một số môi trường OMP hoặc terminal có cấu hình mạng/khóa
    bun run bin/arsenal.ts profile verify --json
    ```
 
+Rule OpSec và các specialist không bắt buộc agent đặt POSIX mode `0600`
+cho spilled raw outputs. Permission mặc định của tool và file hiện có không
+bị thay đổi bởi chính sách này.
+
 ### Proxy analysis tiers: Burp và mitmproxy + hook
 
 Rule nguồn nằm tại `plugin/rules/proxy-analysis-tiers.md`. `profile install`
@@ -132,10 +136,18 @@ Không cần bật MCP hay cấu hình proxy hệ thống để cài rule.
 - **Reverse engineering native/mobile/Electron/JavaScript:** ưu tiên mitmproxy
   để quan sát network, kết hợp hook runtime có phạm vi hẹp để đối chiếu code/data.
   Dùng `mitmdump` cho capture/addon tự động; `mitmweb` khi cần xem trực quan.
-- **Tier 1:** thu baseline có giới hạn, không tự replay/scan hoặc sửa request.
+- **Tier 1:** discovery chủ động; được capture, replay, scan/fuzz và sửa
+  request/response ngay khi cần cho mục tiêu đã được phép, đồng thời giữ baseline
+  để phân biệt traffic gốc với probe hoặc dữ liệu đã sửa.
 - **Tier 2 — mặc định cho RE:** liên kết flow với hook tại điểm dựng request,
   serialization, mã hóa/giải mã hoặc xử lý response; phân biệt quan sát và suy luận.
 - **Tier 3:** kiểm chứng có thể tái lập bằng baseline và một biến đổi có kiểm soát.
+
+Tier phân biệt độ sâu phân tích và chất lượng bằng chứng, không phải cổng phân
+quyền công cụ hay các bước bắt buộc tuần tự. Không tự đặt quota capture,
+số request, thời gian hoặc rate theo tier; chỉ tuân theo cấu hình thực tế của
+operator/host và yêu cầu ổn định của target. Không hỏi lại cho từng thao tác
+đã nằm trong phạm vi được phép.
 
 Master truyền workflow, tier và phạm vi cho specialist. Các prompt `sec-re`,
 `sec-mobile` và `sec-webapp` áp dụng cùng lựa chọn theo mục tiêu; mobile API
