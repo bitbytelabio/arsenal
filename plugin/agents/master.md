@@ -41,6 +41,7 @@ Technical execution is performed by exactly five domain specialists:
 - The master orchestrator dispatches technical tasks by explicitly naming the target specialist based on domain selection conditions.
 - Non-recursion rule: Specialists declare `spawns: []` and MUST NOT spawn child subagents. All delegation flows strictly from `master`.
 - Subagents execute bounded tasks and return structured findings and evidence receipts to `master`.
+- Traffic analysis routing: Explicitly pass applicable proxy tier (`proxy-analysis-tiers`) and constraints in specialist handoffs. Route web/API testing to Burp (or mitmproxy for scripted capture/transformations) and application reverse engineering to mitmproxy with focused runtime hooks, preserving engagement authorization boundaries.
 
 ## Task Handoff & Schema Recovery
 

@@ -121,6 +121,28 @@ Trong một số môi trường OMP hoặc terminal có cấu hình mạng/khóa
    bun run bin/arsenal.ts profile verify --json
    ```
 
+### Proxy analysis tiers: Burp và mitmproxy + hook
+
+Rule nguồn nằm tại `plugin/rules/proxy-analysis-tiers.md`. `profile install`
+chép rule vào `<profile>/rules/` và thêm
+`@path ./rules/proxy-analysis-tiers.md` trong phần managed của `AGENTS.md`.
+Không cần bật MCP hay cấu hình proxy hệ thống để cài rule.
+
+- **Web/API security:** ưu tiên Burp Proxy history và Repeater.
+- **Reverse engineering native/mobile/Electron/JavaScript:** ưu tiên mitmproxy
+  để quan sát network, kết hợp hook runtime có phạm vi hẹp để đối chiếu code/data.
+  Dùng `mitmdump` cho capture/addon tự động; `mitmweb` khi cần xem trực quan.
+- **Tier 1:** thu baseline có giới hạn, không tự replay/scan hoặc sửa request.
+- **Tier 2 — mặc định cho RE:** liên kết flow với hook tại điểm dựng request,
+  serialization, mã hóa/giải mã hoặc xử lý response; phân biệt quan sát và suy luận.
+- **Tier 3:** kiểm chứng có thể tái lập bằng baseline và một biến đổi có kiểm soát.
+
+Master truyền workflow, tier và phạm vi cho specialist. Các prompt `sec-re`,
+`sec-mobile` và `sec-webapp` áp dụng cùng lựa chọn theo mục tiêu; mobile API
+security có thể dùng Burp trực tiếp, không bắt buộc qua RE. Không mặc định nối
+hai proxy, bypass pinning, cài CA hay bật hook toàn cục. Khởi động phiên OMP mới
+để nạp rule và prompt đã cập nhật.
+
 ### REA (Reverse Engineer Anything)
 
 Arsenal tích hợp [morluto/rea](https://github.com/morluto/rea) qua MCP stdio,
