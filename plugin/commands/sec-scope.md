@@ -37,5 +37,4 @@ This command manages engagement boundaries to prevent accidental or unauthorized
 ---
 
 ## Safety Policy
-- Active security testing requires verified authorization status (`status: granted` and `ready_for_act: true`).
 - Any attempt to target an asset listed in `out_of_scope` or unlisted in `in_scope` triggers a mandatory confirmation gate.
