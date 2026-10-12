@@ -206,6 +206,19 @@ providers: {}
         });
       }
     }
+    // Copy domain rules from plugin/rules into rules/
+    const pluginRulesDir = path.join(ctx.repoRoot, "plugin/rules");
+    if (fs.existsSync(pluginRulesDir)) {
+      for (const rf of fs.readdirSync(pluginRulesDir)) {
+        if (rf.endsWith(".md")) {
+          const rulePath = path.join(pluginRulesDir, rf);
+          templates.push({
+            relPath: path.join("rules", rf),
+            content: fs.readFileSync(rulePath, "utf-8"),
+          });
+        }
+      }
+    }
     const actions: Array<{ path: string; action: string }> = [];
     let refused = false;
 
@@ -255,6 +268,7 @@ providers: {}
       const isPremerged =
         t.relPath === "AGENTS.md" ||
         t.relPath === "RULES.md" ||
+        t.relPath.startsWith("rules/") ||
         t.relPath.endsWith(".yml") ||
         t.relPath.endsWith(".yaml") ||
         t.relPath.endsWith("mcp.json");

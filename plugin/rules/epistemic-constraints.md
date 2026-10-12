@@ -1,3 +1,8 @@
+---
+name: epistemic-constraints
+description: Enforce epistemic separation including direct observations, mandatory sec-verifier independent verification, and five-status finding taxonomy.
+---
+
 # Epistemic Constraints
 
 1. Every finding claim must link to at least one valid evidence receipt ID (\`E-xxx\`).
