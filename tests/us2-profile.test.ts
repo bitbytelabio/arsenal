@@ -59,8 +59,10 @@ describe("User Story 2: Profile Installation & Verification", () => {
     expect(fs.existsSync(path.join(scratchProfile, "models.yml"))).toBe(true);
 
 
-    // Verify all 5 specialist agent definitions created in agent/agents/
-    const agentAgentsDir = path.join(scratchProfile, "agent", "agents");
+    // Verify all 5 specialist agent definitions created in agents/
+    const agentAgentsDir = fs.existsSync(path.join(scratchProfile, "agents"))
+      ? path.join(scratchProfile, "agents")
+      : path.join(scratchProfile, "agent", "agents");
     for (const spec of ["sec-re.md", "sec-webapp.md", "sec-mobile.md", "sec-red.md", "sec-verifier.md"]) {
       const specFile = path.join(agentAgentsDir, spec);
       expect(fs.existsSync(specFile)).toBe(true);

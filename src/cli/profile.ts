@@ -88,23 +88,37 @@ Technical execution is performed by exactly five domain specialists:
 - Respect host-level execution authorization controls and operating approval modes without evasion.
 `;
 
-    const configTemplate = `defaultModel: "@reasoning"
-approvalMode: "yolo"
+    const hasExistingYaml = fs.existsSync(path.join(profileDir, "config.yaml"));
+    const configRelPath = hasExistingYaml ? "config.yaml" : "config.yml";
+
+    const configTemplate = `tools:
+  approvalMode: "yolo"
+modelRoles:
+  default: "deepseek/deepseek-flash"
+  lead: "deepseek/deepseek-flash"
+  reasoning: "deepseek/deepseek-flash"
+  plan: "deepseek/deepseek-flash"
+  slow: "deepseek/deepseek-flash"
+  task: "deepseek/deepseek-flash"
+  fast: "deepseek/deepseek-flash"
+  smol: "deepseek/deepseek-flash"
+  verifier: "deepseek/deepseek-flash"
+  sec-re: "deepseek/deepseek-flash"
+  sec-webapp: "deepseek/deepseek-flash"
+  sec-mobile: "deepseek/deepseek-flash"
+  sec-red: "deepseek/deepseek-flash"
+  sec-verifier: "deepseek/deepseek-flash"
+task:
+  agentModelOverrides:
+    sec-re: "deepseek/deepseek-flash"
+    sec-webapp: "deepseek/deepseek-flash"
+    sec-mobile: "deepseek/deepseek-flash"
+    sec-red: "deepseek/deepseek-flash"
+    sec-verifier: "deepseek/deepseek-flash"
 `;
 
-    const modelsTemplate = `roles:
-  lead:
-    provider: "anthropic"
-    model: "claude-3-7-sonnet-20250219"
-  reasoning:
-    provider: "anthropic"
-    model: "claude-3-7-sonnet-20250219"
-  fast:
-    provider: "anthropic"
-    model: "claude-3-5-haiku-20241022"
-  verifier:
-    provider: "anthropic"
-    model: "claude-3-7-sonnet-20250219"
+    const modelsTemplate = `# OMP custom model providers (models.yml)
+providers: {}
 `;
 
     const mcpTemplate = JSON.stringify(
@@ -126,12 +140,16 @@ approvalMode: "yolo"
     const templates: Array<{ relPath: string; content: string }> = [
       { relPath: "AGENTS.md", content: agentsTemplate },
       { relPath: "RULES.md", content: rulesTemplate },
-      { relPath: "config.yml", content: configTemplate },
-      { relPath: "models.yml", content: modelsTemplate },
-      { relPath: "mcp.json", content: mcpTemplate },
+      { relPath: configRelPath, content: configTemplate },
     ];
 
-    // Copy all 5 specialist agent definitions into agent/agents/
+    if (!hasExistingYaml) {
+      templates.push({ relPath: "models.yml", content: modelsTemplate });
+    }
+
+    templates.push({ relPath: "mcp.json", content: mcpTemplate });
+
+    // Copy all 5 specialist agent definitions into agents/
     const pluginAgentsDir = path.join(ctx.repoRoot, "plugin/agents");
     const specialistFiles = [
       "sec-re.md",
@@ -144,12 +162,11 @@ approvalMode: "yolo"
       const srcPath = path.join(pluginAgentsDir, sf);
       if (fs.existsSync(srcPath)) {
         templates.push({
-          relPath: path.join("agent/agents", sf),
+          relPath: path.join("agents", sf),
           content: fs.readFileSync(srcPath, "utf-8"),
         });
       }
     }
-
     const actions: Array<{ path: string; action: string }> = [];
     let refused = false;
 
@@ -161,6 +178,25 @@ approvalMode: "yolo"
       if (fs.existsSync(fullPath) && (t.relPath.endsWith(".yml") || t.relPath.endsWith(".yaml"))) {
         const existing = fs.readFileSync(fullPath, "utf-8");
         contentToWrite = mergeYamlPreservingComments(existing, t.content);
+      }
+      // Non-destructive merge for MCP JSON configuration
+      if (fs.existsSync(fullPath) && t.relPath.endsWith("mcp.json")) {
+        try {
+          const existing = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
+          const template = JSON.parse(t.content);
+          const merged = {
+            $schema: existing.$schema ?? template.$schema,
+            mcpServers: {
+              ...(template.mcpServers ?? {}),
+              ...(existing.mcpServers ?? {}),
+            },
+            ...(existing.disabledServers ? { disabledServers: existing.disabledServers } : {}),
+            ...(existing.enabledServers ? { enabledServers: existing.enabledServers } : {}),
+          };
+          contentToWrite = JSON.stringify(merged, null, 2);
+        } catch {
+          // fallback to template if corrupted
+        }
       }
 
       const res = safeWriteFile(fullPath, contentToWrite, {
@@ -210,36 +246,44 @@ approvalMode: "yolo"
   }
 
   if (subCommand === "verify") {
-    const requiredFiles = [
-      "AGENTS.md",
-      "RULES.md",
-      "config.yml",
-      "models.yml",
-      "mcp.json",
-      "agent/agents/sec-re.md",
-      "agent/agents/sec-webapp.md",
-      "agent/agents/sec-mobile.md",
-      "agent/agents/sec-red.md",
-      "agent/agents/sec-verifier.md",
-    ];
-    const missing: string[] = [];
-    for (const req of requiredFiles) {
-      if (!fs.existsSync(path.join(profileDir, req))) {
-        missing.push(req);
-      }
-    }
-
-    // Shadow agent collision check
-    const agentDir = path.join(profileDir, "agents");
-    const shadows: string[] = [];
-    const pluginAgents = [
-      "master.md",
+    const specialistFiles = [
       "sec-re.md",
       "sec-webapp.md",
       "sec-mobile.md",
       "sec-red.md",
       "sec-verifier.md",
     ];
+
+    const hasConfig =
+      fs.existsSync(path.join(profileDir, "config.yaml")) ||
+      fs.existsSync(path.join(profileDir, "config.yml"));
+    const hasModels =
+      fs.existsSync(path.join(profileDir, "models.yml")) ||
+      (fs.existsSync(path.join(profileDir, "config.yaml")) &&
+        (fs.readFileSync(path.join(profileDir, "config.yaml"), "utf-8").includes("modelRoles:") ||
+         fs.readFileSync(path.join(profileDir, "config.yaml"), "utf-8").includes("roles:"))) ||
+      (fs.existsSync(path.join(profileDir, "config.yml")) &&
+        (fs.readFileSync(path.join(profileDir, "config.yml"), "utf-8").includes("modelRoles:") ||
+         fs.readFileSync(path.join(profileDir, "config.yml"), "utf-8").includes("roles:")));
+    const missing: string[] = [];
+    if (!fs.existsSync(path.join(profileDir, "AGENTS.md"))) missing.push("AGENTS.md");
+    if (!fs.existsSync(path.join(profileDir, "RULES.md"))) missing.push("RULES.md");
+    if (!hasConfig) missing.push("config.yaml (or config.yml)");
+    if (!hasModels) missing.push("models.yml (or roles in config.yaml)");
+    if (!fs.existsSync(path.join(profileDir, "mcp.json"))) missing.push("mcp.json");
+
+    for (const sf of specialistFiles) {
+      const inAgents = fs.existsSync(path.join(profileDir, "agents", sf));
+      const inAgentAgents = fs.existsSync(path.join(profileDir, "agent/agents", sf));
+      if (!inAgents && !inAgentAgents) {
+        missing.push(`agents/${sf}`);
+      }
+    }
+
+    // Shadow agent collision check (only check if unexpected agents like master.md shadow plugin)
+    const agentDir = path.join(profileDir, "agents");
+    const shadows: string[] = [];
+    const pluginAgents = ["master.md"];
     if (fs.existsSync(agentDir)) {
       for (const pa of pluginAgents) {
         if (fs.existsSync(path.join(agentDir, pa))) {
