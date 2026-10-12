@@ -169,7 +169,7 @@ providers: {}
           ghidra: { type: "stdio", command: "uv", args: ["run", "-m", "ghidra_mcp"], enabled: false },
           jshook: { type: "stdio", command: "node", args: ["jshookmcp.js"], enabled: false },
           "burp-ultra": { type: "sse", url: "http://127.0.0.1:8080/mcp", enabled: false },
-          playwright: { type: "stdio", command: "bunx", args: ["-y", "@playwright/mcp-server"], enabled: false },
+          playwright: { type: "stdio", command: "bunx", args: ["@playwright/mcp@latest"], enabled: false },
         },
       },
       null,

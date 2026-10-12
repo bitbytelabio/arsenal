@@ -13,7 +13,7 @@ describe("MCP uv Runner & Configuration", () => {
   test("configures bunx runner and stdio type for playwright bridge", () => {
     expect(CANONICAL_MCP_BRIDGES["playwright"]!.command).toBe("bunx");
     expect(CANONICAL_MCP_BRIDGES["playwright"]!.type).toBe("stdio");
-    expect(CANONICAL_MCP_BRIDGES["playwright"]!.args).toEqual(["-y", "@playwright/mcp-server"]);
+    expect(CANONICAL_MCP_BRIDGES["playwright"]!.args).toEqual(["@playwright/mcp@latest"]);
   });
 
   test("contains all 5 canonical bridges in catalog", () => {

@@ -35,8 +35,7 @@
       "type": "stdio",
       "command": "bunx",
       "args": [
-        "-y",
-        "@playwright/mcp-server"
+        "@playwright/mcp@latest"
       ],
       "enabled": false
     }
