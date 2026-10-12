@@ -44,8 +44,9 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 
 ### 4. Dynamic MCP Lifecycle Management & Isolated `uv` Runner
 - CLI subcommands `arsenal mcp enable <name>` and `arsenal mcp disable <name>` dynamically toggle tool bridges under strict opt-in control.
-- Official catalog supports 5 canonical bridges: `ida-pro`, `ghidra`, `jshook`, `burp-ultra`, and `playwright` (all initialized to `enabled: false`).
+- Official catalog supports 6 canonical bridges: `ida-pro`, `ghidra`, `jshook`, `burp-ultra`, `playwright`, and `rea` (all initialized to `enabled: false`).
 - Python-based bridges execute via isolated `uv` environments, with fail-fast diagnostics if `uv` is not present on the host.
+- REA runs through `bunx rea-agents@6.4.0 mcp`. Its matching `re-reverse-engineer-anything` skill, six references, and MIT license ship with the plugin; see [REA installation](docs/install-omp-plugin.md#rea-reverse-engineer-anything).
 
 ### 5. Complete Operational Slash Command Suite
 - 8 comprehensive slash commands guiding multi-stage security engagements:

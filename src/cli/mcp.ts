@@ -26,6 +26,7 @@ export const CANONICAL_MCP_BRIDGES: Record<
   jshook: { type: "stdio", command: "node", args: ["jshookmcp.js"], runner: "node", binaryPrereq: "node", description: "JavaScript runtime function hooking bridge" },
   "burp-ultra": { type: "sse", url: "http://127.0.0.1:8080/mcp", runner: "none", description: "Burp Suite professional HTTP/S interception bridge" },
   playwright: { type: "stdio", command: "bunx", args: ["@playwright/mcp@latest"], runner: "node", binaryPrereq: "bunx", description: "Headless browser automation bridge" },
+  rea: { type: "stdio", command: "bunx", args: ["rea-agents@6.4.0", "mcp"], runner: "node", binaryPrereq: "bunx", description: "Reverse engineering assistant bridge (morluto/rea)" },
 };
 
 export async function handleMcp(ctx: CommandContext): Promise<number> {

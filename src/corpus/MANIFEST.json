@@ -3,8 +3,8 @@
   "generator": "arsenal-corpus-internalize-v3.0.0",
   "created_at": null,
   "summary": {
-    "total_considered": 1814,
-    "admitted": 1647,
+    "total_considered": 1815,
+    "admitted": 1648,
     "quarantined": 1,
     "excluded": 0,
     "deduplicated": 166
@@ -34,6 +34,11 @@
       "repo": "xalgorix",
       "rev": "911ac7310ba3666c1e5efc0abcb5327d1fc71be4",
       "license": "Apache-2.0"
+    },
+    "rea": {
+      "repo": "morluto/rea",
+      "rev": "a56f7bb668ab23fec8d33f7af353ac7ed2fe1895",
+      "license": "MIT"
     }
   },
   "files": [
@@ -27996,6 +28001,62 @@
           "source_path": "references/sdr-lab-rules.md",
           "sha256": "db3007a3334426a2ab17ae45f26cd634a0e373b926d03cf70e09406d575bf490",
           "bytes": 287
+        }
+      ]
+    },
+    {
+      "path": "skills/reverse-engineer-anything/SKILL.md",
+      "source": "rea",
+      "source_rev": "a56f7bb668ab23fec8d33f7af353ac7ed2fe1895",
+      "license": "MIT",
+      "status": "admitted",
+      "destination_path": "src/corpus/re-reverse-engineer-anything/SKILL.md",
+      "sha256": "6138892980273a7cab58fb43ff290499265f31ac1f022a8b2a48d9838d51329f",
+      "bytes": 14006,
+      "source_path": "skills/reverse-engineer-anything/SKILL.md",
+      "source_sha256": "46b495fe6459c283c1432294ebe67799a54391cd2ded197ee7df3f8ac0a8ac8f",
+      "support_files": [
+        {
+          "path": "LICENSE",
+          "source_path": "LICENSE",
+          "sha256": "798f9e4d18e49b30bf2f12696c8ced73dc4e1413da375a333d01281543a1ea8b",
+          "bytes": 1064
+        },
+        {
+          "path": "references/android-applications.md",
+          "source_path": "references/android-applications.md",
+          "sha256": "412d9cb462d85b07f6fdbc2453dd741ca3da2c0dbba627867d5624df94afa74c",
+          "bytes": 1992
+        },
+        {
+          "path": "references/connection-and-recovery.md",
+          "source_path": "references/connection-and-recovery.md",
+          "sha256": "668e421e2a27b63058f42ebd36bec04db73404c136e5f47611119ab9d4b4f607",
+          "bytes": 7973
+        },
+        {
+          "path": "references/evidence-workflows.md",
+          "source_path": "references/evidence-workflows.md",
+          "sha256": "dd23217d55342bbe3e98a2bf47a7f208b35a4b41c98645ac160a4d0aac5316f9",
+          "bytes": 2786
+        },
+        {
+          "path": "references/javascript-applications.md",
+          "source_path": "references/javascript-applications.md",
+          "sha256": "04cc298e2485d1db7925b8789097fc5fdd042e937ed11980d3eabc29cb176e59",
+          "bytes": 8152
+        },
+        {
+          "path": "references/native-and-artifacts.md",
+          "source_path": "references/native-and-artifacts.md",
+          "sha256": "1947af57448ba7be6a0736ffbe976c7ecdab4105f315ecc06c830727cc5205fe",
+          "bytes": 10177
+        },
+        {
+          "path": "references/runtime-observation.md",
+          "source_path": "references/runtime-observation.md",
+          "sha256": "b3eea94dd7d0c6474634de22ac3ccae317f42ba1ba2389d93535ee8dae7d94e1",
+          "bytes": 1811
         }
       ]
     },

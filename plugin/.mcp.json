@@ -38,6 +38,15 @@
         "@playwright/mcp@latest"
       ],
       "enabled": false
+    },
+    "rea": {
+      "type": "stdio",
+      "command": "bunx",
+      "args": [
+        "rea-agents@6.4.0",
+        "mcp"
+      ],
+      "enabled": false
     }
   }
 }

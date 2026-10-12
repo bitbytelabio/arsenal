@@ -258,6 +258,7 @@ export async function executeBuild(
         jshook: { type: "stdio", command: "node", args: ["jshookmcp.js"], enabled: false },
         "burp-ultra": { type: "sse", url: "http://127.0.0.1:8080/mcp", enabled: false },
         playwright: { type: "stdio", command: "bunx", args: ["@playwright/mcp@latest"], enabled: false },
+        rea: { type: "stdio", command: "bunx", args: ["rea-agents@6.4.0", "mcp"], enabled: false },
       },
     },
     null,

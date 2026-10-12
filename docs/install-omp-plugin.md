@@ -121,6 +121,56 @@ Trong một số môi trường OMP hoặc terminal có cấu hình mạng/khóa
    bun run bin/arsenal.ts profile verify --json
    ```
 
+### REA (Reverse Engineer Anything)
+
+Arsenal tích hợp [morluto/rea](https://github.com/morluto/rea) qua MCP stdio,
+ghim package `rea-agents@6.4.0` và dùng `bunx`. Cần Bun và Node.js
+22.19+ trong nhánh 22, 24.11+ trong nhánh 24, hoặc 26+ theo
+[yêu cầu upstream](https://github.com/morluto/rea/blob/main/docs/installation.md).
+
+Skill phát hành cùng phiên bản được nhập vào
+`src/corpus/re-reverse-engineer-anything/`; build đóng gói `SKILL.md`,
+cả sáu file `references/` và MIT `LICENSE` vào
+`plugin/skills/re-reverse-engineer-anything/`. Frontmatter được chuẩn hóa theo
+schema Arsenal; provenance được ghi trong `src/corpus/MANIFEST.json`.
+Các liên kết nội bộ trong `SKILL.md` dùng URI `skill://re-reverse-engineer-anything/`;
+nội dung hướng dẫn khác và sáu file references upstream được giữ nguyên.
+Khi tài liệu dùng `npx -y rea-agents@6.4.0`, dùng
+`bunx rea-agents@6.4.0` tương đương trong Arsenal.
+
+Catalog plugin và profile mới giữ `enabled: false`. Để bật có chủ đích:
+
+```bash
+bun run bin/arsenal.ts mcp enable rea --profile ~/.omp/profiles/arsenal/agent --json
+bun run bin/arsenal.ts mcp list --profile ~/.omp/profiles/arsenal/agent --json
+```
+
+Lệnh `enable` cập nhật entry `rea` trong `.omp/mcp.json` của repository và
+`mcp.json` của profile đã tồn tại, giữ nguyên các entry khác. Cấu hình kết quả:
+
+```json
+"rea": {
+  "type": "stdio",
+  "command": "bunx",
+  "args": ["rea-agents@6.4.0", "mcp"],
+  "enabled": true
+}
+```
+
+Khởi động lại phiên OMP dùng profile `arsenal` để nạp MCP và skill mới.
+Không chạy `rea setup` toàn cục để tránh tạo skill trùng hoặc sửa client khác.
+Khi nâng cấp REA, cập nhật cả pin MCP và bộ skill/references cùng bản phát hành.
+
+Phân tích JavaScript tĩnh không cần engine native:
+
+```bash
+bunx rea-agents@6.4.0 analyze-javascript-application /absolute/path/to/extracted-app --json
+```
+
+Tích hợp này không cài Hopper/Ghidra/IDA và không cấu hình provider native.
+REA cần provider tương ứng cho decompile native; cấu hình IDA native của OMP
+không tự biến thành provider IDA của REA.
+
 ---
 
 ## 4. Gỡ bỏ hoặc hủy liên kết Plugin

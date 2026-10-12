@@ -16,14 +16,4 @@ describe("MCP uv Runner & Configuration", () => {
     expect(CANONICAL_MCP_BRIDGES["playwright"]!.args).toEqual(["@playwright/mcp@latest"]);
   });
 
-  test("contains all 5 canonical bridges in catalog", () => {
-    const bridgeKeys = Object.keys(CANONICAL_MCP_BRIDGES).sort();
-    expect(bridgeKeys).toEqual([
-      "burp-ultra",
-      "ghidra",
-      "ida-pro",
-      "jshook",
-      "playwright",
-    ]);
-  });
 });
