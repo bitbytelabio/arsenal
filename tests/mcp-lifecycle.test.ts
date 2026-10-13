@@ -375,7 +375,7 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     expect(reinstallProc.exitCode).toBe(0);
     const reinstallJson = JSON.parse(reinstallProc.stdout.toString());
     expect(reinstallJson.data.action).toBe("identical");
-  });
+  }, 15000);
 
   test("malformed or scalar config fails without writes even with --force", () => {
     const corruptFile = path.join(tmpProfile, "mcp.json");

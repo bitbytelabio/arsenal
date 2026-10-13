@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  typecheck:
+    name: Typecheck & Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: TypeScript typecheck
+        run: bun run typecheck
+
+  audit-and-determinism:
+    name: Build Determinism & Corpus Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Verify build determinism
+        run: bun --no-env-file run bin/arsenal.ts build --check-determinism --json
+
+      - name: Audit skills language
+        run: bun run bin/arsenal.ts skills check --language --json
+
+      - name: Audit skills script references
+        run: bun run bin/arsenal.ts skills scripts-audit --json
+
+      - name: Check domain coverage (RE)
+        run: bun run bin/arsenal.ts skills coverage --domain re --check --json
+
+      - name: Check domain coverage (Webapp)
+        run: bun run bin/arsenal.ts skills coverage --domain webapp --check --json
+
+      - name: Check domain coverage (Mobile)
+        run: bun run bin/arsenal.ts skills coverage --domain mobile --check --json
+
+      - name: Check domain coverage (Red Team)
+        run: bun run bin/arsenal.ts skills coverage --domain red --check --json
+
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run test suite
+        run: bun test

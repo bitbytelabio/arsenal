@@ -1,188 +1,192 @@
-# Hướng dẫn cài đặt Arsenal Plugin vào Oh My Pi (OMP)
+[ English ] | [ Tiếng Việt ](install-omp-plugin.vi.md)
 
-Tài liệu này hướng dẫn cách kết nối và nạp plugin `arsenal` vào môi trường Oh My Pi (OMP) thông qua cơ chế Marketplace theo tài liệu OMP từ GitHub repository `bitbytelabio/arsenal` hoặc liên kết trực tiếp mã nguồn phát triển cục bộ (`omp plugin link`).
+# Arsenal Plugin Installation Guide for Oh My Pi (OMP)
 
-## Tài liệu tham chiếu chính thức từ Oh My Pi
+This guide documents how to install and load the `arsenal` plugin into an Oh My Pi (OMP) environment using the official OMP Marketplace mechanism from GitHub repository `bitbytelabio/arsenal` or by directly linking local development source code (`omp plugin link`).
 
-Các quy trình trong tài liệu này bám sát quy chuẩn của OMP:
+## Official OMP Reference Documentation
+
+The procedures described here strictly align with official OMP standards:
 - [OMP Marketplace Plugin System](https://github.com/can1357/oh-my-pi/blob/main/docs/marketplace.md)
 - [OMP Configuration Discovery & Profiles](https://github.com/can1357/oh-my-pi/blob/main/docs/config-usage.md#profiles)
 - [MCP Configuration in OMP](https://github.com/can1357/oh-my-pi/blob/main/docs/mcp-config.md)
 - [Plugin Manager and Installer Plumbing](https://github.com/can1357/oh-my-pi/blob/main/docs/plugin-manager-installer-plumbing.md)
 - [Public Arsenal Marketplace Catalog](https://raw.githubusercontent.com/bitbytelabio/arsenal/main/.omp-plugin/marketplace.json)
 
-> **Lưu ý về định danh và bảo chứng**: Arsenal là một bộ harness / plugin độc lập dành cho Oh My Pi, không phải là một plugin được OMP bảo chứng chính thức (not an OMP-endorsed plugin). Các gói cài đặt từ xa luôn cần được người vận hành tự thẩm định trước khi tích hợp vào môi trường bảo mật nhạy cảm.
+> **Identity & Endorsement Notice**: Arsenal is an independent security engagement harness and plugin designed for Oh My Pi; it is **not an OMP-endorsed plugin**. Third-party remote packages must always be audited by security operators before integration into sensitive assessment environments.
 
 ---
 
-## Cài đặt nhanh bằng Justfile
+## Quick Start via Justfile
 
-Yêu cầu `just`, Bun và OMP có trong `PATH`. Chạy từ repository:
+Prerequisites: `just`, `bun`, and `omp` available in your `PATH`. Run from repository root:
 
 ```bash
-just                       # Liệt kê các recipe, không tự cài đặt
-just preview               # Preview plugin link, không ghi cấu hình
-just install-local         # Cài dependencies → build bundle → link OMP
-just test-local            # Test profile, MCP, specialist parity và slash commands
-just test                  # Toàn bộ test suite
+just                       # List available recipes without installing
+just preview               # Preview plugin link without writing configuration
+just install-local         # Install dependencies → build bundle → link OMP
+just test-local            # Test profile, MCP, specialist parity, and slash commands
+just test                  # Run full test suite
 just test tests/mcp-lifecycle.test.ts
-just typecheck
-just determinism
+just typecheck             # Run TypeScript type check
+just determinism           # Verify byte-for-byte build determinism
 ```
 
-`install-local` chỉ thực hiện `bun install --frozen-lockfile`, `build` và `link` thư mục `plugin/` vào OMP. Cài đặt plugin đã tự động tích hợp sẵn toàn bộ năng lực (skills, subagents, commands, rules và canonical MCP definitions ở trạng thái disabled).
+`install-local` executes `bun install --frozen-lockfile`, `build`, and links the `./plugin` directory into OMP. Installing the plugin automatically provides all capabilities (skills, subagents, commands, rules, and canonical MCP definitions initialized to disabled).
 
-Bước cài đặt profile template (`just profile-install`) là **tùy chọn (optional)** dành riêng cho người vận hành muốn tùy biến sâu prompt orchestrator `AGENTS.md` hoặc cấu hình riêng trong profile agent directory:
+The profile template installation step (`just profile-install`) is **optional**, intended solely for operators who wish to deeply customize the orchestrator prompt (`AGENTS.md`) or deploy custom configuration into their profile agent directory:
 
 ```bash
-# Tùy chọn: cài đặt profile prompt templates riêng biệt
+# Optional: install custom profile prompt templates
 ARSENAL_OMP_PROFILE=security-lab just profile-install
 ARSENAL_OMP_PROFILE=security-lab just verify
 
-# Hoặc trỏ trực tiếp đến một đường dẫn agent profile bất kỳ (hai biến này là hai cấu hình độc lập)
+# Or point directly to an explicit agent profile directory path
 ARSENAL_PROFILE=/tmp/arsenal-test/agent just profile-install
 ARSENAL_PROFILE=/tmp/arsenal-test/agent just verify
 ```
 
-`just build`, `just profile-install` và `just link` cũng chạy độc lập được. Recipe giữ nguyên hành vi merge/conflict của CLI; không tự ép ghi đè file.
----
-
-## Phân biệt `--profile <path>` của Arsenal CLI và `OMP_PROFILE=<name>` của OMP
-
-- **`--profile <path>` trong Arsenal CLI**: Trỏ trực tiếp tới **đường dẫn thư mục agent** trên đĩa (mặc định: `~/.omp/profiles/arsenal/agent`). Cờ này không tự động phân giải tên ngắn thành đường dẫn OMP và không phụ thuộc vào biến môi trường OMP.
-- **`OMP_PROFILE=<name>` (hoặc cờ `omp --profile <name>`) trong OMP**: Chỉ định **tên định danh profile** của OMP (ví dụ: `OMP_PROFILE=arsenal`). Khi profile có hiệu lực, OMP tự động ánh xạ cấu hình user từ `~/.omp/agent/` sang `~/.omp/profiles/<name>/agent/`.
+`just build`, `just profile-install`, and `just link` can also be run independently. Recipes preserve CLI merge/conflict behavior and never force overwrite files unless explicitly requested.
 
 ---
 
-## 1. Bản chất kiến trúc phân phối và nạp Capability
+## Disambiguation: Arsenal CLI `--profile <path>` vs OMP `OMP_PROFILE=<name>`
 
-Theo kiểm chứng thực nghiệm trên OMP 18.10.2:
-- **Hai cơ chế nạp (Two Loaders)**:
-  - Cài đặt qua **Marketplace** nạp qua provider `claude-plugins` (priority 70): các MCP servers được đặt tiền tố namespace theo tên marketplace/plugin (ví dụ: `arsenal:burp-ultra`, `arsenal:rea`).
-  - Cài đặt qua **Local Link** (`omp plugin link`) nạp qua provider legacy `omp-plugins` (priority 90): các MCP servers giữ nguyên định danh bare ID ban đầu (`burp-ultra`, `rea`).
-- **Năng lực tự động sẵn sàng**: `master` cùng 5 specialist agents (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`), 9 slash commands và rules được nạp từ plugin mà không cần chạy `profile install`. Đã kiểm chứng qua RPC trên OMP 18.10.2.
-- **Quyền ưu tiên**: Cấu hình native của profile/project (priority 100) có quyền ưu tiên cao hơn khi dùng đúng cùng định danh server, bao gồm namespace nếu cài qua marketplace. Plugin không ghi lại file cấu hình native của user.
+- **`--profile <path>` in Arsenal CLI**: Specifies an explicit **filesystem path to an agent directory** (default: `~/.omp/profiles/arsenal/agent`). This CLI flag does not resolve short profile names and is independent of OMP environment variables.
+- **`OMP_PROFILE=<name>` (or `omp --profile <name>`) in OMP**: Specifies an OMP **profile identifier** (e.g., `OMP_PROFILE=arsenal`). When set, OMP redirects user configuration paths from `~/.omp/agent/` to `~/.omp/profiles/<name>/agent/`.
 
-Phương thức phân phối:
-1. **Marketplace**: Catalog nội bộ trỏ source `./plugin` và skills `./skills` (bản GitHub raw từ xa hiện giữ `./` cho đến khi người dùng đẩy commit mới).
-2. **Local Link**: Bắt buộc chạy build trước (`just build`) vì OMP không có build hook tự động.
 ---
 
-## 2. Quy trình cài đặt qua cơ chế Marketplace theo tài liệu OMP
+## 1. Capability Distribution Architecture & Dynamic Loaders
 
-Theo tài liệu của OMP, marketplace registry và plugin user state được phân lập theo từng named profile (mặc định tại `~/.omp/profiles/<name>/marketplaces.json` và `~/.omp/profiles/<name>/plugins/` trong môi trường non-XDG; nếu cấu hình biến `XDG_DATA_HOME` và đã khởi tạo qua `omp config init-xdg`, đường dẫn sẽ giải quyết dưới `$XDG_DATA_HOME/omp/profiles/<name>/`).
+Empirical verification on OMP 18.10.2 establishes:
+- **Two Loaders**:
+  - **Marketplace Installation**: Loaded via the `claude-plugins` provider (priority 70). MCP servers are automatically namespaced with the marketplace/plugin identifier prefix (e.g., `arsenal:burp-ultra`, `arsenal:rea`).
+  - **Local Link (`omp plugin link`)**: Loaded via the legacy `omp-plugins` provider (priority 90). MCP servers retain their original bare identifiers (`burp-ultra`, `rea`).
+- **Automatic Capability Availability**: The `master` agent, 5 specialist subagents (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`), 9 slash commands, and security rules are loaded directly from the plugin without requiring `profile install`. Verified via OMP RPC inspection.
+- **Configuration Precedence**: Native profile/project configuration (priority 100) takes precedence when matching server identifiers (including namespaced IDs for marketplace installations). The plugin never overwrites existing native user configurations.
 
-Do đó, **toàn bộ các lệnh tương tác marketplace** (kể cả thao tác ở phạm vi project hoặc tra cứu danh sách) cần được tiền tố nhất quán với `OMP_PROFILE=arsenal` để đảm bảo catalog và plugin registry được ghi nhận đúng vào profile mục tiêu thay vì profile mặc định.
+Distribution Modes:
+1. **Marketplace**: Repository catalog references source `./plugin` and skills `./skills`.
+2. **Local Link**: Requires running a prior build (`just build`) as OMP does not execute build hooks automatically during link.
 
-### Bước 1: Thêm Marketplace Source
+---
 
-Thêm nguồn marketplace từ repository GitHub vào profile:
+## 2. Marketplace Installation Workflow
+
+In OMP, marketplace registries and plugin state are isolated per named profile (stored by default in `~/.omp/profiles/<name>/marketplaces.json` and `~/.omp/profiles/<name>/plugins/` in non-XDG environments, or under `$XDG_DATA_HOME/omp/profiles/<name>/` when configured).
+
+Therefore, **all marketplace commands** must be consistently prefixed with `OMP_PROFILE=arsenal` to ensure the catalog and plugin registry are registered in the target profile:
+
+### Step 1: Add Marketplace Source
+
+Register the GitHub repository marketplace source in your profile:
 
 ```bash
-# Thêm marketplace catalog từ GitHub vào profile arsenal
+# Add GitHub repository marketplace catalog to profile arsenal
 OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal
 
-# Kiểm tra danh sách marketplace đã cấu hình trong profile
+# Verify configured marketplaces in profile
 OMP_PROFILE=arsenal omp plugin marketplace list
 
-# Khám phá các plugin có sẵn trong marketplace arsenal
+# Discover available plugins in arsenal marketplace
 OMP_PROFILE=arsenal omp plugin discover arsenal
 ```
 
-### Bước 2: Kiểm tra cài đặt thử nghiệm (Dry Run)
+### Step 2: Validate Installation (Dry Run)
 
-Cờ `--dry-run` của OMP kiểm tra tính hợp lệ của catalog đã được cache, phạm vi cài đặt và các ràng buộc mà không tải gói hay thay đổi cấu hình đĩa:
+OMP's `--dry-run` flag validates cached catalog state, installation scopes, and dependency constraints without mutating disk state:
 
 ```bash
-# Chạy dry-run kiểm tra trước khi cài đặt thực tế
+# Run dry-run validation prior to installation
 OMP_PROFILE=arsenal omp plugin install --dry-run arsenal@arsenal
 ```
 
-> **Điều kiện tiên quyết của `--dry-run`**: OMP yêu cầu catalog đã được nạp/cache trong hệ thống (`~/.omp/profiles/arsenal/marketplaces.json` và cache cục bộ của profile). Do đó bước `OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal` phải được chạy trước.
+> **Dry-Run Prerequisite**: OMP requires the catalog to be cached locally (`~/.omp/profiles/arsenal/marketplaces.json`). `marketplace add` must precede `install --dry-run`.
 
-### Bước 3: Cài đặt Plugin vào OMP
+### Step 3: Install Plugin into OMP
 
-Bạn có thể cài đặt theo một trong hai phạm vi (Scope):
+You can install into either of two scopes:
 
-#### Cách A: Cài đặt phạm vi User (cho Profile arsenal)
+#### Option A: User Scope Installation (arsenal profile)
 
-Phạm vi `user` là mặc định trong OMP. Để đảm bảo phân lập profile môi trường:
+The `user` scope is the OMP default. To preserve environment isolation:
 
 ```bash
-# Cài đặt plugin cho user profile arsenal
+# Install plugin for user profile arsenal
 OMP_PROFILE=arsenal omp plugin install arsenal@arsenal
 
-# Kiểm tra danh sách plugin đã cài đặt
+# List installed plugins
 OMP_PROFILE=arsenal omp plugin list
 ```
 
-#### Cách B: Cài đặt phạm vi Project (Dự án cục bộ)
+#### Option B: Project Scope Installation
 
-Nếu bạn muốn áp dụng Arsenal trong một dự án đánh giá an ninh cụ thể, vẫn giữ tiền tố profile để OMP nhận diện catalog nguồn từ profile đang làm việc:
+To scope Arsenal to a specific assessment workspace while preserving profile resolution:
 
 ```bash
-# Cài đặt plugin trong phạm vi project hiện tại (.omp/plugins/)
+# Install plugin into local project scope (.omp/plugins/)
 OMP_PROFILE=arsenal omp plugin install --scope project arsenal@arsenal
 
-# Kiểm tra plugin trong phạm vi project
+# List project-scoped plugins
 OMP_PROFILE=arsenal omp plugin list
 ```
 
 ---
 
-## 3. Quy trình chuẩn bị và liên kết Plugin cục bộ (Local Link)
+## 3. Local Link Development Workflow
 
-Dành cho nhà phát triển muốn biên dịch và kiểm thử trực tiếp từ repository này:
+For developers building and testing directly from source:
 
-### Bước 1: Biên dịch và kiểm tra tính toàn vẹn của Plugin
+### Step 1: Build & Verify Distribution Bundle
 
 ```bash
-# 1. Biên dịch distribution bundle sang plugin/
+# 1. Compile distribution bundle into plugin/
 bun run bin/arsenal.ts build --write --force
 
-# 2. Xác thực tính tiền định byte-for-byte
+# 2. Assert byte-for-byte build determinism
 bun run bin/arsenal.ts build --check-determinism --json
 ```
 
-### Bước 2: Kiểm tra cấu hình liên kết (Dry Run)
+### Step 2: Preview Symlink (Dry Run)
 
-> **Lưu ý về phạm vi của `link`**: Theo tài liệu OMP (`docs/plugin-manager-installer-plumbing.md`), các thao tác `omp plugin link` luôn thuộc phạm vi **user-level** (tạo symlink trong thư mục plugins của profile đang hoạt động: `~/.omp/profiles/<name>/plugins/node_modules/` trong chế độ non-XDG hoặc `~/.omp/plugins/node_modules/` ở default profile). OMP link CLI cảnh báo và bỏ qua `--scope`. Không sử dụng `--scope project` cho lệnh `omp plugin link`. Nếu cần phạm vi project, hãy sử dụng cơ chế marketplace nêu ở mục trên.
+> **Link Scope Warning**: Per OMP documentation (`docs/plugin-manager-installer-plumbing.md`), `omp plugin link` operations are strictly **user-level** (creating symlinks under the active profile's plugins directory: `~/.omp/profiles/<name>/plugins/node_modules/` or `~/.omp/plugins/node_modules/` in default profile). OMP ignores `--scope project` on link commands. For project-scoped workflows, use the marketplace mechanism above.
 
 ```bash
-# Dry-run kiểm tra liên kết
+# Preview symlink creation
 OMP_PROFILE=arsenal omp plugin link ./plugin --dry-run --json
 ```
 
-### Bước 3: Thực hiện liên kết thực tế
+### Step 3: Execute Local Link
 
 ```bash
-# Liên kết thư mục plugin/ cục bộ vào OMP dưới profile ngữ cảnh
+# Link local plugin/ directory into OMP under the active profile
 OMP_PROFILE=arsenal omp plugin link ./plugin
 ```
 
 ---
 
-## 4. Khuyến cáo thực nghiệm và xử lý sự cố (Operational Caveats)
+## 4. Operational Caveats & Troubleshooting
 
-1. **Kiểm tra trạng thái sau khi cài đặt**:
+1. **Verify Plugin Status**:
    ```bash
    OMP_PROFILE=arsenal omp plugin list --json
    ```
-   Nếu lệnh phản hồi chậm, hãy kiểm tra file cấu hình plugin của OMP tại:
-   - Profile user scope: `~/.omp/profiles/arsenal/plugins/` hoặc `~/.omp/profiles/arsenal/agent/config.json`
-   - Project scope: `.omp/plugins/` hoặc `.omp/config.json`
+   If resolution delays occur, inspect configuration files at:
+   - Profile user scope: `~/.omp/profiles/arsenal/plugins/` or `~/.omp/profiles/arsenal/agent/config.json`
+   - Project scope: `.omp/plugins/` or `.omp/config.json`
 
-2. **Chẩn đoán môi trường OMP**:
+2. **Run Diagnostics**:
    ```bash
    OMP_PROFILE=arsenal omp plugin doctor
    ```
 
-3. **Nạp lại Plugin và giới hạn phiên (Restart vs /reload-plugins)**:
-   - Lệnh `/reload-plugins` trong phiên tương tác chỉ làm mới task agents, skills, slash commands và MCP servers.
-   - Đối với các công cụ không thuộc MCP (non-MCP tools), hooks, hoặc runtime extension modules (như các bundle JavaScript trong `plugin/dist/extensions/`), bạn **bắt buộc phải khởi động lại (restart) phiên OMP** để nạp mã thực thi mới.
+3. **Reload Limitations (Restart vs /reload-plugins)**:
+   - The interactive `/reload-plugins` command reloads task agents, skills, slash commands, and MCP servers.
+   - For non-MCP tools, hooks, or runtime extension modules (such as JavaScript bundles in `plugin/dist/extensions/`), **you must restart the OMP session** to load updated bytecode.
 
-4. **Cài đặt Profile Arsenal (Tùy chọn)**:
-   Do plugin đã tự động cung cấp subagents và skills qua provider `omp-plugins`, bước cài đặt profile template vào `<profileDir>/agent/` là tùy chọn, chỉ cần thiết khi bạn muốn nạp các prompt mẫu `AGENTS.md` và `RULES.md` tùy chỉnh vào thư mục profile:
+4. **Optional Profile Installation**:
+   Since the plugin delivers subagents and skills automatically, installing profile templates is optional:
    ```bash
    bun run bin/arsenal.ts profile install --profile ~/.omp/profiles/arsenal/agent --write
    bun run bin/arsenal.ts profile verify --profile ~/.omp/profiles/arsenal/agent --json
@@ -190,20 +194,20 @@ OMP_PROFILE=arsenal omp plugin link ./plugin
 
 ---
 
-## 5. Cấu hình và Quản lý MCP Bridges
+## 5. Configuring & Managing MCP Bridges
 
-Khi cài đặt plugin Arsenal, các canonical MCP bridges (`ida-pro`, `ghidra`, `jshook`, `burp-ultra`, `playwright`, `rea`) đã được định nghĩa sẵn trong `.mcp.json` của plugin và tự động tích hợp vào OMP mà không cần chạy lệnh cài đặt MCP riêng.
+Arsenal ships with 6 canonical MCP bridges: `ida-pro`, `ghidra`, `jshook`, `burp-ultra`, `playwright`, and `rea`. These definitions are pre-packaged in the plugin's `.mcp.json` and auto-register with OMP.
 
-> **Mặc định vô hiệu hóa (Default Disabled)**: Toàn bộ canonical bridges đều giữ `enabled: false`. Lệnh `/mcp list` của OMP 18.10.2 chỉ đọc các file cấu hình native (`mcp.json`), không duyệt danh mục plugin; đồng thời lệnh `/mcp enable` trong OMP không kích hoạt được các bridge chỉ tồn tại ở lớp bundle nếu chưa có trong cấu hình native.
+> **Default-Disabled Policy**: All canonical bridges default to `enabled: false`. OMP 18.10.2's `/mcp list` inspects native configuration files (`mcp.json`) rather than bundle catalogs. To activate a bridge, declare it in your native configuration.
 
-### Kích hoạt Bridges có chủ đích (Opt-in Activation)
+### Opt-in Activation
 
-Để kích hoạt bridge mong muốn trong profile, thêm định danh tương ứng vào `enabledServers` trong `~/.omp/profiles/arsenal/agent/mcp.json` (thực hiện merge, giữ nguyên các servers khác):
+Add the server identifier to `enabledServers` in `~/.omp/profiles/arsenal/agent/mcp.json`:
 
-- **Khi cài qua Marketplace**: Thêm định danh đầy đủ có namespace `arsenal:<name>` (ví dụ: `"arsenal:burp-ultra"`). Cấu hình bare `burp-ultra` sẽ không kích hoạt được server marketplace.
-- **Khi cài qua Local Link**: Thêm định danh bare ID (ví dụ: `"burp-ultra"`).
+- **Marketplace Installation**: Use namespaced identifier `arsenal:<name>` (e.g., `"arsenal:burp-ultra"`).
+- **Local Link Installation**: Use bare identifier `<name>` (e.g., `"burp-ultra"`).
 
-Ví dụ phần cấu hình cần merge khi cài qua **Marketplace**; với local link, thay `arsenal:burp-ultra` bằng `burp-ultra`. Không bật cả hai nếu chỉ cần một kết nối:
+Example configuration fragment for **Marketplace**:
 
 ```json
 {
@@ -212,70 +216,48 @@ Ví dụ phần cấu hình cần merge khi cài qua **Marketplace**; với loca
 }
 ```
 
-CLI `bun run bin/arsenal.ts mcp` quản lý và kiểm tra file cấu hình native của profile/project (chẳng hạn khi bạn muốn export định nghĩa đầy đủ ra file native để OMP nhận diện độc lập), không can thiệp toàn bộ discovery runtime nội tại của OMP.
----
-
-### Kiểm tra và Liệt kê MCP Bridges
-
-Lệnh `mcp list` hiển thị trạng thái của bridge theo phạm vi được chọn:
+The Arsenal CLI manages native configuration files across profile and project scopes:
 
 ```bash
-# Liệt kê trạng thái bridges trong profile
+# List bridges in profile scope
 bun run bin/arsenal.ts mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
 
-# Liệt kê trạng thái bridges trong project
+# List bridges in project scope
 bun run bin/arsenal.ts mcp list --scope project --repo . --json
-```
 
-### Kích hoạt và Vô hiệu hóa MCP Bridges có chủ đích (Opt-in)
-
-Các thao tác `enable` và `disable` chỉ tác động vào đúng file cấu hình được chỉ định bởi `--scope` (hoặc profile được chọn), **không bao giờ đồng thời ghi đè cả hai file**:
-
-```bash
-# Kích hoạt bridge 'rea' trong profile
+# Enable 'rea' in profile scope
 bun run bin/arsenal.ts mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent
 
-# Vô hiệu hóa bridge 'rea' trong profile
+# Disable 'rea' in profile scope
 bun run bin/arsenal.ts mcp disable rea --scope profile --profile ~/.omp/profiles/arsenal/agent
 
-# Kích hoạt bridge 'rea' ở cấp độ project
+# Enable 'rea' in project scope
 bun run bin/arsenal.ts mcp enable rea --scope project --repo .
-```
 
-### Xác thực cấu hình MCP
-
-Lệnh `mcp verify` kiểm tra tính toàn vẹn của file cấu hình, điều kiện tiên quyết của binary trong `PATH`, và đảm bảo an toàn bảo mật (không bị git theo dõi trái phép):
-
-```bash
-# Kiểm tra cấu hình MCP của profile
+# Verify MCP configuration integrity
 bun run bin/arsenal.ts mcp verify --scope profile --profile ~/.omp/profiles/arsenal/agent --json
-
-# Kiểm tra cấu hình MCP của project
 bun run bin/arsenal.ts mcp verify --scope project --repo . --json
 ```
-
-> **Lưu ý về cờ `--check`**: Cờ `--check` là chế độ báo cáo thuần túy (report-only) và cam kết không làm thay đổi hay ghi đè bất kỳ byte nào trên đĩa.
 
 ---
 
 ## 6. REA (Reverse Engineer Anything)
 
-Arsenal tích hợp [morluto/rea](https://github.com/morluto/rea) qua MCP stdio, ghim package `rea-agents@6.4.0` và dùng `bunx`. Cần Bun và Node.js 22.19+ trong nhánh 22, 24.11+ trong nhánh 24, hoặc 26+ theo [yêu cầu upstream](https://github.com/morluto/rea/blob/main/docs/installation.md).
+Arsenal integrates [morluto/rea](https://github.com/morluto/rea) via stdio MCP, pinned to `rea-agents@6.4.0` using `bunx`. Requires Bun and Node.js 22.19+ (v22), 24.11+ (v24), or 26+ per [upstream specifications](https://github.com/morluto/rea/blob/main/docs/installation.md).
 
-Skill phát hành cùng phiên bản được nhập vào `src/corpus/re-reverse-engineer-anything/`; build đóng gói `SKILL.md`, cả sáu file `references/` và MIT `LICENSE` vào `plugin/skills/re-reverse-engineer-anything/`. Frontmatter được chuẩn hóa theo schema Arsenal; provenance được ghi trong `src/corpus/MANIFEST.json`.
-Các liên kết nội bộ trong `SKILL.md` dùng URI `skill://re-reverse-engineer-anything/`; nội dung hướng dẫn khác và sáu file references upstream được giữ nguyên. Khi tài liệu dùng `npx -y rea-agents@6.4.0`, dùng `bunx rea-agents@6.4.0` tương đương trong Arsenal.
+The companion skill is internalized at `src/corpus/re-reverse-engineer-anything/`. Build artifacts include `SKILL.md`, all 6 reference manuals, and the MIT `LICENSE` under `plugin/skills/re-reverse-engineer-anything/`. Internal links resolve via canonical `skill://re-reverse-engineer-anything/` URIs.
 
-Để kích hoạt REA trong profile của bạn:
+To enable REA in your profile:
 
 ```bash
-# Bật bridge REA trong profile
+# Enable REA bridge in profile
 bun run bin/arsenal.ts mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent
 
-# Kiểm tra lại trạng thái
+# Verify activation status
 bun run bin/arsenal.ts mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
 ```
 
-Cấu hình entry kết quả trong `mcp.json`:
+Resulting configuration entry in `mcp.json`:
 
 ```json
 "rea": {
@@ -286,41 +268,35 @@ Cấu hình entry kết quả trong `mcp.json`:
 }
 ```
 
-Khởi động lại phiên OMP dùng profile `arsenal` để nạp MCP và skill mới.
-Không chạy `rea setup` toàn cục để tránh tạo skill trùng hoặc sửa client khác.
-Khi nâng cấp REA, cập nhật cả pin MCP và bộ skill/references cùng bản phát hành.
+Restart your OMP session with `OMP_PROFILE=arsenal` to load the new bridge and skill. Do not run global `rea setup` to prevent conflicts with other clients.
 
-Phân tích JavaScript tĩnh không cần engine native:
+Static JavaScript reverse engineering functions without native disassemblers:
 
 ```bash
 bunx rea-agents@6.4.0 analyze-javascript-application /absolute/path/to/extracted-app --json
 ```
 
-Tích hợp này không cài Hopper/Ghidra/IDA và không cấu hình provider native.
-REA cần provider tương ứng cho decompile native; cấu hình IDA native của OMP
-không tự biến thành provider IDA của REA.
+Note: This integration does not install or configure Hopper, Ghidra, or IDA Pro. Native decompilation requires host disassembler installations; OMP native IDA configurations do not automatically bind to REA.
+
 ---
 
 ## 7. Burp Suite & BurpMCP-Ultra Bridge
 
-Arsenal tích hợp [Cy-S3c/BurpMCP-Ultra](https://github.com/Cy-S3c/BurpMCP-Ultra) qua MCP SSE, dùng Bearer token trong header. Tham chiếu cấu hình upstream: [mcp-claude-code-direct.json](https://github.com/Cy-S3c/BurpMCP-Ultra/blob/main/configs/mcp-claude-code-direct.json).
+Arsenal connects to [Cy-S3c/BurpMCP-Ultra](https://github.com/Cy-S3c/BurpMCP-Ultra) via SSE MCP with Bearer token authentication, adhering to upstream reference [mcp-claude-code-direct.json](https://github.com/Cy-S3c/BurpMCP-Ultra/blob/main/configs/mcp-claude-code-direct.json).
 
-### 1. Chuẩn bị tiện ích BurpMCP-Ultra trên Burp Suite Pro
+### 1. Setup BurpMCP-Ultra Extension in Burp Suite Professional
 
-1. Tải bản phát hành JAR từ [BurpMCP-Ultra Releases](https://github.com/Cy-S3c/BurpMCP-Ultra/releases) (hoặc biên dịch từ nguồn với JDK 17–21 qua `./gradlew shadowJar`).
-2. Mở **Burp Suite Professional** → vào tab **Extensions** → chọn **Add** → chọn file JAR `burpmcp-ultra-*.jar`.
-3. Tab **BurpMCP-Ultra** sẽ xuất hiện trên giao diện Burp Suite với trạng thái màu xanh "Running" tại cổng mặc định `http://127.0.0.1:9876/` cùng mã kết nối (connection token).
+1. Download the release JAR from [BurpMCP-Ultra Releases](https://github.com/Cy-S3c/BurpMCP-Ultra/releases) (or compile with JDK 17–21 via `./gradlew shadowJar`).
+2. In **Burp Suite Professional** → open **Extensions** → click **Add** → select the JAR file `burpmcp-ultra-*.jar`.
+3. The **BurpMCP-Ultra** tab appears showing green "Running" status at default endpoint `http://127.0.0.1:9876/` along with your connection token.
 
-### 2. Định dạng cấu hình MCP và Endpoint chính xác
+### 2. MCP Endpoint & Protocol Specifications
 
-Theo cấu hình tham chiếu thượng nguồn (`configs/mcp-claude-code-direct.json`), BurpMCP-Ultra hoạt động qua:
 - **Transport**: `sse`.
-- **URL Endpoint**: Lắng nghe tại root path `/` (mặc định cổng 9876). Không dùng `/sse` hay `/mcp`.
-- **Xác thực**: Header `Authorization: Bearer <TOKEN>`.
+- **URL Endpoint**: Listens at root `/` (default port 9876). Do not append `/sse` or `/mcp`.
+- **Authentication**: `Authorization: Bearer <TOKEN>` header.
 
-Để hỗ trợ đổi cổng cục bộ hoặc kết nối máy chủ Burp từ xa mà không ghi đè cấu hình của người dùng khi cập nhật plugin, URL được định nghĩa qua biến môi trường kèm giá trị mặc định:
-
-Mẫu cấu hình trong `mcp.json`:
+The bridge definition supports environment variable expansion with sensible defaults:
 
 ```json
 "burp-ultra": {
@@ -333,79 +309,72 @@ Mẫu cấu hình trong `mcp.json`:
 }
 ```
 
-> **Cơ chế mở rộng biến môi trường native `${VAR}` của OMP**: Theo tài liệu OMP (`docs/mcp-config.md`), OMP tự động mở rộng cú pháp `${BURP_MCP_TOKEN}` trong `headers` và `${BURP_MCP_URL:-http://127.0.0.1:9876/}` trong `url` tại thời điểm discovery. Do đó:
-> - **Tuyệt đối không ghi token thô trực tiếp vào `mcp.json`** để bảo vệ bí mật xác thực khỏi bị vô tình theo dõi hoặc lộ lọt.
-> - Plugin chỉ thiết lập giá trị mặc định ban đầu; cấu hình `url` và `headers` do người dùng hoặc profile/project tự tùy chỉnh sẽ được giữ nguyên toàn vẹn, không bị plugin cập nhật đè lên.
+> **OMP Native Environment Expansion**: OMP expands `${BURP_MCP_TOKEN}` and `${BURP_MCP_URL:-http://127.0.0.1:9876/}` during discovery.
+> - **Never write raw credentials directly to `mcp.json`**.
+> - User-defined `url` and `headers` configurations are preserved during plugin updates.
 
-### 3. Lưu trữ Biến Môi trường an toàn trong Profile `.env`
+### 3. Store Credentials Securely in Profile `.env`
 
-Theo cơ chế discovery môi trường của OMP (`docs/providers.md`), file `.env` của profile nằm tại thư mục agent đang hoạt động:
+In OMP (`docs/providers.md`), the active profile's `.env` resides at:
 
 ```
 ~/.omp/profiles/arsenal/agent/.env
 ```
 
-Thêm cấu hình token và URL tùy chọn vào file này:
+Append your token and optional URL override:
 
 ```bash
-# Thêm BURP_MCP_TOKEN lấy từ tab Server của BurpMCP-Ultra
+# Add BURP_MCP_TOKEN from BurpMCP-Ultra server tab
 echo 'BURP_MCP_TOKEN=your_token_from_burpmcp_server_tab' >> ~/.omp/profiles/arsenal/agent/.env
 
-# Tùy chọn: ghi đè URL nếu đổi cổng hoặc kết nối Burp từ xa (mặc định nếu không đặt: http://127.0.0.1:9876/)
-# LƯU Ý BẢO MẬT: Khi kết nối tới remote endpoint qua mạng, bắt buộc/ưu tiên sử dụng HTTPS vì Bearer token truyền trong header!
+# Optional: override URL for custom ports or remote Burp instances
+# SECURITY NOTE: Remote connections over network MUST use HTTPS to protect Bearer tokens!
 echo 'BURP_MCP_URL=http://127.0.0.1:9876/' >> ~/.omp/profiles/arsenal/agent/.env
 ```
 
-> **Quy tắc ghi đè biến môi trường (Environment Precedence)**:
-> - Biến môi trường hiện hữu trong tiến trình (process environment) và file `.env` tại thư mục dự án (`<project>/.env`) có độ ưu tiên cao hơn và sẽ ghi đè giá trị trong profile `.env`.
-> - Nếu xác thực vào BurpMCP-Ultra gặp lỗi `401 Unauthorized`, hãy kiểm tra xem trong terminal hoặc dự án có đang tồn tại biến `BURP_MCP_TOKEN` rỗng hoặc không khớp hay không.
+> **Precedence Rules**: Environment variables in the active process shell and project-level `.env` (`<project>/.env`) take precedence over profile `.env`. If you receive `401 Unauthorized`, verify that no conflicting or empty `BURP_MCP_TOKEN` exists in your shell.
 
-### 4. Kích hoạt và nạp cấu hình
+### 4. Activation and Reload
 
-1. **Kích hoạt trong profile `mcp.json`**:
-   - Khi cài đặt qua Marketplace: thêm `"arsenal:burp-ultra"` vào mảng `enabledServers`.
-   - Khi cài đặt qua Local Link: thêm `"burp-ultra"` vào mảng `enabledServers`.
-2. **Khởi động lại (Restart) phiên OMP**:
-   - Khi thay đổi file `.env`, bạn được **khuyến nghị khởi động lại toàn bộ phiên OMP** để đảm bảo biến môi trường mới được nạp vào tiến trình đầy đủ.
-   - Lệnh `/mcp reload` trong OMP chỉ nạp lại cấu hình file `mcp.json` đã có sẵn, không tự động quét lại thay đổi trong file `.env`.
+1. **Activate in profile `mcp.json`**:
+   - Marketplace: Add `"arsenal:burp-ultra"` to `enabledServers`.
+   - Local Link: Add `"burp-ultra"` to `enabledServers`.
+2. **Restart OMP**: Restart the OMP session after modifying `.env` to ensure new environment variables propagate to the runtime process.
 
 ---
 
-## 8. Gỡ bỏ hoặc hủy cài đặt Plugin
+## 8. Plugin Uninstallation & Removal
 
-### Gỡ bỏ Plugin cài qua Marketplace
+### Uninstall Marketplace Plugin
 
 ```bash
-# Gỡ bỏ ở scope user trong profile arsenal
+# Remove from user scope
 OMP_PROFILE=arsenal omp plugin uninstall arsenal@arsenal --scope user
 
-# Hoặc gỡ bỏ ở scope project
+# Or remove from project scope
 OMP_PROFILE=arsenal omp plugin uninstall arsenal@arsenal --scope project
 ```
 
-### Hủy liên kết Plugin cài qua Local Link
+### Unlink Local Development Plugin
 
 ```bash
 OMP_PROFILE=arsenal omp plugin uninstall arsenal
 ```
 
-Sau đó kiểm tra lại với `OMP_PROFILE=arsenal omp plugin list` để bảo đảm môi trường sạch.
+Verify clean removal with `OMP_PROFILE=arsenal omp plugin list`.
+
 ---
 
-## 9. Proxy analysis tiers: Burp và mitmproxy + hook
+## 9. Proxy Analysis Tiers: Burp and mitmproxy + Hooks
 
-Rule nguồn nằm tại `plugin/rules/proxy-analysis-tiers.md`. `profile install` chép rule vào `<profile>/rules/` và thêm `@path ./rules/proxy-analysis-tiers.md` trong phần managed của `AGENTS.md`. Không cần bật MCP hay cấu hình proxy hệ thống để cài rule.
+Canonical policy resides in `plugin/rules/proxy-analysis-tiers.md`. Running `profile install` copies this rule to `<profile>/rules/` and configures `@path ./rules/proxy-analysis-tiers.md` in `AGENTS.md`.
 
-- **Web/API security:** ưu tiên Burp Proxy history và Repeater.
-- **Reverse engineering native/mobile/Electron/JavaScript:** ưu tiên mitmproxy để quan sát network, kết hợp hook runtime có phạm vi hẹp để đối chiếu code/data. Dùng `mitmdump` cho capture/addon tự động; `mitmweb` khi cần xem trực quan.
-- **Tier 1:** discovery chủ động; được capture, replay, scan/fuzz và sửa request/response ngay khi cần cho mục tiêu đã được phép, đồng thời giữ baseline để phân biệt traffic gốc với probe hoặc dữ liệu đã sửa.
-- **Tier 2 — mặc định cho RE:** liên kết flow với hook tại điểm dựng request, serialization, mã hóa/giải mã hoặc xử lý response; phân biệt quan sát và suy luận.
-- **Tier 3:** kiểm chứng có thể tái lập bằng baseline và một biến đổi có kiểm soát.
+- **Web/API Security**: Prioritize Burp Suite Proxy history and Repeater.
+- **Reverse Engineering (Native/Mobile/Electron/JavaScript)**: Prioritize mitmproxy for network visibility coupled with scoped runtime hooks for code/data correlation. Use `mitmdump` for headless automation and `mitmweb` for interactive UI.
+- **Tier 1 (Active Discovery)**: Capture, replay, scan/fuzz, and modify requests/responses as needed for authorized targets while retaining clean baselines.
+- **Tier 2 (Correlation - Default for RE)**: Correlate network flows with runtime hooks at request builders, serialization routines, cryptographic boundaries, or response parsers.
+- **Tier 3 (Verification)**: Reproducible verification against baselines through controlled singular mutations.
 
-Tier phân biệt độ sâu phân tích và chất lượng bằng chứng, không phải cổng phân quyền công cụ hay các bước bắt buộc tuần tự. Không tự đặt quota capture, số request, thời gian hoặc rate theo tier; chỉ tuân theo cấu hình thực tế của operator/host và yêu cầu ổn định của target. Không hỏi lại cho từng thao tác đã nằm trong phạm vi được phép.
+Tiers distinguish analysis depth and evidentiary rigor rather than tooling permission gates. Never apply arbitrary capture quotas, rate limits, or mandatory sequential barriers; follow operator authorization and target stability constraints.
 
-Master truyền workflow, tier và phạm vi cho specialist. Các prompt `sec-re`, `sec-mobile` và `sec-webapp` áp dụng cùng lựa chọn theo mục tiêu; mobile API security có thể dùng Burp trực tiếp, không bắt buộc qua RE.
-
-**Capture HTTPS trên Android và iOS:** khi SSL/TLS pinning cản interception, được dùng bypass có phạm vi đúng target (test build hoặc hook Frida/debugger tại điểm kiểm tra pinning Java/Kotlin/native trên Android hoặc Objective-C/Swift/native trên iOS) ở mọi tier trong phạm vi đã được phép, không cần hỏi lại. Phân biệt lỗi routing, CA trust và pinning; cài CA không tự bypass pinning. Giữ lần chạy trước bypass kể cả khi chỉ có lỗi handshake, rồi lặp lại cùng thao tác sau bypass. Ghi app version, package/bundle ID, APK/IPA hoặc app-binary hash, OS/device, cấu hình proxy/CA, script/hash và điểm hook; ghi khác biệt về signing, root/jailbreak hoặc emulator/simulator nếu có; đối chiếu flow đã giải mã với runtime và kết quả trên app. Dữ liệu chỉ quan sát qua hook phải được ghi rõ là runtime-only, không gọi là wire capture.
-
-Bypass giúp tăng khả năng quan sát, không tự chứng minh hành vi nguyên bản hoặc lỗ hổng. Tách evidence sau can thiệp khỏi baseline và ghi rõ giới hạn còn lại. Không mặc định nối hai proxy, bypass mọi app, cài CA hay bật hook toàn cục; hoàn nguyên các thay đổi của phiên sau capture. Khởi động phiên OMP mới để nạp rule và prompt đã cập nhật.
+**Android & iOS HTTPS Interception**: When TLS pinning interferes, operators are authorized to deploy targeted bypasses (test builds, Frida scripts, or debugger breakpoints at platform trust checks) across all tiers within authorized engagement scope without repetitive approval prompts. Distinguish routing faults, CA trust failures, and TLS pinning. Record app version, package/bundle ID, binary hashes, host/device OS, proxy/CA configuration, and hook locations. Hook observations must be explicitly labeled as runtime-only rather than raw wire captures.

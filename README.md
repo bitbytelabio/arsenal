@@ -1,3 +1,5 @@
+[ English ] | [ Tiếng Việt ](README.vi.md)
+
 # Arsenal
 
 > **Plugin-First Offensive Security & Reverse Engineering Harness for Oh My Pi (OMP)**
@@ -21,10 +23,9 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 
 ## Documentation & Installation
 
-- [OMP Plugin Installation Guide](docs/install-omp-plugin.md): Hướng dẫn cài đặt qua cơ chế Marketplace theo tài liệu OMP (`OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal`, `OMP_PROFILE=arsenal omp plugin install arsenal@arsenal`), liên kết phát triển cục bộ (`OMP_PROFILE=arsenal omp plugin link ./plugin`), và quản lý cấu hình MCP bridges theo profile / project.
-- [System Architecture & Design Specification (v3)](docs/DESIGN.md): Đặc tả kiến trúc SSOT và hợp đồng runtime.
-- [Hardening & Improvement Findings](docs/IMPROVE.md): Kế hoạch nâng cấp và đối chiếu kiến trúc thực nghiệm.
-- [Feature Specifications](docs/specs/): Các hồ sơ đặc tả kỹ thuật và kế hoạch thực thi theo phương pháp SpecKit.
+- [OMP Plugin Installation Guide](docs/install-omp-plugin.md) ([Tiếng Việt](docs/install-omp-plugin.vi.md)): Complete guide to installation via the OMP Marketplace mechanism (`OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal`, `OMP_PROFILE=arsenal omp plugin install arsenal@arsenal`), local development linking (`OMP_PROFILE=arsenal omp plugin link ./plugin`), and profile/project MCP bridge management.
+
+---
 
 ## Modernized OMP Harness Features
 
@@ -46,6 +47,7 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 - Official catalog supports 6 canonical bridges: `ida-pro`, `ghidra`, `jshook`, `burp-ultra`, `playwright`, and `rea` (all initialized to `enabled: false`).
 - Python-based bridges execute via isolated `uv` environments, with fail-fast diagnostics if `uv` is not present on the host.
 - REA runs through `bunx rea-agents@6.4.0 mcp`. Its matching `re-reverse-engineer-anything` skill, six references, and MIT license ship with the plugin; see [REA installation](docs/install-omp-plugin.md#6-rea-reverse-engineer-anything).
+
 ### 5. Complete Operational Slash Command Suite
 - 8 comprehensive slash commands guiding multi-stage security engagements:
   - `/sec-scope`: Scope manager enforcing in-scope targets and exclusions.
@@ -61,6 +63,7 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 - 496 empirically verified technique mappings enrolled into `presets/baselines/coverage-map.json` using verified markdown heading locators in target `SKILL.md` playbooks.
 - Artificial `accepted-gaps.json` reduced by > 50% in strict adherence to Principle III (Evidence Rigor) and rule CM-4.
 - 100% clean corpus manifest integrity verified via `arsenal skills check --domains` (0 errors).
+
 ---
 
 ## CLI Usage
@@ -69,6 +72,9 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 # Build plugin distribution and verify byte-for-byte determinism
 bun run bin/arsenal.ts build --write --force
 bun run bin/arsenal.ts build --check-determinism --json
+
+# Package plugin marketplace distribution
+bun run bin/arsenal.ts plugin pack --write
 
 # Verify language compliance and script citations
 bun run bin/arsenal.ts skills check --language --json

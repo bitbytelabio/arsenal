@@ -16,6 +16,9 @@ deps:
 build:
     bun --no-env-file run bin/arsenal.ts build --write
 
+# Package the plugin distribution into dist/ archive.
+pack:
+    bun --no-env-file run bin/arsenal.ts plugin pack --write
 # Preview plugin linking without writing configuration.
 preview:
     OMP_PROFILE="$ARSENAL_OMP_PROFILE" omp plugin link ./plugin --dry-run --json
