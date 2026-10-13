@@ -477,3 +477,8 @@ VULNERABILITIES FOUND:
     Impact: [Operational impact]
     Remediation: [Fix or mitigation]
 ```
+
+## References
+
+- `skill://re-performing-plc-firmware-security-analysis/references/api-reference.md` — API Reference — Performing PLC Firmware Security Analysis
+- `skill://re-performing-plc-firmware-security-analysis/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)

@@ -355,3 +355,7 @@ POLICY VALIDATION RESULTS:
   Policies with errors:              0
   Policies with suggestions:        12
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-aws-lambda-execution-roles/references/api-reference.md` — API and execution command reference

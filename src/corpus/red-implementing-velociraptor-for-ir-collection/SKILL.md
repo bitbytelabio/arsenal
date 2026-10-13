@@ -273,3 +273,10 @@ Monitoring:
 - [CISA Velociraptor Resource](https://www.cisa.gov/resources-tools/services/velociraptor)
 - [Velociraptor GitHub Repository](https://github.com/Velocidex/velociraptor)
 - [Pen Test Partners: Large-Scale Velociraptor](https://www.pentestpartners.com/security-blog/using-velociraptor-for-large-scale-endpoint-visibility-and-rapid-threat-hunting/)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-velociraptor-for-ir-collection/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-velociraptor-for-ir-collection/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-velociraptor-for-ir-collection/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-velociraptor-for-ir-collection/assets/template.md` — Assessment deliverable and reporting template

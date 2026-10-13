@@ -199,3 +199,8 @@ Centralize algorithm selection (config, not code), record key/cert expiry, and s
 - [ ] Hybrid `X25519MLKEM768` key exchange negotiated and confirmed on a test endpoint.
 - [ ] Production TLS terminator offers the hybrid group with classical fallback.
 - [ ] Crypto-agility/rotation plan documented and inventory re-run scheduled.
+
+## Shipped Playbook Resources
+
+- `skill://red-migrating-to-post-quantum-cryptography/references/api-reference.md` — API and execution command reference
+- `skill://red-migrating-to-post-quantum-cryptography/references/standards.md` — Relevant standards and compliance baselines

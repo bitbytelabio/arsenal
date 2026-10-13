@@ -125,7 +125,7 @@ Refresh decoy names, secrets, and pocket-litter periodically so they age with th
 
 ## Output Format
 
-Produce a **Cloud Deception Deployment Record** using `skill://red-deploying-cloud-deception-with-decoy-resources/support/deploying-cloud-deception-with-decoy-resources/assets/template.md`, containing:
+Produce a **Cloud Deception Deployment Record** using `skill://red-deploying-cloud-deception-with-decoy-resources/assets/template.md`, containing:
 
 1. **Decoy inventory** — per decoy: cloud, type, plausible name, real placement location of any planted credential, internal `deception` tag/label, owner.
 2. **Detection wiring** — per decoy: audit-log source → rule/pattern → alert sink → IR playbook reference, with the target alert latency.
@@ -133,4 +133,8 @@ Produce a **Cloud Deception Deployment Record** using `skill://red-deploying-clo
 4. **Validation results** — date tested, who tested, end-to-end latency observed, pass/fail.
 5. **Maintenance plan** — rotation cadence and review owner.
 
-Use `skill://red-deploying-cloud-deception-with-decoy-resources/support/deploying-cloud-deception-with-decoy-resources/templates/process.py` to render the deployment record and a per-decoy detection checklist from a decoy-inventory JSON, and to flag decoys missing detection wiring or validation.
+Use `skill://red-deploying-cloud-deception-with-decoy-resources/templates/process.py` to render the deployment record and a per-decoy detection checklist from a decoy-inventory JSON, and to flag decoys missing detection wiring or validation.
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-cloud-deception-with-decoy-resources/references/standards.md` — Relevant standards and compliance baselines

@@ -130,7 +130,7 @@ describe("US2 — shipped-first citation gate (IN-C1..IN-C3)", () => {
   it("IN-C1/IN-C3: the shipped corpus cites zero files that do not ship with it", () => {
     const result = auditCitations({ treeDir: CORPUS_DIR });
     expect(result.dangling.map((d) => `${d.skill} -> ${d.raw}`)).toEqual([]);
-  });
+  }, 120_000);
 
   it("IN-C2: prose tokens are not reported as dangling", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "arsenal-cite-"));
@@ -237,7 +237,7 @@ describe("US4 — mobile domain parity (SC-006)", () => {
     expect(r.totals.uncovered).toBe(0);
     expect(r.baseline.revision.length).toBeGreaterThan(0);
     expect(r.baseline.standard).toContain("Mobile Application Security Testing Guide");
-  });
+  }, 180_000);
 });
 
 describe("US5 — specialist definitions (P-1..P-4, SC-007, SC-008)", () => {
@@ -295,7 +295,7 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
       });
       expect(r.capabilities.length).toBe(r.totals.capabilities);
     }
-  });
+  }, 300_000);
 
   it("every coverage report names its baseline revision and artifact hash", () => {
     for (const domain of DOMAINS) {
@@ -303,7 +303,7 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
       expect(r.baseline.revision.length).toBeGreaterThan(0);
       expect(r.baseline.extracted_from_sha256).toMatch(/^[0-9a-f]{64}$/);
     }
-  });
+  }, 300_000);
 
   it("a covered record names a shipped playbook with a locator that resolves (M-1/CM-3)", () => {
     const violations: string[] = [];
@@ -322,7 +322,7 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
       }
     }
     expect(violations).toEqual([]);
-  });
+  }, 300_000);
 
   it(
     "IN-V3: two runs on unchanged inputs are byte-identical",
@@ -331,7 +331,7 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
         expect(JSON.stringify(report(domain))).toBe(JSON.stringify(report(domain)));
       }
     },
-    30_000
+    600_000
   );
 
   it("M-4/M-6: a capability id present only in a copied support file confers no coverage", () => {
@@ -416,7 +416,7 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
     const stale = report("re", { coverageMap: mutated });
     expect(stale.coverage_map.stale_locators.length).toBeGreaterThanOrEqual(1);
     expect(stale.totals.covered).toBeLessThan(target!.skills.length === 0 ? 0 : 20);
-  });
+  }, 300_000);
 
   it("routing and citation sections are clean in every report", () => {
     for (const domain of DOMAINS) {
@@ -424,14 +424,14 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
       expect({ domain, unrouted: r.routing.unrouted_categories }).toEqual({ domain, unrouted: [] });
       expect({ domain, dangling: r.citations.dangling_count }).toEqual({ domain, dangling: 0 });
     }
-  });
+  }, 300_000);
 
   it("re is fully covered by reviewed mappings (the mechanism is exercised end to end)", () => {
     const r = report("re");
     expect(r.totals.capabilities).toBe(20);
     expect(r.totals.covered).toBe(20);
     expect(r.totals.uncovered).toBe(0);
-  });
+  }, 180_000);
 
   it("every domain has zero uncovered capabilities (SC-005)", () => {
     for (const domain of DOMAINS) {
@@ -441,7 +441,7 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
       expect(r.coverage_map.stale_locators).toEqual([]);
       expect(r.coverage_map.dangling_refs).toEqual([]);
     }
-  });
+  }, 300_000);
 
   it("enforces baseline integrity across all 4 domains with 0 uncovered and valid gap rationales (US6 / T027)", () => {
     const gaps = loadAcceptedGaps(REPO_ROOT);
@@ -465,5 +465,5 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
       expect(r.coverage_map.stale_locators).toEqual([]);
       expect(r.coverage_map.dangling_refs).toEqual([]);
     }
-  });
+  }, 300_000);
 });

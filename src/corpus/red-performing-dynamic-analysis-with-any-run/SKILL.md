@@ -252,3 +252,7 @@ DROPPED FILES
 payload.dll  SHA-256: abc123... Detection: 48/72 (VirusTotal)
 config.dat   SHA-256: def456... (encrypted configuration)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-dynamic-analysis-with-any-run/references/api-reference.md` — API and execution command reference

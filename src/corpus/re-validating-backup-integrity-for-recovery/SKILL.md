@@ -114,7 +114,7 @@ find /restore-test -type f \( \
 
 # Check file entropy (high entropy = possible encryption)
 # Files with entropy > 7.9 out of 8.0 are likely encrypted
-python agent.py --entropy-scan /restore-test
+python templates/agent.py --entropy-scan /restore-test
 ```
 
 ### Step 6: Automate and Schedule Validation
@@ -166,3 +166,4 @@ python agent.py --entropy-scan /restore-test
 - NIST CSF 2.0 RC.RP-03: Backup Integrity Verification
 - CIS Controls v8: Control 11 - Data Recovery
 - CISA Ransomware Guide: https://www.cisa.gov/stopransomware
+- `skill://re-validating-backup-integrity-for-recovery/references/api-reference.md` — API Reference: Validating Backup Integrity for Recovery

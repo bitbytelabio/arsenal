@@ -163,3 +163,8 @@ chainsaw lint -r ./rules --kind sigma
 - [ ] Shimcache analysed with Amcache timestamp pairing.
 - [ ] SRUM and event-log-gap analysis performed where artifacts exist.
 - [ ] Findings (e.g., PowerShell T1059.001) documented for the hunt report.
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-evtx-with-chainsaw/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-evtx-with-chainsaw/references/standards.md` — Relevant standards and compliance baselines

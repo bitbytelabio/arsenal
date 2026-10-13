@@ -55,6 +55,6 @@ rule Mimikatz_Strings {
 ## CLI Usage
 
 ```bash
-python agent.py --evtx-file Sysmon.evtx
-python agent.py --text-log process_audit.log
+python scripts/agent.py --evtx-file Sysmon.evtx
+python scripts/agent.py --text-log process_audit.log
 ```

@@ -82,3 +82,10 @@ Business Email Compromise (BEC) is a sophisticated fraud scheme where attackers 
 - Financial controls prevent unauthorized transfers in drills
 - Account compromise detection catches simulated attacks
 - Reduced BEC susceptibility in awareness assessments
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-business-email-compromise/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-business-email-compromise/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-business-email-compromise/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-business-email-compromise/assets/template.md` — Assessment deliverable and reporting template

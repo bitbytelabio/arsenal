@@ -331,3 +331,7 @@ MONITORING:
   Blocked Packets (24h): [count]
   DPI Violations (24h): [count]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-ics-firewall-with-tofino/references/api-reference.md` — API and execution command reference

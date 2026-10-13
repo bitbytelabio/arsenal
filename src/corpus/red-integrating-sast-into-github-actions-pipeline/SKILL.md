@@ -310,3 +310,10 @@ QUALITY GATE: FAILED
 
 Action Required: Fix blocking findings before merge is permitted.
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-integrating-sast-into-github-actions-pipeline/references/api-reference.md` — API and execution command reference
+- `skill://red-integrating-sast-into-github-actions-pipeline/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-integrating-sast-into-github-actions-pipeline/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-integrating-sast-into-github-actions-pipeline/assets/template.md` — Assessment deliverable and reporting template

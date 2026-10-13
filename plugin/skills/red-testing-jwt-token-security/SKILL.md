@@ -332,3 +332,7 @@ The `kid` header parameter is used in a SQL query to look up signing keys. Injec
 4. Validate all JWT claims server-side (iss, aud, exp, nbf)
 5. Use a minimum key length of 256 bits for HMAC secrets
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-jwt-token-security/references/api-reference.md` — API and execution command reference

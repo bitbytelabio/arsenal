@@ -310,3 +310,10 @@ cosign verify ghcr.io/myorg/myapp:v1.0.0 \
 6. **Store keys in KMS** (AWS KMS, GCP KMS, HashiCorp Vault) for key-based signing
 7. **Verify the full chain**: signature + certificate + Rekor inclusion
 8. **Include build metadata** as annotations on signatures
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-image-provenance-verification-with-cosign/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-image-provenance-verification-with-cosign/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-image-provenance-verification-with-cosign/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-image-provenance-verification-with-cosign/assets/template.md` — Assessment deliverable and reporting template

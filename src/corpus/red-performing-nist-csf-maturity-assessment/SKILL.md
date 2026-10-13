@@ -123,3 +123,10 @@ The NIST Cybersecurity Framework (CSF) 2.0, released in February 2024, provides 
 - NIST SP 800-53 Rev 5 (control catalog that maps to CSF)
 - NIST CSF 2.0 Quick Start Guides
 - CSF 2.0 Reference Tool: https://csrc.nist.gov/projects/cybersecurity-framework
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-nist-csf-maturity-assessment/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-nist-csf-maturity-assessment/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-nist-csf-maturity-assessment/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-nist-csf-maturity-assessment/assets/template.md` — Assessment deliverable and reporting template

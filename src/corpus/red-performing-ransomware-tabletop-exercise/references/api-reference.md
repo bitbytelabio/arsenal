@@ -78,7 +78,7 @@ Rating thresholds:
 ## CLI Usage
 
 ```bash
-python agent.py --mode demo --output aar.json
-python agent.py --mode generate --variant accelerated --output scenario.json
-python agent.py --mode score --responses-file responses.json --output aar.json
+python scripts/agent.py --mode demo --output aar.json
+python scripts/agent.py --mode generate --variant accelerated --output scenario.json
+python scripts/agent.py --mode score --responses-file responses.json --output aar.json
 ```

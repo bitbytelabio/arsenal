@@ -85,8 +85,8 @@ reg query HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce
 ## CLI Usage
 
 ```bash
-python agent.py --input sysmon_events.json --output report.json
-python agent.py --input registry_snapshot.json --output report.json
+python scripts/agent.py --input sysmon_events.json --output report.json
+python scripts/agent.py --input registry_snapshot.json --output report.json
 ```
 
 ## MITRE ATT&CK Reference

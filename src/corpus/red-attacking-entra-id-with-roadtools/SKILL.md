@@ -188,3 +188,8 @@ roadtx describe < .roadtools_auth | jq .
 - [ ] Device registered and PRT-based SSO demonstrated (where in scope).
 - [ ] Token claims inspected with `roadtx describe`.
 - [ ] Findings and access documented for the engagement report.
+
+## Shipped Playbook Resources
+
+- `skill://red-attacking-entra-id-with-roadtools/references/api-reference.md` — API and execution command reference
+- `skill://red-attacking-entra-id-with-roadtools/references/standards.md` — Relevant standards and compliance baselines

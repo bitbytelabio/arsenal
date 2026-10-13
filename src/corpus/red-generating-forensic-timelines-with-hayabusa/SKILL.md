@@ -155,3 +155,8 @@ On the affected machine (Administrator), analyze local logs without exporting fi
 - [ ] Pivot keywords list produced for hunting leads.
 - [ ] Targeted IOC searches run with keyword/regex.
 - [ ] Findings (e.g., PowerShell T1059.001 detections) documented in the incident timeline.
+
+## Shipped Playbook Resources
+
+- `skill://red-generating-forensic-timelines-with-hayabusa/references/api-reference.md` — API and execution command reference
+- `skill://red-generating-forensic-timelines-with-hayabusa/references/standards.md` — Relevant standards and compliance baselines

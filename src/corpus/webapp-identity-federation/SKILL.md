@@ -47,7 +47,7 @@ metadata:
 ## References
 
 - `skill://webapp-identity-federation/references/sso-flow-checklist.md`
-- `../api-security/` `../windows-ad/` (Enterprise IdP)
+- ``skill://webapp-api-security`` ``skill://red-windows-ad`` (Enterprise IdP)
 
 ## Routing Context
 

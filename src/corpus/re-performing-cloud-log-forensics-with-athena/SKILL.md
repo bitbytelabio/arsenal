@@ -468,7 +468,7 @@ ORDER BY total_bytes DESC;
 
 ```bash
 # Quick-start: run the forensics agent for a full investigation
-python agent.py \
+python templates/agent.py \
     --action full_investigation \
     --database cloud_forensics \
     --start-date 2024-06-01 \
@@ -476,14 +476,14 @@ python agent.py \
     --output forensics_report.json
 
 # Run specific queries only
-python agent.py \
+python templates/agent.py \
     --action privilege_escalation \
     --database cloud_forensics \
     --start-date 2024-06-15 \
     --end-date 2024-06-16
 
 # Create all forensic tables from scratch
-python agent.py \
+python templates/agent.py \
     --action setup_tables \
     --cloudtrail-bucket my-cloudtrail-logs \
     --vpc-flow-bucket my-vpc-flow-logs \
@@ -492,3 +492,8 @@ python agent.py \
     --account-id 123456789012 \
     --regions us-east-1,us-west-2
 ```
+
+## References
+
+- `skill://re-performing-cloud-log-forensics-with-athena/references/api-reference.md` — AWS Athena API Reference
+- `skill://re-performing-cloud-log-forensics-with-athena/references/athena-forensics-reference.md` — Reference: Cloud Log Forensics with AWS Athena

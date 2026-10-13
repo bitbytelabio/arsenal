@@ -218,3 +218,10 @@ docker ps -q | xargs docker inspect --format '{{.Id}}: User={{.Config.User}}'
 - [Docker Security Best Practices](https://docs.docker.com/engine/security/)
 - [Docker Bench Security Tool](https://github.com/docker/docker-bench-security)
 - [Hadolint - Dockerfile Linter](https://github.com/hadolint/hadolint)
+
+## Shipped Playbook Resources
+
+- `skill://red-hardening-docker-containers-for-production/references/api-reference.md` — API and execution command reference
+- `skill://red-hardening-docker-containers-for-production/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hardening-docker-containers-for-production/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hardening-docker-containers-for-production/assets/template.md` — Assessment deliverable and reporting template

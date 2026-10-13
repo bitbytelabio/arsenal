@@ -48,3 +48,7 @@ Combine multiple indicators (TLS + timing + HTTP profile) into a composite beaco
 ## Expected Output
 
 JSON report containing detected beacon candidates with confidence scores, TLS fingerprints, timing analysis, HTTP profile matches, and recommended response actions.
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-cobalt-strike-beacons/references/api-reference.md` — API and execution command reference

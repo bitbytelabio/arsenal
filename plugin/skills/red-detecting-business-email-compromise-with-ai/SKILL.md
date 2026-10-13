@@ -79,3 +79,10 @@ AI-powered BEC detection uses machine learning, NLP, and behavioral analytics to
 - NLP correctly classifies urgency manipulation in test scenario
 - False positive rate below 0.05% after baseline training
 - Detection rate exceeds traditional rule-based filters by 25%+
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-business-email-compromise-with-ai/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-business-email-compromise-with-ai/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-business-email-compromise-with-ai/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-business-email-compromise-with-ai/assets/template.md` — Assessment deliverable and reporting template

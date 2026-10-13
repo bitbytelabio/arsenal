@@ -399,6 +399,8 @@ plugins:
 
 ## References
 
+- `skill://webapp-detecting-api-enumeration-attacks/references/api-reference.md` — API reference and command specification
+
 - OWASP API1:2023 Broken Object Level Authorization: https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/
 - Traceable.ai BOLA Deep Dive: https://www.traceable.ai/blog-post/a-deep-dive-on-the-most-critical-api-vulnerability----bola-broken-object-level-authorization
 - Cequence BOLA Prevention: https://www.cequence.ai/solutions/bola-and-enumeration-attack-prevention/

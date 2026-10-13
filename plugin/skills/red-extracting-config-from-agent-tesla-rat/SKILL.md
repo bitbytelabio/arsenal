@@ -175,3 +175,10 @@ if __name__ == "__main__":
 - [ANY.RUN Agent Tesla Analysis](https://any.run/malware-trends/agenttesla/)
 - [Trustwave - Agent Tesla Novel Loader](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/agent-teslas-new-ride-the-rise-of-a-novel-loader/)
 - [Malpedia - Agent Tesla](https://malpedia.caad.fkie.fraunhofer.de/details/win.agent_tesla)
+
+## Shipped Playbook Resources
+
+- `skill://red-extracting-config-from-agent-tesla-rat/references/api-reference.md` — API and execution command reference
+- `skill://red-extracting-config-from-agent-tesla-rat/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-extracting-config-from-agent-tesla-rat/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-extracting-config-from-agent-tesla-rat/assets/template.md` — Assessment deliverable and reporting template

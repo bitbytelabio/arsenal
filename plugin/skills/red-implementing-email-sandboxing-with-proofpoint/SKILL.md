@@ -91,3 +91,10 @@ Recommended attachment policy:
 - URL Defense rewrites and blocks known phishing URLs
 - TAP Dashboard displays threat summary
 - SIEM receives and alerts on TAP events
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-email-sandboxing-with-proofpoint/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-email-sandboxing-with-proofpoint/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-email-sandboxing-with-proofpoint/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-email-sandboxing-with-proofpoint/assets/template.md` — Assessment deliverable and reporting template

@@ -382,3 +382,7 @@ resources the OAuth scope grants access to.
 5. Enforce single-use authorization codes with a short TTL (max 60 seconds)
 6. Validate the audience (aud) claim in tokens before accepting them
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-oauth2-implementation-flaws/references/api-reference.md` — API and execution command reference

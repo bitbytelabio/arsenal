@@ -312,3 +312,10 @@ VPN DECOMMISSION STATUS:
   Users still on VPN:              148 (5%)
   Planned decommission:            2026-03-15
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-beyondcorp-zero-trust-access-model/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-beyondcorp-zero-trust-access-model/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-beyondcorp-zero-trust-access-model/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-beyondcorp-zero-trust-access-model/assets/template.md` — Assessment deliverable and reporting template

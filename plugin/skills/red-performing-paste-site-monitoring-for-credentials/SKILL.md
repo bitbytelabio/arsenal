@@ -326,3 +326,7 @@ def generate_credential_leak_alert(alert_data):
 - [Bitdefender: Credentials on Pastebin](https://www.bitdefender.com/en-us/blog/hotforsecurity/more-than-300000-user-credentials-posted-on-pastebin-over-the-last-year)
 - [zSecurity: Pastebin Monitoring](https://zsecurity.org/glossary/pastebin-monitoring/)
 - [SecurityBoulevard: Need to Monitor Paste Sites](https://securityboulevard.com/2019/11/orvis-data-leak-and-the-need-to-monitor-paste-sites/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-paste-site-monitoring-for-credentials/references/api-reference.md` — API and execution command reference

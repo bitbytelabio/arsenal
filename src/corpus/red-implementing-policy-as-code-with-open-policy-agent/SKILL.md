@@ -300,3 +300,10 @@ AUDIT VIOLATIONS (warn):
   [K8sRequiredLabels] namespace/staging
     - Missing labels: {cost-center}
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-policy-as-code-with-open-policy-agent/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-policy-as-code-with-open-policy-agent/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-policy-as-code-with-open-policy-agent/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-policy-as-code-with-open-policy-agent/assets/template.md` — Assessment deliverable and reporting template

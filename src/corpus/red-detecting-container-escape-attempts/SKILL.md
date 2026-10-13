@@ -300,3 +300,10 @@ ausearch -k container_escape --interpret
 - [Container Escape Techniques - HackTricks](https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-security/docker-breakout-privilege-escalation)
 - [MITRE ATT&CK T1611 - Escape to Host](https://attack.mitre.org/techniques/T1611/)
 - [Sysdig Container Security](https://sysdig.com/products/secure/)
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-container-escape-attempts/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-container-escape-attempts/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-container-escape-attempts/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-container-escape-attempts/assets/template.md` — Assessment deliverable and reporting template

@@ -87,3 +87,10 @@ Creation Time: [Timestamp]
 Run As: [Execution account]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-suspicious-scheduled-tasks/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-for-suspicious-scheduled-tasks/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hunting-for-suspicious-scheduled-tasks/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hunting-for-suspicious-scheduled-tasks/assets/template.md` — Assessment deliverable and reporting template

@@ -339,3 +339,7 @@ The password reset flow generates a one-time token but does not invalidate it af
 4. Implement idempotency keys to prevent duplicate transaction processing
 5. Rate-limit and log coupon applications, referral submissions, and transfers
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-for-business-logic-vulnerabilities/references/api-reference.md` — API and execution command reference

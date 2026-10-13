@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { inspectApk } from "../plugin/tools/apk-inspect.ts";
+import { readCorpusManifest, validateSupportFileIntegrity } from "../src/core/skill-manifest.ts";
 
 describe("Native APK Inspection Tool (apk_inspect)", () => {
   const fixturePath = path.resolve("tests/fixtures/sample.apk");
@@ -36,23 +37,25 @@ describe("Native APK Inspection Tool (apk_inspect)", () => {
     }).toThrow();
   });
 
-  test("verifies zero unmonitored scripts remain in corpus", () => {
+  test("every shipped corpus script is monitored through manifest provenance records", () => {
     const corpusDir = path.resolve("src/corpus");
     if (!fs.existsSync(corpusDir)) return;
 
-    const entries = fs.readdirSync(corpusDir);
-    const violatingSkills: string[] = [];
+    const manifest = readCorpusManifest(path.join(corpusDir, "MANIFEST.json"));
+    const integrityErrors = validateSupportFileIntegrity(manifest, corpusDir);
+    expect(integrityErrors).toEqual([]);
 
-    for (const entry of entries) {
-      const scriptsDir = path.join(corpusDir, entry, "scripts");
-      if (fs.existsSync(scriptsDir)) {
-        const files = fs.readdirSync(scriptsDir).filter((f) => !f.startsWith("."));
-        if (files.length > 0) {
-          violatingSkills.push(`${entry}/scripts: [${files.join(", ")}]`);
+    const unrecordedScripts: string[] = [];
+    for (const entry of manifest.files) {
+      if (entry.status !== "admitted" || !entry.destination_path) continue;
+      const skillId = entry.destination_path.slice("src/corpus/".length).split("/")[0]!;
+      for (const sf of entry.support_files ?? []) {
+        if (!/\.(py|sh|ps1|js)$/.test(sf.path)) continue;
+        if (!sf.source_path || sf.bytes === 0) {
+          unrecordedScripts.push(`${skillId}: ${sf.path} lacks provenance or is empty`);
         }
       }
     }
-
-    expect(violatingSkills).toEqual([]);
+    expect(unrecordedScripts).toEqual([]);
   });
 });

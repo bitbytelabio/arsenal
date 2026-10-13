@@ -394,3 +394,7 @@ At 1000 attempts per minute, a 6-digit PIN can be brute-forced in under
 5. Use atomic rate limit counters (Redis INCR) to prevent race conditions
 6. Implement progressive delays (exponential backoff) in addition to hard limits
 ```
+
+## References
+
+- `skill://webapp-performing-api-rate-limiting-bypass/references/api-reference.md` — API reference and command specification

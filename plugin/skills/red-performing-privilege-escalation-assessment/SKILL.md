@@ -188,3 +188,7 @@ read access to 75,000 customer records including names, emails, and addresses.
 3. Audit all sudo entries for binaries listed in GTFOBins
 4. Implement sudo logging with auditd for all privileged command execution
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-privilege-escalation-assessment/references/api-reference.md` — API and execution command reference

@@ -250,3 +250,8 @@ Every decision from steps 4-6 is logged with actor, tool, argument hash, and dec
 - [ ] Every invocation audit-logged with actor, tool, arg hash, and decision
 - [ ] SIEM alerting on deny/approval spikes configured
 - [ ] Controls mapped to MITRE ATLAS AML.T0053 and OWASP Agentic AI Top 10
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-agentic-ai-tool-invocation/references/api-reference.md` — API and execution command reference
+- `skill://red-securing-agentic-ai-tool-invocation/references/standards.md` — Relevant standards and compliance baselines

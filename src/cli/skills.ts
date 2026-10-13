@@ -775,32 +775,106 @@ export async function handleSkills(ctx: CommandContext): Promise<number> {
       const fixRes = planCorpusReferenceMaterialization({ repoRoot: ctx.repoRoot, preview: false });
       materializedFiles = fixRes.totalSupportFilesMaterialized;
     }
+    const domainFilter = ctx.values.domain as string | undefined;
+    const skillFilter = (ctx.values.skill as string | undefined) ?? (ctx.values.target as string | undefined);
 
-    const corpusAudit = auditCitations({ treeDir: corpusDir });
-    const seen = new Set(corpusAudit.dangling.map((d) => `${d.skill}\u0000${d.raw}`));
+    if (!fs.existsSync(corpusDir)) {
+      const msg = `Corpus directory '${corpusDir}' does not exist.`;
+      if (ctx.isJson) {
+        emitJson(
+          createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.CLI_USAGE_ERROR, ctx.mode, {}, [], [msg])
+        );
+      } else {
+        console.error(`Error: ${msg}`);
+      }
+      return EXIT_CODES.CLI_USAGE_ERROR;
+    }
+
+    const allDirs = fs
+      .readdirSync(corpusDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory() && fs.existsSync(path.join(corpusDir, d.name, "SKILL.md")))
+      .map((d) => d.name);
+
+    let skillIdsToScan: string[] | undefined;
+    if (skillFilter) {
+      skillIdsToScan = allDirs.filter((id) => id === skillFilter);
+      if (skillIdsToScan.length === 0) {
+        const msg = `Specified skill '${skillFilter}' does not exist in corpus.`;
+        if (ctx.isJson) {
+          emitJson(
+            createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.CLI_USAGE_ERROR, ctx.mode, {}, [], [msg])
+          );
+        } else {
+          console.error(`Error: ${msg}`);
+        }
+        return EXIT_CODES.CLI_USAGE_ERROR;
+      }
+    } else if (domainFilter) {
+      skillIdsToScan = allDirs.filter((id) => id.startsWith(`${domainFilter}-`));
+      if (skillIdsToScan.length === 0) {
+        const msg = `Specified domain '${domainFilter}' does not match any skills in corpus.`;
+        if (ctx.isJson) {
+          emitJson(
+            createJsonEnvelope(ctx.rawArgs.join(" "), EXIT_CODES.CLI_USAGE_ERROR, ctx.mode, {}, [], [msg])
+          );
+        } else {
+          console.error(`Error: ${msg}`);
+        }
+        return EXIT_CODES.CLI_USAGE_ERROR;
+      }
+    }
+
+    const corpusAudit = auditCitations({ treeDir: corpusDir, skillIds: skillIdsToScan });
+    const seen = new Set<string>();
     const diagnostics: Array<{
       skill: string;
+      file: string;
+      line: number;
+      column?: number;
       raw: string;
+      target: string;
       sourceRoot: string;
       candidatePaths: string[];
       reason: string;
-    }> = corpusAudit.dangling.map((d) => ({
-      skill: d.skill,
-      raw: d.raw,
-      sourceRoot: "src/corpus",
-      candidatePaths: [],
-      reason: d.reason,
-    }));
+    }> = [];
+
+    for (const d of corpusAudit.dangling) {
+      const file = d.file ?? "SKILL.md";
+      const line = d.line ?? 1;
+      const key = `${d.skill}\u0000${file}\u0000${line}\u0000${d.raw}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        diagnostics.push({
+          skill: d.skill,
+          file,
+          line,
+          column: d.column,
+          raw: d.raw,
+          target: d.target,
+          sourceRoot: "src/corpus",
+          candidatePaths: [],
+          reason: d.reason,
+        });
+      }
+    }
 
     let scanned = corpusAudit.playbooks_scanned;
-    if (fs.existsSync(skillsDir)) {
+    if (fs.existsSync(skillsDir) && !skillFilter && !domainFilter) {
       const pluginAudit = auditCitations({ treeDir: skillsDir });
       scanned += pluginAudit.playbooks_scanned;
       for (const d of pluginAudit.dangling) {
-        if (seen.has(`${d.skill}\u0000${d.raw}`)) continue;
+        const file = d.file ?? "SKILL.md";
+        const line = d.line ?? 1;
+        const key = `${d.skill}\u0000${file}\u0000${line}\u0000${d.raw}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
         diagnostics.push({
           skill: d.skill,
+          file,
+          line,
+          column: d.column,
           raw: d.raw,
+          target: d.target,
           sourceRoot: "plugin/skills",
           candidatePaths: [],
           reason: d.reason,
@@ -808,7 +882,13 @@ export async function handleSkills(ctx: CommandContext): Promise<number> {
       }
     }
 
-    diagnostics.sort((a, b) => a.skill.localeCompare(b.skill) || a.raw.localeCompare(b.raw));
+    diagnostics.sort(
+      (a, b) =>
+        a.skill.localeCompare(b.skill) ||
+        a.file.localeCompare(b.file) ||
+        a.line - b.line ||
+        a.raw.localeCompare(b.raw)
+    );
     const clean = diagnostics.length === 0;
     const exitCode = clean ? EXIT_CODES.SUCCESS : EXIT_CODES.CHECK_FAILURE;
 
@@ -822,12 +902,13 @@ export async function handleSkills(ctx: CommandContext): Promise<number> {
             totalSkillsConsidered: scanned,
             totalSupportFilesMaterialized: materializedFiles,
             totalDanglingReferences: diagnostics.length,
+            categoryCounts: corpusAudit.category_counts,
             clean,
-            danglingDiagnostics: diagnostics.slice(0, 50),
+            danglingDiagnostics: diagnostics.slice(0, 100),
             ...(isFix ? { fixed: true } : {}),
           },
           [],
-          diagnostics.map((d) => `[${d.skill}] Dangling: ${d.raw} -> ${d.reason}`)
+          diagnostics.map((d) => `[${d.skill}] Dangling: ${d.raw} in ${d.file}:${d.line} -> ${d.reason}`)
         )
       );
     } else {
@@ -839,8 +920,8 @@ export async function handleSkills(ctx: CommandContext): Promise<number> {
         console.error(
           `[skills scripts-audit failed] ${diagnostics.length} dangling reference(s) detected:`
         );
-        for (const d of diagnostics.slice(0, 20)) {
-          console.error(` - [${d.skill}] ${d.raw} (${d.reason})`);
+        for (const d of diagnostics.slice(0, 30)) {
+          console.error(` - [${d.skill}] ${d.file}:${d.line} ${d.raw} (${d.reason})`);
         }
       }
     }

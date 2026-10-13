@@ -43,3 +43,7 @@ This skill uses boto3 and Cloudsplaining-style analysis to identify IAM privileg
 - List of dangerous permission combinations per principal
 - Wildcard resource policy audit results
 - Remediation recommendations for each finding
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-aws-iam-privilege-escalation/references/api-reference.md` — API and execution command reference

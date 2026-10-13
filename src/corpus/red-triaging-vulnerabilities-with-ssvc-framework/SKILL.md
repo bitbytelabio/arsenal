@@ -192,3 +192,9 @@ print('All SSVC decision tests passed')
 - [CISA SSVC Guide PDF](https://www.cisa.gov/sites/default/files/publications/cisa-ssvc-guide%20508c.pdf)
 - [FIRST EPSS API](https://www.first.org/epss/)
 - [CISA Known Exploited Vulnerabilities](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+
+## Shipped Playbook Resources
+
+- `skill://red-triaging-vulnerabilities-with-ssvc-framework/references/api-reference.md` — API and execution command reference
+- `skill://red-triaging-vulnerabilities-with-ssvc-framework/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-triaging-vulnerabilities-with-ssvc-framework/references/workflows.md` — Operational procedures and detailed workflows

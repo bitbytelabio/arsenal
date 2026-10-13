@@ -372,3 +372,10 @@ kubectl get --raw /metrics | grep gatekeeper
 5. **Monitor audit results** - Check constraint `.status.violations` regularly
 6. **Test Rego policies** - Use `opa test` or Rego Playground before deploying
 7. **Combine with admission webhooks** - Layer Gatekeeper with Pod Security Admission for defense in depth
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-opa-gatekeeper-for-policy-enforcement/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-opa-gatekeeper-for-policy-enforcement/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-opa-gatekeeper-for-policy-enforcement/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-opa-gatekeeper-for-policy-enforcement/assets/template.md` — Assessment deliverable and reporting template

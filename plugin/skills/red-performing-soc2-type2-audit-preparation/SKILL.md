@@ -280,3 +280,10 @@ ir_evidence = {
     ],
 }
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-soc2-type2-audit-preparation/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-soc2-type2-audit-preparation/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-soc2-type2-audit-preparation/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-soc2-type2-audit-preparation/assets/template.md` — Assessment deliverable and reporting template

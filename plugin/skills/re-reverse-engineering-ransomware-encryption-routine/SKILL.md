@@ -266,3 +266,7 @@ def calculate_entropy(data):
 - [Halcyon Ransomware Power Rankings Q4-2024](https://www.halcyon.ai/raas-mq/power-rankings-ransomware-malicious-quartile-q4-2024)
 - [No More Ransom Project](https://www.nomoreransom.org/)
 - [MITRE ATT&CK T1486 - Data Encrypted for Impact](https://attack.mitre.org/techniques/T1486/)
+- `skill://re-reverse-engineering-ransomware-encryption-routine/references/api-reference.md` — API Reference: Reverse Engineering Ransomware Encryption
+- `skill://re-reverse-engineering-ransomware-encryption-routine/references/standards.md` — Ransomware Encryption Standards Reference
+- `skill://re-reverse-engineering-ransomware-encryption-routine/references/workflows.md` — Ransomware Encryption Analysis Workflows
+- `skill://re-reverse-engineering-ransomware-encryption-routine/assets/template.md` — Ransomware Encryption Analysis Report

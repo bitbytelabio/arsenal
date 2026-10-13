@@ -145,3 +145,7 @@ Embed signing and verification into build and deployment pipelines:
 
 **Policy Check**: Image signed by authorized CI workflow identity
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-sigstore-for-software-signing/references/api-reference.md` — API and execution command reference

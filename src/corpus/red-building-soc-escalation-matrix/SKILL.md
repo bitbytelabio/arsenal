@@ -200,3 +200,10 @@ auto_escalation_rules:
 - [ClearFeed - Incident Escalation Matrix](https://clearfeed.ai/blogs/incident-escalation-matrix)
 - [Vectra - SOC Operations Guide](https://www.vectra.ai/topics/soc-operations)
 - [Runframe - Incident Priority Levels Explained](https://runframe.io/learn/incident-priority)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-soc-escalation-matrix/references/api-reference.md` — API and execution command reference
+- `skill://red-building-soc-escalation-matrix/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-soc-escalation-matrix/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-soc-escalation-matrix/assets/template.md` — Assessment deliverable and reporting template

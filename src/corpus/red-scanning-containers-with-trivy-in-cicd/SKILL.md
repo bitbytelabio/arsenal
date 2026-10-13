@@ -304,3 +304,10 @@ MISCONFIGURATION:
 
 QUALITY GATE: FAILED (2 Critical, 5 High findings)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-scanning-containers-with-trivy-in-cicd/references/api-reference.md` — API and execution command reference
+- `skill://red-scanning-containers-with-trivy-in-cicd/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-scanning-containers-with-trivy-in-cicd/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-scanning-containers-with-trivy-in-cicd/assets/template.md` — Assessment deliverable and reporting template

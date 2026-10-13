@@ -244,3 +244,7 @@ Target MTTA: 15 minutes
 Target MTTC: 1 hour
 Target MTTR: 4 hours
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-building-incident-response-playbook/references/api-reference.md` — API and execution command reference

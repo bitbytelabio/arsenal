@@ -358,3 +358,7 @@ INVESTMENT RECOMMENDATION:
   Closing top 10 gaps requires: 2 detection engineer FTEs, 60 days
   Expected coverage improvement: 64% -> 76%
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-threat-modeling-with-mitre-attack/references/api-reference.md` — API and execution command reference

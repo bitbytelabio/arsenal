@@ -261,3 +261,8 @@ C2 IPs:     185.220.101.42, 91.215.85.17
 C2 Domains: [extracted from beacon config]
 Mutexes:    Global\MSCTF.Shared.MUTEX.ZRQ
 ```
+
+## References
+
+- `skill://re-conducting-memory-forensics-with-volatility/references/api-reference.md` — API Reference: Memory Forensics Agent (Volatility 3)
+- `skill://re-conducting-memory-forensics-with-volatility/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)

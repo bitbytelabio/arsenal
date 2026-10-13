@@ -13,7 +13,7 @@ Analyzes phishing emails: parses EML files, extracts URLs and attachment hashes,
 ## CLI Usage
 
 ```bash
-python agent.py --eml suspicious_email.eml --vt-key <key> --output report.json
+python scripts/agent.py --eml suspicious_email.eml --vt-key <key> --output report.json
 ```
 
 ## Key Functions

@@ -685,3 +685,7 @@ RECOMMENDED RESPONSE:
   2. [Verification step]
   3. [Escalation path]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-attacks-on-scada-systems/references/api-reference.md` — API and execution command reference

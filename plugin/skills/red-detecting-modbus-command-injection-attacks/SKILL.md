@@ -491,3 +491,7 @@ RECOMMENDED ACTIONS:
   2. Block unauthorized sources at industrial firewall
   3. Validate PLC register values against known-good state
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-modbus-command-injection-attacks/references/api-reference.md` — API and execution command reference

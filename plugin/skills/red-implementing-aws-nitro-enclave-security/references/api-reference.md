@@ -16,14 +16,14 @@ Assesses the security posture of AWS Nitro Enclave deployments by auditing KMS k
 
 ```bash
 # Full assessment
-python agent.py --region us-east-1 --kms-key-ids alias/enclave-key mrk-abc123 \
+python scripts/agent.py --region us-east-1 --kms-key-ids alias/enclave-key mrk-abc123 \
   --iam-roles EnclaveParentRole --cloudtrail-days 14 --output report.json
 
 # Validate a specific attestation document
-python agent.py --attestation-doc <base64-encoded-doc> --output attestation_report.json
+python scripts/agent.py --attestation-doc <base64-encoded-doc> --output attestation_report.json
 
 # Quick scan of enclave-enabled instances only
-python agent.py --region us-west-2 --output instances_report.json
+python scripts/agent.py --region us-west-2 --output instances_report.json
 ```
 
 ## Arguments

@@ -244,3 +244,7 @@ NETWORK ANALYSIS:
   Communication Links: [count]
   Cross-Zone Flows: [count]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-ot-network-traffic-analysis-with-nozomi/references/api-reference.md` — API and execution command reference

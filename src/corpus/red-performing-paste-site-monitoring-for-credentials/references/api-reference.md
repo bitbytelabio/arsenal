@@ -7,11 +7,11 @@
 
 ## CLI Interface
 ```
-python agent.py [--api-key <hibp_key>] check --email user@example.com
-python agent.py [--api-key <hibp_key>] pastes --email user@example.com
-python agent.py [--api-key <hibp_key>] bulk --domain example.com --emails employee_list.txt
-python agent.py scan --file paste_dump.txt
-python agent.py [--api-key <hibp_key>] report --domain example.com --emails employees.txt
+python scripts/agent.py [--api-key <hibp_key>] check --email user@example.com
+python scripts/agent.py [--api-key <hibp_key>] pastes --email user@example.com
+python scripts/agent.py [--api-key <hibp_key>] bulk --domain example.com --emails employee_list.txt
+python scripts/agent.py scan --file paste_dump.txt
+python scripts/agent.py [--api-key <hibp_key>] report --domain example.com --emails employees.txt
 ```
 
 ## Core Functions

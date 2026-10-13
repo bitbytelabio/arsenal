@@ -322,3 +322,10 @@ aws guardduty update-organization-configuration \
 - AWS GuardDuty Best Practices: https://aws.github.io/aws-security-services-best-practices/guides/guardduty/
 - EventBridge Integration: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings_eventbridge.html
 - GuardDuty Finding Types Reference
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-aws-guardduty-findings-automation/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-aws-guardduty-findings-automation/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-aws-guardduty-findings-automation/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-aws-guardduty-findings-automation/assets/template.md` — Assessment deliverable and reporting template

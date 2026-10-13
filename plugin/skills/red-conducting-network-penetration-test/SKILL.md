@@ -180,3 +180,7 @@ ultimately accessing the customer database containing 50,000+ records.
 3. Restrict access to the Tomcat Manager interface to authorized management IPs only
 4. Implement network segmentation between web servers and database tier
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-conducting-network-penetration-test/references/api-reference.md` — API and execution command reference

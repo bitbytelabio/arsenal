@@ -64,6 +64,6 @@ r"(handle|process|complete).*(today|immediately|by end of day)"
 ## CLI Usage
 
 ```bash
-python agent.py --file email_body.txt
-python agent.py --file email_body.txt --baseline-file sender_style.json
+python scripts/agent.py --file email_body.txt
+python scripts/agent.py --file email_body.txt --baseline-file sender_style.json
 ```

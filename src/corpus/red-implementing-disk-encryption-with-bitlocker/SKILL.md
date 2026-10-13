@@ -202,3 +202,10 @@ if ($vol.ProtectionStatus -eq "On" -and $vol.VolumeStatus -eq "FullyEncrypted") 
 - **Encrypting used space only on repurposed drives**: If a drive previously contained sensitive data, "used space only" encryption leaves deleted data unencrypted in free space. Use full disk encryption for repurposed drives.
 - **Forgetting removable drives**: USB drives and external disks are common data loss vectors. Enforce BitLocker To Go for removable media.
 - **No pre-provisioning for SCCM deployments**: Pre-provision BitLocker during OSD task sequence to encrypt before OS deployment, avoiding the lengthy post-deployment encryption process.
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-disk-encryption-with-bitlocker/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-disk-encryption-with-bitlocker/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-disk-encryption-with-bitlocker/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-disk-encryption-with-bitlocker/assets/template.md` — Assessment deliverable and reporting template

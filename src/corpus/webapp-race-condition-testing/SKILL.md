@@ -102,8 +102,8 @@ Attach: baseline request, the synchronized batch description (N, technique), and
 
 ## When to Load a Specialist Skill
 
-- HTTP/2 protocol-level subtleties, request smuggling interactions -> http-request-smuggling (web-application-security)
-- API-specific concurrency patterns (batching endpoints) -> api-resource-consumption (api-security)
+- HTTP/2 protocol-level subtleties, request smuggling interactions -> `skill://webapp-web-offensive-request-smuggling` (web-application-security)
+- API-specific concurrency patterns (batching endpoints) -> `skill://webapp-api-resource-consumption` (api-security)
 
 ## Stopping Rule
 
@@ -111,6 +111,6 @@ Stop racing an operation after: the invariant is stated, two sync-tightness tier
 
 ## Handoffs
 
-- business-logic-testing - the invariants worth racing come from here
+- `skill://webapp-business-logic-testing` - the invariants worth racing come from here
 - workflow-state-machine-testing - racing workflow transitions rather than single operations
-- authorization-testing - racing role/grant changes
+- `skill://webapp-authorization-testing` - racing role/grant changes

@@ -22,10 +22,10 @@ python scripts/generate_ropa_report.py --input ropa.json --output Article30_Regi
 npm install @opendatarights/odr-core
 
 # Submit DSAR programmatically
-node scripts/submit_dsar.js --email user@example.com --company "Acme Corp"
+node submit_dsar.js --email user@example.com --company "Acme Corp"
 
 # Check DSAR status
-node scripts/check_dsar_status.js --request-id abc123
+node check_dsar_status.js --request-id abc123
 ```
 
 ## GDPR Compliance Scanning Tools
@@ -184,7 +184,7 @@ pseudonym = pseudonymize("user@example.com", secret)
 | Right | Verification Check | Command/Tool |
 |-------|-------------------|--------------|
 | Right to Access (Art 15) | Can org deliver all data within 1 month? | Test DSAR workflow end-to-end |
-| Right to Erasure (Art 17) | Can org delete across all systems? | `python scripts/test_deletion.py --user-id 12345` |
+| Right to Erasure (Art 17) | Can org delete across all systems? | Execute erasure validation workflow / API check |
 | Right to Portability (Art 20) | Can org export in machine-readable format? | Verify CSV/JSON export functionality |
 | Right to Object (Art 21) | Can org stop direct marketing? | Test unsubscribe mechanism |
 

@@ -97,3 +97,7 @@ Export enriched indicators via TAXII 2.1 push to SIEM (Splunk, Microsoft Sentine
 - **Feed overlap without deduplication**: Ingesting the same IOC from five feeds without deduplication inflates indicator counts and SIEM rule complexity.
 - **TLP violation**: Redistributing RED-classified intelligence outside authorized boundaries violates sharing agreements and trust relationships.
 - **Over-blocking on low-confidence indicators**: Indicators with confidence below 50 should trigger detection-only rules, not blocking, to avoid operational disruption.
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-threat-intelligence-feeds/references/api-reference.md` — API and execution command reference

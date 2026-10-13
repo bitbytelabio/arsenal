@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-python agent.py scan
-python agent.py registry
-python agent.py monitor --duration 120
-python agent.py full
+python scripts/agent.py scan
+python scripts/agent.py registry
+python scripts/agent.py monitor --duration 120
+python scripts/agent.py full
 ```
 
 ## Core Functions

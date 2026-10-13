@@ -269,3 +269,7 @@ Sources Correlated:
 Disposition:    TRUE POSITIVE — Escalated to Incident Response
 Ticket:         IR-2024-0432
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-correlating-security-events-in-qradar/references/api-reference.md` — API and execution command reference

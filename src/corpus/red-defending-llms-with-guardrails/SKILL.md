@@ -240,7 +240,7 @@ rails:
 
 ### Step 7: Validate the stack against a known-bad corpus
 
-Run the helper script in `skill://red-defending-llms-with-guardrails/support/defending-llms-with-guardrails/templates/agent.py` over a JSONL of labeled prompts and compute block rate / false-positive rate.
+Run the helper script in `skill://red-defending-llms-with-guardrails/templates/agent.py` over a JSONL of labeled prompts and compute block rate / false-positive rate.
 
 ```bash
 evidence_exec llmguard --input payloads.jsonl --report report.json
@@ -270,3 +270,8 @@ evidence_exec llamaguard --model meta-llama/Llama-Guard-3-8B --input payloads.js
 - [ ] Llama Guard is wired into NeMo as a `content_safety` model and invoked by the content-safety rail.
 - [ ] The validation script reports block rate and false-positive rate against the labeled corpus.
 - [ ] Guardrail decisions (verdict, category, score) are logged for audit and tuning.
+
+## Shipped Playbook Resources
+
+- `skill://red-defending-llms-with-guardrails/references/api-reference.md` — API and execution command reference
+- `skill://red-defending-llms-with-guardrails/references/standards.md` — Relevant standards and compliance baselines

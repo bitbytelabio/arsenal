@@ -40,5 +40,5 @@ index=sysmon EventCode=10
 ## CLI Usage
 
 ```bash
-python agent.py --sysmon-log Sysmon.evtx
+python scripts/agent.py --sysmon-log Sysmon.evtx
 ```

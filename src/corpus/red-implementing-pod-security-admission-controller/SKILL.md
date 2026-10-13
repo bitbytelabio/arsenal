@@ -312,3 +312,10 @@ kubectl get namespaces -L pod-security.kubernetes.io/enforce
 6. **Combine with Gatekeeper** for additional custom policies beyond PSA
 7. **Use restricted profile** for all production workloads
 8. **Document exemptions** with clear justification
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-pod-security-admission-controller/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-pod-security-admission-controller/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-pod-security-admission-controller/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-pod-security-admission-controller/assets/template.md` — Assessment deliverable and reporting template

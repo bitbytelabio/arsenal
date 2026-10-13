@@ -369,3 +369,7 @@ disseminator = IntelligenceDisseminator()
 - [MISP Project](https://www.misp-project.org/)
 - [STIX/TAXII Documentation](https://oasis-open.github.io/cti-documentation/)
 - [CISA Known Exploited Vulnerabilities](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-threat-intelligence-lifecycle-management/references/api-reference.md` — API and execution command reference

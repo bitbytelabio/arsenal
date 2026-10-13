@@ -71,3 +71,7 @@ Embedded Files: [Count and types]
 VirusTotal Detections: [X/Y engines]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-malicious-pdf-with-peepdf/references/api-reference.md` — API and execution command reference

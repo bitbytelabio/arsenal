@@ -61,19 +61,19 @@
 
 ```bash
 # List all ATT&CK threat groups
-python agent.py --list-groups
+python scripts/agent.py --list-groups
 
 # Analyze a specific group
-python agent.py --group "APT29"
+python scripts/agent.py --group "APT29"
 
 # Generate Navigator layer file
-python agent.py --group "APT29" --layer-output apt29_layer.json
+python scripts/agent.py --group "APT29" --layer-output apt29_layer.json
 
 # Compare multiple groups
-python agent.py --compare "APT29" "APT28" "Lazarus Group"
+python scripts/agent.py --compare "APT29" "APT28" "Lazarus Group"
 
 # Save full report as JSON
-python agent.py --group "APT29" --layer-output apt29.json --output report.json
+python scripts/agent.py --group "APT29" --layer-output apt29.json --output report.json
 ```
 
 ## External References

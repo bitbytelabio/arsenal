@@ -256,3 +256,10 @@ gcloud asset search-all-resources \
 - GCP Organization Policy Constraints: https://docs.google.com/resource-manager/docs/organization-policy/org-policy-constraints
 - GCP Policy Intelligence: https://cloud.google.com/policy-intelligence
 - CIS GCP Foundations Benchmark
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-gcp-organization-policy-constraints/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-gcp-organization-policy-constraints/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-gcp-organization-policy-constraints/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-gcp-organization-policy-constraints/assets/template.md` — Assessment deliverable and reporting template

@@ -14,7 +14,7 @@ metadata:
 
 1. `NOW`: Read `skill://re-ida-reverse/support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized routine procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
-3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+3. `NEXT`: Read `tool-index` (workstation tool inventory) to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 5. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -104,8 +104,8 @@ Path: `templates/start.sh`
 - The server runs in the background and does not block conversations.
 
 **Usage**:
-```
-powershell -File "<skill-root>\ida-reverse\templates/start.sh"
+```bash
+bash templates/start.sh [port]
 ```
 
 ### watchdog.ps1 / recover.sh / install-autostart.sh — Keepalive
@@ -130,20 +130,8 @@ Path: `templates/open.sh`
 - Automatically retries using a Temp copy upon failure.
 
 **Usage**:
-```
-powershell -File "<skill-root>\ida-reverse\templates/open.sh" -Path "C:\path\to\file.exe"
-```
-
-**Optional Parameters**:
-```
-# Specify SessionId
-powershell -File "templates/open.sh" -Path "file.exe" -SessionId "my_session"
-
-# Skip auto-analysis (recommended for large files)
-powershell -File "templates/open.sh" -Path "large.exe" -NoAutoAnalysis
-
-# Set timeout to prevent hanging during lengthy auto-analysis
-powershell -File "templates/open.sh" -Path "file.exe" -TimeoutSeconds 600
+```bash
+bash templates/open.sh "/path/to/file.exe" [port]
 ```
 
 **Output Conventions**:
@@ -249,14 +237,14 @@ ERR:open_timeout_600s
 ### Step 1: Start Server
 
 **Path A — Headless idalib (Requires valid license)**
-```
-powershell -File "templates/start.sh"
+```bash
+bash templates/start.sh
 ```
 Output `OK:<tool_count>` (currently ~65) indicates readiness.
 
 **Path B — GUI + Plugin (Fallback when idalib license fails or interactive analysis is required)**
-```
-powershell -File "templates/start-gui.sh" -Path "C:\target.exe"
+```bash
+bash templates/start-gui.sh "target.exe"
 ```
 Or double-click the portable `Launch-IDA-Pro.cmd` and open the sample inside IDA.
 
@@ -267,8 +255,8 @@ For general setup procedures, see `LOCAL-SETUP.md`.
 ### Step 2: Open File
 
 Headless:
-```
-powershell -File "templates/open.sh" -Path "C:\target.exe" -TimeoutSeconds 600
+```bash
+bash templates/open.sh "target.exe"
 ```
 Output `OK:filename:session_id` indicates success (suffixed with `(temp copy)` if degraded to a temporary copy).
 
@@ -336,13 +324,13 @@ After completing the analysis, generate `report.md` documenting findings and ste
 ## Routing Context
 
 **Upstream Entry**: `skill://re-ida-reverse/support/SKILL.md` (Master Controller), `skill://re-ida-reverse/support/routing.md`
-**Upstream Alternatives**: `radare2/` (For fast initial reconnaissance if IDA startup is deferred)
+**Upstream Alternatives**: `re-radare2/` (For fast initial reconnaissance if IDA startup is deferred)
 **Downstream Exit**:
 - Dynamic verification via Frida required → `arsenal skill_load re-reverse-engineering/tools-dynamic.md`
 - Symbolic execution/angr required → `arsenal skill_load re-reverse-engineering/tools-dynamic.md`
 - General reverse engineering methodology → `arsenal skill_load re-reverse-engineering`
 
-**Related Sibling Modules**: `radare2/` (Alternative when IDA is unavailable)
+**Related Sibling Modules**: `re-radare2/` (Alternative when IDA is unavailable)
 
 ---
 
@@ -392,6 +380,10 @@ ida-pro-mcp --config
   - User env `IDADIR` → IDA installation folder (containing `ida.exe`).
   - Optional `~\Tools\bin\idalib-mcp.cmd` / `ida-pro-mcp.cmd` wrappers.
   - Client MCP server configuration retains only `idapro` → `http://127.0.0.1:13337/mcp`.
+
+## References
+
+- `skill://re-ida-reverse/references/ida-mcp-cheatsheet.md` — IDA Pro MCP tool reference and command patterns
 
 ## Task Completion Self-Check (MUST pass before claiming completion)
 

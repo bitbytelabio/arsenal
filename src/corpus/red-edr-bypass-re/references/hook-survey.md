@@ -223,4 +223,4 @@ After identifying the target EDR, decide which DLL to reverse engineer to extrac
 
 ## Routing Callback
 
-After completing hook reconnaissance, return to Step 3 in `SKILL.md` to select a bypass technique combination, then execute according to `references/unhook-techniques.md` and `references/telemetry-blinding.md`.
+After completing hook reconnaissance, return to Step 3 in `SKILL.md` to select a bypass technique combination, then execute according to `skill://red-edr-bypass-re/references/unhook-techniques.md` and `skill://red-edr-bypass-re/references/telemetry-blinding.md`.

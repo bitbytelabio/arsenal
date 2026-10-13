@@ -266,3 +266,10 @@ Dashboard monitoring:
 - **Ignoring tamper protection**: Without tamper protection, malware or insiders can disable Defender via PowerShell or registry edits. Enable tamper protection through the M365 Defender portal.
 - **Running Defender alongside third-party AV**: Defender enters passive mode when third-party AV is present. Ensure you are using the intended AV solution and configure Defender appropriately (EDR-only mode if keeping third-party AV).
 - **Forgetting cloud connectivity requirements**: Cloud-delivered protection and BAFS require endpoints to reach Microsoft cloud services. Verify proxy/firewall rules allow Defender cloud traffic.
+
+## Shipped Playbook Resources
+
+- `skill://red-configuring-windows-defender-advanced-settings/references/api-reference.md` — API and execution command reference
+- `skill://red-configuring-windows-defender-advanced-settings/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-configuring-windows-defender-advanced-settings/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-configuring-windows-defender-advanced-settings/assets/template.md` — Assessment deliverable and reporting template

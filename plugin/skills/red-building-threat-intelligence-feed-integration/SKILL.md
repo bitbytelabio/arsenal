@@ -317,3 +317,7 @@ Actions Today:
   SIEM matches:         121 notable events generated
   False positives:      3 (CDN IPs removed from feed)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-building-threat-intelligence-feed-integration/references/api-reference.md` — API and execution command reference

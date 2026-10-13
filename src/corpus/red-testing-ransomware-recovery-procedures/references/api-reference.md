@@ -4,19 +4,19 @@
 
 ```bash
 # Generate hash manifest for a directory (pre-backup baseline)
-python agent.py --hash-dir /data/critical-app -o manifest_baseline.json
+python scripts/agent.py --hash-dir /data/critical-app -o manifest_baseline.json
 
 # Compare original manifest against restored data
-python agent.py --compare manifest_baseline.json manifest_restored.json
+python scripts/agent.py --compare manifest_baseline.json manifest_restored.json
 
 # Check if a service is running after restore
-python agent.py --check-service postgresql
+python scripts/agent.py --check-service postgresql
 
 # Check database connectivity after restore
-python agent.py --check-db postgresql:localhost:5432
+python scripts/agent.py --check-db postgresql:localhost:5432
 
 # Run full recovery drill from config
-python agent.py --config drill_config.json -o recovery_report.json
+python scripts/agent.py --config drill_config.json -o recovery_report.json
 ```
 
 ## Drill Configuration Format

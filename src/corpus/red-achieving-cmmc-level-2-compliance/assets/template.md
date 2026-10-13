@@ -33,7 +33,7 @@
 | *(others)* | all met | — | — | — |
 
 ## 4. SPRS Score
-*(computed by `scripts/process.py` from the control-status JSON)*
+*(computed by `templates/process.py` from the control-status JSON)*
 
 - **Score: 97 / 110** (started at 110; deducted 13).
 - **Gap to perfect:** 13 points across 4 not-met + 1 partial requirement.

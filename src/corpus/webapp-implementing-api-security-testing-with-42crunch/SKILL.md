@@ -334,6 +334,8 @@ When 42Crunch identifies issues, follow this remediation process:
 
 ## References
 
+- `skill://webapp-implementing-api-security-testing-with-42crunch/references/api-reference.md` — API reference and command specification
+
 - 42Crunch API Security Platform: https://42crunch.com/api-security-platform/
 - 42Crunch Documentation: https://docs.42crunch.com/
 - Microsoft Defender for Cloud 42Crunch Integration: https://learn.microsoft.com/en-us/azure/defender-for-cloud/onboarding-guide-42crunch

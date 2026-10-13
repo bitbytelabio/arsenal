@@ -319,3 +319,7 @@ CONTAINMENT ACTIONS:
   [x] Bucket policy restricting to VPC-only access
   [x] TruffleHog scan initiated on developer repositories
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-s3-data-exfiltration-attempts/references/api-reference.md` — API and execution command reference

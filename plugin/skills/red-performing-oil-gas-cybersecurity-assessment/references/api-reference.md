@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python agent.py network --assets ot_inventory.csv
-python agent.py compliance --csv iec62443_assessment.csv
-python agent.py safety --assets ot_inventory.csv
-python agent.py report --assets ot_inventory.csv [--compliance-csv iec62443.csv]
+python scripts/agent.py network --assets ot_inventory.csv
+python scripts/agent.py compliance --csv iec62443_assessment.csv
+python scripts/agent.py safety --assets ot_inventory.csv
+python scripts/agent.py report --assets ot_inventory.csv [--compliance-csv iec62443.csv]
 ```
 
 ## Core Functions

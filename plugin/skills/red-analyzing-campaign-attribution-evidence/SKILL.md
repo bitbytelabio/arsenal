@@ -222,3 +222,10 @@ def generate_attribution_report(analyzer):
 - [MITRE ATT&CK Groups](https://attack.mitre.org/groups/)
 - [Analysis of Competing Hypotheses](https://www.cia.gov/static/9a5f1162fd0932c29e985f0159f56c07/Tradecraft-Primer-apr09.pdf)
 - [Threat Attribution Framework](https://www.mandiant.com/resources/reports)
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-campaign-attribution-evidence/references/api-reference.md` — API and execution command reference
+- `skill://red-analyzing-campaign-attribution-evidence/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-analyzing-campaign-attribution-evidence/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-analyzing-campaign-attribution-evidence/assets/template.md` — Assessment deliverable and reporting template

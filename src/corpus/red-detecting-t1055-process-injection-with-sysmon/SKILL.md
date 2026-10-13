@@ -149,3 +149,10 @@ Access Mask: [Granted access value]
 Risk Level: [Critical/High/Medium/Low]
 ATT&CK Sub-Technique: [T1055.xxx]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-t1055-process-injection-with-sysmon/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-t1055-process-injection-with-sysmon/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-t1055-process-injection-with-sysmon/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-t1055-process-injection-with-sysmon/assets/template.md` — Assessment deliverable and reporting template

@@ -88,3 +88,10 @@ Creation Time: [Timestamp]
 Risk Level: [Critical/High/Medium/Low]
 Verdict: [Malicious/Suspicious/Benign]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-persistence-mechanisms-in-windows/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-for-persistence-mechanisms-in-windows/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hunting-for-persistence-mechanisms-in-windows/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hunting-for-persistence-mechanisms-in-windows/assets/template.md` — Assessment deliverable and reporting template

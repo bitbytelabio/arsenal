@@ -175,3 +175,7 @@ Analyze campaign results and produce the assessment report:
 4. Conduct targeted training for Finance and Marketing departments
 5. Schedule quarterly phishing simulations to track improvement
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-executing-phishing-simulation-campaign/references/api-reference.md` — API and execution command reference

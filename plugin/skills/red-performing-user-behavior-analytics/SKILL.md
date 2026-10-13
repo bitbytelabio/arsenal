@@ -234,3 +234,7 @@ INVESTIGATION STATUS:
   admin_svc01: Under review — may be new automation deployment (checking with IT Ops)
   mwilson:     Pending HR context — employee on notice period, monitoring increased
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-user-behavior-analytics/references/api-reference.md` — API and execution command reference

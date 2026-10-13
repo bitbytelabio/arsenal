@@ -153,7 +153,7 @@ Locating workflow:
 4. Common pattern: AES-256-CBC with Key==IV (Codegate 2013 pattern, see .NET section in reverse-engineering/tools.md)
 ```
 
-Refer to `references/sharp-tools.md` for specific configuration structures of red team tools.
+Refer to `skill://re-dotnet-reverse/references/sharp-tools.md` for specific configuration structures of red team tools.
 
 ## Scope Boundaries with reverse-engineering
 
@@ -166,6 +166,6 @@ Refer to `references/sharp-tools.md` for specific configuration structures of re
 Recommended outputs for every .NET reverse engineering task:
 - `target-original.exe` (Original sample, unmodified)
 - `target-clean.exe` (After de4dot unpacking)
-- `notes.md` (Identified obfuscator, decryptor tokens, key method addresses, configuration/C2/keys)
+- `analysis-notes.txt` (Identified obfuscator, decryptor tokens, key method addresses, configuration/C2/keys)
 - `target-patched.exe` (After patching, if required)
 - `il-diff.txt` (IL diff before and after patching, if patching was performed)

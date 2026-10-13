@@ -131,7 +131,7 @@ For detailed information on converting executables and DLLs to shellcode, includ
 - Tools like Donut, sRDI, Pe2shc and Amber
 - Open-source shellcode loaders like ScareCrow and NimPackt-v1
 
-See the [Shellcode documentation](/exploit/shellcode.md).
+See the [Shellcode documentation](skill://red-infrastructure-offensive-shellcode).
 
 ### EDR Evasion Techniques
 
@@ -144,7 +144,7 @@ For detailed information on EDR evasion techniques, including:
 - Call Stack Obfuscation
 - Sleep Obfuscation
 
-See the [EDR Evasion documentation](/exploit/edr.md)
+See the [EDR Evasion documentation](skill://red-infrastructure-offensive-edr-evasion)
 
 ### Modern CyberDefense Stack
 
@@ -265,11 +265,11 @@ For detailed information on EDR evasion techniques, including:
 - Persistence strategies
 - Event correlation evasion
 
-See the [EDR Evasion documentation](exploit/edr.md).
+See the [EDR Evasion documentation](skill://red-infrastructure-offensive-edr-evasion).
 
 ### Windows Defender Bypass Techniques
 
-For detailed information on Windows Defender bypass techniques, including ASR bypasses and custom detection rules evasion, see the [EDR Evasion documentation](exploit/edr.md).
+For detailed information on Windows Defender bypass techniques, including ASR bypasses and custom detection rules evasion, see the [EDR Evasion documentation](skill://red-infrastructure-offensive-edr-evasion).
 
 ## Hosting Payloads
 
@@ -761,7 +761,7 @@ For detailed information on shellcode loaders, techniques, and implementation, i
 - Methods to hide shellcode
 - Storage solutions (including Certificate Table approach)
 
-See the [Shellcode documentation](exploit/shellcode.md).
+See the [Shellcode documentation](skill://red-infrastructure-offensive-shellcode).
 
 ### Formats
 
@@ -804,7 +804,7 @@ For detailed information on EDR evasion techniques, including:
 - Call stack obfuscation
 - DripLoader technique
 
-See the [EDR Evasion documentation](exploit/edr.md).
+See the [EDR Evasion documentation](skill://red-infrastructure-offensive-edr-evasion).
 
 ## Emerging Initial-Access
 

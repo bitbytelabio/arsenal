@@ -287,3 +287,7 @@ NERC CIP COMPLIANCE:
   CIP-005: [Status]
   CIP-007: [Status]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-power-grid-cybersecurity-assessment/references/api-reference.md` — API and execution command reference

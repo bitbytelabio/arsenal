@@ -14,10 +14,10 @@ Tests web applications for unprotected endpoints, authentication bypass via HTTP
 
 ```bash
 # Test common admin paths
-python agent.py --target https://target.example.com --admin-paths --session-cookie <token>
+python scripts/agent.py --target https://target.example.com --admin-paths --session-cookie <token>
 
 # Test with custom wordlist
-python agent.py --target https://target.example.com --wordlist /path/to/wordlist.txt
+python scripts/agent.py --target https://target.example.com --wordlist /path/to/wordlist.txt
 ```
 
 ## Arguments

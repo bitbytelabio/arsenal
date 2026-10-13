@@ -70,3 +70,7 @@ GUID Accessed: [Replication GUID]
 Risk Level: [Critical/High/Medium/Low]
 Recommended Action: [Disable account, reset krbtgt, investigate]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-dcsync-attacks/references/api-reference.md` — API and execution command reference

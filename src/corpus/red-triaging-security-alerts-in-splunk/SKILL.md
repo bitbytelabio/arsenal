@@ -199,3 +199,7 @@ Disposition:  TRUE POSITIVE — Compromised credential
 Action:       Escalated to Tier 2, ticket IR-2024-0431 created
               Account jsmith disabled pending password reset
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-triaging-security-alerts-in-splunk/references/api-reference.md` — API and execution command reference

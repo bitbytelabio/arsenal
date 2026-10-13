@@ -64,7 +64,7 @@ headers = {"Authorization": f"Bearer {token['access_token']}"}
 ## CLI Usage
 
 ```bash
-python agent.py --input audit_data.json --output report.json
+python scripts/agent.py --input audit_data.json --output report.json
 ```
 
 ## Required API Permissions

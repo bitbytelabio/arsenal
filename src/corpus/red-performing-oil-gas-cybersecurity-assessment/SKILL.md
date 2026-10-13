@@ -347,3 +347,7 @@ COMPLIANCE STATUS:
   API 1164: [N]% compliant
   IEC 62443: [N]% compliant
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-oil-gas-cybersecurity-assessment/references/api-reference.md` — API and execution command reference

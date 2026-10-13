@@ -243,3 +243,7 @@ EVIDENCE REFERENCES
 PCAP File:        INC-2025-1547_capture.pcap (SHA-256: ...)
 Zeek Logs:        /logs/zeek/2025-11-15/ (conn.log, ssl.log, dns.log)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-network-traffic-for-incidents/references/api-reference.md` — API and execution command reference

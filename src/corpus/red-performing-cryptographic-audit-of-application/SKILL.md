@@ -71,3 +71,10 @@ A cryptographic audit systematically reviews an application's use of cryptograph
 - [ ] Weak KDF parameters are identified
 - [ ] Report includes severity, location, and remediation
 - [ ] False positive rate is below 10%
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-cryptographic-audit-of-application/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-cryptographic-audit-of-application/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-cryptographic-audit-of-application/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-cryptographic-audit-of-application/assets/template.md` — Assessment deliverable and reporting template

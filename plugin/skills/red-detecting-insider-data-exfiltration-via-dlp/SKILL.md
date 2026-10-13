@@ -59,3 +59,7 @@ df["hour"] = df["timestamp"].dt.hour
 off_hours = df[(df["hour"] < 6) | (df["hour"] > 22)]
 suspicious = off_hours.groupby("user").size().sort_values(ascending=False)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-insider-data-exfiltration-via-dlp/references/api-reference.md` — API and execution command reference

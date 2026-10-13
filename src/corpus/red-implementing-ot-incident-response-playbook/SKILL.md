@@ -365,3 +365,7 @@ CONTAINMENT ACTIONS TAKEN:
 RECOVERY STATUS:
   [system] - [restored/pending] - [ETA]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-ot-incident-response-playbook/references/api-reference.md` — API and execution command reference

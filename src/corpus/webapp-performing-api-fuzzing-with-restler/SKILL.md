@@ -354,3 +354,7 @@ EOF
 - Uncovered: POST /admin/migrate, DELETE /admin/cache,
   PUT /config/advanced, POST /webhooks/test
 ```
+
+## References
+
+- `skill://webapp-performing-api-fuzzing-with-restler/references/api-reference.md` — API reference and command specification

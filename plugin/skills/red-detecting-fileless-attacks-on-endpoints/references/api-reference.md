@@ -65,6 +65,6 @@ Get-WMIObject -Namespace root\Subscription -Class __FilterToConsumerBinding
 ## CLI Usage
 
 ```bash
-python agent.py --ps-log PowerShell-Operational.evtx
-python agent.py --sysmon-log Sysmon.evtx --check-wmi --check-injection
+python scripts/agent.py --ps-log PowerShell-Operational.evtx
+python scripts/agent.py --sysmon-log Sysmon.evtx --check-wmi --check-injection
 ```

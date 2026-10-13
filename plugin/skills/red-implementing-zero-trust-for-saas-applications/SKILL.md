@@ -301,3 +301,7 @@ SSPM FINDINGS:
   Medium: 15
   Remediated this month: 18
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-zero-trust-for-saas-applications/references/api-reference.md` — API and execution command reference

@@ -264,3 +264,10 @@ mimikatz# misc::skeleton
 - HackTricks AD: https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html
 - SpecterOps AD Security: https://specterops.io/blog/
 - MITRE ATT&CK: https://attack.mitre.org/
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-active-directory-penetration-test/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-active-directory-penetration-test/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-active-directory-penetration-test/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-active-directory-penetration-test/assets/template.md` — Assessment deliverable and reporting template

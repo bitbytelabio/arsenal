@@ -271,3 +271,7 @@ POST-INCIDENT HARDENING
 3. SCP preventing CloudTrail disablement deployed
 4. GuardDuty auto-remediation Lambda configured
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-conducting-cloud-incident-response/references/api-reference.md` — API and execution command reference

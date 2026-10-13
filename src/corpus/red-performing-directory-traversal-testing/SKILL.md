@@ -307,3 +307,7 @@ Original `../` stripped by filter. Successful bypass: `....//....//....//etc/pas
 4. Remove sensitive files from web-accessible directories
 5. Disable PHP wrappers (allow_url_include, allow_url_fopen) if not required
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-directory-traversal-testing/references/api-reference.md` — API and execution command reference

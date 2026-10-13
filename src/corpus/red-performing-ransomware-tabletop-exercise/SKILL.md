@@ -218,3 +218,10 @@ Produce an after-action report (AAR) within 5 business days:
 | Area | Previous Score | Current Score | Trend |
 |------|---------------|--------------|-------|
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-ransomware-tabletop-exercise/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-ransomware-tabletop-exercise/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-ransomware-tabletop-exercise/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-ransomware-tabletop-exercise/assets/template.md` — Assessment deliverable and reporting template

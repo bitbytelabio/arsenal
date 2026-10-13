@@ -171,3 +171,8 @@ certipy shadow clear -u 'attacker@corp.local' -p 'Passw0rd!' \
 - [ ] (If computer) RBCD chain or onward movement demonstrated
 - [ ] Injected Key Credential removed / object restored
 - [ ] Enabling ACL path documented with remediation recommendation
+
+## Shipped Playbook Resources
+
+- `skill://red-abusing-shadow-credentials-for-privesc/references/api-reference.md` — API and execution command reference
+- `skill://red-abusing-shadow-credentials-for-privesc/references/standards.md` — Relevant standards and compliance baselines

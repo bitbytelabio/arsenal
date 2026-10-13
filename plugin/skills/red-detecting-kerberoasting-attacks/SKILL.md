@@ -75,3 +75,10 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-kerberoasting-attacks/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-kerberoasting-attacks/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-kerberoasting-attacks/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-kerberoasting-attacks/assets/template.md` — Assessment deliverable and reporting template

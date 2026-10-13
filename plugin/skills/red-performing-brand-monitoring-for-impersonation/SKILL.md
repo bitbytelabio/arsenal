@@ -236,3 +236,7 @@ Regards,
 - [NetDiligence: Domain Security and Phishing](https://netdiligence.com/blog/2025/12/understanding-domain-security-brand-impersonation/)
 - [Flare: Digital Brand Protection](https://flare.io/glossary/digital-brand-protection/)
 - [dnstwist GitHub](https://github.com/elceef/dnstwist)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-brand-monitoring-for-impersonation/references/api-reference.md` — API and execution command reference

@@ -480,3 +480,10 @@ resource "boundary_host_set_plugin" "web_tier" {
 - [From Zero to Hero with Boundary](https://www.hashicorp.com/en/blog/from-zero-to-hero-hashicorp-boundary)
 - [Boundary Terraform Provider](https://registry.terraform.io/providers/hashicorp/boundary/latest/docs)
 - [Zero Trust with Vault, Consul, and Boundary](https://www.hashicorp.com/en/resources/zero-trust-security-with-hashicorp-vault-consul-and-boundary)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-zero-trust-with-hashicorp-boundary/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-zero-trust-with-hashicorp-boundary/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-zero-trust-with-hashicorp-boundary/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-zero-trust-with-hashicorp-boundary/assets/template.md` — Assessment deliverable and reporting template

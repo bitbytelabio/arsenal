@@ -252,3 +252,7 @@ Actions Taken:
 
 Verdict:      HYPOTHESIS CONFIRMED — 3 true positive findings escalated to IR
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-threat-hunting-with-elastic-siem/references/api-reference.md` — API and execution command reference

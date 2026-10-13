@@ -306,3 +306,7 @@ SUMMARY:
   Pods with auto-mounted tokens: 45 / 67
   Privileged containers: 8
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-auditing-kubernetes-cluster-rbac/references/api-reference.md` — API and execution command reference

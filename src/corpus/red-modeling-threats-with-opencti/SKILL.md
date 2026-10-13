@@ -256,3 +256,8 @@ for r in rels:
 - [ ] A STIX 2.1 bundle ingested via `import_bundle_from_json`
 - [ ] MITRE ATT&CK connector enabled and importing techniques
 - [ ] Intrusion-set TTP profile queryable and exportable
+
+## Shipped Playbook Resources
+
+- `skill://red-modeling-threats-with-opencti/references/api-reference.md` — API and execution command reference
+- `skill://red-modeling-threats-with-opencti/references/standards.md` — Relevant standards and compliance baselines

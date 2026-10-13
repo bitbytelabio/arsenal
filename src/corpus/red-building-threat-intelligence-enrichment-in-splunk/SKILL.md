@@ -292,3 +292,10 @@ index=firewall sourcetype=pan:traffic action=allowed
 - [Splunk Lantern - Threat Intelligence Enrichment](https://lantern.splunk.com/Security/UCE/Guided_Insights/Threat_intelligence)
 - [Integrated Intelligence Enrichment - Splunk Blog](https://www.splunk.com/en_us/blog/security/integrated-intelligence-enrichment-with-threat-intelligence-management.html)
 - [Cisco Talos Threat Intelligence in Splunk](https://www.splunk.com/en_us/blog/security/cisco-talos-threat-intelligence-splunk-security.html)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-threat-intelligence-enrichment-in-splunk/references/api-reference.md` — API and execution command reference
+- `skill://red-building-threat-intelligence-enrichment-in-splunk/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-threat-intelligence-enrichment-in-splunk/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-threat-intelligence-enrichment-in-splunk/assets/template.md` — Assessment deliverable and reporting template

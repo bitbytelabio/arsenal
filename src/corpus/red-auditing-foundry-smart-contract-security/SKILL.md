@@ -28,9 +28,9 @@ layering four independent techniques that each catch what the others miss:
    **invariant tests** (`invariant_*` + handler contracts with ghost variables)
    proves protocol-level properties hold across millions of random sequences.
 4. **Manual review + key hygiene** — a structured checklist (see
-   `skill://red-auditing-foundry-smart-contract-security/support/auditing-foundry-smart-contract-security/references/vulnerability-checklist.md`) and a secrets/keystore audit so no
+   `skill://red-auditing-foundry-smart-contract-security/references/vulnerability-checklist.md`) and a secrets/keystore audit so no
    private key ever lives in plaintext and deployment goes through an encrypted
-   `cast` keystore (see `skill://red-auditing-foundry-smart-contract-security/support/auditing-foundry-smart-contract-security/references/secure-deployment-and-keys.md`).
+   `cast` keystore (see `skill://red-auditing-foundry-smart-contract-security/references/secure-deployment-and-keys.md`).
 
 The skill is **dev-side and pre-deployment** — it is run by the engineer building
 the contract, not by a SOC after an incident. Findings gate the deploy: any
@@ -103,12 +103,12 @@ forge test --match-test invariant_ -vvv          # invariant suite (handler-base
 
 Every value-moving contract should have **invariant tests with a handler** (bounded
 inputs, ghost variables, `targetContract(handler)`) — not just unit tests. See
-`skill://red-auditing-foundry-smart-contract-security/support/auditing-foundry-smart-contract-security/references/api-reference.md` for the handler pattern, and write a
+`skill://red-auditing-foundry-smart-contract-security/references/api-reference.md` for the handler pattern, and write a
 `test_RevertWhen_*` (with `vm.expectRevert`) for each access-control guard.
 
 ### Step 5: Manual review against the checklist
 
-Walk `skill://red-auditing-foundry-smart-contract-security/support/auditing-foundry-smart-contract-security/references/vulnerability-checklist.md` for every contract: reentrancy
+Walk `skill://red-auditing-foundry-smart-contract-security/references/vulnerability-checklist.md` for every contract: reentrancy
 (checks-effects-interactions / `nonReentrant`), access control, oracle manipulation,
 `delegatecall`/proxy storage layout, unchecked return values, `tx.origin`, weak
 randomness, DoS, front-running/MEV, and ERC-specific pitfalls (approve race,
@@ -127,7 +127,7 @@ cast wallet import deployer --interactive
 forge script script/Deploy.s.sol --account deployer --rpc-url <testnet> --broadcast --verify
 ```
 
-See `skill://red-auditing-foundry-smart-contract-security/support/auditing-foundry-smart-contract-security/references/secure-deployment-and-keys.md` for the full hardening rules
+See `skill://red-auditing-foundry-smart-contract-security/references/secure-deployment-and-keys.md` for the full hardening rules
 (MetaMask hygiene, hardware wallet for mainnet, RPC trust, post-deploy verification).
 
 ### Step 7: Triage and report

@@ -305,6 +305,8 @@ gcloud apigee apis list-deployments \
 
 ## References
 
+- `skill://webapp-implementing-api-threat-protection-with-apigee/references/api-reference.md` — API reference and command specification
+
 - Apigee JSON Threat Protection: https://cloud.google.com/apigee/docs/api-platform/reference/policies/json-threat-protection-policy
 - Google Cloud Apigee Security Best Practices: https://cloud.google.com/architecture/best-practices-securing-applications-and-apis-using-apigee
 - Apigee Advanced API Security: https://docs.cloud.google.com/apigee/docs/api-security

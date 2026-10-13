@@ -240,3 +240,10 @@ FAILED CHECKS:
 
 QUALITY GATE: FAILED (2 HIGH severity findings)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-infrastructure-as-code-security-scanning/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-infrastructure-as-code-security-scanning/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-infrastructure-as-code-security-scanning/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-infrastructure-as-code-security-scanning/assets/template.md` — Assessment deliverable and reporting template

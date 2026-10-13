@@ -6,9 +6,9 @@
 
 ## CLI Interface
 ```
-python agent.py precedence --url <target> [--param id]
-python agent.py test --url <target> [--method GET|POST]
-python agent.py waf --url <target> --param <name> --value <blocked_value>
+python scripts/agent.py precedence --url <target> [--param id]
+python scripts/agent.py test --url <target> [--method GET|POST]
+python scripts/agent.py waf --url <target> --param <name> --value <blocked_value>
 ```
 
 ## Core Functions

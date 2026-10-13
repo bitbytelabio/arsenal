@@ -243,3 +243,10 @@ trivy sbom sbom-cyclonedx.json
 - [Trivy Operator for Kubernetes](https://aquasecurity.github.io/trivy-operator/)
 - [Aqua Security Platform](https://www.aquasec.com/products/)
 - [CycloneDX SBOM Specification](https://cyclonedx.org/specification/overview/)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-aqua-security-for-container-scanning/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-aqua-security-for-container-scanning/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-aqua-security-for-container-scanning/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-aqua-security-for-container-scanning/assets/template.md` — Assessment deliverable and reporting template

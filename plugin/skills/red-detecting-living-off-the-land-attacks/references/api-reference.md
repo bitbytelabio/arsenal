@@ -4,13 +4,13 @@
 
 ```bash
 # Analyze Sysmon EVTX file
-python agent.py sysmon-events.evtx
+python scripts/agent.py sysmon-events.evtx
 
 # Analyze Sysmon JSON/JSONL export (one event per line)
-python agent.py sysmon-events.jsonl
+python scripts/agent.py sysmon-events.jsonl
 
 # Filter output for critical alerts
-python agent.py sysmon-events.evtx 2>/dev/null | grep CRITICAL
+python scripts/agent.py sysmon-events.evtx 2>/dev/null | grep CRITICAL
 ```
 
 ## LOLBins Detected

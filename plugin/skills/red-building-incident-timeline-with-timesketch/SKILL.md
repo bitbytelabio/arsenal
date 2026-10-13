@@ -241,3 +241,10 @@ target-query -f timesketch://timesketch.local/case-001 \
 - [CISA Timesketch Resource](https://www.cisa.gov/resources-tools/services/timesketch)
 - [Hunt and Hackett: Scalable Forensics with Dissect and Timesketch](https://www.huntandhackett.com/blog/scalable-forensics-timeline-analysis-using-dissect-and-timesketch)
 - [Plaso (log2timeline) Documentation](https://plaso.readthedocs.io/)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-incident-timeline-with-timesketch/references/api-reference.md` — API and execution command reference
+- `skill://red-building-incident-timeline-with-timesketch/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-incident-timeline-with-timesketch/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-incident-timeline-with-timesketch/assets/template.md` — Assessment deliverable and reporting template

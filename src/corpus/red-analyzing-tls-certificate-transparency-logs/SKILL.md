@@ -59,3 +59,7 @@ certs = c.search("%.example.com")
 for cert in certs:
     print(f"Issuer: {cert.get('issuer_name')}, Domain: {cert.get('name_value')}")
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-tls-certificate-transparency-logs/references/api-reference.md` — API and execution command reference

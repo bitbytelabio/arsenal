@@ -284,3 +284,7 @@ Key Metrics:
 
 Business Impact: LOW — Finance file server offline, no customer-facing systems affected
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-building-incident-response-dashboard/references/api-reference.md` — API and execution command reference

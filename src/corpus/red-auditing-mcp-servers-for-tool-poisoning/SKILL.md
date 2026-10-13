@@ -204,3 +204,8 @@ Document each finding with server, tool, evidence (the poisoned description / SS
 - [ ] Findings mapped to MITRE ATLAS AML.T0010 and OWASP MCP03:2025
 - [ ] Severity assigned and remediation documented for each finding
 - [ ] Re-scan scheduled to catch future rug pulls
+
+## Shipped Playbook Resources
+
+- `skill://red-auditing-mcp-servers-for-tool-poisoning/references/api-reference.md` — API and execution command reference
+- `skill://red-auditing-mcp-servers-for-tool-poisoning/references/standards.md` — Relevant standards and compliance baselines

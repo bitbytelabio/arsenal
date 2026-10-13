@@ -286,3 +286,10 @@ Attack Path 1: Domain Compromise via LLMNR Poisoning
 - PTES: http://www.pentest-standard.org/
 - Impacket: https://github.com/fortra/impacket
 - BloodHound: https://github.com/BloodHoundAD/BloodHound
+
+## Shipped Playbook Resources
+
+- `skill://red-conducting-internal-network-penetration-test/references/api-reference.md` — API and execution command reference
+- `skill://red-conducting-internal-network-penetration-test/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-conducting-internal-network-penetration-test/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-conducting-internal-network-penetration-test/assets/template.md` — Assessment deliverable and reporting template

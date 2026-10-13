@@ -45,3 +45,7 @@ Before exfiltrating data, adversaries typically stage collected files in a centr
 - Archive creation timeline with source file analysis
 - MITRE ATT&CK mapping (T1074.001, T1074.002, T1560)
 - Staging directory heat map showing suspicious write activity
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-data-staging-before-exfiltration/references/api-reference.md` — API and execution command reference

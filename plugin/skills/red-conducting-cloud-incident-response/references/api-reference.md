@@ -14,7 +14,7 @@ Automates AWS cloud incident response: disables compromised access keys, attache
 ## CLI Usage
 
 ```bash
-python agent.py --incident-id INC-2025-001 --username compromised-user \
+python scripts/agent.py --incident-id INC-2025-001 --username compromised-user \
   --access-key-id AKIA... --instance-id i-0abc123 --output report.json
 ```
 

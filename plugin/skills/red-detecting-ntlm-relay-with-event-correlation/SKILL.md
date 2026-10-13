@@ -727,3 +727,7 @@ Recommended Actions:
   - Short-term: [Enable SMB/LDAP signing, disable LLMNR/NBT-NS]
   - Long-term: [Migrate to Kerberos, enforce EPA, restrict NTLM via GPO]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-ntlm-relay-with-event-correlation/references/api-reference.md` — API and execution command reference

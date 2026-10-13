@@ -262,3 +262,10 @@ kubectl delete pod test-netpol test-egress test-metadata
 - [kube-bench - CIS Benchmark](https://github.com/aquasecurity/kube-bench)
 - [MITRE ATT&CK Containers Matrix](https://attack.mitre.org/matrices/enterprise/containers/)
 - [Kubernetes Threat Matrix - Microsoft](https://microsoft.github.io/Threat-Matrix-for-Kubernetes/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-kubernetes-penetration-testing/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-kubernetes-penetration-testing/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-kubernetes-penetration-testing/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-kubernetes-penetration-testing/assets/template.md` — Assessment deliverable and reporting template

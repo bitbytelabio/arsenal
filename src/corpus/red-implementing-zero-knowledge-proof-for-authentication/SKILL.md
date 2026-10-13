@@ -71,3 +71,9 @@ Zero-Knowledge Proofs (ZKPs) allow a prover to demonstrate knowledge of a secret
 - [ ] Non-interactive proof is verifiable offline
 - [ ] Multiple authentications produce different transcripts
 - [ ] Protocol resists replay attacks
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-zero-knowledge-proof-for-authentication/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-zero-knowledge-proof-for-authentication/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-zero-knowledge-proof-for-authentication/references/workflows.md` — Operational procedures and detailed workflows

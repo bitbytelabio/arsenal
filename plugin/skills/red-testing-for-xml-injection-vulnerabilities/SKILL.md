@@ -204,3 +204,7 @@ curl "http://target.com/search?query=' or substring(//user[1]/password,1,1)='a' 
 - Implement XML schema validation with strict DTD restrictions
 - Block outbound connections from XML processing services
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-for-xml-injection-vulnerabilities/references/api-reference.md` — API and execution command reference

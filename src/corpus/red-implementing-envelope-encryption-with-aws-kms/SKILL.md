@@ -82,3 +82,10 @@ Envelope encryption is a strategy where data is encrypted with a data encryption
 - [ ] Plaintext DEK is wiped from memory after use
 - [ ] Encryption context is validated during decryption
 - [ ] Key rotation re-encrypts DEKs with new master key
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-envelope-encryption-with-aws-kms/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-envelope-encryption-with-aws-kms/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-envelope-encryption-with-aws-kms/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-envelope-encryption-with-aws-kms/assets/template.md` — Assessment deliverable and reporting template

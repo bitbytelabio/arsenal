@@ -414,3 +414,10 @@ tailscale up --authkey=$TS_AUTHKEY --hostname=ci-runner-$CI_JOB_ID
 - [Headscale - Open Source Control Server](https://github.com/juanfont/headscale)
 - [WireGuard Protocol](https://www.wireguard.com/protocol/)
 - [Tailscale SSH](https://tailscale.com/kb/1193/tailscale-ssh/)
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-tailscale-for-zero-trust-vpn/references/api-reference.md` — API and execution command reference
+- `skill://red-deploying-tailscale-for-zero-trust-vpn/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-deploying-tailscale-for-zero-trust-vpn/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-deploying-tailscale-for-zero-trust-vpn/assets/template.md` — Assessment deliverable and reporting template

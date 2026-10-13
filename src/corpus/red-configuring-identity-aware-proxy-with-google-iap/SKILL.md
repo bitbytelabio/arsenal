@@ -365,3 +365,10 @@ ACCESS LOGS (last 24h):
   Denied by access level:   55
   Unique users:            134
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-configuring-identity-aware-proxy-with-google-iap/references/api-reference.md` — API and execution command reference
+- `skill://red-configuring-identity-aware-proxy-with-google-iap/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-configuring-identity-aware-proxy-with-google-iap/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-configuring-identity-aware-proxy-with-google-iap/assets/template.md` — Assessment deliverable and reporting template

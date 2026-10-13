@@ -278,3 +278,7 @@ for m in matches:
 - EDPB Guidelines 01/2022 on Right of Access: https://www.edpb.europa.eu/system/files/2023-04/edpb_guidelines_202201_data_subject_rights_access_v2_en.pdf
 - GDPR Article 12 (DSAR Modalities): https://gdpr-info.eu/art-12-gdpr/
 - Regulation (EU) 2025/2518 (Procedural Rules): Cross-border GDPR enforcement procedural rules
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-gdpr-data-subject-access-request/references/api-reference.md` — API and execution command reference

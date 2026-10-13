@@ -312,3 +312,8 @@ vendor/
 6. **Exclude test files** to reduce false positives
 7. **Version control rules** in a shared repository
 8. **Run in CI as a blocking check** for ERROR severity findings
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-semgrep-for-custom-sast-rules/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-semgrep-for-custom-sast-rules/references/standards.md` — Relevant standards and compliance baselines

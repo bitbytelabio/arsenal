@@ -140,3 +140,7 @@ Plan 90-day implementation:
 - **Underestimating administration burden**: MISP and OpenCTI require dedicated admin time (minimum 0.25 FTE); budget accordingly.
 - **Ignoring data migration costs**: Moving historical intelligence from one TIP to another is costly and often impractical for legacy systems.
 - **Not testing SIEM integration in PoC**: TIP value depends heavily on downstream integration quality; always test SIEM/SOAR connectivity during evaluation.
+
+## Shipped Playbook Resources
+
+- `skill://red-evaluating-threat-intelligence-platforms/references/api-reference.md` — API and execution command reference

@@ -289,3 +289,7 @@ REMEDIATION
 - Verify MBR/VBR/UEFI integrity for boot persistence
 - Full system rebuild recommended for kernel-level compromise
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-rootkit-activity/references/api-reference.md` — API and execution command reference

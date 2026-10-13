@@ -575,3 +575,7 @@ Use Activity Explorer and the DLP alerts dashboard to monitor policy effectivene
 - Override justification analysis: 78% "Business requirement", 15% "False positive",
   7% "Other"
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-data-loss-prevention-with-microsoft-purview/references/api-reference.md` — API and execution command reference

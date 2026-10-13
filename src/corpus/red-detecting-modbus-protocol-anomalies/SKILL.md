@@ -368,3 +368,7 @@ ANOMALIES: [N]
   TIMING_ANOMALY: [N]
   BROADCAST_WRITE: [N]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-modbus-protocol-anomalies/references/api-reference.md` — API and execution command reference

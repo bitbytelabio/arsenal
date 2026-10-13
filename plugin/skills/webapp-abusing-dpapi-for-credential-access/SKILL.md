@@ -179,6 +179,8 @@ donpapi collect -u alice -p 'Password123!' -d corp.local --target 10.0.0.0/24
 | Impacket dpapi.py | Remote/offline DPAPI decryption (Python) | https://github.com/fortra/impacket |
 | DonPAPI | Mass remote DPAPI looting | https://github.com/login-securite/DonPAPI |
 | HackTricks DPAPI | Technique reference | https://book.hacktricks.wiki/en/windows-hardening/windows-local-privilege-escalation/dpapi-extracting-passwords.html |
+|- SharpDPAPI / Impacket API Reference | Command and flag reference for SharpDPAPI, SharpChrome, and Impacket dpapi.py | `skill://webapp-abusing-dpapi-for-credential-access/references/api-reference.md` |
+|- DPAPI Standards & Compliance | NIST, CIS, and MITRE ATT&CK mapping for DPAPI credential protection | `skill://webapp-abusing-dpapi-for-credential-access/references/standards.md` |
 
 ## Detection and OPSEC Notes
 

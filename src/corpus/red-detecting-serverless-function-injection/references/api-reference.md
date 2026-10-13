@@ -14,13 +14,13 @@ Detects code injection vulnerabilities in AWS Lambda functions by scanning funct
 
 ```bash
 # Full assessment with code scanning
-python agent.py --region us-east-1 --scan-code --cloudtrail-days 14 --output report.json
+python scripts/agent.py --region us-east-1 --scan-code --cloudtrail-days 14 --output report.json
 
 # Scan specific functions only
-python agent.py --functions payment-processor auth-handler --scan-code --output report.json
+python scripts/agent.py --functions payment-processor auth-handler --scan-code --output report.json
 
 # Quick assessment without code download (IAM, layers, CloudTrail only)
-python agent.py --region us-west-2 --output quick_report.json
+python scripts/agent.py --region us-west-2 --output quick_report.json
 ```
 
 ## Arguments

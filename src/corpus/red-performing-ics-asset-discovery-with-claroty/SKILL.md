@@ -488,3 +488,7 @@ CRITICAL FINDINGS:
   - [End-of-life firmware finding]
   - [Unencrypted protocol concern]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-ics-asset-discovery-with-claroty/references/api-reference.md` — API and execution command reference

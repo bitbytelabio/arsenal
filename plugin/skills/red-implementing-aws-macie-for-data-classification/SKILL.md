@@ -300,3 +300,10 @@ aws macie2 list-classification-jobs \
 - AWS Macie Pricing
 - Supported File Types for Macie Analysis
 - GDPR and CCPA Compliance with Macie
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-aws-macie-for-data-classification/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-aws-macie-for-data-classification/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-aws-macie-for-data-classification/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-aws-macie-for-data-classification/assets/template.md` — Assessment deliverable and reporting template

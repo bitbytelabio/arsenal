@@ -283,3 +283,10 @@ webhooks:
 - [ControlPlane Security Tools](https://controlplane.io/)
 - [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes)
 - [Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
+
+## Shipped Playbook Resources
+
+- `skill://red-scanning-kubernetes-manifests-with-kubesec/references/api-reference.md` — API and execution command reference
+- `skill://red-scanning-kubernetes-manifests-with-kubesec/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-scanning-kubernetes-manifests-with-kubesec/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-scanning-kubernetes-manifests-with-kubesec/assets/template.md` — Assessment deliverable and reporting template

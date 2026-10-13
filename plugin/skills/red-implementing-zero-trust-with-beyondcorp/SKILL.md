@@ -48,3 +48,7 @@ Query IAP audit logs, verify policy enforcement, and identify gaps in zero trust
 ## Expected Output
 
 JSON report containing IAP-protected resources, access level definitions, policy binding audit results, and zero trust coverage metrics.
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-zero-trust-with-beyondcorp/references/api-reference.md` — API and execution command reference

@@ -268,3 +268,7 @@ LATERAL MOVEMENT INDICATORS:
   Unauthorized Processes: [found/not found]
   Anomalous Authentication: [found/not found]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-attacks-on-historian-servers/references/api-reference.md` — API and execution command reference

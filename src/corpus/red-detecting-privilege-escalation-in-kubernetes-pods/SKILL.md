@@ -236,3 +236,10 @@ kubectl get pods --all-namespaces -o json | \
 6. **Monitor with Falco** for runtime privilege escalation attempts
 7. **Audit RBAC changes** with Kubernetes audit logging
 8. **Use seccomp profiles** to restrict syscalls
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-privilege-escalation-in-kubernetes-pods/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-privilege-escalation-in-kubernetes-pods/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-privilege-escalation-in-kubernetes-pods/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-privilege-escalation-in-kubernetes-pods/assets/template.md` — Assessment deliverable and reporting template

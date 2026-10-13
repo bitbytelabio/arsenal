@@ -62,3 +62,7 @@ AuditLogs
 | where TargetResources[0].modifiedProperties[0].newValue has "Global Administrator"
 '''
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-azure-activity-logs-for-threats/references/api-reference.md` — API and execution command reference

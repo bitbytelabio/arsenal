@@ -376,3 +376,7 @@ jobs:
 4. Remove password_hash and mfa_secret from user serialization
 5. Standardize login error messages to prevent account enumeration
 ```
+
+## References
+
+- `skill://webapp-performing-api-security-testing-with-postman/references/api-reference.md` — API reference and command specification

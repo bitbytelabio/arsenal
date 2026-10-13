@@ -46,3 +46,7 @@ Test connectivity between pods to verify policies are correctly enforced.
 ## Expected Output
 
 JSON audit report listing all network policies, unprotected namespaces, policy rule counts, and connectivity test results.
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-container-network-policies-with-calico/references/api-reference.md` — API and execution command reference

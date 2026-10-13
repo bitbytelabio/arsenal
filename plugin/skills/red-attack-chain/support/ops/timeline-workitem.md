@@ -15,10 +15,10 @@ work/<case>/
   report/            # Final report draft or copy
 ```
 
-Initialization:
+Initialization: resolve `skill://red-attack-chain/scripts/case-init.ps1`, copy the complete resource to `scripts/case-init.ps1` in the analysis workspace, and run from that workspace:
 
 ```powershell
-powershell -File skills\scripts\case-init.sh -Hint "full pentest" -CaseName "acme-2026"
+powershell -File scripts/case-init.ps1 -Hint "full pentest" -CaseName "acme-2026"
 ```
 
 ## timeline.md Format
@@ -48,7 +48,7 @@ You **MUST NOT** delete or overwrite existing `##` time blocks (corrections use 
 - A consumer **MUST** first parse `carry_forward_refs`, and then apply `decision_delta` over the working context; never treat the delta as a complete state.
 - A genuine decision boundary exists only when there are two or more materially different, evidence-supported branches where user choice alters the next action; deterministic transitions proceed directly without restating context solely to generate option menus.
 
-Representative transition: For `Triage -> Static`, if auth/scope/route remain unchanged, record only `decision_delta: [phase=triage->static]`, and inherit remaining state via `carry_forward_refs: [scope.md, evidence/E-triage.md]`.
+Representative transition: For `Triage -> Static`, if auth/scope/route remain unchanged, record only `decision_delta: [phase=triage->static]`, and inherit remaining state via `carry_forward_refs: [scope.md, evidence/E-triage]`.
 
 ## workitems.md Template
 

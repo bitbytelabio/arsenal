@@ -6,11 +6,11 @@
 
 ## CLI Interface
 ```
-python agent.py plugin --dump memory.raw --name pslist [--args --pid 1234]
-python agent.py malproc --dump memory.raw
-python agent.py inject --dump memory.raw
-python agent.py network --dump memory.raw
-python agent.py triage --dump memory.raw
+python templates/agent.py plugin --dump memory.raw --name pslist [--args --pid 1234]
+python templates/agent.py malproc --dump memory.raw
+python templates/agent.py inject --dump memory.raw
+python templates/agent.py network --dump memory.raw
+python templates/agent.py triage --dump memory.raw
 ```
 
 ## Core Functions

@@ -150,3 +150,10 @@ def apply_criticality_to_vulns(vulns_df, asset_scores):
 - building-vulnerability-aging-and-sla-tracking
 - performing-business-impact-analysis
 - implementing-asset-management-program
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-asset-criticality-scoring-for-vulns/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-asset-criticality-scoring-for-vulns/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-asset-criticality-scoring-for-vulns/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-asset-criticality-scoring-for-vulns/assets/template.md` — Assessment deliverable and reporting template

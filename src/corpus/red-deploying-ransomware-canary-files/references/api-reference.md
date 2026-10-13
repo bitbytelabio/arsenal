@@ -46,16 +46,16 @@
 
 ```bash
 # Deploy canary files
-python agent.py --action deploy --dirs /srv/shares /home/admin/Documents
+python scripts/agent.py --action deploy --dirs /srv/shares /home/admin/Documents
 
 # Monitor canary files with Slack alerts
-python agent.py --action monitor --slack-webhook https://hooks.slack.com/...
+python scripts/agent.py --action monitor --slack-webhook https://hooks.slack.com/...
 
 # Verify canary file integrity
-python agent.py --action verify
+python scripts/agent.py --action verify
 
 # Test detection pipeline
-python agent.py --action test
+python scripts/agent.py --action test
 ```
 
 ## Python Libraries

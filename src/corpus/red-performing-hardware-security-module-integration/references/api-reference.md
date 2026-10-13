@@ -6,13 +6,13 @@
 
 ## CLI Interface
 ```
-python agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 slots
-python agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 objects
-python agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 gen-rsa --label mykey --bits 2048
-python agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 gen-ec --label myec
-python agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 sign-verify --key-label mykey
-python agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 mechanisms
-python agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 full
+python scripts/agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 slots
+python scripts/agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 objects
+python scripts/agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 gen-rsa --label mykey --bits 2048
+python scripts/agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 gen-ec --label myec
+python scripts/agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 sign-verify --key-label mykey
+python scripts/agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 mechanisms
+python scripts/agent.py --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 full
 ```
 
 ## Core Functions

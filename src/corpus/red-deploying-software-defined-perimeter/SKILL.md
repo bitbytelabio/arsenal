@@ -172,3 +172,10 @@ SDP connections are provisioned on-demand based on real-time policy evaluation. 
 - NIST SP 800-207: Zero Trust Architecture
 - CISA Zero Trust Maturity Model v2.0
 - fwknop: Single Packet Authorization implementation
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-software-defined-perimeter/references/api-reference.md` — API and execution command reference
+- `skill://red-deploying-software-defined-perimeter/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-deploying-software-defined-perimeter/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-deploying-software-defined-perimeter/assets/template.md` — Assessment deliverable and reporting template

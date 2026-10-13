@@ -121,3 +121,7 @@ Structure findings as:
 - **Ignoring Phases 1 and 2**: Reconnaissance and weaponization occur before the defender has visibility. Intelligence about these phases requires external sources (OSINT, threat intelligence).
 - **Missing insider threats**: The kill chain was designed for external adversaries. Insider threats may skip directly to Phase 7 without traversing earlier phases.
 - **Confusing with ATT&CK tactics**: The 7-phase kill chain and 14 ATT&CK tactics are complementary but not directly equivalent. Maintain distinction to prevent analytic confusion.
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-cyber-kill-chain/references/api-reference.md` — API and execution command reference

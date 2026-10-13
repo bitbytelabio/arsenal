@@ -60,3 +60,7 @@ for step in job.get("steps", []):
     if "${{" in run_cmd and "github.event" in run_cmd:
         print(f"Script injection risk: {run_cmd[:80]}")
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-supply-chain-attacks-in-ci-cd/references/api-reference.md` — API and execution command reference

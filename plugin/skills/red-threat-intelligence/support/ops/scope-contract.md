@@ -6,27 +6,29 @@
 
 ## How to Initialize
 
+Resolve `skill://red-threat-intelligence/scripts/case-init.ps1` (PowerShell) or `skill://red-threat-intelligence/scripts/case-init.sh` (Bash), then copy the complete selected resource into the local scripts directory under your analysis workspace. Run the examples from that workspace; a skill URI is not a shell path.
+
 Windows:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File skills\scripts\case-init.sh -Hint "<one-line task description>" -CaseName "my-case"
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/case-init.ps1 -Hint "<one-line task description>" -CaseName "my-case"
 # Default output: work/<case>/scope.md, etc., in the current analysis project
 # Explicitly specify when calling the skill from another directory: -ProjectRoot "C:\path\to\analysis-project"
 
 # Authorized local offline sample: auth granted + offline + explicit sample → ready_for_act=true
-powershell -NoProfile -ExecutionPolicy Bypass -File skills\scripts\case-init.sh `
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/case-init.ps1 `
   -Hint "offline apk" -CaseName "my-sample" -Preset offline-sample -Sample ".\app.apk"
 ```
 
 Linux / macOS / Kali:
 
 ```bash
-bash skills/scripts/case-init.sh --hint "<one-line task description>" --case-name "my-case"
+bash scripts/case-init.sh --hint "<one-line task description>" --case-name "my-case"
 # Default output: work/<case>/scope.md, etc., in the caller's current analysis project
 # Explicitly specify when calling from another directory: --project-root "/path/to/analysis-project"
 
 # Authorized local offline sample
-bash skills/scripts/case-init.sh \
+bash scripts/case-init.sh \
   --hint "offline apk" --case-name "my-sample" \
   --preset offline-sample --sample ./app.apk
 ```

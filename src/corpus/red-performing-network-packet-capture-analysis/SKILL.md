@@ -225,7 +225,7 @@ class PCAPForensicAnalyzer:
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: python process.py <pcap_file> <output_dir>")
+        print("Usage: python scripts/process.py <pcap_file> <output_dir>")
         sys.exit(1)
     analyzer = PCAPForensicAnalyzer(sys.argv[1], sys.argv[2])
     analyzer.generate_report()
@@ -241,3 +241,10 @@ if __name__ == "__main__":
 - PCAP Analysis Mastery: https://insanecyber.com/mastering-pcap-review/
 - SANS Network Forensics: https://www.sans.org/cyber-security-courses/network-forensics/
 - Public PCAPs for Practice: https://www.netresec.com/?page=PcapFiles
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-network-packet-capture-analysis/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-network-packet-capture-analysis/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-network-packet-capture-analysis/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-network-packet-capture-analysis/assets/template.md` — Assessment deliverable and reporting template

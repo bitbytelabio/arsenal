@@ -159,7 +159,7 @@ No behavior or immediate exit / Infinite sleep
 
 ### 3.3 Anti-Debugging / Obfuscation Bypass Quick Reference (Issue #65 Patches A–T · High Frequency)
 
-For full index and action details, see `reverse-engineering/anti-analysis.md` "Agent Response Cookbook A–T". Only **P0 must-check + common transitions** are listed here. Default to **authorized isolated lab**; patching/modifying flag bits does not constitute unauthorized production actions.
+For full index and action details, see `skill://re-reverse-engineering/anti-analysis.md` "Agent Response Cookbook A–T". Only **P0 must-check + common transitions** are listed here. Default to **authorized isolated lab**; patching/modifying flag bits does not constitute unauthorized production actions.
 
 | Trigger Feature | Preferred Action (Summary) | Evidence |
 |-----------------|----------------------------|----------|
@@ -178,7 +178,7 @@ For full index and action details, see `reverse-engineering/anti-analysis.md` "A
 | End of file > sum of sections (Overlay) (J) | Extract overlay; file/entropy; locate loading offset xrefs | `E-overlay` |
 | .rsrc abnormally large / high-entropy RT_RCDATA (Q) | Extract resource; FindResource chain + decrypt dump | `E-rsrc-payload` |
 | DLL loaded only at runtime (R) | Check Delay Import; bp delay-load helper | `E-delay-import` |
-| while+switch star-shaped CFG (H) | **See** `ollvm-deobfuscation.md`; dynamic path if plugins fail | `E-cff` |
+| while+switch star-shaped CFG (H) | **See** `skill://re-reverse-engineering/references/ollvm-deobfuscation.md`; dynamic path if plugins fail | `E-cff` |
 | Always-true / Always-false branches (S) | **See** ollvm / symbolic execution; dynamic ground truth prevails | `E-opaque-pred` |
 | `/proc/self/status` TracerPid (L) | **Linux/ELF**; hook or patch; not mandatory for Windows main path | `E-anti-debug-tracerpid` |
 
@@ -186,7 +186,7 @@ For full index and action details, see `reverse-engineering/anti-analysis.md` "A
 
 ### 3.4 Non-PE / Multi-Format Side Channels (Issue #65 Patches U–AV · Routing)
 
-Full index: `reverse-engineering/references/nonpe-format-cookbook.md`. Only **Type → Entry** listed here; action details reside in cookbook / corresponding skill.
+Full index: `skill://re-reverse-engineering/references/nonpe-format-cookbook.md`. Only **Type → Entry** listed here; action details reside in cookbook / corresponding skill.
 
 | Type | Jump | P0 Evidence Anchor (Example) |
 |------|------|------------------------------|
@@ -204,9 +204,9 @@ Full index: `reverse-engineering/references/nonpe-format-cookbook.md`. Only **Ty
 
 ### Decision quality overlay (Issue #77)
 
-Before closing Synthesis, apply [analysis-decision-framework.md](../../ops/analysis-decision-framework.md) **P0 checklist**: R41 grounded claims, R4* validated sufficiency, R1 confidence->dynamic, R2 hypothesis exit, R43 deadlock replan (under feasibility gate), R8/R23 no default malice/IOC. Multi-module -> R50; anti-analysis effort -> R51 + A-T cookbook.
+Before closing Synthesis, apply [analysis-decision-framework.md](skill://re-reverse-engineering/support/ops/analysis-decision-framework.md) **P0 checklist**: R41 grounded claims, R4* validated sufficiency, R1 confidence->dynamic, R2 hypothesis exit, R43 deadlock replan (under feasibility gate), R8/R23 no default malice/IOC. Multi-module -> R50; anti-analysis effort -> R51 + A-T cookbook.
 
-Blindspots (Rust/Go/VMP/injection/OLE/PDF/agent-meta): [analysis-blindspot-cookbook.md](../../ops/analysis-blindspot-cookbook.md) R52-R81 — detection-oriented; not a parallel master flow.
+Blindspots (Rust/Go/VMP/injection/OLE/PDF/agent-meta): [analysis-blindspot-cookbook.md](skill://re-reverse-engineering/support/ops/analysis-blindspot-cookbook.md) R52-R81 — detection-oriented; not a parallel master flow.
 
 ```text
 □ Finding: Algorithm / Validation logic / Exploitable primitives / Behavioral conclusions

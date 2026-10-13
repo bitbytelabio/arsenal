@@ -14,7 +14,7 @@ Enumerates AWS IAM users, roles, cross-account trusts, IMDSv1 instances, public 
 ## CLI Usage
 
 ```bash
-python agent.py --profile target-account --output pentest_report.json
+python scripts/agent.py --profile target-account --output pentest_report.json
 ```
 
 ## Key Functions

@@ -259,3 +259,7 @@ SUMMARY:
   Unverified credential patterns: 15
   Repositories with pre-commit hooks: 8 / 42
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-aws-credential-exposure-with-trufflehog/references/api-reference.md` — API and execution command reference

@@ -340,3 +340,7 @@ SIEM INTEGRATION:
   Status: [Connected/Disconnected]
   Events Forwarded (Last 24h): [count]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-dragos-platform-for-ot-monitoring/references/api-reference.md` — API and execution command reference

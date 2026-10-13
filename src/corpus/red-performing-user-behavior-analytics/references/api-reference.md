@@ -51,5 +51,5 @@ Great-circle distance between two geographic coordinates in km.
 ## Usage
 
 ```bash
-python agent.py https://elastic.corp.local:9200
+python scripts/agent.py https://elastic.corp.local:9200
 ```

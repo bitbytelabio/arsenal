@@ -8,9 +8,9 @@
 ## CLI Interface
 
 ```
-python agent.py enumerate                  # WMIC-based WMI subscription enumeration
-python agent.py powershell                 # PowerShell Get-WMIObject enumeration
-python agent.py sysmon --evtx-file <path>  # Scan Sysmon EVTX for WMI events
+python scripts/agent.py enumerate                  # WMIC-based WMI subscription enumeration
+python scripts/agent.py powershell                 # PowerShell Get-WMIObject enumeration
+python scripts/agent.py sysmon --evtx-file <path>  # Scan Sysmon EVTX for WMI events
 ```
 
 ## Core Functions

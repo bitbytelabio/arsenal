@@ -330,3 +330,7 @@ Steganalysis Summary:
 
   Report: /cases/case-2024-001/analysis/steg_report.json
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-steganography-detection/references/api-reference.md` — API and execution command reference

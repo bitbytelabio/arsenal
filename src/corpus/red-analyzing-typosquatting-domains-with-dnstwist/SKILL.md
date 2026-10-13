@@ -304,3 +304,7 @@ generate_takedown_report(analysis["high"])
 - [Darktrace: Monitoring Typosquatting Domains](https://www.darktrace.com/blog/vigilance-in-action-monitoring-typosquatting-domains)
 - [Security Risk Advisors: Domain Monitoring](https://sra.io/blog/domain-monitoring-fast-and-cheap/)
 - [Conscia: How to Detect Typosquatting](https://conscia.com/blog/diving-deep-how-to-detect-typosquatting/)
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-typosquatting-domains-with-dnstwist/references/api-reference.md` — API and execution command reference

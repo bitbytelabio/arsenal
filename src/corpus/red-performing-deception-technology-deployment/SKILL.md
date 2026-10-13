@@ -279,3 +279,7 @@ Automated Response:
   [DONE] Incident INC0012567 created (P1 — Critical)
   [PENDING] Tier 2 investigation — determine if workstation compromised or insider threat
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-deception-technology-deployment/references/api-reference.md` — API and execution command reference

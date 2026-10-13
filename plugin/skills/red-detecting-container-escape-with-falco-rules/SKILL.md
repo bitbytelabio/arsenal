@@ -315,3 +315,10 @@ kubectl logs -n falco -l app.kubernetes.io/name=falco --tail=50 | grep -i escape
 6. **Test rules** in permissive mode before enforcing
 7. **Tune false positives** by adding exception lists for known good processes
 8. **Monitor Falco health** with Prometheus metrics endpoint
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-container-escape-with-falco-rules/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-container-escape-with-falco-rules/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-container-escape-with-falco-rules/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-container-escape-with-falco-rules/assets/template.md` — Assessment deliverable and reporting template

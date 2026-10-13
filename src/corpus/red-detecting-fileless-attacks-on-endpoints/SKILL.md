@@ -157,3 +157,10 @@ index=sysmon EventCode=13
 - **Disabled PowerShell logging**: Without Script Block Logging, deobfuscated PowerShell commands are invisible to defenders.
 - **AMSI bypass not detected**: Sophisticated attackers bypass AMSI before executing payloads. Detect AMSI bypass attempts as a high-priority alert.
 - **Not monitoring WMI events**: WMI persistence is a favored technique of APT groups. Sysmon events 19-21 must be enabled.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-fileless-attacks-on-endpoints/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-fileless-attacks-on-endpoints/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-fileless-attacks-on-endpoints/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-fileless-attacks-on-endpoints/assets/template.md` — Assessment deliverable and reporting template

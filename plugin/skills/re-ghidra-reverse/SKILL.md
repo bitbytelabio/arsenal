@@ -14,7 +14,7 @@ metadata:
 
 1. `NOW`: Read `skill://re-ghidra-reverse/support/field-journal/precedent-reverse.md`
 2. `NOW`: Confirm **Ghidra** is needed (no IDA / open-source preference / batch headless)
-3. `NEXT`: Read `../tool-index.md` to check ghidra / ghidra-mcp paths
+3. `NEXT`: Read `tool-index` (workstation tool inventory) to check ghidra / ghidra-mcp paths
 4. `NEXT`: Missing tool → bootstrap `ghidra-mcp` (if manifest supports it) or install Ghidra following manual steps
 5. `ACT`: Import sample → run auto-analysis → export critical function decompilation
 
@@ -29,9 +29,9 @@ metadata:
 
 | Requirement | Priority |
 |------|------|
-| Deep dive with existing IDA MCP | `ida-reverse/` |
+| Deep dive with existing IDA MCP | `re-ida-reverse/` |
 | Open-source / Batch / Educational | **This skill** |
-| CLI-only fast reconnaissance | `radare2/` |
+| CLI-only fast reconnaissance | `re-radare2/` |
 
 ## Workflow
 
@@ -72,18 +72,18 @@ analyzeHeadless /path/to/project Proj -import sample.bin -postScript ExportDecom
 |------|---------|-----------|
 | Ghidra | Primary decompilation tool | Manual release / package manager |
 | ghidra-mcp | AI bridge | Bootstrap capability name: `ghidra-mcp` |
-| ghidriff | Patch diffing | See `patch-diff-exploit` |
+| ghidriff | Patch diffing | See `re-patch-diff-exploit` |
 
 ## References
 
 - `skill://re-ghidra-reverse/references/ghidra-cheatsheet.md`
-- `../ida-reverse/` `../radare2/` `../binary-diff/`
+- `../re-ida-reverse/` `../re-radare2/` `../re-binary-diff/`
 
 ## Routing Context
 
 **Upstream**: MASTER R22  
-**Downstream**: Dynamic verification → Frida/GDB; Exploitation → `pwn-chain`  
-**Peer**: `ida-reverse` (commercial deep dive)
+**Downstream**: Dynamic verification → Frida/GDB; Exploitation → `re-pwn-chain`  
+**Peer**: `re-ida-reverse` (commercial deep dive)
 
 ## Task Completion Self-Check
 

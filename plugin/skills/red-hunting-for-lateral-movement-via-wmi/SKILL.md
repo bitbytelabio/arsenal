@@ -46,3 +46,7 @@ Parse WMI-Activity/Operational log for event consumer creation indicating persis
 ## Expected Output
 
 JSON report with WMI-spawned processes, suspicious command lines, WMI event subscription alerts, and timeline of lateral movement activity.
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-lateral-movement-via-wmi/references/api-reference.md` — API and execution command reference

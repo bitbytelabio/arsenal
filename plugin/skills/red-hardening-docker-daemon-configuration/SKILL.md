@@ -310,3 +310,10 @@ docker run --rm --net host --pid host \
 8. **Audit Docker socket** - Monitor access to /var/run/docker.sock
 9. **Run Docker Bench regularly** - Automate CIS benchmark checks
 10. **Keep Docker updated** - Apply security patches promptly
+
+## Shipped Playbook Resources
+
+- `skill://red-hardening-docker-daemon-configuration/references/api-reference.md` — API and execution command reference
+- `skill://red-hardening-docker-daemon-configuration/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hardening-docker-daemon-configuration/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hardening-docker-daemon-configuration/assets/template.md` — Assessment deliverable and reporting template

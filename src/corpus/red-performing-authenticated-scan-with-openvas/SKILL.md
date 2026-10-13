@@ -250,3 +250,10 @@ gvm-cli socket --socketpath /run/gvmd/gvmd.sock --gmp-username admin --gmp-passw
 - [GVM GitHub Repository](https://github.com/greenbone/openvas-scanner)
 - [python-gvm Library](https://github.com/greenbone/python-gvm)
 - [GVM Docker Deployment](https://greenbone.github.io/docs/latest/22.4/container/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-authenticated-scan-with-openvas/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-authenticated-scan-with-openvas/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-authenticated-scan-with-openvas/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-authenticated-scan-with-openvas/assets/template.md` — Assessment deliverable and reporting template

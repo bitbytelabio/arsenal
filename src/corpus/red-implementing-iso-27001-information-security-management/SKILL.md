@@ -159,3 +159,10 @@ The 2022 revision restructured 93 controls into four categories:
 - ISO/IEC 27005:2022 Information Security Risk Management
 - ISMS.online ISO 27001 Annex A Guide: https://www.isms.online/iso-27001/annex-a-2022/
 - IT Governance ISO 27001 Controls Guide: https://www.itgovernance.co.uk/blog/iso-27001-the-14-control-sets-of-annex-a-explained
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-iso-27001-information-security-management/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-iso-27001-information-security-management/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-iso-27001-information-security-management/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-iso-27001-information-security-management/assets/template.md` — Assessment deliverable and reporting template

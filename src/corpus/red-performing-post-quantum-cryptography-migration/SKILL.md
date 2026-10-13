@@ -316,3 +316,7 @@ evidence_exec --action scan_tls --target server.example.com:443
 - CISA PQC Migration Strategy: https://www.cisa.gov/sites/default/files/2024-09/Strategy-for-Migrating-to-Automated-PQC-Discovery-and-Inventory-Tools.pdf
 - IETF Hybrid Key Exchange Draft: https://datatracker.ietf.org/doc/draft-ietf-tls-hybrid-design/
 - CycloneDX Crypto BOM: https://cyclonedx.org/use-cases/cryptographic-key/
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-post-quantum-cryptography-migration/references/api-reference.md` — API and execution command reference

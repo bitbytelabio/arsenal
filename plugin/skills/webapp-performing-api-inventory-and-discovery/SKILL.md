@@ -417,3 +417,7 @@ def detect_shadow_and_zombie_apis(discovered_endpoints, documented_endpoints):
 3. **Exposed Documentation**: 12 Swagger UI instances accessible publicly,
    revealing full API schema and endpoint details
 ```
+
+## References
+
+- `skill://webapp-performing-api-inventory-and-discovery/references/api-reference.md` — API reference and command specification

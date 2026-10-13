@@ -16,46 +16,46 @@ Automates Sigstore-based software signing and verification using Cosign keyless 
 
 ```bash
 # Check cosign installation and Rekor connectivity
-python agent.py check
+python scripts/agent.py check
 
 # Sign a file blob (triggers OIDC auth flow)
-python agent.py sign-blob myfile.tar.gz --bundle myfile.sigstore.json
+python scripts/agent.py sign-blob myfile.tar.gz --bundle myfile.sigstore.json
 
 # Verify a signed blob
-python agent.py verify-blob myfile.tar.gz --bundle myfile.sigstore.json \
+python scripts/agent.py verify-blob myfile.tar.gz --bundle myfile.sigstore.json \
   --cert-identity user@example.com \
   --cert-oidc-issuer https://accounts.google.com
 
 # Sign a container image (use digest, not tag)
-python agent.py sign-container registry.io/myimage@sha256:abc123...
+python scripts/agent.py sign-container registry.io/myimage@sha256:abc123...
 
 # Verify a container image
-python agent.py verify-container registry.io/myimage@sha256:abc123... \
+python scripts/agent.py verify-container registry.io/myimage@sha256:abc123... \
   --cert-identity user@example.com \
   --cert-oidc-issuer https://accounts.google.com
 
 # Search Rekor by artifact hash
-python agent.py search-rekor --hash <sha256-hash>
+python scripts/agent.py search-rekor --hash <sha256-hash>
 
 # Search Rekor by signer email
-python agent.py search-rekor --email user@example.com
+python scripts/agent.py search-rekor --email user@example.com
 
 # Search Rekor by file (computes hash automatically)
-python agent.py search-rekor --file myfile.tar.gz
+python scripts/agent.py search-rekor --file myfile.tar.gz
 
 # Retrieve a specific Rekor entry
-python agent.py get-rekor-entry <uuid>
+python scripts/agent.py get-rekor-entry <uuid>
 
 # Get Rekor transparency log state
-python agent.py log-info
+python scripts/agent.py log-info
 
 # Full audit of a signing event
-python agent.py audit --file myfile.tar.gz \
+python scripts/agent.py audit --file myfile.tar.gz \
   --cert-identity user@example.com \
   --cert-oidc-issuer https://accounts.google.com
 
 # All commands support custom output path
-python agent.py sign-blob myfile.tar.gz --output custom_report.json
+python scripts/agent.py sign-blob myfile.tar.gz --output custom_report.json
 ```
 
 ## Arguments

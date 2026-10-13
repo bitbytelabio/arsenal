@@ -247,3 +247,8 @@ Remediation: replace wildcards with explicit verbs/resources; remove `escalate`/
 - [ ] At least one escalation path demonstrated in a lab
 - [ ] Findings report with least-privilege remediation produced
 - [ ] All testing stayed within authorized scope
+
+## Shipped Playbook Resources
+
+- `skill://red-auditing-kubernetes-rbac-privilege-escalation/references/api-reference.md` — API and execution command reference
+- `skill://red-auditing-kubernetes-rbac-privilege-escalation/references/standards.md` — Relevant standards and compliance baselines

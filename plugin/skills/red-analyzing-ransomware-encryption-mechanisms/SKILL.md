@@ -319,3 +319,7 @@ RECOVERY OPTIONS
 3. Memory forensics if machine was not rebooted (key may persist in RAM)
 4. Negotiate with attacker (last resort - no guarantee of decryption)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-ransomware-encryption-mechanisms/references/api-reference.md` — API and execution command reference

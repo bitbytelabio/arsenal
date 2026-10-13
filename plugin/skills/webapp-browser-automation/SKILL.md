@@ -13,7 +13,7 @@ metadata:
 ## ACTION REQUIRED (Execute immediately upon reading)
 
 1. `NOW`: Confirm whether the current task falls within the scope of this skill.
-2. `NOW`: Read `tool-index.md` to verify tool availability and actual paths.
+2. `NOW`: Verify tool availability and actual paths based on available tools.
 3. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 4. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -221,6 +221,12 @@ If the AI detects that desktop application automation is required but OpenRevers
 ```
 
 ---
+
+## References
+
+- `skill://webapp-browser-automation/references/playwright-cheatsheet.md` — Playwright automation and selector cheatsheet
+- `skill://webapp-browser-automation/scripts/bootstrap-reverse.ps1` — Windows capability bootstrap script
+- `skill://webapp-browser-automation/scripts/bootstrap-reverse.sh` — POSIX capability bootstrap script
 
 ## Routing Context
 

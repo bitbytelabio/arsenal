@@ -304,3 +304,7 @@ No HSTS header is present. An attacker on the network can perform an SSL strippi
 6. **Low**: Remove Server and X-Powered-By version information
 7. **Low**: Add Permissions-Policy to restrict unused browser features
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-security-headers-audit/references/api-reference.md` — API and execution command reference

@@ -186,3 +186,7 @@ python3 hpp_tester.py --url http://target.com/api/action \
 - Apply WAF rules that detect duplicate parameter patterns
 - Validate all parameters server-side regardless of client-side checks
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-http-parameter-pollution-attack/references/api-reference.md` — API and execution command reference

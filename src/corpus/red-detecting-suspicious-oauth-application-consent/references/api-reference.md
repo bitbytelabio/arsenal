@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET grants
-python agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET apps
-python agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET audit-logs
-python agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET full --days 30
+python scripts/agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET grants
+python scripts/agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET apps
+python scripts/agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET audit-logs
+python scripts/agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET full --days 30
 ```
 
 ## Core Functions

@@ -322,3 +322,7 @@ CREDENTIAL HYGIENE:
   Average Lease TTL: 2.3 hours
   Secrets Rotated This Month: 12,456
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-secrets-management-with-vault/references/api-reference.md` — API and execution command reference

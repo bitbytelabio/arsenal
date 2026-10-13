@@ -208,3 +208,10 @@ TRANSPARENCY LOG:
   Log index range: 24658135-24658137
   Verification: https://search.sigstore.dev
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-code-signing-for-artifacts/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-code-signing-for-artifacts/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-code-signing-for-artifacts/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-code-signing-for-artifacts/assets/template.md` — Assessment deliverable and reporting template

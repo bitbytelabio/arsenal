@@ -379,3 +379,7 @@ SID 9000010:      HTTP beacon pattern
 SID 9000011:      JA3 TLS fingerprint
 SID 9000013:      C2 certificate match
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-command-and-control-communication/references/api-reference.md` — API and execution command reference

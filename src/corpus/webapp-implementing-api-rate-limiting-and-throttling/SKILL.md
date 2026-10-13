@@ -457,3 +457,7 @@ class DistributedRateLimiter:
 - Retry-After header: Accurate within 1 second of actual reset time
 - Response overhead: < 2ms added latency per request for rate limit check
 ```
+
+## References
+
+- `skill://webapp-implementing-api-rate-limiting-and-throttling/references/api-reference.md` — API reference and command specification

@@ -67,8 +67,8 @@ docker inspect --format='{{range .Mounts}}{{.Source}}:{{.Destination}} {{end}}' 
 ## CLI Usage
 
 ```bash
-python agent.py --falco-log /var/log/falco/events.json
-python agent.py --audit-log /var/log/audit/audit.log
-python agent.py --check-containers
-python agent.py --container-id abc123
+python scripts/agent.py --falco-log /var/log/falco/events.json
+python scripts/agent.py --audit-log /var/log/audit/audit.log
+python scripts/agent.py --check-containers
+python scripts/agent.py --container-id abc123
 ```

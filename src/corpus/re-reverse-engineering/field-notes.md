@@ -87,7 +87,7 @@ Detailed quick notes that support [`SKILL.md`](SKILL.md). Read this file after t
 - [Web/CTF Auth Bypass Case Notes](#webctf-auth-bypass-case-notes)
   - [Signed Cookie Key Reuse: access token to admin_session](#signed-cookie-key-reuse-access-token-to-admin_session)
 - [Web Phishing Infrastructure](#web-phishing-infrastructure)
-  - [Phishing Panel: {domain_a} / {domain_b}](#phishing-panel-domain_a--domain_b)
+  - [Phishing Panel: {target_domain_a} / {target_domain_b}](#phishing-panel-target_domain_a--target_domain_b)
 
 
 ## Binary Types
@@ -194,7 +194,7 @@ Validation time varies per correct character; measure elapsed time per candidate
 Binary mangles input 2 bytes at a time with running state; extract target from `.rodata`, write inverse function. See [patterns.md](patterns.md#custom-mangle-function-reversing).
 
 ### Rust serde_json Schema Recovery
-Disassemble serde `Visitor` implementations to recover expected JSON schema; field names in order reveal flag. See [languages-platforms.md](languages-platforms.md#rust-serdejson-schema-recovery).
+Disassemble serde `Visitor` implementations to recover expected JSON schema; field names in order reveal flag. See [languages-platforms.md](languages-platforms.md#rust-serde_json-schema-recovery).
 
 ### Position-Based Transformation Reversing
 Binary adds/subtracts position index; reverse by undoing per-index offset. See [patterns.md](patterns.md#position-based-transformation-reversing).
@@ -328,7 +328,7 @@ Patch `0xCC` (INT3) after transform output, enable core dumps, brute-force each 
 
 
 ### Signal Handler Chain + LD_PRELOAD Oracle
-Binary uses signal handler chains for per-character password validation. Hook `signal()` via LD_PRELOAD -- the call to install the next handler confirms the current character is correct. See [patterns.md](patterns.md#signal-handler-chain-ldpreload-oracle-nuit-du-hack-2016).
+Binary uses signal handler chains for per-character password validation. Hook `signal()` via LD_PRELOAD -- the call to install the next handler confirms the current character is correct. See [patterns.md](patterns.md#signal-handler-chain-ld_preload-oracle-nuit-du-hack-2016).
 
 ### Font Ligature Exploitation
 Custom OpenType font maps multi-character ligature sequences to single glyphs; reverse the GSUB table to decode hidden messages. See [patterns-ctf-3.md](patterns-ctf-3.md#opentype-font-ligature-exploitation-for-hidden-messages-hack-the-vote-2016).

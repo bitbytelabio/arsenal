@@ -271,3 +271,8 @@ helm upgrade falco falcosecurity/falco -n falco --reuse-values \
 - [ ] Priorities set appropriately (CRITICAL for escape primitives)
 - [ ] Alerts forwarded to the SIEM via Falcosidekick
 - [ ] Rule tags include the relevant MITRE technique IDs
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-container-runtime-threats-with-falco/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-container-runtime-threats-with-falco/references/standards.md` — Relevant standards and compliance baselines

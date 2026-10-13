@@ -43,3 +43,7 @@ Attackers frequently install malicious Windows services for persistence and priv
 
 - JSON report listing all new service installations with risk scores, suspicious indicators, and remediation recommendations
 - Timeline of service installation events with binary path analysis
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-unusual-service-installations/references/api-reference.md` — API and execution command reference

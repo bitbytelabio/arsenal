@@ -197,3 +197,8 @@ Exposed?         Item                              Impact
 - [ ] Any embedded secrets reported for immediate rotation.
 - [ ] Remediations applied (secrets externalized, authz server-side, output guardrail added).
 - [ ] Re-test confirms zero successful prompt-leak after remediation.
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-for-system-prompt-leakage/references/api-reference.md` — API and execution command reference
+- `skill://red-testing-for-system-prompt-leakage/references/standards.md` — Relevant standards and compliance baselines

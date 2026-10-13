@@ -81,3 +81,10 @@ App Location: [Expected/Anomalous]
 Host: [Hostname]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-dll-sideloading-attacks/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-dll-sideloading-attacks/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-dll-sideloading-attacks/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-dll-sideloading-attacks/assets/template.md` — Assessment deliverable and reporting template

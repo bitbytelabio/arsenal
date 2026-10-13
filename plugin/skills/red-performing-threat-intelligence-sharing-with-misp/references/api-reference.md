@@ -86,8 +86,8 @@ results = misp.search(controller="events", tags=["tlp:white", "ransomware"])
 ## CLI Usage
 
 ```bash
-python agent.py --input events.json --output report.json
-python agent.py --input events.json --misp-url https://misp.example.com --api-key KEY
+python scripts/agent.py --input events.json --output report.json
+python scripts/agent.py --input events.json --misp-url https://misp.example.com --api-key KEY
 ```
 
 ## References

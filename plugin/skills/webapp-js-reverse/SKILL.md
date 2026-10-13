@@ -14,7 +14,7 @@ metadata:
 
 1. `NOW`: Read `skill://webapp-js-reverse/support/field-journal/precedent-reverse.md` — Confirm that operations under this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
-3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+3. `NEXT`: Verify tool availability and actual paths based on available tools.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 5. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -178,6 +178,7 @@ Rules:
 - Needs local reproduction → `skill://webapp-js-reverse/references/local-rebuild.md` / `skill://webapp-js-reverse/references/node-env-rebuild.md`
 - Needs deobfuscation → `skill://webapp-js-reverse/references/ast-deobfuscation.md`
 - Blocked / fallback required → `skill://webapp-js-reverse/references/fallbacks.md`
+- Bootstrap helpers → `skill://webapp-js-reverse/scripts/bootstrap-reverse.ps1` and `skill://webapp-js-reverse/scripts/bootstrap-reverse.sh`
 
 **Related Sibling Modules**: anything-analyzer MCP (browser automation and HTTP capture capabilities can complement each other)
 
@@ -198,11 +199,13 @@ The MCP capabilities required by this skill can be installed via the unified boo
 ### Bootstrap Method
 
 ```powershell
+# Resolve helper from canonical resource URI: skill://webapp-js-reverse/scripts/bootstrap-reverse.ps1
+# Copy or resolve to local workspace path before execution:
 # Install and register jshookmcp; Codex can be replaced with Claude or Both
-powershell -File "<skill-root>\scripts\bootstrap-reverse.ps1" -Capability @('jshookmcp') -McpHostTarget Codex
+powershell -File ./bootstrap-reverse.ps1 -Capability @('jshookmcp') -McpHostTarget Codex
 
 # Register and start anything-analyzer
-powershell -File "<skill-root>\scripts\bootstrap-reverse.ps1" -Capability @('anything-analyzer') -StartServices -McpHostTarget Codex
+powershell -File ./bootstrap-reverse.ps1 -Capability @('anything-analyzer') -StartServices -McpHostTarget Codex
 ```
 
 ### Important Notes

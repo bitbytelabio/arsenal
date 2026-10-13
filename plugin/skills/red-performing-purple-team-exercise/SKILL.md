@@ -285,3 +285,7 @@ DETAILED RESULTS:
 POST-EXERCISE COVERAGE: 93% (14/15) — up from 73% at start
 REMAINING GAP: T1486 requires EDR file monitoring enhancement
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-purple-team-exercise/references/api-reference.md` — API and execution command reference

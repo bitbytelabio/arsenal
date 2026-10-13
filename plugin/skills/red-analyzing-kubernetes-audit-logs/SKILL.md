@@ -57,3 +57,7 @@ Key events to detect:
 if verb in ("get", "list") and resource == "secrets":
     print(f"Secret access: {user} -> {event['objectRef'].get('name')}")
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-kubernetes-audit-logs/references/api-reference.md` — API and execution command reference

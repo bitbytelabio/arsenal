@@ -42,7 +42,7 @@ metadata:
 
 ## Workflow
 
-**For detailed procedures, templates, and examples, see `skill://red-conducting-gdpr-compliance-assessment/support/conducting-gdpr-compliance-assessment/references/detailed-workflow.md`**
+**For detailed procedures, templates, and examples, see `skill://red-conducting-gdpr-compliance-assessment/references/detailed-workflow.md`**
 
 ### Phase 1: Determine Territorial Applicability (Article 3)
 
@@ -63,7 +63,7 @@ Document for EACH activity:
 - Retention periods
 - Security measures
 
-**Tools**: Use `templates/article30_parser.py`, `article30_validator.py`, `generate_ropa_report.py`
+**Tools**: Use `scripts/article30_parser.py`, `scripts/article30_validator.py`, `scripts/generate_ropa_report.py`
 
 **Common gaps**: Missing retention periods (68%), vague purposes, undocumented transfers
 
@@ -88,7 +88,7 @@ Verify capability for:
 - **Objection** (21): Opt-out of legitimate interest processing
 - **Automated Decision-Making** (22): Human review of algorithmic decisions
 
-**Test**: Process sample DSAR through full workflow. Use `scripts/` for automation.
+**Test**: Process sample DSAR through full workflow. Use `scripts/article30_parser.py` and `scripts/article30_validator.py` for automation.
 
 ### Phase 5: Review DPIAs (Article 35)
 
@@ -97,7 +97,7 @@ DPIA **mandatory** for:
 - Large-scale special categories processing
 - Systematic monitoring of public areas (facial recognition)
 
-**Template**: See `skill://red-conducting-gdpr-compliance-assessment/support/conducting-gdpr-compliance-assessment/references/detailed-workflow.md` for complete DPIA structure
+**Template**: See `skill://red-conducting-gdpr-compliance-assessment/references/detailed-workflow.md` for complete DPIA structure
 
 **Content**: Description, necessity, risks, mitigation, consultation (DPO, supervisory authority if novel high-risk)
 
@@ -257,3 +257,9 @@ COMPLIANCE SCORE: 67/100 → Target 90/100 (6 months post-remediation)
 - [ ] Privacy policy published and updated within 12 months
 - [ ] DPO designated if required (Article 37 criteria met)
 - [ ] Staff trained on GDPR principles and data subject rights
+
+## Shipped Playbook Resources
+
+- `skill://red-conducting-gdpr-compliance-assessment/references/api-reference.md` — API and execution command reference
+- `skill://red-conducting-gdpr-compliance-assessment/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-conducting-gdpr-compliance-assessment/assets/compliance-scorecard.md` — Compliance evaluation scorecard and gap matrix

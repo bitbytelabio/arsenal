@@ -350,3 +350,7 @@ POLICY COMPLIANCE:
   Time-Limited Sessions: [compliance %]
   Prohibited Target Attempts: [count blocked]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-conduit-security-for-ot-remote-access/references/api-reference.md` — API and execution command reference

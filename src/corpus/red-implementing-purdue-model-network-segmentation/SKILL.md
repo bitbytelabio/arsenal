@@ -423,3 +423,7 @@ DMZ COMPONENTS:
 FIREWALL RULES: [count] rules generated
 MIGRATION STEPS: [count] phases planned
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-purdue-model-network-segmentation/references/api-reference.md` — API and execution command reference

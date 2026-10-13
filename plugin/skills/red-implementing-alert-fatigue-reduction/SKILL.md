@@ -311,3 +311,7 @@ Changes Implemented:
 Detection Coverage Impact: NONE — ATT&CK coverage maintained at 67%
 True Positive Detection Rate: IMPROVED — 12 additional true positives caught per week
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-alert-fatigue-reduction/references/api-reference.md` — API and execution command reference

@@ -114,10 +114,10 @@ Always attach the CONTROL pair: the same request in canonical form showing what 
 
 ## When to Load a Specialist Skill
 
-- WAF bypass technique depth -> performing-web-application-firewall-bypass
-- Protocol-level desync between proxy pairs -> http-request-smuggling
-- Cache-layer abuse -> cache-poisoning / web-cache-deception
-- Authorization outcome of the differential -> authorization-testing (this skill proves the bypass; that skill proves the access break)
+- WAF bypass technique depth -> `skill://webapp-performing-web-application-firewall-bypass`
+- Protocol-level desync between proxy pairs -> `skill://webapp-web-offensive-request-smuggling`
+- Cache-layer abuse -> `skill://webapp-performing-web-cache-poisoning-attack` / web-cache-deception
+- Authorization outcome of the differential -> `skill://webapp-authorization-testing` (this skill proves the bypass; that skill proves the access break)
 
 ## Stopping Rule
 
@@ -125,6 +125,6 @@ Stop when: the observed layers each have one representative experiment per categ
 
 ## Handoffs
 
-- authorization-testing - what the bypassed control was protecting
-- input-boundary-testing - parser-confusion variants discovered here become parameter-level hypotheses
+- `skill://webapp-authorization-testing` - what the bypassed control was protecting
+- `skill://webapp-input-boundary-testing` - parser-confusion variants discovered here become parameter-level hypotheses
 - web-application-security specialists - once the differential exposes a concrete vulnerability class

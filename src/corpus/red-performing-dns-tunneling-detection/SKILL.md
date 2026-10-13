@@ -66,3 +66,7 @@ for pkt in packets:
         if entropy > 4.0:
             print(f"Suspicious: {query} (entropy={entropy:.2f})")
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-dns-tunneling-detection/references/api-reference.md` — API and execution command reference

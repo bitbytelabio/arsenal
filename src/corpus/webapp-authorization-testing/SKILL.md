@@ -112,11 +112,11 @@ A 403 on one verb is NOT a clean negative until the other verbs, versions, and r
 
 ## When to Load a Specialist Skill
 
-- REST API object-level patterns -> api-bola (api-security); function-level -> api-bfla
-- IDOR enumeration technique -> exploiting-idor-vulnerabilities
-- Role via request parameters -> exploiting-mass-assignment-in-rest-apis
-- GraphQL-specific authorization -> graphql-api-security
-- Session/role-change behavior -> authentication-session-testing
+- REST API object-level patterns -> `skill://webapp-testing-api-for-broken-object-level-authorization` (api-security); function-level -> `skill://webapp-api-bfla`
+- IDOR enumeration technique -> `skill://webapp-exploiting-idor-vulnerabilities`
+- Role via request parameters -> `skill://webapp-testing-api-for-mass-assignment-vulnerability`
+- GraphQL-specific authorization -> `skill://webapp-graphql-api-security`
+- Session/role-change behavior -> `skill://webapp-authentication-session-testing`
 
 ## Stopping Rule
 
@@ -124,6 +124,6 @@ Stop when: every discovered resource type has been exercised horizontally (read 
 
 ## Handoffs
 
-- application-attack-surface-modeling - where the boundaries came from
-- business-logic-testing - authorization rules that are business rules (spend limits, approval chains)
-- application-data-exposure-testing - over-fetch evidence
+- `skill://webapp-application-attack-surface-modeling` - where the boundaries came from
+- `skill://webapp-business-logic-testing` - authorization rules that are business rules (spend limits, approval chains)
+- `skill://webapp-application-data-exposure-testing` - over-fetch evidence

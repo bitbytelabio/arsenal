@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-python agent.py access.log --type proxy parse
-python agent.py access.log --type proxy analyze
-python agent.py dns-queries.log --type dns full
-python agent.py traffic.csv --type csv --approved approved.txt full
+python scripts/agent.py access.log --type proxy parse
+python scripts/agent.py access.log --type proxy analyze
+python scripts/agent.py dns-queries.log --type dns full
+python scripts/agent.py traffic.csv --type csv --approved approved.txt full
 ```
 
 ## Core Functions

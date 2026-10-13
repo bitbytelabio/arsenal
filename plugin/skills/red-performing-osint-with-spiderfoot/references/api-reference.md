@@ -73,7 +73,7 @@ python sf.py -M
 
 ## Agent CLI Usage
 ```bash
-python agent.py --target example.com --use-case footprint --output report.json
-python agent.py --target 203.0.113.5 --use-case investigate --timeout 1200
-python agent.py --list-modules --server http://spiderfoot:5001
+python scripts/agent.py --target example.com --use-case footprint --output report.json
+python scripts/agent.py --target 203.0.113.5 --use-case investigate --timeout 1200
+python scripts/agent.py --list-modules --server http://spiderfoot:5001
 ```

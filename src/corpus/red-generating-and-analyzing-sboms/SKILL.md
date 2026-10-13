@@ -172,3 +172,8 @@ Feed Grype JSON into your vulnerability management workflow: deduplicate by CVE,
 - [ ] Attestation verified downstream
 - [ ] Stored SBOMs re-scanned on Grype DB updates
 - [ ] Findings correlated/prioritized (EPSS/KEV) and tracked to remediation
+
+## Shipped Playbook Resources
+
+- `skill://red-generating-and-analyzing-sboms/references/api-reference.md` — API and execution command reference
+- `skill://red-generating-and-analyzing-sboms/references/standards.md` — Relevant standards and compliance baselines

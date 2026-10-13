@@ -15,7 +15,7 @@ metadata:
 1. `NOW`: Read `skill://red-threat-intelligence/support/ops/scope-contract.md` to confirm public sources, target entities, time windows, and delivery purposes.
 2. `NOW`: Read `skill://red-threat-intelligence/support/field-journal/precedent-pentest.md` only when operational precedents are needed. Precedents do not grant authorization.
 3. `NOW`: Formulate falsifiable intelligence questions along with candidate conclusions that must be independently verified.
-4. `NEXT`: Read `tool-index.md`. Inspect `xquik-mcp` when public X data is needed.
+4. `NEXT`: Inspect tool index and `xquik-mcp` when public X data is needed.
 5. `ACT`: Start with the narrowest read-only queries, preserve source metadata, and then proceed to correlation and verification.
 
 ## Scope of Application
@@ -66,13 +66,15 @@ Stage Exits:
 
 Prefer Xquik MCP. Running the platform bootstrap will only register the remote URL inside MCP clients explicitly selected by the user. It will not install local bridges, write secrets, or start background services.
 
+Resolve `skill://red-threat-intelligence/scripts/bootstrap-reverse.ps1` or `skill://red-threat-intelligence/scripts/bootstrap-reverse.sh` for your platform. Copy the complete selected helper into the local scripts directory in your workspace before executing it; do not pass a skill URI to a shell.
+
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File skills\scripts\bootstrap-reverse.ps1 `
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/bootstrap-reverse.ps1 `
   -Capability xquik-mcp -McpHostTarget Codex
 ```
 
 ```bash
-bash skills/templates/bootstrap-reverse.sh xquik-mcp --mcp-host=codex
+bash scripts/bootstrap-reverse.sh xquik-mcp --mcp-host=codex
 ```
 
 Complete OAuth subsequently within the client. If falling back to REST, read `XQUIK_API_KEY` only from the environment or an approved secrets store. Writing secrets into command lines, configurations, reports, or evidence text is prohibited.

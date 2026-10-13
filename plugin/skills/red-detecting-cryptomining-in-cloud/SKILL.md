@@ -314,3 +314,7 @@ REMEDIATION:
   - AWS Config rule deployed: cloudtrail-enabled (auto-remediate)
   - SCP deployed: deny ec2:RunInstances for GPU instance types without approval
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-cryptomining-in-cloud/references/api-reference.md` — API and execution command reference

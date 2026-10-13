@@ -210,3 +210,10 @@ earliest=-24h
 - [ConnectWise - 9 Ways to Eliminate SIEM False Positives](https://www.connectwise.com/blog/9-ways-to-eliminate-siem-false-positives)
 - [Prophet Security - Alert Tuning Best Practices](https://www.prophetsecurity.ai/blog/security-operations-center-soc-best-practices-alert-tuning)
 - [ManageEngine - Reducing SIEM Alert False Positives](https://www.manageengine.com/log-management/siem/reducing-siem-alert-false-positives.html)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-false-positive-reduction-in-siem/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-false-positive-reduction-in-siem/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-false-positive-reduction-in-siem/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-false-positive-reduction-in-siem/assets/template.md` — Assessment deliverable and reporting template

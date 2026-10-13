@@ -133,3 +133,10 @@ ATT&CK Technique: [T1003.00x]
 Risk Level: [Critical/High/Medium]
 Credentials at Risk: [Scope assessment]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-t1003-credential-dumping-with-edr/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-t1003-credential-dumping-with-edr/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-t1003-credential-dumping-with-edr/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-t1003-credential-dumping-with-edr/assets/template.md` — Assessment deliverable and reporting template

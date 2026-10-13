@@ -430,6 +430,8 @@ if __name__ == "__main__":
 
 ## References
 
+- `skill://webapp-performing-soap-web-service-security-testing/references/api-reference.md` — API reference and command specification
+
 - SecureLayer7 OWASP SOAP Pentesting: https://blog.securelayer7.net/owasp-top-10-pentesting-mitigating-soap-service-risks/
 - BrightSec SOAP Vulnerabilities: https://brightsec.com/blog/top-7-soap-api-vulnerabilities/
 - Levo.ai SOAP API Security Testing Guide: https://www.levo.ai/resources/blogs/soap-api-security-testing

@@ -308,3 +308,7 @@ evidence_exec --action inventory \
 - Zeltser Honeytoken Setup Guide: https://zeltser.com/honeytokens-canarytokens-setup/
 - Grafana Canary Token Case Study: https://grafana.com/blog/2025/08/25/canary-tokens-learn-all-about-the-unsung-heroes-of-security-at-grafana-labs/
 - AWS Infrastructure Canarytoken: https://blog.thinkst.com/2025/09/introducing-the-aws-infrastructure-canarytoken.html
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-canary-tokens-for-network-intrusion/references/api-reference.md` — API and execution command reference

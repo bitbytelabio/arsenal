@@ -251,3 +251,10 @@ class CustomEnrichmentConnector:
 
 if __name__ == "__main__":
     connector = CustomEnrichmentConnector()
+
+## Shipped Playbook Resources
+
+- `skill://red-building-ioc-enrichment-pipeline-with-opencti/references/api-reference.md` — API and execution command reference
+- `skill://red-building-ioc-enrichment-pipeline-with-opencti/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-ioc-enrichment-pipeline-with-opencti/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-ioc-enrichment-pipeline-with-opencti/assets/template.md` — Assessment deliverable and reporting template

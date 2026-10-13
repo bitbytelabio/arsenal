@@ -649,3 +649,7 @@ Authentication Context:
 Risk Assessment: [Critical/High/Medium]
 Recommended Action: [Isolate, investigate source, reset credentials, restrict DCOM]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-dcom-lateral-movement/references/api-reference.md` — API and execution command reference

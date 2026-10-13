@@ -305,3 +305,7 @@ Testing:
   False Positives:   2 in 7-day backtest (svchost edge case — filter added)
   Performance:       Avg execution 3.2s on 50M events/day
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-building-detection-rules-with-sigma/references/api-reference.md` — API and execution command reference

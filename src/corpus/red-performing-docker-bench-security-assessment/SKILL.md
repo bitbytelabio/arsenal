@@ -131,3 +131,10 @@ docker run --rm docker/docker-bench-security 2>&1 | grep -c "WARN"
 - [Docker Bench Security](https://github.com/docker/docker-bench-security)
 - [CIS Docker Benchmark](https://www.cisecurity.org/benchmark/docker)
 - [Docker Security Best Practices](https://docs.docker.com/engine/security/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-docker-bench-security-assessment/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-docker-bench-security-assessment/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-docker-bench-security-assessment/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-docker-bench-security-assessment/assets/template.md` — Assessment deliverable and reporting template

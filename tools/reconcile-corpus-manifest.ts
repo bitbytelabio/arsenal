@@ -7,16 +7,92 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { sha256File } from "../src/core/hash.ts";
-import type { CorpusManifest } from "../src/core/skill-manifest.ts";
-import { validateSupportFileIntegrity } from "../src/core/skill-manifest.ts";
+import {
+  type CorpusManifest,
+  serializeCorpusManifest,
+  validateCorpusManifest,
+  validateSupportFileIntegrity,
+} from "../src/core/skill-manifest.ts";
 
-export function reconcileManifest(manifestPath: string, corpusDir: string): { updated: number; remainingErrors: string[] } {
+const ADAPTED_POSIX_SCRIPT_SOURCES: Record<string, string> = {
+  "re-apk-reverse:templates/manifest-summary.sh": "arsenal-adapted-from:scripts/manifest-summary.ps1",
+  "re-ida-reverse:templates/install-autostart.sh": "arsenal-adapted-from:scripts/install-autostart.ps1",
+  "re-ida-reverse:templates/open.sh": "arsenal-adapted-from:scripts/open.ps1",
+  "re-ida-reverse:templates/recover.sh": "arsenal-adapted-from:scripts/recover.ps1",
+  "re-ida-reverse:templates/start-gui.sh": "arsenal-adapted-from:scripts/start-gui.ps1",
+  "re-ida-reverse:templates/start.sh": "arsenal-adapted-from:scripts/start.ps1",
+};
+
+function resolveSupportSourcePath(
+  skillId: string,
+  entrySource: string,
+  entrySourcePath: string | undefined,
+  relPath: string,
+  repoRoot: string
+): string | null {
+  const adapted = ADAPTED_POSIX_SCRIPT_SOURCES[`${skillId}:${relPath}`];
+  if (adapted) return adapted;
+
+  if (entrySource === "Anthropic-Cybersecurity-Skills" && entrySourcePath) {
+    const slugDir = path.posix.dirname(entrySourcePath);
+    const upRoot = path.join(repoRoot, "upstream/Anthropic-Cybersecurity-Skills/skills", slugDir);
+    if (fs.existsSync(path.join(upRoot, relPath))) return relPath;
+    if (relPath.startsWith("templates/")) {
+      const asScript = `scripts/${relPath.slice("templates/".length)}`;
+      if (fs.existsSync(path.join(upRoot, asScript))) return asScript;
+    }
+    return null;
+  }
+
+  if (entrySource === "reverse-skill" && entrySourcePath) {
+    const skillSubDir = path.posix.dirname(entrySourcePath); // e.g. skills/apk-reverse
+    const revRoot = path.join(repoRoot, "upstream/reverse-skill");
+    if (fs.existsSync(path.join(revRoot, skillSubDir, relPath))) return relPath;
+    if (relPath.startsWith("references/")) {
+      const sub = relPath.slice("references/".length);
+      if (fs.existsSync(path.join(revRoot, "skills/references", sub))) return `skills/references/${sub}`;
+    }
+    if (relPath.startsWith("templates/")) {
+      const sub = relPath.slice("templates/".length);
+      if (fs.existsSync(path.join(revRoot, skillSubDir, "scripts", sub))) return `scripts/${sub}`;
+      if (fs.existsSync(path.join(revRoot, "skills/scripts", sub))) return `skills/scripts/${sub}`;
+    }
+    if (relPath.startsWith("scripts/")) {
+      const sub = relPath.slice("scripts/".length);
+      if (fs.existsSync(path.join(revRoot, skillSubDir, "scripts", sub))) return `scripts/${sub}`;
+      if (fs.existsSync(path.join(revRoot, "skills/scripts", sub))) return `skills/scripts/${sub}`;
+    }
+    if (relPath.startsWith("support/templates/")) {
+      const sub = relPath.slice("support/templates/".length);
+      if (fs.existsSync(path.join(revRoot, "skills/scripts", sub))) return `skills/scripts/${sub}`;
+    }
+    if (relPath.startsWith("support/")) {
+      const sub = relPath.slice("support/".length);
+      if (fs.existsSync(path.join(revRoot, "skills", sub))) return `skills/${sub}`;
+      if (fs.existsSync(path.join(revRoot, sub))) return sub;
+    }
+    return null;
+  }
+
+  if (entrySource === "rea" || entrySource === "arsenal-local" || entrySource === "xalgorix" || entrySource === "claude-red" || entrySource === "strix") {
+    return relPath;
+  }
+
+  return null;
+}
+
+export function reconcileManifest(
+  manifestPath: string,
+  corpusDir: string
+): { updated: number; remainingErrors: string[]; schemaValid: boolean; schemaErrors: string[]; unresolvedProvenance: string[] } {
+  const repoRoot = path.resolve(corpusDir, "../..");
   const raw = fs.readFileSync(manifestPath, "utf-8");
   const manifest = JSON.parse(raw) as CorpusManifest;
 
   let updated = 0;
   const prefix = "src/corpus/";
 
+  const unresolvedProvenance: string[] = [];
   for (const entry of manifest.files) {
     if (entry.status !== "admitted" || !entry.destination_path) continue;
     if (!entry.destination_path.startsWith(prefix)) continue;
@@ -55,7 +131,11 @@ export function reconcileManifest(manifestPath: string, corpusDir: string): { up
           if (rel === "SKILL.md") continue;
           const hash = sha256File(full);
           const size = fs.statSync(full).size;
-          const sourcePath = oldSupportMap.get(rel) ?? rel;
+          const sourcePath = resolveSupportSourcePath(skillId, entry.source, entry.source_path, rel, repoRoot);
+          if (!sourcePath) {
+            unresolvedProvenance.push(`${entry.destination_path}: unable to resolve upstream source_path for '${rel}'`);
+            continue;
+          }
           foundOnDisk.push({ path: rel, source_path: sourcePath, sha256: hash, bytes: size });
         }
       }
@@ -69,7 +149,7 @@ export function reconcileManifest(manifestPath: string, corpusDir: string): { up
       oldSupport.length !== foundOnDisk.length ||
       foundOnDisk.some((f, idx) => {
         const old = oldSupport[idx];
-        return !old || old.path !== f.path || old.sha256 !== f.sha256 || !old.source_path;
+        return !old || old.path !== f.path || old.sha256 !== f.sha256 || old.source_path !== f.source_path;
       });
 
     if (isDifferent) {
@@ -78,10 +158,17 @@ export function reconcileManifest(manifestPath: string, corpusDir: string): { up
     }
   }
 
-  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n", "utf-8");
+  fs.writeFileSync(manifestPath, serializeCorpusManifest(manifest), "utf-8");
   const remainingErrors = validateSupportFileIntegrity(manifest, corpusDir);
+  const validation = validateCorpusManifest(manifest);
 
-  return { updated, remainingErrors };
+  return {
+    updated,
+    remainingErrors,
+    schemaValid: validation.valid,
+    schemaErrors: validation.errors,
+    unresolvedProvenance,
+  };
 }
 
 if (import.meta.main) {
@@ -92,7 +179,18 @@ if (import.meta.main) {
   const res = reconcileManifest(manifestPath, corpusDir);
   console.log(`Reconciled MANIFEST.json: updated ${res.updated} entries.`);
   console.log(`Remaining support file integrity errors: ${res.remainingErrors.length}`);
+  console.log(`Manifest schema valid: ${res.schemaValid}`);
+  console.log(`Unresolved support provenance: ${res.unresolvedProvenance.length}`);
   if (res.remainingErrors.length > 0) {
     console.error(res.remainingErrors.slice(0, 10).join("\n"));
+  }
+  if (!res.schemaValid) {
+    console.error(res.schemaErrors.slice(0, 10).join("\n"));
+  }
+  if (res.unresolvedProvenance.length > 0) {
+    console.error(res.unresolvedProvenance.slice(0, 10).join("\n"));
+  }
+  if (res.remainingErrors.length > 0 || !res.schemaValid || res.unresolvedProvenance.length > 0) {
+    process.exit(1);
   }
 }

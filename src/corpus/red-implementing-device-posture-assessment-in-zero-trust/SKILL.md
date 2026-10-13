@@ -433,3 +433,10 @@ POSTURE DRIFT ALERTS:
   EDR sensor stopped:             3
   OS downgraded:                  1
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-device-posture-assessment-in-zero-trust/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-device-posture-assessment-in-zero-trust/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-device-posture-assessment-in-zero-trust/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-device-posture-assessment-in-zero-trust/assets/template.md` — Assessment deliverable and reporting template

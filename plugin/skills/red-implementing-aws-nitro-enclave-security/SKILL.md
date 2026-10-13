@@ -435,3 +435,7 @@ Run the enclave and implement operational monitoring:
 - [WARN] PCR0 used in policy; consider PCR8 for deployment flexibility
 - [FAIL] Health check endpoint does not verify enclave attestation freshness
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-aws-nitro-enclave-security/references/api-reference.md` — API and execution command reference

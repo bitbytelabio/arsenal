@@ -193,3 +193,10 @@ The organization-level security overview provides:
 - [CodeQL Query Repository](https://github.com/github/codeql)
 - [SARIF Specification](https://sarifweb.azurewebsites.net/)
 - [GitHub Security Overview](https://docs.github.com/en/code-security/security-overview/about-security-overview)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-github-advanced-security-for-code-scanning/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-github-advanced-security-for-code-scanning/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-github-advanced-security-for-code-scanning/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-github-advanced-security-for-code-scanning/assets/template.md` — Assessment deliverable and reporting template

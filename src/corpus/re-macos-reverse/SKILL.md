@@ -65,12 +65,12 @@ otool -L target
 ## References
 
 - `skill://re-macos-reverse/references/macho-triage.md`
-- `../mobile-reverse/` (iOS) `../ghidra-reverse/` `../malware-analysis/`
+- `../mobile-reverse/` (iOS) `../re-ghidra-reverse/` `../re-malware-analysis/`
 
 ## Routing Context
 
 **Upstream**: MASTER R31  
-**Downstream**: iOS → mobile-reverse; General samples → malware-analysis
+**Downstream**: iOS → mobile-reverse; General samples → re-malware-analysis
 
 ## Task Completion Checklist
 

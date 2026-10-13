@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-python agent.py decode --token <jwt_string>
-python agent.py forge --token <jwt_string> [--claims '{"role":"admin"}']
-python agent.py confuse --token <jwt_string> [--pubkey public.pem]
-python agent.py test --url <api_endpoint> --token <original_jwt>
+python scripts/agent.py decode --token <jwt_string>
+python scripts/agent.py forge --token <jwt_string> [--claims '{"role":"admin"}']
+python scripts/agent.py confuse --token <jwt_string> [--pubkey public.pem]
+python scripts/agent.py test --url <api_endpoint> --token <original_jwt>
 ```
 
 ## Core Functions

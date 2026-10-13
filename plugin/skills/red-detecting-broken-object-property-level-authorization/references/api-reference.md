@@ -57,7 +57,7 @@ resp = requests.patch(url, json={"is_admin": True}, headers=headers, timeout=10)
 ## CLI Usage
 
 ```bash
-python agent.py --base-url https://api.example.com \
+python scripts/agent.py --base-url https://api.example.com \
   --endpoint /api/v1/users/123 \
   --token "eyJhbGciOiJIUzI1NiJ9..." \
   --expected-fields id username name email \

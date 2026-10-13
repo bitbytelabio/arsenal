@@ -246,3 +246,8 @@ trivy k8s --report summary --severity HIGH,CRITICAL cluster
 - [ ] SARIF output produced for the code-scanning dashboard.
 - [ ] CI/CD gate fails the build on HIGH/CRITICAL findings via `--exit-code 1`.
 - [ ] `.trivyignore` configured for accepted-risk findings with documented justification.
+
+## Shipped Playbook Resources
+
+- `skill://red-scanning-iac-and-images-with-trivy/references/api-reference.md` — API and execution command reference
+- `skill://red-scanning-iac-and-images-with-trivy/references/standards.md` — Relevant standards and compliance baselines

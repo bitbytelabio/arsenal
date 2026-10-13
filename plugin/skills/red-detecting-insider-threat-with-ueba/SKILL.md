@@ -47,3 +47,7 @@ Combine multiple anomalous indicators (unusual hours + large downloads + new sys
 ## Expected Output
 
 JSON report containing per-user risk scores, anomalous activity details, peer group deviations, and recommended investigation actions.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-insider-threat-with-ueba/references/api-reference.md` — API and execution command reference

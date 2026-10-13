@@ -185,3 +185,8 @@ nxc smb 192.168.1.0/24 -u jsmith -p 'Summer2025!' --shares --log spray_results.l
 - [ ] Credential dumping (`--sam`/`--lsa`/`--ntds`) performed only on authorized targets.
 - [ ] LDAP attacks (Kerberoasting/ASREPRoast/LAPS/BloodHound) executed where in scope.
 - [ ] Workspace results exported and included in the engagement report.
+
+## Shipped Playbook Resources
+
+- `skill://red-moving-laterally-with-netexec/references/api-reference.md` — API and execution command reference
+- `skill://red-moving-laterally-with-netexec/references/standards.md` — Relevant standards and compliance baselines

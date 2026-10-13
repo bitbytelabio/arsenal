@@ -201,3 +201,10 @@ kubectl get secrets --all-namespaces -o json | \
 - [CIS Kubernetes Benchmark - etcd Controls](https://www.cisecurity.org/benchmark/kubernetes)
 - [Securing etcd - K8s Security Guide](https://k8s-security.geek-kb.com/docs/best_practices/cluster_setup_and_hardening/control_plane_security/etcd_security_mitigation/)
 - [Infosec: Encryption and etcd](https://www.infosecinstitute.com/resources/cryptography/encryption-and-etcd-the-key-to-securing-kubernetes/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-kubernetes-etcd-security-assessment/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-kubernetes-etcd-security-assessment/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-kubernetes-etcd-security-assessment/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-kubernetes-etcd-security-assessment/assets/template.md` — Assessment deliverable and reporting template

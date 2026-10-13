@@ -16,7 +16,7 @@ Binary analysis skill oriented toward the `radare2` CLI. The focus is performing
 
 1. `NOW`: Read `skill://re-radare2/support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
-3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+3. `NEXT`: Read `tool-index` (workstation tool inventory) to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 5. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -69,14 +69,14 @@ Standard reconnaissance script, suitable for performing an initial overview anal
 
 Usage:
 
-```powershell
-powershell -File "<skill-root>\radare2\scripts\recon.sh" -TargetPath "C:\path\to\sample.exe"
+```bash
+bash templates/recon.sh "path/to/sample.exe"
 ```
 
 If automated analysis via `r2` is needed as well:
 
-```powershell
-powershell -File "<skill-root>\radare2\scripts\recon.sh" -TargetPath "C:\path\to\sample.exe" -RunAnalysis
+```bash
+bash templates/recon.sh "path/to/sample.exe" --analyze
 ```
 
 ### `skill://re-radare2/references/cheatsheet.md`
@@ -142,8 +142,8 @@ Before recording import table (or legitimate equivalent anchor / IAT failure byp
 
 Prioritize directly running the built-in script:
 
-```powershell
-powershell -File "<skill-root>\radare2\scripts\recon.sh" -TargetPath "sample.exe"
+```bash
+bash templates/recon.sh "sample.exe"
 ```
 
 If only minimal manual commands are needed, use:
@@ -411,13 +411,13 @@ This skill maintains existing hard gates and evidence chain integrity; skipping 
 ## Routing Context
 
 **Upstream Entry**: `skill://re-radare2/support/SKILL.md` (Master Controller), `skill://re-radare2/support/routing.md`
-**Upstream Alternative**: `ida-reverse/` (Escalate to IDA when decompilation/pseudocode is required)
+**Upstream Alternative**: `re-ida-reverse/` (Escalate to IDA when decompilation/pseudocode is required)
 **Downstream Exit**:
 - Dynamic analysis needed → `arsenal skill_load re-reverse-engineering/tools-dynamic.md` (Frida/GDB)
-- Deep decompilation needed → `ida-reverse/`
-- Cross-references needed after PAT finds interesting strings → `ida-reverse/` (IDA's xrefs are more powerful)
+- Deep decompilation needed → `re-ida-reverse/`
+- Cross-references needed after PAT finds interesting strings → `re-ida-reverse/` (IDA's xrefs are more powerful)
 
-**Related Sibling Modules**: `ida-reverse/` (Complementary: r2 provides rapid recon, IDA provides deep decompilation)
+**Related Sibling Modules**: `re-ida-reverse/` (Complementary: r2 provides rapid recon, IDA provides deep decompilation)
 
 ## On-Demand Bootstrap
 

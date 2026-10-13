@@ -220,3 +220,10 @@ kubectl run frontend-test --image=busybox --labels=app=frontend --restart=Never 
 - [Calico Network Policies](https://docs.tigera.io/calico/latest/network-policy/)
 - [Cilium Network Policies](https://docs.cilium.io/en/stable/security/policy/)
 - [Network Policy Editor](https://editor.networkpolicy.io/)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-network-policies-for-kubernetes/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-network-policies-for-kubernetes/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-network-policies-for-kubernetes/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-network-policies-for-kubernetes/assets/template.md` — Assessment deliverable and reporting template

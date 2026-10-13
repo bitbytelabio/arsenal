@@ -281,3 +281,7 @@ SECURITY (last 30 days):
   URL Blocked: 45,678
   WildFire Submissions: 2,345
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-palo-alto-prisma-access-zero-trust/references/api-reference.md` — API and execution command reference

@@ -82,25 +82,25 @@ The agent implements a complete input/output validation pipeline:
 
 ```bash
 # Analyze a single input through all guardrail layers
-python agent.py --input "Tell me how to hack into a system"
+python scripts/agent.py --input "Tell me how to hack into a system"
 
 # Analyze input with a custom content policy file
-python agent.py --input "Some text" --policy policy.json
+python scripts/agent.py --input "Some text" --policy policy.json
 
 # Scan a file of prompts through the guardrail pipeline
-python agent.py --file prompts.txt --mode full
+python scripts/agent.py --file prompts.txt --mode full
 
 # Input-only validation (no LLM call, just check if input is safe)
-python agent.py --input "Some text" --mode input-only
+python scripts/agent.py --input "Some text" --mode input-only
 
 # Output validation mode (validate a pre-generated LLM response)
-python agent.py --input "User question" --response "LLM response to validate" --mode output-only
+python scripts/agent.py --input "User question" --response "LLM response to validate" --mode output-only
 
 # PII detection and redaction mode
-python agent.py --input "My SSN is 123-45-6789 and email john@example.com" --mode pii
+python scripts/agent.py --input "My SSN is 123-45-6789 and email john@example.com" --mode pii
 
 # JSON output for pipeline integration
-python agent.py --file prompts.txt --output json
+python scripts/agent.py --file prompts.txt --output json
 ```
 
 ### Step 3: Configure Content Policies
@@ -187,7 +187,7 @@ Review guardrail logs to track block rates, false positives, and bypass attempts
 
 ```bash
 # Generate a summary report from guardrail logs
-python agent.py --file interaction_logs.txt --mode full --output json > guardrail_audit.json
+python scripts/agent.py --file interaction_logs.txt --mode full --output json > guardrail_audit.json
 ```
 
 ## Verification
@@ -218,3 +218,7 @@ python agent.py --file interaction_logs.txt --mode full --output json > guardrai
 - **Microsoft Presidio**: Open-source PII detection and anonymization engine supporting 30+ entity types with configurable NLP backends
 - **Colang 2.0**: Event-driven interaction modeling language for defining guardrail flows with Python-like syntax, supporting multi-turn dialog control
 - **OpenAI Guardrails Python**: OpenAI's client-side guardrails library for prompt injection detection and content policy enforcement
+
+## References
+
+- `skill://webapp-implementing-llm-guardrails-for-security/scripts/agent.py` — Bundled Python CLI helper script (`scripts/agent.py`)

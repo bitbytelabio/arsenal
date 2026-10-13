@@ -110,11 +110,11 @@ Always verify by re-reading state server-side (order history, balance, quota cou
 
 ## When to Load a Specialist Skill
 
-- E-commerce/payment-specific deep technique -> testing-ecommerce-and-payment-logic
-- Concurrency-needed limit bypass -> race-condition-testing
+- E-commerce/payment-specific deep technique -> `skill://webapp-testing-ecommerce-and-payment-logic`
+- Concurrency-needed limit bypass -> `skill://webapp-race-condition-testing`
 - Skipping workflow steps rather than values -> workflow-state-machine-testing
-- API business-flow abuse patterns -> api-business-flow-abuse (api-security)
-- Price/role fields persisted via extra parameters -> exploiting-mass-assignment-in-rest-apis
+- API business-flow abuse patterns -> `skill://webapp-api-business-flow-abuse` (api-security)
+- Price/role fields persisted via extra parameters -> `skill://webapp-testing-api-for-mass-assignment-vulnerability`
 
 ## Stopping Rule
 
@@ -122,6 +122,6 @@ Stop broad mutation when: every discovered business rule has had its primary inv
 
 ## Handoffs
 
-- application-attack-surface-modeling - the workflow/inventory model this testing needs
+- `skill://webapp-application-attack-surface-modeling` - the workflow/inventory model this testing needs
 - workflow-state-machine-testing - structural bypasses of the same flows
-- race-condition-testing - when one-at-a-time is not enough
+- `skill://webapp-race-condition-testing` - when one-at-a-time is not enough

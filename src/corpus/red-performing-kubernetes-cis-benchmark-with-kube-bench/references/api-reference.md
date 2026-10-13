@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python agent.py bench [--target master|node|etcd|policies] [--benchmark cis-1.8]
-python agent.py pods [--namespace default]
-python agent.py rbac
-python agent.py netpol [--namespace default]
+python scripts/agent.py bench [--target master|node|etcd|policies] [--benchmark cis-1.8]
+python scripts/agent.py pods [--namespace default]
+python scripts/agent.py rbac
+python scripts/agent.py netpol [--namespace default]
 ```
 
 ## Core Functions

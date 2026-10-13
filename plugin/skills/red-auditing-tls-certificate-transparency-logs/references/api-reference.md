@@ -18,27 +18,27 @@ The core monitoring functionality requires only `requests`. The `cryptography` a
 
 ```bash
 # One-shot scan with report
-python agent.py --domains example.com --db ct_monitor.db --report report.json
+python scripts/agent.py --domains example.com --db ct_monitor.db --report report.json
 
 # Continuous monitoring with Slack alerts
-python agent.py --domains example.com --continuous --interval 900 \
+python scripts/agent.py --domains example.com --continuous --interval 900 \
     --webhook https://hooks.slack.com/services/XXX/YYY/ZZZ
 
 # Build baseline and auto-detect authorized CAs
-python agent.py --domains example.com --auto-baseline --db ct_monitor.db
+python scripts/agent.py --domains example.com --auto-baseline --db ct_monitor.db
 
 # Monitor multiple domains with email alerts
-python agent.py --domains example.com bank.example.com \
+python scripts/agent.py --domains example.com bank.example.com \
     --continuous --interval 600 \
     --smtp-host smtp.gmail.com --smtp-port 587 \
     --smtp-user alerts@example.com --smtp-pass "app-password" \
     --email-to security@example.com soc@example.com
 
 # Scan for typosquat phishing domains
-python agent.py --domains example.com --typosquats --report typosquat_report.json
+python scripts/agent.py --domains example.com --typosquats --report typosquat_report.json
 
 # Manually add an authorized CA
-python agent.py --domains example.com --add-ca "DigiCert SHA2 Extended Validation Server CA" 1397
+python scripts/agent.py --domains example.com --add-ca "DigiCert SHA2 Extended Validation Server CA" 1397
 ```
 
 ## Arguments

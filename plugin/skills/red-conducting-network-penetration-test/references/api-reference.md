@@ -14,10 +14,10 @@ Automates network penetration testing: host discovery, TCP SYN scanning with ser
 
 ```bash
 # Full pentest
-python agent.py --target 192.168.1.0/24 --ports 1-10000 --output report.json
+python scripts/agent.py --target 192.168.1.0/24 --ports 1-10000 --output report.json
 
 # Host discovery only
-python agent.py --target 10.0.0.0/24 --discovery-only
+python scripts/agent.py --target 10.0.0.0/24 --discovery-only
 ```
 
 ## Key Functions

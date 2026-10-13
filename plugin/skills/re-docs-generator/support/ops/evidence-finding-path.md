@@ -28,14 +28,16 @@ Each evidence item is an independent paragraph or table row:
 **CLI helper** (writes to `work/<case>/evidence/E-*.md`):
 
 ```powershell
-powershell -File skills/scripts/append-evidence.sh -CaseRoot work/<case> `
+# Resolve helper from skill://webapp-pentest-tools/support/templates/append-evidence.ps1 to local working directory:
+pwsh -File append-evidence.ps1 -CaseRoot work/<case> `
   -Id E-001 -Title "..." -ReproCommand "..." -Severity info -Status observed
 ```
 
 When the evidence is a case-local file, pass `-ArtifactPath` to record a SHA-256 fixity value and a relative artifact path. Review the complete case graph before handoff:
 
 ```bash
-python3 skills/case-review/scripts/review_case.py work/<case> --verify-hashes --strict
+# Resolve helper from skill://re-case-review/templates/review_case.py to ./review_case.py in the local working directory:
+python3 ./review_case.py work/<case> --verify-hashes --strict
 ```
 
 The review is read-only and checks scope fields, Evidence records, work item and timeline references, structured Findings, Paths, and artifact hash matches.
@@ -95,7 +97,7 @@ Standardized as **Path**, interpreted by task type:
 4. At least 1 Path (attack / call flow / solution)  
 5. Timeline summary (optional full-text link to `timeline.md`)
 
-For details, refer to the **Evidence Chain** section in `docs-generator/references/security-report-templates.md`.
+For details, refer to the **Evidence Chain** section in `skill://re-docs-generator/references/security-report-templates.md`.
 
 ## 5. field-journal Integration
 
@@ -105,7 +107,7 @@ When writing back to the journal, you **SHOULD** extract:
 - 1 core Finding  
 - A one-sentence reusable Path pattern  
 
-Complete sensitive content remains exclusively within the user project report; journal entries **MUST** be sanitized (`anonymization.md`).
+Complete sensitive content remains exclusively within the user project report; journal entries **MUST** be sanitized (`skill://re-reverse-engineering/support/field-journal/anonymization.md`).
 
 ## 6. Differences from Z3r0 (Key Highlights)
 
@@ -128,4 +130,4 @@ Promotion to status=validated is stricter (decision cookbook):
 | **validated** | **SHOULD >=2 independent** Evidence (best: 1 static + 1 dynamic). A single Evidence item alone MUST NOT silently promote to validated — keep candidate/preliminary, or record residual_risk + human confirm. |
 | blocked promotion | record Evidence E-insufficient-evidence |
 
-Full recipes: [analysis-decision-framework.md](analysis-decision-framework.md) (R4*, R1, R41, R44).
+Full recipes: [analysis-decision-framework.md](skill://re-reverse-engineering/support/ops/analysis-decision-framework.md) (R4*, R1, R41, R44).

@@ -369,3 +369,7 @@ Ransomware Investigation Summary:
     Bitcoin: bc1q...
     Tor: http://lockbit...onion
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-investigating-ransomware-attack-artifacts/references/api-reference.md` — API and execution command reference

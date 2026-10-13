@@ -29,7 +29,7 @@ It MUST NOT perform reconnaissance, exploitation, dynamic instrumentation, or ta
 
 1. `NOW`: read `skill://re-case-review/support/field-journal/precedent-reverse.md` and confirm that this is a review of an existing authorized case package.
 2. `NOW`: confirm the case path and choose read-only review mode.
-3. `NEXT`: read `../tool-index.md`; this skill uses only Python 3 standard library and does not require bootstrap.
+3. `NEXT`: read `tool-index` (workstation tool inventory); this skill uses only Python 3 standard library and does not require bootstrap.
 4. `NEXT`: run `bun run bin/arsenal.ts case review <case-root> --format markdown`.
 5. `ACT`: resolve every error, then rerun the review before claiming a handoff is complete.
 
@@ -101,7 +101,8 @@ The script accepts `sha256:<64 hex characters>` and checks that the artifact rem
 The PowerShell Evidence helper can record a hash while appending a record:
 
 ```powershell
-powershell -File skills/templates/append-evidence.sh -CaseRoot work\<case> -Id E-001 -Title "Sample hash" -ReproCommand "sha256sum evidence/sample.bin" -ArtifactPath "evidence\sample.bin"
+# Resolve helper from skill://webapp-pentest-tools/support/templates/append-evidence.ps1 to local working directory:
+pwsh -File append-evidence.ps1 -CaseRoot work\<case> -Id E-001 -Title "Sample hash" -ReproCommand "sha256sum evidence/sample.bin" -ArtifactPath "evidence\sample.bin"
 ```
 
 ## Recommended Next Steps (Select one)
@@ -117,14 +118,14 @@ powershell -File skills/templates/append-evidence.sh -CaseRoot work\<case> -Id E
 Use strict mode before a final report or specialist handoff:
 
 ```bash
-python3 case review work/<case> --strict --format markdown > work/<case>/report/case-review.md
+python3 templates/review_case.py work/<case> --strict --format markdown > work/<case>/report/case-review.md
 ```
 
 The command is read-only with respect to the case unless shell redirection is explicitly used to save its output. The review is not legal advice and does not replace organizational evidence handling procedures.
 
 ## Recommended Next Steps (Select one)
 
-1. Pass validated review results to `docs-generator/` to generate the formal report
+1. Pass validated review results to `re-docs-generator/` to generate the formal report
 2. Return to PRIMARY skill to gather new analysis evidence
 3. Archive Markdown and JSON review results
 4. Pause and request human review
@@ -143,9 +144,9 @@ This skill has no third-party dependency. If Python 3 is unavailable, the only a
 
 **Upstream entry**: any reverse, forensics, CTF, or authorized security skill that has produced a case package.
 
-**Downstream exit**: `docs-generator/` for a formal report, or the original PRIMARY skill when the graph is incomplete.
+**Downstream exit**: `re-docs-generator/` for a formal report, or the original PRIMARY skill when the graph is incomplete.
 
-**Related modules**: `skill://re-case-review/support/ops/evidence-finding-path.md`, `skill://re-case-review/support/ops/timeline-workitem.md`, `digital-forensics/`, `reverse-engineering/`, and `docs-generator/`.
+**Related modules**: `skill://re-case-review/support/ops/evidence-finding-path.md`, `skill://re-case-review/support/ops/timeline-workitem.md`, `re-digital-forensics/`, `re-reverse-engineering/`, and `re-docs-generator/`.
 
 ## References
 

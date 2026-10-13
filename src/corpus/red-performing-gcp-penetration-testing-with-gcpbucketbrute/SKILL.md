@@ -45,3 +45,7 @@ This skill covers Google Cloud Platform security testing using GCPBucketBrute fo
 - IAM privilege escalation path analysis
 - Service account security assessment
 - Risk-scored findings with remediation recommendations
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-gcp-penetration-testing-with-gcpbucketbrute/references/api-reference.md` — API and execution command reference

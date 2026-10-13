@@ -49,7 +49,7 @@ for result in results.JSONResultsReader(job.results(output_mode="json")):
 ## CLI Usage
 
 ```bash
-python agent.py --generate-queries
-python agent.py --generate-queries --techniques pass_the_hash psexec_execution
-python agent.py --parse-results splunk_output.json
+python scripts/agent.py --generate-queries
+python scripts/agent.py --generate-queries --techniques pass_the_hash psexec_execution
+python scripts/agent.py --parse-results splunk_output.json
 ```

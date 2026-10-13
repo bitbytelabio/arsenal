@@ -266,3 +266,10 @@ All EZ Tools produce CSV output that can be:
 - SANS EZ Tools Training: https://www.sans.org/tools/ez-tools
 - SANS FOR508: Advanced Incident Response and Threat Hunting
 - SANS FOR498: Battlefield Forensics & Data Acquisition
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-windows-artifact-analysis-with-eric-zimmerman/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-windows-artifact-analysis-with-eric-zimmerman/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-windows-artifact-analysis-with-eric-zimmerman/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-windows-artifact-analysis-with-eric-zimmerman/assets/template.md` — Assessment deliverable and reporting template

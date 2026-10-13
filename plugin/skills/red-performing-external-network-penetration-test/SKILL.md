@@ -333,3 +333,10 @@ meterpreter> keyscan_start
 - NIST SP 800-115: Technical Guide to Information Security Testing: https://csrc.nist.gov/publications/detail/sp/800-115/final
 - OSSTMM v3: https://www.isecom.org/OSSTMM.3.pdf
 - MITRE ATT&CK: https://attack.mitre.org/
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-external-network-penetration-test/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-external-network-penetration-test/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-external-network-penetration-test/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-external-network-penetration-test/assets/template.md` — Assessment deliverable and reporting template

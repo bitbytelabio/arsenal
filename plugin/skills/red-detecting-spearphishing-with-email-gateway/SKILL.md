@@ -76,7 +76,7 @@ Proofpoint:
 - Block macro-enabled Office documents from external senders
 
 ### Step 4: Create Custom Detection Rules
-Use the `skill://red-detecting-spearphishing-with-email-gateway/support/detecting-spearphishing-with-email-gateway/templates/process.py` to analyze email gateway logs, identify spearphishing patterns, and generate custom detection rules.
+Use the `skill://red-detecting-spearphishing-with-email-gateway/templates/process.py` to analyze email gateway logs, identify spearphishing patterns, and generate custom detection rules.
 
 ### Step 5: Configure Alert and Response Actions
 - Real-time alerts for impersonation attempts
@@ -96,3 +96,10 @@ Use the `skill://red-detecting-spearphishing-with-email-gateway/support/detectin
 - Attachment sandboxing detects weaponized documents
 - Custom rules trigger on known spearphishing patterns
 - SIEM integration receives gateway alerts
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-spearphishing-with-email-gateway/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-spearphishing-with-email-gateway/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-spearphishing-with-email-gateway/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-spearphishing-with-email-gateway/assets/template.md` — Assessment deliverable and reporting template

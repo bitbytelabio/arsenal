@@ -91,8 +91,8 @@ event.code: "1" AND
 
 ```bash
 # Analyze Sysmon XML export
-python agent.py --sysmon-xml sysmon_events.xml --output cred_report.json
+python scripts/agent.py --sysmon-xml sysmon_events.xml --output cred_report.json
 
 # Print Splunk detection queries
-python agent.py --show-splunk
+python scripts/agent.py --show-splunk
 ```

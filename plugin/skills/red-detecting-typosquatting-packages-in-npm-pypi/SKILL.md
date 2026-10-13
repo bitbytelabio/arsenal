@@ -146,3 +146,7 @@ Combine signals into a composite risk score and generate an actionable report:
 - REPORT: Submit malware reports to security@pypi.org with package names and evidence
 - MONITOR: Continue weekly scans for the full dependency watchlist
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-typosquatting-packages-in-npm-pypi/references/api-reference.md` — API and execution command reference

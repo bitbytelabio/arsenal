@@ -17,8 +17,9 @@ work/<case>/
 
 Initialization:
 
-```powershell
-powershell -File skills\scripts\case-init.sh -Hint "full pentest" -CaseName "acme-2026"
+```bash
+# Resolve helper from skill://re-docs-generator/support/templates/case-init.sh to local working directory:
+bash case-init.sh --hint "full pentest" --case-name "acme-2026"
 ```
 
 ## timeline.md Format

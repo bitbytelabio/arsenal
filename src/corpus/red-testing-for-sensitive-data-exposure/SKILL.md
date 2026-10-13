@@ -347,3 +347,7 @@ The `.git` directory is accessible on the production server. Using git-dumper, t
 7. Enable TLS 1.2+ on all endpoints; redirect HTTP to HTTPS
 8. Implement secret scanning in CI/CD pipeline (trufflehog/gitleaks)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-for-sensitive-data-exposure/references/api-reference.md` — API and execution command reference

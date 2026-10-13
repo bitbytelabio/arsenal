@@ -267,3 +267,7 @@ TOTAL ESCALATION PATHS: 4 (2 Critical, 1 High, 1 Medium)
 PERMISSION BOUNDARIES IN PLACE: 0 / 47 IAM principals
 SCP GUARDRAILS BLOCKING ESCALATION: 0 / 3 tested vectors
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-aws-privilege-escalation-assessment/references/api-reference.md` — API and execution command reference

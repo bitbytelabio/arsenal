@@ -53,3 +53,7 @@ if "-encodedcommand" in script_text.lower():
 
 ### Reconstruct Multi-Block Script
 Scripts split across multiple 4104 events share a `ScriptBlockId`. Concatenate blocks ordered by `MessageNumber` to recover the full script.
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-powershell-script-block-logging/references/api-reference.md` — API and execution command reference

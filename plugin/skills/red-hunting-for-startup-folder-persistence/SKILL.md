@@ -42,3 +42,7 @@ Attackers use Windows startup folders for persistence (MITRE ATT&CK T1547.001 â€
 
 - JSON report listing all startup folder contents with risk scores, file metadata, and suspicious indicators
 - Real-time monitoring alerts for new file creation in startup directories
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-startup-folder-persistence/references/api-reference.md` â€” API and execution command reference

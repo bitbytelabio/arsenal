@@ -68,3 +68,7 @@ psscan_pids = set(p.pid for p in s.plugins.psscan())
 hidden = psscan_pids - pslist_pids
 print(f"Hidden PIDs: {hidden}")
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-extracting-memory-artifacts-with-rekall/references/api-reference.md` — API and execution command reference

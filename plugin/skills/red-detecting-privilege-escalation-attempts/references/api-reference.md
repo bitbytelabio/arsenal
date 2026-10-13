@@ -39,6 +39,6 @@ index=wineventlog (EventCode=4672 OR EventCode=4688)
 ## CLI Usage
 
 ```bash
-python agent.py --evtx-file Sysmon.evtx
-python agent.py --text-log auth.log
+python scripts/agent.py --evtx-file Sysmon.evtx
+python scripts/agent.py --text-log auth.log
 ```

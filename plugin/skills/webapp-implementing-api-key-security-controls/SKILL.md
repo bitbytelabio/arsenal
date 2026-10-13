@@ -383,3 +383,7 @@ def process_leaked_keys(leaks_file):
 - Average time to revocation: 3.2 minutes
 - Keys detected in CI/CD pre-commit: 7 (prevented)
 ```
+
+## References
+
+- `skill://webapp-implementing-api-key-security-controls/references/api-reference.md` — API reference and command specification

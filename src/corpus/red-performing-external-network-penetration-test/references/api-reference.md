@@ -9,10 +9,10 @@
 
 ## CLI Interface
 ```
-python agent.py scan --host <target_ip> [--ports 22 80 443]
-python agent.py nmap --target <ip_or_range> [--type quick|full|vuln|udp]
-python agent.py dns --domain <domain>
-python agent.py ssl --host <hostname> [--port 443]
+python scripts/agent.py scan --host <target_ip> [--ports 22 80 443]
+python scripts/agent.py nmap --target <ip_or_range> [--type quick|full|vuln|udp]
+python scripts/agent.py dns --domain <domain>
+python scripts/agent.py ssl --host <hostname> [--port 443]
 ```
 
 ## Core Functions

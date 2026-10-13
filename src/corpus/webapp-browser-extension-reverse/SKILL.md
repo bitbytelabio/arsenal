@@ -65,7 +65,7 @@ metadata:
 
 - `skill://webapp-browser-extension-reverse/references/extension-analysis.md`
 - Field-journal extension recovery entries
-- `../js-reverse/` `../malware-analysis/`
+- ``skill://webapp-js-reverse`` ``skill://re-malware-analysis``
 
 ## Routing Context
 

@@ -1,6 +1,6 @@
 # Non-PE / Multi-Format Agent Response Playbook U–AV + AW–DN
 
-> Coexists alongside the PE Anti-Debugging Playbook A–T (`../anti-analysis.md`): Provides "Trigger → One-line Action → Evidence" organized by **file type**.  
+> Coexists alongside the PE Anti-Debugging Playbook A–T (`skill://re-reverse-engineering/anti-analysis.md`): Provides "Trigger → One-line Action → Evidence" organized by **file type**.  
 > This is **NOT** a secondary master workflow. After identifying the file type via triage, navigate to the corresponding skill + this table.  
 > Default scope: **Authorized isolated lab / authorized samples and devices**. For disk wiping, BYOVD, reflective injection, etc., document **detection and forensics**; do not author unauthorized destruction/exploitation tutorials.  
 > If bypass or reconstruction fails, Evidence MUST still be recorded; silently assuming "benign" is strictly prohibited.
@@ -76,7 +76,7 @@
 | **AH** | Presence of DeviceIoControl / IOCTL dispatching | Build control code → dispatch handler table; annotate METHOD_* and buffering direction; map user-mode communication surface | E-driver-ioctl | P0 |
 | **AI** | Sample loads/drops known vulnerable drivers or abnormally signed drivers (BYOVD pattern) | Correlate against **public** lists such as LOLDrivers; record driver name/hash/signature; analyze **invocation intent**; **do not** elaborate exploit steps | E-driver-byovd | P1 |
 
-For detailed procedures, refer to `kernel-driver-reverse.md`; this table only provides agent action anchors.
+For detailed procedures, refer to `skill://re-reverse-engineering/references/nonpe-format-cookbook.md`; this table only provides agent action anchors.
 
 ## 6. DLL (AJ–AQ) — Deduplicated with A–T / #72
 

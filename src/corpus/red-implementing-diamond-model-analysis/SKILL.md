@@ -161,3 +161,10 @@ class DiamondAnalysis:
 - [Diamond Model Paper](https://www.activeresponse.org/wp-content/uploads/2013/07/diamond.pdf)
 - [MITRE ATT&CK](https://attack.mitre.org/)
 - [STIX 2.1 Campaign Object](https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-diamond-model-analysis/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-diamond-model-analysis/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-diamond-model-analysis/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-diamond-model-analysis/assets/template.md` — Assessment deliverable and reporting template

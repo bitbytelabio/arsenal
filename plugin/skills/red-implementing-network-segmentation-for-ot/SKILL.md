@@ -469,3 +469,7 @@ VALIDATION RESULTS:
   Tests Passed: [N]/[Total]
   Critical Failures: [N]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-network-segmentation-for-ot/references/api-reference.md` — API and execution command reference

@@ -94,8 +94,8 @@ IDA static patch:
 
 ## Suggested Improvements for This Package
 
-- `reverse-engineering/SKILL.md` already covers Unity, but lacks a case for the IL2CPP **complete workflow**
-- Make `reverse-engineering/references/il2cpp-cheatsheet.md` a standalone document: dump tool comparison, frida-bridge templates, encrypted metadata handling
+- `skill://re-reverse-engineering/SKILL.md` already covers Unity, but lacks a case for the IL2CPP **complete workflow**
+- Make `skill://re-reverse-engineering/languages-compiled.md` a standalone document: dump tool comparison, frida-bridge templates, encrypted metadata handling
 - Add frida-il2cpp-bridge to the bootstrap manifest
 
 ## Reusable Patterns / Script Snippets

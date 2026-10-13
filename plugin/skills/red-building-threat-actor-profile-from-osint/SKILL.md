@@ -360,3 +360,7 @@ generate_dossier("APT29", {
 - [MITRE ATT&CK Groups](https://attack.mitre.org/groups/)
 - [ShadowDragon: OSINT Techniques](https://shadowdragon.io/blog/osint-techniques/)
 - [ISACA: Building a Threat-Led Cybersecurity Program](https://www.isaca.org/resources/white-papers/2025/building-a-threat-led-cybersecurity-program)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-threat-actor-profile-from-osint/references/api-reference.md` — API and execution command reference

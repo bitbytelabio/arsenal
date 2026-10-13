@@ -200,3 +200,7 @@ During an active incident, scan endpoints for ransomware-associated mutexes:
 - **malware-mutex (GitHub)**: Community-maintained database of mutexes used by known malware families
 - **ANY.RUN**: Interactive malware sandbox that reports mutex creation during dynamic analysis
 - **PassiveDNS**: DNS monitoring infrastructure for detecting kill switch domain resolution attempts
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-ransomware-kill-switch-detection/references/api-reference.md` — API and execution command reference

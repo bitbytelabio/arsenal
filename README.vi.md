@@ -9,7 +9,7 @@
 [![Runtime: Bun](https://img.shields.io/badge/runtime-Bun-f472b6?style=flat-square&logo=bun)](https://bun.sh)
 [![Ngôn ngữ: TypeScript](https://img.shields.io/badge/ngôn%20ngữ-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![OMP Plugin](https://img.shields.io/badge/OMP-Plugin-8b5cf6?style=flat-square)](docs/install-omp-plugin.vi.md)
-[![Kho kỹ năng](https://img.shields.io/badge/kỹ%20năng-1%2C647%20chuẩn%20hóa-f59e0b?style=flat-square)](src/corpus)
+[![Kho kỹ năng](https://img.shields.io/badge/kỹ%20năng-1%2C648%20chuẩn%20hóa-f59e0b?style=flat-square)](src/corpus)
 [![Build: Tiền định](https://img.shields.io/badge/build-tiền%20định-06b6d4?style=flat-square)](#danh-mục-lệnh-cli-cheat-sheet)
 
 [ English ](README.md) &bull; [ Tiếng Việt ]
@@ -24,10 +24,10 @@
 
 ### Điểm nổi bật cốt lõi
 
-- **Mô hình Nguồn chân lý duy nhất (SSOT)**: 1.647 kịch bản tấn công (playbooks) chuẩn mực và 3.288 trích dẫn tham khảo được phân giải động qua định danh `skill://` với kiểm soát kích thước nghiêm ngặt ($\le 4096$ bytes).
+- **Mô hình Nguồn chân lý duy nhất (SSOT)**: 1.648 playbook chuẩn hóa kèm tài liệu tham khảo, template và helper có nguồn gốc xác định. Resource dùng định danh `skill://<skill-id>/<path>`; công cụ đọc asset có giới hạn kích thước và báo rõ khi nội dung bị cắt.
 - **Đội ngũ 5 Tác tử Chuyên gia (Specialists)**: Các chuyên gia độc lập theo miền (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) hoạt động dưới các quy tắc nhận thức luận chặt chẽ (`E-*` dữ kiện thực nghiệm vs. `P-*` suy luận dự đoán vs. `unk-*` ẩn số chưa xác định).
 - **Sổ cái bằng chứng Mật mã học (Cryptographic Evidence Ledger)**: Chuỗi sự kiện gắn băm SHA-256 đơn điệu chỉ-ghi-nối (append-only) tại `evidence/ledger.jsonl`, được hỗ trợ bởi cơ chế theo dõi trạng thái SQLite chế độ WAL chống giả mạo.
-- **Công cụ thuần Bun & TypeScript**: Loại bỏ hoàn toàn các script Python tự do trên máy host thông qua các công cụ biên dịch có kiểm toán như `apk_inspect` và quy trình thực thi được giám sát `evidence_exec`.
+- **Công cụ thuần Bun & TypeScript**: Công cụ lõi như `apk_inspect` chạy native. Helper riêng của playbook giữ đúng interpreter Python, Bash hoặc PowerShell cùng dependency được tài liệu chỉ rõ; việc thực thi vẫn chịu kiểm soát phạm vi và bằng chứng.
 - **Cơ chế MCP Opt-In động & An toàn tuyệt đối**: 6 cầu nối công cụ chuẩn (`burp-ultra`, `rea`, `playwright`, `ghidra`, `ida-pro`, `jshook`) mặc định ở trạng thái vô hiệu hóa, bật/tắt linh hoạt theo phạm vi profile hoặc dự án.
 
 ---
@@ -65,7 +65,7 @@ flowchart TD
 
     subgraph CoreEngine ["Nguồn Chân lý & Môi trường Runtime"]
         direction TB
-        Corpus["src/corpus/<br/>1.647 Kỹ năng & URI skill://"]
+        Corpus["src/corpus/<br/>1.648 Kỹ năng & URI skill://"]
         PluginDist["plugin/<br/>Extension Biên dịch & Danh mục Định tuyến"]
         NativeTools["Công cụ Native TS<br/>apk_inspect, evidence_exec"]
     end
@@ -212,6 +212,13 @@ bun run bin/arsenal.ts evidence verify --ledger evidence/ledger.jsonl --json
 # Chạy bộ kiểm thử tự động
 bun test
 ```
+
+### Resource của corpus và cách chạy helper
+
+- Chỉnh sửa tại `src/corpus/`; `plugin/skills/` là đầu ra được sinh. Liên kết tài liệu hỗ trợ hữu ích từ trang chính của skill và ghi nguồn gốc trong `MANIFEST.json`.
+- Reference `<SKILL_ROOT>` tương ứng resource canonical `skill://<skill-id>/<path>`, không phải placeholder đường dẫn trên máy. Resolve resource trước khi chạy; shell không thực thi trực tiếp URI `skill://`. Sao chép **toàn bộ** helper cùng các dependency file đi kèm ra thư mục cục bộ; bản xem trước asset bị cắt không phải script hoàn chỉnh.
+- Interpreter và tham số phải khớp helper được đóng gói. Helper ghi Evidence là `skill://webapp-pentest-tools/support/templates/append-evidence.ps1`, cần PowerShell (`pwsh`), từ chối record trùng, severity/status sai và artifact nằm ngoài case.
+
 
 ---
 

@@ -292,3 +292,9 @@ Throughout: SOC monitoring on high alert
 - [ ] IOCs loaded in detection rules
 - [ ] Canary files deployed
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-recovering-from-ransomware-attack/references/api-reference.md` — API and execution command reference
+- `skill://red-recovering-from-ransomware-attack/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-recovering-from-ransomware-attack/references/workflows.md` — Operational procedures and detailed workflows

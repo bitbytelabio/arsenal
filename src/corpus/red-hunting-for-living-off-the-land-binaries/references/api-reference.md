@@ -8,8 +8,8 @@
 ## CLI Interface
 
 ```
-python agent.py hunt --es-host <url> --index <pattern> [--api-key <key>] [--hours <n>]
-python agent.py sysmon --evtx-file <path>
+python scripts/agent.py hunt --es-host <url> --index <pattern> [--api-key <key>] [--hours <n>]
+python scripts/agent.py sysmon --evtx-file <path>
 ```
 
 ## Core Functions

@@ -25,7 +25,7 @@ Attackers use Windows startup folders for persistence (MITRE ATT&CK T1547.001 �
 ## Detection Gaps & Validation
 
 - **Both folders, or you miss half:** monitor per-user `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup` AND all-users `%ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup`. A watchdog on only one is a guaranteed blind spot.
-- **Extension filtering isn't enough:** a `.lnk` whose target is encoded PowerShell or a UNC/HTTP path looks benign by extension — you must resolve and inspect the LNK target, not just flag `.exe/.bat/.vbs/.ps1`.
+- **Extension filtering isn't enough:** a `.lnk` whose target is encoded PowerShell or a UNC/HTTP path looks benign by extension — you must resolve and inspect the LNK target, not just flag `.exe`, `.bat`, `.vbs`, `.ps1`.
 - **Offline profiles:** logged-off users' AppData isn't seen by a live agent — scan offline profiles too.
 - **SACL dependency:** Windows EID 4663 only fires if object-access auditing (SACL) is set on the startup folders — off by default.
 - **Validate:** run Atomic T1547.001 startup-folder drop; confirm a new-file event AND successful LNK target extraction.

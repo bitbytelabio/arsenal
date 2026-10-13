@@ -337,3 +337,7 @@ REMEDIATION
 7. Reimport only trusted certificates into Secure Boot db
 8. Monitor MeasuredBoot logs for anomalous boot component loading
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-uefi-bootkit-persistence/references/api-reference.md` — API and execution command reference

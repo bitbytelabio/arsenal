@@ -73,12 +73,12 @@ vol -f mem.dmp windows.cmdline
 ## References
 
 - `skill://re-digital-forensics/references/forensics-triage.md`
-- `../malware-analysis/` `../threat-hunting/` `../protocol-reverse/`
+- `../re-malware-analysis/` `../red-threat-hunting/` `../re-protocol-reverse/`
 
 ## Routing Context
 
 **Upstream**: MASTER R25  
-**Downstream**: Deep-dive malware sample analysis → malware-analysis; detection engineering/rules → threat-hunting
+**Downstream**: Deep-dive malware sample analysis → re-malware-analysis; detection engineering/rules → red-threat-hunting
 
 ## Task Completion Self-Check
 

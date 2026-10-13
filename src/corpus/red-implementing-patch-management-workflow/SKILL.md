@@ -302,3 +302,10 @@ curl -k -X POST "https://nessus:8834/scans/$VERIFY_SCAN_ID/launch" \
 - prioritizing-vulnerabilities-with-cvss-scoring
 - implementing-vulnerability-remediation-sla
 - implementing-continuous-vulnerability-monitoring
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-patch-management-workflow/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-patch-management-workflow/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-patch-management-workflow/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-patch-management-workflow/assets/template.md` — Assessment deliverable and reporting template

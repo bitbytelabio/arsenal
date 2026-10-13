@@ -70,3 +70,7 @@ Credentials Used: [Username:Password if applicable]
 Commands Executed: [For SSH honeypots]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-network-deception-with-honeypots/references/api-reference.md` — API and execution command reference

@@ -184,3 +184,10 @@ Threat Dragon participates in the CycloneDX Threat Model Bill of Materials (TMBO
 - [OWASP Threat Modeling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html)
 - [STRIDE Threat Model](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats)
 - [LINDDUN Privacy Threat Modeling](https://www.linddun.org/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-threat-modeling-with-owasp-threat-dragon/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-threat-modeling-with-owasp-threat-dragon/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-threat-modeling-with-owasp-threat-dragon/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-threat-modeling-with-owasp-threat-dragon/assets/template.md` — Assessment deliverable and reporting template

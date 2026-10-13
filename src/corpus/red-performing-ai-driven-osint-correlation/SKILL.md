@@ -360,3 +360,7 @@ The final output is a structured JSON correlation report and a Markdown intellig
 - Verify that no false positives from common usernames (e.g., "admin", "test") inflated entity profiles.
 - Ensure breach data timestamps are current and from reputable aggregators.
 - Validate that the final report does not include stale or retracted OSINT data.
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-ai-driven-osint-correlation/references/api-reference.md` — API and execution command reference

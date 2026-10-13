@@ -51,3 +51,7 @@ Produce a structured audit report with vulnerability descriptions, affected code
 ## Expected Output
 
 JSON report listing vulnerabilities with SWC (Smart Contract Weakness Classification) identifiers, severity ratings, affected functions, and suggested fixes.
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-ethereum-smart-contract-vulnerabilities/references/api-reference.md` — API and execution command reference

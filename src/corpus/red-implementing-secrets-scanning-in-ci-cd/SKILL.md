@@ -74,3 +74,7 @@ The agent script produces a JSON report containing:
   "findings": [...]
 }
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-secrets-scanning-in-ci-cd/references/api-reference.md` — API and execution command reference

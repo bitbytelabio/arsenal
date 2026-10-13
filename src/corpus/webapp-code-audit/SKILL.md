@@ -71,7 +71,7 @@ Optional ATT&CK / CWE identifiers
 ## References
 
 - `skill://webapp-code-audit/references/sast-review-checklist.md`
-- `../supply-chain-security/` `../api-security/` `../llm-security/` (Agent code)
+- ``skill://red-supply-chain-security`` ``skill://webapp-api-security`` ``skill://red-llm-security`` (Agent code)
 
 ## Routing Context
 

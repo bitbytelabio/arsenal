@@ -291,3 +291,10 @@ VPN MIGRATION:
   Users migrated to ZPA: 487 / 500
   VPN decommission date: 2026-03-15
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-configuring-zscaler-private-access-for-ztna/references/api-reference.md` — API and execution command reference
+- `skill://red-configuring-zscaler-private-access-for-ztna/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-configuring-zscaler-private-access-for-ztna/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-configuring-zscaler-private-access-for-ztna/assets/template.md` — Assessment deliverable and reporting template

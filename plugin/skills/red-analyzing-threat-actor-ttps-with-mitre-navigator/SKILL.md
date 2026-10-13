@@ -51,3 +51,7 @@ multiple groups, and assess detection coverage gaps against known adversaries.
   ]
 }
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-threat-actor-ttps-with-mitre-navigator/references/api-reference.md` — API and execution command reference

@@ -317,3 +317,7 @@ Linux Forensics Summary:
 
   Report: /cases/case-2024-001/linux/analysis/
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-linux-system-artifacts/references/api-reference.md` — API and execution command reference

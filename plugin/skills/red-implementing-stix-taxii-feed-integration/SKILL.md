@@ -294,3 +294,10 @@ def push_to_taxii(server_url, collection_id, stix_bundle, user, password):
 - [stix2 Python Library](https://stix2.readthedocs.io/)
 - [MITRE ATT&CK TAXII Server](https://cti-taxii.mitre.org/taxii2/)
 - [Medallion TAXII Server](https://github.com/oasis-open/cti-taxii-server)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-stix-taxii-feed-integration/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-stix-taxii-feed-integration/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-stix-taxii-feed-integration/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-stix-taxii-feed-integration/assets/template.md` — Assessment deliverable and reporting template

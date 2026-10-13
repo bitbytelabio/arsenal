@@ -192,3 +192,10 @@ trivy image myapp:distroless
 - [Distroless Images - Docker Documentation](https://docs.docker.com/dhi/core-concepts/distroless/)
 - [Alpine, Distroless, or Scratch? - Google Cloud](https://medium.com/google-cloud/alpine-distroless-or-scratch-caac35250e0b)
 - [Docker Hardened Images](https://www.infoq.com/news/2025/12/docker-hardened-images/)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-container-image-minimal-base-with-distroless/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-container-image-minimal-base-with-distroless/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-container-image-minimal-base-with-distroless/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-container-image-minimal-base-with-distroless/assets/template.md` — Assessment deliverable and reporting template

@@ -7,10 +7,10 @@
 ## CLI Interface
 
 ```
-python agent.py compile --source target.c --output target_fuzz [--compiler afl-clang-fast]
-python agent.py fuzz --binary ./target_fuzz --input seeds/ --output findings/ [--duration 300]
-python agent.py triage --binary ./target_fuzz --crashes-dir findings/default/crashes/
-python agent.py stats --stats-file findings/default/fuzzer_stats
+python scripts/agent.py compile --source target.c --output target_fuzz [--compiler afl-clang-fast]
+python scripts/agent.py fuzz --binary ./target_fuzz --input seeds/ --output findings/ [--duration 300]
+python scripts/agent.py triage --binary ./target_fuzz --crashes-dir findings/default/crashes/
+python scripts/agent.py stats --stats-file findings/default/fuzzer_stats
 ```
 
 ## Core Functions

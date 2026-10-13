@@ -213,3 +213,7 @@ curl -H "Host: management.internal" http://target.com/
 - Configure web server to reject requests with unrecognized Host values
 - Set absolute URLs in application configuration instead of deriving from Host
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-for-host-header-injection/references/api-reference.md` — API and execution command reference

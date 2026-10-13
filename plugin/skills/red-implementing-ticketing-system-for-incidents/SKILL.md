@@ -404,3 +404,7 @@ Metrics:
   Time to Resolve:     3 hours 37 minutes
   SLA Status:          MET (within 4-hour resolution target)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-ticketing-system-for-incidents/references/api-reference.md` — API and execution command reference

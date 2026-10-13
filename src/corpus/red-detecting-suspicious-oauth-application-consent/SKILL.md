@@ -43,3 +43,7 @@ Illicit consent grant attacks trick users into granting excessive permissions to
 
 - JSON report listing all OAuth apps with granted permissions, risk scores, unverified publishers, and suspicious consent patterns
 - Audit trail of consent grant events with user and IP details
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-suspicious-oauth-application-consent/references/api-reference.md` — API and execution command reference

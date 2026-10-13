@@ -191,3 +191,8 @@ and view financial data without biometric verification.
 3. Add runtime integrity checks to detect Frida and other instrumentation frameworks
 4. Implement step-up authentication for high-risk operations (transfers > threshold)
 ```
+
+## References
+
+- `skill://mobile-conducting-mobile-app-penetration-test/references/api-reference.md` — API Reference: Mobile App Penetration Testing Agent
+- `skill://mobile-conducting-mobile-app-penetration-test/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)

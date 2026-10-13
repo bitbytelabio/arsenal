@@ -263,3 +263,7 @@ FINDING SUMMARY BY MITRE ATT&CK TACTIC:
   Discovery:           14 findings
   Total:               47 findings
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-conducting-cloud-penetration-testing/references/api-reference.md` — API and execution command reference

@@ -6,11 +6,11 @@
 
 ## CLI Interface
 ```
-python agent.py --tenant-id T --client-id C --client-secret S audit-logs --days 7
-python agent.py --tenant-id T --client-id C --client-secret S inbox-rules --user user@domain.com
-python agent.py --tenant-id T --client-id C --client-secret S forwarding --user user@domain.com
-python agent.py --tenant-id T --client-id C --client-secret S oauth
-python agent.py --tenant-id T --client-id C --client-secret S full --users user1@d.com user2@d.com --days 7
+python scripts/agent.py --tenant-id T --client-id C --client-secret S audit-logs --days 7
+python scripts/agent.py --tenant-id T --client-id C --client-secret S inbox-rules --user user@domain.com
+python scripts/agent.py --tenant-id T --client-id C --client-secret S forwarding --user user@domain.com
+python scripts/agent.py --tenant-id T --client-id C --client-secret S oauth
+python scripts/agent.py --tenant-id T --client-id C --client-secret S full --users user1@d.com user2@d.com --days 7
 ```
 
 ## Core Functions

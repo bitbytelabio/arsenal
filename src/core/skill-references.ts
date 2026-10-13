@@ -54,6 +54,8 @@ export interface MaterializationPlanItem {
   destAbsPath: string;
   record: SupportFileRecord;
   content: Buffer;
+  upstreamContent?: Buffer;
+  sourceSha256?: string;
 }
 
 export interface SkillReferenceContext {
@@ -252,19 +254,44 @@ export function buildSkillMaterializationPlan(
       sourceRel = relPath;
     }
     if (!fs.existsSync(sourceAbs)) return;
-    const bytes = fs.readFileSync(sourceAbs);
+    const destAbs = path.resolve(skillDir, relPath);
+    const upstreamBytes = fs.readFileSync(sourceAbs);
+    const upstreamHash = sha256Bytes(upstreamBytes);
+    if (fs.existsSync(destAbs)) {
+      const existingBytes = fs.readFileSync(destAbs);
+      if (!existingBytes.equals(upstreamBytes)) {
+        const record: SupportFileRecord = {
+          path: relPath,
+          source_path: sourceRel,
+          sha256: sha256Bytes(existingBytes),
+          bytes: existingBytes.byteLength,
+        };
+        itemsMap.set(relPath, {
+          sourceAbsPath: sourceAbs,
+          destRelPath: relPath,
+          destAbsPath: destAbs,
+          record,
+          content: existingBytes,
+          upstreamContent: upstreamBytes,
+          sourceSha256: upstreamHash,
+        });
+        return;
+      }
+    }
     const record: SupportFileRecord = {
       path: relPath,
       source_path: sourceRel,
-      sha256: sha256Bytes(bytes),
-      bytes: bytes.byteLength,
+      sha256: upstreamHash,
+      bytes: upstreamBytes.byteLength,
     };
     itemsMap.set(relPath, {
       sourceAbsPath: sourceAbs,
       destRelPath: relPath,
-      destAbsPath: path.resolve(skillDir, relPath),
+      destAbsPath: destAbs,
       record,
-      content: bytes,
+      content: upstreamBytes,
+      upstreamContent: upstreamBytes,
+      sourceSha256: upstreamHash,
     });
   };
 
@@ -273,15 +300,85 @@ export function buildSkillMaterializationPlan(
     for (const rel of walkFiles(upstreamDir, "references")) addItem(rel);
     for (const rel of walkFiles(upstreamDir, "assets")) addItem(rel);
 
-    // Ship scripts/ only when the body cites the exact path.
-    const citedScripts = new Set(
-      citations
-        .map((c) => c.target.replace(/\\/g, "/").replace(/^\.\//, ""))
-        .filter((t) => t.startsWith("scripts/"))
+    // Inspect nested support files (both planned and already shipped) for script/helper citations
+    const allCitations: Array<{ citation: ExtractedSkillReference; docDir: string }> = citations.map(
+      (citation) => ({ citation, docDir: "." })
     );
+    for (const item of itemsMap.values()) {
+      if (fs.existsSync(item.destAbsPath)) continue;
+      if (item.destRelPath.endsWith(".md") || item.destRelPath.endsWith(".markdown")) {
+        const text = item.content.toString("utf-8");
+        const docDir = path.posix.dirname(item.destRelPath.replace(/\\/g, "/"));
+        for (const citation of extractSkillReferences(text)) {
+          allCitations.push({ citation, docDir });
+        }
+      }
+    }
+    if (fs.existsSync(skillDir)) {
+      for (const rel of walkAllFiles(skillDir)) {
+        if (rel !== "SKILL.md" && (rel.endsWith(".md") || rel.endsWith(".markdown"))) {
+          try {
+            const text = fs.readFileSync(path.join(skillDir, rel), "utf-8");
+            const docDir = path.posix.dirname(rel.replace(/\\/g, "/"));
+            for (const citation of extractSkillReferences(text)) {
+              allCitations.push({ citation, docDir });
+            }
+          } catch {
+            // ignore read error
+          }
+        }
+      }
+    }
+
+    const citedScripts = new Set<string>();
+    for (const { citation: c, docDir } of allCitations) {
+      let t = c.target.replace(/\\/g, "/");
+      if (t.includes("#")) t = t.split("#")[0]!.trim();
+      if (t.startsWith(`skill://${context.skillSlug}/`)) {
+        t = t.slice(`skill://${context.skillSlug}/`.length);
+      } else if (docDir !== "." && (t.startsWith("./") || t.startsWith("../") || t.includes("/"))) {
+        const joined = path.posix.normalize(path.posix.join(docDir, t));
+        if (!joined.startsWith("..")) {
+          t = joined;
+        }
+      }
+      t = t.replace(/^\.\//, "");
+      if (
+        t.startsWith("scripts/") ||
+        t.startsWith("templates/") ||
+        t.endsWith(".py") ||
+        t.endsWith(".sh") ||
+        t.endsWith(".ps1")
+      ) {
+        citedScripts.add(t);
+      }
+    }
+
     if (citedScripts.size > 0) {
+      for (const rel of walkFiles(upstreamDir, "templates")) {
+        const subRel = rel.slice("templates/".length);
+        if (citedScripts.has(rel) || (!subRel.includes("/") && citedScripts.has(subRel))) {
+          addItem(rel);
+        }
+      }
       for (const rel of walkFiles(upstreamDir, "scripts")) {
-        if (citedScripts.has(rel)) addItem(rel);
+        const subRel = rel.slice("scripts/".length);
+        const asTemplate = `templates/${subRel}`;
+        if (citedScripts.has(rel)) {
+          addItem(rel);
+        }
+        if (citedScripts.has(asTemplate) && !fs.existsSync(path.join(upstreamDir, asTemplate))) {
+          addItem(asTemplate, { abs: path.join(upstreamDir, rel), sourceRelPath: rel });
+        }
+        if (!subRel.includes("/") && citedScripts.has(subRel) && !citedScripts.has(rel) && !citedScripts.has(asTemplate)) {
+          const preferTemplates =
+            fs.existsSync(path.join(skillDir, "templates")) && !fs.existsSync(path.join(skillDir, "scripts"));
+          if (preferTemplates) {
+            addItem(asTemplate, { abs: path.join(upstreamDir, rel), sourceRelPath: rel });
+          } else {
+            addItem(rel);
+          }
+        }
       }
     }
   }
@@ -301,10 +398,19 @@ export function buildSkillMaterializationPlan(
       shippedTree: path.resolve(repoRoot, "src/corpus"),
     });
 
-    if (
-      resolution.status === "dangling" &&
-      plannedPaths.has(resolution.target.replace(/\\/g, "/").replace(/^\.\//, ""))
-    ) {
+    let targetNorm = resolution.target.replace(/\\/g, "/").replace(/^\.\//, "");
+    if (targetNorm.startsWith(`skill://${context.skillSlug}/`)) {
+      targetNorm = targetNorm.slice(`skill://${context.skillSlug}/`.length);
+    }
+    const matchedPlanned =
+      plannedPaths.has(targetNorm)
+        ? targetNorm
+        : !targetNorm.includes("/") && plannedPaths.has(`templates/${targetNorm}`)
+        ? `templates/${targetNorm}`
+        : !targetNorm.includes("/") && plannedPaths.has(`scripts/${targetNorm}`)
+        ? `scripts/${targetNorm}`
+        : null;
+    if (resolution.status === "dangling" && matchedPlanned) {
       // Will resolve once materialized (raw path is fine as-is).
       resolvedList.push({
         raw: resolution.raw,
@@ -312,12 +418,11 @@ export function buildSkillMaterializationPlan(
         originalTarget: resolution.originalTarget,
         kind: resolution.kind,
         status: "resolved-shipped",
-        shippedRelPath: resolution.target.replace(/\\/g, "/").replace(/^\.\//, ""),
+        shippedRelPath: matchedPlanned,
         resolution: "Materialized",
       });
       continue;
     }
-
     if (resolution.status === "dangling" && citation.target.includes("../")) {
       // Rewrite a `../`-prefixed citation to its in-playbook equivalent when that
       // target ships (contracts/reference-materialization.md §3 rewrite option).
@@ -396,6 +501,16 @@ export function applyMaterializationPlan(
     try {
       if (!item.destAbsPath.startsWith(plan.skillDir + path.sep)) {
         errors.push(`Refused to write outside the playbook directory: ${item.destRelPath}`);
+        continue;
+      }
+      if (fs.existsSync(item.destAbsPath)) {
+        const existingBytes = fs.readFileSync(item.destAbsPath);
+        if (!existingBytes.equals(item.content)) {
+          errors.push(
+            `Refused to overwrite curated file '${item.destRelPath}' with non-identical upstream content`
+          );
+          continue;
+        }
         continue;
       }
       fs.mkdirSync(path.dirname(item.destAbsPath), { recursive: true });

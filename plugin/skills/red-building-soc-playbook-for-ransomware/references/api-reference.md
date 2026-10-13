@@ -13,7 +13,7 @@ Automates ransomware incident response workflow: sample identification, host iso
 ## CLI Usage
 
 ```bash
-python agent.py --incident-id IR-2024-0500 --sample encrypted_file.locked \
+python scripts/agent.py --incident-id IR-2024-0500 --sample encrypted_file.locked \
   --device-id <device_id> --cs-token <token> \
   --splunk-url https://splunk:8089 --splunk-key <key>
 ```

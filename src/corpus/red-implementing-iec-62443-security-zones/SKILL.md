@@ -507,3 +507,7 @@ VALIDATION RESULTS:
   Prohibited path tests: [all blocked / exceptions]
   Protocol enforcement: [function code filtering verified]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-iec-62443-security-zones/references/api-reference.md` — API and execution command reference

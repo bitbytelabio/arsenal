@@ -43,3 +43,7 @@ Business Email Compromise (BEC) attacks often leave traces in Office 365 audit l
 
 - JSON report listing forwarding rules, delegation changes, OAuth grants, and suspicious audit events with risk scores
 - Timeline of compromise indicators with affected mailboxes
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-office365-audit-logs-for-compromise/references/api-reference.md` — API and execution command reference

@@ -128,3 +128,7 @@ Before dissemination, apply these checks:
 - **Intelligence without recommendations**: Reports that describe threats without prescribing actions leave stakeholders without direction.
 - **Stale intelligence**: Publishing a report on a threat campaign that was resolved 2 weeks ago creates alarm without utility. Include freshness dating on all claims.
 - **Over-classification**: Applying TLP:RED to information that could be TLP:GREEN impedes community sharing and limits defensive value across the sector.
+
+## Shipped Playbook Resources
+
+- `skill://red-generating-threat-intelligence-reports/references/api-reference.md` — API and execution command reference

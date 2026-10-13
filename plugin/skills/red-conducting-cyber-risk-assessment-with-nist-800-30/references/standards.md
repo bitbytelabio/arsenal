@@ -59,7 +59,7 @@
 | Low | Very Low | Low | Low | Low | Moderate |
 | Very Low | Very Low | Very Low | Very Low | Low | Low |
 
-> Document whichever matrix the organization adopts during Prepare; the engine in `scripts/process.py` defaults to the table above and is configurable.
+> Document whichever matrix the organization adopts during Prepare; the engine in `templates/process.py` defaults to the table above and is configurable.
 
 ## NIST CSF 2.0 alignment
 | CSF 2.0 ID | Relevance |

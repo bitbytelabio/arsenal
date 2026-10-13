@@ -121,3 +121,10 @@ Created: [Timestamp]
 User Context: [SYSTEM/User]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-persistence-via-wmi-subscriptions/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-for-persistence-via-wmi-subscriptions/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hunting-for-persistence-via-wmi-subscriptions/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hunting-for-persistence-via-wmi-subscriptions/assets/template.md` — Assessment deliverable and reporting template

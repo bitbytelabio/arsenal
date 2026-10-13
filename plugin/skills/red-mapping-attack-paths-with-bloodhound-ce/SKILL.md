@@ -214,3 +214,8 @@ Rank paths by hop count, stealth (avoid noisy edges like HasSession requiring ho
 - [ ] ADCS and ACL-abuse paths enumerated
 - [ ] At least one custom Cypher query (including a hybrid query where applicable) executed
 - [ ] Paths prioritized by hops/stealth and documented with remediation
+
+## Shipped Playbook Resources
+
+- `skill://red-mapping-attack-paths-with-bloodhound-ce/references/api-reference.md` — API and execution command reference
+- `skill://red-mapping-attack-paths-with-bloodhound-ce/references/standards.md` — Relevant standards and compliance baselines

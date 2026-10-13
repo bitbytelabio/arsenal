@@ -59,6 +59,6 @@ tolerance = 0.5
 ## CLI Usage
 
 ```bash
-python agent.py --modbus-log modbus.log
-python agent.py --modbus-log modbus.log --expected-interval 2.0
+python scripts/agent.py --modbus-log modbus.log
+python scripts/agent.py --modbus-log modbus.log --expected-interval 2.0
 ```

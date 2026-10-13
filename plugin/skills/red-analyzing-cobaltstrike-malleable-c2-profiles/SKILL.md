@@ -46,3 +46,7 @@ Cobalt Strike Malleable C2 profiles are domain-specific language scripts that cu
 ## Expected Output
 
 A JSON report containing extracted C2 URIs, HTTP headers, user agents, sleep/jitter settings, process injection config, spawned process paths, DNS settings, and generated Suricata-compatible detection rules.
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-cobaltstrike-malleable-c2-profiles/references/api-reference.md` — API and execution command reference

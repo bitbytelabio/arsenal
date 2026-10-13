@@ -319,3 +319,10 @@ NEW FINDINGS (blocking):
 QUALITY GATE: FAILED (3 new findings)
 Action: Rotate exposed credentials immediately.
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-secret-scanning-with-gitleaks/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-secret-scanning-with-gitleaks/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-secret-scanning-with-gitleaks/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-secret-scanning-with-gitleaks/assets/template.md` — Assessment deliverable and reporting template

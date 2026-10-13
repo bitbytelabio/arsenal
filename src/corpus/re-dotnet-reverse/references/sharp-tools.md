@@ -156,9 +156,9 @@ After registration, the AI interaction workflow for this skill is: User requests
 
 ### Existing .NET Resources in this Repository (Cross-References)
 
-- `reverse-engineering/tools.md` `.NET Analysis` section — dnSpy/ILSpy tool quick reference + Codegate 2013 two-stage XOR+AES-CBC pattern
-- `reverse-engineering/field-notes.md` `.NET` section — Tool cheatsheet
-- `reverse-engineering/awesome-re-resources.md` — de4dot listed
-- `field-journal/seed-014_unity-il2cpp-reverse.md` — Unity IL2CPP (native side, complementary to the .NET managed layer)
+- `skill://re-reverse-engineering/tools.md` `.NET Analysis` section — dnSpy/ILSpy tool quick reference + Codegate 2013 two-stage XOR+AES-CBC pattern
+- `skill://re-reverse-engineering/field-notes.md` `.NET` section — Tool cheatsheet
+- `skill://re-reverse-engineering/SKILL.md` — de4dot listed
+- `skill://re-dotnet-reverse/support/field-journal/seed-014_unity-il2cpp-reverse.md` — Unity IL2CPP (native side, complementary to the .NET managed layer)
 
 In-depth .NET reverse engineering content is consolidated within this module; retain only quick-reference indices inside `reverse-engineering/`.

@@ -180,3 +180,10 @@ Track modifications to these critical groups:
 - [Microsoft: Total Identity Compromise IR Lessons](https://techcommunity.microsoft.com/blog/microsoftsecurityexperts/total-identity-compromise-microsoft-incident-response-lessons-on-securing-active/3753391)
 - [Semperis: Top 10 Active Directory Risks](https://www.semperis.com/blog/10-ad-risks-caught-by-identity-forensics-and-incident-response/)
 - [Fidelis: Active Directory Compromise Response](https://fidelissecurity.com/threatgeek/active-directory-security/respond-after-an-active-directory-compromise/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-active-directory-compromise-investigation/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-active-directory-compromise-investigation/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-active-directory-compromise-investigation/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-active-directory-compromise-investigation/assets/template.md` — Assessment deliverable and reporting template

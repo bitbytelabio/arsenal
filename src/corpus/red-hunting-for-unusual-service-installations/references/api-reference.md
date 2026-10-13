@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-python agent.py System.evtx parse
-python agent.py System.evtx hunt
-python agent.py System.evtx stats
-python agent.py System.evtx full
+python scripts/agent.py System.evtx parse
+python scripts/agent.py System.evtx hunt
+python scripts/agent.py System.evtx stats
+python scripts/agent.py System.evtx full
 ```
 
 ## Core Functions

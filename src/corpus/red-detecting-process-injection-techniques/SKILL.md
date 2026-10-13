@@ -340,3 +340,7 @@ T1055.012  Process Hollowing
 T1071.001  Web Protocols (HTTPS C2)
 T1036.005  Match Legitimate Name (svchost.exe)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-process-injection-techniques/references/api-reference.md` — API and execution command reference

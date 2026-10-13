@@ -242,3 +242,10 @@ LICENSE ISSUES:
 
 QUALITY GATE: FAILED (1 Critical with fix available)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-sca-dependency-scanning-with-snyk/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-sca-dependency-scanning-with-snyk/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-sca-dependency-scanning-with-snyk/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-sca-dependency-scanning-with-snyk/assets/template.md` — Assessment deliverable and reporting template

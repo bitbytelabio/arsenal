@@ -51,3 +51,7 @@ Correlate DNS anomalies with threat intelligence feeds, check resolution targets
 ## Expected Output
 
 JSON report listing DNS anomalies with record type, historical changes, risk severity, and remediation recommendations for each finding.
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-dns-based-persistence/references/api-reference.md` — API and execution command reference

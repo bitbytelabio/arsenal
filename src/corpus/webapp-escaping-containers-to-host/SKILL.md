@@ -242,6 +242,8 @@ kubectl get pod <pod> -o jsonpath='{.spec.containers[*].securityContext}'
 | runc PoC (CVE-2024-21626) | Leaky Vessels reference exploit | https://github.com/strikoder/cve-2024-21626-runc-1.1.11-escape |
 | Sysdig runc 2025 advisory | CVE-2025-31133/52565/52881 analysis | https://www.sysdig.com/blog/runc-container-escape-vulnerabilities |
 | Palo Alto Leaky Vessels | CVE-2024-21626 deep dive | https://www.paloaltonetworks.com/blog/cloud-security/leaky-vessels-vulnerabilities-container-escape/ |
+|- Container Escape API Reference | Reference for escape primitives, kernel interfaces, and runtime checks | `skill://webapp-escaping-containers-to-host/references/api-reference.md` |
+|- Container Security Standards | Compliance frameworks (CIS Docker/K8s, NIST SP 800-190) and controls | `skill://webapp-escaping-containers-to-host/references/standards.md` |
 
 ## Escape Primitive Reference
 

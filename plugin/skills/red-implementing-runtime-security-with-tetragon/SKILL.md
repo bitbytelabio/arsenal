@@ -269,3 +269,10 @@ spec:
 - [CNCF Tetragon Project Page](https://www.cncf.io/projects/tetragon/)
 - [eBPF Security Observability with Tetragon - CoreWeave](https://docs.coreweave.com/security/tutorials/ebpf-observability)
 - [Kubernetes Security: eBPF & Tetragon for Runtime Monitoring](https://medium.com/@noah_h/kubernetes-security-ebpf-tetragon-for-runtime-monitoring-policy-enforcement-819b6ed97953)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-runtime-security-with-tetragon/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-runtime-security-with-tetragon/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-runtime-security-with-tetragon/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-runtime-security-with-tetragon/assets/template.md` — Assessment deliverable and reporting template

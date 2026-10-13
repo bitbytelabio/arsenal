@@ -119,10 +119,10 @@ Not enough: reset token appeared reusable. Good proof: the same token changes th
 
 ## When to Load a Specialist Skill
 
-- JWT-based tokens -> jwt-security-testing (api-security)
-- OAuth/OIDC flows -> oauth-oidc-security; SAML -> exploiting-saml-authentication-flaws
-- Forced browsing after auth bypass -> bypassing-authentication-with-forced-browsing
-- Reset email poisoning -> host-header-attacks; 2FA-specific deep-dives -> 2fa-mfa-bypass
+- JWT-based tokens -> `skill://webapp-jwt-security-testing` (api-security)
+- OAuth/OIDC flows -> `skill://webapp-oauth-oidc-security`; SAML -> `skill://webapp-exploiting-saml-authentication-flaws`
+- Forced browsing after auth bypass -> `skill://webapp-bypassing-authentication-with-forced-browsing`
+- Reset email poisoning -> `skill://webapp-testing-for-host-header-injection`; 2FA-specific deep-dives -> `skill://webapp-authentication-session-testing`
 
 ## Stopping Rule
 
@@ -130,6 +130,6 @@ Stop lifecycle testing when: every lifecycle event the app exposes has its befor
 
 ## Handoffs
 
-- application-attack-surface-modeling - the role/state model feeding this skill
-- authorization-testing - what the session is allowed to do after auth
+- `skill://webapp-application-attack-surface-modeling` - the role/state model feeding this skill
+- `skill://webapp-authorization-testing` - what the session is allowed to do after auth
 - workflow-state-machine-testing - multi-step verification/approval flows

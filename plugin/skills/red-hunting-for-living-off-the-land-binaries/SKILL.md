@@ -93,3 +93,10 @@ IOCs Identified: [List]
 Detection Rules Created/Updated: [List]
 Recommendations: [Next steps]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-living-off-the-land-binaries/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-for-living-off-the-land-binaries/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hunting-for-living-off-the-land-binaries/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hunting-for-living-off-the-land-binaries/assets/template.md` — Assessment deliverable and reporting template

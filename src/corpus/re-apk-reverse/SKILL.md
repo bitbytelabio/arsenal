@@ -14,7 +14,7 @@ metadata:
 
 1. `NOW`: Read `skill://re-apk-reverse/support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized routine operations.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
-3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+3. `NEXT`: Read `tool-index` (workstation tool inventory) to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 5. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -70,9 +70,8 @@ Purpose:
 
 Examples:
 
-```powershell
-pwsh -File "<skill-root>\apk-reverse\scripts\decode.sh" -ApkPath "D:\DOWNLOAD\app.apk" -Clean
-pwsh -File "<skill-root>\apk-reverse\scripts\decode.sh" -ApkPath "D:\DOWNLOAD\app.apk" -Name demo -SkipJadx
+```bash
+bash templates/decode.sh "path/to/app.apk" [out_dir]
 ```
 
 ### `templates/frida-run.sh`
@@ -84,10 +83,8 @@ Purpose:
 
 Examples:
 
-```powershell
-pwsh -File "<skill-root>\apk-reverse\scripts\frida-run.sh" -ListDevices
-pwsh -File "<skill-root>\apk-reverse\scripts\frida-run.sh" -Usb -ListProcesses
-pwsh -File "<skill-root>\apk-reverse\scripts\frida-run.sh" -Usb -Spawn -Package com.example.app -ScriptPath "D:\hooks\test.js"
+```bash
+bash templates/frida-run.sh <package_name> [script_path]
 ```
 
 ### `templates/rebuild-sign-install.sh`
@@ -101,9 +98,8 @@ Purpose:
 
 Examples:
 
-```powershell
-pwsh -File "<skill-root>\apk-reverse\scripts\rebuild-sign-install.sh" -ProjectDir "C:\work\apktool_out" -Clean
-pwsh -File "<skill-root>\apk-reverse\scripts\rebuild-sign-install.sh" -ProjectDir "C:\work\apktool_out" -Install -Reinstall -DeviceSerial "127.0.0.1:7555"
+```bash
+bash templates/rebuild-sign-install.sh "work/apktool_out"
 ```
 
 Notes:
@@ -122,14 +118,14 @@ Purpose:
 
 Example:
 
-```powershell
-pwsh -File "<skill-root>\apk-reverse\scripts\manifest-summary.sh" -ManifestPath "C:\work\apktool_out\AndroidManifest.xml"
+```bash
+bash templates/manifest-summary.sh "work/apktool_out/AndroidManifest.xml"
 ```
 
 If analyzing `.so`, `lib/arm64-v8a/*.so`, or `lib/armeabi-v7a/*.so` files, combine with:
 
-- `ida-reverse`
-- `radare2`
+- `re-ida-reverse`
+- `re-radare2`
 
 ## Division of Tool Responsibilities
 
@@ -285,8 +281,8 @@ apktool b apktool_out -o rebuilt.apk
 
 Or close the loop directly via script:
 
-```powershell
-pwsh -File "<skill-root>\apk-reverse\scripts\rebuild-sign-install.sh" -ProjectDir "apktool_out" -Install -Reinstall -DeviceSerial "127.0.0.1:7555"
+```bash
+bash templates/rebuild-sign-install.sh "apktool_out"
 ```
 
 Notes:
@@ -320,8 +316,8 @@ Recommendations:
 If the APK contains critical `.so` files:
 
 - Locate `lib/**/*.so` via `apktool` or `jadx`.
-- If only checking exported symbols, strings, or performing fast triage, use `radare2`.
-- For deep long-term analysis, decompilation, renaming, and type recovery, use `ida-reverse`.
+- If only checking exported symbols, strings, or performing fast triage, use `re-radare2`.
+- For deep long-term analysis, decompilation, renaming, and type recovery, use `re-ida-reverse`.
 
 Switch to native analysis promptly upon encountering these signals:
 
@@ -373,11 +369,11 @@ frida -U -f com.example.app -l hook.js
 
 **Upstream Entry**: `skill://re-apk-reverse/support/SKILL.md` (Master Controller), `skill://re-apk-reverse/support/routing.md`
 **Downstream Exit**:
-- Core logic in `.so` → `ida-reverse/` or `radare2/`
+- Core logic in `.so` → `re-ida-reverse/` or `re-radare2/`
 - Dynamic hooking/validation needed → `arsenal skill_load re-reverse-engineering/tools-dynamic.md` (Frida section)
 - General reverse engineering methodology → `arsenal skill_load re-reverse-engineering`
 
-**Related Sibling Modules**: `reverse-engineering/` (.so analysis and advanced Frida usage)
+**Related Sibling Modules**: `re-reverse-engineering/` (.so analysis and advanced Frida usage)
 
 ---
 
@@ -410,6 +406,13 @@ If automated installation fails, the script will throw an explicit error along w
 - winget unavailable (Windows version too old)
 - Java not installed (apktool depends on JDK)
 
+
+## References
+
+- `skill://re-apk-reverse/references/frida-cookbook.md` — Frida hooking recipes and scripts
+- `skill://re-apk-reverse/references/android-advanced.md` — Advanced Android internals and JNI analysis
+- `skill://re-apk-reverse/references/apk-security-checklist.md` — APK audit and verification checklist
+- `skill://re-apk-reverse/references/frida-bypass-kit.md` — Root detection and SSL pinning bypass kit
 
 ## Task Completion Self-Check (MUST pass before claiming completion)
 

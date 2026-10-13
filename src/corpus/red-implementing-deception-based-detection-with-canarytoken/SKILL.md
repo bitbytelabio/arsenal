@@ -43,3 +43,7 @@ Canary Tokens are lightweight tripwire mechanisms that alert when an attacker ac
 
 - JSON report listing all deployed Canary Tokens, trigger history, alert details, and coverage analysis
 - Deployment map showing token types across network segments
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-deception-based-detection-with-canarytoken/references/api-reference.md` — API and execution command reference

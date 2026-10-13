@@ -383,3 +383,7 @@ KEY FINDINGS:
 ACTION ITEMS: 5 (Critical: 2, High: 2, Medium: 1)
 NEXT EXERCISE: TTX-2024-Q2 (June 2024) — Insider Threat Scenario
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-soc-tabletop-exercise/references/api-reference.md` — API and execution command reference

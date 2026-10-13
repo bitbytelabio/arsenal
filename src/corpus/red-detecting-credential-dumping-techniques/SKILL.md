@@ -42,3 +42,7 @@ Credential dumping (MITRE ATT&CK T1003) is a post-exploitation technique where a
 ## Expected Output
 
 JSON report containing detected credential dumping indicators with technique classification, severity ratings, process details, MITRE ATT&CK mapping, and Splunk/Elastic detection queries.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-credential-dumping-techniques/references/api-reference.md` — API and execution command reference

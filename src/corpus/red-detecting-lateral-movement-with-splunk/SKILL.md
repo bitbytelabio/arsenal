@@ -87,3 +87,10 @@ Event Count: [Number of events]
 Risk Level: [Critical/High/Medium/Low]
 Lateral Movement Path: [A -> B -> C -> D]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-lateral-movement-with-splunk/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-lateral-movement-with-splunk/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-lateral-movement-with-splunk/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-lateral-movement-with-splunk/assets/template.md` — Assessment deliverable and reporting template

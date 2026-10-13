@@ -503,3 +503,8 @@ production database credentials, and execute admin-only mutations.
 5. Disable field suggestions in error messages to prevent schema reconstruction
 6. Rate limit GraphQL requests per query, not just per HTTP request
 ```
+
+## References
+
+- `skill://webapp-performing-graphql-introspection-attack/references/api-reference.md` — API reference and CLI invocation commands for introspection probing
+- `scripts/agent.py` — authentic Python CLI test harness for schema introspection and depth limit validation

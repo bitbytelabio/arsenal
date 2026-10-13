@@ -171,3 +171,10 @@ tags:
 - Action items list with owners and deadlines
 - Updated IR playbooks and detection rules
 - Executive summary for leadership
+
+## Shipped Playbook Resources
+
+- `skill://red-conducting-post-incident-lessons-learned/references/api-reference.md` — API and execution command reference
+- `skill://red-conducting-post-incident-lessons-learned/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-conducting-post-incident-lessons-learned/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-conducting-post-incident-lessons-learned/assets/template.md` — Assessment deliverable and reporting template

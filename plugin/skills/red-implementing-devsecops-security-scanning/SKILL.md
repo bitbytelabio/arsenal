@@ -362,3 +362,7 @@ pre-commit run --all-files  # Test against existing codebase
 - [ ] Branch protection rules enforce required status checks before merge
 - [ ] Pre-commit hooks catch secrets and SAST findings locally before push
 - [ ] Developer documentation explains how to interpret scan results and fix common findings
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-devsecops-security-scanning/references/api-reference.md` — API and execution command reference

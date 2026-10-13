@@ -160,3 +160,10 @@ ZPA supports clientless browser-based access for web applications, enabling ZTNA
 - CISA Zero Trust Maturity Model v2.0 - Network Pillar
 - Zscaler Private Access Architecture Guide
 - CSA Software-Defined Perimeter and Zero Trust Specification v2.0
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-zero-trust-network-access-with-zscaler/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-zero-trust-network-access-with-zscaler/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-zero-trust-network-access-with-zscaler/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-zero-trust-network-access-with-zscaler/assets/template.md` — Assessment deliverable and reporting template

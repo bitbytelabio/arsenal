@@ -256,3 +256,7 @@ Policy: "Alert on mass file download (exfiltration via stolen token)"
 - [ ] Device code flow is restricted via conditional access (block or require compliant device)
 - [ ] Incident response runbook includes token revocation, password reset, and OAuth consent review steps
 - [ ] Mail forwarding rules and OAuth app grants are audited for compromised accounts
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-oauth-token-theft/references/api-reference.md` — API and execution command reference

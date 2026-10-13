@@ -76,9 +76,9 @@ nxc smb dc.domain.local -u svc -p 'CrackedPass' --ntds
 
 ## Improvement Suggestions for this Package
 
-- Add a dedicated Kerberoasting section in `pentest-tools/references/network-attack-defense.md`.
+- Add a dedicated Kerberoasting section in `skill://webapp-pentest-tools/references/network-attack-defense.md`.
 - BloodHound CE is now standard; update `bootstrap-manifest` to explicitly install `bloodhound-ce-cli`.
-- Add `pentest-tools/references/ad-cheatsheet.md` covering the 6 major AD attacks on a single page (Kerberoasting, AS-REP, DCSync, DCShadow, Constrained Delegation, Resource-Based Constrained Delegation, ESC1-ESC15).
+- Add AD cheatsheet covering the 6 major AD attacks on a single page (Kerberoasting, AS-REP, DCSync, DCShadow, Constrained Delegation, Resource-Based Constrained Delegation, ESC1-ESC15).
 
 ## Reusable Patterns / Script Snippets
 
@@ -105,7 +105,7 @@ nxc smb dc.domain.local -u svc -p 'CrackedPass' --ntds
 | 19700 | Kerberos TGS-Rep (AES256) |
 
 ## Evolution Tasks
-- [ ] Add `ad-cheatsheet.md`
+- [ ] Add AD cheatsheet
 - [ ] Verify tool-index status for `nxc` / `bloodhound-ce` / `bloodyAD`
 - [x] Routing matrix includes Kerberos / Kerberoasting
 

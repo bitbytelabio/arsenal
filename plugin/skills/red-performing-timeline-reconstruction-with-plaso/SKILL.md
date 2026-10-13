@@ -310,3 +310,7 @@ Timeline Reconstruction Summary:
     Incident Window:   /timeline/incident_window.csv (234K rows)
     Timesketch Import: /timeline/timeline.jsonl
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-timeline-reconstruction-with-plaso/references/api-reference.md` — API and execution command reference

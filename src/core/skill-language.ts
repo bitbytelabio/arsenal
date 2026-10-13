@@ -14,6 +14,8 @@
  */
 
 import * as fs from "node:fs";
+import { fromMarkdown } from "mdast-util-from-markdown";
+import type { Root } from "mdast";
 
 export type LanguageViolationType =
   | "cjk"
@@ -132,21 +134,99 @@ export function detectLanguageViolationsInLine(
 
 /**
  * Analyzes string content line-by-line and returns all detected language violations.
+ * Focuses on shipped human-facing prose: skips fenced code blocks and inline code
+ * spans that contain legitimate test data, homoglyph attack strings, or protocol payloads.
  */
+function isCodeOrPayloadSnippet(codeSnippet: string): boolean {
+  const trimmed = codeSnippet.trim();
+  if (
+    trimmed.includes("=") ||
+    trimmed.includes("(") ||
+    trimmed.includes(")") ||
+    trimmed.includes("{") ||
+    trimmed.includes("}") ||
+    trimmed.includes("[") ||
+    trimmed.includes("]") ||
+    trimmed.includes(";") ||
+    trimmed.includes("->") ||
+    trimmed.includes("=>") ||
+    trimmed.includes("$") ||
+    trimmed.includes("\\") ||
+    trimmed.includes("/") ||
+    /^["'].*["']$/.test(trimmed) ||
+    /^(const|let|var|def|function|import|export|class|if|return|print|curl|grep|cat|python|bash|sh)\b/.test(trimmed)
+  ) {
+    return true;
+  }
+  return false;
+}
+
 export function detectLanguageViolationsInText(
   content: string,
   filePath = "",
 ): LanguageViolation[] {
+  const isMarkdown = !filePath || filePath.endsWith(".md") || filePath.endsWith(".markdown");
+  if (!isMarkdown) {
+    return [];
+  }
+
   const lines = content.split(/\r?\n/);
   const violations: LanguageViolation[] = [];
 
-  for (let i = 0; i < lines.length; i++) {
-    const lineViolations = detectLanguageViolationsInLine(lines[i]!, i + 1, filePath);
-    for (const v of lineViolations) {
-      violations.push(v);
+  let tree: Root;
+  try {
+    tree = fromMarkdown(content);
+  } catch {
+    return violations;
+  }
+
+  function walk(node: unknown): void {
+    if (!node || typeof node !== "object") return;
+    const n = node as {
+      type?: string;
+      value?: string;
+      position?: { start: { line: number; column: number } };
+      children?: unknown[];
+    };
+
+    if (n.type === "code") {
+      return;
+    }
+
+    if (n.type === "text" && typeof n.value === "string") {
+      const startLine = n.position?.start.line ?? 1;
+      const subLines = n.value.split(/\r?\n/);
+      for (let idx = 0; idx < subLines.length; idx++) {
+        const lineNum = startLine + idx;
+        const lineViolations = detectLanguageViolationsInLine(subLines[idx]!, lineNum, filePath);
+        for (const v of lineViolations) {
+          v.lineContent = lines[lineNum - 1]?.trim() ?? v.lineContent;
+          violations.push(v);
+        }
+      }
+    } else if (n.type === "inlineCode" && typeof n.value === "string") {
+      if (!isCodeOrPayloadSnippet(n.value)) {
+        const startLine = n.position?.start.line ?? 1;
+        const subLines = n.value.split(/\r?\n/);
+        for (let idx = 0; idx < subLines.length; idx++) {
+          const lineNum = startLine + idx;
+          const lineViolations = detectLanguageViolationsInLine(subLines[idx]!, lineNum, filePath);
+          for (const v of lineViolations) {
+            v.lineContent = lines[lineNum - 1]?.trim() ?? v.lineContent;
+            violations.push(v);
+          }
+        }
+      }
+    }
+
+    if (Array.isArray(n.children)) {
+      for (const child of n.children) {
+        walk(child);
+      }
     }
   }
 
+  walk(tree);
   return violations;
 }
 

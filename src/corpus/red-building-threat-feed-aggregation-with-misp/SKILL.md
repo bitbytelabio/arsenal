@@ -324,3 +324,7 @@ exporter.export_ioc_list("blocklist_ips.txt", ioc_types=["ip-dst"], days=7)
 - [PyMISP Documentation](https://pymisp.readthedocs.io/)
 - [Kraven Security: MISP Using Feeds](https://kravensecurity.com/threat-intelligence-with-misp-part-4-using-feeds/)
 - [Cosive: What is MISP](https://www.cosive.com/blog/what-is-misp-the-ultimate-introduction)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-threat-feed-aggregation-with-misp/references/api-reference.md` — API and execution command reference

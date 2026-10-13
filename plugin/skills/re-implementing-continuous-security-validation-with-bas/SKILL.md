@@ -239,3 +239,11 @@ Validation Schedule:
 - performing-purple-team-exercise
 - implementing-siem-use-cases-for-detection
 - implementing-threat-modeling-with-mitre-attack
+
+## References
+
+- `skill://re-implementing-continuous-security-validation-with-bas/references/api-reference.md` — API Reference: Breach and Attack Simulation Agent
+- `skill://re-implementing-continuous-security-validation-with-bas/references/standards.md` — Standards and References - Continuous Security Validation with BAS
+- `skill://re-implementing-continuous-security-validation-with-bas/references/workflows.md` — Workflows - BAS Continuous Security Validation
+- `skill://re-implementing-continuous-security-validation-with-bas/assets/template.md` — BAS Security Validation Report Template
+- `skill://re-implementing-continuous-security-validation-with-bas/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)

@@ -5,11 +5,11 @@
 - **time**: Measure response latency for resource exhaustion detection
 
 ## CLI Interface
-```
-python agent.py depth --url <endpoint> [--max-depth 20] [--auth-header "Bearer token"]
-python agent.py circular --url <endpoint> --type-a User --field-a posts --type-b Post --field-b author [--depth 10]
-python agent.py batch --url <endpoint> [--count 50]
-python agent.py width --url <endpoint> [--width 50] [--depth 5]
+```bash
+python scripts/agent.py depth --url <endpoint> [--max-depth 20] [--auth-header "Bearer token"]
+python scripts/agent.py circular --url <endpoint> --type-a User --field-a posts --type-b Post --field-b author [--depth 10]
+python scripts/agent.py batch --url <endpoint> [--count 50]
+python scripts/agent.py width --url <endpoint> [--width 50] [--depth 5]
 ```
 
 ## Core Functions

@@ -94,11 +94,11 @@ POST security-*/_search
 
 ```bash
 # Parse exported event log XML and detect PtT indicators
-python agent.py --evtx-xml security_events.xml --output report.json
+python scripts/agent.py --evtx-xml security_events.xml --output report.json
 
 # Show Splunk detection queries
-python agent.py --show-splunk
+python scripts/agent.py --show-splunk
 
 # Custom thresholds
-python agent.py --evtx-xml events.xml --tgs-threshold 30 --preauth-threshold 5
+python scripts/agent.py --evtx-xml events.xml --tgs-threshold 30 --preauth-threshold 5
 ```

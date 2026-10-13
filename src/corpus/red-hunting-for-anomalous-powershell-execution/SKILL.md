@@ -54,3 +54,7 @@ and fileless attack techniques even when the attacker uses obfuscation layers.
   "credential_access": 3
 }
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-anomalous-powershell-execution/references/api-reference.md` — API and execution command reference

@@ -232,3 +232,10 @@ volumes:
 - Cartography Documentation: https://cartography.dev
 - CNCF Sandbox Project
 - Neo4j Cypher Query Language Reference
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-cloud-asset-inventory-with-cartography/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-cloud-asset-inventory-with-cartography/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-cloud-asset-inventory-with-cartography/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-cloud-asset-inventory-with-cartography/assets/template.md` — Assessment deliverable and reporting template

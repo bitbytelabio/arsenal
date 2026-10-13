@@ -327,3 +327,7 @@ ALERTING STATUS:
   CloudWatch alarms active: 14 / 14
   Alerts fired (last 7 days): 8
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-cloud-trail-log-analysis/references/api-reference.md` — API and execution command reference

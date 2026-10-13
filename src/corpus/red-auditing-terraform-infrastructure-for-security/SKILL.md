@@ -333,3 +333,7 @@ SUMMARY BY SEVERITY:
   Low:      18 findings
   Info:     12 findings
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-auditing-terraform-infrastructure-for-security/references/api-reference.md` — API and execution command reference

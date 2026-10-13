@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python agent.py assess --csv assessment_responses.csv
-python agent.py gaps --csv assessment_responses.csv
-python agent.py template [--output template.csv]
-python agent.py executive --csv assessment_responses.csv
+python scripts/agent.py assess --csv assessment_responses.csv
+python scripts/agent.py gaps --csv assessment_responses.csv
+python scripts/agent.py template [--output template.csv]
+python scripts/agent.py executive --csv assessment_responses.csv
 ```
 
 ## Core Functions

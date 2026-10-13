@@ -211,3 +211,10 @@ curl -X PATCH "https://thehive.local/api/v1/case/$CASE_ID" \
 - IOC enrichment summary attached to case
 - Escalation notification to appropriate stakeholders
 - Initial timeline of events from alert data
+
+## Shipped Playbook Resources
+
+- `skill://red-triaging-security-incident-with-ir-playbook/references/api-reference.md` — API and execution command reference
+- `skill://red-triaging-security-incident-with-ir-playbook/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-triaging-security-incident-with-ir-playbook/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-triaging-security-incident-with-ir-playbook/assets/template.md` — Assessment deliverable and reporting template

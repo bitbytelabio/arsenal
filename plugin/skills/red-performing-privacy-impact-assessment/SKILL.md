@@ -261,3 +261,7 @@ for function_id, outcomes in profile["functions"].items():
         status = "PASS" if outcome["implemented"] else "GAP"
         print(f"  [{status}] {outcome['subcategory']}: {outcome['description']}")
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-privacy-impact-assessment/references/api-reference.md` — API and execution command reference

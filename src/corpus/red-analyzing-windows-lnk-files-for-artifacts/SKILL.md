@@ -307,3 +307,7 @@ LNK File Analysis Summary:
 
   Timeline: /cases/case-2024-001/analysis/lnk_analysis.csv
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-windows-lnk-files-for-artifacts/references/api-reference.md` — API and execution command reference

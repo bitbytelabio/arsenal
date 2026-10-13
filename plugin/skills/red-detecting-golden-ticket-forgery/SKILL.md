@@ -42,3 +42,7 @@ A Golden Ticket attack (MITRE ATT&CK T1558.001) involves forging a Kerberos Tick
 ## Expected Output
 
 JSON report with Golden Ticket indicators including RC4 downgrades, orphaned TGS requests, abnormal ticket lifetimes, and risk-scored alerts with MITRE ATT&CK technique mapping.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-golden-ticket-forgery/references/api-reference.md` — API and execution command reference

@@ -75,3 +75,7 @@ Integrity Check: PASSED (all packs verified)
 Object Lock: Compliance mode, 90-day retention
 Restore Test: PASSED (15 files verified)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-immutable-backup-with-restic/references/api-reference.md` — API and execution command reference

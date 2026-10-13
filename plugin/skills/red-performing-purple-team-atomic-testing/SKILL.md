@@ -974,3 +974,7 @@ RECOMMENDATIONS
 [HIGH]     Enable exfiltration monitoring data sources
 [MEDIUM]   Increase lateral movement test coverage (3 of 7 tested)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-purple-team-atomic-testing/references/api-reference.md` — API and execution command reference

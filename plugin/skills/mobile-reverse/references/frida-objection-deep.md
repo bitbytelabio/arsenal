@@ -167,8 +167,8 @@ objection patchapk --source app.apk --skip-resources
 ### iOS — Frida Gadget Injection
 
 ```bash
-# 1. Decrypt App Store IPA
-python3 frida-ios-dump.py -u -p com.app.target
+# 1. Decrypt App Store IPA (prerequisite: git clone https://github.com/AloneMonkey/frida-ios-dump.git)
+python3 frida-ios-dump/dump.py -u -p com.app.target
 
 # 2. Inject FridaGadget.dylib
 # Modify Mach-O Load Commands, add @executable_path/FridaGadget.dylib

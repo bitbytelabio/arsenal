@@ -153,3 +153,10 @@ Detection Category: [download_cradle/proxy_exec/uac_bypass/applocker_bypass]
 Network Activity: [Yes/No -- destination if applicable]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-lolbins-execution-in-endpoint-logs/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-for-lolbins-execution-in-endpoint-logs/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hunting-for-lolbins-execution-in-endpoint-logs/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hunting-for-lolbins-execution-in-endpoint-logs/assets/template.md` — Assessment deliverable and reporting template

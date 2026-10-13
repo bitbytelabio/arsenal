@@ -20,7 +20,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { evaluateQuarantine } from "../src/core/quarantine.ts";
-import { sha256String } from "../src/core/hash.ts";
+import { sha256Bytes, sha256String } from "../src/core/hash.ts";
 import { type SkillDomain } from "../src/core/skill-naming.ts";
 import {
   normalizeSkillDocument,
@@ -33,7 +33,10 @@ import {
   type DedupGroup,
   computeManifestSummary,
   mergeCorpusManifest,
+  readCorpusManifest,
   serializeCorpusManifest,
+  validateCorpusManifest,
+  validateSupportFileIntegrity,
 } from "../src/core/skill-manifest.ts";
 import { loadUpstreamSources } from "../src/core/upstream-sources.ts";
 import {
@@ -139,6 +142,7 @@ const REVSKILL_DESCRIPTIONS: Record<string, string> = {
 export interface InternalizeCorpusOptions {
   repoRoot?: string;
   preview?: boolean;
+  renameSync?: (oldPath: fs.PathLike, newPath: fs.PathLike) => void;
 }
 
 export interface InternalizeCorpusResult {
@@ -175,10 +179,29 @@ export function internalizeCorpus(
   const isPreview = options.preview ?? process.argv.includes("--preview");
   const corpusDir = path.resolve(repoRoot, "src/corpus");
   const manifestPath = path.join(corpusDir, "MANIFEST.json");
+  const renameFn = options.renameSync ?? fs.renameSync;
+
+  // Load and strictly validate previous manifest before ANY destructive actions
+  let previousManifest: CorpusManifest | null = null;
+  if (fs.existsSync(manifestPath)) {
+    try {
+      previousManifest = readCorpusManifest(manifestPath);
+    } catch (err) {
+      throw new Error(`Refusing to internalize corpus: existing manifest at '${manifestPath}' is invalid or malformed:\n${err instanceof Error ? err.message : String(err)}`);
+    }
+  }
+  const prevAdmittedBySlug = new Map<string, ManifestEntry>();
+  if (previousManifest) {
+    for (const prev of previousManifest.files) {
+      if (prev.status === "admitted" && prev.destination_path?.startsWith("src/corpus/")) {
+        const slug = prev.destination_path.slice("src/corpus/".length).split("/")[0];
+        if (slug) prevAdmittedBySlug.set(slug, prev);
+      }
+    }
+  }
 
   const candidateResults: NormalizedSkillResult[] = [];
   const nonAdmittedEntries: ManifestEntry[] = [];
-
   const upstreamConfigs = loadUpstreamSources(repoRoot);
   const revSkillCfg = upstreamConfigs["reverse-skill"]!;
   const xalgCfg = upstreamConfigs["xalgorix"]!;
@@ -215,11 +238,21 @@ export function internalizeCorpus(
       const domain = REVSKILL_DOMAINS[dir] ?? "re";
       const desc = REVSKILL_DESCRIPTIONS[dir] || "";
 
-      // Preserve already curated/translated English content if present in src/corpus
+      // Preserve already curated/translated English content if present in src/corpus and proven same-revision/raw-hash
       let contentToUse = raw;
-      const canonicalDir = path.join(corpusDir, `${domain}-${dir}`);
+      const canonicalId = `${domain}-${dir}`;
+      const canonicalDir = path.join(corpusDir, canonicalId);
       const existingFile = path.join(canonicalDir, "SKILL.md");
-      if (fs.existsSync(existingFile)) {
+      const prevRevEntry = prevAdmittedBySlug.get(canonicalId);
+      const rawHash = sha256String(raw);
+      const revPreserved = Boolean(
+        prevRevEntry &&
+        prevRevEntry.source_rev &&
+        prevRevEntry.source_rev === revSkillCfg.rev &&
+        prevRevEntry.source_sha256 &&
+        prevRevEntry.source_sha256 === rawHash
+      );
+      if (fs.existsSync(existingFile) && (!previousManifest || revPreserved)) {
         contentToUse = fs.readFileSync(existingFile, "utf-8");
       }
       const normalized = normalizeSkillDocument({
@@ -541,7 +574,22 @@ export function internalizeCorpus(
   let totalDanglingReferences = 0;
 
   for (const adm of admitted) {
-    const plan = buildSkillMaterializationPlan(adm.serialized, {
+    const existingSkillFile = path.join(corpusDir, adm.canonicalId, "SKILL.md");
+    const prevEntry = prevAdmittedBySlug.get(adm.canonicalId);
+    const newSrcRev = upstreamConfigs[adm.manifestEntry.source]?.rev;
+    const isPreservedSameSource = Boolean(
+      prevEntry &&
+      prevEntry.source_rev &&
+      newSrcRev &&
+      prevEntry.source_rev === newSrcRev &&
+      prevEntry.source_sha256 &&
+      adm.manifestEntry.source_sha256 &&
+      prevEntry.source_sha256 === adm.manifestEntry.source_sha256
+    );
+    const planningContent = isPreservedSameSource && fs.existsSync(existingSkillFile)
+      ? fs.readFileSync(existingSkillFile, "utf-8")
+      : adm.serialized;
+    const plan = buildSkillMaterializationPlan(planningContent, {
       skillSlug: adm.canonicalId,
       source: adm.manifestEntry.source,
       sourcePath: adm.manifestEntry.source_path || adm.manifestEntry.path,
@@ -576,16 +624,7 @@ export function internalizeCorpus(
       adm.manifestEntry.support_files = plan.supportFiles;
     }
   }
-
-  // Load previous manifest to preserve local operator tier (IN-11)
-  let previousManifest: CorpusManifest | null = null;
-  if (fs.existsSync(manifestPath)) {
-    try {
-      previousManifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8")) as CorpusManifest;
-    } catch {
-      // Fresh build if previous manifest unreadable
-    }
-  }
+  // previousManifest was already loaded and validated before ingestion started
 
   // Compile all entries
   const allEntries: ManifestEntry[] = [
@@ -635,29 +674,269 @@ export function internalizeCorpus(
   // Reconcile with local tier (IN-11)
   const finalManifest = mergeCorpusManifest(rawManifest, previousManifest);
 
-  // Clean cutover execution on write: remove stale child directories under src/corpus/
   if (!isPreview) {
     fs.mkdirSync(corpusDir, { recursive: true });
-
-    if (fs.existsSync(corpusDir)) {
-      const existingChildren = fs
-        .readdirSync(corpusDir, { withFileTypes: true })
-        .filter((ent) => ent.isDirectory())
-        .sort((a, b) => a.name.localeCompare(b.name));
-
-      for (const child of existingChildren) {
-        fs.rmSync(path.join(corpusDir, child.name), { recursive: true, force: true });
+    const admittedBySlug = new Map<string, NormalizedSkillResult>();
+    const admittedBySourcePath = new Map<string, NormalizedSkillResult>();
+    for (const adm of admitted) {
+      admittedBySlug.set(adm.canonicalId, adm);
+      if (adm.manifestEntry.source_path) {
+        admittedBySourcePath.set(`${adm.manifestEntry.source}:${adm.manifestEntry.source_path}`, adm);
       }
     }
 
-    // Apply materialization plans (writes support files + rewritten SKILL.md)
-    for (const plan of materializationPlans) {
-      applyMaterializationPlan(plan, { preview: false });
+    // Preflight active sources against previous manifest
+    if (previousManifest) {
+      const activeSourceSet = new Set(Object.keys(sourcesConfig));
+      const prevAdmittedMap = new Map<string, ManifestEntry>();
+
+      for (const prev of previousManifest.files) {
+        if (!activeSourceSet.has(prev.source)) continue;
+        if (prev.status === "admitted" && prev.destination_path) {
+          const prefix = "src/corpus/";
+          const slug = prev.destination_path.startsWith(prefix)
+            ? prev.destination_path.slice(prefix.length).split("/")[0]!
+            : "";
+          if (slug) prevAdmittedMap.set(slug, prev);
+
+          const matchedCandidate = (slug && admittedBySlug.get(slug)) ||
+            (prev.source_path ? admittedBySourcePath.get(`${prev.source}:${prev.source_path}`) : undefined);
+
+          if (!matchedCandidate) {
+            throw new Error(`Refusing to internalize corpus: previously admitted skill '${prev.destination_path}' from active source '${prev.source}' has no candidate admitted result in new ingestion.`);
+          }
+
+          const prevSrcRev = prev.source_rev;
+          const newSrcRev = sourcesConfig[prev.source]?.rev;
+          const sameRev = prevSrcRev && newSrcRev && prevSrcRev === newSrcRev;
+
+          const prevRawSha = prev.source_sha256;
+          const newRawSha = matchedCandidate.manifestEntry.source_sha256;
+          const sameRawSha = prevRawSha && newRawSha && prevRawSha === newRawSha;
+
+          if (sameRev && sameRawSha) {
+            // Same proven source revision and raw hash -> preserve existing tree (SKILL + all support files)
+            const existingSkillFile = path.join(corpusDir, slug, "SKILL.md");
+            if (fs.existsSync(existingSkillFile)) {
+              const curatedSkillContent = fs.readFileSync(existingSkillFile, "utf-8");
+              matchedCandidate.serialized = curatedSkillContent;
+              matchedCandidate.body = curatedSkillContent;
+              matchedCandidate.sha256 = sha256String(curatedSkillContent);
+              matchedCandidate.bytes = Buffer.byteLength(curatedSkillContent, "utf-8");
+              matchedCandidate.manifestEntry.sha256 = matchedCandidate.sha256;
+              matchedCandidate.manifestEntry.bytes = matchedCandidate.bytes;
+            }
+            const supportMap = new Map<string, { path: string; source_path: string; sha256: string; bytes: number }>();
+            // Add existing support files from prev manifest
+            for (const sf of prev.support_files || []) {
+              const sfPath = path.join(corpusDir, slug, sf.path);
+              if (fs.existsSync(sfPath)) {
+                const sfBytes = fs.readFileSync(sfPath);
+                supportMap.set(sf.path, {
+                  ...sf,
+                  sha256: sha256Bytes(sfBytes),
+                  bytes: sfBytes.byteLength,
+                });
+              } else {
+                supportMap.set(sf.path, { ...sf });
+              }
+            }
+            // Merge any newly planned missing items from newPlan.items
+            const candPlan = materializationPlans.find((p) => p.skillSlug === matchedCandidate.canonicalId);
+            for (const item of candPlan?.items || []) {
+              if (!supportMap.has(item.destRelPath)) {
+                supportMap.set(item.destRelPath, { ...item.record });
+              }
+            }
+            if (supportMap.size > 0) {
+              matchedCandidate.manifestEntry.support_files = Array.from(supportMap.values()).sort((a, b) => a.path.localeCompare(b.path));
+            } else {
+              delete matchedCandidate.manifestEntry.support_files;
+            }
+            continue;
+          }
+          // Source revision or raw hash changed: verify if candidate would modify/remove existing canonical bytes
+          if (!prevRawSha) {
+            throw new Error(`Refusing to internalize corpus: legacy entry '${prev.destination_path}' lacks source_sha256 and upstream has changed.`);
+          }
+
+          const existingSkillFile = path.join(corpusDir, slug, "SKILL.md");
+          const existingSkillBytes = fs.existsSync(existingSkillFile) ? fs.readFileSync(existingSkillFile) : null;
+          const newSkillBytes = Buffer.from(matchedCandidate.serialized, "utf-8");
+
+          if (!existingSkillBytes || !existingSkillBytes.equals(newSkillBytes)) {
+            throw new Error(`Refusing to internalize corpus: candidate for '${slug}' modifies existing canonical SKILL.md under changed revision '${newSrcRev}'.`);
+          }
+
+          const existingSupportFiles = prev.support_files || [];
+          const newPlan = materializationPlans.find((p) => p.skillSlug === matchedCandidate.canonicalId);
+          const newSupportItems = newPlan?.items || [];
+
+          const existingSupportMap = new Map<string, Buffer>();
+          for (const sf of existingSupportFiles) {
+            const sfPath = path.join(corpusDir, slug, sf.path);
+            if (fs.existsSync(sfPath)) {
+              existingSupportMap.set(sf.path, fs.readFileSync(sfPath));
+            }
+          }
+          const newSupportMap = new Map<string, Buffer>();
+          for (const item of newSupportItems) {
+            let rawBytes: Buffer = item.upstreamContent ?? item.content;
+            if (!item.upstreamContent && item.sourceAbsPath && fs.existsSync(item.sourceAbsPath)) {
+              try {
+                rawBytes = fs.readFileSync(item.sourceAbsPath);
+              } catch {
+                rawBytes = item.content;
+              }
+            }
+            newSupportMap.set(item.destRelPath, rawBytes);
+          }
+
+          if (existingSupportMap.size !== newSupportMap.size) {
+            throw new Error(`Refusing to internalize corpus: candidate for '${slug}' alters support file count under changed revision '${newSrcRev}'.`);
+          }
+          for (const [relPath, exBytes] of existingSupportMap.entries()) {
+            const candBytes = newSupportMap.get(relPath);
+            if (!candBytes || !exBytes.equals(candBytes)) {
+              throw new Error(`Refusing to internalize corpus: candidate for '${slug}' modifies support file '${relPath}' under changed revision '${newSrcRev}'.`);
+            }
+          }
+        }
+      }
     }
 
-    // Write MANIFEST.json with deterministic formatting
-    const serializedManifest = serializeCorpusManifest(finalManifest);
-    fs.writeFileSync(manifestPath, serializedManifest, "utf-8");
+    // Safe staging transaction: stage sibling directory, apply changes, and commit via atomic swap
+    const stageDir = path.resolve(repoRoot, `src/corpus.__stage_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`);
+    const backupDir = path.resolve(repoRoot, `src/corpus.__backup_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`);
+
+    try {
+      fs.mkdirSync(stageDir, { recursive: true });
+
+      // Copy existing corpus contents to stageDir (preserving all existing files, including unmanaged and non-enumerated sources)
+      if (fs.existsSync(corpusDir)) {
+        fs.cpSync(corpusDir, stageDir, { recursive: true });
+      }
+
+      // Filter materialization plans: skip overwriting preserved curated skills
+      const preservedSlugs = new Set<string>();
+      if (previousManifest) {
+        for (const prev of previousManifest.files) {
+          if (prev.status === "admitted" && prev.destination_path) {
+            const prefix = "src/corpus/";
+            const slug = prev.destination_path.startsWith(prefix)
+              ? prev.destination_path.slice(prefix.length).split("/")[0]!
+              : "";
+            const matchedCandidate = slug ? admittedBySlug.get(slug) : undefined;
+            if (matchedCandidate && prev.source_rev === sourcesConfig[prev.source]?.rev && prev.source_sha256 === matchedCandidate.manifestEntry.source_sha256) {
+              preservedSlugs.add(slug);
+            }
+          }
+        }
+      }
+      // Apply materialization plans into stageDir
+      for (const plan of materializationPlans) {
+        const isPreserved = preservedSlugs.has(plan.skillSlug);
+        const stagedPlan: SkillMaterializationPlan = {
+          ...plan,
+          skillDir: path.join(stageDir, plan.skillSlug),
+          rewrittenContent: isPreserved ? "" : plan.rewrittenContent,
+          items: plan.items.map((item) => ({
+            ...item,
+            destAbsPath: path.join(stageDir, plan.skillSlug, item.destRelPath),
+          })),
+        };
+
+        if (!isPreserved) {
+          applyMaterializationPlan(stagedPlan, { preview: false });
+        } else {
+          // For preserved skills: do not overwrite existing files, but materialize any newly planned missing support files
+          for (const item of stagedPlan.items) {
+            if (!fs.existsSync(item.destAbsPath)) {
+              fs.mkdirSync(path.dirname(item.destAbsPath), { recursive: true });
+              fs.writeFileSync(item.destAbsPath, item.content);
+            }
+          }
+        }
+      }
+
+      // Ensure preserved curated skills have their exact existing tree copied/retained in stageDir
+      if (previousManifest) {
+        for (const prev of previousManifest.files) {
+          if (prev.status === "admitted" && prev.destination_path) {
+            const prefix = "src/corpus/";
+            const slug = prev.destination_path.startsWith(prefix)
+              ? prev.destination_path.slice(prefix.length).split("/")[0]!
+              : "";
+            const matchedCandidate = slug ? admittedBySlug.get(slug) : undefined;
+            if (matchedCandidate && prev.source_rev === sourcesConfig[prev.source]?.rev && prev.source_sha256 === matchedCandidate.manifestEntry.source_sha256) {
+              const origSkillPath = path.join(corpusDir, slug, "SKILL.md");
+              const stagedSkillPath = path.join(stageDir, slug, "SKILL.md");
+              if (fs.existsSync(origSkillPath)) {
+                fs.mkdirSync(path.dirname(stagedSkillPath), { recursive: true });
+                fs.copyFileSync(origSkillPath, stagedSkillPath);
+              }
+              for (const sf of prev.support_files || []) {
+                const origSf = path.join(corpusDir, slug, sf.path);
+                const stagedSf = path.join(stageDir, slug, sf.path);
+                if (fs.existsSync(origSf)) {
+                  fs.mkdirSync(path.dirname(stagedSf), { recursive: true });
+                  fs.copyFileSync(origSf, stagedSf);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // Validate support file integrity of the staged tree before commit
+      const supportIntegrityErrors = validateSupportFileIntegrity(finalManifest, stageDir);
+      if (supportIntegrityErrors.length > 0) {
+        throw new Error(`Refusing to internalize corpus: staged support files failed integrity check:\n  ${supportIntegrityErrors.join("\n  ")}`);
+      }
+
+      // Recompute manifest summary in case entries were refreshed
+      finalManifest.summary = computeManifestSummary(finalManifest.files);
+
+      // Pre-commit validation of the finalManifest before writing
+      const preValidation = validateCorpusManifest(finalManifest);
+      if (!preValidation.valid) {
+        throw new Error(`Refusing to internalize corpus: generated final manifest failed validation:\n${preValidation.errors.join("\n")}`);
+      }
+      // Write MANIFEST.json in stageDir
+      const stageManifestPath = path.join(stageDir, "MANIFEST.json");
+      const serializedManifest = serializeCorpusManifest(finalManifest);
+      fs.writeFileSync(stageManifestPath, serializedManifest, "utf-8");
+
+      // Atomic commit: rename corpusDir -> backupDir, rename stageDir -> corpusDir
+      const hadCorpus = fs.existsSync(corpusDir);
+      if (hadCorpus) {
+        renameFn(corpusDir, backupDir);
+      }
+      try {
+        renameFn(stageDir, corpusDir);
+      } catch (commitErr) {
+        // Roll back if rename stageDir -> corpusDir fails
+        if (hadCorpus && fs.existsSync(backupDir)) {
+          try {
+            renameFn(backupDir, corpusDir);
+          } catch {
+            // preserve original commitErr
+          }
+        }
+        throw commitErr;
+      }
+
+      // Clean up backupDir on successful commit
+      if (fs.existsSync(backupDir)) {
+        fs.rmSync(backupDir, { recursive: true, force: true });
+      }
+    } catch (txErr) {
+      // Clean up stageDir on failure
+      if (fs.existsSync(stageDir)) {
+        fs.rmSync(stageDir, { recursive: true, force: true });
+      }
+      throw txErr;
+    }
   } else {
     // Preview mode: report-only without mutating disk
     for (const plan of materializationPlans) {

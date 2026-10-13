@@ -149,7 +149,7 @@ stratus status   # confirm COLD state for all techniques
 ```
 
 ### 9. Drive it programmatically for coverage runs
-Loop over a tactic to measure detection coverage, then clean up. See `skill://red-emulating-cloud-attacks-with-stratus-red-team/support/emulating-cloud-attacks-with-stratus-red-team/templates/agent.py`.
+Loop over a tactic to measure detection coverage, then clean up. See `skill://red-emulating-cloud-attacks-with-stratus-red-team/templates/agent.py`.
 ```bash
 evidence_exec --platform aws --tactic credential-access --detonate --cleanup
 ```
@@ -206,3 +206,8 @@ did not, you have found a coverage gap; document it before cleaning up.
 - [ ] Technique reverted and re-detonated to confirm repeatability
 - [ ] `stratus cleanup --all` run and status returns COLD for every technique
 - [ ] No orphaned billable resources remain in the account
+
+## Shipped Playbook Resources
+
+- `skill://red-emulating-cloud-attacks-with-stratus-red-team/references/api-reference.md` — API and execution command reference
+- `skill://red-emulating-cloud-attacks-with-stratus-red-team/references/standards.md` — Relevant standards and compliance baselines

@@ -531,16 +531,16 @@ def char_at(n, offset):
 
 ## .NET / C# Binary Reversing
 
-.NET managed applications (C#-compiled exe/dll) have a complete and independent workflow; see [`../dotnet-reverse/SKILL.md`](../dotnet-reverse/SKILL.md) for details.
+.NET managed applications (C#-compiled exe/dll) have a complete and independent workflow; see [`re-dotnet-reverse`](skill://re-dotnet-reverse/SKILL.md) for details.
 
 **Quick Reference:**
 - Identification: PE header CLR runtime header is non-zero, `mscoree.dll` import, `mscorlib`/`System.Private.CoreLib` strings
 - Tools: **dnSpyEx** (decompilation + debugging + IL editing, Windows GUI) / **ILSpy** (CLI) / **de4dot** (deobfuscation) / **dnlib** (scripting)
-- Deobfuscation: ConfuserEx / SmartAssembly / Babel / .NET Reactor → `de4dot`, see [`../dotnet-reverse/references/obfuscators.md`](../dotnet-reverse/references/obfuscators.md) for details
+- Deobfuscation: ConfuserEx / SmartAssembly / Babel / .NET Reactor → `de4dot`, see [obfuscators.md](skill://re-dotnet-reverse/references/obfuscators.md) for details
 - **IL First**: Use an IL editor rather than a C# decompiler for critical decisions and patches (avoids recompilation artifacts from compiler-generated code)
-- Red team Sharp* tools (Rubeus/SharpHound) analysis → [`../dotnet-reverse/references/sharp-tools.md`](../dotnet-reverse/references/sharp-tools.md)
+- Red team Sharp* tools (Rubeus/SharpHound) analysis → [sharp-tools.md](skill://re-dotnet-reverse/references/sharp-tools.md)
 
-**Boundaries:** IL2CPP / NativeAOT compilation artifacts are native (no CLR) and do not use dnSpy → use `ida-reverse/` / `radare2/` (see [seed-014](../field-journal/seed-014_unity-il2cpp-reverse.md)). For the Codegate 2013 two-stage XOR+AES-CBC pattern, see the `.NET Analysis` section in [tools.md](tools.md#net-analysis).
+**Boundaries:** IL2CPP / NativeAOT compilation artifacts are native (no CLR) and do not use dnSpy → use `re-ida-reverse/` / `re-radare2/` (see [seed-014](skill://re-dotnet-reverse/support/field-journal/seed-014_unity-il2cpp-reverse.md)). For the Codegate 2013 two-stage XOR+AES-CBC pattern, see the `.NET Analysis` section in [tools.md](tools.md#net-analysis).
 
 ---
 

@@ -281,3 +281,10 @@ gcloud compute instances delete-access-config compromised-instance \
 - [Unit 42: Responding to Cloud Incidents](https://unit42.paloaltonetworks.com/responding-to-cloud-incidents/)
 - [Wiz: Cloud Incident Response Checklist](https://www.wiz.io/academy/incident-response-checklist)
 - [Microsoft Cloud Security Benchmark - IR](https://learn.microsoft.com/en-us/security/benchmark/azure/mcsb-incident-response)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-cloud-incident-containment-procedures/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-cloud-incident-containment-procedures/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-cloud-incident-containment-procedures/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-cloud-incident-containment-procedures/assets/template.md` — Assessment deliverable and reporting template

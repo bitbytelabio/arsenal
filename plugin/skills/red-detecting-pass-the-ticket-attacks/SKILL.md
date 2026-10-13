@@ -42,3 +42,7 @@ Pass-the-Ticket (PtT) is a credential theft technique (MITRE ATT&CK T1550.003) w
 ## Expected Output
 
 JSON report containing detected PtT indicators including anomalous ticket requests, RC4 downgrades, cross-host ticket reuse events, and risk-scored users with MITRE ATT&CK technique mapping.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-pass-the-ticket-attacks/references/api-reference.md` — API and execution command reference

@@ -438,3 +438,10 @@ aws cloudwatch put-metric-alarm \
 - [Building Zero Trust Across Multi-Account AWS Environments](https://aws.amazon.com/blogs/networking-and-content-delivery/building-zero-trust-access-across-multi-account-aws-environments/)
 - [Visual Guide to AWS Verified Access Setup](https://medium.com/@chaim_sanders/a-visual-guide-to-setting-up-aws-verified-access-1333466f7222)
 - [NIST SP 800-207 Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+
+## Shipped Playbook Resources
+
+- `skill://red-configuring-aws-verified-access-for-ztna/references/api-reference.md` — API and execution command reference
+- `skill://red-configuring-aws-verified-access-for-ztna/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-configuring-aws-verified-access-for-ztna/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-configuring-aws-verified-access-for-ztna/assets/template.md` — Assessment deliverable and reporting template

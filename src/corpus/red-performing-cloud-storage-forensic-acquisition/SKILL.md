@@ -326,3 +326,10 @@ Acquisition Summary:
   Acquisition log:      /acquisition/gdrive/acquisition_log.csv
   Completion Time:      2024-01-19 08:18:47 UTC
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-cloud-storage-forensic-acquisition/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-cloud-storage-forensic-acquisition/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-cloud-storage-forensic-acquisition/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-cloud-storage-forensic-acquisition/assets/template.md` — Assessment deliverable and reporting template

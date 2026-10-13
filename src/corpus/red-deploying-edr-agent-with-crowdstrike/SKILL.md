@@ -239,3 +239,10 @@ reg query "HKLM\SYSTEM\CrowdStrike\{9b03c1d9-3138-44ed-9fae-d9f4c034b88d}\{16e04
 - **macOS System Extension blocked**: macOS requires explicit approval for kernel/system extensions. Use MDM to pre-approve CrowdStrike extensions before deployment.
 - **Conflicting security products**: Running multiple EDR/AV products causes performance issues and false positives. Coordinate exclusions or remove legacy AV before Falcon deployment.
 - **Sensor version pinning**: Falcon auto-updates sensors by default. Pin sensor versions in the console for change-controlled environments before testing new versions.
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-edr-agent-with-crowdstrike/references/api-reference.md` — API and execution command reference
+- `skill://red-deploying-edr-agent-with-crowdstrike/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-deploying-edr-agent-with-crowdstrike/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-deploying-edr-agent-with-crowdstrike/assets/template.md` — Assessment deliverable and reporting template

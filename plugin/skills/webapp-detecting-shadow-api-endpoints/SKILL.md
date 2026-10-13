@@ -353,6 +353,8 @@ plugins:
 
 ## References
 
+- `skill://webapp-detecting-shadow-api-endpoints/references/api-reference.md` — API reference and command specification
+
 - APIsec Shadow API Best Practices: https://www.apisec.ai/blog/secure-your-shadow-apis-best-practices-for-api-discovery
 - Wiz Shadow API Guide: https://www.wiz.io/academy/api-security/shadow-api
 - Checkmarx Shadow and Zombie APIs: https://checkmarx.com/learn/api-security/shadow-zombie-apis-undocumented-api-vulnerabilities-threaten-security-posture/

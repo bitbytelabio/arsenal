@@ -58,6 +58,6 @@ index=sysmon (EventCode=2 OR EventCode=8 OR EventCode=10)
 ## CLI Usage
 
 ```bash
-python agent.py --evtx-file Sysmon.evtx
-python agent.py --evtx-file Security.evtx
+python scripts/agent.py --evtx-file Sysmon.evtx
+python scripts/agent.py --evtx-file Security.evtx
 ```

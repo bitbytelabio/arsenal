@@ -363,3 +363,7 @@ VENDOR ACCESS:
   Co-attended: [N]
   Recorded: [N]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-remote-access-to-ot-environment/references/api-reference.md` — API and execution command reference

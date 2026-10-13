@@ -219,3 +219,8 @@ for hit in client.search("docs", model.encode(["help"])[0].tolist(), limit=10):
 - [ ] Retrieved chunks scanned for indirect-injection content.
 - [ ] Findings reported with remediation for each weakness class.
 - [ ] No production corpus modified during the assessment.
+
+## Shipped Playbook Resources
+
+- `skill://red-assessing-vector-and-embedding-weaknesses/references/api-reference.md` — API and execution command reference
+- `skill://red-assessing-vector-and-embedding-weaknesses/references/standards.md` — Relevant standards and compliance baselines

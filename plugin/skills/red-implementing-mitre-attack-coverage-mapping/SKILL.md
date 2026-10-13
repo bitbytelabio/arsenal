@@ -261,3 +261,10 @@ DATA_SOURCE_TECHNIQUE_MAP = {
 - [CardinalOps - SIEM Detection Coverage Report 2025](https://www.helpnetsecurity.com/2025/06/09/siem-detection-coverage/)
 - [Datadog - Cloud SIEM MITRE ATT&CK Map](https://www.datadoghq.com/blog/cloud-siem-mitre-attack-map/)
 - [Picus Security - MITRE ATT&CK Framework Guide](https://www.picussecurity.com/mitre-attack-framework)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-mitre-attack-coverage-mapping/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-mitre-attack-coverage-mapping/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-mitre-attack-coverage-mapping/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-mitre-attack-coverage-mapping/assets/template.md` — Assessment deliverable and reporting template

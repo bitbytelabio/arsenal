@@ -126,7 +126,7 @@ find /restore-test -type f \( \
 
 # Check file entropy (high entropy = possible encryption)
 # Files with entropy > 7.9 out of 8.0 are likely encrypted
-python agent.py --entropy-scan /restore-test
+python scripts/agent.py --entropy-scan /restore-test
 ```
 
 ### Step 6: Automate and Schedule Validation
@@ -173,6 +173,8 @@ python agent.py --entropy-scan /restore-test
 - **Using MD5 for integrity**: MD5 is cryptographically broken. Use SHA-256 or SHA-3 for integrity verification.
 
 ## References
+
+- `skill://webapp-validating-backup-integrity-for-recovery/scripts/agent.py` — Bundled Python CLI helper script (`scripts/agent.py`)
 
 - NIST SP 800-184: Guide for Cybersecurity Event Recovery
 - NIST CSF 2.0 RC.RP-03: Backup Integrity Verification

@@ -46,3 +46,7 @@ Produce a JSON report with anomaly scores, top suspicious users, and recommended
 ## Expected Output
 
 JSON report with event statistics, baseline deviations, anomalous users/IPs, sensitive API calls, and error rate analysis.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-aws-cloudtrail-anomalies/references/api-reference.md` — API and execution command reference

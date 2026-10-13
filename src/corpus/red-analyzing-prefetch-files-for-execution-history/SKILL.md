@@ -308,3 +308,7 @@ Prefetch Analysis Summary:
 
   Report: /cases/case-2024-001/analysis/execution_timeline.csv
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-prefetch-files-for-execution-history/references/api-reference.md` — API and execution command reference

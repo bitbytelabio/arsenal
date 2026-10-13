@@ -185,3 +185,8 @@ evidence_exec --tarball ./some-pkg.tgz --output verdict.json
 - [ ] IOCs (URLs, IPs, hashes) extracted and recorded.
 - [ ] Documented verdict (benign / suspicious / malicious) with supporting evidence.
 - [ ] Malicious findings reported to the registry and shared as threat intel.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-malicious-npm-packages/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-malicious-npm-packages/references/standards.md` — Relevant standards and compliance baselines

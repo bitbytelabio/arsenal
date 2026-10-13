@@ -174,3 +174,8 @@ Capture exactly what recon revealed, which tokens/APIs were reachable, and wheth
 - [ ] Backdoor / Golden SAML path tested in an authorized controlled tenant or documented as out of scope
 - [ ] Exposure documented with concrete impact
 - [ ] Hardening recommendations delivered (cert protection, federation monitoring, managed auth migration)
+
+## Shipped Playbook Resources
+
+- `skill://red-auditing-entra-id-with-aadinternals/references/api-reference.md` — API and execution command reference
+- `skill://red-auditing-entra-id-with-aadinternals/references/standards.md` — Relevant standards and compliance baselines

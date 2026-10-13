@@ -62,5 +62,5 @@ Executes all hunt queries and aggregates results.
 ## Usage
 
 ```bash
-python agent.py https://elastic.corp.local:9200
+python scripts/agent.py https://elastic.corp.local:9200
 ```

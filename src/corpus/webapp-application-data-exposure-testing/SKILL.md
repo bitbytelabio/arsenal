@@ -108,10 +108,10 @@ Good proof: the trace contains a database connection string / internal endpoint 
 
 ## When to Load a Specialist Skill
 
-- Exposure that is actually broken access control -> authorization-testing (BOLA evidence pattern)
-- Cache-layer exposure -> web-cache-deception / cache-poisoning
+- Exposure that is actually broken access control -> `skill://webapp-authorization-testing` (BOLA evidence pattern)
+- Cache-layer exposure -> `skill://webapp-performing-web-cache-deception-attack` / cache-poisoning
 - Error-based enumeration feeding brute force -> the relevant authentication specialist
-- Source-attached targets -> source-assisted-analysis (find the serializer the UI forgot)
+- Source-attached targets -> `skill://webapp-source-assisted-analysis` (find the serializer the UI forgot)
 
 ## Stopping Rule
 
@@ -119,6 +119,6 @@ Stop when: each major object class has been diffed across available identities o
 
 ## Handoffs
 
-- authorization-testing - most over-fetch findings ARE authorization findings; this skill proves the data arrived
-- application-attack-surface-modeling - object/serializer inventory feeding this testing
-- input-boundary-testing - when exposure is triggered by unexpected parameter shapes
+- `skill://webapp-authorization-testing` - most over-fetch findings ARE authorization findings; this skill proves the data arrived
+- `skill://webapp-application-attack-surface-modeling` - object/serializer inventory feeding this testing
+- `skill://webapp-input-boundary-testing` - when exposure is triggered by unexpected parameter shapes

@@ -173,3 +173,8 @@ Confirm KAPE's `CopyLog`, `ConsoleLog`, and `SkipLog` CSVs are present in the ta
 - [ ] Modules run (`!EZParser`) producing CSV/JSON in `--mdest`
 - [ ] File hashes recorded and verified against source
 - [ ] Batch `_kape.cli` validated for fleet deployment where applicable
+
+## Shipped Playbook Resources
+
+- `skill://red-triaging-windows-with-kape/references/api-reference.md` — API and execution command reference
+- `skill://red-triaging-windows-with-kape/references/standards.md` — Relevant standards and compliance baselines

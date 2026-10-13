@@ -66,3 +66,7 @@ vol3 -f memory.lime linux.bash
 vol3 -f memory.lime linux.malfind
 vol3 -f memory.lime linux.lsmod
 ```
+
+## References
+
+- `skill://re-analyzing-memory-forensics-with-lime-and-volatility/references/api-reference.md` — API Reference: Analyzing Memory Forensics with LiME and Volatility

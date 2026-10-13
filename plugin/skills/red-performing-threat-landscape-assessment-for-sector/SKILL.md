@@ -273,3 +273,7 @@ generate_sector_report(assessment)
 - [FS-ISAC Financial Sector](https://www.fsisac.com/)
 - [H-ISAC Healthcare Sector](https://h-isac.org/)
 - [CyCognito: Threat Intelligence Lifecycle](https://www.cycognito.com/learn/threat-intelligence/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-threat-landscape-assessment-for-sector/references/api-reference.md` — API and execution command reference

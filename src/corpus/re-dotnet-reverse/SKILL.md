@@ -12,7 +12,7 @@ metadata:
 
 ## ACTION REQUIRED (Execute Immediately After Reading)
 
-1. `NOW`: Confirm the target is a managed .NET assembly using DIE / `file` / CLR headers (otherwise SWITCH to `ida-reverse/` / `reverse-engineering/`)
+1. `NOW`: Confirm the target is a managed .NET assembly using DIE / `file` / CLR headers (otherwise SWITCH to `re-ida-reverse/` / `re-reverse-engineering/`)
 2. `NOW`: If obfuscation is suspected → Unpack first using `de4dot`, produce `*-clean.exe`, and preserve the original sample
 3. `NEXT`: dnSpyEx (or dnSpy MCP / `ilspycmd`) static analysis: Browse C# + use **IL view** to inspect critical decision logic
 4. `ACT`: Perform dynamic debugging when plaintext/C2 extraction is required; when modifying logic, prioritize **IL patching** over C# recompilation
@@ -27,9 +27,9 @@ Prioritize using this skill when the task falls into the following scenarios:
 - Deobfuscating protectors like ConfuserEx / SmartAssembly / Babel / Eazfuscator / .NET Reactor
 - Reverse engineering decryption and C2 logic in .NET loaders / info-stealers / RATs
 - Patching C# applications (modifying checks, constants, keygens)
-- Analyzing the Mono/Unity managed layer prior to IL2CPP (Note: IL2CPP-compiled binaries are native; route to `reverse-engineering/` + seed-014)
+- Analyzing the Mono/Unity managed layer prior to IL2CPP (Note: IL2CPP-compiled binaries are native; route to `re-reverse-engineering/` + seed-014)
 
-If the target is a purely native binary (compiled with C/C++/Go/Rust without CLR), switch to `reverse-engineering/`, `ida-reverse/`, or `radare2/`.
+If the target is a purely native binary (compiled with C/C++/Go/Rust without CLR), switch to `re-reverse-engineering/`, `re-ida-reverse/`, or `re-radare2/`.
 
 ## Core Principles
 
@@ -159,23 +159,23 @@ Route to this skill when the user mentions:
 
 ## Exit Routing
 
-- IL2CPP-compiled Unity games → `reverse-engineering/` + `skill://re-dotnet-reverse/support/field-journal/seed-014_unity-il2cpp-reverse.md` (IL2CPP is native, bypass dnSpy)
-- NativeAOT artifacts → `reverse-engineering/` (Native binary)
-- Pure native PE (without CLR) → `reverse-engineering/` / `ida-reverse/`
-- Bulk symbol/function porting between binary versions → `binary-diff/`
-- Attack path modeling / call graph generation → `diagram-generator/`
+- IL2CPP-compiled Unity games → `re-reverse-engineering/` + `skill://re-dotnet-reverse/support/field-journal/seed-014_unity-il2cpp-reverse.md` (IL2CPP is native, bypass dnSpy)
+- NativeAOT artifacts → `re-reverse-engineering/` (Native binary)
+- Pure native PE (without CLR) → `re-reverse-engineering/` / `re-ida-reverse/`
+- Bulk symbol/function porting between binary versions → `re-binary-diff/`
+- Attack path modeling / call graph generation → `re-diagram-generator/`
 
 ## Routing Context
 
 **Upstream Entry**: `skill://re-dotnet-reverse/support/SKILL.md` (Master Controller), `skill://re-dotnet-reverse/support/routing.md`
 **Downstream Exit**:
-- IL2CPP / NativeAOT (native) → `reverse-engineering/`
-- In-depth native .so/.dll segment analysis → `ida-reverse/` / `radare2/`
+- IL2CPP / NativeAOT (native) → `re-reverse-engineering/`
+- In-depth native .so/.dll segment analysis → `re-ida-reverse/` / `re-radare2/`
 - Direct AI control over dnSpy → Register and interface with dnSpy MCP (see `skill://re-dotnet-reverse/references/sharp-tools.md`)
 
 **Related Sibling Modules**:
 - `arsenal skill_load re-reverse-engineering/languages-compiled.md` (.NET introduction points to this module)
-- `apk-reverse/` (Xamarin/MAUI Android reverse engineering can branch back here for C# layer analysis)
+- `re-apk-reverse/` (Xamarin/MAUI Android reverse engineering can branch back here for C# layer analysis)
 
 ## Reference Documents
 

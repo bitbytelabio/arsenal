@@ -228,7 +228,7 @@ Save all deployment artifacts (PowerShell scripts, detection rules, manifest) to
 
 ---
 
-## PowerShell Module: Deploy-ADHoneytokens.sh
+## PowerShell Module: Deploy-ADHoneytokens.ps1
 
 ### Exported Functions
 
@@ -269,7 +269,7 @@ Save all deployment artifacts (PowerShell scripts, detection rules, manifest) to
 
 ```bash
 # Full deployment (generates all scripts, rules, and manifest)
-python agent.py --action full_deploy \
+python scripts/agent.py --action full_deploy \
     --domain corp.example.com \
     --ou "OU=Service Accounts" \
     --token-count 3 \
@@ -277,33 +277,33 @@ python agent.py --action full_deploy \
     --output-dir honeytoken_deployment
 
 # Generate detection rules only
-python agent.py --action generate_rules \
+python scripts/agent.py --action generate_rules \
     --account-name svc_sqlbackup_legacy \
     --siem splunk
 
 # Generate single account creation script
-python agent.py --action deploy_account \
+python scripts/agent.py --action deploy_account \
     --account-name svc_sqlbackup_legacy \
     --domain corp.example.com
 
 # Generate SPN addition script
-python agent.py --action deploy_spn \
+python scripts/agent.py --action deploy_spn \
     --account-name svc_sqlbackup_legacy
 
 # Generate decoy GPO script
-python agent.py --action deploy_gpo \
+python scripts/agent.py --action deploy_gpo \
     --domain corp.example.com
 
 # Generate BloodHound deception script
-python agent.py --action deploy_bloodhound \
+python scripts/agent.py --action deploy_bloodhound \
     --account-name svc_sqlbackup_legacy
 
 # Validate deployment
-python agent.py --action validate \
+python scripts/agent.py --action validate \
     --account-name svc_sqlbackup_legacy
 
 # Analyze event logs for honeytoken alerts
-python agent.py --action analyze_logs \
+python scripts/agent.py --action analyze_logs \
     --account-name svc_sqlbackup_legacy \
     --event-log events.json
 ```

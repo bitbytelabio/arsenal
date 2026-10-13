@@ -259,17 +259,17 @@ longest = nx.dag_longest_path(G)
 
 ```bash
 # Full SBOM analysis with NVD correlation
-python agent.py analyze sbom-cyclonedx.json --api-key YOUR_KEY -o report.json
+python scripts/agent.py analyze sbom-cyclonedx.json --api-key YOUR_KEY -o report.json
 
 # Offline analysis (skip NVD queries)
-python agent.py analyze sbom.json --skip-nvd -o report.json
+python scripts/agent.py analyze sbom.json --skip-nvd -o report.json
 
 # Compare two SBOMs
-python agent.py diff old-sbom.json new-sbom.json
+python scripts/agent.py diff old-sbom.json new-sbom.json
 
 # Parse and list components only
-python agent.py parse sbom.json -o components.json
+python scripts/agent.py parse sbom.json -o components.json
 
 # Check license compliance
-python agent.py licenses sbom.json
+python scripts/agent.py licenses sbom.json
 ```

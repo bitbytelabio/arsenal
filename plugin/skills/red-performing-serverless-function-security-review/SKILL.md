@@ -281,3 +281,7 @@ SUMMARY:
   Functions without VPC:               28 / 34
   Functions with wildcard permissions: 12 / 34
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-serverless-function-security-review/references/api-reference.md` — API and execution command reference

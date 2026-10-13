@@ -278,3 +278,7 @@ AUTO-REMEDIATION (Last 7 Days):
   Manual remediation pending: 51
   Exceptions approved:        8
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-cloud-security-posture-management/references/api-reference.md` — API and execution command reference

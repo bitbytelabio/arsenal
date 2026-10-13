@@ -5,11 +5,11 @@
 
 ## CLI Interface
 ```
-python agent.py --url https://gophish.local:3333 --api-key <key> campaigns
-python agent.py --url <url> --api-key <key> metrics --id 1
-python agent.py --url <url> --api-key <key> resources
-python agent.py --url <url> --api-key <key> report --id 1
-python agent.py --url <url> --api-key <key> launch --name "Q1 Test" --template-id 1 --page-id 1 --smtp-id 1 --group-ids 1 2 --phish-url https://phish.local
+python scripts/agent.py --url https://gophish.local:3333 --api-key <key> campaigns
+python scripts/agent.py --url <url> --api-key <key> metrics --id 1
+python scripts/agent.py --url <url> --api-key <key> resources
+python scripts/agent.py --url <url> --api-key <key> report --id 1
+python scripts/agent.py --url <url> --api-key <key> launch --name "Q1 Test" --template-id 1 --page-id 1 --smtp-id 1 --group-ids 1 2 --phish-url https://phish.local
 ```
 
 ## GoPhishClient API Endpoints

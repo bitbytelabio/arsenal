@@ -354,3 +354,7 @@ tetra getevents -o json | jq -c 'select(.process_kprobe != null)' | \
       -d "$line"
   done
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-ebpf-security-monitoring/references/api-reference.md` — API and execution command reference

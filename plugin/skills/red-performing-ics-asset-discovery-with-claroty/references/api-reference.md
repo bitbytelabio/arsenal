@@ -5,10 +5,10 @@
 
 ## CLI Interface
 ```
-python agent.py --url <claroty_base_url> --token <api_token> assets [--type PLC] [--limit 100]
-python agent.py --url <claroty_base_url> --token <api_token> vulns [--severity critical] [--limit 100]
-python agent.py --url <claroty_base_url> --token <api_token> alerts
-python agent.py --url <claroty_base_url> --token <api_token> topology
+python scripts/agent.py --url <claroty_base_url> --token <api_token> assets [--type PLC] [--limit 100]
+python scripts/agent.py --url <claroty_base_url> --token <api_token> vulns [--severity critical] [--limit 100]
+python scripts/agent.py --url <claroty_base_url> --token <api_token> alerts
+python scripts/agent.py --url <claroty_base_url> --token <api_token> topology
 ```
 
 ## ClarotyClient Class

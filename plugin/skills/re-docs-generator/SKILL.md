@@ -13,7 +13,7 @@ metadata:
 ## ACTION REQUIRED (Execute immediately upon reading)
 
 1. `NOW`: Confirm whether the current task falls within the scope of this skill.
-2. `NOW`: Read `tool-index.md` to verify tool availability and actual paths.
+2. `NOW`: Read `tool-index` (workstation tool inventory) to verify tool availability and actual paths.
 3. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 4. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -172,11 +172,11 @@ If rendering diagrams to embed in reports is required, invoke the `diagram-gener
 - Manual: Triggered when user states "write a report", "produce documentation", or "writeup"
 
 **Related Sibling Modules**:
-- `apk-reverse/` — Generates reverse engineering report after APK reversing is complete
-- `ida-reverse/` — Generates reverse engineering report after binary analysis is complete
-- `radare2/` — Generates reverse engineering report after CLI analysis is complete
-- `js-reverse/` — Generates signature report after JS signature reversing is complete
-- `reverse-engineering/` — Generates reverse engineering report after general reverse engineering is complete
+- `re-apk-reverse/` — Generates reverse engineering report after APK reversing is complete
+- `re-ida-reverse/` — Generates reverse engineering report after binary analysis is complete
+- `re-radare2/` — Generates reverse engineering report after CLI analysis is complete
+- `webapp-js-reverse/` — Generates signature report after JS signature reversing is complete
+- `re-reverse-engineering/` — Generates reverse engineering report after general reverse engineering is complete
 - `field-journal/` — Report content simultaneously serves as a data source for the evolution journal
 
 **Security Report Templates**: `skill://re-docs-generator/references/security-report-templates.md`

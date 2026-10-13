@@ -6,8 +6,8 @@
 ## CLI Interface
 
 ```
-python agent.py check --domain example.com
-python agent.py audit --domains example.com example.org [--selectors default google k1]
+python scripts/agent.py check --domain example.com
+python scripts/agent.py audit --domains example.com example.org [--selectors default google k1]
 ```
 
 ## Core Functions

@@ -362,3 +362,7 @@ DMZ REPLICATION:
   Method: [PI-to-PI / Data Diode / VPN]
   Direction: [Unidirectional / Bidirectional]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-historian-server-in-ot-environment/references/api-reference.md` — API and execution command reference

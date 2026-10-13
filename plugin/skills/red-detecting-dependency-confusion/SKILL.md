@@ -210,3 +210,8 @@ evidence_exec --path . --ecosystem npm \
 - [ ] Placeholder packages registered for names that cannot be isolated.
 - [ ] CI job enforces the check on every push/PR.
 - [ ] Findings documented with owner and remediation status.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-dependency-confusion/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-dependency-confusion/references/standards.md` — Relevant standards and compliance baselines

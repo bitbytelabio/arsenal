@@ -158,3 +158,7 @@ Recovery Test Report:
 - CISA Ransomware Guide: https://www.cisa.gov/stopransomware
 - Veeam RTO/RPO Best Practices: https://www.veeam.com/blog/recovery-time-recovery-point-objectives.html
 - NIST CSF 2.0 RC.RP (Recovery Planning)
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-ransomware-recovery-procedures/references/api-reference.md` — API and execution command reference

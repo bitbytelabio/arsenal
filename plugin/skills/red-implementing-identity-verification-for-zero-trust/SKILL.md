@@ -188,3 +188,10 @@ AI-driven analytics detect compromised identities through impossible travel dete
 - CISA Zero Trust Maturity Model v2.0 - Identity Pillar
 - FIDO Alliance WebAuthn Specification
 - Microsoft Entra Conditional Access Documentation
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-identity-verification-for-zero-trust/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-identity-verification-for-zero-trust/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-identity-verification-for-zero-trust/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-identity-verification-for-zero-trust/assets/template.md` — Assessment deliverable and reporting template

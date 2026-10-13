@@ -72,7 +72,7 @@
 3. [Step 3]
 
 **Evidence:**
-![Screenshot](./evidence/finding_N_screenshot.png)
+[Screenshot placeholder: ./evidence/finding_N_screenshot.png]
 
 ```
 [Terminal output / HTTP request-response]

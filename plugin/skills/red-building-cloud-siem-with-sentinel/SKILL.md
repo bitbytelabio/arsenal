@@ -291,3 +291,7 @@ AUTOMATION:
   Incidents Auto-Enriched: 198
   False Positive Rate: 12%
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-building-cloud-siem-with-sentinel/references/api-reference.md` — API and execution command reference

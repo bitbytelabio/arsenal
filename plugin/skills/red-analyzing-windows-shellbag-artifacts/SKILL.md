@@ -197,3 +197,10 @@ Summary:
   Deleted folder evidence:        3 paths (anti-forensics indicator)
   CSV exported to:                /analysis/shellbag_output/
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-windows-shellbag-artifacts/references/api-reference.md` — API and execution command reference
+- `skill://red-analyzing-windows-shellbag-artifacts/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-analyzing-windows-shellbag-artifacts/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-analyzing-windows-shellbag-artifacts/assets/template.md` — Assessment deliverable and reporting template

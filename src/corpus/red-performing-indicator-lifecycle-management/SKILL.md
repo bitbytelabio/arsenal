@@ -125,3 +125,10 @@ class IOCLifecycle:
 - [MISP Indicator Lifecycle](https://www.misp-project.org/)
 - [STIX Indicator Valid From/Until](https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html)
 - [IOC Quality Framework](https://www.first.org/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-indicator-lifecycle-management/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-indicator-lifecycle-management/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-indicator-lifecycle-management/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-indicator-lifecycle-management/assets/template.md` — Assessment deliverable and reporting template

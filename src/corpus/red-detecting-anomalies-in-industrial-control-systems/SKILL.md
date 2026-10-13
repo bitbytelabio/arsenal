@@ -304,3 +304,7 @@ ANOMALIES DETECTED: [N]
   Baseline: [Expected behavior]
   Observed: [Actual behavior]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-anomalies-in-industrial-control-systems/references/api-reference.md` — API and execution command reference

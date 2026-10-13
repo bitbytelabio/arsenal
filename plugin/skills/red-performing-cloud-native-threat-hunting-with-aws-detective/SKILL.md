@@ -148,3 +148,10 @@ Indicators are retrieved separately via `list-indicators` and include types such
 3. Cross-reference Detective findings with raw CloudTrail logs for accuracy
 4. Verify finding group correlations match manual investigation conclusions
 5. Confirm automated alerts trigger for HIGH/CRITICAL severity investigations
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-cloud-native-threat-hunting-with-aws-detective/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-cloud-native-threat-hunting-with-aws-detective/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-cloud-native-threat-hunting-with-aws-detective/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-cloud-native-threat-hunting-with-aws-detective/assets/template.md` — Assessment deliverable and reporting template

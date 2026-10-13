@@ -309,3 +309,7 @@ Email Header Analysis Report:
 
   Risk Level: HIGH
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-email-headers-for-phishing-investigation/references/api-reference.md` — API and execution command reference

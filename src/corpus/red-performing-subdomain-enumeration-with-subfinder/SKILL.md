@@ -177,3 +177,10 @@ subfinder -d example.com -silent | httpx -silent | gowitness file -f - -P screen
 - Investigate subdomains with CNAME pointing to unclaimed services
 - Restrict access to development and staging environments
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-subdomain-enumeration-with-subfinder/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-subdomain-enumeration-with-subfinder/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-subdomain-enumeration-with-subfinder/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-subdomain-enumeration-with-subfinder/assets/template.md` — Assessment deliverable and reporting template

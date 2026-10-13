@@ -71,7 +71,7 @@ $acl.Access | Where-Object {
 ## CLI Usage
 
 ```bash
-python agent.py --security-log Security.evtx --dc-accounts known_dcs.txt
-python agent.py --generate-sigma
-python agent.py --check-perms
+python scripts/agent.py --security-log Security.evtx --dc-accounts known_dcs.txt
+python scripts/agent.py --generate-sigma
+python scripts/agent.py --check-perms
 ```

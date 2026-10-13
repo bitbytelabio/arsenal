@@ -430,3 +430,7 @@ REMEDIATION ACTIONS:
   Access controls tightened:         14,200
   Sensitivity labels applied:        45,200
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-cloud-dlp-for-data-protection/references/api-reference.md` — API and execution command reference

@@ -180,3 +180,8 @@ Confirm the environment is hardened against ESC8 after testing:
 - [ ] Certificate converted to a TGT and NT hash with `certipy auth`.
 - [ ] Domain compromise validated via DCSync (in scope only).
 - [ ] EPA/HTTPS and coercion-patch mitigations verified and documented.
+
+## Shipped Playbook Resources
+
+- `skill://red-relaying-ntlm-for-adcs-esc8/references/api-reference.md` — API and execution command reference
+- `skill://red-relaying-ntlm-for-adcs-esc8/references/standards.md` — Relevant standards and compliance baselines

@@ -302,3 +302,10 @@ class TIPMetrics:
 - [TheHive Project](https://thehive-project.org/)
 - [Cortex Documentation](https://github.com/TheHive-Project/Cortex)
 - [MISP-OpenCTI Integration](https://docs.opencti.io/latest/deployment/connectors/)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-threat-intelligence-platform/references/api-reference.md` — API and execution command reference
+- `skill://red-building-threat-intelligence-platform/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-threat-intelligence-platform/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-threat-intelligence-platform/assets/template.md` — Assessment deliverable and reporting template

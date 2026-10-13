@@ -321,3 +321,7 @@ CONTAINMENT ACTIONS TAKEN:
   Passwords force-reset:          4
   MFA re-enrolled:                4
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-compromised-cloud-credentials/references/api-reference.md` — API and execution command reference

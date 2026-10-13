@@ -310,3 +310,10 @@ Physical Assessment:
 - Social Engineer Toolkit: https://github.com/trustedsec/social-engineer-toolkit
 - Verizon DBIR: https://www.verizon.com/business/resources/reports/dbir/
 - NIST SP 800-61: Computer Security Incident Handling Guide
+
+## Shipped Playbook Resources
+
+- `skill://red-conducting-social-engineering-penetration-test/references/api-reference.md` — API and execution command reference
+- `skill://red-conducting-social-engineering-penetration-test/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-conducting-social-engineering-penetration-test/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-conducting-social-engineering-penetration-test/assets/template.md` — Assessment deliverable and reporting template

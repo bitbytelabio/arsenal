@@ -281,3 +281,7 @@ AREAS FOR IMPROVEMENT:
   [2] Night shift MTTD 23% slower than day shift
   [3] 4 critical vulnerability scan tickets overdue on SLA
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-building-soc-metrics-and-kpi-tracking/references/api-reference.md` — API and execution command reference

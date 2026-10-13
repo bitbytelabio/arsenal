@@ -294,3 +294,7 @@ SECURITY ALERTS (Last 7 Days):
   Medium severity:  12
   Low severity:     28
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-azure-defender-for-cloud/references/api-reference.md` — API and execution command reference

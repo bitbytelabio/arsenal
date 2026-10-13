@@ -44,3 +44,7 @@ Hardware Security Modules (HSMs) provide tamper-resistant cryptographic key stor
 
 - JSON report listing HSM slots, tokens, stored keys, supported mechanisms, and compliance status
 - Signing test results with key metadata and algorithm details
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-hardware-security-module-integration/references/api-reference.md` — API and execution command reference

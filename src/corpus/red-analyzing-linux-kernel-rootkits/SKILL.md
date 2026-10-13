@@ -117,3 +117,7 @@ Summary:
   Modified Binaries:    3 (/usr/bin/ps, netstat, ls)
   Risk Level:           CRITICAL
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-linux-kernel-rootkits/references/api-reference.md` — API and execution command reference

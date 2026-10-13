@@ -100,6 +100,6 @@ Stop source work when: the seeded ledger is exhausted (claimed and closed every 
 
 ## Handoffs
 
-- application-attack-surface-modeling - feed discovered routes/sinks into the runtime model
-- input-boundary-testing - guards that miss parameter shapes become boundary hypotheses
+- `skill://webapp-application-attack-surface-modeling` - feed discovered routes/sinks into the runtime model
+- `skill://webapp-input-boundary-testing` - guards that miss parameter shapes become boundary hypotheses
 - web-application-security specialists - once a class signal is live, the specialist skill owns the exploitation depth

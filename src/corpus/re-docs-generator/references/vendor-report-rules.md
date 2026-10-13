@@ -39,7 +39,7 @@ The following Base elements apply according to report type. Items marked **MUST*
 |---|---------|-------------|
 | G1 | Executive Summary / Overview | **MUST**: 3–8 sentences: what was analyzed, most critical finding, impact scope, recommended actions |
 | G2 | Scope & Authorization | **MUST**: Link to case `scope.md` (see template §0.1) |
-| G3 | Evidence→Finding→Path | **MUST**: See `security-report-templates.md` §0 and `skills/ops/evidence-finding-path.md` |
+| G3 | Evidence→Finding→Path | **MUST**: See `skill://re-docs-generator/references/security-report-templates.md` §0 and `skill://re-docs-generator/support/ops/evidence-finding-path.md` |
 | G4 | IOC Table | `malware` / `apt` **MUST**; for other tasks, include only when relevant indicators exist |
 | G5 | Recommendations / Remediation | `malware` / `apt` **MUST**: At least 1 actionable recommendation; other tasks follow original task template |
 | G6 | Appendix Metadata | **SHOULD**: Tools and versions, sample hashes, complete reproduction commands |

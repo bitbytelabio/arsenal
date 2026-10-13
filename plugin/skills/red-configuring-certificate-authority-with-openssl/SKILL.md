@@ -82,3 +82,10 @@ Root CA (offline, air-gapped)
 - [ ] CRL is generated and accessible
 - [ ] Revoked certificates appear in CRL
 - [ ] Certificate policies are correctly embedded
+
+## Shipped Playbook Resources
+
+- `skill://red-configuring-certificate-authority-with-openssl/references/api-reference.md` — API and execution command reference
+- `skill://red-configuring-certificate-authority-with-openssl/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-configuring-certificate-authority-with-openssl/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-configuring-certificate-authority-with-openssl/assets/template.md` — Assessment deliverable and reporting template

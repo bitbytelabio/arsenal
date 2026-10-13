@@ -174,3 +174,8 @@ evidence_exec --check-chipsec --output secureboot_report.json
 - [ ] Hashes cross-checked against known-bad / revoked sets.
 - [ ] ESP inspected for unauthorized or recently modified binaries.
 - [ ] Findings documented with remediation (dbx update / firmware update) per host.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-secure-boot-bypass/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-secure-boot-bypass/references/standards.md` — Relevant standards and compliance baselines

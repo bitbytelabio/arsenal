@@ -8,8 +8,8 @@
 ## CLI Interface
 
 ```
-python agent.py scan [--categories run_keys winlogon ifeo] [--save-baseline out.json]
-python agent.py compare --baseline baseline.json
+python scripts/agent.py scan [--categories run_keys winlogon ifeo] [--save-baseline out.json]
+python scripts/agent.py compare --baseline baseline.json
 ```
 
 ## Core Functions

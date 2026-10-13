@@ -147,3 +147,10 @@ Risk Score: [0-100]
 Risk Level: [Critical/High/Medium/Low]
 Indicators: [List of triggered risk factors]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-beaconing-with-frequency-analysis/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-for-beaconing-with-frequency-analysis/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hunting-for-beaconing-with-frequency-analysis/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hunting-for-beaconing-with-frequency-analysis/assets/template.md` — Assessment deliverable and reporting template

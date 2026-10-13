@@ -7,11 +7,11 @@
 
 ## CLI Interface
 ```
-python agent.py [--kubeconfig ~/.kube/config] encrypt
-python agent.py access --endpoint https://127.0.0.1:2379 [--cert client.crt --key client.key --cacert ca.crt]
-python agent.py secrets
-python agent.py tls
-python agent.py full [--endpoint https://127.0.0.1:2379]
+python scripts/agent.py [--kubeconfig ~/.kube/config] encrypt
+python scripts/agent.py access --endpoint https://127.0.0.1:2379 [--cert client.crt --key client.key --cacert ca.crt]
+python scripts/agent.py secrets
+python scripts/agent.py tls
+python scripts/agent.py full [--endpoint https://127.0.0.1:2379]
 ```
 
 ## Core Functions

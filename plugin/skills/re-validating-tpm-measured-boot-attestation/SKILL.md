@@ -164,3 +164,8 @@ evidence_exec --pcrs 0,1,2,3,4,5,6,7 --baseline golden_pcrs.json --output attest
 - [ ] (Optional) Secret sealed/unsealed against a PCR policy successfully.
 - [ ] IMA runtime measurements reviewed where enabled.
 - [ ] Results documented per host with pass/fail and any drift evidence.
+
+## References
+
+- `skill://re-validating-tpm-measured-boot-attestation/references/api-reference.md` — tpm2-tools Command Reference
+- `skill://re-validating-tpm-measured-boot-attestation/references/standards.md` — Standards and Framework Mapping

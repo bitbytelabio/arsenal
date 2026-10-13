@@ -278,3 +278,7 @@ Registry Analysis Summary:
   Installed Software:     127 applications
   Suspicious Findings:    3 items flagged for review
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-windows-registry-for-artifacts/references/api-reference.md` — API and execution command reference

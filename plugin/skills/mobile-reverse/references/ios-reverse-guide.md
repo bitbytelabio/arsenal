@@ -13,8 +13,8 @@ ipatool download -b com.target.app -o app.ipa
 scp root@device:/private/var/containers/Bundle/Application/*/Target.app .
 
 # Decryption (App Store binaries are in encrypted FAT format)
-# frida-ios-dump (Recommended)
-python3 dump.py com.target.app -o decrypted.ipa
+# frida-ios-dump (Recommended; prerequisite: git clone https://github.com/AloneMonkey/frida-ios-dump.git)
+python3 frida-ios-dump/dump.py com.target.app -o decrypted.ipa
 
 # Clutch
 Clutch -i  # List installed applications

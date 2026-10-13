@@ -199,3 +199,8 @@ curl -k -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
 - [ ] Domain categorization / CDN fronting considered where applicable.
 - [ ] Infrastructure rotation and decommissioning plan documented.
 - [ ] All activity confined to the authorized engagement scope.
+
+## Shipped Playbook Resources
+
+- `skill://red-building-c2-redirector-infrastructure/references/api-reference.md` — API and execution command reference
+- `skill://red-building-c2-redirector-infrastructure/references/standards.md` — Relevant standards and compliance baselines

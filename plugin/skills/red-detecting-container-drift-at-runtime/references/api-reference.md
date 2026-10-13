@@ -77,6 +77,6 @@ securityContext:
 ## CLI Usage
 
 ```bash
-python agent.py --container my-app-container
-python agent.py --container abc123 --all
+python scripts/agent.py --container my-app-container
+python scripts/agent.py --container abc123 --all
 ```

@@ -241,3 +241,10 @@ scout aws --profile production
 - AWS Security Audit Checklist
 - CIS AWS Foundations Benchmark
 - AWS Well-Architected Security Pillar
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-aws-account-enumeration-with-scout-suite/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-aws-account-enumeration-with-scout-suite/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-aws-account-enumeration-with-scout-suite/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-aws-account-enumeration-with-scout-suite/assets/template.md` — Assessment deliverable and reporting template

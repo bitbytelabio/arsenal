@@ -286,3 +286,7 @@ Health Metrics:
   Avg Detection Latency:     2.3 min (target: <5 min)
   Use Cases Deprecated:      3 (replaced by improved versions)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-siem-use-cases-for-detection/references/api-reference.md` — API and execution command reference

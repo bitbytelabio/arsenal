@@ -269,3 +269,10 @@ afl-whatsup findings/
 - [AFL++ Fuzzing in Depth Guide](https://aflplus.plus/docs/fuzzing_in_depth/)
 - [Google Testing Handbook - AFL++](https://appsec.guide/docs/fuzzing/c-cpp/aflpp/)
 - [OWASP Fuzzing Guide](https://owasp.org/www-community/Fuzzing)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-fuzz-testing-in-cicd-with-aflplusplus/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-fuzz-testing-in-cicd-with-aflplusplus/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-fuzz-testing-in-cicd-with-aflplusplus/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-fuzz-testing-in-cicd-with-aflplusplus/assets/template.md` — Assessment deliverable and reporting template

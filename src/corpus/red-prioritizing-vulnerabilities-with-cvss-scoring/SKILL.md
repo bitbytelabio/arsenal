@@ -174,3 +174,10 @@ Combine CVSS with additional prioritization factors:
 - prioritizing-patches-with-exploit-prediction-scoring
 - implementing-risk-based-vulnerability-management
 - implementing-vulnerability-remediation-sla
+
+## Shipped Playbook Resources
+
+- `skill://red-prioritizing-vulnerabilities-with-cvss-scoring/references/api-reference.md` — API and execution command reference
+- `skill://red-prioritizing-vulnerabilities-with-cvss-scoring/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-prioritizing-vulnerabilities-with-cvss-scoring/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-prioritizing-vulnerabilities-with-cvss-scoring/assets/template.md` — Assessment deliverable and reporting template

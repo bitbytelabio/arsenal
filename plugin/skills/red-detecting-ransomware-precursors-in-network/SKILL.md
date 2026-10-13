@@ -277,3 +277,10 @@ Define triage procedures based on precursor confidence level:
 - [ ] Block identified C2 infrastructure
 - [ ] Escalate to incident response team
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-ransomware-precursors-in-network/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-ransomware-precursors-in-network/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-ransomware-precursors-in-network/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-ransomware-precursors-in-network/assets/template.md` — Assessment deliverable and reporting template

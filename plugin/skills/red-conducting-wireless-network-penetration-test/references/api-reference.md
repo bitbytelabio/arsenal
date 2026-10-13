@@ -18,7 +18,7 @@ Tests WiFi security: scans access points via beacon capture, detects rogue APs a
 sudo airmon-ng start wlan0
 
 # Run wireless pentest
-python agent.py --interface wlan0mon --duration 60 \
+python scripts/agent.py --interface wlan0mon --duration 60 \
   --known-ssids "CorpWiFi" "GuestWiFi" \
   --known-bssids "AA:BB:CC:DD:EE:FF" --output report.json
 ```

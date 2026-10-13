@@ -46,3 +46,7 @@ Cross-reference account changes with authentication events to identify initial c
 ## Expected Output
 
 JSON report with detected account manipulation events, privileged group changes, shadow admin indicators, and timeline correlation.
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-t1098-account-manipulation/references/api-reference.md` — API and execution command reference

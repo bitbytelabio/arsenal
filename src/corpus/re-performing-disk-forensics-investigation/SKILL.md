@@ -247,3 +247,7 @@ TOOLS USED
 - PECmd 1.5.0 (prefetch parsing)
 - MFTECmd 1.2.2 (MFT analysis)
 ```
+
+## References
+
+- `skill://re-performing-disk-forensics-investigation/references/api-reference.md` — API Reference: Performing Disk Forensics Investigation

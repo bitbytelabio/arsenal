@@ -210,3 +210,7 @@ FINDING SUMMARY:
   Auto-Remediated This Month: 89
   Suppressed: 23
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-aws-security-hub/references/api-reference.md` — API and execution command reference

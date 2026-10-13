@@ -336,3 +336,7 @@ RECOMMENDATIONS:
   2. Block unauthorized sources at firewall
   3. Enable DNP3 DPI on industrial firewall
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-dnp3-protocol-anomalies/references/api-reference.md` — API and execution command reference

@@ -77,7 +77,7 @@ Create a honeytoken account that mimics a legacy privileged service account.
 
 ```powershell
 # Import the deployment module
-Import-Module templates/Deploy-ADHoneytokens.sh
+Import-Module ./scripts/Deploy-ADHoneytokens.ps1
 
 # Create a honeytoken admin account
 $honeyAdmin = New-HoneytokenAdmin `
@@ -188,7 +188,7 @@ $validation | Format-Table Check, Status, Details -AutoSize
 ### Full Deployment Pipeline
 
 ```powershell
-Import-Module templates/Deploy-ADHoneytokens.sh
+Import-Module ./scripts/Deploy-ADHoneytokens.ps1
 
 # Deploy complete honeytoken suite
 $deployment = Deploy-FullHoneytokenSuite `
@@ -234,3 +234,7 @@ SecurityEvent
 - SpecterOps - Kerberoasting and AES-256: https://specterops.io/blog/2025/10/21/is-kerberoasting-still-a-risk-when-aes-256-kerberos-encryption-is-enabled/
 - APT29a Blog - Deploying Honeytokens in AD: https://apt29a.blogspot.com/2019/11/deploying-honeytokens-in-active.html
 - ADSecurity.org - Detecting Kerberoasting Activity: https://adsecurity.org/?p=3458
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-active-directory-honeytokens/references/api-reference.md` — API and execution command reference

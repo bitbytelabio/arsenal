@@ -383,3 +383,7 @@ with ApiClient(configuration) as api_client:
 - [ ] Notification workflows deliver alerts to Slack, PagerDuty, or Jira for critical and high signals
 - [ ] Suppression queries are configured to reduce false positives on noisy rules
 - [ ] Security Signals API returns results programmatically for automation integration
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-security-monitoring-with-datadog/references/api-reference.md` — API and execution command reference

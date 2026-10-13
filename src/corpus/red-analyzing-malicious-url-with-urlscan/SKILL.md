@@ -73,7 +73,7 @@ API: POST https://urlscan.io/api/v1/scan/
 - JavaScript file hashes
 
 ### Step 4: Cross-Reference with Threat Intelligence
-Use the `skill://red-analyzing-malicious-url-with-urlscan/support/analyzing-malicious-url-with-urlscan/templates/process.py` to automate URL scanning, extract IOCs, and cross-reference with VirusTotal, PhishTank, and Google Safe Browsing.
+Use the `skill://red-analyzing-malicious-url-with-urlscan/templates/process.py` to automate URL scanning, extract IOCs, and cross-reference with VirusTotal, PhishTank, and Google Safe Browsing.
 
 ## Tools & Resources
 - **URLScan.io**: https://urlscan.io/
@@ -90,3 +90,10 @@ Use the `skill://red-analyzing-malicious-url-with-urlscan/support/analyzing-mali
 - Document complete redirect chain
 - Generate IOC list from scan results
 - Cross-reference findings with at least 2 threat intelligence sources
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-malicious-url-with-urlscan/references/api-reference.md` — API and execution command reference
+- `skill://red-analyzing-malicious-url-with-urlscan/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-analyzing-malicious-url-with-urlscan/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-analyzing-malicious-url-with-urlscan/assets/template.md` — Assessment deliverable and reporting template

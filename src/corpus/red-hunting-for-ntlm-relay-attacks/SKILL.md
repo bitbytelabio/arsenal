@@ -40,3 +40,7 @@ NTLM relay attacks intercept and forward NTLM authentication messages to gain un
 ## Output
 
 JSON report with suspected relay events, IP-hostname correlation anomalies, SMB signing audit results, and MITRE ATT&CK mapping to T1557.001.
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-ntlm-relay-attacks/references/api-reference.md` — API and execution command reference

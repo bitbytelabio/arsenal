@@ -294,3 +294,7 @@ SUMMARY:
   Access Logging Coverage: 100%
   Block Public Access: 156/156 buckets
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-remediating-s3-bucket-misconfiguration/references/api-reference.md` — API and execution command reference

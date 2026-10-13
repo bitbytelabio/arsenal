@@ -290,3 +290,8 @@ sliver > implants rm IMPLANT_NAME
 - [ ] An armory extension is installed and executed in-memory
 - [ ] A SOCKS proxy or port-forward is established for pivoting
 - [ ] Implants killed, listeners stopped, and artifacts removed at cleanup
+
+## Shipped Playbook Resources
+
+- `skill://red-operating-sliver-c2/references/api-reference.md` — API and execution command reference
+- `skill://red-operating-sliver-c2/references/standards.md` — Relevant standards and compliance baselines

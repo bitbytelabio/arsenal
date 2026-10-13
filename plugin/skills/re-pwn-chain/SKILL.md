@@ -12,7 +12,7 @@ metadata:
 
 1. `NOW`: Read `skill://re-pwn-chain/support/field-journal/precedent-reverse.md` — confirm that the operations in this skill are authorized routine operations.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
-3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+3. `NEXT`: Read `tool-index` (workstation tool inventory) to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 5. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -33,12 +33,12 @@ Use this skill when the task falls into the following scenarios:
 
 | Scenario | What to use |
 |------|--------|
-| Identifying a custom VM / anti-debug / complex obfuscation | `reverse-engineering/` |
-| Opening a binary from scratch to do static analysis | `ida-reverse/` or `radare2/` |
+| Identifying a custom VM / anti-debug / complex obfuscation | `re-reverse-engineering/` |
+| Opening a binary from scratch to do static analysis | `re-ida-reverse/` or `re-radare2/` |
 | **You have a vulnerability point and need to write an exploit to reach the remote** | **This skill** |
 | Integrating the shell obtained from pwn into a complete attack chain | `attack-chain/` (downstream) |
 
-`reverse-engineering/` focuses on "understanding what the program is doing" (pattern recognition, protocol recovery, unraveling weird mechanisms in CTF challenges); this skill focuses on "turning an already-understood vulnerability into a workable attack." The two are often used together, but the division of labor is clear.
+`re-reverse-engineering/` focuses on "understanding what the program is doing" (pattern recognition, protocol recovery, unraveling weird mechanisms in CTF challenges); this skill focuses on "turning an already-understood vulnerability into a workable attack." The two are often used together, but the division of labor is clear.
 
 ## Core Workflow
 
@@ -163,9 +163,9 @@ Stop retrying and output structured manual installation steps (pip source / gem 
 **Trigger Condition**: You have a binary + an identified vulnerability point and need to write an exploit
 
 **Upstream skills (use them first, then return to this skill)**:
-- You don't yet understand what the binary is doing → `reverse-engineering/`
-- You need detailed static analysis → `ida-reverse/`
-- Quick reconnaissance to confirm architecture/mitigations → `radare2/`
+- You don't yet understand what the binary is doing → `re-reverse-engineering/`
+- You need detailed static analysis → `re-ida-reverse/`
+- Quick reconnaissance to confirm architecture/mitigations → `re-radare2/`
 
 **Downstream skill (after you get a shell)**:
 - Integrating into a complete attack chain (lateral movement, privilege escalation, persistence) → `attack-chain/`

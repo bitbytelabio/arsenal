@@ -175,7 +175,7 @@ The scoring algorithm considers:
 
 ```bash
 # Run complete ASM pipeline against a target domain
-python agent.py \
+python scripts/agent.py \
     --domain example.com \
     --action full_scan \
     --shodan-key YOUR_KEY \
@@ -184,21 +184,26 @@ python agent.py \
     --output asm_report.json
 
 # Subdomain enumeration only
-python agent.py \
+python scripts/agent.py \
     --domain example.com \
     --action enumerate \
     --output subdomains.json
 
 # Exposure scoring on previously discovered assets
-python agent.py \
+python scripts/agent.py \
     --domain example.com \
     --action score \
     --input previous_scan.json \
     --output scored_assets.json
 
 # Multi-domain scan from file
-python agent.py \
+python scripts/agent.py \
     --domain-list targets.txt \
     --action full_scan \
     --output multi_domain_report.json
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-attack-surface-management/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-attack-surface-management/references/asm-reference.md` — Asm Reference reference guide

@@ -271,3 +271,7 @@ LICENSE COMPLIANCE
 - NVD API rate limits can slow analysis when scanning hundreds of components without an API key
 - CPE names in SBOMs may not exactly match NVD entries, requiring fuzzy matching
 - Transitive dependencies may include log4j even when it is not a direct dependency
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-sbom-for-supply-chain-vulnerabilities/references/api-reference.md` — API and execution command reference

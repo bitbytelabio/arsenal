@@ -16,7 +16,7 @@ metadata:
 
 1. `NOW`: Read `skill://re-reverse-engineering/support/field-journal/precedent-reverse.md` — confirm that operations in this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
-3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+3. `NEXT`: Read `tool-index` (workstation tool inventory) to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 5. `ACT`: Proceed according to re-agent-workflow; enter Step 1 of the Workflow and execute, do not stop at confirmation state.
 
@@ -195,16 +195,25 @@ Use [field-notes.md](field-notes.md) after the first round of triage when you kn
 
 **Upstream Entry**: `skill://re-reverse-engineering/support/SKILL.md` (Master Controller), `skill://re-reverse-engineering/support/routing.md`
 **Downstream Exit**:
-- Need IDA decompilation → `ida-reverse/`
-- Need radare2 CLI analysis → `radare2/`
-- Need APK-level analysis → `apk-reverse/`
+- Need IDA decompilation → `re-ida-reverse/`
+- Need radare2 CLI analysis → `re-radare2/`
+- Need APK-level analysis → `re-apk-reverse/`
 - Need Frida/angr dynamic execution → `tools-dynamic.md`
 - Need to bypass anti-debugging → `anti-analysis.md`
 - Encountered specific Language (Go/Rust/Python/WASM) → `languages*.md`
 - Encountered CTF patterns → `patterns*.md`
 
-**Related Sibling Modules**: `apk-reverse/` (When an APK points to a .so, you can pivot back to the Frida/radare2 branch of this module)
+**Related Sibling Modules**: `re-apk-reverse/` (When an APK points to a .so, you can pivot back to the Frida/radare2 branch of this module)
 
+
+## References
+
+- `skill://re-reverse-engineering/references/re-agent-workflow.md` — Core six-phase reverse engineering workflow
+- `skill://re-reverse-engineering/references/ai-assisted-re.md` — AI-assisted reverse engineering patterns and prompting
+- `skill://re-reverse-engineering/references/ollvm-deobfuscation.md` — OLLVM deobfuscation and control flow flattening recovery
+- `skill://re-reverse-engineering/references/nonpe-format-cookbook.md` — Non-PE and multi-format reverse engineering cookbook
+- `skill://re-reverse-engineering/support/ops/analysis-decision-framework.md` — Decision quality and evidence sufficiency framework
+- `skill://re-reverse-engineering/support/ops/analysis-blindspot-cookbook.md` — Detection recipes for language and runtime blindspots
 
 ## Task Completion Self-Check (MUST pass before claiming completion)
 

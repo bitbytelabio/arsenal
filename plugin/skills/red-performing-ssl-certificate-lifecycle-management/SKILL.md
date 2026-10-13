@@ -76,3 +76,10 @@ SSL/TLS certificate lifecycle management encompasses the full process of request
 - [ ] Certificate chain validation verifies trust path
 - [ ] OCSP checking detects revoked certificates
 - [ ] Certificate inventory tracks all deployed certificates
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-ssl-certificate-lifecycle-management/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-ssl-certificate-lifecycle-management/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-ssl-certificate-lifecycle-management/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-ssl-certificate-lifecycle-management/assets/template.md` — Assessment deliverable and reporting template

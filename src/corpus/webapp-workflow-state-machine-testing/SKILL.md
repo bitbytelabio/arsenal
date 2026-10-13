@@ -98,10 +98,10 @@ Verify PERSISTENT state: re-read the object (profile, order, membership) after t
 
 ## When to Load a Specialist Skill
 
-- Auth/verification/reset flows -> authentication-session-testing (token binding depth)
-- Payment/checkout deep technique -> testing-ecommerce-and-payment-logic
-- Concurrency on the same step -> race-condition-testing
-- API workflow abuse patterns -> api-business-flow-abuse (api-security)
+- Auth/verification/reset flows -> `skill://webapp-authentication-session-testing` (token binding depth)
+- Payment/checkout deep technique -> `skill://webapp-testing-ecommerce-and-payment-logic`
+- Concurrency on the same step -> `skill://webapp-race-condition-testing`
+- API workflow abuse patterns -> `skill://webapp-api-business-flow-abuse` (api-security)
 
 ## Stopping Rule
 
@@ -109,6 +109,6 @@ Stop when: the flow machine is mapped (states + markers), each of the six abuses
 
 ## Handoffs
 
-- application-attack-surface-modeling - workflow/invariant inventory
-- business-logic-testing - when the abuse is about VALUES not order
-- authorization-testing - when the skipped step was an authorization gate
+- `skill://webapp-application-attack-surface-modeling` - workflow/invariant inventory
+- `skill://webapp-business-logic-testing` - when the abuse is about VALUES not order
+- `skill://webapp-authorization-testing` - when the skipped step was an authorization gate

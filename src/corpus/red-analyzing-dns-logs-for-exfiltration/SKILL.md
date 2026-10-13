@@ -281,3 +281,7 @@ Containment:
   [DONE] Domain evil-tunnel[.]com added to DNS sinkhole
   [DONE] Incident IR-2024-0448 created
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-dns-logs-for-exfiltration/references/api-reference.md` — API and execution command reference

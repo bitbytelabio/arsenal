@@ -302,3 +302,7 @@ RECOMMENDER SUGGESTIONS:
   Priority HIGH:                     12
   Estimated permissions reduced:     2,847 individual permissions
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-auditing-gcp-iam-permissions/references/api-reference.md` — API and execution command reference

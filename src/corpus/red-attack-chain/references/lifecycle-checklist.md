@@ -8,7 +8,7 @@
 
 - [ ] `case-init` completed, `auth.status=granted`
 - [ ] `network_profile` ≠ unrestricted erroneously applied against production
-- [ ] `lead` has assigned specialist_roles (`ops/role-map.md`)
+- [ ] `lead` has assigned specialist_roles (`skill://webapp-pentest-tools/support/ops/role-map.md`)
 
 ## Phase Gates
 
@@ -34,4 +34,4 @@
 
 ## Minimum of One Timeline Entry per Phase
 
-Refer to `ops/timeline-workitem.md` for format.
+Refer to `skill://red-attack-chain/support/ops/timeline-workitem.md` for format.

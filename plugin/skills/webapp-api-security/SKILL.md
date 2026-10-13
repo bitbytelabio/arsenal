@@ -14,7 +14,7 @@ metadata:
 
 1. `NOW`: Read `skill://webapp-api-security/support/field-journal/precedent-pentest.md` — Confirm that operations in this skill are authorized routine operations.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
-3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+3. `NEXT`: Verify tool availability and actual paths based on available tools.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 5. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 

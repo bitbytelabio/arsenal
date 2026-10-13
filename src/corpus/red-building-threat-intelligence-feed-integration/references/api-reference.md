@@ -16,10 +16,10 @@ Ingests threat intelligence from TAXII 2.1 servers, Abuse.ch URLhaus, and Feodo 
 
 ```bash
 # Ingest from multiple sources
-python agent.py --urlhaus --feodo --output ti_bundle.json
+python scripts/agent.py --urlhaus --feodo --output ti_bundle.json
 
 # Ingest from TAXII feed
-python agent.py --taxii-url https://taxii.example.com/taxii2/ \
+python scripts/agent.py --taxii-url https://taxii.example.com/taxii2/ \
   --taxii-collection https://taxii.example.com/taxii2/collections/abc/ \
   --taxii-user user --taxii-pass pass
 ```

@@ -277,3 +277,7 @@ Containment:
 
 Status:       RESOLVED — No evidence of lateral movement post-compromise
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-investigating-phishing-email-incident/references/api-reference.md` — API and execution command reference

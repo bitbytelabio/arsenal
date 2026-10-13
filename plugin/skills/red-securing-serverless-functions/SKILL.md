@@ -304,3 +304,7 @@ SUMMARY:
   Functions with Secrets Manager: 19/47 (40%)
   Functions with Input Validation: 22/47 (47%)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-serverless-functions/references/api-reference.md` — API and execution command reference

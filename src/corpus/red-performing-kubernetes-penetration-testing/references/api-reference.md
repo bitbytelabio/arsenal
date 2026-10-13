@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python agent.py recon
-python agent.py sa-perms [--namespace default]
-python agent.py dashboards
-python agent.py escape [--namespace default]
+python scripts/agent.py recon
+python scripts/agent.py sa-perms [--namespace default]
+python scripts/agent.py dashboards
+python scripts/agent.py escape [--namespace default]
 ```
 
 ## Core Functions

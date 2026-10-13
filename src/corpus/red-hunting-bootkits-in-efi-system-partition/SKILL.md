@@ -208,3 +208,8 @@ Record every anomalous binary (path, hash, signature status, baseline diff resul
 - [ ] Secure Boot confirmed enabled; no present binary matches a `dbx`-revoked hash
 - [ ] TPM PCR 0/2/4 measurements compared to baseline (where TPM present)
 - [ ] Forensic ESP image preserved and all findings documented
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-bootkits-in-efi-system-partition/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-bootkits-in-efi-system-partition/references/standards.md` — Relevant standards and compliance baselines

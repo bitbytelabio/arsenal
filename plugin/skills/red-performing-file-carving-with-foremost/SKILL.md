@@ -312,3 +312,7 @@ File Carving Summary:
   Audit Log: /cases/case-2024-001/carved/foremost_all/audit.txt
   File Catalog: /cases/case-2024-001/analysis/carved_file_catalog.csv
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-file-carving-with-foremost/references/api-reference.md` — API and execution command reference

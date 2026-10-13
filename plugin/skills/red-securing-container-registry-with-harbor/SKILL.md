@@ -224,3 +224,10 @@ curl -k "https://harbor.example.com/api/v2.0/audit-logs?page=1&page_size=10" \
 - [Harbor Documentation](https://goharbor.io/docs/)
 - [Harbor Security Best Practices](https://goharbor.io/docs/2.10.0/administration/vulnerability-scanning/)
 - [Harbor GitHub Repository](https://github.com/goharbor/harbor)
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-container-registry-with-harbor/references/api-reference.md` — API and execution command reference
+- `skill://red-securing-container-registry-with-harbor/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-securing-container-registry-with-harbor/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-securing-container-registry-with-harbor/assets/template.md` — Assessment deliverable and reporting template

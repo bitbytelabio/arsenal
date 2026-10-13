@@ -122,3 +122,7 @@ python sf.py -s evil-domain.com -m sfp_shodan,sfp_virustotal,sfp_passivetotal \
 - **Outdated data**: WHOIS privacy services and bulletproof hosting rotate frequently. Always check data timestamps — 6-month-old passive DNS may no longer be valid.
 - **Attribution overconfidence**: Infrastructure overlap does not guarantee same threat actor. False flag operations deliberately share indicators across groups.
 - **Legal boundaries**: Some OSINT tools perform active scans (port scanning, banner grabbing). Confirm tool behavior before use against external targets without authorization.
+
+## Shipped Playbook Resources
+
+- `skill://red-collecting-open-source-intelligence/references/api-reference.md` — API and execution command reference

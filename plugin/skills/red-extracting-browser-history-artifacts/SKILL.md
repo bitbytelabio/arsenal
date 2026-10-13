@@ -330,3 +330,7 @@ Browser Forensics Summary:
     Firefox History:  /analysis/firefox_history.csv
     Full Report:      /analysis/hindsight_report.xlsx
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-extracting-browser-history-artifacts/references/api-reference.md` — API and execution command reference

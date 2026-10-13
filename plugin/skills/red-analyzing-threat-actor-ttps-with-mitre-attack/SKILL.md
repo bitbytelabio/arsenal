@@ -261,3 +261,10 @@ for gname, techs in group_techniques.items():
 - [attackcti Python Library](https://github.com/OTRF/ATTACK-Python-Client)
 - [ATT&CK STIX Data](https://github.com/mitre/cti)
 - [ATT&CK Groups](https://attack.mitre.org/groups/)
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-threat-actor-ttps-with-mitre-attack/references/api-reference.md` — API and execution command reference
+- `skill://red-analyzing-threat-actor-ttps-with-mitre-attack/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-analyzing-threat-actor-ttps-with-mitre-attack/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-analyzing-threat-actor-ttps-with-mitre-attack/assets/template.md` — Assessment deliverable and reporting template

@@ -405,3 +405,7 @@ COMPLIANCE STATUS BY STANDARD:
   CIP-010: [Status] - [N] gaps identified
   CIP-013: [Status] - [N] gaps identified
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-nerc-cip-compliance-controls/references/api-reference.md` — API and execution command reference

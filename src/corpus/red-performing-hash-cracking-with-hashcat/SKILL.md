@@ -78,3 +78,10 @@ Hash cracking is an essential skill for penetration testers and security auditor
 - [ ] Mask attack cracks short passwords
 - [ ] Results report shows password strength distribution
 - [ ] All operations performed within authorized scope
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-hash-cracking-with-hashcat/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-hash-cracking-with-hashcat/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-hash-cracking-with-hashcat/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-hash-cracking-with-hashcat/assets/template.md` — Assessment deliverable and reporting template

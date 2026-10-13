@@ -322,3 +322,10 @@ def benchmark_rule(rule_text, scan_directory, iterations=3):
 - [Yara-Rules Community Repository](https://github.com/Yara-Rules/rules)
 - [ReversingLabs - Writing Detailed YARA Rules](https://www.reversinglabs.com/blog/writing-detailed-yara-rules-for-malware-detection)
 - [YARA Rule Crafting Deep Dive](https://cyberthreatintelligencenetwork.com/index.php/2024/09/11/yara-rule-crafting-a-deep-dive-into-signature-based-threat-hunting-strategies/)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-yara-rule-development-for-detection/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-yara-rule-development-for-detection/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-yara-rule-development-for-detection/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-yara-rule-development-for-detection/assets/template.md` — Assessment deliverable and reporting template

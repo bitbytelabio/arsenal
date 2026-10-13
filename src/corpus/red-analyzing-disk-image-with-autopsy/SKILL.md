@@ -249,3 +249,7 @@ Autopsy Case Analysis Summary:
   Timeline Events:  1,234,567 entries (filtered to incident window: 892)
   Report:          /cases/case-2024-001/reports/autopsy_report.html
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-disk-image-with-autopsy/references/api-reference.md` — API and execution command reference

@@ -76,3 +76,10 @@ Ed25519 is a high-performance digital signature algorithm using the Edwards curv
 - [ ] Deterministic: same input produces same signature
 - [ ] File signing and verification works correctly
 - [ ] Performance meets or exceeds RSA-3072
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-digital-signatures-with-ed25519/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-digital-signatures-with-ed25519/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-digital-signatures-with-ed25519/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-digital-signatures-with-ed25519/assets/template.md` — Assessment deliverable and reporting template

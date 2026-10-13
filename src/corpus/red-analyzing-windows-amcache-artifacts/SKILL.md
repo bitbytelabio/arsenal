@@ -227,3 +227,7 @@ Combine Amcache data with other artifacts for a comprehensive timeline:
 - [ ] LinkDate vs. FileKeyLastWriteTimestamp comparison has been performed to detect timestomping
 - [ ] Amcache findings are correlated with Prefetch and ShimCache for execution confirmation
 - [ ] Final timeline integrates Amcache data with other forensic artifacts
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-windows-amcache-artifacts/references/api-reference.md` — API and execution command reference

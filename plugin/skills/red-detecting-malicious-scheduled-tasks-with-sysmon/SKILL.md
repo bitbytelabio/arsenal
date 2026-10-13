@@ -53,3 +53,7 @@ targeting remote systems.
   Source: \\192.168.1.50 (remote creation)
   MITRE: T1053.005 - Scheduled Task/Job
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-malicious-scheduled-tasks-with-sysmon/references/api-reference.md` — API and execution command reference

@@ -212,3 +212,7 @@ file with chain of custody documentation for potential legal action.
 - Background noise from the call environment can reduce classification accuracy
 - Highly sophisticated voice cloning (e.g., fine-tuned VALL-E with 30+ minutes of training data) may evade basic feature analysis
 - Genuine speech transmitted through VoIP may exhibit spectral artifacts similar to deepfakes
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-deepfake-audio-in-vishing-attacks/references/api-reference.md` — API and execution command reference

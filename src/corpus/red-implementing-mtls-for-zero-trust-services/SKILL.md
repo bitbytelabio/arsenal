@@ -59,3 +59,7 @@ context.load_cert_chain("client.pem", "client-key.pem")
 context.load_verify_locations("ca.pem")
 context.verify_mode = ssl.CERT_REQUIRED
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-mtls-for-zero-trust-services/references/api-reference.md` — API and execution command reference

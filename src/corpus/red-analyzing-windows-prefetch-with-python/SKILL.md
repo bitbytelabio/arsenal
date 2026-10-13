@@ -96,3 +96,7 @@ Summary:
   Anti-forensics tools:         2 (sdelete64.exe, wevtutil.exe)
   JSON report: /analysis/prefetch_report/prefetch_timeline.json
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-windows-prefetch-with-python/references/api-reference.md` — API and execution command reference

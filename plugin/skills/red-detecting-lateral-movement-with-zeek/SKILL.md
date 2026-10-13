@@ -191,8 +191,8 @@ event ntlm_log(rec: NTLM::Info) {
 Use the provided agent.py for comprehensive lateral movement detection:
 
 ```bash
-python3 agent.py /opt/zeek/logs/current/
-python3 agent.py /opt/zeek/logs/2026-03-18/  # Analyze a specific date
+python3 scripts/agent.py /opt/zeek/logs/current/
+python3 scripts/agent.py /opt/zeek/logs/2026-03-18/  # Analyze a specific date
 ```
 
 ## Verification

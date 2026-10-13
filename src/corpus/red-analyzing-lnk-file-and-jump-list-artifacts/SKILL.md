@@ -267,3 +267,10 @@ Summary:
   Suspicious artifacts:          3 (hidden window execution, USB drive access, network shares)
   CSV exported to:               /analysis/lnk_output/ and /analysis/jumplist_output/
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-lnk-file-and-jump-list-artifacts/references/api-reference.md` — API and execution command reference
+- `skill://red-analyzing-lnk-file-and-jump-list-artifacts/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-analyzing-lnk-file-and-jump-list-artifacts/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-analyzing-lnk-file-and-jump-list-artifacts/assets/template.md` — Assessment deliverable and reporting template

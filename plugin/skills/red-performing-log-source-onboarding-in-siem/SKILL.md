@@ -276,3 +276,10 @@ search = index=new_source sourcetype=new_sourcetype action=failure \
 - [Sumo Logic - Cloud SIEM Onboarding Checklist](https://help.sumologic.com/docs/cse/get-started-with-cloud-siem/onboarding-checklist-cse/)
 - [SIEM Logging Best Practices - Coralogix](https://coralogix.com/guides/siem/siem-logging/)
 - [Huntress - SIEM Implementation Guide](https://www.huntress.com/siem-guide/siem-implementation-guide)
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-log-source-onboarding-in-siem/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-log-source-onboarding-in-siem/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-log-source-onboarding-in-siem/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-log-source-onboarding-in-siem/assets/template.md` — Assessment deliverable and reporting template

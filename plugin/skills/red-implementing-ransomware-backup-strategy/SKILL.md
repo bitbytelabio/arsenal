@@ -262,3 +262,10 @@ Document restore test results and maintain a recovery runbook with step-by-step 
 | 2 | 200 | 4hr | 12hr | 4hr inc/Daily full | Monthly |
 | 3 | 250 | 24hr | 48hr | Daily inc/Weekly full | Quarterly |
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-ransomware-backup-strategy/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-ransomware-backup-strategy/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-ransomware-backup-strategy/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-ransomware-backup-strategy/assets/template.md` — Assessment deliverable and reporting template

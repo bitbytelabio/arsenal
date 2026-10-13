@@ -157,3 +157,10 @@ Isolate critical applications (PCI cardholder data environment, SWIFT financial 
 - Illumio Core Administration Guide
 - VMware NSX Distributed Firewall Configuration Guide
 - Forrester Zero Trust eXtended (ZTX) Framework
+
+## Shipped Playbook Resources
+
+- `skill://red-configuring-microsegmentation-for-zero-trust/references/api-reference.md` — API and execution command reference
+- `skill://red-configuring-microsegmentation-for-zero-trust/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-configuring-microsegmentation-for-zero-trust/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-configuring-microsegmentation-for-zero-trust/assets/template.md` — Assessment deliverable and reporting template

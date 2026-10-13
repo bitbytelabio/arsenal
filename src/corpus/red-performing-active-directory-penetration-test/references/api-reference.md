@@ -80,5 +80,5 @@ python3 -m impacket.examples.secretsdump DOMAIN/admin:pass@10.0.0.1
 ## CLI Usage
 
 ```bash
-python agent.py --server ldaps://dc.example.com --username "DOMAIN\\user" --password "pass" --output report.json
+python scripts/agent.py --server ldaps://dc.example.com --username "DOMAIN\\user" --password "pass" --output report.json
 ```

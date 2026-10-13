@@ -233,3 +233,7 @@ RECOMMENDATIONS
 3. [Regulatory notification assessment]
 4. [Access control improvements]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-insider-threat-investigation/references/api-reference.md` — API and execution command reference

@@ -75,3 +75,7 @@ Splunk SOAR orchestrates and automates security operations through playbooks tha
   }
 }
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-soar-playbook-for-phishing/references/api-reference.md` — API and execution command reference

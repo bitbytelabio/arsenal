@@ -216,3 +216,8 @@ jobs:
 - [ ] Risk scoring suppresses obvious false positives (legit scoped/forked packages)
 - [ ] CI/CD gate screens new dependency names on every pull request
 - [ ] No suspect package installed outside a disposable sandbox
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-typosquatting-packages/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-typosquatting-packages/references/standards.md` — Relevant standards and compliance baselines

@@ -349,3 +349,7 @@ USB Device History Analysis:
 
   Timeline: /cases/case-2024-001/analysis/usb_timeline.csv
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-usb-device-connection-history/references/api-reference.md` — API and execution command reference

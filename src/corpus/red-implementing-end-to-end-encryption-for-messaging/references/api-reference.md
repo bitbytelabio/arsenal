@@ -6,11 +6,11 @@
 ## CLI Interface
 
 ```
-python agent.py keygen                                    # Generate X25519 key pair
-python agent.py exchange                                  # Simulate key exchange
-python agent.py demo                                      # Full E2EE demo flow
-python agent.py encrypt --message <text> --key <hex>      # Encrypt message
-python agent.py decrypt --nonce <hex> --ciphertext <hex> --key <hex>
+python scripts/agent.py keygen                                    # Generate X25519 key pair
+python scripts/agent.py exchange                                  # Simulate key exchange
+python scripts/agent.py demo                                      # Full E2EE demo flow
+python scripts/agent.py encrypt --message <text> --key <hex>      # Encrypt message
+python scripts/agent.py decrypt --nonce <hex> --ciphertext <hex> --key <hex>
 ```
 
 ## Core Functions

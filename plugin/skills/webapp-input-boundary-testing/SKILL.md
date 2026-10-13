@@ -83,12 +83,12 @@ Pure type-rejection with clean errors is a NEGATIVE - close it and move on.
 | Signal observed | Load specialist |
 |---|---|
 | SQL/NoSQL error, boolean-based difference in query behavior | sql-injection / nosql-injection |
-| `{{7*7}}`-style evaluation, template error | ssti |
-| Server-side fetch attempt from an injected URL | ssrf |
-| Role/admin field persisted | exploiting-mass-assignment-in-rest-apis |
-| Path-shaped value reaching a file operation | path-traversal-lfi-rfi |
-| Reflection with markup interpretation | xss |
-| Deserialization of attacker-shaped structures | insecure-deserialization |
+| `{{7*7}}`-style evaluation, template error | `skill://webapp-web-offensive-ssti` |
+| Server-side fetch attempt from an injected URL | `skill://webapp-web-offensive-ssrf` |
+| Role/admin field persisted | `skill://webapp-testing-api-for-mass-assignment-vulnerability` |
+| Path-shaped value reaching a file operation | `skill://webapp-exploiting-client-side-path-traversal` |
+| Reflection with markup interpretation | `skill://webapp-web-offensive-xss` |
+| Deserialization of attacker-shaped structures | `skill://webapp-web-offensive-deserialization` |
 | Parser confusion between framework layers | security-control-differential-testing (this category) |
 
 ## Common Misses
@@ -121,7 +121,7 @@ Stop when: every meaningful parameter on privileged/state-changing endpoints has
 
 ## Handoffs
 
-- application-attack-surface-modeling - where the meaningful-parameter inventory comes from
-- business-logic-testing - when the violated domain is a business rule (quantity, price, coupon)
-- security-control-differential-testing - when two layers parse the same bytes differently
+- `skill://webapp-application-attack-surface-modeling` - where the meaningful-parameter inventory comes from
+- `skill://webapp-business-logic-testing` - when the violated domain is a business rule (quantity, price, coupon)
+- `skill://webapp-security-control-differential-testing` - when two layers parse the same bytes differently
 - the specialist table above - for exploitation depth once a class signal is live

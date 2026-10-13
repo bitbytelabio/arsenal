@@ -142,3 +142,10 @@ DLP incident response:
 - **Too many SIT false positives**: Phone numbers, dates, and random number sequences can match PCI/SSN patterns. Tune confidence levels and require corroborating keywords.
 - **Ignoring user education**: DLP is most effective when users understand why data is protected. Policy tips should explain the restriction and provide approved alternatives.
 - **Not monitoring overrides**: If users frequently override DLP blocks, the policy is either too restrictive or users are ignoring data protection requirements. Review override reasons.
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-endpoint-dlp-controls/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-endpoint-dlp-controls/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-endpoint-dlp-controls/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-endpoint-dlp-controls/assets/template.md` — Assessment deliverable and reporting template

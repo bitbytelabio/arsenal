@@ -293,3 +293,7 @@ FALSE POSITIVE ANALYSIS:
   Confirmed False Positives: 1 (SizeRestrictions_BODY for /api/upload)
   Action Taken: Rule exclusion applied
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-cloud-waf-rules/references/api-reference.md` — API and execution command reference

@@ -60,7 +60,7 @@ detection:
 ## CLI Usage
 
 ```bash
-python agent.py --sysmon-log Sysmon.evtx
-python agent.py --scan-dir C:\Users\victim\Downloads\app\
-python agent.py --generate-sigma
+python scripts/agent.py --sysmon-log Sysmon.evtx
+python scripts/agent.py --scan-dir C:\Users\victim\Downloads\app\
+python scripts/agent.py --generate-sigma
 ```

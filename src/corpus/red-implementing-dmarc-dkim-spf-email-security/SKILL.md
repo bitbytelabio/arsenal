@@ -95,7 +95,7 @@ v=DMARC1; p=reject; rua=mailto:dmarc-aggregate@example.com; pct=100
 ```
 
 ### Step 5: Monitor and Analyze DMARC Reports
-Use the `skill://red-implementing-dmarc-dkim-spf-email-security/support/implementing-dmarc-dkim-spf-email-security/templates/process.py` to parse DMARC aggregate XML reports and identify authentication failures, unauthorized senders, and spoofing attempts.
+Use the `skill://red-implementing-dmarc-dkim-spf-email-security/templates/process.py` to parse DMARC aggregate XML reports and identify authentication failures, unauthorized senders, and spoofing attempts.
 
 ## Tools & Resources
 - **MXToolbox**: https://mxtoolbox.com/SuperTool.aspx
@@ -109,3 +109,10 @@ Use the `skill://red-implementing-dmarc-dkim-spf-email-security/support/implemen
 - DKIM signature verified on test emails
 - DMARC record properly formatted and reporting enabled
 - Test emails pass all three checks in recipient's Authentication-Results header
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-dmarc-dkim-spf-email-security/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-dmarc-dkim-spf-email-security/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-dmarc-dkim-spf-email-security/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-dmarc-dkim-spf-email-security/assets/template.md` — Assessment deliverable and reporting template

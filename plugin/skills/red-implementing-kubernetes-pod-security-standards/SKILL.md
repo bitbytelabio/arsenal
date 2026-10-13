@@ -254,3 +254,10 @@ kubescape scan framework nsa --namespace production
 - [Pod Security Admission - Kubernetes](https://kubernetes.io/docs/concepts/security/pod-security-admission/)
 - [Migrate from PodSecurityPolicy](https://kubernetes.io/docs/tasks/configure-pod-container/migrate-from-psp/)
 - [Kubescape PSS Scanner](https://github.com/kubescape/kubescape)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-kubernetes-pod-security-standards/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-kubernetes-pod-security-standards/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-kubernetes-pod-security-standards/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-kubernetes-pod-security-standards/assets/template.md` — Assessment deliverable and reporting template

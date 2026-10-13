@@ -218,3 +218,8 @@ Run the pipeline over a labeled set of clean + injected artifacts, measure preci
 - [ ] Pipeline validated on a labeled corpus with precision/recall measured
 - [ ] Thresholds tuned and documented
 - [ ] Findings mapped to MITRE ATLAS AML.T0051.001 and OWASP LLM01:2025
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-indirect-prompt-injection/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-indirect-prompt-injection/references/standards.md` — Relevant standards and compliance baselines

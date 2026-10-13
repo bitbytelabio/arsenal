@@ -238,3 +238,10 @@ FAILING ALERTS:
 
 QUALITY GATE: FAILED (1 HIGH, 2 MEDIUM findings)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-integrating-dast-with-owasp-zap-in-pipeline/references/api-reference.md` — API and execution command reference
+- `skill://red-integrating-dast-with-owasp-zap-in-pipeline/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-integrating-dast-with-owasp-zap-in-pipeline/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-integrating-dast-with-owasp-zap-in-pipeline/assets/template.md` — Assessment deliverable and reporting template

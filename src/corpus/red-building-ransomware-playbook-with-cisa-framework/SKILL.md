@@ -161,3 +161,7 @@ Post-Incident Report Template:
 - **ID Ransomware**: Service for identifying ransomware families from encrypted files and ransom notes
 - **MITRE ATT&CK**: Technique framework for mapping ransomware TTPs to detection opportunities
 - **Velociraptor**: Endpoint visibility tool for rapid triage and forensic artifact collection during incidents
+
+## Shipped Playbook Resources
+
+- `skill://red-building-ransomware-playbook-with-cisa-framework/references/api-reference.md` — API and execution command reference

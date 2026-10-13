@@ -200,3 +200,7 @@ ESCALATION
 Routed To:       [Team/Individual]
 SLA Target:      [Containment deadline]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-triaging-security-incident/references/api-reference.md` — API and execution command reference

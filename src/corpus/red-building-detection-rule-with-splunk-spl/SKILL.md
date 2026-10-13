@@ -231,3 +231,10 @@ index=notable
 - [Writing Practical Splunk Detection Rules](https://medium.com/@vitbukac/practical-splunk-detection-rules-how-to-part-1-crawl-a24bc39a4b9d)
 - [Configure Correlation Searches - Splunk Documentation](https://help.splunk.com/en/splunk-enterprise-security-8/splunk-app-for-pci-compliance/installation-and-configuration-manual/6.1/configure-correlation-searches/configure-correlation-searches)
 - [SOC Prime - Correlation Events in Splunk](https://socprime.com/blog/creating-correlation-events-in-splunk-using-alerts/)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-detection-rule-with-splunk-spl/references/api-reference.md` — API and execution command reference
+- `skill://red-building-detection-rule-with-splunk-spl/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-detection-rule-with-splunk-spl/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-detection-rule-with-splunk-spl/assets/template.md` — Assessment deliverable and reporting template

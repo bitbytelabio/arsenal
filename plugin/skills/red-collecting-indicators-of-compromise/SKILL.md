@@ -245,3 +245,7 @@ Hash     | c3d4e5f6a7b8...         | 100        | Malicious .docm attachment
 
 TOTAL: 14 indicators | HIGH confidence avg: 91
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-collecting-indicators-of-compromise/references/api-reference.md` — API and execution command reference

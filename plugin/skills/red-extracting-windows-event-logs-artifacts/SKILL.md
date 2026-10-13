@@ -322,3 +322,7 @@ Windows Event Log Analysis Summary:
     Hayabusa: /analysis/hayabusa_timeline.csv
     Critical Events: /analysis/critical_events.json
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-extracting-windows-event-logs-artifacts/references/api-reference.md` — API and execution command reference

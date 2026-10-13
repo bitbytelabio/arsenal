@@ -151,3 +151,8 @@ Look for MACB timestamps that disagree with $UsnJrnl entries (timestomping), gap
 - [ ] Suspicious window triaged with tags/stars/saved searches
 - [ ] Anti-forensic indicators (timestomping, log clearing) checked
 - [ ] Findings documented with corroborating cross-source events
+
+## Shipped Playbook Resources
+
+- `skill://red-building-super-timelines-with-plaso/references/api-reference.md` — API and execution command reference
+- `skill://red-building-super-timelines-with-plaso/references/standards.md` — Relevant standards and compliance baselines

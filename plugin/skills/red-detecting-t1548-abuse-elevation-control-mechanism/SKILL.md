@@ -115,3 +115,10 @@ User Context: [Account]
 Risk Level: [Critical/High/Medium]
 ATT&CK Technique: [T1548.00x]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-t1548-abuse-elevation-control-mechanism/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-t1548-abuse-elevation-control-mechanism/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-t1548-abuse-elevation-control-mechanism/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-t1548-abuse-elevation-control-mechanism/assets/template.md` — Assessment deliverable and reporting template

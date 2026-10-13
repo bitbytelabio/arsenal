@@ -312,3 +312,10 @@ kubectl exec -n production frontend-pod -- wget -qO- --timeout=2 http://backend-
 6. **Test policies in staging** - Validate network connectivity after applying policies
 7. **Monitor denied traffic** - Enable Calico flow logs for visibility into blocked connections
 8. **Use tiers** - Organize policies into security, platform, and application tiers
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-kubernetes-network-policy-with-calico/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-kubernetes-network-policy-with-calico/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-kubernetes-network-policy-with-calico/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-kubernetes-network-policy-with-calico/assets/template.md` — Assessment deliverable and reporting template

@@ -9,11 +9,11 @@
 
 ## CLI Interface
 ```
-python agent.py extract --firmware plc_fw.bin [--output /tmp/fw_extract]
-python agent.py metadata --firmware plc_fw.bin
-python agent.py creds --dir /tmp/fw_extract
-python agent.py vulns --dir /tmp/fw_extract
-python agent.py full --firmware plc_fw.bin [--output /tmp/fw_extract]
+python templates/agent.py extract --firmware plc_fw.bin [--output /tmp/fw_extract]
+python templates/agent.py metadata --firmware plc_fw.bin
+python templates/agent.py creds --dir /tmp/fw_extract
+python templates/agent.py vulns --dir /tmp/fw_extract
+python templates/agent.py full --firmware plc_fw.bin [--output /tmp/fw_extract]
 ```
 
 ## Core Functions

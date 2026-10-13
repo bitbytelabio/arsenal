@@ -166,3 +166,10 @@ The regulation requires organizations to implement measures appropriate to the r
 - ICO (UK) GDPR Guidance: https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/
 - CNIL (France) GDPR Compliance Toolkit
 - Article 29 Working Party Guidelines on DPIAs
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-gdpr-data-protection-controls/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-gdpr-data-protection-controls/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-gdpr-data-protection-controls/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-gdpr-data-protection-controls/assets/template.md` — Assessment deliverable and reporting template

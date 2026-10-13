@@ -45,3 +45,7 @@ Adversaries establish persistence on Linux systems through crontab jobs, systemd
 - Timeline of persistence installation from auditd correlation
 - MITRE ATT&CK technique mapping (T1053, T1543, T1574, T1546)
 - Remediation commands for each detected persistence mechanism
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-persistence-mechanisms-in-linux/references/api-reference.md` — API and execution command reference

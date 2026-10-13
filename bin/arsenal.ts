@@ -87,6 +87,7 @@ const globalOptions = {
   workspace: { type: "string" },
   help: { type: "boolean", short: "h", default: false },
   target: { type: "string" },
+  skill: { type: "string" },
   from: { type: "string" },
   slug: { type: "string" },
   domain: { type: "string" },

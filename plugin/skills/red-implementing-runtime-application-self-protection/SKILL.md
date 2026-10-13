@@ -51,3 +51,7 @@ Forward RASP alerts to the SIEM for correlation with WAF, IDS, and authenticatio
 ## Expected Output
 
 JSON report containing RASP policy audit results, detected attack attempts with stack traces, blocked requests summary, and coverage assessment against OWASP Top 10.
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-runtime-application-self-protection/references/api-reference.md` — API and execution command reference

@@ -166,3 +166,7 @@ Identify the technologies, frameworks, and services used by the target:
 3. Disable directory listings on docs.techcorp.io and audit all web servers
 4. Implement GitHub secret scanning across all organization repositories
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-conducting-external-reconnaissance-with-osint/references/api-reference.md` — API and execution command reference

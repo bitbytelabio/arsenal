@@ -263,3 +263,7 @@ for tactic in tactic_order:
 - [Navigator Layer Format v4.5](https://github.com/mitre-attack/attack-navigator/blob/master/layers/LAYERFORMATv4_5.md)
 - [CISA Best Practices for MITRE ATT&CK Mapping](https://www.cisa.gov/sites/default/files/2023-01/Best%20Practices%20for%20MITRE%20ATTCK%20Mapping.pdf)
 - [Picus: Leverage MITRE ATT&CK for Threat Intelligence](https://www.picussecurity.com/how-to-leverage-the-mitre-attack-framework-for-threat-intelligence)
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-apt-group-with-mitre-navigator/references/api-reference.md` — API and execution command reference

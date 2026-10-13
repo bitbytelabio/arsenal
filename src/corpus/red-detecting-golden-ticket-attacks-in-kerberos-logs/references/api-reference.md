@@ -59,6 +59,6 @@ kerberos::golden /user:admin /domain:corp.local /sid:S-1-5-21-... /krbtgt:hash /
 ## CLI Usage
 
 ```bash
-python agent.py --security-log Security.evtx --domain corp.local
-python agent.py --generate-sigma
+python scripts/agent.py --security-log Security.evtx --domain corp.local
+python scripts/agent.py --generate-sigma
 ```

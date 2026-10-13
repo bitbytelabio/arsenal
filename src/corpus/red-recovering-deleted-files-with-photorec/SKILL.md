@@ -222,3 +222,7 @@ PhotoRec Recovery Summary:
   Output Directory: /cases/case-2024-001/recovered/all/
   Hash Manifest:    /cases/case-2024-001/recovered/recovered_hashes.txt
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-recovering-deleted-files-with-photorec/references/api-reference.md` — API and execution command reference

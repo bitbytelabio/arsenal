@@ -240,3 +240,10 @@ reaver -i wlan0mon -b AA:BB:CC:DD:EE:03 -K 1 -vv
 - WiFi Alliance WPA3 Specification: https://www.wi-fi.org/discover-wi-fi/security
 - NIST SP 800-153: Guidelines for Securing WLANs
 - Hashcat WPA modes: https://hashcat.net/wiki/doku.php?id=example_hashes
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-wireless-network-penetration-test/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-wireless-network-penetration-test/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-wireless-network-penetration-test/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-wireless-network-penetration-test/assets/template.md` — Assessment deliverable and reporting template

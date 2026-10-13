@@ -45,3 +45,7 @@ Email account compromise (EAC) is a prevalent attack vector where adversaries ga
 ## Expected Output
 
 A JSON report listing compromised or suspicious accounts, malicious inbox rules detected, impossible travel events, suspicious OAuth grants, and recommended containment actions with severity ratings.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-email-account-compromise/references/api-reference.md` — API and execution command reference

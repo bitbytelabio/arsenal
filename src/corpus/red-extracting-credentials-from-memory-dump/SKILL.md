@@ -316,3 +316,7 @@ Credential Extraction Summary:
     - High: Revoke all Kerberos tickets via krbtgt rotation
     - Medium: Audit DPAPI-protected data exposure
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-extracting-credentials-from-memory-dump/references/api-reference.md` — API and execution command reference

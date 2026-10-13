@@ -264,3 +264,7 @@ The `/actuator/env` endpoint is exposed without authentication, revealing enviro
 4. Implement IP-based access restrictions for administrative interfaces
 5. Use a reverse proxy to restrict access to internal-only endpoints
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-bypassing-authentication-with-forced-browsing/references/api-reference.md` — API and execution command reference

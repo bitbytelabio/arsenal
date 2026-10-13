@@ -8,10 +8,10 @@
 ## CLI Interface
 
 ```
-python agent.py registry    # Enumerate registry Run keys
-python agent.py tasks       # Enumerate scheduled tasks
-python agent.py services    # Enumerate suspicious services
-python agent.py all         # Run all persistence hunts
+python scripts/agent.py registry    # Enumerate registry Run keys
+python scripts/agent.py tasks       # Enumerate scheduled tasks
+python scripts/agent.py services    # Enumerate suspicious services
+python scripts/agent.py all         # Run all persistence hunts
 ```
 
 ## Core Functions

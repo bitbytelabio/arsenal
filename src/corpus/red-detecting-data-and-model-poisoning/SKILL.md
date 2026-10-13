@@ -200,3 +200,8 @@ Remove flagged samples (intersection of Cleanlab + ART signals is highest-confid
 - [ ] Model retrained on cleaned data and re-tested for the trigger
 - [ ] Findings mapped to MITRE ATLAS AML.T0020 / AML.T0018 and OWASP LLM04:2025
 - [ ] Report delivered with remediation (provenance, signed weights, pipeline scanning)
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-data-and-model-poisoning/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-data-and-model-poisoning/references/standards.md` — Relevant standards and compliance baselines

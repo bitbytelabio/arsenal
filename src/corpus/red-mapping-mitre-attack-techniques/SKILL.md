@@ -124,3 +124,7 @@ Summarize coverage by tactic category (Initial Access, Execution, Persistence, e
 - **Ignoring sub-techniques**: Many adversaries use specific sub-techniques. Coverage of T1059 (parent) doesn't imply coverage of T1059.005 (Visual Basic).
 - **Static mapping without updates**: ATT&CK releases major versions annually. Coverage maps go stale as techniques are added, revised, or deprecated.
 - **Not mapping to adversary groups**: Generic coverage maps don't distinguish between techniques used by APTs targeting your sector vs. commodity malware.
+
+## Shipped Playbook Resources
+
+- `skill://red-mapping-mitre-attack-techniques/references/api-reference.md` — API and execution command reference

@@ -282,3 +282,10 @@ def build_infrastructure_timeline(indicators):
 - [crt.sh Certificate Transparency](https://crt.sh/)
 - [PassiveTotal API](https://api.passivetotal.org/api/docs/)
 - [JARM Fingerprinting](https://github.com/salesforce/jarm)
+
+## Shipped Playbook Resources
+
+- `skill://red-tracking-threat-actor-infrastructure/references/api-reference.md` — API and execution command reference
+- `skill://red-tracking-threat-actor-infrastructure/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-tracking-threat-actor-infrastructure/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-tracking-threat-actor-infrastructure/assets/template.md` — Assessment deliverable and reporting template

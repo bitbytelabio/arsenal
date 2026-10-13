@@ -7,10 +7,10 @@
 
 ## CLI Interface
 ```
-python agent.py analyze --pcap capture.pcap
-python agent.py http --pcap capture.pcap
-python agent.py suspicious --pcap capture.pcap
-python agent.py conversations --pcap capture.pcap
+python scripts/agent.py analyze --pcap capture.pcap
+python scripts/agent.py http --pcap capture.pcap
+python scripts/agent.py suspicious --pcap capture.pcap
+python scripts/agent.py conversations --pcap capture.pcap
 ```
 
 ## Core Functions

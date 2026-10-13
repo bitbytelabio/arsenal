@@ -13,7 +13,7 @@ metadata:
 ## ACTION REQUIRED (Execute immediately upon reading)
 
 1. `NOW`: Confirm whether the current task falls within the scope of this skill.
-2. `NOW`: Read `tool-index.md` to verify tool availability and actual paths.
+2. `NOW`: Read `tool-index` (workstation tool inventory) to verify tool availability and actual paths.
 3. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 4. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -111,16 +111,15 @@ Use SVG only when text diagram languages cannot express the requested visual rel
 
 ## Rendering files
 
-When the user asks for PNG/SVG/PDF, create a source file and run:
+When the user asks for PNG/SVG/PDF, create a source file and run `templates/render_diagram.py` (provided at `skill://re-diagram-generator/templates/render_diagram.py`; resolve or copy to a local directory before execution):
 
 ```bash
-python "<SKILL_ROOT>/diagram-generator/templates/render_diagram.py" input.mmd --format svg --out output.svg
-python "<SKILL_ROOT>/diagram-generator/templates/render_diagram.py" input.dot --format png --out output.png
-python "<SKILL_ROOT>/diagram-generator/templates/render_diagram.py" input.puml --format svg --out output.svg
+python templates/render_diagram.py input.mmd --format svg --out output.svg
+python templates/render_diagram.py input.dot --format png --out output.png
+python templates/render_diagram.py input.puml --format svg --out output.svg
 ```
 
-> `<SKILL_ROOT>` is the actual path to the skills directory, which the AI should detect automatically.
-
+> The helper script is located at `skill://re-diagram-generator/templates/render_diagram.py`.
 The renderer is intentionally dependency-tolerant. It tries common local tools and reports actionable installation hints if a renderer is unavailable. Do not claim an image was rendered unless the script completed successfully and the output file exists.
 
 ## Validation checklist
@@ -179,10 +178,10 @@ If the renderer is unavailable, `templates/render_diagram.py` will output instal
 **Upstream Entry**: `skill://re-diagram-generator/support/SKILL.md` (Master Controller), `skill://re-diagram-generator/support/routing.md`
 **Trigger Condition**: User says "draw diagram", "flowchart", "architecture diagram", "attack path diagram", "sequence diagram", "Mermaid", "Graphviz", "PlantUML"
 **Downstream Exit**:
-- Generated diagrams can be embedded in `docs-generator/` reports
-- Attack path diagrams can accompany `pentest-tools/` penetration testing reports
+- Generated diagrams can be embedded in `re-docs-generator/` reports
+- Attack path diagrams can accompany `webapp-pentest-tools/` penetration testing reports
 
-**Related Sibling Modules**: `docs-generator/` (Embed diagrams into reports)
+**Related Sibling Modules**: `re-docs-generator/` (Embed diagrams into reports)
 
 
 ## Task Completion Self-Check (MUST pass before claiming completion)

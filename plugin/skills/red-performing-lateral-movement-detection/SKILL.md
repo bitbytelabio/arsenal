@@ -283,3 +283,7 @@ Affected Systems: 5 hosts across 2 network segments
 User Account:     admin_compromised (Domain Admin)
 Containment:      All 5 hosts isolated at 14:45 UTC
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-lateral-movement-detection/references/api-reference.md` — API and execution command reference

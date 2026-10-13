@@ -255,3 +255,7 @@ Total Affected: 1 server, 3 workstations
 Data Loss:      4 hours of file modifications (backup RPO)
 Exfiltration:   No evidence of data exfiltration confirmed
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-building-soc-playbook-for-ransomware/references/api-reference.md` — API and execution command reference

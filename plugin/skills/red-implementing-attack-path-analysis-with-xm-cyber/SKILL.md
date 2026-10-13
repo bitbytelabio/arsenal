@@ -242,3 +242,10 @@ Priority 4 (Standard - 90 days):
 - performing-asset-criticality-scoring-for-vulns
 - detecting-lateral-movement-in-network
 - exploiting-active-directory-with-bloodhound
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-attack-path-analysis-with-xm-cyber/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-attack-path-analysis-with-xm-cyber/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-attack-path-analysis-with-xm-cyber/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-attack-path-analysis-with-xm-cyber/assets/template.md` — Assessment deliverable and reporting template

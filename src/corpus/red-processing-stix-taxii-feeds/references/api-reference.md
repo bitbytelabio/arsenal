@@ -56,5 +56,5 @@ Maps STIX relationship objects into a graph of source -> [{relationship, target}
 ## Usage
 
 ```bash
-python agent.py https://cti.example.com/taxii/
+python scripts/agent.py https://cti.example.com/taxii/
 ```

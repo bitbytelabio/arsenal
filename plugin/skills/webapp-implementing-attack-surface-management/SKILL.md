@@ -183,14 +183,14 @@ The scoring algorithm considers:
 
 ```python
 # Exposure Score = sum of weighted factors, normalized to 0-100
-# See agent.py for the full implementation
+# See scripts/agent.py for the full implementation
 ```
 
 ## Examples
 
 ```bash
 # Run complete ASM pipeline against a target domain
-python agent.py \
+python scripts/agent.py \
     --domain example.com \
     --action full_scan \
     --shodan-key YOUR_KEY \
@@ -199,21 +199,25 @@ python agent.py \
     --output asm_report.json
 
 # Subdomain enumeration only
-python agent.py \
+python scripts/agent.py \
     --domain example.com \
     --action enumerate \
     --output subdomains.json
 
 # Exposure scoring on previously discovered assets
-python agent.py \
+python scripts/agent.py \
     --domain example.com \
     --action score \
     --input previous_scan.json \
     --output scored_assets.json
 
 # Multi-domain scan from file
-python agent.py \
+python scripts/agent.py \
     --domain-list targets.txt \
     --action full_scan \
     --output multi_domain_report.json
 ```
+
+## References
+
+- `skill://webapp-implementing-attack-surface-management/scripts/agent.py` — Bundled Python CLI helper script (`scripts/agent.py`)

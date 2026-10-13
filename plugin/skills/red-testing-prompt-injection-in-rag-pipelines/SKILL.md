@@ -256,3 +256,8 @@ Collect garak's HTML/JSONL report, Promptfoo's report, and PyRIT memory transcri
 - [ ] Findings mapped to OWASP LLM01:2025 and MITRE ATLAS AML.T0051
 - [ ] Remediation recommendations provided (context isolation, output filtering, corpus provenance)
 - [ ] Report delivered with severity ratings and reproduction steps
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-prompt-injection-in-rag-pipelines/references/api-reference.md` — API and execution command reference
+- `skill://red-testing-prompt-injection-in-rag-pipelines/references/standards.md` — Relevant standards and compliance baselines

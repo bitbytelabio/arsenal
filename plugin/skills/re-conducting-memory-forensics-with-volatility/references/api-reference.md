@@ -13,7 +13,7 @@ Automates memory forensics analysis using Volatility 3: process listing, network
 ## CLI Usage
 
 ```bash
-python agent.py --memory-file memory.raw --output forensics_report.json
+python templates/agent.py --memory-file memory.raw --output forensics_report.json
 ```
 
 ## Key Functions

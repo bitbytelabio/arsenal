@@ -132,3 +132,10 @@ Legitimate DC: [Yes/No]
 Known Service Account: [Yes/No]
 Risk Assessment: [Critical - non-DC replication detected]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-dcsync-attack-in-active-directory/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-dcsync-attack-in-active-directory/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-dcsync-attack-in-active-directory/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-dcsync-attack-in-active-directory/assets/template.md` — Assessment deliverable and reporting template

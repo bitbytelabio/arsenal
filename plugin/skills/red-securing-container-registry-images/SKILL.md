@@ -284,3 +284,7 @@ REGISTRY CONFIGURATION:
   Lifecycle policies:       20 / 24 repositories
   Image signing enforced:    8 / 24 repositories
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-container-registry-images/references/api-reference.md` — API and execution command reference

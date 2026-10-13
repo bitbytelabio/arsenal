@@ -237,3 +237,10 @@ index=sysmon host=*
 - **Missing Sysmon Event ID 8/10**: Default Sysmon configurations may not capture CreateRemoteThread or ProcessAccess. Use a comprehensive Sysmon config.
 - **Ignoring parent process context**: A suspicious command line from cmd.exe is concerning only if the parent of cmd.exe is unusual (e.g., Excel spawning cmd.exe).
 - **Not correlating across event types**: Single events are often benign. Combine multiple weak signals (process creation + network connection + file creation) for high-confidence detections.
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-evasion-techniques-in-endpoint-logs/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-evasion-techniques-in-endpoint-logs/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-evasion-techniques-in-endpoint-logs/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-evasion-techniques-in-endpoint-logs/assets/template.md` — Assessment deliverable and reporting template

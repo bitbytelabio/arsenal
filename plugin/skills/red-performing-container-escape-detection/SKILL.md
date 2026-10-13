@@ -58,3 +58,7 @@ for vol in pod.spec.volumes or []:
     if vol.host_path and "docker.sock" in (vol.host_path.path or ""):
         print(f"Docker socket exposed: {pod.metadata.name}")
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-container-escape-detection/references/api-reference.md` — API and execution command reference

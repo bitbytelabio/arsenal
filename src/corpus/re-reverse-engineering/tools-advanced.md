@@ -15,7 +15,7 @@ Advanced tooling for commercial packers/protectors, binary diffing, deobfuscatio
   - [BinDiff](#bindiff)
   - [Diaphora](#diaphora)
 - [Deobfuscation Frameworks](#deobfuscation-frameworks)
-  - [D-810 (IDA)](#d-810-ida)
+  - [d810-ng (IDA)](#d810-ng-ida--preferred-local-choice)
   - [GOOMBA (Ghidra)](#goomba-ghidra)
   - [Miasm](#miasm)
 - [Qiling Framework (Emulation)](#qiling-framework-emulation)

@@ -273,3 +273,10 @@ jobs:
 8. **Lint strictly** in CI with `--strict` flag
 9. **Review third-party charts** before deploying to production
 10. **Use Helm test hooks** to validate deployments post-install
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-helm-chart-deployments/references/api-reference.md` — API and execution command reference
+- `skill://red-securing-helm-chart-deployments/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-securing-helm-chart-deployments/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-securing-helm-chart-deployments/assets/template.md` — Assessment deliverable and reporting template

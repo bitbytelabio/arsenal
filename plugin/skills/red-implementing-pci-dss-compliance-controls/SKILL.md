@@ -128,3 +128,10 @@ PCI DSS 4.0.1 establishes 12 requirements across 6 control objectives for organi
 - PCI SSC Quick Reference Guide
 - PCI DSS 4.0 Summary of Changes
 - UpGuard PCI DSS 4.0 Guide: https://www.upguard.com/blog/pci-compliance
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-pci-dss-compliance-controls/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-pci-dss-compliance-controls/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-pci-dss-compliance-controls/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-pci-dss-compliance-controls/assets/template.md` — Assessment deliverable and reporting template

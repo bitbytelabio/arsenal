@@ -204,3 +204,10 @@ output.elasticsearch:
 - **Ignoring baseline establishment**: First FIM scan creates a baseline. Changes detected before baseline stabilization are noise, not threats. Allow 48 hours for baseline.
 - **Active response without testing**: Auto-blocking IPs or disabling accounts can cause outages. Test active response rules in a non-production environment first.
 - **Agent enrollment failures**: Agents must successfully enroll with the manager before monitoring begins. Verify firewall rules allow port 1514 and 1515 traffic.
+
+## Shipped Playbook Resources
+
+- `skill://red-configuring-host-based-intrusion-detection/references/api-reference.md` — API and execution command reference
+- `skill://red-configuring-host-based-intrusion-detection/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-configuring-host-based-intrusion-detection/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-configuring-host-based-intrusion-detection/assets/template.md` — Assessment deliverable and reporting template

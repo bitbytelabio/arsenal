@@ -57,3 +57,7 @@ JSON report containing:
 - Targeted usernames and failure sub-status codes
 - Successful logons following brute force attempts (potential compromises)
 - Time-series analysis of attack intensity
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-rdp-brute-force-attacks/references/api-reference.md` — API and execution command reference

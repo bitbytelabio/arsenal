@@ -215,3 +215,8 @@ if __name__ == "__main__":
 - [2024 Volatility Plugin Contest](https://volatilityfoundation.org/the-2024-volatility-plugin-contest-results-are-in/)
 - [Memory Forensics with Volatility 3](https://newtonpaul.com/malware-analysis-memory-forensics-with-volatility-3/)
 - [MITRE ATT&CK T1055 - Process Injection](https://attack.mitre.org/techniques/T1055/)
+- `skill://re-performing-memory-forensics-with-volatility3-plugins/references/api-reference.md` — API Reference — Performing Memory Forensics with Volatility3 Plugins
+- `skill://re-performing-memory-forensics-with-volatility3-plugins/references/standards.md` — Volatility3 Memory Forensics Standards
+- `skill://re-performing-memory-forensics-with-volatility3-plugins/references/workflows.md` — Memory Forensics Workflows
+- `skill://re-performing-memory-forensics-with-volatility3-plugins/assets/template.md` — Memory Forensics Analysis Report
+- `skill://re-performing-memory-forensics-with-volatility3-plugins/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)

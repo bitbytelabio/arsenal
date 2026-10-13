@@ -209,3 +209,7 @@ curl -X POST http://target.com/api/send-email \
 - Use parameterized email APIs that separate headers from data
 - Implement rate limiting on email-sending functionality
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-testing-for-email-header-injection/references/api-reference.md` — API and execution command reference

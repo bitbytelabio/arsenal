@@ -71,3 +71,7 @@ Command: [Executed command or script]
 Risk Level: [Critical/High/Medium/Low]
 Recommended Action: [Remove subscription, investigate lateral movement]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-wmi-persistence/references/api-reference.md` — API and execution command reference

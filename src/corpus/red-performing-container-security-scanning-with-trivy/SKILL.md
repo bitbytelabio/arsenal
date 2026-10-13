@@ -51,3 +51,7 @@ Add Trivy scanning as a pipeline gate that blocks builds with critical/high vuln
 ## Expected Output
 
 JSON/table report listing CVEs with severity, CVSS scores, fixed versions, affected packages, misconfiguration findings, and exposed secrets with file locations.
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-container-security-scanning-with-trivy/references/api-reference.md` — API and execution command reference

@@ -180,3 +180,10 @@ WHERE a.result != 'trusted';
 - **Schedule intervals too aggressive**: Running heavy queries every 60 seconds causes CPU spikes. Use 300-3600 second intervals for most queries.
 - **Not using differential mode**: Without differential logging, osquery logs all results every interval. Differential mode logs only changes.
 - **Missing event tables**: Some osquery tables require events framework enabled (process_events, socket_events). Enable with `--disable_events=false`.
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-osquery-for-endpoint-monitoring/references/api-reference.md` — API and execution command reference
+- `skill://red-deploying-osquery-for-endpoint-monitoring/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-deploying-osquery-for-endpoint-monitoring/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-deploying-osquery-for-endpoint-monitoring/assets/template.md` — Assessment deliverable and reporting template

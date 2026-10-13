@@ -15,7 +15,7 @@ Monitors SCADA/ICS Modbus TCP traffic for unauthorized function codes, register 
 
 ```bash
 # Analyze a pcap file
-python agent.py --pcap modbus_capture.pcap \
+python scripts/agent.py --pcap modbus_capture.pcap \
   --authorized-masters 10.1.1.10 10.1.1.11 \
   --authorized-writers 10.1.1.10 \
   --register-limits-file register_limits.json \
@@ -23,11 +23,11 @@ python agent.py --pcap modbus_capture.pcap \
   --output report.json
 
 # Build a baseline from pcap
-python agent.py --pcap normal_traffic.pcap \
+python scripts/agent.py --pcap normal_traffic.pcap \
   --baseline-mode --baseline-file baseline.json
 
 # Live capture on network interface
-python agent.py --interface eth0 --duration 3600 \
+python scripts/agent.py --interface eth0 --duration 3600 \
   --authorized-masters 10.1.1.10 10.1.1.11 \
   --authorized-writers 10.1.1.10 \
   --baseline-file baseline.json \

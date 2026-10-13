@@ -99,3 +99,10 @@ Use the automation script to pull campaign data via GoPhish API and generate det
 - Capture simulated credentials on landing page
 - Generate campaign report with open/click/submit rates
 - Redirect users to awareness training after interaction
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-phishing-simulation-with-gophish/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-phishing-simulation-with-gophish/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-phishing-simulation-with-gophish/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-phishing-simulation-with-gophish/assets/template.md` — Assessment deliverable and reporting template

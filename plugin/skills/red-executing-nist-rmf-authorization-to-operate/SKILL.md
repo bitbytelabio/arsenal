@@ -93,7 +93,7 @@ Authorization is not a one-time gate. Maintain an ongoing posture: track control
 
 ## Output Format
 
-Produce an **Authorization Package summary** using `skill://red-executing-nist-rmf-authorization-to-operate/support/executing-nist-rmf-authorization-to-operate/assets/template.md`, containing:
+Produce an **Authorization Package summary** using `skill://red-executing-nist-rmf-authorization-to-operate/assets/template.md`, containing:
 
 1. **System & boundary** — description, components, data flows, inherited services.
 2. **Categorization** — FIPS 199 C/I/A and overall impact, with information-type rationale.
@@ -104,4 +104,8 @@ Produce an **Authorization Package summary** using `skill://red-executing-nist-r
 7. **Authorization decision** — ATO/cATO/DATO, term, conditions, residual-risk statement, AO.
 8. **ConMon plan** — what's monitored, how often, reporting cadence, reassessment triggers.
 
-Use `skill://red-executing-nist-rmf-authorization-to-operate/support/executing-nist-rmf-authorization-to-operate/templates/process.py` to select the right SP 800-53B baseline from a FIPS 199 categorization, summarize control-implementation status, and generate a POA&M table from a findings JSON.
+Use `skill://red-executing-nist-rmf-authorization-to-operate/templates/process.py` to select the right SP 800-53B baseline from a FIPS 199 categorization, summarize control-implementation status, and generate a POA&M table from a findings JSON.
+
+## Shipped Playbook Resources
+
+- `skill://red-executing-nist-rmf-authorization-to-operate/references/standards.md` — Relevant standards and compliance baselines

@@ -12,7 +12,7 @@ metadata:
 
 1. `NOW`: Read `skill://red-edr-bypass-re/support/field-journal/precedent-reverse.md` — confirm that the operations in this skill are authorized routine operations.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
-3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+3. `NEXT`: Read engagement tool index to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 5. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -190,7 +190,8 @@ Solution:
 ### Bootstrap command
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File "&lt;SKILL_ROOT&gt;\skills\scripts\bootstrap-reverse.ps1" -Capability @('pe-sieve','syswhispers3','sysmon') -StartServices
+# Resolve skill://red-edr-bypass-re/scripts/bootstrap-reverse.ps1 to local path before execution
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/bootstrap-reverse.ps1 -Capability @('pe-sieve','syswhispers3','sysmon') -StartServices
 ```
 
 ## Routing Context

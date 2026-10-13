@@ -14,7 +14,7 @@ Gathers open-source intelligence on target domains using Shodan, certificate tra
 ## CLI Usage
 
 ```bash
-python agent.py --domain example.com --shodan-key <key> --github-token <token> --output report.json
+python scripts/agent.py --domain example.com --shodan-key <key> --github-token <token> --output report.json
 ```
 
 ## Key Functions

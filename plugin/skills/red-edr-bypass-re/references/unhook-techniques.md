@@ -335,4 +335,4 @@ Recommended practical chain: **Halo's Gate + indirect syscall + CallStackSpoofer
 
 ## Routing Callback
 
-Unhooking is only half of the bypass; the other half is telemetry blinding: go to `references/telemetry-blinding.md`.
+Unhooking is only half of the bypass; the other half is telemetry blinding: go to `skill://red-edr-bypass-re/references/telemetry-blinding.md`.

@@ -61,13 +61,13 @@ metadata:
 ## References
 
 - `skill://re-go-rust-reverse/references/go-rust-notes.md`
-- `skill://re-go-rust-reverse/support/reverse-engineering/go-reverse.md` `../ida-reverse/` `../ghidra-reverse/`
+- `skill://re-go-rust-reverse/support/reverse-engineering/go-reverse.md` `../re-ida-reverse/` `../re-ghidra-reverse/`
 - seed: `skill://re-go-rust-reverse/support/field-journal/seed-002_go-malware-stripped.md`
 
 ## Routing Context
 
 **Upstream**: MASTER R33  
-**Downstream**: Malware analysis workflow `malware-analysis`; Generic RE `reverse-engineering`
+**Downstream**: Malware analysis workflow `re-malware-analysis`; Generic RE `re-reverse-engineering`
 
 ## Task Completion Self-Check
 

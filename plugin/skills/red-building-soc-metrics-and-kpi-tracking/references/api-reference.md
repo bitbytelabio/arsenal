@@ -13,7 +13,7 @@ Automates collection of SOC performance metrics (MTTD, MTTR, alert quality, anal
 ## CLI Usage
 
 ```bash
-python agent.py --splunk-url https://splunk:8089 --username admin --password <pass> --output report.json
+python scripts/agent.py --splunk-url https://splunk:8089 --username admin --password <pass> --output report.json
 ```
 
 ## Arguments

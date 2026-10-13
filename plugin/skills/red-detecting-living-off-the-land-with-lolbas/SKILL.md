@@ -45,3 +45,7 @@ Living Off the Land Binaries, Scripts, and Libraries (LOLBAS) are legitimate sys
 - MITRE ATT&CK technique mapping for each detection (T1218, T1105, T1140, T1127)
 - Parent-child process anomaly analysis
 - Sigma rule match details with raw event data
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-living-off-the-land-with-lolbas/references/api-reference.md` — API and execution command reference

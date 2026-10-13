@@ -2,7 +2,7 @@
 
 > Source Retrieval Date: **2026-07-17**  
 > Objective: Provide reverse-skill with **visibility into external resources** to adopt best practices on demand, **without** integrating massive external repositories wholesale into this package.  
-> Package Identity: Routing + Tool bootstrapping + Evidence/Scope contracts + Field journals (see `ops/IDENTITY.md`).
+> Package Identity: Routing + Tool bootstrapping + Evidence/Scope contracts + Field journals (see `skill://webapp-pentest-tools/support/ops/IDENTITY.md`).
 
 ## 1. High-Value External Repositories (Learn, Do Not Blindly Install)
 
@@ -11,7 +11,7 @@
 | [trailofbits/skills](https://github.com/trailofbits/skills) | ToB security research Claude plugin marketplace | Quality benchmark for audit / vulnerability analysis / RE plugins | Must be installed per ToB marketplace; do not implicitly trust non-curated copies |
 | [trailofbits/skills-curated](https://github.com/trailofbits/skills-curated) | Vetted plugin list | Takes precedence over arbitrary community skills | Same as above |
 | [Orizon-eu/claude-code-pentest](https://github.com/Orizon-eu/claude-code-pentest) | 6 pentest lifecycle skills + pure Python scripts | Recon → Exploit → Report pipeline can serve as a benchmark for our `attack-chain` + `pentest-tools` | Authorization boundaries require self-checks; scripts require sandboxing |
-| [trilwu/secskills](https://github.com/trilwu/secskills) | 16 skills + 6 expert subagents | Multi-role division of labor maps to `ops/role-map.md` | Plugin format; differs from this package's monorepo architecture |
+| [trilwu/secskills](https://github.com/trilwu/secskills) | 16 skills + 6 expert subagents | Multi-role division of labor maps to `skill://webapp-pentest-tools/support/ops/role-map.md` | Plugin format; differs from this package's monorepo architecture |
 | [Masriyan/Claude-Code-CyberSecurity-Skill](https://github.com/Masriyan/Claude-Code-CyberSecurity-Skill) | ~15–19 domain skills (incl. RE/OT/CSOC) | Domain coverage checklist | Lacks the depth of this package's single-domain skills |
 | [mukul975/Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills) | **800+** skills · ATT&CK/NIST mappings | Useful for **framework mapping** and domain directories; whole-repo dependency is discouraged | Excessive footprint; massive maintenance overhead and poisoning surface |
 | [Eyadkelleh/awesome-skills-security](https://github.com/Eyadkelleh/awesome-claude-skills-security) | SecLists packaged as agent skills | Entry point for wordlists / payloads | Overlaps with seclists bootstrap |
@@ -27,11 +27,11 @@
 | [trailofbits/skills](https://github.com/trailofbits/skills) plugins: `audit-context-building` `differential-review` `semgrep-rule-creator` `sharp-edges` `dwarf-expert` `burpsuite-project-parser` | Audit context, differential security review, dangerous APIs, DWARF, Burp project parsing | Benchmark against `ida-reverse` / `docs-generator` / audit workflows; **do not** merge the entire repo |
 | [HexRaysSA/ida-claude-code-plugins](https://github.com/HexRaysSA/ida-claude-code-plugins) | Official IDA Claude plugins (includes domain automation, marked unsafe) | Reference for `ida-reverse` MCP paths; unsafe plugins remain disabled by default |
 | [P4nda0s/reverse-skills](https://github.com/P4nda0s/reverse-skills) | IDA-NO-MCP: export decompilation prior to analysis; rev-frida/dex-dump/u3d | Complements "offline exports when MCP is unavailable" |
-| [2389-research/binary-re](https://github.com/2389-research/binary-re) | triage → static (r2/Ghidra) → dynamic (QEMU/GDB/Frida) → synthesis | Stage gates for `reverse-engineering` are documented in `re-agent-workflow.md` |
+| [2389-research/binary-re](https://github.com/2389-research/binary-re) | triage → static (r2/Ghidra) → dynamic (QEMU/GDB/Frida) → synthesis | Stage gates for `reverse-engineering` are documented in `skill://re-reverse-engineering/references/re-agent-workflow.md` |
 | [incogbyte/android-reverse-engineering-claude-skill](https://github.com/incogbyte/android-reverse-engineering-claude-skill) | APK unpacking, endpoint extraction, adaptive Frida bypasses | Benchmark against `apk-reverse`; dynamic scripts require explicit scope |
 | [OwenPawl/cerberus-re-skill](https://github.com/OwenPawl/cerberus-re-skill) | Apple-focused Ghidra + LLDB + Frida tri-loop | Reference for macOS / iOS dynamic loops |
 | [ljagiello/ctf-skills](https://github.com/ljagiello/ctf-skills) | CTF reverse / pwn; on-demand tool installation | Benchmark against CTF-Sandbox + `pwn-chain` |
-| [shuvonsec/claude-bug-bounty](https://github.com/shuvonsec/claude-bug-bounty) | /recon → /hunt → /validate → /report | Benchmark against `recon-pipeline.md` + scope gates |
+| [shuvonsec/claude-bug-bounty](https://github.com/shuvonsec/claude-bug-bounty) | /recon → /hunt → /validate → /report | Benchmark against `skill://webapp-pentest-tools/references/recon-pipeline.md` + scope gates |
 | [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) | Web payloads + Prompt Injection section | Prioritize `pentest-tools/payloads`; see `llm-security` for LLM topics |
 | [HackTricks](https://hacktricks.wiki/) | Pentesting methodology + **AI / MCP abuse** | See skill-supply-chain MCP section |
 | [appsecsanta AI pentesting agents 2026](https://appsecsanta.com/research/ai-pentesting-agents-2026) | Architectural classification of 39+ open-source AI pentesting agents | Multi-agent is not strictly required; we utilize role-map |
@@ -41,7 +41,7 @@
 
 | Source | Key Takeaways | Application in This Package |
 |--------|---------------|-----------------------------|
-| [OWASP Agentic Skills Top 10](https://owasp.org/www-project-agentic-skills-top-10/) | Malicious skills, supply chain, privilege abuse, memory poisoning, etc. | `ops/skill-supply-chain.md` |
+| [OWASP Agentic Skills Top 10](https://owasp.org/www-project-agentic-skills-top-10/) | Malicious skills, supply chain, privilege abuse, memory poisoning, etc. | `skill://re-apk-reverse/support/ops/skill-supply-chain.md` |
 | [Anthropic Agent Skills Engineering Post](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) | Only install from trusted sources; audit scripts and dependencies | Same as above + bootstrap prohibits guessing paths |
 | ClawHavoc and related poisoning campaigns (documented in AST10) | Batch malicious skills published to registries | Prohibit one-click installations from unknown registries into this package |
 
@@ -72,11 +72,11 @@
 
 | Artifact | Path |
 |----------|------|
-| Four Stages of RE | `reverse-engineering/references/re-agent-workflow.md` |
-| Authorized Reconnaissance | `pentest-tools/references/recon-pipeline.md` |
-| Attack Chain Gatechecks | `attack-chain/references/lifecycle-checklist.md` |
-| Skill Supply Chain | `ops/skill-supply-chain.md` |
-| Domain Coverage | `references/domain-coverage-map.md` |
+| Four Stages of RE | `skill://re-reverse-engineering/references/re-agent-workflow.md` |
+| Authorized Reconnaissance | `skill://webapp-pentest-tools/references/recon-pipeline.md` |
+| Attack Chain Gatechecks | `skill://red-attack-chain/references/lifecycle-checklist.md` |
+| Skill Supply Chain | `skill://re-apk-reverse/support/ops/skill-supply-chain.md` |
+| Domain Coverage | `skill://re-reverse-engineering/support/references/domain-coverage-map.md` |
 
 ## 5. Recommended Priorities (Subsequent Iterations)
 

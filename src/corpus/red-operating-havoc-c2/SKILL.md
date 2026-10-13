@@ -264,3 +264,8 @@ Stop the team server (`Ctrl-C`) and revoke operator credentials at engagement en
 - [ ] A .NET assembly or BOF executed in-memory
 - [ ] SOCKS proxy or port-forward established for pivoting
 - [ ] Artifacts removed, agent exited, and team server stopped at cleanup
+
+## Shipped Playbook Resources
+
+- `skill://red-operating-havoc-c2/references/api-reference.md` — API and execution command reference
+- `skill://red-operating-havoc-c2/references/standards.md` — Relevant standards and compliance baselines

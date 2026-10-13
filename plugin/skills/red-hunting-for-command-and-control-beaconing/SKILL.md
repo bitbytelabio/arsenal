@@ -92,3 +92,10 @@ Domain Age: [Days]
 TI Match: [Yes/No - source]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-command-and-control-beaconing/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-for-command-and-control-beaconing/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hunting-for-command-and-control-beaconing/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hunting-for-command-and-control-beaconing/assets/template.md` — Assessment deliverable and reporting template

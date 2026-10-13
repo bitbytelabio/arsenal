@@ -324,3 +324,7 @@ monitor = InfrastructureMonitor(tracker, known_indicators=set())
 - [Validin: Passive DNS Threat Hunting](https://www.validin.com/blog/announcing_validin_threat_hunting_platform/)
 - [SecurityTrails API](https://securitytrails.com/corp/api)
 - [Hunt.io: Uncovering Malicious Infrastructure](https://hunt.io/blog/practical-guide-unconvering-malicious-infrastructure)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-adversary-infrastructure-tracking-system/references/api-reference.md` — API and execution command reference

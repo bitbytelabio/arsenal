@@ -233,13 +233,13 @@ engine.generate_dpia_report(
 
 ```bash
 # Run demonstration workflow
-python agent.py --action demo --org "Acme Corp" --output report.json
+python scripts/agent.py --action demo --org "Acme Corp" --output report.json
 
 # Run screening checklist
-python agent.py --action screening
+python scripts/agent.py --action screening
 
 # Specify DPO email
-python agent.py --action demo --dpo-email dpo@acme.com --output dpia.json
+python scripts/agent.py --action demo --dpo-email dpo@acme.com --output dpia.json
 ```
 
 ## References

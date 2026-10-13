@@ -203,3 +203,10 @@ Post-Deployment Validation:
 - performing-cve-prioritization-with-kev-catalog
 - implementing-vulnerability-remediation-sla
 - implementing-patch-management-workflow
+
+## Shipped Playbook Resources
+
+- `skill://red-building-patch-tuesday-response-process/references/api-reference.md` — API and execution command reference
+- `skill://red-building-patch-tuesday-response-process/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-patch-tuesday-response-process/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-patch-tuesday-response-process/assets/template.md` — Assessment deliverable and reporting template

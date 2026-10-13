@@ -320,3 +320,10 @@ calculate_risk_score()
 - [From Zero to Process to XSOAR Playbook](https://live.paloaltonetworks.com/t5/community-blogs/from-zero-to-process-to-xsoar-playbook/ba-p/564568)
 - [XSOAR Common Playbooks Pack](https://www.paloaltonetworks.com/blog/security-operations/playbook-of-the-week-xsoar-common-playbook/)
 - [Cortex XSOAR Product Page](https://www.paloaltonetworks.com/cortex/cortex-xsoar)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-soar-playbook-with-palo-alto-xsoar/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-soar-playbook-with-palo-alto-xsoar/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-soar-playbook-with-palo-alto-xsoar/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-soar-playbook-with-palo-alto-xsoar/assets/template.md` — Assessment deliverable and reporting template

@@ -322,3 +322,7 @@ def verify_token_secure(token: str, secret_key: str) -> dict:
 - PortSwigger JWT None Algorithm: https://portswigger.net/kb/issues/00200901_jwt-none-algorithm-supported
 - HackTricks JWT Vulnerabilities: https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens
 - Invicti JWT Signature Bypass: https://www.invicti.com/web-vulnerability-scanner/vulnerabilities/jwt-signature-bypass-via-none-algorithm
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-jwt-none-algorithm-attack/references/api-reference.md` — API and execution command reference

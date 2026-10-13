@@ -360,3 +360,7 @@ HIGH FINDINGS:
   [K8S-005] Images deployed using mutable tags (:latest) in 8 deployments
   [K8S-006] RBAC ClusterRoleBinding grants cluster-admin to developers group
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-kubernetes-on-cloud/references/api-reference.md` — API and execution command reference

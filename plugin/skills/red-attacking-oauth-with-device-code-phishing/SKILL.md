@@ -227,3 +227,8 @@ Instead of device-code, register a malicious multi-tenant app and phish the vict
 - [ ] Illicit-consent variant tested or documented as out of scope
 - [ ] Accessible resources enumerated with ROADtools and recorded
 - [ ] Remediation recommendations (CA device-code block, FIDO2, consent restrictions) delivered
+
+## Shipped Playbook Resources
+
+- `skill://red-attacking-oauth-with-device-code-phishing/references/api-reference.md` — API and execution command reference
+- `skill://red-attacking-oauth-with-device-code-phishing/references/standards.md` — Relevant standards and compliance baselines

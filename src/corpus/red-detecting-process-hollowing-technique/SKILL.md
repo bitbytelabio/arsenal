@@ -87,3 +87,10 @@ Host: [Hostname]
 User: [Account context]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-process-hollowing-technique/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-process-hollowing-technique/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-process-hollowing-technique/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-process-hollowing-technique/assets/template.md` — Assessment deliverable and reporting template

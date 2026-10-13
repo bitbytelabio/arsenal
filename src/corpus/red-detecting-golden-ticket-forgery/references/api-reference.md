@@ -76,7 +76,7 @@ event.code: "4769" AND winlog.event_data.TicketEncryptionType: "0x17"
 
 ## CLI Usage
 ```bash
-python agent.py --evtx-xml security_events.xml --output golden_ticket_report.json
-python agent.py --show-splunk
-python agent.py --evtx-xml events.xml --max-ticket-hours 8
+python scripts/agent.py --evtx-xml security_events.xml --output golden_ticket_report.json
+python scripts/agent.py --show-splunk
+python scripts/agent.py --evtx-xml events.xml --max-ticket-hours 8
 ```

@@ -75,3 +75,10 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-for-living-off-the-cloud-techniques/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-for-living-off-the-cloud-techniques/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-hunting-for-living-off-the-cloud-techniques/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-hunting-for-living-off-the-cloud-techniques/assets/template.md` — Assessment deliverable and reporting template

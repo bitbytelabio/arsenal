@@ -70,3 +70,10 @@ Each message uses a unique encryption key derived from a ratcheting chain. After
 - [ ] Forward secrecy: old keys cannot decrypt new messages
 - [ ] Out-of-order messages can be decrypted
 - [ ] Tampered messages are rejected by authentication
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-end-to-end-encryption-for-messaging/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-end-to-end-encryption-for-messaging/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-end-to-end-encryption-for-messaging/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-end-to-end-encryption-for-messaging/assets/template.md` — Assessment deliverable and reporting template

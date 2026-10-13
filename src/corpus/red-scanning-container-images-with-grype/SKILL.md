@@ -214,3 +214,10 @@ grype db list
 5. **Scan all layers** - Use `--scope all-layers` to catch vulnerabilities in intermediate layers
 6. **Automate database updates** - Keep the vulnerability database current in CI runners
 7. **Compare scans** - Track vulnerability count over time for regression detection
+
+## Shipped Playbook Resources
+
+- `skill://red-scanning-container-images-with-grype/references/api-reference.md` — API and execution command reference
+- `skill://red-scanning-container-images-with-grype/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-scanning-container-images-with-grype/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-scanning-container-images-with-grype/assets/template.md` — Assessment deliverable and reporting template

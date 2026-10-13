@@ -158,17 +158,17 @@ Based on research from IEEE and Springer publications:
 
 ```bash
 # Analyze a single audio file
-python agent.py analyze suspect_call.wav
+python scripts/agent.py analyze suspect_call.wav
 
 # Analyze with trained model
-python agent.py analyze suspect_call.wav --model deepfake_model.joblib -o result.json
+python scripts/agent.py analyze suspect_call.wav --model deepfake_model.joblib -o result.json
 
 # Batch analyze a directory
-python agent.py batch /path/to/audio/samples/ -o batch_results.json
+python scripts/agent.py batch /path/to/audio/samples/ -o batch_results.json
 
 # Train a model from labeled data
-python agent.py train --genuine /data/genuine/ --deepfake /data/deepfake/ -o model.joblib
+python scripts/agent.py train --genuine /data/genuine/ --deepfake /data/deepfake/ -o model.joblib
 
 # Extract features only (for custom analysis)
-python agent.py features suspect_call.wav -o features.json
+python scripts/agent.py features suspect_call.wav -o features.json
 ```

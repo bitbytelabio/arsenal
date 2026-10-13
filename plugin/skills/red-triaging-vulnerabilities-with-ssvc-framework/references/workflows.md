@@ -107,9 +107,7 @@ Weekly/monthly reporting cycle.
 
 ### Report Generation
 ```bash
-python3 scripts/process.py \
-  --mode report \
-  --input ssvc_results.json \
-  --period weekly \
-  --output ssvc_metrics_report.html
+python3 templates/process.py \
+  --input ssvc_results.csv \
+  --output ssvc_metrics_report.json
 ```

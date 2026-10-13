@@ -59,6 +59,6 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "Restr
 ## CLI Usage
 
 ```bash
-python agent.py --security-log Security.evtx
-python agent.py --security-log Security.evtx --target-threshold 5
+python scripts/agent.py --security-log Security.evtx
+python scripts/agent.py --security-log Security.evtx --target-threshold 5
 ```

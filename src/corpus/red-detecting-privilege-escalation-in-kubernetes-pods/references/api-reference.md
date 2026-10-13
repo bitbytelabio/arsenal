@@ -47,6 +47,6 @@ metadata:
 ## CLI Usage
 
 ```bash
-python agent.py --namespace default
-python agent.py --json-file pods.json
+python scripts/agent.py --namespace default
+python scripts/agent.py --json-file pods.json
 ```

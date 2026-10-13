@@ -84,3 +84,10 @@ Application --> PKCS#11 API --> HSM Provider --> Hardware HSM
 - [ ] Signing/verification uses HSM-resident keys
 - [ ] Keys cannot be exported (non-extractable)
 - [ ] Key listing shows all HSM-stored objects
+
+## Shipped Playbook Resources
+
+- `skill://red-configuring-hsm-for-key-storage/references/api-reference.md` — API and execution command reference
+- `skill://red-configuring-hsm-for-key-storage/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-configuring-hsm-for-key-storage/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-configuring-hsm-for-key-storage/assets/template.md` — Assessment deliverable and reporting template

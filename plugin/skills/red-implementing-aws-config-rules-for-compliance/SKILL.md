@@ -327,3 +327,7 @@ ACCOUNT COMPLIANCE RANKING:
   ...
   30. dev-sandbox (account-030):  68% compliant
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-aws-config-rules-for-compliance/references/api-reference.md` — API and execution command reference

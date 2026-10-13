@@ -71,7 +71,7 @@ metadata:
 ## References
 
 - `skill://webapp-thick-client/references/thick-client-checklist.md`
-- `../dotnet-reverse/` `../ida-reverse/` `../js-reverse/` `../api-security/`
+- ``skill://re-dotnet-reverse`` ``skill://re-ida-reverse`` ``skill://webapp-js-reverse`` ``skill://webapp-api-security``
 
 ## Routing Context
 

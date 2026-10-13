@@ -92,7 +92,7 @@ chmod +x gophish
 - Set campaign schedule (stagger sends to avoid detection)
 - Launch and monitor in real-time
 
-### Step 6: Analyze Results with process.py
+### Step 6: Analyze Results with `scripts/process.py`
 Use the automation script to pull campaign data via GoPhish API and generate detailed analytics reports.
 
 ## Tools & Resources
@@ -108,3 +108,7 @@ Use the automation script to pull campaign data via GoPhish API and generate det
 - Capture simulated credentials on landing page
 - Generate campaign report with open/click/submit rates
 - Redirect users to awareness training after interaction
+
+## References
+
+- `skill://webapp-performing-phishing-simulation-with-gophish/scripts/process.py` — Bundled Python automation helper script (`scripts/process.py`)

@@ -7,10 +7,10 @@
 
 ## CLI Interface
 ```
-python agent.py assets --csv ot_inventory.csv
-python agent.py segmentation --csv firewall_rules.csv
-python agent.py protocols --subnet 192.168.1.0/24
-python agent.py report --assets inventory.csv [--firewall fw_rules.csv]
+python scripts/agent.py assets --csv ot_inventory.csv
+python scripts/agent.py segmentation --csv firewall_rules.csv
+python scripts/agent.py protocols --subnet 192.168.1.0/24
+python scripts/agent.py report --assets inventory.csv [--firewall fw_rules.csv]
 ```
 
 ## Core Functions

@@ -637,9 +637,9 @@ for c in {a..z} {A..Z} {0..9}; do
 done
 ```
 
+
 # Character producing the most SIGFPEs is correct
 # Repeat for each position, extending the known prefix
-```
 
 **Key insight:** Signal handlers (SIGFPE, SIGSEGV, SIGILL) create implicit control flow invisible to static analysis. The number of signals raised correlates with validation progress. Counting signals via `strace -e signal=SIGFPE` turns opaque signal-based validation into a measurable side-channel for character-by-character brute-force.
 
@@ -787,7 +787,7 @@ Many CTF challenges stack multiple checks:
 
 ## Agent Response Playbook A–T (Issue #65)
 
-> For long-form detection references, see `malware-analysis/references/anti-analysis-techniques.md`; for extended OLLVM workflows, see `references/ollvm-deobfuscation.md`.  
+> For long-form detection references, see `skill://re-malware-analysis/references/anti-analysis-techniques.md`; for extended OLLVM workflows, see `skill://re-reverse-engineering/references/ollvm-deobfuscation.md`.  
 > This section is a concise **Trigger → Action → Evidence** playbook for agents to select from during Dynamic/Static side-channels.  
 > **Authorized isolated lab environment assumed by default**; static patching, PEB modification, and return value manipulation are not default actions on unauthorized targets.
 
@@ -810,7 +810,7 @@ Many CTF challenges stack multiple checks:
 | **E** | TimeDateStamp is in the future/0/anomalous; version info mimics legitimate vendor | Cross-reference with discovery time; **optional** VT first submission; run `SigCheck` to verify if version resource matches signature; if no VT → n/a | `E-meta-timestamp` | P2 |
 | **F** | Displays digital signature, but origin is suspicious | `SigCheck`: Valid chain? Revoked? Signing time vs compile time; **invalid/revoked status must not lower** threat severity | `E-sig-forge` | P0 |
 | **G** | Multiple PE headers, overlapping sections, disguised section names | Use CFF/PE-bear/LoadPE to inspect actual mapping and EP section; use entropy to distinguish encrypted vs code; do not trust section names | `E-pe-anomaly` | P1 |
-| **H** | Hex-Rays F5 shows excessive `while(1)+switch`, star-shaped CFG | **See** `ollvm-deobfuscation.md` (d810/deflat, etc.); if plugins are unavailable, record block order dynamically to reconstruct | `E-cff` | P1 pointer |
+| **H** | Hex-Rays F5 shows excessive `while(1)+switch`, star-shaped CFG | **See** `skill://re-reverse-engineering/references/ollvm-deobfuscation.md` (d810/deflat, etc.); if plugins are unavailable, record block order dynamically to reconstruct | `E-cff` | P1 pointer |
 | **I** | `strings` shows no domain/IP, but network/filesystem behavior exists | Locate Base64/XOR/custom decoders; trace xrefs to decryptor functions; dump and reinject into IDA after decryption | `E-string-decrypt` | P0 |
 | **J** | File size ≫ sum of raw section sizes (Overlay) | Extract overlay; run `file`/entropy check; search IDA for offset references; if encrypted, capture key dynamically | `E-overlay` | P1 |
 | **K** | `fs:[0x30]`/`gs:[0x60]` → BeingDebugged / NtGlobalFlag | Modify PEB flags or use ScyllaHide; or patch conditional jump | `E-anti-debug-peb` | P0 |

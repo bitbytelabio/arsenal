@@ -385,46 +385,59 @@ export function computeManifestSummary(files: ManifestEntry[]): CorpusManifestSu
 }
 
 /**
- * Merges newly rebuilt upstream manifest entries with previously preserved local-tier entries.
+ * Merges newly rebuilt active upstream manifest entries with preserved entries
+ * from non-enumerated sources (including 'rea' and 'arsenal-local').
  * Per data-model §3 (IN-11) & contracts/skill-lifecycle.md §4:
- * - 'arsenal-local' entries survive upstream rebuild
- * - 'arsenal-local' sources descriptor survives upstream rebuild
+ * - Non-enumerated sources and 'arsenal-local' entries survive upstream rebuild
+ * - Corresponding sources descriptors survive upstream rebuild
  * - Summary counts are refreshed deterministically
  * - files are stably sorted by path, then source
  */
 export function mergeCorpusManifest(
   upstream: CorpusManifest,
-  previous?: CorpusManifest | null
+  previous?: CorpusManifest | null,
+  activeSourceIds?: ReadonlySet<string>
 ): CorpusManifest {
-  const localEntries: ManifestEntry[] = [];
-  let localSourceDesc: CorpusManifestSource | undefined;
+  const activeSet =
+    activeSourceIds ??
+    new Set(Object.keys(upstream.sources).filter((s) => s !== LOCAL_SOURCE_ID));
+
+  const preservedEntries: ManifestEntry[] = [];
+  const preservedSources: Record<string, CorpusManifestSource> = {};
 
   if (previous) {
     for (const file of previous.files) {
-      if (file.source === LOCAL_SOURCE_ID) {
-        localEntries.push({ ...file });
+      if (file.source === LOCAL_SOURCE_ID || !activeSet.has(file.source)) {
+        preservedEntries.push({
+          ...file,
+          ...(file.support_files
+            ? { support_files: file.support_files.map((sf) => ({ ...sf })) }
+            : {}),
+        });
       }
     }
-    if (previous.sources[LOCAL_SOURCE_ID]) {
-      localSourceDesc = { ...previous.sources[LOCAL_SOURCE_ID] };
+    for (const [srcKey, srcDesc] of Object.entries(previous.sources)) {
+      if (srcKey === LOCAL_SOURCE_ID || !activeSet.has(srcKey)) {
+        preservedSources[srcKey] = { ...srcDesc };
+      }
     }
   }
 
-  // Retain or add local source descriptor
   const mergedSources: Record<string, CorpusManifestSource> = {
     ...upstream.sources,
+    ...preservedSources,
   };
 
-  if (localSourceDesc) {
-    mergedSources[LOCAL_SOURCE_ID] = localSourceDesc;
-  } else if (localEntries.length > 0 && !mergedSources[LOCAL_SOURCE_ID]) {
+  const hasLocalEntries = preservedEntries.some((f) => f.source === LOCAL_SOURCE_ID);
+  if (hasLocalEntries && !mergedSources[LOCAL_SOURCE_ID]) {
     mergedSources[LOCAL_SOURCE_ID] = { ...DEFAULT_LOCAL_SOURCE_DESCRIPTOR };
   }
 
-  // Filter upstream to ensure no accidental arsenal-local entries are duplicated if upstream had them
-  const upstreamFiles = upstream.files.filter((f) => f.source !== LOCAL_SOURCE_ID);
+  const upstreamFiles = upstream.files.filter(
+    (f) => f.source !== LOCAL_SOURCE_ID && activeSet.has(f.source)
+  );
 
-  const mergedFiles: ManifestEntry[] = [...upstreamFiles, ...localEntries].sort(
+  const mergedFiles: ManifestEntry[] = [...upstreamFiles, ...preservedEntries].sort(
     compareManifestEntries
   );
 

@@ -4,7 +4,7 @@
 > Retrieved: 2026-07-17  
 > Scope: Applicable when installing, authoring, or merging **any** skill, MCP, or bootstrap script
 
-Static audit of this package's **executable script surface** (backdoors / destructive deletion / piped execution): [`docs/PACKAGE-SECURITY-AUDIT.md`](../../docs/PACKAGE-SECURITY-AUDIT.md).
+Static audit of this package's **executable script surface** (backdoors / destructive deletion / piped execution): PACKAGE-SECURITY-AUDIT.md.
 
 ## 1. Why reverse-skill Manages This Independently
 
@@ -66,6 +66,6 @@ Get-ChildItem -Recurse -Include *.ps1,*.sh,*.py,*.js | Select-Object FullName
 
 ## 7. Related References
 
-- Identity: `IDENTITY.md`  
+- Identity: IDENTITY contract  
 - External Directory: `../references/community-security-skills.md`  
-- Authorization: `scope-contract.md` + `field-journal/precedent-auth.md`
+- Authorization: scope-contract + precedent-auth journal

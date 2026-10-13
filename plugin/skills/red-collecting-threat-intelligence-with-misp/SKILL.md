@@ -170,3 +170,10 @@ csv_output = misp.search(
 - [MISP GitHub Repository](https://github.com/MISP/MISP)
 - [MISP OpenAPI Specification](https://www.misp-project.org/openapi/)
 - [CIRCL OSINT Feed](https://www.circl.lu/doc/misp/feed-osint/)
+
+## Shipped Playbook Resources
+
+- `skill://red-collecting-threat-intelligence-with-misp/references/api-reference.md` — API and execution command reference
+- `skill://red-collecting-threat-intelligence-with-misp/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-collecting-threat-intelligence-with-misp/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-collecting-threat-intelligence-with-misp/assets/template.md` — Assessment deliverable and reporting template

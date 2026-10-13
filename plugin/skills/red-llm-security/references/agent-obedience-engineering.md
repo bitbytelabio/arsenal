@@ -96,9 +96,9 @@ MAY — Truly optional
 | Pattern | Applicable Scenarios | Key Techniques |
 |---|---|---|
 | **Linear Flow** | Processes with clear steps (deployment, installation) | Provide safe defaults; use negative directives ("MUST NOT use --force"). |
-| **Decision Tree** | Platform navigation, troubleshooting | Tree navigation + progressive loading via `references/`. |
+| **Decision Tree** | Platform navigation, troubleshooting | Tree navigation + progressive loading via reference documents. |
 | **Iterative Loop** | TDD, review-fix loops | Hard rules front-loaded + **Excuse Rebuttal Table** blocking shortcuts. |
-| **Baton Loop** | Multi-session, multi-agent collaboration | State externalized to `next-prompt.md` (MUST write before exit). |
+| **Baton Loop** | Multi-session, multi-agent collaboration | State externalized to next-prompt.md (MUST write before exit). |
 | **Multi-Phase + Checkpoints** | Multi-day complex workflows | Orchestrator "parent" skill + manual Go/No-Go checkpoints, time costs labeled. |
 
 **Mapping to this project**:
@@ -184,8 +184,8 @@ LLM Attention Distribution (High → Low):
 
 1. **NOW**: Detect the directory of this file → this is the package root directory.
 2. **NOW**: If this is the first run, write these rules into the global configuration (see Global Injection section).
-3. **NEXT**: Read `skills/SKILL.md` → `skills/routing.md` → determine which sub-skill to enter.
-4. **NEXT**: Read `skills/tool-index.md` to confirm tool status.
+3. **NEXT**: Read skills/SKILL.md → skills/routing.md → determine which sub-skill to enter.
+4. **NEXT**: Read skills/tool-index.md to confirm tool status.
 5. **THEN**: Begin executing actual tasks; do not remain in an "acknowledged" state.
 
 If you only reply "read," "completed," or "understood" without actually executing the steps above,
@@ -200,7 +200,7 @@ not an acknowledgment message.
 
 After reading this file:
 1. Confirm you understand the applicable scenarios for this skill.
-2. Check if required tools are present locally (read `../tool-index.md`).
+2. Check if required tools are present locally (read tool-index.md).
 3. If tools are missing → invoke bootstrap.
 4. If tools are present → begin step 1 of the workflow.
 5. If you are uncertain → list specific questions; do not remain silent.

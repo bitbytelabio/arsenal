@@ -55,5 +55,5 @@ End-to-end: image info -> PhotoRec recovery -> catalog -> sort.
 ## Usage
 
 ```bash
-python agent.py /cases/evidence.dd /cases/recovered/ jpg,pdf,doc
+python scripts/agent.py /cases/evidence.dd /cases/recovered/ jpg,pdf,doc
 ```

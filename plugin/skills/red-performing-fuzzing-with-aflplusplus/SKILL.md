@@ -55,3 +55,7 @@ and persistent mode for high-throughput fuzzing.
   paths found: 1847
   exec speed: 2145/sec
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-fuzzing-with-aflplusplus/references/api-reference.md` — API and execution command reference

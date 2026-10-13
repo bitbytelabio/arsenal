@@ -180,7 +180,7 @@ sigma convert -t elasticsearch misp_domains.yml > misp_domains.eql
 ```bash
 evidence_exec --url https://localhost --key YOUR_AUTH_KEY \
   --last 7d --outdir ./detections --insecure
-# crontab: 0 * * * * /usr/bin/python /path/templates/agent.py ... >> /var/log/misp_pipeline.log 2>&1
+# crontab: 0 * * * * /usr/bin/python scripts/agent.py ... >> /var/log/misp_pipeline.log 2>&1
 ```
 
 ## Tools and Resources
@@ -206,3 +206,8 @@ evidence_exec --url https://localhost --key YOUR_AUTH_KEY \
 - [ ] Sigma rule generated and converted to the SIEM backend.
 - [ ] Generated detections confirmed to load (and fire on a test IOC).
 - [ ] Pipeline scheduled and logging successfully.
+
+## Shipped Playbook Resources
+
+- `skill://red-operationalizing-misp-threat-feeds/references/api-reference.md` — API and execution command reference
+- `skill://red-operationalizing-misp-threat-feeds/references/standards.md` — Relevant standards and compliance baselines

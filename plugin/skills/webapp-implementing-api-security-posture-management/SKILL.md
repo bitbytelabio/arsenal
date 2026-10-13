@@ -388,6 +388,8 @@ policies:
 
 ## References
 
+- `skill://webapp-implementing-api-security-posture-management/references/api-reference.md` — API reference and command specification
+
 - OX Security ASPM Guide 2025: https://www.ox.security/blog/application-security-posture-management-aspm/
 - IBM ASPM Overview: https://www.ibm.com/think/topics/aspm
 - StackHawk Best ASPM Tools: https://www.stackhawk.com/blog/best-aspm-tools/

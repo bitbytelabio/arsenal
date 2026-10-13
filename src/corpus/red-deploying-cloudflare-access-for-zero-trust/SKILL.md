@@ -370,3 +370,10 @@ ACCESS METRICS (last 30 days):
   Countries: 12
   Avg Session Duration: 6.2 hours
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-cloudflare-access-for-zero-trust/references/api-reference.md` — API and execution command reference
+- `skill://red-deploying-cloudflare-access-for-zero-trust/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-deploying-cloudflare-access-for-zero-trust/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-deploying-cloudflare-access-for-zero-trust/assets/template.md` — Assessment deliverable and reporting template

@@ -61,6 +61,6 @@ Authorization: Bearer {token}
 ## CLI Usage
 
 ```bash
-python agent.py --email-file suspicious.eml --vip-names "John Smith" "Jane CEO"
-python agent.py --scan-dir /var/mail/quarantine/ --vip-names "CFO Name"
+python scripts/agent.py --email-file suspicious.eml --vip-names "John Smith" "Jane CEO"
+python scripts/agent.py --scan-dir /var/mail/quarantine/ --vip-names "CFO Name"
 ```

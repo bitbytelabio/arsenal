@@ -238,3 +238,10 @@ VULNERABILITY COMPARISON:
   After:  18 CVEs (0 Critical, 3 High)
   Reduction: 92.3%
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-container-image-hardening/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-container-image-hardening/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-container-image-hardening/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-container-image-hardening/assets/template.md` — Assessment deliverable and reporting template

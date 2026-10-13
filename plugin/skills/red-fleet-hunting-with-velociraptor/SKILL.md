@@ -183,3 +183,8 @@ For unmanaged/air-gapped hosts, build a standalone collector from the GUI ("Serv
 - [ ] Fleet-wide hunt launched and results aggregated
 - [ ] Custom VQL artifact authored and tested
 - [ ] Offline collector produced for unmanaged hosts where needed
+
+## Shipped Playbook Resources
+
+- `skill://red-fleet-hunting-with-velociraptor/references/api-reference.md` — API and execution command reference
+- `skill://red-fleet-hunting-with-velociraptor/references/standards.md` — Relevant standards and compliance baselines

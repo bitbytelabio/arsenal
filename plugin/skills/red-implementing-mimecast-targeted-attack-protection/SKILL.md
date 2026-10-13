@@ -109,3 +109,10 @@ Mimecast Targeted Threat Protection (TTP) is a suite of advanced email security 
 - Internal Email Protect detects test lateral phishing scenario
 - Pre-delivery hold catches weaponized URL before reaching inbox
 - False positive rate below organizational threshold after tuning
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-mimecast-targeted-attack-protection/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-mimecast-targeted-attack-protection/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-mimecast-targeted-attack-protection/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-mimecast-targeted-attack-protection/assets/template.md` — Assessment deliverable and reporting template

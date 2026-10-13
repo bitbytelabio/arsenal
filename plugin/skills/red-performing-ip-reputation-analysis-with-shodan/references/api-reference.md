@@ -7,8 +7,8 @@
 ## CLI Interface
 
 ```
-python agent.py --shodan-key <key> [--abuseipdb-key <key>] lookup --ip <ip>
-python agent.py --shodan-key <key> [--abuseipdb-key <key>] bulk --ips <ip1> <ip2>
+python scripts/agent.py --shodan-key <key> [--abuseipdb-key <key>] lookup --ip <ip>
+python scripts/agent.py --shodan-key <key> [--abuseipdb-key <key>] bulk --ips <ip1> <ip2>
 ```
 
 ## Core Functions

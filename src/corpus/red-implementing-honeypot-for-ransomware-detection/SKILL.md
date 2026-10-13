@@ -343,3 +343,10 @@ def send_ransomware_alert(source_ip: str, canary_path: str, action: str):
 | Test Date | Test Type | Canary Triggered | Alert Received | Containment Executed | Time to Alert |
 |-----------|----------|-----------------|----------------|---------------------|---------------|
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-honeypot-for-ransomware-detection/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-honeypot-for-ransomware-detection/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-honeypot-for-ransomware-detection/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-honeypot-for-ransomware-detection/assets/template.md` — Assessment deliverable and reporting template

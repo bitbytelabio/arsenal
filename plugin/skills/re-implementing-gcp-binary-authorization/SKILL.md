@@ -266,3 +266,7 @@ spec:
 - SLSA Framework: https://slsa.dev
 - Sigstore/Cosign for container signing
 - Google Software Supply Chain Security Best Practices
+- `skill://re-implementing-gcp-binary-authorization/references/api-reference.md` — API Reference: Implementing GCP Binary Authorization
+- `skill://re-implementing-gcp-binary-authorization/references/standards.md` — Standards - GCP Binary Authorization
+- `skill://re-implementing-gcp-binary-authorization/references/workflows.md` — Workflows - GCP Binary Authorization
+- `skill://re-implementing-gcp-binary-authorization/assets/template.md` — GCP Binary Authorization Implementation Template

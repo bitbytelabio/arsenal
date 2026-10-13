@@ -224,13 +224,13 @@ Deploy ongoing BLE monitoring for threat detection:
 
 ```bash
 # Run the agent in monitoring mode
-python agent.py --mode monitor --duration 3600 --output ble_alerts.json
+python scripts/agent.py --mode monitor --duration 3600 --output ble_alerts.json
 
 # Combine with Ubertooth for passive monitoring
-ubertooth-btle -p -r - | python agent.py --mode analyze --pcap-stdin
+ubertooth-btle -p -r - | python scripts/agent.py --mode analyze --pcap-stdin
 
 # Alert on specific threat indicators
-python agent.py --mode monitor --alert-on replay,spoofing,weak-pairing
+python scripts/agent.py --mode monitor --alert-on replay,spoofing,weak-pairing
 ```
 
 ## Key Concepts

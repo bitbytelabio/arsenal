@@ -176,3 +176,7 @@ Verify log integrity and produce compliance evidence:
 | exarnple.com | 2 | Let's Encrypt | Investigate phishing |
 | examp1e.com | 1 | ZeroSSL | Investigate phishing |
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-auditing-tls-certificate-transparency-logs/references/api-reference.md` — API and execution command reference

@@ -290,3 +290,7 @@ TIMELINE
 14:15:00  Code injection into explorer.exe (PID 852) detected
 14:20:00  Credential dump from LSASS process
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-memory-dumps-with-volatility/references/api-reference.md` — API and execution command reference

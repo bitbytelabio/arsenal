@@ -230,3 +230,7 @@ RECOMMENDATIONS
 3. Send targeted awareness notification to all 47 recipients
 4. Request domain takedown via registrar abuse contact
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-conducting-phishing-incident-response/references/api-reference.md` — API and execution command reference

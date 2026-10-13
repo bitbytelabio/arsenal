@@ -241,3 +241,10 @@ Every merge request displays a security scanning widget showing:
 - [GitLab DAST Configuration](https://docs.gitlab.com/ee/user/application_security/dast/)
 - [GitLab Security Policies](https://docs.gitlab.com/ee/user/application_security/policies/)
 - [GitLab Vulnerability Management](https://docs.gitlab.com/ee/user/application_security/vulnerability_report/)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-devsecops-pipeline-with-gitlab-ci/references/api-reference.md` — API and execution command reference
+- `skill://red-building-devsecops-pipeline-with-gitlab-ci/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-devsecops-pipeline-with-gitlab-ci/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-devsecops-pipeline-with-gitlab-ci/assets/template.md` — Assessment deliverable and reporting template

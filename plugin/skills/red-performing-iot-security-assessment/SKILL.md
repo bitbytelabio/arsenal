@@ -176,3 +176,7 @@ network entry point with root-level command execution capability.
 3. Encrypt stored WiFi credentials using a hardware-backed key
 4. Deploy cameras on an isolated VLAN with no access to the corporate network
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-iot-security-assessment/references/api-reference.md` — API and execution command reference

@@ -8,9 +8,9 @@
 ## CLI Interface
 
 ```
-python agent.py enumerate                    # List and risk-score all tasks
-python agent.py events --evtx-file <path>    # Scan EVTX for task creation events
-python agent.py export --task-name <name>    # Export task XML definition
+python scripts/agent.py enumerate                    # List and risk-score all tasks
+python scripts/agent.py events --evtx-file <path>    # Scan EVTX for task creation events
+python scripts/agent.py export --task-name <name>    # Export task XML definition
 ```
 
 ## Core Functions

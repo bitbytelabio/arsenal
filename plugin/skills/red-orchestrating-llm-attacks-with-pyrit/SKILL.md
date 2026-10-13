@@ -210,3 +210,8 @@ This skill uses MITRE ATLAS technique IDs.
 - [ ] At least one converter applied and shown to alter the sent prompt.
 - [ ] Full conversation exported from memory as evidence.
 - [ ] Findings mapped to MITRE ATLAS and OWASP LLM Top 10 with turn counts and verdicts.
+
+## Shipped Playbook Resources
+
+- `skill://red-orchestrating-llm-attacks-with-pyrit/references/api-reference.md` — API and execution command reference
+- `skill://red-orchestrating-llm-attacks-with-pyrit/references/standards.md` — Relevant standards and compliance baselines

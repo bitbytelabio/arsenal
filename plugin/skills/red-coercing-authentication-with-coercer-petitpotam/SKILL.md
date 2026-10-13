@@ -161,3 +161,8 @@ coercer fuzz -u 'attacker' -p 'Passw0rd!' -d corp.local \
 - [ ] (ESC8) DC certificate used to authenticate and DCSync demonstrated
 - [ ] Coercible methods documented with affected host and patch recommendation
 - [ ] Relay mitigations (SMB/LDAP signing, EPA, RPC filters) validated or flagged
+
+## Shipped Playbook Resources
+
+- `skill://red-coercing-authentication-with-coercer-petitpotam/references/api-reference.md` — API and execution command reference
+- `skill://red-coercing-authentication-with-coercer-petitpotam/references/standards.md` — Relevant standards and compliance baselines

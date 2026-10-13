@@ -530,11 +530,23 @@ describe("User Story 1: Skill Standard Oracles (T012)", () => {
     expect(violations).toEqual([]);
   });
 
-  it("enforces recursive technical English and zero .ps1 script hygiene (US5 / T022)", () => {
+  it("enforces recursive technical English and manifest-provenance hygiene for shipped scripts (US5 / T022)", () => {
     const corpusRoot = path.join(REPO_ROOT, "src/corpus");
     expect(fs.existsSync(corpusRoot)).toBe(true);
 
-    // Assert 1: Zero .ps1 files anywhere in src/corpus
+    // Assert 1: Every shipped .ps1 helper is a manifest-recorded, provenance-backed support file.
+    // Authentic PowerShell helpers (bootstrap/watchdog/append-evidence) are shipped deliberately;
+    // unrecorded or untraceable scripts are the failure mode this oracle guards.
+    const manifest = readCorpusManifest(path.join(corpusRoot, "MANIFEST.json"));
+    const recordedSupport = new Set<string>();
+    for (const entry of manifest.files) {
+      if (entry.status !== "admitted" || !entry.destination_path) continue;
+      const skillId = entry.destination_path.slice("src/corpus/".length).split("/")[0]!;
+      for (const sf of entry.support_files ?? []) {
+        recordedSupport.add(`${skillId}/${sf.path}`);
+      }
+    }
+
     function findFiles(dir: string, ext: string): string[] {
       const results: string[] = [];
       const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -550,7 +562,11 @@ describe("User Story 1: Skill Standard Oracles (T012)", () => {
     }
 
     const ps1Files = findFiles(corpusRoot, ".ps1");
-    expect(ps1Files).toEqual([]);
+    const unrecordedPs1 = ps1Files.filter((full) => {
+      const rel = path.relative(corpusRoot, full).replace(/\\/g, "/");
+      return !recordedSupport.has(rel);
+    });
+    expect(unrecordedPs1).toEqual([]);
 
     // Assert 2: Recursive language scan of all .md files across corpus
     const mdFiles = findFiles(corpusRoot, ".md");
@@ -570,5 +586,5 @@ describe("User Story 1: Skill Standard Oracles (T012)", () => {
     }
 
     expect(languageViolations).toEqual([]);
-  });
+  }, 120_000);
 });

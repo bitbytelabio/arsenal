@@ -23,7 +23,7 @@ Use Binary Ninja when the user explicitly selects it, when its ILs materially he
 
 - **GUI or Python API:** preferred when Binary Ninja is already open or the user wants direct interactive analysis.
 - **Community MCP bridge:** use only when explicitly requested and after reviewing the third-party plugin boundary. Keep the Binary Ninja HTTP listener on `127.0.0.1:9009`; do not enable network exposure by default.
-- **Fallback:** use `ghidra-reverse`, `ida-reverse`, or `radare2` when Binary Ninja is unavailable or its license/API cannot open the target.
+- **Fallback:** use `re-ghidra-reverse`, `re-ida-reverse`, or `re-radare2` when Binary Ninja is unavailable or its license/API cannot open the target.
 
 The reviewed community integration is [`fosdickio/binary_ninja_mcp`](https://github.com/fosdickio/binary_ninja_mcp), GPL-3.0, plugin metadata version `1.1.0`, minimum Binary Ninja build `4000`. The repository is not an official Vector 35 component. This skill was checked against commit `8c5134ee46e2bf44f9a4d846bd971c3e39b3e306` on 2026-09-03.
 

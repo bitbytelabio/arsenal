@@ -63,6 +63,6 @@ for pkt in packets:
 ## CLI Usage
 
 ```bash
-python agent.py --zeek-log dnp3.log
-python agent.py --zeek-log dnp3.log --authorized-masters masters.txt
+python scripts/agent.py --zeek-log dnp3.log
+python scripts/agent.py --zeek-log dnp3.log --authorized-masters masters.txt
 ```

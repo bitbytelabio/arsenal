@@ -205,3 +205,7 @@ BUSINESS IMPACT
 - 3 user workstations isolated (users reassigned to loaners)
 - Estimated restoration: pending eradication completion
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-containing-active-breach/references/api-reference.md` — API and execution command reference

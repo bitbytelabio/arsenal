@@ -174,7 +174,7 @@ Common patterns:
 
 ### Console / Telnet Default Creds
 
-Try (per device class): `admin/admin`, `root/root`, `root/<empty>`, `admin/password`, `skill://red-iot-offensive-iot/support/support`, `cisco/cisco`, vendor brand as user/pass. **Always try `root/<serial number>`** — many vendors use a per-device default.
+Try (per device class): `admin/admin`, `root/root`, `root/<empty>`, `admin/password`, `support/support`, `cisco/cisco`, vendor brand as user/pass. **Always try `root/<serial number>`** — many vendors use a per-device default.
 
 ### Web Admin Command Injection
 

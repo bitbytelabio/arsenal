@@ -342,3 +342,10 @@ Tier 3 - Compliance (Organization-specific):
 - [NIST SP 800-81-2: Secure DNS Deployment Guide](https://csrc.nist.gov/publications/detail/sp/800-81/2/final)
 - [RFC 8484: DNS Queries over HTTPS (DoH)](https://tools.ietf.org/html/rfc8484)
 - [RFC 7858: DNS over TLS (DoT)](https://tools.ietf.org/html/rfc7858)
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-zero-trust-dns-with-nextdns/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-zero-trust-dns-with-nextdns/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-zero-trust-dns-with-nextdns/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-zero-trust-dns-with-nextdns/assets/template.md` — Assessment deliverable and reporting template

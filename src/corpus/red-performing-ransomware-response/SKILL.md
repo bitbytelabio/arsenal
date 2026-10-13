@@ -208,3 +208,7 @@ POST-INCIDENT ACTIONS
 4. LAPS deployed for local administrator passwords
 5. Regulatory notifications filed (GDPR 72-hour, state AG)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-ransomware-response/references/api-reference.md` — API and execution command reference

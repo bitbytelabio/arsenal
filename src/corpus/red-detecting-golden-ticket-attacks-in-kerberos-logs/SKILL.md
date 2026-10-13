@@ -85,3 +85,7 @@ Anomaly: [No prior TGT/RC4 in AES environment/Extended lifetime]
 KRBTGT Last Reset: [Date]
 Risk Level: [Critical]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-golden-ticket-attacks-in-kerberos-logs/references/api-reference.md` — API and execution command reference

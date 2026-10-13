@@ -83,8 +83,8 @@ alert http $HOME_NET any -> $EXTERNAL_NET any (
 ## CLI Usage
 
 ```bash
-python agent.py --input profile.profile --output report.json
-python agent.py --input parsed_config.json --output report.json
+python scripts/agent.py --input profile.profile --output report.json
+python scripts/agent.py --input parsed_config.json --output report.json
 ```
 
 ## References

@@ -18,7 +18,7 @@
 > The risk analysis is **dated and documented** — this is the first artifact OCR requests.
 
 ## 3. Safeguard Status
-*(scored by `scripts/process.py`; weighted readiness ≈ 62% in this example)*
+*(scored by `templates/process.py`; weighted readiness ≈ 62% in this example)*
 
 | Specification | Section | Requirement | Status | Alt. documented |
 |---|---|---|---|---|

@@ -305,3 +305,7 @@ Log Analysis Summary:
 
   Report: /cases/case-2024-001/analysis/log_analysis_report.txt
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-log-analysis-for-forensic-investigation/references/api-reference.md` — API and execution command reference

@@ -57,3 +57,7 @@ spray = df[df["status"] == "failed"].groupby(["source_ip", "password_hash"]).agg
     accounts=("username", "nunique")).reset_index()
 sprays = spray[spray["accounts"] > 10]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-credential-stuffing-attacks/references/api-reference.md` — API and execution command reference

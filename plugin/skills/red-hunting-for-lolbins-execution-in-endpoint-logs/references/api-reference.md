@@ -8,8 +8,8 @@
 ## CLI Interface
 
 ```
-python agent.py csv --file <csv_path> [--process-col Image] [--cmdline-col CommandLine]
-python agent.py evtx --file <evtx_path>
+python scripts/agent.py csv --file <csv_path> [--process-col Image] [--cmdline-col CommandLine]
+python scripts/agent.py evtx --file <evtx_path>
 ```
 
 ## Core Functions

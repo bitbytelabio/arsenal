@@ -6,7 +6,7 @@ This document provides documentation templates for security projects including r
 
 ## 0. Evidence Chain (MUST be included in all security reports)
 
-> Full contract text: `skills/ops/evidence-finding-path.md`  
+> Full contract text: `skill://webapp-pentest-tools/support/ops/evidence-finding-path.md`  
 > Case directory: `work/<case>/` (`case-init.sh`)
 
 The report body **MUST** contain the following sections (these may be merged into "Key Findings", but no fields may be omitted):
@@ -33,7 +33,7 @@ Linked to `timeline.md` or embedded with 3–10 critical appended records
 
 ## 0.6 Vendor Structure Overlay (Professional Vendor Report Structure)
 
-> Full rules: `references/vendor-report-rules.md` (Issue #65)  
+> Full rules: `skill://re-docs-generator/references/vendor-report-rules.md` (Issue #65)  
 > **MUST** be read and selected when generating formal security reports; **adopt structure only, strictly forbid verbatim copying of vendor text or IOC instances**.
 
 | Flavor / Overlay | Scenario | Skeleton in One Sentence |

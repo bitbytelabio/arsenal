@@ -96,10 +96,10 @@ Good proof per class:
 
 ## When to Load a Specialist Skill
 
-- Webshell/extension-based upload exploitation depth -> exploiting-file-upload-vulnerabilities
-- SSRF technique -> ssrf; XXE technique -> xxe; stored XSS -> xss; traversal -> path-traversal-lfi-rfi
-- Command injection in conversion pipelines -> rce
-- Race on the same file object -> race-condition-testing
+- Webshell/extension-based upload exploitation depth -> `skill://webapp-exploiting-file-upload-vulnerabilities`
+- SSRF technique -> `skill://webapp-web-offensive-ssrf`; XXE technique -> `skill://webapp-web-offensive-xxe`; stored XSS -> `skill://webapp-web-offensive-xss`; traversal -> `skill://webapp-exploiting-client-side-path-traversal`
+- Command injection in conversion pipelines -> `skill://webapp-web-offensive-rce`
+- Race on the same file object -> `skill://webapp-race-condition-testing`
 
 ## Stopping Rule
 
@@ -107,6 +107,6 @@ Stop when: every pipeline stage the target actually has has been mapped, each tr
 
 ## Handoffs
 
-- authorization-testing - object-level access on stored files
-- application-data-exposure-testing - files reachable by parties who should not have them
-- input-boundary-testing - metadata/CSV/XML content as hostile input into downstream parsers
+- `skill://webapp-authorization-testing` - object-level access on stored files
+- `skill://webapp-application-data-exposure-testing` - files reachable by parties who should not have them
+- `skill://webapp-input-boundary-testing` - metadata/CSV/XML content as hostile input into downstream parsers

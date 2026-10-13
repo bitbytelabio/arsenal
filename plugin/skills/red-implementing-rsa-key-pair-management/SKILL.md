@@ -82,3 +82,10 @@ RSA (Rivest-Shamir-Adleman) is the most widely deployed asymmetric cryptographic
 - [ ] Tampered signature verification fails
 - [ ] Key fingerprint is computed correctly
 - [ ] Key rotation maintains old key access for verification
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-rsa-key-pair-management/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-rsa-key-pair-management/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-rsa-key-pair-management/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-rsa-key-pair-management/assets/template.md` — Assessment deliverable and reporting template

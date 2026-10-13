@@ -248,3 +248,10 @@ echo "Exit code: $?"  # 0 = no vulns, 1 = vulns found
 - [Trivy GitHub Repository](https://github.com/aquasecurity/trivy)
 - [Trivy GitHub Action](https://github.com/aquasecurity/trivy-action)
 - [Aqua Security - Trivy Scanner Guide](https://www.aquasec.com/products/trivy/)
+
+## Shipped Playbook Resources
+
+- `skill://red-scanning-docker-images-with-trivy/references/api-reference.md` — API and execution command reference
+- `skill://red-scanning-docker-images-with-trivy/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-scanning-docker-images-with-trivy/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-scanning-docker-images-with-trivy/assets/template.md` — Assessment deliverable and reporting template

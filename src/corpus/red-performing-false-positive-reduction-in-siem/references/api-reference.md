@@ -6,9 +6,9 @@
 
 ## CLI Interface
 ```
-python agent.py analyze --csv alerts.csv [--threshold 5]
-python agent.py tune --csv alerts.csv
-python agent.py simulate --csv alerts.csv [--disable-rules "Rule A" "Rule B"] [--whitelist-sources 10.0.0.1]
+python scripts/agent.py analyze --csv alerts.csv [--threshold 5]
+python scripts/agent.py tune --csv alerts.csv
+python scripts/agent.py simulate --csv alerts.csv [--disable-rules "Rule A" "Rule B"] [--whitelist-sources 10.0.0.1]
 ```
 
 ## Core Functions

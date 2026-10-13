@@ -68,3 +68,7 @@ detection:
   condition: pipe_created | near service_installed
 level: high
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-siem-correlation-rules-for-apt/references/api-reference.md` — API and execution command reference

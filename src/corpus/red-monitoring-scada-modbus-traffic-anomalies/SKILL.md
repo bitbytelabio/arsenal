@@ -322,3 +322,7 @@ for all scanned devices.
 **Recommended Action**: Investigate source workstation for compromise
 indicators. Block FC 43 from non-engineering subnets at OT firewall.
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-monitoring-scada-modbus-traffic-anomalies/references/api-reference.md` — API and execution command reference

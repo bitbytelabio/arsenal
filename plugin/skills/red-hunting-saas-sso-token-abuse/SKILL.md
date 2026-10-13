@@ -149,7 +149,7 @@ For confirmed token abuse, revoke sessions and rotate, then promote the hunt to 
 az rest --method POST \
   --url "https://graph.microsoft.com/v1.0/users/<userId>/revokeSignInSessions"
 ```
-See `skill://red-hunting-saas-sso-token-abuse/support/hunting-saas-sso-token-abuse/templates/agent.py` to pull Okta logs and flag reused session tokens automatically.
+See `skill://red-hunting-saas-sso-token-abuse/templates/agent.py` to pull Okta logs and flag reused session tokens automatically.
 
 ## Tools and Resources
 
@@ -208,3 +208,8 @@ Detection should pair with controls that make stolen tokens far less useful:
 - [ ] Confirmed findings triaged and sessions revoked
 - [ ] Effective queries promoted to standing detection rules
 - [ ] False-positive baseline (VPN/proxy egress) documented
+
+## Shipped Playbook Resources
+
+- `skill://red-hunting-saas-sso-token-abuse/references/api-reference.md` — API and execution command reference
+- `skill://red-hunting-saas-sso-token-abuse/references/standards.md` — Relevant standards and compliance baselines

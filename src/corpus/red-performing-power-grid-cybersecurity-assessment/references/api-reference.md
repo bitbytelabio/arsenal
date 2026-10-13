@@ -5,9 +5,9 @@
 
 ## CLI Interface
 ```
-python agent.py template [--output nerc_cip_template.csv]
-python agent.py assess --csv completed_assessment.csv
-python agent.py esp --firewall-csv esp_rules.csv
+python scripts/agent.py template [--output nerc_cip_template.csv]
+python scripts/agent.py assess --csv completed_assessment.csv
+python scripts/agent.py esp --firewall-csv esp_rules.csv
 ```
 
 ## Core Functions

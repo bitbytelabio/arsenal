@@ -236,3 +236,10 @@ Recovered files exported to: /analysis/mft_output/recovered/
 Full CSV report: /analysis/mft_output/mft_analysis.csv (395,264 rows)
 Timeline CSV: /analysis/mft_output/mft_timeline.csv
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-mft-for-deleted-file-recovery/references/api-reference.md` — API and execution command reference
+- `skill://red-analyzing-mft-for-deleted-file-recovery/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-analyzing-mft-for-deleted-file-recovery/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-analyzing-mft-for-deleted-file-recovery/assets/template.md` — Assessment deliverable and reporting template

@@ -169,3 +169,10 @@ Lateral Movement Indicators:
 - **Default log size too small**: 20 MB Security log fills in minutes on busy servers. Set minimum 1 GB.
 - **Missing command line logging**: Event 4688 without command line content has minimal detection value. Always enable ProcessCreationIncludeCmdLine_Enabled.
 - **Not forwarding logs**: Local event logs are lost when endpoints are wiped by ransomware. Forward to centralized SIEM immediately.
+
+## Shipped Playbook Resources
+
+- `skill://red-configuring-windows-event-logging-for-detection/references/api-reference.md` — API and execution command reference
+- `skill://red-configuring-windows-event-logging-for-detection/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-configuring-windows-event-logging-for-detection/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-configuring-windows-event-logging-for-detection/assets/template.md` — Assessment deliverable and reporting template

@@ -329,3 +329,7 @@ Mobile Forensics Summary:
     Messages Export: /analysis/whatsapp_messages.csv
     Locations:       /analysis/photo_locations.json
 ```
+
+## References
+
+- `skill://mobile-performing-mobile-device-forensics-with-cellebrite/references/api-reference.md` — API Reference: Mobile Device Forensics with Cellebrite

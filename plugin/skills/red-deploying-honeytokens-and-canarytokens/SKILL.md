@@ -218,3 +218,8 @@ Record each deployed token (type, memo, location, alert channel, D3FEND mapping)
 - [ ] Each token validated by a controlled trigger; alert confirmed end-to-end.
 - [ ] Token inventory exported (type, memo, location, alert channel, D3-DF/D3-DUC mapping).
 - [ ] No tokens committed to public repositories or planted on out-of-scope systems.
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-honeytokens-and-canarytokens/references/api-reference.md` — API and execution command reference
+- `skill://red-deploying-honeytokens-and-canarytokens/references/standards.md` — Relevant standards and compliance baselines

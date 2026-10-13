@@ -113,10 +113,10 @@ The model is complete enough when: every discovered workflow has initiator/precu
 
 ## Handoffs
 
-- authorization-testing - boundary replay methodology (authz_matrix first)
+- `skill://webapp-authorization-testing` - boundary replay methodology (authz_matrix first)
 - workflow-state-machine-testing - state-machine abuse
-- business-logic-testing - invariant violation
-- race-condition-testing - concurrency abuse
-- input-boundary-testing - parameter domain violation
+- `skill://webapp-business-logic-testing` - invariant violation
+- `skill://webapp-race-condition-testing` - concurrency abuse
+- `skill://webapp-input-boundary-testing` - parameter domain violation
 - api-security skills - when the surface is an API (api-bola, api-bfla, api-business-flow-abuse)
 - reconnaissance skills - for more surface; this skill assumes a baseline inventory

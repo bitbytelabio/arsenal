@@ -17,8 +17,8 @@ pip install requests
 ## CLI Interface
 
 ```bash
-python agent.py introspect --url <graphql_endpoint> [--auth-header "Bearer token"]
-python agent.py depth --url <graphql_endpoint> [--max-depth 10]
+python scripts/agent.py introspect --url <graphql_endpoint> [--auth-header "Bearer token"]
+python scripts/agent.py depth --url <graphql_endpoint> [--max-depth 10]
 ```
 
 ## Core Functions

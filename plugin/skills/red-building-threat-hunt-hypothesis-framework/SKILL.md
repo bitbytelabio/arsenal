@@ -76,3 +76,10 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-building-threat-hunt-hypothesis-framework/references/api-reference.md` — API and execution command reference
+- `skill://red-building-threat-hunt-hypothesis-framework/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-threat-hunt-hypothesis-framework/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-threat-hunt-hypothesis-framework/assets/template.md` — Assessment deliverable and reporting template

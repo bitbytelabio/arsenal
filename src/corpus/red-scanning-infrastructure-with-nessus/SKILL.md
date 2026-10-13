@@ -160,3 +160,10 @@ curl -k -X POST "https://localhost:8834/scans/<SCAN_ID>/export" \
 - prioritizing-vulnerabilities-with-cvss-scoring
 - implementing-continuous-vulnerability-monitoring
 - performing-network-vulnerability-assessment
+
+## Shipped Playbook Resources
+
+- `skill://red-scanning-infrastructure-with-nessus/references/api-reference.md` — API and execution command reference
+- `skill://red-scanning-infrastructure-with-nessus/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-scanning-infrastructure-with-nessus/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-scanning-infrastructure-with-nessus/assets/template.md` — Assessment deliverable and reporting template

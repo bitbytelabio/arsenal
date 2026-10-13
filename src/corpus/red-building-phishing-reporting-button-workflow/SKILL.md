@@ -80,3 +80,10 @@ A phishing reporting button empowers users to flag suspicious emails directly fr
 - Auto-retraction removes confirmed phishing from all inboxes
 - Reporter receives feedback notification with classification
 - Metrics dashboard shows report volume and accuracy trends
+
+## Shipped Playbook Resources
+
+- `skill://red-building-phishing-reporting-button-workflow/references/api-reference.md` — API and execution command reference
+- `skill://red-building-phishing-reporting-button-workflow/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-building-phishing-reporting-button-workflow/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-building-phishing-reporting-button-workflow/assets/template.md` — Assessment deliverable and reporting template

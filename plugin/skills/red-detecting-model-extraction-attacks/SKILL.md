@@ -190,3 +190,8 @@ Wire step-2 findings into your SIEM. On a confirmed extraction pattern: throttle
 - [ ] Label-only / confidence-perturbation defenses applied and re-tested.
 - [ ] Per-principal rate limiting enforced and validated.
 - [ ] Alerts routed to SIEM with response playbook (throttle, revoke, preserve evidence).
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-model-extraction-attacks/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-model-extraction-attacks/references/standards.md` — Relevant standards and compliance baselines

@@ -272,3 +272,7 @@ STATISTICS:
   Auto-Remediated: 4
   Pending Investigation: 2
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-cloud-threats-with-guardduty/references/api-reference.md` — API and execution command reference

@@ -249,3 +249,7 @@ SUMMARY:
   Shared key access enabled:           18 / 24
   Keys not rotated in 90+ days:        14 / 24
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-misconfigured-azure-storage/references/api-reference.md` — API and execution command reference

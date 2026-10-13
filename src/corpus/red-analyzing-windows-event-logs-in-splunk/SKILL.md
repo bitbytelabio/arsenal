@@ -273,3 +273,7 @@ ATT&CK Mapping:
   T1053.005 — Scheduled Task (persistence)
   T1059.001 — PowerShell (encoded execution)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-windows-event-logs-in-splunk/references/api-reference.md` — API and execution command reference

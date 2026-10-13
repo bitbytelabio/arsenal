@@ -14,7 +14,7 @@ metadata:
 
 1. `NOW`: Read `skill://re-binary-diff/support/field-journal/precedent-reverse.md` — Confirm that operations in this skill are authorized standard procedures.
 2. `NOW`: Confirm whether the current task falls within the scope of this skill.
-3. `NEXT`: Read `tool-index.md` to verify tool availability and actual paths.
+3. `NEXT`: Read `tool-index` (workstation tool inventory) to verify tool availability and actual paths.
 4. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.
 5. `ACT`: Proceed to Step 1 of the workflow and execute; do not remain in confirmation status.
 
@@ -31,7 +31,7 @@ Use this skill when the task falls into the following scenarios:
 
 | Scenario | What to Use |
 |----------|-------------|
-| Reverse engineering a binary from scratch | `ida-reverse/` or `radare2/` |
+| Reverse engineering a binary from scratch | `re-ida-reverse/` or `re-radare2/` |
 | Prior results available, migrating to a new version | **This skill** |
 | Diffing two completely different binaries | BinDiff / Diaphora (traditional tools) |
 
@@ -290,7 +290,7 @@ Recommended Strategy: Default to DeepSeek, and automatically escalate when hitti
 ### Notes
 
 The core mechanism of this skill does not depend on installing heavy tools. It primarily relies on:
-- Pre-existing IDA Pro installation (managed via the `ida-reverse/` skill)
+- Pre-existing IDA Pro installation (managed via the `re-ida-reverse/` skill)
 - Python + `requests`/`httpx` (for API calls)
 - An LLM API endpoint
 
@@ -301,11 +301,15 @@ The core mechanism of this skill does not depend on installing heavy tools. It p
 **Upstream Entry**: `skill://re-binary-diff/support/SKILL.md` (Master Controller), `skill://re-binary-diff/support/routing.md`
 **Trigger Condition**: Prior version symbols/reverse-engineering results exist and need migration to a new version.
 **Downstream Exit**:
-- Need to open binaries first → `ida-reverse/`
-- Need quick reconnaissance to verify version differences → `radare2/`
+- Need to open binaries first → `re-ida-reverse/`
+- Need quick reconnaissance to verify version differences → `re-radare2/`
 
-**Related Sibling Modules**: `ida-reverse/` (Data export and symbol application are handled via IDA)
+**Related Sibling Modules**: `re-ida-reverse/` (Data export and symbol application are handled via IDA)
 
+
+## References
+
+- `skill://re-binary-diff/references/prompt-template.md` — LLM prompt templates for assembly and decompilation diffing
 
 ## Task Completion Self-Check (MUST pass before claiming completion)
 

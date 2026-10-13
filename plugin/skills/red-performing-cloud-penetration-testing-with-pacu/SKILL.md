@@ -281,3 +281,7 @@ RECOMMENDATIONS:
   3. Reduce SOC response time to < 15 minutes for IAM escalation alerts
   4. Implement SCP blocking iam:CreatePolicyVersion in non-admin OUs
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-cloud-penetration-testing-with-pacu/references/api-reference.md` — API and execution command reference

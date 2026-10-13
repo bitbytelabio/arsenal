@@ -48,3 +48,7 @@ evidence_exec --bucket my-sensitive-data --hours-back 24 --output s3_access_repo
 {"eventName": "GetObject", "requestParameters": {"bucketName": "sensitive-data", "key": "financials/q4.xlsx"},
  "sourceIPAddress": "203.0.113.50", "userIdentity": {"arn": "arn:aws:iam::123456789012:user/analyst"}}
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-cloud-storage-access-patterns/references/api-reference.md` — API and execution command reference

@@ -95,3 +95,10 @@ Never use raw passwords as encryption keys. Always derive keys using:
 - [ ] Nonces are never reused for the same key
 - [ ] Large files (>1GB) can be processed via streaming
 - [ ] Encrypted file format includes all necessary metadata
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-aes-encryption-for-data-at-rest/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-aes-encryption-for-data-at-rest/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-aes-encryption-for-data-at-rest/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-aes-encryption-for-data-at-rest/assets/template.md` — Assessment deliverable and reporting template

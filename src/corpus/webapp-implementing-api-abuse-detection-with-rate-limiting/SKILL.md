@@ -368,6 +368,8 @@ Content-Type: application/json
 
 ## References
 
+- `skill://webapp-implementing-api-abuse-detection-with-rate-limiting/references/api-reference.md` — API reference and command specification
+
 - APIsec Rate Limiting Strategies: https://www.apisec.ai/blog/api-rate-limiting-strategies-preventing
 - HackerOne Rate Limiting Best Practices: https://www.hackerone.com/blog/rate-limiting-strategies-protecting-your-api-ddos-and-brute-force-attacks
 - API7.ai Rate Limiting Algorithms Guide: https://api7.ai/blog/rate-limiting-guide-algorithms-best-practices

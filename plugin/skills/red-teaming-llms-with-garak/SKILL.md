@@ -206,3 +206,8 @@ This skill uses MITRE ATLAS (the adversarial-ML companion to ATT&CK) technique I
 - [ ] Successful attack strings captured from the hit log as evidence.
 - [ ] A mitigation applied and a comparison re-run completed showing changed hit rates.
 - [ ] Findings documented against OWASP LLM Top 10 and MITRE ATLAS for the risk assessment.
+
+## Shipped Playbook Resources
+
+- `skill://red-teaming-llms-with-garak/references/api-reference.md` — API and execution command reference
+- `skill://red-teaming-llms-with-garak/references/standards.md` — Relevant standards and compliance baselines

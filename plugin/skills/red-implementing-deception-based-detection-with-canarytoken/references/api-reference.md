@@ -6,13 +6,13 @@
 
 ## CLI Interface
 ```
-python agent.py --console abc123 --auth-token TOKEN ping
-python agent.py --console abc123 --auth-token TOKEN list
-python agent.py --console abc123 --auth-token TOKEN alerts
-python agent.py --console abc123 --auth-token TOKEN create --kind http --memo "Web server token"
-python agent.py --console abc123 --auth-token TOKEN create --kind dns --memo "DNS honeypot"
-python agent.py --console abc123 --auth-token TOKEN coverage
-python agent.py --console abc123 --auth-token TOKEN full
+python scripts/agent.py --console abc123 --auth-token TOKEN ping
+python scripts/agent.py --console abc123 --auth-token TOKEN list
+python scripts/agent.py --console abc123 --auth-token TOKEN alerts
+python scripts/agent.py --console abc123 --auth-token TOKEN create --kind http --memo "Web server token"
+python scripts/agent.py --console abc123 --auth-token TOKEN create --kind dns --memo "DNS honeypot"
+python scripts/agent.py --console abc123 --auth-token TOKEN coverage
+python scripts/agent.py --console abc123 --auth-token TOKEN full
 ```
 
 ## Core Functions

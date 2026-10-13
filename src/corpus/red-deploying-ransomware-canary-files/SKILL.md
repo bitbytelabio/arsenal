@@ -77,3 +77,7 @@ SHA-256 After: 7e91...2d3f
 Alert Channels: [email, slack, syslog]
 Action: Investigate immediately - potential ransomware activity
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-deploying-ransomware-canary-files/references/api-reference.md` — API and execution command reference

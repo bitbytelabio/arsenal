@@ -341,3 +341,7 @@ MIGRATION STATUS:
   Phase 3 (high-risk apps):     0/6  in progress
   VPN decommission:            Scheduled after Phase 3
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-zero-trust-network-access/references/api-reference.md` — API and execution command reference

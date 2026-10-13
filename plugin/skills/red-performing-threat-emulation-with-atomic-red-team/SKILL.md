@@ -59,3 +59,7 @@ for test in tests.get("atomic_tests", []):
     print(f"Test: {test['name']}")
     print(f"  Platforms: {test.get('supported_platforms', [])}")
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-threat-emulation-with-atomic-red-team/references/api-reference.md` — API and execution command reference

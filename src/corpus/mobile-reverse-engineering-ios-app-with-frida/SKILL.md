@@ -48,9 +48,9 @@ ssh root@<device_ip>
 find /var/containers/Bundle/Application/ -name "TargetApp" -type f
 
 # Pull decrypted binary (apps from App Store are encrypted with FairPlay)
-# Use frida-ios-dump or Clutch for decryption
-pip install frida-ios-dump
-dump.py com.target.app
+# Prerequisite: clone frida-ios-dump (https://github.com/AloneMonkey/frida-ios-dump) or use Clutch
+git clone https://github.com/AloneMonkey/frida-ios-dump.git && pip install -r frida-ios-dump/requirements.txt
+python3 frida-ios-dump/dump.py com.target.app
 
 # Extract Objective-C class headers
 class-dump -H decrypted_binary -o headers/

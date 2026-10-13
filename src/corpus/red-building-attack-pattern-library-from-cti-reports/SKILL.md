@@ -300,3 +300,7 @@ templates = library.generate_detection_templates(mapped_behaviors)
 - [attackcti Python Library](https://github.com/OTRF/ATTACK-Python-Client)
 - [Sigma Rules Project](https://github.com/SigmaHQ/sigma)
 - [MITRE ATT&CK STIX Data](https://github.com/mitre/cti)
+
+## Shipped Playbook Resources
+
+- `skill://red-building-attack-pattern-library-from-cti-reports/references/api-reference.md` — API and execution command reference

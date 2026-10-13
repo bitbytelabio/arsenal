@@ -114,3 +114,10 @@ v=DMARC1; p=quarantine; pct=25; rua=mailto:dmarc-agg@company.com; ruf=mailto:dma
 - Spoofed messages from unauthorized senders are rejected
 - No legitimate mail blocked after full p=reject enforcement
 - Subdomain policy (sp=) also set to reject
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-dmarc-policy-enforcement-rollout/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-dmarc-policy-enforcement-rollout/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-dmarc-policy-enforcement-rollout/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-dmarc-policy-enforcement-rollout/assets/template.md` — Assessment deliverable and reporting template

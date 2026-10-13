@@ -225,3 +225,11 @@ Structure forensic report:
 - **Analyzing only disk, ignoring memory**: In-memory-only malware (fileless attacks) leaves no disk artifacts. Always capture memory first.
 - **Not hashing evidence**: All evidence must be cryptographically hashed at collection time to prove integrity.
 - **Tunnel vision**: Focusing on one artifact when the timeline tells a broader story. Always build a comprehensive timeline.
+
+## References
+
+- `skill://re-performing-endpoint-forensics-investigation/references/api-reference.md` — API Reference — Performing Endpoint Forensics Investigation
+- `skill://re-performing-endpoint-forensics-investigation/references/standards.md` — Standards & References
+- `skill://re-performing-endpoint-forensics-investigation/references/workflows.md` — Workflows
+- `skill://re-performing-endpoint-forensics-investigation/assets/template.md` — Endpoint Forensics Investigation Template
+- `skill://re-performing-endpoint-forensics-investigation/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)

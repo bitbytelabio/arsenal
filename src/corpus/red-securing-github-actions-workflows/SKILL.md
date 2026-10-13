@@ -237,3 +237,10 @@ SECRETS:
 
 SCORE: 6/10 (Remediate 5 HIGH findings)
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-securing-github-actions-workflows/references/api-reference.md` — API and execution command reference
+- `skill://red-securing-github-actions-workflows/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-securing-github-actions-workflows/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-securing-github-actions-workflows/assets/template.md` — Assessment deliverable and reporting template

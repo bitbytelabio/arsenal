@@ -9,7 +9,7 @@
 [![Runtime: Bun](https://img.shields.io/badge/runtime-Bun-f472b6?style=flat-square&logo=bun)](https://bun.sh)
 [![Language: TypeScript](https://img.shields.io/badge/language-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![OMP Plugin](https://img.shields.io/badge/OMP-Plugin-8b5cf6?style=flat-square)](docs/install-omp-plugin.md)
-[![Skills Corpus](https://img.shields.io/badge/skills-1%2C647%20canonical-f59e0b?style=flat-square)](src/corpus)
+[![Skills Corpus](https://img.shields.io/badge/skills-1%2C648%20canonical-f59e0b?style=flat-square)](src/corpus)
 [![Build: Deterministic](https://img.shields.io/badge/build-deterministic-06b6d4?style=flat-square)](#cli-cheat-sheet)
 
 [ English ] &bull; [ Tiếng Việt ](README.vi.md)
@@ -24,10 +24,10 @@
 
 ### Key Highlights
 
-- **Single Source of Truth (SSOT)**: 1,647 canonical security playbooks and 3,288 references resolved with strict bounded checks ($\le 4096$ bytes) via `skill://` URI resolution.
+- **Single Source of Truth (SSOT)**: 1,648 canonical security playbooks with bundled references, templates, and source-backed helpers. Resource identifiers use `skill://<skill-id>/<path>`; bounded asset reads report when content is truncated.
 - **5 Specialist Agents**: Autonomous domain specialists (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) operating under structured epistemic rules (`E-*` empirical facts vs. `P-*` predictive deductions vs. `unk-*` unknowns).
 - **Cryptographic Evidence Ledger**: Monotonic SHA-256 hash-chained event streams recorded to `evidence/ledger.jsonl` backed by WAL-mode SQLite state tracking for tamper-evident provenance.
-- **Native Bun & TypeScript Tooling**: Eliminates untracked host Python scripts via compiled, audited tools like `apk_inspect` and monitored `evidence_exec` executions.
+- **Native Bun & TypeScript Tooling**: Core tools such as `apk_inspect` run natively. Playbook-specific helpers retain their actual Python, Bash, or PowerShell interpreter and require the dependencies documented by that playbook; execution remains subject to scope and evidence controls.
 - **Zero Host Mutation & Dynamic Opt-In MCP**: 6 native tool bridges (`burp-ultra`, `rea`, `playwright`, `ghidra`, `ida-pro`, `jshook`) initialize disabled, toggled safely per-profile or per-project.
 
 ---
@@ -65,7 +65,7 @@ flowchart TD
 
     subgraph CoreEngine ["Single Source of Truth & Runtime"]
         direction TB
-        Corpus["src/corpus/<br/>1,647 Canonical Skills & skill:// URIs"]
+        Corpus["src/corpus/<br/>1,648 Canonical Skills & skill:// URIs"]
         PluginDist["plugin/<br/>Compiled Extensions & Routing Catalog"]
         NativeTools["Native TS Tools<br/>apk_inspect, evidence_exec"]
     end
@@ -212,6 +212,13 @@ bun run bin/arsenal.ts evidence verify --ledger evidence/ledger.jsonl --json
 # Run test suite
 bun test
 ```
+
+### Corpus resources and helper execution
+
+- Edit `src/corpus/`; `plugin/skills/` is generated. Keep useful supporting documents linked from their skill entrypoint and record source provenance in `MANIFEST.json`.
+- `<SKILL_ROOT>` references are canonical `skill://<skill-id>/<path>` resources, not host filesystem placeholders. Resolve a resource before running it; shell interpreters do not execute `skill://` URIs. Copy the **complete** helper and its sibling dependencies to a local directory; a truncated asset preview is not an executable script.
+- Match the documented interpreter and arguments to the shipped helper. The Evidence append helper is `skill://webapp-pentest-tools/support/templates/append-evidence.ps1`, requires PowerShell (`pwsh`), and rejects duplicate records, invalid severity/status, and artifact paths outside the case.
+
 
 ---
 

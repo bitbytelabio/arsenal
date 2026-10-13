@@ -466,3 +466,7 @@ ENGINEERING WORKSTATION:
   Unauthorized modifications: [N]
   USB connections: [N]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-stuxnet-style-attacks/references/api-reference.md` — API and execution command reference

@@ -206,3 +206,8 @@ sudo kube-bench run --targets master,node --pgsql
 - [ ] CIS remediation applied to control-plane manifests and node configs.
 - [ ] Re-run confirms previously failing checks now PASS.
 - [ ] Results tracked over time (file archive or PostgreSQL).
+
+## Shipped Playbook Resources
+
+- `skill://red-benchmarking-kubernetes-with-kube-bench/references/api-reference.md` — API and execution command reference
+- `skill://red-benchmarking-kubernetes-with-kube-bench/references/standards.md` — Relevant standards and compliance baselines

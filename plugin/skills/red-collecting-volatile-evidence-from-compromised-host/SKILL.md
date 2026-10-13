@@ -231,3 +231,10 @@ EOF
 - System configuration snapshots
 - Evidence manifest with SHA256 checksums
 - Chain of custody documentation
+
+## Shipped Playbook Resources
+
+- `skill://red-collecting-volatile-evidence-from-compromised-host/references/api-reference.md` — API and execution command reference
+- `skill://red-collecting-volatile-evidence-from-compromised-host/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-collecting-volatile-evidence-from-compromised-host/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-collecting-volatile-evidence-from-compromised-host/assets/template.md` — Assessment deliverable and reporting template

@@ -194,25 +194,6 @@ function rollbackRepositories(states: readonly RepositoryState[]): void {
   }
 }
 
-function updateManifestRevisions(repoRoot: string): void {
-  const manifestPath = path.join(repoRoot, "src/corpus/MANIFEST.json");
-  if (!fs.existsSync(manifestPath)) throw new Error(`Manifest '${manifestPath}' was not generated.`);
-  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8")) as {
-    sources?: Record<string, { repo?: string; rev?: string | null; license?: string }>;
-    files?: Array<{ source?: string; source_rev?: string | null }>;
-  };
-  const sources = manifest.sources ?? {};
-  const files = manifest.files ?? [];
-  for (const source of UPSTREAM_SOURCES) {
-    sources[source.id] = { repo: source.repo, rev: source.revision, license: source.license };
-    for (const entry of files) {
-      if (entry.source === source.id) entry.source_rev = source.revision;
-    }
-  }
-  manifest.sources = sources;
-  manifest.files = files;
-  fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf-8");
-}
 
 function runIngestion(repoRoot: string): void {
   const result = Bun.spawnSync(["bun", "--no-env-file", "run", "tools/internalize-corpus.ts"], {
@@ -238,7 +219,6 @@ export function syncUpstreams(options: Options): { results: SyncResult[]; ingest
     for (const state of states) prepareRepository(state);
     for (const state of states) checkoutPrepared(state);
     runIngestion(options.repoRoot);
-    updateManifestRevisions(options.repoRoot);
     return {
       results: states.map((state) => ({
         source: state.source.id,

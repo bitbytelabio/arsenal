@@ -574,3 +574,10 @@ DETAILED FINDINGS:
     Impact: [operational and safety impact]
     Remediation: [specific technical remediation steps]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-ot-network-security-assessment/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-ot-network-security-assessment/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-ot-network-security-assessment/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-ot-network-security-assessment/assets/template.md` — Assessment deliverable and reporting template

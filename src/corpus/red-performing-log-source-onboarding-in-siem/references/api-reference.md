@@ -7,10 +7,10 @@
 
 ## CLI Interface
 ```
-python agent.py detect --file sample.log
-python agent.py validate --host siem.corp.com [--port 514] [--protocol udp|tcp]
-python agent.py parse-config --format syslog_rfc3164 --source-type firewall_logs
-python agent.py checklist --source "Palo Alto FW" --format syslog_rfc3164 --siem-host siem.corp.com
+python scripts/agent.py detect --file sample.log
+python scripts/agent.py validate --host siem.corp.com [--port 514] [--protocol udp|tcp]
+python scripts/agent.py parse-config --format syslog_rfc3164 --source-type firewall_logs
+python scripts/agent.py checklist --source "Palo Alto FW" --format syslog_rfc3164 --siem-host siem.corp.com
 ```
 
 ## Core Functions

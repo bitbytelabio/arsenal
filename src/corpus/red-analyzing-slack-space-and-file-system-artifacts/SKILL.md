@@ -379,3 +379,7 @@ File System Artifact Analysis:
 
   Reports: /cases/case-2024-001/analysis/
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-slack-space-and-file-system-artifacts/references/api-reference.md` — API and execution command reference

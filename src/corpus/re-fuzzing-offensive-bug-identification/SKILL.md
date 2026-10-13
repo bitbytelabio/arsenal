@@ -41,7 +41,7 @@ When this skill is active:
 
 Bug identification is the process of discovering potential vulnerabilities in software through various techniques including static analysis, dynamic analysis, and fuzzing. This document outlines methodologies and tools for effective vulnerability research.
 
-For practical exploit development, see [Exploit Development](/exploit/development.md).
+For practical exploit development, see [Exploit Development](skill://re-exploit-dev-offensive-exploit-development/SKILL.md).
 
 ```mermaid
 flowchart TD
@@ -163,7 +163,7 @@ Before diving into specific bug hunting techniques, it's essential to understand
 - Named Pipes
 - File & Network IO
 - Windows Messages
-- For authentication-related vulnerabilities, see [Windows Auth](/exploit/windows-auth.md)
+- For authentication-related vulnerabilities, see [Active Directory / Windows Auth](skill://red-active-directory-offensive-active-directory/SKILL.md)
 
 ### Kernel
 
@@ -188,7 +188,7 @@ Before diving into specific bug hunting techniques, it's essential to understand
   - IOCTL handlers that accept a fixed‑size struct and pass a user‑controlled `PHYSICAL_ADDRESS` directly to `MmMapIoSpace`
   - then memcpy out/in mapped memory (sometimes via wrappers that swap src/dst) indicate physical memory read/write primitives.
   - Similarly, unguarded MSR read/write paths yield `RDMSR/WRMSR` primitives.
-- See the Lenovo `LnvMSRIO.sys` case study in [windows-kernel.md](/exploit/windows-kernel.md)
+- See the Lenovo `LnvMSRIO.sys` case study in [Windows Kernel Boundaries](skill://red-infrastructure-offensive-windows-boundaries/SKILL.md)
 
 ### eBPF & XDP
 
@@ -202,14 +202,14 @@ Before diving into specific bug hunting techniques, it's essential to understand
 
 - Namespace/cgroup escapes, device‑mapper abuse, races in snapshotting backends (e.g., overlayfs)
 - Micro‑VM hypercalls in Firecracker, CloudHypervisor, Kata Containers
-- For detailed container exploitation techniques, see [Container](/exploit/container.md)
+- For detailed container exploitation techniques, see [Container Escape](skill://red-container-offensive-container-escape/SKILL.md)
 
 ### Cloud‑Native & IAM Bugs
 
 - Misconfigured IAM policies, privilege‑escalating API actions (AWS `sts:AssumeRole`, Azure Golden SAML)
 - SSRF paths into metadata services (`169.254.169.254`, IMDSv2 bypass techniques)
 - Race conditions in managed control‑plane components (Kubernetes API server, AWS Lambda workers)
-- Kubernetes Attack Vectors: look at [kubernetes](/pentest/kubernetes.md) for a deeper checklist
+- Kubernetes Attack Vectors: look at [Kubernetes Attacks](skill://red-container-offensive-k8s-attacks/SKILL.md) for a deeper checklist
 - **Serverless Vulnerabilities:**
   - Lambda layer poisoning
   - Function URL authentication bypass
@@ -351,7 +351,7 @@ V8 now uses a multi-tier JIT pipeline with distinct exploitation characteristics
 ### AI & LLM Application Security
 
 - Prompt‑injection, sandbox boundary escapes, hidden‑channel data exfil
-- See [AI Security](/pentest/ai.md) for a deeper checklist
+- See [AI Security](skill://red-ai-offensive-ai-security/SKILL.md) for a deeper checklist
 
 ### Confidential‑Computing / TEE Surface
 
@@ -359,7 +359,7 @@ V8 now uses a multi-tier JIT pipeline with distinct exploitation characteristics
 - **AMD SEV‑SNP**: look for unchecked `VMGEXIT` leafs in PSP firmware; `sevtool --decode` helps locate IDA entry points.
 - **Arm CCA / RMM**: analyze SMC handlers inside Realm Management Monitor (RMM) EL3 firmware.
 - **Cloud offerings (Azure CCE, Google C3)**: focus on paravirtualised MMIO and attestation report flows exposed to guests.
-- For TEE-specific exploitation, see [Secure Enclaves](/exploit/secure-enclaves.md)
+- For TEE-specific exploitation, see Secure Enclaves / TEE documentation
 
 ### GPU & vGPU Surface
 
@@ -398,7 +398,7 @@ V8 now uses a multi-tier JIT pipeline with distinct exploitation characteristics
 - Memory corruption in IOCTL handlers
 - Race conditions in driver communication
 - Improper input validation
-- For detailed EDR analysis techniques, see [EDR](/exploit/edr.md)
+- For detailed EDR analysis techniques, see [EDR Evasion](skill://red-infrastructure-offensive-edr-evasion/SKILL.md)
 
 #### Research methodology
 
@@ -439,8 +439,8 @@ Static analysis examines code without execution to identify potential vulnerabil
 - Enumerating the ways to feed input to it
 - Examine the file formats and network protocols that the application uses
 - Locating logical vulnerabilities or memory corruptions
-- For Windows-specific techniques, see [Windows Kernel](/exploit/windows-kernel.md)
-- For Linux-specific techniques, see [Linux](/exploit/linux.md)
+- For Windows-specific techniques, see [Windows Kernel Boundaries](skill://red-infrastructure-offensive-windows-boundaries/SKILL.md)
+- For Linux-specific techniques, see [Linux Privilege Escalation](skill://red-privesc-offensive-linux-privesc/SKILL.md)
 
 ### Patch Diffing
 
@@ -690,7 +690,7 @@ Patch‑diffing Linux kernels is often faster at the source level, but for binar
 
    ```bash
    # If only vmlinuz is present, use the upstream helper
-   /usr/src/linux-headers-<ver>/templates/extract-vmlinux /boot/vmlinuz-<ver> > vmlinux-<ver>
+   /usr/src/linux-headers-<ver>/scripts/extract-vmlinux /boot/vmlinuz-<ver> > vmlinux-<ver>
    # Or take vmlinux directly from debuginfo package tree
    ```
 
@@ -716,8 +716,8 @@ Patch‑diffing Linux kernels is often faster at the source level, but for binar
 7. Symbolization and crash mapping (cheat‑sheet)
 
    ```bash
-   # Decode kernel oops backtraces to lines
-   ./templates/decode_stacktrace.sh vmlinux /lib/modules/<ver>/build < dmesg.log
+   # Decode kernel oops backtraces (run from Linux kernel source tree containing scripts/decode_stacktrace.sh)
+   ./scripts/decode_stacktrace.sh vmlinux /lib/modules/<ver>/build < dmesg.log
    # Map PC to file:line quickly
    addr2line -e vmlinux-<ver> 0xffffffff81234567
    ```
@@ -842,8 +842,8 @@ _(Update: Server 2022 build 20349.2300, May 2024, hardened this code path; the o
 - Understanding protocol specifications (ESP and IPv6 fragmentation) was critical
 - Simple buffer checks are still overlooked in complex networking code
 - Even limited primitives (single byte overwrite at constrained offsets) can be dangerous
-- For modern exploitation techniques, see [Modern Samples](/exploit/modern-samples.md)
-- For mitigation bypass techniques, see [Modern Mitigations](/exploit/modern-mitigations.md)
+- For modern exploitation techniques, see [Basic Exploitation Samples](skill://re-exploit-dev-offensive-basic-exploitation/SKILL.md)
+- For mitigation bypass techniques, see [Modern Mitigations](skill://red-infrastructure-offensive-windows-mitigations/SKILL.md)
 
 When applying patch diffing to networking protocols:
 
@@ -851,7 +851,7 @@ When applying patch diffing to networking protocols:
 2. Look for missing bounds checks in data processing
 3. Pay attention to buffer size calculations
 4. Check for proper validation of protocol field values and locations
-5. Consider evasion techniques for exploit deployment - see [EDR](/exploit/edr.md)
+5. Consider evasion techniques for exploit deployment - see [EDR Evasion](skill://red-infrastructure-offensive-edr-evasion/SKILL.md)
 6. Specs: ESP (RFC 4303) and IPv6 (RFC 8200) are essential references when reasoning about header placement and bounds
 
 #### Semi-Automatic Patch Diffing
@@ -977,7 +977,7 @@ Reverse engineering involves analyzing an application while it runs to understan
   - Translate GPA to Host Physical Address (HPA) when needed
   - Understand Second Level Address Translation mechanisms
 
-- For mitigation techniques, see [Mitigation](/exploit/mitigation.md) or [Modern Mitigations](/exploit/modern-mitigations.md)
+- For mitigation techniques, see [Mitigation](skill://re-exploit-dev-offensive-mitigations/SKILL.md) or [Modern Mitigations](skill://red-infrastructure-offensive-windows-mitigations/SKILL.md)
 
 ### Binary Instrumentation
 
@@ -1047,7 +1047,7 @@ genhtml coverage.info -o cov_html
 
 ## Fuzzing
 
-Fuzzing is a technique where you feed the application malformed inputs and monitor for crashes or unintended behaviors. See the dedicated [Fuzzing](/exploit/fuzzing.md) document for more detailed techniques.
+Fuzzing is a technique where you feed the application malformed inputs and monitor for crashes or unintended behaviors. See the dedicated [Fuzzing](skill://re-fuzzing-offensive-fuzzing/SKILL.md) document for more detailed techniques.
 
 ### Fuzzing Overview
 
@@ -1083,7 +1083,7 @@ Fuzzing is a technique where you feed the application malformed inputs and monit
   - Shadow memory (by inserting red zones in-between stack objects)
 - Memory Sanitizer (uninitialized variable read)
   - Memory Leak, Used to Break ASLR
-- Cluster crashes with token‑based Capstone‑hashing or `gdb‑script dedup.py` before manual analysis.
+- Cluster crashes with token‑based Capstone‑hashing or GDB deduplication scripts (e.g., custom crash deduplication script) before manual analysis.
 
 ### Fuzzing Tools
 
@@ -1165,7 +1165,7 @@ The most effective approach often combines multiple techniques:
 - Reverse engineer first to identify interesting parts
 - Fuzz those parts to find crashes
 - Investigate crashes to find exploitable vulnerabilities
-- For shellcode development, see [Shellcode](/exploit/shellcode.md)
+- For shellcode development, see [Shellcode Development](skill://red-infrastructure-offensive-shellcode/SKILL.md)
 
 ## AI/ML-Assisted Vulnerability Discovery
 

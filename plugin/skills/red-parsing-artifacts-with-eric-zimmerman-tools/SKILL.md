@@ -156,3 +156,8 @@ Build a working theory by correlating PECmd (execution time) with MFTECmd (file 
 - [ ] LNK/Jump Lists/EVTX parsed as needed
 - [ ] Output loaded and reviewed in Timeline Explorer
 - [ ] Cross-artifact correlation performed on UTC timestamps
+
+## Shipped Playbook Resources
+
+- `skill://red-parsing-artifacts-with-eric-zimmerman-tools/references/api-reference.md` — API and execution command reference
+- `skill://red-parsing-artifacts-with-eric-zimmerman-tools/references/standards.md` — Relevant standards and compliance baselines

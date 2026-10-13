@@ -62,5 +62,5 @@ Full analysis pipeline combining all detection methods.
 ## Usage
 
 ```bash
-python agent.py suspect_image.png
+python scripts/agent.py suspect_image.png
 ```

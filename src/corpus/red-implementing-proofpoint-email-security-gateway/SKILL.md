@@ -110,3 +110,10 @@ Proofpoint Email Protection is a cloud-native secure email gateway (SEG) that ac
 - TRAP successfully retracts test phishing message from inboxes post-delivery
 - False positive rate below 0.1% after initial tuning period
 - DMARC/SPF/DKIM authentication passes for all legitimate outbound mail
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-proofpoint-email-security-gateway/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-proofpoint-email-security-gateway/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-proofpoint-email-security-gateway/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-proofpoint-email-security-gateway/assets/template.md` — Assessment deliverable and reporting template

@@ -70,7 +70,7 @@ Security awareness training is the human layer of phishing defense. An effective
 - Include diverse attack types: links, attachments, QR codes, BEC
 
 ### Step 5: Measure and Optimize
-Use `skill://red-implementing-anti-phishing-training-program/support/implementing-anti-phishing-training-program/templates/process.py` to analyze training completion, simulation results, and program effectiveness over time.
+Use `skill://red-implementing-anti-phishing-training-program/templates/process.py` to analyze training completion, simulation results, and program effectiveness over time.
 
 ## Tools & Resources
 - **KnowBe4**: https://www.knowbe4.com/
@@ -84,3 +84,10 @@ Use `skill://red-implementing-anti-phishing-training-program/support/implementin
 - Measurable reduction in phishing click rate over 6 months
 - Increase in user phishing report rate
 - Department-level improvement tracking
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-anti-phishing-training-program/references/api-reference.md` — API and execution command reference
+- `skill://red-implementing-anti-phishing-training-program/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-implementing-anti-phishing-training-program/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-implementing-anti-phishing-training-program/assets/template.md` — Assessment deliverable and reporting template

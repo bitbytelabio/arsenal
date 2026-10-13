@@ -195,3 +195,8 @@ sudo chipsec_main -p <PLATFORM> # force platform code if auto-detect fails
 - [ ] UEFI variables enumerated and triaged
 - [ ] All FAIL/WARNING findings documented with platform/BIOS version
 - [ ] Write/modify modules NOT run on production hardware
+
+## References
+
+- `skill://re-auditing-uefi-firmware-with-chipsec/references/api-reference.md` — Command Reference - CHIPSEC
+- `skill://re-auditing-uefi-firmware-with-chipsec/references/standards.md` — Standards and References - Auditing UEFI Firmware with CHIPSEC

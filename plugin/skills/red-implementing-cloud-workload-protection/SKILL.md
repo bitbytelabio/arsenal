@@ -59,3 +59,7 @@ ssm.send_command(
     Parameters={"commands": ["ss -tlnp | grep ESTABLISHED"]},
 )
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-cloud-workload-protection/references/api-reference.md` — API and execution command reference

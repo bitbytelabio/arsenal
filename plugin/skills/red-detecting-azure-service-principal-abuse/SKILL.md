@@ -218,3 +218,10 @@ Create analytics rules for:
 - Semperis: Service Principal Ownership Abuse in Entra ID
 - MITRE ATT&CK Cloud Matrix
 - Microsoft: Securing service principals in Entra ID
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-azure-service-principal-abuse/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-azure-service-principal-abuse/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-detecting-azure-service-principal-abuse/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-detecting-azure-service-principal-abuse/assets/template.md` — Assessment deliverable and reporting template

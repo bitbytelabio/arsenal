@@ -216,3 +216,10 @@ kubectl get clusterroles -o json | jq '.items[] | select(.rules[].resources[] ==
 5. **Use benchmark profiles** matching your Kubernetes distribution
 6. **Track score over time** to measure security posture improvement
 7. **Combine with admission controllers** to prevent drift
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-kubernetes-cis-benchmark-with-kube-bench/references/api-reference.md` — API and execution command reference
+- `skill://red-performing-kubernetes-cis-benchmark-with-kube-bench/references/standards.md` — Relevant standards and compliance baselines
+- `skill://red-performing-kubernetes-cis-benchmark-with-kube-bench/references/workflows.md` — Operational procedures and detailed workflows
+- `skill://red-performing-kubernetes-cis-benchmark-with-kube-bench/assets/template.md` — Assessment deliverable and reporting template

@@ -229,3 +229,7 @@ RECOMMENDED DETECTIONS
 2. Threshold alert for LSASS access patterns
 3. Behavioral rule for beacon-interval network traffic
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-analyzing-security-logs-with-splunk/references/api-reference.md` — API and execution command reference

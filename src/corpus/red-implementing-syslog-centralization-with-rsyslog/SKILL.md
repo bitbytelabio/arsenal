@@ -59,3 +59,7 @@ action(type="omfwd" target="10.0.0.1" port="6514" protocol="tcp"
        queue.maxdiskspace="1g" queue.saveonshutdown="on"
        action.resumeRetryCount="-1")
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-syslog-centralization-with-rsyslog/references/api-reference.md` — API and execution command reference

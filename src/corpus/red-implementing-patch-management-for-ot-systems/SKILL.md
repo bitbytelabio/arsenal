@@ -324,3 +324,7 @@ COMPLIANCE:
   Deployed or mitigated: [N]/[N]
   Deferred with compensating controls: [N]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-patch-management-for-ot-systems/references/api-reference.md` — API and execution command reference

@@ -476,3 +476,7 @@ Deploy runtime protection controls to prevent injection at execution time:
 - Config rule: Lambda functions must not have layers from external accounts
 - Config rule: Lambda execution roles must not have wildcard resource permissions
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-serverless-function-injection/references/api-reference.md` — API and execution command reference

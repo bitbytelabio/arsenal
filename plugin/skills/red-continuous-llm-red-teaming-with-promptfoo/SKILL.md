@@ -195,3 +195,8 @@ promptfoo redteam run --filter-failing results.json
 - [ ] CI/CD job fails the build on new red-team failures (non-zero exit).
 - [ ] `results.json` artifact archived per run for regression tracking.
 - [ ] Attack-success-rate per OWASP category trended across releases.
+
+## Shipped Playbook Resources
+
+- `skill://red-continuous-llm-red-teaming-with-promptfoo/references/api-reference.md` — API and execution command reference
+- `skill://red-continuous-llm-red-teaming-with-promptfoo/references/standards.md` — Relevant standards and compliance baselines

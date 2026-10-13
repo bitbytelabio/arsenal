@@ -5,56 +5,166 @@
 
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { fromMarkdown } from "mdast-util-from-markdown";
+import type { Root } from "mdast";
 
 export function migrateSkillContent(skillId: string, content: string): { updated: string; count: number } {
-  let count = 0;
+  let tree: Root;
+  try {
+    tree = fromMarkdown(content);
+  } catch {
+    return { updated: content, count: 0 };
+  }
 
-  // 1. Markdown links: [text](references/...) -> [text](skill://<skillId>/references/...)
-  let updated = content.replace(
-    /\[([^\]]+)\]\((?:\.\/)?references\/([^)]+)\)/g,
-    (match, text, file) => {
-      count++;
-      return `[${text}](skill://${skillId}/references/${file})`;
+  const edits: Array<{ start: number; end: number; replacement: string }> = [];
+
+  function normalizeRef(rawUrl: string): string | null {
+    let u = rawUrl.trim();
+    if (u.includes("://")) return null;
+    u = u.replace(/^<SKILL_ROOT>\/?/i, "").replace(/^\.\//, "");
+    if (u.startsWith("references/") || u.startsWith("support/")) {
+      return `skill://${skillId}/${u}`;
     }
-  );
+    return null;
+  }
 
-  // 2. Markdown links: [text](support/...) -> [text](skill://<skillId>/support/...)
-  updated = updated.replace(
-    /\[([^\]]+)\]\((?:\.\/)?support\/([^)]+)\)/g,
-    (match, text, file) => {
-      count++;
-      return `[${text}](skill://${skillId}/support/${file})`;
+  function walk(node: unknown): void {
+    if (!node || typeof node !== "object") return;
+    const n = node as {
+      type?: string;
+      url?: string;
+      value?: string;
+      position?: {
+        start: { line: number; column: number; offset?: number };
+        end: { line: number; column: number; offset?: number };
+      };
+      children?: unknown[];
+    };
+
+    if (n.type === "code") return;
+
+    if ((n.type === "link" || n.type === "image") && typeof n.url === "string" && n.position) {
+      const start = n.position.start.offset;
+      const end = n.position.end.offset;
+      if (start !== undefined && end !== undefined) {
+        const canonical = normalizeRef(n.url);
+        if (canonical) {
+          const raw = content.slice(start, end);
+          let searchFrom = 0;
+          if (Array.isArray(n.children) && n.children.length > 0) {
+            const lastChild = n.children[n.children.length - 1] as {
+              position?: { end?: { offset?: number } };
+            };
+            if (lastChild.position?.end?.offset !== undefined) {
+              searchFrom = Math.max(0, lastChild.position.end.offset - start);
+            }
+          } else {
+            let depth = 0;
+            for (let i = 0; i < raw.length; i++) {
+              if (raw[i] === "\\") {
+                i++;
+                continue;
+              }
+              if (raw[i] === "[") depth++;
+              else if (raw[i] === "]") {
+                depth--;
+                if (depth === 0 && raw[i + 1] === "(") {
+                  searchFrom = i;
+                  break;
+                }
+              }
+            }
+          }
+          const openParenIdx = raw.indexOf("](", searchFrom);
+          if (openParenIdx !== -1) {
+            const urlIdx = raw.indexOf(n.url, openParenIdx + 2);
+            if (urlIdx !== -1) {
+              const newRaw = raw.slice(0, urlIdx) + canonical + raw.slice(urlIdx + n.url.length);
+              edits.push({ start, end, replacement: newRaw });
+            }
+          }
+        }
+      }
+      return;
     }
-  );
 
-  // 3. Inline code: `references/...` -> `skill://<skillId>/references/...`
-  updated = updated.replace(
-    /`(?:\.\/)?references\/([^`]+)`/g,
-    (match, file) => {
-      count++;
-      return `\`skill://${skillId}/references/${file}\``;
+    if (n.type === "definition" && typeof n.url === "string" && n.position) {
+      const start = n.position.start.offset;
+      const end = n.position.end.offset;
+      if (start !== undefined && end !== undefined) {
+        const canonical = normalizeRef(n.url);
+        if (canonical) {
+          const raw = content.slice(start, end);
+          const colonIdx = raw.indexOf("]:");
+          if (colonIdx !== -1) {
+            const urlIdx = raw.indexOf(n.url, colonIdx + 2);
+            if (urlIdx !== -1) {
+              const newRaw = raw.slice(0, urlIdx) + canonical + raw.slice(urlIdx + n.url.length);
+              edits.push({ start, end, replacement: newRaw });
+            }
+          }
+        }
+      }
+      return;
     }
-  );
 
-  // 4. Inline code: `support/...` -> `skill://<skillId>/support/...`
-  updated = updated.replace(
-    /`(?:\.\/)?support\/([^`]+)`/g,
-    (match, file) => {
-      count++;
-      return `\`skill://${skillId}/support/${file}\``;
+    if (n.type === "inlineCode" && typeof n.value === "string" && n.position) {
+      const start = n.position.start.offset;
+      const end = n.position.end.offset;
+      const val = n.value.trim();
+      if (start !== undefined && end !== undefined && !/\s/.test(val)) {
+        const preceding = content.slice(Math.max(0, start - 25), start);
+        if (!/(?:python3?|bash|sh|pwsh|powershell|node|exec|cat|cp|mv)\s+$/i.test(preceding)) {
+          const canonical = normalizeRef(val);
+          if (canonical) {
+            const raw = content.slice(start, end);
+            const ticks = raw.match(/^`+/)?.[0] ?? "`";
+            edits.push({ start, end, replacement: `${ticks}${canonical}${ticks}` });
+          }
+        }
+      }
+      return;
     }
-  );
 
-  // 5. Prose citations like "See references/foo.md" or "read references/foo.md"
-  updated = updated.replace(
-    /(?<=\s)(?:\.\/)?references\/([a-zA-Z0-9_.-]+\.md)/g,
-    (match, file) => {
-      count++;
-      return `skill://${skillId}/references/${file}`;
+    if (n.type === "text" && typeof n.value === "string" && n.position) {
+      const start = n.position.start.offset;
+      const end = n.position.end.offset;
+      if (start !== undefined && end !== undefined) {
+        const raw = content.slice(start, end);
+        const regex = /(?<=\s|^)(?:<SKILL_ROOT>\/|\.\/*)?((?:references|support)\/[a-zA-Z0-9_./-]+\.md(?:#[a-zA-Z0-9_-]+)?)/g;
+        let match: RegExpExecArray | null;
+        while ((match = regex.exec(raw)) !== null) {
+          const fullMatch = match[0];
+          if (fullMatch.includes("://")) continue;
+          const matchStart = start + match.index;
+          const preceding = content.slice(Math.max(0, matchStart - 25), matchStart);
+          if (/(?:python3?|bash|sh|pwsh|powershell|node|exec|cat|cp|mv)\s+$/i.test(preceding)) continue;
+          const canonical = normalizeRef(fullMatch);
+          if (canonical) {
+            edits.push({
+              start: matchStart,
+              end: matchStart + fullMatch.length,
+              replacement: canonical,
+            });
+          }
+        }
+      }
+      return;
     }
-  );
 
-  return { updated, count };
+    if (Array.isArray(n.children)) {
+      for (const child of n.children) walk(child);
+    }
+  }
+
+  walk(tree);
+
+  edits.sort((a, b) => b.start - a.start);
+  let updated = content;
+  for (const edit of edits) {
+    updated = updated.slice(0, edit.start) + edit.replacement + updated.slice(edit.end);
+  }
+  return { updated, count: edits.length };
 }
 
 export function runMigration(corpusDir: string): { totalModified: number; totalCitations: number } {

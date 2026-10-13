@@ -77,5 +77,5 @@ Enables S3 versioning on the bucket.
 ## Usage
 
 ```bash
-python agent.py us-east-1
+python scripts/agent.py us-east-1
 ```

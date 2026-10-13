@@ -42,3 +42,7 @@ SpiderFoot is an open-source OSINT automation tool with 200+ modules that integr
 ## Expected Output
 
 JSON report containing OSINT findings organized by data type (domains, IPs, emails, credentials, DNS records), module source attribution, and target profile summary with risk indicators.
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-osint-with-spiderfoot/references/api-reference.md` — API and execution command reference

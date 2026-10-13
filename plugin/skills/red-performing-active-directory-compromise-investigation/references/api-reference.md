@@ -77,5 +77,5 @@ Get-WinEvent -LogName Security | ConvertTo-Json -Depth 5 > events.json
 ## CLI Usage
 
 ```bash
-python agent.py --log events.json --output report.json
+python scripts/agent.py --log events.json --output report.json
 ```

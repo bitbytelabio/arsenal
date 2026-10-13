@@ -46,3 +46,7 @@ Use the /logtest endpoint to validate decoder and rule logic against sample log 
 ## Expected Output
 
 JSON report with agent inventory, alert statistics, rule coverage, and logtest validation results.
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-endpoint-detection-with-wazuh/references/api-reference.md` — API and execution command reference

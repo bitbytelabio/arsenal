@@ -249,3 +249,7 @@ SUMMARY:
   Buckets without access logging:      18 / 47
   Buckets with overly broad policies:   7 / 47
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-auditing-aws-s3-bucket-permissions/references/api-reference.md` — API and execution command reference

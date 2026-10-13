@@ -177,3 +177,8 @@ Document the level each consumed artifact achieves:
 - [ ] GitHub blob/bundle attestation verified
 - [ ] Verification wired as a fail-closed CI/admission gate
 - [ ] Each consumed artifact assigned a SLSA Build level
+
+## Shipped Playbook Resources
+
+- `skill://red-verifying-build-provenance-with-slsa-sigstore/references/api-reference.md` — API and execution command reference
+- `skill://red-verifying-build-provenance-with-slsa-sigstore/references/standards.md` — Relevant standards and compliance baselines

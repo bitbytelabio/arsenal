@@ -16,28 +16,28 @@ Detects typosquatting attacks in npm and PyPI package registries by generating c
 
 ```bash
 # Scan for typosquats of a single PyPI package
-python agent.py scan requests --registry pypi
+python scripts/agent.py scan requests --registry pypi
 
 # Scan for typosquats of an npm package
-python agent.py scan express --registry npm
+python scripts/agent.py scan express --registry npm
 
 # Scan with limited candidate count
-python agent.py scan numpy --registry pypi --max-candidates 50
+python scripts/agent.py scan numpy --registry pypi --max-candidates 50
 
 # Scan all dependencies in a requirements file
-python agent.py scan-file requirements.txt --registry pypi
+python scripts/agent.py scan-file requirements.txt --registry pypi
 
 # Scan all dependencies in a package.json
-python agent.py scan-file package.json --registry npm
+python scripts/agent.py scan-file package.json --registry npm
 
 # Check a specific candidate against a target
-python agent.py check reqeusts requests --registry pypi
+python scripts/agent.py check reqeusts requests --registry pypi
 
 # Generate typosquat candidates without querying registries
-python agent.py generate requests
+python scripts/agent.py generate requests
 
 # Custom output path
-python agent.py scan flask --registry pypi --output flask_typosquat_report.json
+python scripts/agent.py scan flask --registry pypi --output flask_typosquat_report.json
 ```
 
 ## Arguments

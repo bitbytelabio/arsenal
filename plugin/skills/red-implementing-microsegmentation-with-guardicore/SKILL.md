@@ -325,3 +325,7 @@ PCI CDE ISOLATION:
   Authorized CDE entry points:  4
   Lateral movement paths blocked: 95%
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-implementing-microsegmentation-with-guardicore/references/api-reference.md` — API and execution command reference

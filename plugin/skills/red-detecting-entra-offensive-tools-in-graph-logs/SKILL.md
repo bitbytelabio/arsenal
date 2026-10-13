@@ -180,3 +180,8 @@ Promote the highest-fidelity queries (Steps 2-4) to scheduled analytics rules. S
 - [ ] At least one finding correlated back to a sign-in/session and source identity
 - [ ] Best queries promoted to scheduled analytics rules with T1078.004 mapping and entity mappings
 - [ ] Known-good service principals/IPs excluded via watchlist to control false positives
+
+## Shipped Playbook Resources
+
+- `skill://red-detecting-entra-offensive-tools-in-graph-logs/references/api-reference.md` — API and execution command reference
+- `skill://red-detecting-entra-offensive-tools-in-graph-logs/references/standards.md` — Relevant standards and compliance baselines

@@ -412,3 +412,7 @@ RECOMMENDATIONS:
   2. [Network segmentation improvement]
   3. [Monitoring enhancement]
 ```
+
+## Shipped Playbook Resources
+
+- `skill://red-performing-s7comm-protocol-security-analysis/references/api-reference.md` — API and execution command reference
