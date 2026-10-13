@@ -7714,7 +7714,7 @@ var ajv = new import__2020.default({
 });
 import_ajv_formats.default(ajv);
 var SCOPE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/scope.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/scope.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -7780,7 +7780,7 @@ var SCOPE_SCHEMA = {
   additionalProperties: false
 };
 var ENGAGEMENT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/engagement.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/engagement.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -7816,7 +7816,7 @@ var ENGAGEMENT_SCHEMA = {
   additionalProperties: false
 };
 var ENVIRONMENT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/environment.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/environment.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -7847,7 +7847,7 @@ var ENVIRONMENT_SCHEMA = {
   additionalProperties: false
 };
 var EVIDENCE_RECEIPT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/evidence-receipt.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/evidence-receipt.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -7936,7 +7936,7 @@ var EVIDENCE_RECEIPT_SCHEMA = {
   additionalProperties: false
 };
 var FINDING_SCHEMA = {
-  $id: "https://arsenal.security/schemas/finding.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/finding.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -7990,7 +7990,7 @@ var FINDING_SCHEMA = {
   additionalProperties: false
 };
 var VERIFICATION_RESULT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/verification-result.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/verification-result.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -8044,7 +8044,7 @@ var VERIFICATION_RESULT_SCHEMA = {
   additionalProperties: false
 };
 var MANIFEST_SCHEMA = {
-  $id: "https://arsenal.security/schemas/manifest.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/manifest.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -8090,7 +8090,7 @@ var MANIFEST_SCHEMA = {
   additionalProperties: false
 };
 var BUDGET_RECORD_SCHEMA = {
-  $id: "https://arsenal.security/schemas/budget-record.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/budget-record.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -8133,7 +8133,7 @@ var BUDGET_RECORD_SCHEMA = {
   additionalProperties: false
 };
 var CLI_ENVELOPE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/cli-envelope.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/cli-envelope.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -8150,7 +8150,7 @@ var CLI_ENVELOPE_SCHEMA = {
   ],
   properties: {
     $schema: { type: "string" },
-    version: { const: "3.0.0" },
+    version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+" },
     command: { type: "string" },
     status: { enum: ["success", "failure"] },
     exitCode: { type: "integer" },
@@ -8169,7 +8169,7 @@ var CLI_ENVELOPE_SCHEMA = {
   additionalProperties: false
 };
 var SKILL_FRONTMATTER_SCHEMA = {
-  $id: "https://arsenal.security/schemas/skill-frontmatter.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/skill-frontmatter.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -8232,7 +8232,7 @@ var SKILL_FRONTMATTER_SCHEMA = {
   additionalProperties: true
 };
 var CORPUS_MANIFEST_SCHEMA = {
-  $id: "https://arsenal.security/schemas/corpus-manifest.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/corpus-manifest.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -8456,7 +8456,7 @@ var CORPUS_MANIFEST_SCHEMA = {
   additionalProperties: false
 };
 var ROUTING_TABLE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/routing-table.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/routing-table.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: ["schemaVersion", "meta", "categories", "priority", "routes"],
@@ -8516,7 +8516,7 @@ var ROUTING_TABLE_SCHEMA = {
   additionalProperties: false
 };
 var COVERAGE_BASELINE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/coverage-baseline.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/coverage-baseline.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: ["schemaVersion", "domain", "standard", "extracted_from", "license", "capabilities"],
@@ -8562,7 +8562,7 @@ var COVERAGE_BASELINE_SCHEMA = {
   additionalProperties: false
 };
 var EXTENSION_BUNDLE_ARTIFACT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/extension-bundle-artifact.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/extension-bundle-artifact.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -8603,7 +8603,7 @@ var EXTENSION_BUNDLE_ARTIFACT_SCHEMA = {
   additionalProperties: false
 };
 var VERIFICATION_ORACLE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/verification-oracle.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/verification-oracle.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: ["oracle_type", "parameters"],
@@ -8619,7 +8619,7 @@ var VERIFICATION_ORACLE_SCHEMA = {
   additionalProperties: false
 };
 var SPECIALIST_HANDOFF_SCHEMA = {
-  $id: "https://arsenal.security/schemas/specialist-handoff.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/specialist-handoff.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   properties: {
@@ -8653,7 +8653,7 @@ var SPECIALIST_HANDOFF_SCHEMA = {
   additionalProperties: false
 };
 var APK_INSPECT_TOOL_SCHEMA = {
-  $id: "https://arsenal.security/schemas/apk-inspect.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/apk-inspect.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   properties: {
@@ -8665,7 +8665,7 @@ var APK_INSPECT_TOOL_SCHEMA = {
   additionalProperties: false
 };
 var SKILL_ASSET_LOAD_SCHEMA = {
-  $id: "https://arsenal.security/schemas/skill-asset-load.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/skill-asset-load.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   properties: {

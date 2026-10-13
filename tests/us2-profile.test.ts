@@ -6,6 +6,7 @@
 import { describe, expect, it } from "bun:test";
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { VERSION } from "../src/core/version.ts";
 
 describe("User Story 2: Profile Installation & Verification", () => {
   const scratchProfile = path.resolve("tests/fixtures/us2-profile");
@@ -441,7 +442,7 @@ modelRoles:
       "--json",
     ]);
     expect(packProc.exitCode).toBe(0);
-    expect(fs.existsSync(path.join(scratchDist, "arsenal-3.0.0.tar.gz"))).toBe(true);
+    expect(fs.existsSync(path.join(scratchDist, `arsenal-${VERSION}.tar.gz`))).toBe(true);
     expect(fs.existsSync(path.join(scratchDist, "marketplace.json"))).toBe(true);
 
     fs.rmSync(scratchProfile, { recursive: true, force: true });

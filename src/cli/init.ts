@@ -10,6 +10,7 @@ import type { CommandContext } from "./router.ts";
 import { safeWriteFile, safeMkdir } from "../core/fs-safe.ts";
 import { sha256String } from "../core/hash.ts";
 import { detectDrift } from "../core/drift.ts";
+import { VERSION } from "../core/version.ts";
 
 export async function handleInit(ctx: CommandContext): Promise<number> {
   const isCheck = Boolean(ctx.values.check);
@@ -249,7 +250,7 @@ raw/
   const manifestContent = JSON.stringify(
     {
       schema_version: 1,
-      generator: "arsenal-init-v3.0.0",
+      generator: `arsenal-init-v${VERSION}`,
       created_at: now,
       preset,
       engagement_id: engagementId,

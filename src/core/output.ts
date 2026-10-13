@@ -4,6 +4,7 @@
  */
 
 import type { JsonEnvelope } from "../../bin/arsenal.ts";
+import { VERSION } from "./version.ts";
 
 export function createEnvelope<T = unknown>(
   command: string,
@@ -15,7 +16,7 @@ export function createEnvelope<T = unknown>(
 ): JsonEnvelope<T> {
   return {
     $schema: "https://json-schema.org/draft/2020-12/schema",
-    version: "3.0.0",
+    version: VERSION,
     command,
     status: exitCode === 0 ? "success" : "failure",
     exitCode,

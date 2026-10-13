@@ -14,6 +14,7 @@ import { safeWriteFile } from "../core/fs-safe.ts";
 import { sha256File } from "../core/hash.ts";
 import { parseSkillFrontmatter } from "../core/skill-frontmatter.ts";
 import { createCanonicalMcpCatalog } from "../core/mcp.ts";
+import { VERSION } from "../core/version.ts";
 
 /**
  * Extracts an explicit override reason from local skill frontmatter.
@@ -186,7 +187,7 @@ export async function executeBuild(
   const packageJsonContent = JSON.stringify(
     {
       name: "arsenal",
-      version: "3.0.0",
+      version: VERSION,
       description: "Arsenal Security Engagement Harness Plugin",
       type: "module",
       omp: {
@@ -217,7 +218,7 @@ export async function executeBuild(
     {
       $schema: "https://json-schema.org/draft/2020-12/schema",
       name: "arsenal",
-      version: "3.0.0",
+      version: VERSION,
       description: "Arsenal Security Engagement Harness Plugin for Oh My Pi",
       author: {
         name: "arsenal",

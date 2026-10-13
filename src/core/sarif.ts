@@ -117,8 +117,8 @@ export function exportToSarif(
         tool: {
           driver: {
             name: "Arsenal Security Harness",
-            version: "3.0.0",
-            informationUri: "https://arsenal.security",
+            version: "3.0.2",
+            informationUri: "https://github.com/bitbytelabio/arsenal",
             rules,
           },
         },

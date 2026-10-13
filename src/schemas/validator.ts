@@ -24,7 +24,7 @@ export const ajv = new Ajv2020({
 addFormats(ajv);
 
 export const SCOPE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/scope.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/scope.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -91,7 +91,7 @@ export const SCOPE_SCHEMA = {
 } as const;
 
 export const ENGAGEMENT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/engagement.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/engagement.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -128,7 +128,7 @@ export const ENGAGEMENT_SCHEMA = {
 } as const;
 
 export const ENVIRONMENT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/environment.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/environment.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -160,7 +160,7 @@ export const ENVIRONMENT_SCHEMA = {
 } as const;
 
 export const EVIDENCE_RECEIPT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/evidence-receipt.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/evidence-receipt.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -250,7 +250,7 @@ export const EVIDENCE_RECEIPT_SCHEMA = {
 } as const;
 
 export const FINDING_SCHEMA = {
-  $id: "https://arsenal.security/schemas/finding.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/finding.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -305,7 +305,7 @@ export const FINDING_SCHEMA = {
 } as const;
 
 export const VERIFICATION_RESULT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/verification-result.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/verification-result.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -360,7 +360,7 @@ export const VERIFICATION_RESULT_SCHEMA = {
 } as const;
 
 export const MANIFEST_SCHEMA = {
-  $id: "https://arsenal.security/schemas/manifest.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/manifest.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -407,7 +407,7 @@ export const MANIFEST_SCHEMA = {
 } as const;
 
 export const BUDGET_RECORD_SCHEMA = {
-  $id: "https://arsenal.security/schemas/budget-record.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/budget-record.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -451,7 +451,7 @@ export const BUDGET_RECORD_SCHEMA = {
 } as const;
 
 export const CLI_ENVELOPE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/cli-envelope.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/cli-envelope.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -468,7 +468,7 @@ export const CLI_ENVELOPE_SCHEMA = {
   ],
   properties: {
     $schema: { type: "string" },
-    version: { const: "3.0.0" },
+    version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+" },
     command: { type: "string" },
     status: { enum: ["success", "failure"] },
     exitCode: { type: "integer" },
@@ -488,7 +488,7 @@ export const CLI_ENVELOPE_SCHEMA = {
 } as const;
 
 export const SKILL_FRONTMATTER_SCHEMA = {
-  $id: "https://arsenal.security/schemas/skill-frontmatter.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/skill-frontmatter.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -551,7 +551,7 @@ export const SKILL_FRONTMATTER_SCHEMA = {
 } as const;
 
 export const CORPUS_MANIFEST_SCHEMA = {
-  $id: "https://arsenal.security/schemas/corpus-manifest.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/corpus-manifest.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -776,7 +776,7 @@ export const CORPUS_MANIFEST_SCHEMA = {
 } as const;
 
 export const ROUTING_TABLE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/routing-table.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/routing-table.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: ["schemaVersion", "meta", "categories", "priority", "routes"],
@@ -837,7 +837,7 @@ export const ROUTING_TABLE_SCHEMA = {
 } as const;
 
 export const COVERAGE_BASELINE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/coverage-baseline.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/coverage-baseline.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: ["schemaVersion", "domain", "standard", "extracted_from", "license", "capabilities"],
@@ -893,7 +893,7 @@ export interface ExtensionBundleArtifact {
 }
 
 export const EXTENSION_BUNDLE_ARTIFACT_SCHEMA = {
-  $id: "https://arsenal.security/schemas/extension-bundle-artifact.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/extension-bundle-artifact.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: [
@@ -940,7 +940,7 @@ export interface VerificationOraclePayload {
 }
 
 export const VERIFICATION_ORACLE_SCHEMA = {
-  $id: "https://arsenal.security/schemas/verification-oracle.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/verification-oracle.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   required: ["oracle_type", "parameters"],
@@ -957,7 +957,7 @@ export const VERIFICATION_ORACLE_SCHEMA = {
 } as const;
 
 export const SPECIALIST_HANDOFF_SCHEMA = {
-  $id: "https://arsenal.security/schemas/specialist-handoff.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/specialist-handoff.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   properties: {
@@ -992,7 +992,7 @@ export const SPECIALIST_HANDOFF_SCHEMA = {
 } as const;
 
 export const APK_INSPECT_TOOL_SCHEMA = {
-  $id: "https://arsenal.security/schemas/apk-inspect.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/apk-inspect.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   properties: {
@@ -1005,7 +1005,7 @@ export const APK_INSPECT_TOOL_SCHEMA = {
 } as const;
 
 export const SKILL_ASSET_LOAD_SCHEMA = {
-  $id: "https://arsenal.security/schemas/skill-asset-load.json",
+  $id: "https://github.com/bitbytelabio/arsenal/schemas/skill-asset-load.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   properties: {

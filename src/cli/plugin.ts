@@ -6,6 +6,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { EXIT_CODES, createJsonEnvelope, emitJson } from "../../bin/arsenal.ts";
+import { VERSION } from "../core/version.ts";
 import type { CommandContext } from "./router.ts";
 
 export async function handlePlugin(ctx: CommandContext): Promise<number> {
@@ -103,7 +104,7 @@ export async function handlePlugin(ctx: CommandContext): Promise<number> {
     const outDir = ctx.values.out
       ? path.resolve(ctx.values.out as string)
       : path.join(ctx.repoRoot, "dist");
-    const archiveName = "arsenal-3.0.0.tar.gz";
+    const archiveName = `arsenal-${VERSION}.tar.gz`;
     const archivePath = path.join(outDir, archiveName);
 
     if (!isWrite) {
@@ -160,7 +161,7 @@ export async function handlePlugin(ctx: CommandContext): Promise<number> {
     // Generate marketplace catalog entry
     const marketplaceCatalog = {
       name: "arsenal",
-      version: "3.0.0",
+      version: VERSION,
       description: "Arsenal Security Engagement Harness Plugin",
       archive: archiveName,
       created_at: new Date().toISOString(),

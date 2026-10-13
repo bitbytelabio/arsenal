@@ -3,7 +3,7 @@ import { validateSchema } from "../src/schemas/validator.ts";
 import type { SpecialistHandoff } from "../src/core/types.ts";
 
 describe("Specialist Subagent Handoff Contract Validation", () => {
-  const schemaId = "https://arsenal.security/schemas/specialist-handoff.json";
+  const schemaId = "https://github.com/bitbytelabio/arsenal/schemas/specialist-handoff.json";
 
   test("accepts fully compliant specialist handoff payload", () => {
     const validHandoff: SpecialistHandoff = {

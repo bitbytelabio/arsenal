@@ -93,4 +93,12 @@ describe("User Story 9: Distribution & Build Determinism", () => {
     fs.rmSync(b1, { recursive: true, force: true });
     fs.rmSync(b2, { recursive: true, force: true });
   });
+
+  it("enforces single source of truth for version across package.json and plugin.json", () => {
+    const rootPkg = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf-8"));
+    const pluginJson = JSON.parse(fs.readFileSync(path.resolve("plugin.json"), "utf-8"));
+    const pluginDistJson = JSON.parse(fs.readFileSync(path.resolve("plugin/plugin.json"), "utf-8"));
+    expect(pluginJson.version).toBe(rootPkg.version);
+    expect(pluginDistJson.version).toBe(rootPkg.version);
+  });
 });

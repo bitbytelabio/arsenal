@@ -74,7 +74,7 @@ export interface ManifestValidationResult {
   manifest?: CorpusManifest;
 }
 
-export const CORPUS_MANIFEST_SCHEMA_ID = "https://arsenal.security/schemas/corpus-manifest.json";
+export const CORPUS_MANIFEST_SCHEMA_ID = "https://github.com/bitbytelabio/arsenal/schemas/corpus-manifest.json";
 
 export const LOCAL_SOURCE_ID = "arsenal-local";
 

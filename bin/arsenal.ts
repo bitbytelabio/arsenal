@@ -9,6 +9,7 @@ import { parseArgs } from "node:util";
 import * as path from "node:path";
 import * as process from "node:process";
 import { dispatch as routeCommand } from "../src/cli/router.ts";
+import { VERSION } from "../src/core/version.ts";
 
 export const EXIT_CODES = {
   SUCCESS: 0,
@@ -42,7 +43,7 @@ export function createJsonEnvelope<T = unknown>(
 ): JsonEnvelope<T> {
   return {
     $schema: "https://json-schema.org/draft/2020-12/schema",
-    version: "3.0.0",
+    version: VERSION,
     command,
     status: exitCode === 0 ? "success" : "failure",
     exitCode,
@@ -195,7 +196,7 @@ export async function main(): Promise<void> {
         })
       );
     } else {
-      console.log(`Arsenal Security Engagement Harness v3.0.0
+      console.log(`Arsenal Security Engagement Harness v${VERSION}
 Usage: arsenal <family> <command> [options]
 
 Families:

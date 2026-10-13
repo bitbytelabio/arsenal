@@ -5,6 +5,7 @@
  */
 
 import { MANIFEST_SCHEMA, validateSchema } from "../schemas/validator.ts";
+import { VERSION } from "./version.ts";
 import type { CapabilityOverride } from "./overrides.ts";
 
 export interface ManifestFileRecord {
@@ -30,7 +31,7 @@ export function generateDistributionManifest(
 
   const manifest: DistributionManifest = {
     schema_version: 1,
-    generator: "arsenal-manifest-v3.0.0",
+    generator: `arsenal-manifest-v${VERSION}`,
     created_at: null,
     files: sortedFiles,
     overrides,

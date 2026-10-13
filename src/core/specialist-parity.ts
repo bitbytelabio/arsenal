@@ -19,7 +19,7 @@ export interface HandoffValidationResult {
 }
 
 export function validateSpecialistHandoff(rawPayload: unknown): HandoffValidationResult {
-  const schemaId = "https://arsenal.security/schemas/specialist-handoff.json";
+  const schemaId = "https://github.com/bitbytelabio/arsenal/schemas/specialist-handoff.json";
   const res = validateSchema<SpecialistHandoff>(schemaId, rawPayload);
   if (res.valid) {
     return {

@@ -22,7 +22,7 @@ export type { SkillDomain };
 
 export const DOMAINS: readonly SkillDomain[] = Object.freeze(["re", "webapp", "mobile", "red"]);
 
-export const ROUTING_TABLE_SCHEMA_ID = "https://arsenal.security/schemas/routing-table.json";
+export const ROUTING_TABLE_SCHEMA_ID = "https://github.com/bitbytelabio/arsenal/schemas/routing-table.json";
 
 /** Router body token envelope (DESIGN §6.6 compact-router budget, research.md R8). */
 export const ROUTER_TOKEN_BUDGET = 500;

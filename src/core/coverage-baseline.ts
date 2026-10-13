@@ -17,7 +17,7 @@ import type { SkillDomain } from "./skill-frontmatter.ts";
 import { loadRoutingTable, computeRoutingCoverage, type RoutingCoverage } from "./skill-routing.ts";
 import { auditCitations, type CitationDiagnostic } from "./reference-resolver.ts";
 
-export const COVERAGE_BASELINE_SCHEMA_ID = "https://arsenal.security/schemas/coverage-baseline.json";
+export const COVERAGE_BASELINE_SCHEMA_ID = "https://github.com/bitbytelabio/arsenal/schemas/coverage-baseline.json";
 
 export interface Capability {
   id: string;
