@@ -1,9 +1,36 @@
 {
-  "name": "arsenal",
+  "name": "@bitbytelab/arsenal",
   "version": "3.0.0",
-  "description": "Arsenal Security Harness",
+  "description": "Arsenal Security Engagement Harness Plugin & CLI for Oh My Pi",
+  "license": "MIT",
   "type": "module",
-  "bin": { "arsenal": "./bin/arsenal.ts" },
+  "bin": {
+    "arsenal": "bin/arsenal.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin",
+    "src",
+    "plugin",
+    "presets",
+    "tools",
+    "marketplace.json",
+    "plugin.json",
+    "docs",
+    "README.md",
+    "README.vi.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitbytelabio/arsenal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bitbytelabio/arsenal/issues"
+  },
+  "homepage": "https://github.com/bitbytelabio/arsenal#readme",
   "scripts": {
     "build": "bun run bin/arsenal.ts build",
     "test": "bun test",
@@ -11,8 +38,16 @@
     "upstream:check": "bun --no-env-file run tools/sync-upstreams.ts --check",
     "upstream:update": "bun --no-env-file run tools/sync-upstreams.ts --write"
   },
-  "dependencies": { "ajv": "^8.17.1", "ajv-formats": "^3.0.1", "yaml": "^2.7.0" },
-  "devDependencies": { "@types/bun": "latest", "@types/node": "^22.13.9", "typescript": "^5.8.2" },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^22.13.9",
+    "typescript": "^5.8.2"
+  },
   "omp": {
     "extensions": [
       "./plugin/dist/extensions/bounding.js",
@@ -20,7 +55,9 @@
       "./plugin/dist/extensions/budget.js",
       "./plugin/dist/extensions/routing.js"
     ],
-    "skills": ["./plugin/skills"]
+    "skills": [
+      "./plugin/skills"
+    ]
   },
   "pi": {
     "extensions": [
@@ -29,6 +66,8 @@
       "./plugin/dist/extensions/budget.js",
       "./plugin/dist/extensions/routing.js"
     ],
-    "skills": ["./plugin/skills"]
+    "skills": [
+      "./plugin/skills"
+    ]
   }
 }

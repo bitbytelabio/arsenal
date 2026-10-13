@@ -63,12 +63,13 @@ Arsenal is architected around a **Single Source of Truth (SSOT)** model and stri
 - 496 empirically verified technique mappings enrolled into `presets/baselines/coverage-map.json` using verified markdown heading locators in target `SKILL.md` playbooks.
 - Artificial `accepted-gaps.json` reduced by > 50% in strict adherence to Principle III (Evidence Rigor) and rule CM-4.
 - 100% clean corpus manifest integrity verified via `arsenal skills check --domains` (0 errors).
-
----
-
 ## CLI Usage
 
 ```bash
+# Run directly via bunx without installation
+bunx @bitbytelab/arsenal --help
+bunx @bitbytelab/arsenal doctor --json
+
 # Build plugin distribution and verify byte-for-byte determinism
 bun run bin/arsenal.ts build --write --force
 bun run bin/arsenal.ts build --check-determinism --json

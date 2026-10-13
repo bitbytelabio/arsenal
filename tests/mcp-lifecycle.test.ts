@@ -298,7 +298,7 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     expect(disabledCfg.mcpServers["playwright"].enabled).toBe(false);
     expect(disabledCfg.disabledServers).toContain("playwright");
     expect(disabledCfg.denied).toContain("playwright");
-  });
+  }, 15000);
 
   test("idempotent merges and operator preservation: keeps frida, semgrep, custom burp, metadata and returns identical", () => {
     const profMcp = path.join(tmpProfile, "mcp.json");

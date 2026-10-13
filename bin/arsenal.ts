@@ -123,7 +123,7 @@ const globalOptions = {
   show: { type: "boolean", default: false },
 } as const;
 
-async function main(): Promise<void> {
+export async function main(): Promise<void> {
   const rawArgs = process.argv.slice(2);
   let parsed;
   try {

@@ -69,6 +69,10 @@ Arsenal được thiết kế theo mô hình **Single Source of Truth (SSOT)** v
 ## Sử dụng CLI
 
 ```bash
+# Chạy trực tiếp qua bunx không cần cài đặt
+bunx @bitbytelab/arsenal --help
+bunx @bitbytelab/arsenal doctor --json
+
 # Biên dịch gói phân phối plugin và xác thực tính tiền định byte-for-byte
 bun run bin/arsenal.ts build --write --force
 bun run bin/arsenal.ts build --check-determinism --json
