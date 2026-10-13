@@ -58,6 +58,6 @@ index=sysmon (EventCode=2 OR EventCode=8 OR EventCode=10)
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-evasion-techniques-in-endpoint-logs/agent --evtx-file Sysmon.evtx
-arsenal scripts red-detecting-evasion-techniques-in-endpoint-logs/agent --evtx-file Security.evtx
+arsenal scripts red-detecting-evasion-techniques-in-endpoint-logs --evtx-file Sysmon.evtx
+arsenal scripts red-detecting-evasion-techniques-in-endpoint-logs --evtx-file Security.evtx
 ```

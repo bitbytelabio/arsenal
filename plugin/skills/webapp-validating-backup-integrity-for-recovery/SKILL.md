@@ -126,7 +126,7 @@ find /restore-test -type f \( \
 
 # Check file entropy (high entropy = possible encryption)
 # Files with entropy > 7.9 out of 8.0 are likely encrypted
-arsenal scripts webapp-validating-backup-integrity-for-recovery/agent --entropy-scan /restore-test
+arsenal scripts webapp-validating-backup-integrity-for-recovery --entropy-scan /restore-test
 ```
 
 ### Step 6: Automate and Schedule Validation
@@ -174,7 +174,7 @@ arsenal scripts webapp-validating-backup-integrity-for-recovery/agent --entropy-
 
 ## References
 
-- `arsenal scripts webapp-validating-backup-integrity-for-recovery/agent` — Bundled Python CLI helper script
+- `arsenal scripts webapp-validating-backup-integrity-for-recovery` — Bundled Python CLI helper script
 
 - NIST SP 800-184: Guide for Cybersecurity Event Recovery
 - NIST CSF 2.0 RC.RP-03: Backup Integrity Verification

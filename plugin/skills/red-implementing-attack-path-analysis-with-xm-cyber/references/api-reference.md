@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-implementing-attack-path-analysis-with-xm-cyber/agent \
+arsenal scripts red-implementing-attack-path-analysis-with-xm-cyber \
   --url https://xmcyber.example.com \
   --api-key YOUR_API_KEY \
   --output-dir /reports/ \

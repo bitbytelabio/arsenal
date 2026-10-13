@@ -83,8 +83,8 @@ alert http $HOME_NET any -> $EXTERNAL_NET any (
 ## CLI Usage
 
 ```bash
-arsenal scripts red-analyzing-cobaltstrike-malleable-c2-profiles/agent --input profile.profile --output report.json
-arsenal scripts red-analyzing-cobaltstrike-malleable-c2-profiles/agent --input parsed_config.json --output report.json
+arsenal scripts red-analyzing-cobaltstrike-malleable-c2-profiles --input profile.profile --output report.json
+arsenal scripts red-analyzing-cobaltstrike-malleable-c2-profiles --input parsed_config.json --output report.json
 ```
 
 ## References

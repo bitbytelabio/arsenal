@@ -13,7 +13,7 @@ Automates collection of SOC performance metrics (MTTD, MTTR, alert quality, anal
 ## CLI Usage
 
 ```bash
-arsenal scripts red-building-soc-metrics-and-kpi-tracking/agent --splunk-url https://splunk:8089 --username admin --password <pass> --output report.json
+arsenal scripts red-building-soc-metrics-and-kpi-tracking --splunk-url https://splunk:8089 --username admin --password <pass> --output report.json
 ```
 
 ## Arguments

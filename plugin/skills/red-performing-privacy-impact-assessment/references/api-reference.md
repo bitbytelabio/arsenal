@@ -233,13 +233,13 @@ engine.generate_dpia_report(
 
 ```bash
 # Run demonstration workflow
-arsenal scripts red-performing-privacy-impact-assessment/agent --action demo --org "Acme Corp" --output report.json
+arsenal scripts red-performing-privacy-impact-assessment --action demo --org "Acme Corp" --output report.json
 
 # Run screening checklist
-arsenal scripts red-performing-privacy-impact-assessment/agent --action screening
+arsenal scripts red-performing-privacy-impact-assessment --action screening
 
 # Specify DPO email
-arsenal scripts red-performing-privacy-impact-assessment/agent --action demo --dpo-email dpo@acme.com --output dpia.json
+arsenal scripts red-performing-privacy-impact-assessment --action demo --dpo-email dpo@acme.com --output dpia.json
 ```
 
 ## References

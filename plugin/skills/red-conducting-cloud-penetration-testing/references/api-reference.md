@@ -14,7 +14,7 @@ Enumerates AWS IAM users, roles, cross-account trusts, IMDSv1 instances, public 
 ## CLI Usage
 
 ```bash
-arsenal scripts red-conducting-cloud-penetration-testing/agent --profile target-account --output pentest_report.json
+arsenal scripts red-conducting-cloud-penetration-testing --profile target-account --output pentest_report.json
 ```
 
 ## Key Functions

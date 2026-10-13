@@ -13,7 +13,7 @@ Automates memory forensics analysis using Volatility 3: process listing, network
 ## CLI Usage
 
 ```bash
-arsenal scripts re-conducting-memory-forensics-with-volatility/agent --memory-file memory.raw --output forensics_report.json
+arsenal scripts re-conducting-memory-forensics-with-volatility --memory-file memory.raw --output forensics_report.json
 ```
 
 ## Key Functions

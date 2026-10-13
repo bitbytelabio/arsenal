@@ -8,8 +8,8 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-hunting-for-living-off-the-land-binaries/agent hunt --es-host <url> --index <pattern> [--api-key <key>] [--hours <n>]
-arsenal scripts red-hunting-for-living-off-the-land-binaries/agent sysmon --evtx-file <path>
+arsenal scripts red-hunting-for-living-off-the-land-binaries hunt --es-host <url> --index <pattern> [--api-key <key>] [--hours <n>]
+arsenal scripts red-hunting-for-living-off-the-land-binaries sysmon --evtx-file <path>
 ```
 
 ## Core Functions

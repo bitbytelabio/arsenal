@@ -507,4 +507,4 @@ production database credentials, and execute admin-only mutations.
 ## References
 
 - `skill://webapp-performing-graphql-introspection-attack/references/api-reference.md` — API reference and CLI invocation commands for introspection probing
-- `arsenal scripts webapp-performing-graphql-introspection-attack/agent` — authentic Python CLI test harness for schema introspection and depth limit validation
+- `arsenal scripts webapp-performing-graphql-introspection-attack` — authentic Python CLI test harness for schema introspection and depth limit validation

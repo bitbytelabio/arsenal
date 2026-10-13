@@ -83,7 +83,7 @@ chmod +x gophish
 - Set campaign schedule (stagger sends to avoid detection)
 - Launch and monitor in real-time
 
-### Step 6: Analyze Results with process.py
+### Step 6: Analyze Results with Phishing Simulation Script
 Use the automation script to pull campaign data via GoPhish API and generate detailed analytics reports.
 
 ## Tools & Resources

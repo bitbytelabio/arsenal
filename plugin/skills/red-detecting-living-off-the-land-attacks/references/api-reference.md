@@ -4,13 +4,13 @@
 
 ```bash
 # Analyze Sysmon EVTX file
-arsenal scripts red-detecting-living-off-the-land-attacks/agent sysmon-events.evtx
+arsenal scripts red-detecting-living-off-the-land-attacks sysmon-events.evtx
 
 # Analyze Sysmon JSON/JSONL export (one event per line)
-arsenal scripts red-detecting-living-off-the-land-attacks/agent sysmon-events.jsonl
+arsenal scripts red-detecting-living-off-the-land-attacks sysmon-events.jsonl
 
 # Filter output for critical alerts
-arsenal scripts red-detecting-living-off-the-land-attacks/agent sysmon-events.evtx 2>/dev/null | grep CRITICAL
+arsenal scripts red-detecting-living-off-the-land-attacks sysmon-events.evtx 2>/dev/null | grep CRITICAL
 ```
 
 ## LOLBins Detected

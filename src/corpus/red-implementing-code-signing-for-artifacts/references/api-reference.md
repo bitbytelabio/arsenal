@@ -10,13 +10,13 @@
 
 ```bash
 # Generate keypair
-arsenal scripts red-implementing-code-signing-for-artifacts/agent --generate-keys --output-dir /keys/
+arsenal scripts red-implementing-code-signing-for-artifacts --generate-keys --output-dir /keys/
 
 # Sign artifact
-arsenal scripts red-implementing-code-signing-for-artifacts/agent --sign build/app.tar.gz --private-key /keys/signing_key.pem
+arsenal scripts red-implementing-code-signing-for-artifacts --sign build/app.tar.gz --private-key /keys/signing_key.pem
 
 # Verify artifacts
-arsenal scripts red-implementing-code-signing-for-artifacts/agent \
+arsenal scripts red-implementing-code-signing-for-artifacts \
   --artifacts build/app.tar.gz build/lib.so \
   --public-key /keys/signing_key.pub \
   --output-dir /reports/

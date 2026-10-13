@@ -8,6 +8,9 @@ from importlib.resources import files
 from jsonschema import Draft202012Validator, FormatChecker
 
 
+PLAYBOOK_CATALOG_SCHEMA = "PLAYBOOK_CATALOG_SCHEMA"
+PLAYBOOK_ADMISSION_SCHEMA = "PLAYBOOK_ADMISSION_SCHEMA"
+
 @lru_cache(maxsize=32)
 def schema(name: str) -> dict[str, object]:
     if not name.isidentifier() or not name.endswith("_SCHEMA"):

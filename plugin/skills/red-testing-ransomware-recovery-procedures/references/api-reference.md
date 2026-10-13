@@ -4,19 +4,19 @@
 
 ```bash
 # Generate hash manifest for a directory (pre-backup baseline)
-arsenal scripts red-testing-ransomware-recovery-procedures/agent --hash-dir /data/critical-app -o manifest_baseline.json
+arsenal scripts red-testing-ransomware-recovery-procedures --hash-dir /data/critical-app -o manifest_baseline.json
 
 # Compare original manifest against restored data
-arsenal scripts red-testing-ransomware-recovery-procedures/agent --compare manifest_baseline.json manifest_restored.json
+arsenal scripts red-testing-ransomware-recovery-procedures --compare manifest_baseline.json manifest_restored.json
 
 # Check if a service is running after restore
-arsenal scripts red-testing-ransomware-recovery-procedures/agent --check-service postgresql
+arsenal scripts red-testing-ransomware-recovery-procedures --check-service postgresql
 
 # Check database connectivity after restore
-arsenal scripts red-testing-ransomware-recovery-procedures/agent --check-db postgresql:localhost:5432
+arsenal scripts red-testing-ransomware-recovery-procedures --check-db postgresql:localhost:5432
 
 # Run full recovery drill from config
-arsenal scripts red-testing-ransomware-recovery-procedures/agent --config drill_config.json -o recovery_report.json
+arsenal scripts red-testing-ransomware-recovery-procedures --config drill_config.json -o recovery_report.json
 ```
 
 ## Drill Configuration Format

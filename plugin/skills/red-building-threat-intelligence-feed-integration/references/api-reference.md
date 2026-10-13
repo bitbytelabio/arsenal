@@ -16,10 +16,10 @@ Ingests threat intelligence from TAXII 2.1 servers, Abuse.ch URLhaus, and Feodo 
 
 ```bash
 # Ingest from multiple sources
-arsenal scripts red-building-threat-intelligence-feed-integration/agent --urlhaus --feodo --output ti_bundle.json
+arsenal scripts red-building-threat-intelligence-feed-integration --urlhaus --feodo --output ti_bundle.json
 
 # Ingest from TAXII feed
-arsenal scripts red-building-threat-intelligence-feed-integration/agent --taxii-url https://taxii.example.com/taxii2/ \
+arsenal scripts red-building-threat-intelligence-feed-integration --taxii-url https://taxii.example.com/taxii2/ \
   --taxii-collection https://taxii.example.com/taxii2/collections/abc/ \
   --taxii-user user --taxii-pass pass
 ```

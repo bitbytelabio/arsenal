@@ -94,11 +94,11 @@ POST security-*/_search
 
 ```bash
 # Parse exported event log XML and detect PtT indicators
-arsenal scripts red-detecting-pass-the-ticket-attacks/agent --evtx-xml security_events.xml --output report.json
+arsenal scripts red-detecting-pass-the-ticket-attacks --evtx-xml security_events.xml --output report.json
 
 # Show Splunk detection queries
-arsenal scripts red-detecting-pass-the-ticket-attacks/agent --show-splunk
+arsenal scripts red-detecting-pass-the-ticket-attacks --show-splunk
 
 # Custom thresholds
-arsenal scripts red-detecting-pass-the-ticket-attacks/agent --evtx-xml events.xml --tgs-threshold 30 --preauth-threshold 5
+arsenal scripts red-detecting-pass-the-ticket-attacks --evtx-xml events.xml --tgs-threshold 30 --preauth-threshold 5
 ```

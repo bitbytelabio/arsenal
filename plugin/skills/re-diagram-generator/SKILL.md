@@ -163,13 +163,13 @@ For English user requests, respond in English. For Chinese user requests, respon
 | Mermaid CLI (mmdc) | ✓ | npm install -g @mermaid-js/mermaid-cli | Render Mermaid to PNG/SVG |
 | Graphviz (dot) | ✗ | Manual installation | https://graphviz.org/download/ |
 | PlantUML | ✗ | Requires Java + plantuml.jar | https://plantuml.com/download |
-| Python (render script) | ✓ | Already included in bootstrap | `templates/render_diagram.py` dependency |
+| Python (render script) | ✓ | Already included in bootstrap | `arsenal scripts re-diagram-generator/render-diagram` |
 
 ### Notes
 
 This skill primarily outputs text-format diagram source (Mermaid/DOT/PlantUML); local rendering tools are not strictly required. A local renderer is only required when the user explicitly requests generating PNG/SVG/PDF files.
 
-If the renderer is unavailable, `templates/render_diagram.py` will output installation instructions instead of an error.
+If the renderer is unavailable, `arsenal scripts re-diagram-generator/render-diagram` will output installation instructions instead of an error.
 
 ---
 

@@ -63,7 +63,16 @@ export interface CitationContext {
  * Prose that is structurally path-like but is not a citation (contract §2 C-3).
  * Confirmed in the corpus today.
  */
-const PROSE_NON_CITATIONS = new Set<string>(["support/support", "scripts/macros/DLLs", "scripts/binaries"]);
+const PROSE_NON_CITATIONS: Record<string, true> = {
+  "support/support": true,
+  "scripts/macros/DLLs": true,
+  "scripts/binaries": true,
+  "assets/": true,
+  "templates/": true,
+  "support/scripts/": true,
+  "assets": true,
+  "templates": true,
+};
 
 /**
  * Directory prefixes that denote a repository file citation whose validity must
@@ -239,7 +248,7 @@ const SYSTEM_TOOLS = new Set([
 export function classifyNonFileCitation(
   target: string
 ): { status: CitationStatus; resolution: string } | null {
-  if (PROSE_NON_CITATIONS.has(target)) {
+  if (PROSE_NON_CITATIONS[target]) {
     return { status: "documented-prerequisite", resolution: `Non-citation prose '${target}'` };
   }
 

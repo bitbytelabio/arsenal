@@ -9,13 +9,13 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-extracting-windows-event-logs-artifacts/agent \
+arsenal scripts red-extracting-windows-event-logs-artifacts \
   --evtx-dir /cases/case-001/evtx/ \
   --output-dir /cases/case-001/analysis/ \
   --output evtx_report.json
 
 # Or specify individual files:
-arsenal scripts red-extracting-windows-event-logs-artifacts/agent \
+arsenal scripts red-extracting-windows-event-logs-artifacts \
   --evtx-files Security.evtx System.evtx \
   --output-dir /cases/analysis/
 ```

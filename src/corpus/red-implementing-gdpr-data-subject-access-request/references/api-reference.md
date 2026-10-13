@@ -276,7 +276,7 @@ Generate a compliance report with pass/fail checks for all processing steps.
 
 ```bash
 # Full automated pipeline
-arsenal scripts red-implementing-gdpr-data-subject-access-request/agent --action full_pipeline \
+arsenal scripts red-implementing-gdpr-data-subject-access-request --action full_pipeline \
     --requester-name "Jane Smith" \
     --requester-email "jane.smith@example.com" \
     --scan-dirs /var/log/app /data/exports \
@@ -285,16 +285,16 @@ arsenal scripts red-implementing-gdpr-data-subject-access-request/agent --action
     --format json
 
 # Scan text for PII
-arsenal scripts red-implementing-gdpr-data-subject-access-request/agent --action scan_pii \
+arsenal scripts red-implementing-gdpr-data-subject-access-request --action scan_pii \
     --scan-text "Contact jane@example.com or call +44 20 7946 0958"
 
 # Scan files only
-arsenal scripts red-implementing-gdpr-data-subject-access-request/agent --action scan_files \
+arsenal scripts red-implementing-gdpr-data-subject-access-request --action scan_files \
     --scan-dirs /data/exports /var/log \
     --requester-email "jane@example.com"
 
 # Generate dashboard
-arsenal scripts red-implementing-gdpr-data-subject-access-request/agent --action dashboard
+arsenal scripts red-implementing-gdpr-data-subject-access-request --action dashboard
 ```
 
 ### CLI Arguments

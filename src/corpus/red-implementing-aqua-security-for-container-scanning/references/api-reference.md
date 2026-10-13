@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-implementing-aqua-security-for-container-scanning/agent \
+arsenal scripts red-implementing-aqua-security-for-container-scanning \
   --images nginx:latest alpine:3.19 myapp:v1.2 \
   --severity CRITICAL,HIGH \
   --sbom \

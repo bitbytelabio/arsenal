@@ -6,8 +6,8 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-performing-dmarc-policy-enforcement-rollout/agent check --domain example.com
-arsenal scripts red-performing-dmarc-policy-enforcement-rollout/agent audit --domains example.com example.org [--selectors default google k1]
+arsenal scripts red-performing-dmarc-policy-enforcement-rollout check --domain example.com
+arsenal scripts red-performing-dmarc-policy-enforcement-rollout audit --domains example.com example.org [--selectors default google k1]
 ```
 
 ## Core Functions

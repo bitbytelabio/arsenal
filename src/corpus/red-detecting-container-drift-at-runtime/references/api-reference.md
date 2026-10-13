@@ -77,6 +77,6 @@ securityContext:
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-container-drift-at-runtime/agent --container my-app-container
-arsenal scripts red-detecting-container-drift-at-runtime/agent --container abc123 --all
+arsenal scripts red-detecting-container-drift-at-runtime --container my-app-container
+arsenal scripts red-detecting-container-drift-at-runtime --container abc123 --all
 ```

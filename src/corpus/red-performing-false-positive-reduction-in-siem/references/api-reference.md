@@ -6,9 +6,9 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-false-positive-reduction-in-siem/agent analyze --csv alerts.csv [--threshold 5]
-arsenal scripts red-performing-false-positive-reduction-in-siem/agent tune --csv alerts.csv
-arsenal scripts red-performing-false-positive-reduction-in-siem/agent simulate --csv alerts.csv [--disable-rules "Rule A" "Rule B"] [--whitelist-sources 10.0.0.1]
+arsenal scripts red-performing-false-positive-reduction-in-siem analyze --csv alerts.csv [--threshold 5]
+arsenal scripts red-performing-false-positive-reduction-in-siem tune --csv alerts.csv
+arsenal scripts red-performing-false-positive-reduction-in-siem simulate --csv alerts.csv [--disable-rules "Rule A" "Rule B"] [--whitelist-sources 10.0.0.1]
 ```
 
 ## Core Functions

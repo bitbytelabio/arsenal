@@ -178,6 +178,40 @@ class TestRuntimeCLI(unittest.TestCase):
         work_dir = self.repo_root / "work"
         self.assertTrue(work_dir.is_dir())
 
+    def test_scripts_argument_forwarding_with_double_dash(self) -> None:
+        f = io.StringIO()
+        with redirect_stdout(f):
+            code = main([
+                "scripts",
+                "case-init",
+                "--",
+                "--hint",
+                "double dash hint",
+                "--project-root",
+                str(self.repo_root),
+                "--json",
+            ])
+        self.assertEqual(code, ExitCodes.SUCCESS)
+        payload = json.loads(f.getvalue())
+        self.assertEqual(payload["status"], "success")
+        self.assertIn("case_name", payload["data"])
+
+    def test_scripts_argument_forwarding_direct_args(self) -> None:
+        f = io.StringIO()
+        with redirect_stdout(f):
+            code = main([
+                "scripts",
+                "case-init",
+                "--hint",
+                "direct args hint",
+                "--project-root",
+                str(self.repo_root),
+                "--json",
+            ])
+        self.assertEqual(code, ExitCodes.SUCCESS)
+        payload = json.loads(f.getvalue())
+        self.assertEqual(payload["status"], "success")
+        self.assertIn("case_name", payload["data"])
 
 if __name__ == "__main__":
     unittest.main()

@@ -224,13 +224,13 @@ Deploy ongoing BLE monitoring for threat detection:
 
 ```bash
 # Run the agent in monitoring mode
-arsenal scripts red-detecting-bluetooth-low-energy-attacks/agent --mode monitor --duration 3600 --output ble_alerts.json
+arsenal scripts red-detecting-bluetooth-low-energy-attacks --mode monitor --duration 3600 --output ble_alerts.json
 
 # Combine with Ubertooth for passive monitoring
-ubertooth-btle -p -r - | arsenal scripts red-detecting-bluetooth-low-energy-attacks/agent --mode analyze --pcap-stdin
+ubertooth-btle -p -r - | arsenal scripts red-detecting-bluetooth-low-energy-attacks --mode analyze --pcap-stdin
 
 # Alert on specific threat indicators
-arsenal scripts red-detecting-bluetooth-low-energy-attacks/agent --mode monitor --alert-on replay,spoofing,weak-pairing
+arsenal scripts red-detecting-bluetooth-low-energy-attacks --mode monitor --alert-on replay,spoofing,weak-pairing
 ```
 
 ## Key Concepts

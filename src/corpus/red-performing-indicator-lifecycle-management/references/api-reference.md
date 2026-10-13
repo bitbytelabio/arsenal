@@ -7,11 +7,11 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-indicator-lifecycle-management/agent extract --file threat_report.txt
-arsenal scripts red-performing-indicator-lifecycle-management/agent ingest --csv ioc_feed.csv
-arsenal scripts red-performing-indicator-lifecycle-management/agent expire --csv ioc_db.csv [--ttl 90]
-arsenal scripts red-performing-indicator-lifecycle-management/agent dedup --csv ioc_feed.csv
-arsenal scripts red-performing-indicator-lifecycle-management/agent report --csv ioc_db.csv [--ttl 90]
+arsenal scripts red-performing-indicator-lifecycle-management extract --file threat_report.txt
+arsenal scripts red-performing-indicator-lifecycle-management ingest --csv ioc_feed.csv
+arsenal scripts red-performing-indicator-lifecycle-management expire --csv ioc_db.csv [--ttl 90]
+arsenal scripts red-performing-indicator-lifecycle-management dedup --csv ioc_feed.csv
+arsenal scripts red-performing-indicator-lifecycle-management report --csv ioc_db.csv [--ttl 90]
 ```
 
 ## Core Functions

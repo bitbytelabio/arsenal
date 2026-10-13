@@ -60,7 +60,7 @@ detection:
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-dll-sideloading-attacks/agent --sysmon-log Sysmon.evtx
-arsenal scripts red-detecting-dll-sideloading-attacks/agent --scan-dir C:\Users\victim\Downloads\app\
-arsenal scripts red-detecting-dll-sideloading-attacks/agent --generate-sigma
+arsenal scripts red-detecting-dll-sideloading-attacks --sysmon-log Sysmon.evtx
+arsenal scripts red-detecting-dll-sideloading-attacks --scan-dir C:\Users\victim\Downloads\app\
+arsenal scripts red-detecting-dll-sideloading-attacks --generate-sigma
 ```

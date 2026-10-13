@@ -12,7 +12,7 @@
 - **Regulatory scope:** PII / state payroll requirements.
 
 ## 2. Inherent-Risk Tier
-*(scored by `arsenal scripts red-managing-third-party-vendor-risk/process`)*
+*(scored by `arsenal scripts red-managing-third-party-vendor-risk`)*
 
 | Factor | Value | Points |
 |---|---|---|

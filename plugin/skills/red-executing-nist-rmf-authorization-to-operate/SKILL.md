@@ -104,7 +104,7 @@ Produce an **Authorization Package summary** using `skill://red-executing-nist-r
 7. **Authorization decision** — ATO/cATO/DATO, term, conditions, residual-risk statement, AO.
 8. **ConMon plan** — what's monitored, how often, reporting cadence, reassessment triggers.
 
-Use `arsenal scripts red-executing-nist-rmf-authorization-to-operate/process` to select the right SP 800-53B baseline from a FIPS 199 categorization, summarize control-implementation status, and generate a POA&M table from a findings JSON.
+Use `arsenal scripts red-executing-nist-rmf-authorization-to-operate` to select the right SP 800-53B baseline from a FIPS 199 categorization, summarize control-implementation status, and generate a POA&M table from a findings JSON.
 
 ## Shipped Playbook Resources
 

@@ -36,8 +36,8 @@ import {
   loadAcceptedGaps,
   loadBaseline,
   loadCoverageMap,
+  type CoverageReport,
 } from "../src/core/coverage-baseline.ts";
-
 const REPO_ROOT = path.resolve(".");
 const CORPUS_DIR = path.join(REPO_ROOT, "src/corpus");
 
@@ -273,10 +273,15 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
     ? path.join(REPO_ROOT, "plugin/skills")
     : CORPUS_DIR;
 
+  const reportCache = new Map<string, CoverageReport>();
   function report(domain: SkillDomain, overrides: Record<string, unknown> = {}) {
+    const isOverride = Object.keys(overrides).length > 0;
+    if (!isOverride && reportCache.has(domain)) {
+      return reportCache.get(domain)!;
+    }
     const { baseline } = loadBaseline(domain, REPO_ROOT);
     if (!baseline) throw new Error(`missing baseline for ${domain}`);
-    return buildCoverageReport({
+    const res = buildCoverageReport({
       domain,
       repoRoot: REPO_ROOT,
       treeDir: TREE,
@@ -284,8 +289,9 @@ describe("US3 — coverage report (IN-V1..IN-V3, M-4/M-6, CM-2/CM-3)", () => {
       coverageMap: (overrides.coverageMap as never) ?? loadCoverageMap(REPO_ROOT),
       acceptedGaps: (overrides.acceptedGaps as never) ?? loadAcceptedGaps(REPO_ROOT),
     });
+    if (!isOverride) reportCache.set(domain, res);
+    return res;
   }
-
   it("IN-V1: covered + uncovered + accepted_gaps == capabilities for every domain", () => {
     for (const domain of DOMAINS) {
       const r = report(domain);

@@ -1,6 +1,6 @@
 # API Reference: LLM Guardrails Security Tools
 
-## GuardrailsPipeline (agent.py)
+## GuardrailsPipeline (llm_guardrails.py)
 
 The primary orchestration class that chains all guardrail layers into a validation pipeline.
 
@@ -169,7 +169,7 @@ safe, violations = guard.check("x" * 5000)
 ## CLI Reference
 
 ```
-usage: arsenal scripts red-implementing-llm-guardrails-for-security/agent [-h] [--input INPUT] [--response RESPONSE] [--file FILE]
+usage: arsenal scripts red-implementing-llm-guardrails-for-security [-h] [--input INPUT] [--response RESPONSE] [--file FILE]
                 [--mode {full,input-only,output-only,pii}]
                 [--policy POLICY] [--output {text,json}]
 

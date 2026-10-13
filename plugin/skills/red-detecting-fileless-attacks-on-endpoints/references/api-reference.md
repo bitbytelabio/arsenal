@@ -65,6 +65,6 @@ Get-WMIObject -Namespace root\Subscription -Class __FilterToConsumerBinding
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-fileless-attacks-on-endpoints/agent --ps-log PowerShell-Operational.evtx
-arsenal scripts red-detecting-fileless-attacks-on-endpoints/agent --sysmon-log Sysmon.evtx --check-wmi --check-injection
+arsenal scripts red-detecting-fileless-attacks-on-endpoints --ps-log PowerShell-Operational.evtx
+arsenal scripts red-detecting-fileless-attacks-on-endpoints --sysmon-log Sysmon.evtx --check-wmi --check-injection
 ```

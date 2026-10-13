@@ -8,8 +8,8 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-hunting-for-lolbins-execution-in-endpoint-logs/agent csv --file <csv_path> [--process-col Image] [--cmdline-col CommandLine]
-arsenal scripts red-hunting-for-lolbins-execution-in-endpoint-logs/agent evtx --file <evtx_path>
+arsenal scripts red-hunting-for-lolbins-execution-in-endpoint-logs csv --file <csv_path> [--process-col Image] [--cmdline-col CommandLine]
+arsenal scripts red-hunting-for-lolbins-execution-in-endpoint-logs evtx --file <evtx_path>
 ```
 
 ## Core Functions

@@ -56,5 +56,5 @@ Maps STIX relationship objects into a graph of source -> [{relationship, target}
 ## Usage
 
 ```bash
-arsenal scripts red-processing-stix-taxii-feeds/agent https://cti.example.com/taxii/
+arsenal scripts red-processing-stix-taxii-feeds https://cti.example.com/taxii/
 ```

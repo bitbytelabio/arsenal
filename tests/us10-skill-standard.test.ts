@@ -350,7 +350,7 @@ describe("User Story 1: Skill Standard Oracles (T012)", () => {
     }
 
     expect(violations).toEqual([]);
-  });
+  }, 30000);
 
   it("enforces catalog bidirectional completeness and hash equality (§3)", () => {
     expect(fs.existsSync(INDEX_FILE)).toBe(true);

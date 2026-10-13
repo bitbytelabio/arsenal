@@ -12,7 +12,10 @@ from typing import Any
 def _resolve_version() -> str:
     try:
         from importlib.metadata import version
-        return version("arsenal-security")
+        try:
+            return version("arsenal")
+        except Exception:
+            return version("arsenal-security")
     except Exception:
         pass
     try:

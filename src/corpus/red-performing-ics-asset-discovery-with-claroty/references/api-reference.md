@@ -5,10 +5,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-ics-asset-discovery-with-claroty/agent --url <claroty_base_url> --token <api_token> assets [--type PLC] [--limit 100]
-arsenal scripts red-performing-ics-asset-discovery-with-claroty/agent --url <claroty_base_url> --token <api_token> vulns [--severity critical] [--limit 100]
-arsenal scripts red-performing-ics-asset-discovery-with-claroty/agent --url <claroty_base_url> --token <api_token> alerts
-arsenal scripts red-performing-ics-asset-discovery-with-claroty/agent --url <claroty_base_url> --token <api_token> topology
+arsenal scripts red-performing-ics-asset-discovery-with-claroty --url <claroty_base_url> --token <api_token> assets [--type PLC] [--limit 100]
+arsenal scripts red-performing-ics-asset-discovery-with-claroty --url <claroty_base_url> --token <api_token> vulns [--severity critical] [--limit 100]
+arsenal scripts red-performing-ics-asset-discovery-with-claroty --url <claroty_base_url> --token <api_token> alerts
+arsenal scripts red-performing-ics-asset-discovery-with-claroty --url <claroty_base_url> --token <api_token> topology
 ```
 
 ## ClarotyClient Class

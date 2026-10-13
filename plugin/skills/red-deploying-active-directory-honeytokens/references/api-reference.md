@@ -269,7 +269,7 @@ Save all deployment artifacts (PowerShell scripts, detection rules, manifest) to
 
 ```bash
 # Full deployment (generates all scripts, rules, and manifest)
-arsenal scripts red-deploying-active-directory-honeytokens/agent --action full_deploy \
+arsenal scripts red-deploying-active-directory-honeytokens --action full_deploy \
     --domain corp.example.com \
     --ou "OU=Service Accounts" \
     --token-count 3 \
@@ -277,33 +277,33 @@ arsenal scripts red-deploying-active-directory-honeytokens/agent --action full_d
     --output-dir honeytoken_deployment
 
 # Generate detection rules only
-arsenal scripts red-deploying-active-directory-honeytokens/agent --action generate_rules \
+arsenal scripts red-deploying-active-directory-honeytokens --action generate_rules \
     --account-name svc_sqlbackup_legacy \
     --siem splunk
 
 # Generate single account creation script
-arsenal scripts red-deploying-active-directory-honeytokens/agent --action deploy_account \
+arsenal scripts red-deploying-active-directory-honeytokens --action deploy_account \
     --account-name svc_sqlbackup_legacy \
     --domain corp.example.com
 
 # Generate SPN addition script
-arsenal scripts red-deploying-active-directory-honeytokens/agent --action deploy_spn \
+arsenal scripts red-deploying-active-directory-honeytokens --action deploy_spn \
     --account-name svc_sqlbackup_legacy
 
 # Generate decoy GPO script
-arsenal scripts red-deploying-active-directory-honeytokens/agent --action deploy_gpo \
+arsenal scripts red-deploying-active-directory-honeytokens --action deploy_gpo \
     --domain corp.example.com
 
 # Generate BloodHound deception script
-arsenal scripts red-deploying-active-directory-honeytokens/agent --action deploy_bloodhound \
+arsenal scripts red-deploying-active-directory-honeytokens --action deploy_bloodhound \
     --account-name svc_sqlbackup_legacy
 
 # Validate deployment
-arsenal scripts red-deploying-active-directory-honeytokens/agent --action validate \
+arsenal scripts red-deploying-active-directory-honeytokens --action validate \
     --account-name svc_sqlbackup_legacy
 
 # Analyze event logs for honeytoken alerts
-arsenal scripts red-deploying-active-directory-honeytokens/agent --action analyze_logs \
+arsenal scripts red-deploying-active-directory-honeytokens --action analyze_logs \
     --account-name svc_sqlbackup_legacy \
     --event-log events.json
 ```

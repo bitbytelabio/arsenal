@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-oil-gas-cybersecurity-assessment/agent network --assets ot_inventory.csv
-arsenal scripts red-performing-oil-gas-cybersecurity-assessment/agent compliance --csv iec62443_assessment.csv
-arsenal scripts red-performing-oil-gas-cybersecurity-assessment/agent safety --assets ot_inventory.csv
-arsenal scripts red-performing-oil-gas-cybersecurity-assessment/agent report --assets ot_inventory.csv [--compliance-csv iec62443.csv]
+arsenal scripts red-performing-oil-gas-cybersecurity-assessment network --assets ot_inventory.csv
+arsenal scripts red-performing-oil-gas-cybersecurity-assessment compliance --csv iec62443_assessment.csv
+arsenal scripts red-performing-oil-gas-cybersecurity-assessment safety --assets ot_inventory.csv
+arsenal scripts red-performing-oil-gas-cybersecurity-assessment report --assets ot_inventory.csv [--compliance-csv iec62443.csv]
 ```
 
 ## Core Functions

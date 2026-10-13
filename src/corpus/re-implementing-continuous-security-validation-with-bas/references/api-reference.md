@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts re-implementing-continuous-security-validation-with-bas/agent \
+arsenal scripts re-implementing-continuous-security-validation-with-bas \
   --target 10.0.1.50 \
   --siem-url https://siem.example.com \
   --siem-key YOUR_KEY \

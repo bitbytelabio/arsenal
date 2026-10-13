@@ -53,6 +53,35 @@ ARSENAL_PROFILE=/tmp/arsenal-test/agent just verify
 
 `just build`, `just profile-install` và `just link` cũng chạy độc lập được. Recipe giữ nguyên hành vi merge/conflict của CLI; không tự ép ghi đè file.
 ---
+## Runtime Playbook Tác Vụ (Operational Playbook Runtime)
+
+Arsenal cung cấp danh mục chuẩn hóa đóng gói sẵn (in-package catalog) cho các playbook tác vụ và tiện ích script cốt lõi:
+
+```bash
+# Liệt kê đầy đủ metadata dạng máy đọc (loại, domain, chế độ thực thi, trạng thái tiếp nhận)
+arsenal scripts --json list
+
+# Liệt kê dạng văn bản gom theo domain
+arsenal scripts list
+arsenal scripts list --domain webapp
+arsenal scripts list --all
+
+# Kiểm chứng tính toàn vẹn (parity) giữa file trên đĩa, catalog descriptor, tài nguyên đóng gói và receipt
+arsenal scripts catalog/verify --json
+
+# Chạy playbook qua giao diện chuẩn hóa
+arsenal scripts <canonical-id> -- <tham-số>
+```
+
+### Ranh giới Thực thi và Cổng Tiền kiểm (Preflight Gates)
+
+- **Nội tiến trình (`shared`)**: Thực thi trong tiến trình chính dành cho các handler thuần túy đã qua phê duyệt (`admission_status: approved_shared`).
+- **Tiến trình con cô lập (`managed_subprocess`)**: Ranh giới mặc định cho playbook chưa phân loại hoặc legacy, cô lập `SystemExit`, tín hiệu và phụ thuộc với giới hạn thời gian nhóm tiến trình và đầu ra UTF-8 có giới hạn.
+- **Môi trường khóa (`locked_environment`)**: Dành cho playbook xung đột phụ thuộc (ví dụ: LLM Guard). Chạy `uv run --locked --offline --project ...` duy nhất một lần; không thử lại trực tuyến hay sửa lockfile khi chạy.
+- **Công cụ bên ngoài (`external_tool`)**: Dành cho binary hệ thống allowlist kèm kiểm tra năng lực.
+- **Kiểm soát Fail-Closed**: Playbook có tác dụng phụ kiểm tra scope máy đọc (`.omp/arsenal/scope.json` hoặc `ARSENAL_SCOPE_FILE`), ủy quyền host tin cậy, adapter proxy bắt buộc (Burp cho web/API, mitmproxy+hook cho dịch ngược) và sink bằng chứng trước khi khởi chạy. Nếu thiếu hoặc không hợp lệ, lệnh bị từ chối ngay lập tức.
+
+---
 
 ## Phân biệt `--profile <path>` của Arsenal CLI và `OMP_PROFILE=<name>` của OMP
 

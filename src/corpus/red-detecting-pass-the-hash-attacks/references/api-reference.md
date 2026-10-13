@@ -59,6 +59,6 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "Restr
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-pass-the-hash-attacks/agent --security-log Security.evtx
-arsenal scripts red-detecting-pass-the-hash-attacks/agent --security-log Security.evtx --target-threshold 5
+arsenal scripts red-detecting-pass-the-hash-attacks --security-log Security.evtx
+arsenal scripts red-detecting-pass-the-hash-attacks --security-log Security.evtx --target-threshold 5
 ```

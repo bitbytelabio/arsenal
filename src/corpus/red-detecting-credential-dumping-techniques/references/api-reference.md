@@ -91,8 +91,8 @@ event.code: "1" AND
 
 ```bash
 # Analyze Sysmon XML export
-arsenal scripts red-detecting-credential-dumping-techniques/agent --sysmon-xml sysmon_events.xml --output cred_report.json
+arsenal scripts red-detecting-credential-dumping-techniques --sysmon-xml sysmon_events.xml --output cred_report.json
 
 # Print Splunk detection queries
-arsenal scripts red-detecting-credential-dumping-techniques/agent --show-splunk
+arsenal scripts red-detecting-credential-dumping-techniques --show-splunk
 ```

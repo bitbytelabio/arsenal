@@ -6,9 +6,9 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-http-parameter-pollution-attack/agent precedence --url <target> [--param id]
-arsenal scripts red-performing-http-parameter-pollution-attack/agent test --url <target> [--method GET|POST]
-arsenal scripts red-performing-http-parameter-pollution-attack/agent waf --url <target> --param <name> --value <blocked_value>
+arsenal scripts red-performing-http-parameter-pollution-attack precedence --url <target> [--param id]
+arsenal scripts red-performing-http-parameter-pollution-attack test --url <target> [--method GET|POST]
+arsenal scripts red-performing-http-parameter-pollution-attack waf --url <target> --param <name> --value <blocked_value>
 ```
 
 ## Core Functions

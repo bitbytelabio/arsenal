@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-jwt-none-algorithm-attack/agent decode --token <jwt_string>
-arsenal scripts red-performing-jwt-none-algorithm-attack/agent forge --token <jwt_string> [--claims '{"role":"admin"}']
-arsenal scripts red-performing-jwt-none-algorithm-attack/agent confuse --token <jwt_string> [--pubkey public.pem]
-arsenal scripts red-performing-jwt-none-algorithm-attack/agent test --url <api_endpoint> --token <original_jwt>
+arsenal scripts red-performing-jwt-none-algorithm-attack decode --token <jwt_string>
+arsenal scripts red-performing-jwt-none-algorithm-attack forge --token <jwt_string> [--claims '{"role":"admin"}']
+arsenal scripts red-performing-jwt-none-algorithm-attack confuse --token <jwt_string> [--pubkey public.pem]
+arsenal scripts red-performing-jwt-none-algorithm-attack test --url <api_endpoint> --token <original_jwt>
 ```
 
 ## Core Functions

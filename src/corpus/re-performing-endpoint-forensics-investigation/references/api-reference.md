@@ -14,11 +14,11 @@
 ## CLI Interface
 
 ```bash
-arsenal scripts re-performing-endpoint-forensics-investigation/agent triage      # Full forensic triage
-arsenal scripts re-performing-endpoint-forensics-investigation/agent processes   # Running processes with PIDs and command lines
-arsenal scripts re-performing-endpoint-forensics-investigation/agent network     # Active network connections
-arsenal scripts re-performing-endpoint-forensics-investigation/agent autoruns    # Persistence entries
-arsenal scripts re-performing-endpoint-forensics-investigation/agent hash --file <filepath>  # Hash file for evidence
+arsenal scripts re-performing-endpoint-forensics-investigation triage      # Full forensic triage
+arsenal scripts re-performing-endpoint-forensics-investigation processes   # Running processes with PIDs and command lines
+arsenal scripts re-performing-endpoint-forensics-investigation network     # Active network connections
+arsenal scripts re-performing-endpoint-forensics-investigation autoruns    # Persistence entries
+arsenal scripts re-performing-endpoint-forensics-investigation hash --file <filepath>  # Hash file for evidence
 ```
 
 ## Core Functions

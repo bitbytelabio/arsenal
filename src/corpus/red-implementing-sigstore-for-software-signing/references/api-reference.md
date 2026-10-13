@@ -16,46 +16,46 @@ Automates Sigstore-based software signing and verification using Cosign keyless 
 
 ```bash
 # Check cosign installation and Rekor connectivity
-arsenal scripts red-implementing-sigstore-for-software-signing/agent check
+arsenal scripts red-implementing-sigstore-for-software-signing check
 
 # Sign a file blob (triggers OIDC auth flow)
-arsenal scripts red-implementing-sigstore-for-software-signing/agent sign-blob myfile.tar.gz --bundle myfile.sigstore.json
+arsenal scripts red-implementing-sigstore-for-software-signing sign-blob myfile.tar.gz --bundle myfile.sigstore.json
 
 # Verify a signed blob
-arsenal scripts red-implementing-sigstore-for-software-signing/agent verify-blob myfile.tar.gz --bundle myfile.sigstore.json \
+arsenal scripts red-implementing-sigstore-for-software-signing verify-blob myfile.tar.gz --bundle myfile.sigstore.json \
   --cert-identity user@example.com \
   --cert-oidc-issuer https://accounts.google.com
 
 # Sign a container image (use digest, not tag)
-arsenal scripts red-implementing-sigstore-for-software-signing/agent sign-container registry.io/myimage@sha256:abc123...
+arsenal scripts red-implementing-sigstore-for-software-signing sign-container registry.io/myimage@sha256:abc123...
 
 # Verify a container image
-arsenal scripts red-implementing-sigstore-for-software-signing/agent verify-container registry.io/myimage@sha256:abc123... \
+arsenal scripts red-implementing-sigstore-for-software-signing verify-container registry.io/myimage@sha256:abc123... \
   --cert-identity user@example.com \
   --cert-oidc-issuer https://accounts.google.com
 
 # Search Rekor by artifact hash
-arsenal scripts red-implementing-sigstore-for-software-signing/agent search-rekor --hash <sha256-hash>
+arsenal scripts red-implementing-sigstore-for-software-signing search-rekor --hash <sha256-hash>
 
 # Search Rekor by signer email
-arsenal scripts red-implementing-sigstore-for-software-signing/agent search-rekor --email user@example.com
+arsenal scripts red-implementing-sigstore-for-software-signing search-rekor --email user@example.com
 
 # Search Rekor by file (computes hash automatically)
-arsenal scripts red-implementing-sigstore-for-software-signing/agent search-rekor --file myfile.tar.gz
+arsenal scripts red-implementing-sigstore-for-software-signing search-rekor --file myfile.tar.gz
 
 # Retrieve a specific Rekor entry
-arsenal scripts red-implementing-sigstore-for-software-signing/agent get-rekor-entry <uuid>
+arsenal scripts red-implementing-sigstore-for-software-signing get-rekor-entry <uuid>
 
 # Get Rekor transparency log state
-arsenal scripts red-implementing-sigstore-for-software-signing/agent log-info
+arsenal scripts red-implementing-sigstore-for-software-signing log-info
 
 # Full audit of a signing event
-arsenal scripts red-implementing-sigstore-for-software-signing/agent audit --file myfile.tar.gz \
+arsenal scripts red-implementing-sigstore-for-software-signing audit --file myfile.tar.gz \
   --cert-identity user@example.com \
   --cert-oidc-issuer https://accounts.google.com
 
 # All commands support custom output path
-arsenal scripts red-implementing-sigstore-for-software-signing/agent sign-blob myfile.tar.gz --output custom_report.json
+arsenal scripts red-implementing-sigstore-for-software-signing sign-blob myfile.tar.gz --output custom_report.json
 ```
 
 ## Arguments

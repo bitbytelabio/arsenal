@@ -232,4 +232,4 @@ Structure forensic report:
 - `skill://re-performing-endpoint-forensics-investigation/references/standards.md` — Standards & References
 - `skill://re-performing-endpoint-forensics-investigation/references/workflows.md` — Workflows
 - `skill://re-performing-endpoint-forensics-investigation/assets/template.md` — Endpoint Forensics Investigation Template
-- `arsenal scripts re-performing-endpoint-forensics-investigation/agent` — Automation and analysis helper script (`arsenal scripts re-performing-endpoint-forensics-investigation/agent`)
+- `arsenal scripts re-performing-endpoint-forensics-investigation` — Automation and analysis helper script (`arsenal scripts re-performing-endpoint-forensics-investigation`)

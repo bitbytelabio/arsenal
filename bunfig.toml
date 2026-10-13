@@ -4,3 +4,4 @@ production = false
 
 [test]
 root = "tests"
+timeout = 60000

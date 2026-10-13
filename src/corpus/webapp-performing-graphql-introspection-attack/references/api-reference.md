@@ -17,8 +17,8 @@ pip install requests
 ## CLI Interface
 
 ```bash
-arsenal scripts webapp-performing-graphql-introspection-attack/agent introspect --url <graphql_endpoint> [--auth-header "Bearer token"]
-arsenal scripts webapp-performing-graphql-introspection-attack/agent depth --url <graphql_endpoint> [--max-depth 10]
+arsenal scripts webapp-performing-graphql-introspection-attack introspect --url <graphql_endpoint> [--auth-header "Bearer token"]
+arsenal scripts webapp-performing-graphql-introspection-attack depth --url <graphql_endpoint> [--max-depth 10]
 ```
 
 ## Core Functions

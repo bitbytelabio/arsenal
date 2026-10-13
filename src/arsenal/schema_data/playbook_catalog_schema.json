@@ -1,0 +1,481 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/playbook_catalog.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/catalog_document"
+    },
+    {
+      "$ref": "#/$defs/catalog_entry"
+    }
+  ],
+  "$defs": {
+    "catalog_document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "entries"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "catalog_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "generated_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/catalog_entry"
+          }
+        }
+      }
+    },
+    "catalog_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "canonical_id",
+        "aliases",
+        "domain",
+        "target_kind",
+        "description",
+        "implementation_ref",
+        "source_sha256",
+        "execution_mode",
+        "admission_status",
+        "isolation_reason",
+        "side_effects",
+        "controls",
+        "dependencies",
+        "interface",
+        "provenance"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "canonical_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]+(/[a-zA-Z0-9_-]+)*$"
+        },
+        "aliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+(/[a-zA-Z0-9_-]+)*$"
+          }
+        },
+        "domain": {
+          "type": "string",
+          "enum": [
+            "core",
+            "red",
+            "re",
+            "webapp",
+            "mobile"
+          ]
+        },
+        "target_kind": {
+          "type": "string",
+          "enum": [
+            "agent",
+            "process",
+            "tool"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "implementation_ref": {
+          "type": "object",
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "module_path",
+                "callable"
+              ],
+              "properties": {
+                "module_path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "callable": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "resource_path"
+              ],
+              "properties": {
+                "resource_path": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "tool_id"
+              ],
+              "properties": {
+                "tool_id": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "blocked_reason"
+              ],
+              "properties": {
+                "blocked_reason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "execution_mode": {
+          "type": "string",
+          "enum": [
+            "shared",
+            "managed_subprocess",
+            "locked_environment",
+            "external_tool",
+            "blocked"
+          ]
+        },
+        "admission_status": {
+          "type": "string",
+          "enum": [
+            "unclassified",
+            "retained_isolated",
+            "approved_shared",
+            "external_only",
+            "blocked"
+          ]
+        },
+        "isolation_reason": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "side_effects": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "network",
+            "credentials",
+            "target_mutation",
+            "filesystem",
+            "external_process",
+            "evidence_write"
+          ],
+          "properties": {
+            "network": {
+              "type": "string",
+              "enum": [
+                "none",
+                "loopback",
+                "external_read",
+                "external_write",
+                "active"
+              ]
+            },
+            "credentials": {
+              "type": "string",
+              "enum": [
+                "none",
+                "read",
+                "write"
+              ]
+            },
+            "target_mutation": {
+              "type": "string",
+              "enum": [
+                "none",
+                "local",
+                "remote",
+                "destructive"
+              ]
+            },
+            "filesystem": {
+              "type": "string",
+              "enum": [
+                "none",
+                "read",
+                "write"
+              ]
+            },
+            "external_process": {
+              "type": "string",
+              "enum": [
+                "none",
+                "allowlisted"
+              ]
+            },
+            "evidence_write": {
+              "type": "string",
+              "enum": [
+                "none",
+                "central_only",
+                "required"
+              ]
+            },
+            "allowed_roots": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "allowed_tools": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "target_binding": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "credential_sources": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "controls": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope",
+            "authorization",
+            "proxy",
+            "write",
+            "verification",
+            "evidence"
+          ],
+          "properties": {
+            "scope": {
+              "type": "string",
+              "enum": [
+                "not_applicable",
+                "required",
+                "target_required",
+                "cloud_account_required"
+              ]
+            },
+            "authorization": {
+              "type": "string",
+              "enum": [
+                "not_applicable",
+                "host_required",
+                "engagement_required",
+                "host_and_engagement"
+              ]
+            },
+            "proxy": {
+              "type": "string",
+              "enum": [
+                "none",
+                "burp_required",
+                "mitmproxy_runtime_required",
+                "verified_adapter"
+              ]
+            },
+            "write": {
+              "type": "string",
+              "enum": [
+                "forbidden",
+                "optional",
+                "requires_write_gate"
+              ]
+            },
+            "verification": {
+              "type": "string",
+              "enum": [
+                "none",
+                "candidate_only",
+                "independent_verifier_required"
+              ]
+            },
+            "evidence": {
+              "type": "string",
+              "enum": [
+                "none",
+                "execution_receipt",
+                "artifact_receipt_required"
+              ]
+            }
+          }
+        },
+        "dependencies": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "profile": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "imports": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "tools": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "lock_hash": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "project_path": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "environment_dir": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "interface": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "argument_schema": {
+              "type": [
+                "object",
+                "string",
+                "null"
+              ]
+            },
+            "output_format": {
+              "type": "string",
+              "enum": [
+                "json",
+                "text",
+                "raw"
+              ]
+            },
+            "exit_mapping": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "timeout_ms": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "stdout_limit": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "stderr_limit": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "original_path": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "migrated_path": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "receipt_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "status": {
+              "type": "string"
+            },
+            "license": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "shared_implementation_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "admission_record_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

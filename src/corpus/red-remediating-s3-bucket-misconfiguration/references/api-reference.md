@@ -77,5 +77,5 @@ Enables S3 versioning on the bucket.
 ## Usage
 
 ```bash
-arsenal scripts red-remediating-s3-bucket-misconfiguration/agent us-east-1
+arsenal scripts red-remediating-s3-bucket-misconfiguration us-east-1
 ```

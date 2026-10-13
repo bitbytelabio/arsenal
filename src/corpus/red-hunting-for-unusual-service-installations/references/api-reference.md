@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-hunting-for-unusual-service-installations/agent System.evtx parse
-arsenal scripts red-hunting-for-unusual-service-installations/agent System.evtx hunt
-arsenal scripts red-hunting-for-unusual-service-installations/agent System.evtx stats
-arsenal scripts red-hunting-for-unusual-service-installations/agent System.evtx full
+arsenal scripts red-hunting-for-unusual-service-installations System.evtx parse
+arsenal scripts red-hunting-for-unusual-service-installations System.evtx hunt
+arsenal scripts red-hunting-for-unusual-service-installations System.evtx stats
+arsenal scripts red-hunting-for-unusual-service-installations System.evtx full
 ```
 
 ## Core Functions

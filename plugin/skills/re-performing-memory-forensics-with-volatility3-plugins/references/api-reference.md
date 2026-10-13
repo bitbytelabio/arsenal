@@ -6,11 +6,11 @@
 
 ## CLI Interface
 ```
-arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent plugin --dump memory.raw --name pslist [--args --pid 1234]
-arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent malproc --dump memory.raw
-arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent inject --dump memory.raw
-arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent network --dump memory.raw
-arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent triage --dump memory.raw
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins plugin --dump memory.raw --name pslist [--args --pid 1234]
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins malproc --dump memory.raw
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins inject --dump memory.raw
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins network --dump memory.raw
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins triage --dump memory.raw
 ```
 
 ## Core Functions

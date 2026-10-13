@@ -7,8 +7,8 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-performing-ip-reputation-analysis-with-shodan/agent --shodan-key <key> [--abuseipdb-key <key>] lookup --ip <ip>
-arsenal scripts red-performing-ip-reputation-analysis-with-shodan/agent --shodan-key <key> [--abuseipdb-key <key>] bulk --ips <ip1> <ip2>
+arsenal scripts red-performing-ip-reputation-analysis-with-shodan --shodan-key <key> [--abuseipdb-key <key>] lookup --ip <ip>
+arsenal scripts red-performing-ip-reputation-analysis-with-shodan --shodan-key <key> [--abuseipdb-key <key>] bulk --ips <ip1> <ip2>
 ```
 
 ## Core Functions

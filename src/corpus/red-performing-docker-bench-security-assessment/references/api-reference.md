@@ -7,8 +7,8 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-performing-docker-bench-security-assessment/agent bench        # Run full docker-bench-security
-arsenal scripts red-performing-docker-bench-security-assessment/agent containers   # Check running container configurations
+arsenal scripts red-performing-docker-bench-security-assessment bench        # Run full docker-bench-security
+arsenal scripts red-performing-docker-bench-security-assessment containers   # Check running container configurations
 ```
 
 ## Core Functions

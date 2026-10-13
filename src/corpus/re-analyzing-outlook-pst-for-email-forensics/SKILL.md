@@ -222,7 +222,7 @@ class PSTForensicAnalyzer:
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: python process.py <pst_file> <output_dir>")
+        print("Usage: arsenal scripts re-analyzing-outlook-pst-for-email-forensics -- <pst_file> <output_dir>")
         sys.exit(1)
     analyzer = PSTForensicAnalyzer(sys.argv[1], sys.argv[2])
     analyzer.generate_report()

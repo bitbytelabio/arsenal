@@ -10,10 +10,10 @@
 
 ```bash
 # List campaigns
-arsenal scripts red-executing-phishing-simulation-campaign/agent --gophish-url https://gophish.lab:3333 --api-key KEY --action list
+arsenal scripts red-executing-phishing-simulation-campaign --gophish-url https://gophish.lab:3333 --api-key KEY --action list
 
 # Get campaign results
-arsenal scripts red-executing-phishing-simulation-campaign/agent --gophish-url https://gophish.lab:3333 --api-key KEY \
+arsenal scripts red-executing-phishing-simulation-campaign --gophish-url https://gophish.lab:3333 --api-key KEY \
   --action results --campaign-id 1 --output report.json
 ```
 

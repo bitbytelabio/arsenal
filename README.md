@@ -217,11 +217,14 @@ bun test
 ### Corpus resources and helper execution
 
 - Edit `src/corpus/`; `plugin/skills/` is generated. Keep useful supporting documents linked from their skill entrypoint and record source provenance in `MANIFEST.json`.
-- Native OMP tools still resolve `skill://` documentation and support assets. Executables live in `src/arsenal/scripts/`; run `arsenal scripts <canonical-id> -- <arguments>` instead of copying scripts out of skills.
+- Native OMP tools still resolve `skill://` documentation and support assets. Operational helpers are resolved through the authoritative in-package catalog (`src/arsenal/scripts/catalog_data/playbook_catalog.json`); run `arsenal scripts <canonical-id> -- <arguments>` instead of copying scripts out of skills.
+- Discover helpers with `arsenal scripts list` (grouped by domain, supporting `--all` and `--domain <name>`) or `arsenal scripts --json list` for complete programmatic metadata (type, domain, execution mode, admission status, side-effects, dependencies, provenance).
+- Parity release gate: run `arsenal scripts catalog/verify --json` to verify strict parity between disk files, catalog descriptors, packaged resources, and historical migration receipts.
+- Tiered execution boundaries: approved pure handlers run in-process (`shared`); unreviewed/legacy helpers run in isolated child processes (`managed_subprocess`); dependency-conflicted playbooks run in locked offline virtualenvs (`locked_environment`); system binaries run via allowlisted `PATH` executables with capability probes (`external_tool`).
+- Fail-closed provider contracts: side-effectful playbooks require normalized machine-readable scope (`.omp/arsenal/scope.json` or `ARSENAL_SCOPE_FILE`), trusted host authorization, verified proxy routing (Burp for web/API, mitmproxy+hooks for reversing), and active evidence sinks; if any provider is missing, contradictory, or unavailable, execution is denied before invoking child interpreters or tools.
 - Use `arsenal exec -- <program> <arguments>` for raw output artifacts and ledger receipts. `arsenal scripts append-evidence` preserves case evidence immutability.
-- Install only needed dependency profiles, for example `uv tool install "arsenal-security[network] @ git+https://github.com/bitbytelabio/arsenal.git"`. Available profiles: `scripts`, `mobile`, `wireless`, `network`, `cloud`, `intel`, `forensics`, `re`, `ad`, `ai`, `analysis`, `crypto`, `vuln`.
-- LLM Guard uses a separate locked Python 3.11–3.12 environment because its crypto requirements conflict with Androguard. Its runner reports the exact `uv sync --locked --project ...` preparation command; execution never installs floating dependencies.
-
+- Install only needed dependency profiles, for example `uv tool install "arsenal[network] @ git+https://github.com/bitbytelabio/arsenal.git"`. Available profiles: `scripts`, `mobile`, `wireless`, `network`, `cloud`, `intel`, `forensics`, `re`, `ad`, `ai`, `analysis`, `crypto`, `vuln`.
+- LLM Guard uses a separate locked Python 3.11–3.12 environment because its crypto requirements conflict with Androguard. Its runner executes locked and offline once, never installing floating dependencies during dispatch; missing synchronization reports the exact `uv sync --locked --project ...` command.
 
 ---
 

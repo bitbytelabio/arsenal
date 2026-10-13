@@ -108,5 +108,5 @@ GET /api/detection_engine/rules/_find_statuses
 ## CLI Usage
 
 ```bash
-arsenal scripts red-performing-alert-triage-with-elastic-siem/agent --host https://elastic:9200 --api-key "key" --hours 24 --output report.json
+arsenal scripts red-performing-alert-triage-with-elastic-siem --host https://elastic:9200 --api-key "key" --hours 24 --output report.json
 ```

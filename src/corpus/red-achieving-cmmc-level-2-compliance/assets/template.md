@@ -33,7 +33,7 @@
 | *(others)* | all met | — | — | — |
 
 ## 4. SPRS Score
-*(computed by `arsenal scripts red-achieving-cmmc-level-2-compliance/process` from the control-status JSON)*
+*(computed by `arsenal scripts red-achieving-cmmc-level-2-compliance` from the control-status JSON)*
 
 - **Score: 97 / 110** (started at 110; deducted 13).
 - **Gap to perfect:** 13 points across 4 not-met + 1 partial requirement.

@@ -80,5 +80,5 @@ python3 -m impacket.examples.secretsdump DOMAIN/admin:pass@10.0.0.1
 ## CLI Usage
 
 ```bash
-arsenal scripts red-performing-active-directory-penetration-test/agent --server ldaps://dc.example.com --username "DOMAIN\\user" --password "pass" --output report.json
+arsenal scripts red-performing-active-directory-penetration-test --server ldaps://dc.example.com --username "DOMAIN\\user" --password "pass" --output report.json
 ```

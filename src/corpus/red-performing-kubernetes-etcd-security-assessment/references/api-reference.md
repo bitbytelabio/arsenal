@@ -7,11 +7,11 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-kubernetes-etcd-security-assessment/agent [--kubeconfig ~/.kube/config] encrypt
-arsenal scripts red-performing-kubernetes-etcd-security-assessment/agent access --endpoint https://127.0.0.1:2379 [--cert client.crt --key client.key --cacert ca.crt]
-arsenal scripts red-performing-kubernetes-etcd-security-assessment/agent secrets
-arsenal scripts red-performing-kubernetes-etcd-security-assessment/agent tls
-arsenal scripts red-performing-kubernetes-etcd-security-assessment/agent full [--endpoint https://127.0.0.1:2379]
+arsenal scripts red-performing-kubernetes-etcd-security-assessment [--kubeconfig ~/.kube/config] encrypt
+arsenal scripts red-performing-kubernetes-etcd-security-assessment access --endpoint https://127.0.0.1:2379 [--cert client.crt --key client.key --cacert ca.crt]
+arsenal scripts red-performing-kubernetes-etcd-security-assessment secrets
+arsenal scripts red-performing-kubernetes-etcd-security-assessment tls
+arsenal scripts red-performing-kubernetes-etcd-security-assessment full [--endpoint https://127.0.0.1:2379]
 ```
 
 ## Core Functions

@@ -81,7 +81,7 @@ START: List all email sending sources
 Daily DMARC aggregate reports (XML) received
   |
   v
-[Parse XML reports with arsenal scripts red-implementing-dmarc-dkim-spf-email-security/process]
+[Parse XML reports with arsenal scripts red-implementing-dmarc-dkim-spf-email-security]
   |
   v
 [Categorize results]

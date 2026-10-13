@@ -16,14 +16,14 @@ Assesses the security posture of AWS Nitro Enclave deployments by auditing KMS k
 
 ```bash
 # Full assessment
-arsenal scripts red-implementing-aws-nitro-enclave-security/agent --region us-east-1 --kms-key-ids alias/enclave-key mrk-abc123 \
+arsenal scripts red-implementing-aws-nitro-enclave-security --region us-east-1 --kms-key-ids alias/enclave-key mrk-abc123 \
   --iam-roles EnclaveParentRole --cloudtrail-days 14 --output report.json
 
 # Validate a specific attestation document
-arsenal scripts red-implementing-aws-nitro-enclave-security/agent --attestation-doc <base64-encoded-doc> --output attestation_report.json
+arsenal scripts red-implementing-aws-nitro-enclave-security --attestation-doc <base64-encoded-doc> --output attestation_report.json
 
 # Quick scan of enclave-enabled instances only
-arsenal scripts red-implementing-aws-nitro-enclave-security/agent --region us-west-2 --output instances_report.json
+arsenal scripts red-implementing-aws-nitro-enclave-security --region us-west-2 --output instances_report.json
 ```
 
 ## Arguments

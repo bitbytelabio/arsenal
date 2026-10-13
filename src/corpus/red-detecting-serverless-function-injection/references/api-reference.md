@@ -14,13 +14,13 @@ Detects code injection vulnerabilities in AWS Lambda functions by scanning funct
 
 ```bash
 # Full assessment with code scanning
-arsenal scripts red-detecting-serverless-function-injection/agent --region us-east-1 --scan-code --cloudtrail-days 14 --output report.json
+arsenal scripts red-detecting-serverless-function-injection --region us-east-1 --scan-code --cloudtrail-days 14 --output report.json
 
 # Scan specific functions only
-arsenal scripts red-detecting-serverless-function-injection/agent --functions payment-processor auth-handler --scan-code --output report.json
+arsenal scripts red-detecting-serverless-function-injection --functions payment-processor auth-handler --scan-code --output report.json
 
 # Quick assessment without code download (IAM, layers, CloudTrail only)
-arsenal scripts red-detecting-serverless-function-injection/agent --region us-west-2 --output quick_report.json
+arsenal scripts red-detecting-serverless-function-injection --region us-west-2 --output quick_report.json
 ```
 
 ## Arguments

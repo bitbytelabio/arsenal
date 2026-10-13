@@ -10,13 +10,13 @@
 
 ```bash
 # Generate keypair
-arsenal scripts red-implementing-digital-signatures-with-ed25519/agent --generate-keys --output-dir /keys/
+arsenal scripts red-implementing-digital-signatures-with-ed25519 --generate-keys --output-dir /keys/
 
 # Sign a file
-arsenal scripts red-implementing-digital-signatures-with-ed25519/agent --sign release.tar.gz --private-key /keys/ed25519_private.pem
+arsenal scripts red-implementing-digital-signatures-with-ed25519 --sign release.tar.gz --private-key /keys/ed25519_private.pem
 
 # Verify files
-arsenal scripts red-implementing-digital-signatures-with-ed25519/agent --verify release.tar.gz --public-key /keys/ed25519_public.pem
+arsenal scripts red-implementing-digital-signatures-with-ed25519 --verify release.tar.gz --public-key /keys/ed25519_public.pem
 ```
 
 ## Functions

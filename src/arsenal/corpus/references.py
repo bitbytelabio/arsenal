@@ -19,6 +19,11 @@ PROSE_NON_CITATIONS: Final[frozenset[str]] = frozenset({
     "support/support",
     "scripts/macros/DLLs",
     "scripts/binaries",
+    "assets/",
+    "templates/",
+    "support/scripts/",
+    "assets",
+    "templates",
 })
 
 STRICT_PATH_PREFIXES: Final[tuple[str, ...]] = (
@@ -238,6 +243,7 @@ def classify_citation(
     skill_id: str,
     shipped_tree: Path,
     admitted_skills: set[str],
+    doc_file: Path | None = None,
 ) -> tuple[str, str | None]:
     """Classify citation status (resolved-shipped, cross-skill, tool, prerequisite, or dangling)."""
     norm = target.replace("\\", "/").strip().lstrip("./")
@@ -275,12 +281,16 @@ def classify_citation(
 
     # Shipped local file
     if is_strict_path_citation(norm) or norm.endswith((".md", ".sh", ".py", ".ps1", ".txt", ".json", ".yaml", ".yml")):
-        local_path = (shipped_tree / skill_id / norm).resolve()
-        if str(local_path).startswith(str((shipped_tree / skill_id).resolve())) and local_path.is_file():
+        skill_root = (shipped_tree / skill_id).resolve()
+        local_path = (skill_root / norm).resolve()
+        if str(local_path).startswith(str(skill_root)) and local_path.is_file():
             return "resolved-shipped", str(local_path)
+        if doc_file is not None:
+            rel_doc_path = (doc_file.parent / target).resolve()
+            if str(rel_doc_path).startswith(str(skill_root)) and rel_doc_path.is_file():
+                return "resolved-shipped", str(rel_doc_path)
         if is_strict_path_citation(norm):
             return "dangling", f"Shipped support file '{norm}' does not exist in skill directory"
-
     # General command or URL
     if "://" in raw or raw.startswith(("http://", "https://", "ftp://")):
         return "resolved-system", f"External URL {raw}"
@@ -367,6 +377,7 @@ def audit_citations(
                         skill_id,
                         tree_dir,
                         admitted_skills,
+                        doc_file=md_file,
                     )
 
                     rec = {

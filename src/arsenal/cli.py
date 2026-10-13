@@ -114,6 +114,8 @@ def build_cli_parser() -> ArsenalArgumentParser:
     p_scripts.add_argument("--profile", type=str, default=argparse.SUPPRESS)
     p_scripts.add_argument("--list", action="store_true", default=argparse.SUPPRESS)
     p_scripts.add_argument("-h", "--help", action="store_true", default=argparse.SUPPRESS)
+    p_scripts.add_argument("--all", action="store_true", default=argparse.SUPPRESS)
+    p_scripts.add_argument("--domain", type=str, default=argparse.SUPPRESS)
     p_scripts.add_argument("script_id", nargs="?", default=None)
     p_scripts.add_argument("script_args", nargs=argparse.REMAINDER)
 
@@ -227,6 +229,13 @@ def parse_cli_args(args: list[str]) -> tuple[dict[str, object], list[str], list[
             if parsed.script_id:
                 positionals.append(parsed.script_id)
             if parsed.script_args:
+                for idx, a in enumerate(parsed.script_args):
+                    if a == "--all":
+                        values["all"] = True
+                    elif a == "--domain" and idx + 1 < len(parsed.script_args):
+                        values["domain"] = parsed.script_args[idx + 1]
+                    elif a.startswith("--domain="):
+                        values["domain"] = a.split("=", 1)[1]
                 positionals.extend(parsed.script_args)
         elif parsed.family == "exec":
             if getattr(parsed, "exec_cmd", None):

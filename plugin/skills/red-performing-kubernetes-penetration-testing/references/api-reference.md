@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-kubernetes-penetration-testing/agent recon
-arsenal scripts red-performing-kubernetes-penetration-testing/agent sa-perms [--namespace default]
-arsenal scripts red-performing-kubernetes-penetration-testing/agent dashboards
-arsenal scripts red-performing-kubernetes-penetration-testing/agent escape [--namespace default]
+arsenal scripts red-performing-kubernetes-penetration-testing recon
+arsenal scripts red-performing-kubernetes-penetration-testing sa-perms [--namespace default]
+arsenal scripts red-performing-kubernetes-penetration-testing dashboards
+arsenal scripts red-performing-kubernetes-penetration-testing escape [--namespace default]
 ```
 
 ## Core Functions

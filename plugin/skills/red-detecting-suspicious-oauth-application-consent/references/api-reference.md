@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-detecting-suspicious-oauth-application-consent/agent --tenant-id TENANT --client-id CLIENT --client-secret SECRET grants
-arsenal scripts red-detecting-suspicious-oauth-application-consent/agent --tenant-id TENANT --client-id CLIENT --client-secret SECRET apps
-arsenal scripts red-detecting-suspicious-oauth-application-consent/agent --tenant-id TENANT --client-id CLIENT --client-secret SECRET audit-logs
-arsenal scripts red-detecting-suspicious-oauth-application-consent/agent --tenant-id TENANT --client-id CLIENT --client-secret SECRET full --days 30
+arsenal scripts red-detecting-suspicious-oauth-application-consent --tenant-id TENANT --client-id CLIENT --client-secret SECRET grants
+arsenal scripts red-detecting-suspicious-oauth-application-consent --tenant-id TENANT --client-id CLIENT --client-secret SECRET apps
+arsenal scripts red-detecting-suspicious-oauth-application-consent --tenant-id TENANT --client-id CLIENT --client-secret SECRET audit-logs
+arsenal scripts red-detecting-suspicious-oauth-application-consent --tenant-id TENANT --client-id CLIENT --client-secret SECRET full --days 30
 ```
 
 ## Core Functions

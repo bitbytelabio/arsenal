@@ -1,6 +1,6 @@
 # API Reference: Prompt Injection Detection Tools
 
-## PromptInjectionDetector (agent.py)
+## PromptInjectionDetector (prompt_injection.py)
 
 The primary detection class combining three layers of prompt injection analysis.
 
@@ -118,7 +118,7 @@ Runs the DeBERTa model on the input (truncated to 512 tokens) and returns the in
 ## CLI Reference
 
 ```
-usage: arsenal scripts red-detecting-ai-model-prompt-injection-attacks/agent [-h] [--input INPUT] [--file FILE]
+usage: arsenal scripts red-detecting-ai-model-prompt-injection-attacks [-h] [--input INPUT] [--file FILE]
                 [--mode {regex,heuristic,full}]
                 [--threshold THRESHOLD]
                 [--output {text,json}]

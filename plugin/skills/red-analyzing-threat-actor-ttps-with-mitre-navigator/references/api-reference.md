@@ -61,19 +61,19 @@
 
 ```bash
 # List all ATT&CK threat groups
-arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --list-groups
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator --list-groups
 
 # Analyze a specific group
-arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --group "APT29"
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator --group "APT29"
 
 # Generate Navigator layer file
-arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --group "APT29" --layer-output apt29_layer.json
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator --group "APT29" --layer-output apt29_layer.json
 
 # Compare multiple groups
-arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --compare "APT29" "APT28" "Lazarus Group"
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator --compare "APT29" "APT28" "Lazarus Group"
 
 # Save full report as JSON
-arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --group "APT29" --layer-output apt29.json --output report.json
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator --group "APT29" --layer-output apt29.json --output report.json
 ```
 
 ## External References

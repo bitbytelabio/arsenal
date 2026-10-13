@@ -5,11 +5,11 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-phishing-simulation-with-gophish/agent --url https://gophish.local:3333 --api-key <key> campaigns
-arsenal scripts red-performing-phishing-simulation-with-gophish/agent --url <url> --api-key <key> metrics --id 1
-arsenal scripts red-performing-phishing-simulation-with-gophish/agent --url <url> --api-key <key> resources
-arsenal scripts red-performing-phishing-simulation-with-gophish/agent --url <url> --api-key <key> report --id 1
-arsenal scripts red-performing-phishing-simulation-with-gophish/agent --url <url> --api-key <key> launch --name "Q1 Test" --template-id 1 --page-id 1 --smtp-id 1 --group-ids 1 2 --phish-url https://phish.local
+arsenal scripts red-performing-phishing-simulation-with-gophish --url https://gophish.local:3333 --api-key <key> campaigns
+arsenal scripts red-performing-phishing-simulation-with-gophish --url <url> --api-key <key> metrics --id 1
+arsenal scripts red-performing-phishing-simulation-with-gophish --url <url> --api-key <key> resources
+arsenal scripts red-performing-phishing-simulation-with-gophish --url <url> --api-key <key> report --id 1
+arsenal scripts red-performing-phishing-simulation-with-gophish --url <url> --api-key <key> launch --name "Q1 Test" --template-id 1 --page-id 1 --smtp-id 1 --group-ids 1 2 --phish-url https://phish.local
 ```
 
 ## GoPhishClient API Endpoints

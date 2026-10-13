@@ -70,7 +70,7 @@ Security awareness training is the human layer of phishing defense. An effective
 - Include diverse attack types: links, attachments, QR codes, BEC
 
 ### Step 5: Measure and Optimize
-Use `arsenal scripts red-implementing-anti-phishing-training-program/process` to analyze training completion, simulation results, and program effectiveness over time.
+Use `arsenal scripts red-implementing-anti-phishing-training-program` to analyze training completion, simulation results, and program effectiveness over time.
 
 ## Tools & Resources
 - **KnowBe4**: https://www.knowbe4.com/

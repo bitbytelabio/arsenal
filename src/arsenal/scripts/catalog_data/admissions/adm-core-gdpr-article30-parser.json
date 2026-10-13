@@ -1,0 +1,32 @@
+{
+  "record_id": "adm-core-gdpr-article30-parser",
+  "catalog_sha256": "294df53fee222116792d324e2037f18847406fd0528ad8ca19c549a1843a1d67",
+  "source_sha256": "6fd792000ebeb8e737371ca31f8e938cc84a5c0bfebffe98dc2a22991d2cc257",
+  "reviewer_role": "security-architect",
+  "reviewer_session": "session-refactor-playbook-runtime",
+  "reviewed_at": "2026-10-13T00:00:00Z",
+  "static_inventory": {
+    "pure_handler": true,
+    "reentrant": true
+  },
+  "dependency_inventory": {
+    "tools": [],
+    "imports": []
+  },
+  "control_decisions": {
+    "scope": "not_applicable",
+    "authorization": "not_applicable"
+  },
+  "falsifier_ids": [
+    "F-CORE-TESTS"
+  ],
+  "decision": "approved_shared",
+  "rationale": "Core handler for gdpr/article30-parser verified by unit tests in tests/python/test_scripts.py and tests/python/test_runtime_cli.py.",
+  "invalidation_conditions": [
+    "Modification of source code",
+    "Introduction of undeclared side effects"
+  ],
+  "receipt_ids": [
+    "gdpr/article30-parser"
+  ]
+}

@@ -188,11 +188,11 @@ event ntlm_log(rec: NTLM::Info) {
 
 ### Step 6: Run the Automated Analysis Agent
 
-Use the provided agent.py for comprehensive lateral movement detection:
+Use the centralized Arsenal operational script for comprehensive lateral movement detection:
 
 ```bash
-arsenal scripts red-detecting-lateral-movement-with-zeek/agent /opt/zeek/logs/current/
-arsenal scripts red-detecting-lateral-movement-with-zeek/agent /opt/zeek/logs/2026-03-18/  # Analyze a specific date
+arsenal scripts red-detecting-lateral-movement-with-zeek /opt/zeek/logs/current/
+arsenal scripts red-detecting-lateral-movement-with-zeek /opt/zeek/logs/2026-03-18/  # Analyze a specific date
 ```
 
 ## Verification

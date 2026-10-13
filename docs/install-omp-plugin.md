@@ -54,6 +54,34 @@ ARSENAL_PROFILE=/tmp/arsenal-test/agent just verify
 `just build`, `just profile-install`, and `just link` can also be run independently. Recipes preserve CLI merge/conflict behavior and never force overwrite files unless explicitly requested.
 
 ---
+## Operational Playbook Runtime
+
+Arsenal provides a deterministic in-package catalog for operational playbooks and core script utilities:
+
+```bash
+# Programmatic listing with full metadata (type, domain, execution mode, admission status)
+arsenal scripts --json list
+
+# Human-readable listing grouped by domain
+arsenal scripts list
+arsenal scripts list --domain webapp
+arsenal scripts list --all
+
+# Verify parity between disk files, catalog descriptors, packaged resources, and receipts
+arsenal scripts catalog/verify --json
+
+# Execute a helper through the canonical interface
+arsenal scripts <canonical-id> -- <arguments>
+```
+
+### Execution Boundaries and Preflight Gates
+
+- **Shared Process (`shared`)**: In-process execution reserved for reviewed, pure, reentrant handlers (`admission_status: approved_shared`).
+- **Managed Subprocess (`managed_subprocess`)**: Default boundary for unclassified or legacy playbooks, isolating child `SystemExit`, signals, and dependencies with process-group timeouts and bounded UTF-8 output.
+- **Locked Environment (`locked_environment`)**: For dependency-conflicted playbooks (e.g. LLM Guard). Executes `uv run --locked --offline --project ...` once; never retries online or mutates lockfiles during dispatch.
+- **External Tool (`external_tool`)**: For allowlisted system binaries with capability probes.
+- **Fail-Closed Provider Contracts**: Side-effectful helpers verify machine-readable scope (`.omp/arsenal/scope.json` or `ARSENAL_SCOPE_FILE`), trusted host authorization, required proxy adapters (Burp for web/API, mitmproxy+hooks for reversing), and evidence sinks before invocation. If any provider is missing or unavailable, dispatch is refused.
+
 
 ## Disambiguation: Arsenal CLI `--profile <path>` vs OMP `OMP_PROFILE=<name>`
 

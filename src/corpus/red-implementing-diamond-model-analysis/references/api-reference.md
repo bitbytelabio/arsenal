@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-implementing-diamond-model-analysis/agent --data /intel/events.json --output-dir /reports/
+arsenal scripts red-implementing-diamond-model-analysis --data /intel/events.json --output-dir /reports/
 ```
 
 ## Functions

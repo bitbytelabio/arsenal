@@ -6,11 +6,11 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-implementing-end-to-end-encryption-for-messaging/agent keygen                                    # Generate X25519 key pair
-arsenal scripts red-implementing-end-to-end-encryption-for-messaging/agent exchange                                  # Simulate key exchange
-arsenal scripts red-implementing-end-to-end-encryption-for-messaging/agent demo                                      # Full E2EE demo flow
-arsenal scripts red-implementing-end-to-end-encryption-for-messaging/agent encrypt --message <text> --key <hex>      # Encrypt message
-arsenal scripts red-implementing-end-to-end-encryption-for-messaging/agent decrypt --nonce <hex> --ciphertext <hex> --key <hex>
+arsenal scripts red-implementing-end-to-end-encryption-for-messaging keygen                                    # Generate X25519 key pair
+arsenal scripts red-implementing-end-to-end-encryption-for-messaging exchange                                  # Simulate key exchange
+arsenal scripts red-implementing-end-to-end-encryption-for-messaging demo                                      # Full E2EE demo flow
+arsenal scripts red-implementing-end-to-end-encryption-for-messaging encrypt --message <text> --key <hex>      # Encrypt message
+arsenal scripts red-implementing-end-to-end-encryption-for-messaging decrypt --nonce <hex> --ciphertext <hex> --key <hex>
 ```
 
 ## Core Functions

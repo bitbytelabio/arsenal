@@ -149,7 +149,7 @@ stratus status   # confirm COLD state for all techniques
 ```
 
 ### 9. Drive it programmatically for coverage runs
-Loop over a tactic to measure detection coverage, then clean up. See `arsenal scripts red-emulating-cloud-attacks-with-stratus-red-team/agent`.
+Loop over a tactic to measure detection coverage, then clean up. See `arsenal scripts red-emulating-cloud-attacks-with-stratus-red-team`.
 ```bash
 evidence_exec --platform aws --tactic credential-access --detonate --cleanup
 ```

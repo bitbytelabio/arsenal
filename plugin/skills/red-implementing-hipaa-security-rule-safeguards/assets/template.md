@@ -18,7 +18,7 @@
 > The risk analysis is **dated and documented** — this is the first artifact OCR requests.
 
 ## 3. Safeguard Status
-*(scored by `arsenal scripts red-implementing-hipaa-security-rule-safeguards/process`; weighted readiness ≈ 62% in this example)*
+*(scored by `arsenal scripts red-implementing-hipaa-security-rule-safeguards`; weighted readiness ≈ 62% in this example)*
 
 | Specification | Section | Requirement | Status | Alt. documented |
 |---|---|---|---|---|

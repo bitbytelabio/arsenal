@@ -47,6 +47,6 @@ metadata:
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-privilege-escalation-in-kubernetes-pods/agent --namespace default
-arsenal scripts red-detecting-privilege-escalation-in-kubernetes-pods/agent --json-file pods.json
+arsenal scripts red-detecting-privilege-escalation-in-kubernetes-pods --namespace default
+arsenal scripts red-detecting-privilege-escalation-in-kubernetes-pods --json-file pods.json
 ```

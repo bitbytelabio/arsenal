@@ -1,0 +1,88 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/playbook_admission.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "catalog_sha256",
+    "source_sha256",
+    "reviewer_role",
+    "reviewer_session",
+    "reviewed_at",
+    "static_inventory",
+    "dependency_inventory",
+    "control_decisions",
+    "falsifier_ids",
+    "decision",
+    "rationale",
+    "invalidation_conditions",
+    "receipt_ids"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "catalog_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "reviewer_role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer_session": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "static_inventory": {
+      "type": "object"
+    },
+    "dependency_inventory": {
+      "type": "object"
+    },
+    "control_decisions": {
+      "type": "object"
+    },
+    "falsifier_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "approved_shared",
+        "retained_isolated",
+        "external_only",
+        "blocked"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invalidation_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "receipt_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

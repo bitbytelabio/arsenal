@@ -9,11 +9,11 @@
 
 ## CLI Interface
 ```
-arsenal scripts re-performing-plc-firmware-security-analysis/agent extract --firmware plc_fw.bin [--output /tmp/fw_extract]
-arsenal scripts re-performing-plc-firmware-security-analysis/agent metadata --firmware plc_fw.bin
-arsenal scripts re-performing-plc-firmware-security-analysis/agent creds --dir /tmp/fw_extract
-arsenal scripts re-performing-plc-firmware-security-analysis/agent vulns --dir /tmp/fw_extract
-arsenal scripts re-performing-plc-firmware-security-analysis/agent full --firmware plc_fw.bin [--output /tmp/fw_extract]
+arsenal scripts re-performing-plc-firmware-security-analysis extract --firmware plc_fw.bin [--output /tmp/fw_extract]
+arsenal scripts re-performing-plc-firmware-security-analysis metadata --firmware plc_fw.bin
+arsenal scripts re-performing-plc-firmware-security-analysis creds --dir /tmp/fw_extract
+arsenal scripts re-performing-plc-firmware-security-analysis vulns --dir /tmp/fw_extract
+arsenal scripts re-performing-plc-firmware-security-analysis full --firmware plc_fw.bin [--output /tmp/fw_extract]
 ```
 
 ## Core Functions

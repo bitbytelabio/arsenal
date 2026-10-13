@@ -55,6 +55,6 @@ rule Mimikatz_Strings {
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-mimikatz-execution-patterns/agent --evtx-file Sysmon.evtx
-arsenal scripts red-detecting-mimikatz-execution-patterns/agent --text-log process_audit.log
+arsenal scripts red-detecting-mimikatz-execution-patterns --evtx-file Sysmon.evtx
+arsenal scripts red-detecting-mimikatz-execution-patterns --text-log process_audit.log
 ```

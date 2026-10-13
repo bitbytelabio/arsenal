@@ -3095,6 +3095,81 @@ SCRIPT_RECEIPTS: list[dict[str, Any]] = [
     }
 ]
 
+SHARED_RECEIPTS: list[dict[str, Any]] = [
+    {
+        "original_path": "src/arsenal/scripts/playbooks/shared/prompt_injection.py",
+        "filename": "prompt_injection.py",
+        "sha256": "413e63918b72cd2dcbc44c33b481c5364f354f30587aa8605345e62cff7fcd4e",
+        "bytes": 17460,
+        "license": "Apache-2.0",
+        "canonical_id": "shared/prompt_injection",
+        "status": "migrated",
+        "target_command": "arsenal scripts red-detecting-ai-model-prompt-injection-attacks/agent",
+        "description": "Shared implementation for prompt-injection detection playbooks",
+        "migrated_path": "src/arsenal/scripts/playbooks/shared/prompt_injection.py",
+    },
+    {
+        "original_path": "src/arsenal/scripts/playbooks/shared/attack_surface_management.py",
+        "filename": "attack_surface_management.py",
+        "sha256": "ea713d224b41bbbe7f45aec1387715d4f515ab2cd381842c1d0dc4de8a9698c6",
+        "bytes": 34324,
+        "license": "Apache-2.0",
+        "canonical_id": "shared/attack_surface_management",
+        "status": "migrated",
+        "target_command": "arsenal scripts red-implementing-attack-surface-management/agent",
+        "description": "Shared implementation for attack-surface-management playbooks",
+        "migrated_path": "src/arsenal/scripts/playbooks/shared/attack_surface_management.py",
+    },
+    {
+        "original_path": "src/arsenal/scripts/playbooks/shared/llm_guardrails.py",
+        "filename": "llm_guardrails.py",
+        "sha256": "7691fd4fd366a7058255daa9ae84851b7ba8f5b6048217a2f32936a9a301d6b4",
+        "bytes": 22070,
+        "license": "Apache-2.0",
+        "canonical_id": "shared/llm_guardrails",
+        "status": "migrated",
+        "target_command": "arsenal scripts red-implementing-llm-guardrails-for-security/agent",
+        "description": "Shared implementation for llm-guardrails playbooks",
+        "migrated_path": "src/arsenal/scripts/playbooks/shared/llm_guardrails.py",
+    },
+    {
+        "original_path": "src/arsenal/scripts/playbooks/shared/vulnerability_remediation_sla.py",
+        "filename": "vulnerability_remediation_sla.py",
+        "sha256": "8d008ad14536f278184d281483ff5827d0ead9abf226efbca7f85d1d756042fd",
+        "bytes": 11013,
+        "license": "Apache-2.0",
+        "canonical_id": "shared/vulnerability_remediation_sla",
+        "status": "migrated",
+        "target_command": "arsenal scripts red-implementing-vulnerability-remediation-sla/process",
+        "description": "Shared implementation for vulnerability-remediation-sla playbooks",
+        "migrated_path": "src/arsenal/scripts/playbooks/shared/vulnerability_remediation_sla.py",
+    },
+    {
+        "original_path": "src/arsenal/scripts/playbooks/shared/phishing_simulation_gophish.py",
+        "filename": "phishing_simulation_gophish.py",
+        "sha256": "de884277cfd4b0f1cb54b4e1e923f0aab5bd185a7be9f29686301f0d57f0b5b5",
+        "bytes": 20505,
+        "license": "Apache-2.0",
+        "canonical_id": "shared/phishing_simulation_gophish",
+        "status": "migrated",
+        "target_command": "arsenal scripts red-performing-phishing-simulation-with-gophish/process",
+        "description": "Shared implementation for phishing-simulation-gophish playbooks",
+        "migrated_path": "src/arsenal/scripts/playbooks/shared/phishing_simulation_gophish.py",
+    },
+    {
+        "original_path": "src/arsenal/scripts/playbooks/shared/backup_integrity.py",
+        "filename": "backup_integrity.py",
+        "sha256": "052dfd4b91473c23d42a4f608b015566aa5be70fe9adb90086e4fb69bcbfee5d",
+        "bytes": 10734,
+        "license": "Apache-2.0",
+        "canonical_id": "shared/backup_integrity",
+        "status": "migrated",
+        "target_command": "arsenal scripts re-validating-backup-integrity-for-recovery/agent",
+        "description": "Shared implementation for backup-integrity playbooks",
+        "migrated_path": "src/arsenal/scripts/playbooks/shared/backup_integrity.py",
+    },
+]
+
 
 def get_receipt(original_path_or_canonical_id: str) -> dict[str, Any] | None:
     """Find a script migration receipt by original path or canonical ID."""

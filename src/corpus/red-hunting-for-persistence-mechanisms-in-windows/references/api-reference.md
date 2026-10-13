@@ -8,10 +8,10 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-hunting-for-persistence-mechanisms-in-windows/agent registry    # Enumerate registry Run keys
-arsenal scripts red-hunting-for-persistence-mechanisms-in-windows/agent tasks       # Enumerate scheduled tasks
-arsenal scripts red-hunting-for-persistence-mechanisms-in-windows/agent services    # Enumerate suspicious services
-arsenal scripts red-hunting-for-persistence-mechanisms-in-windows/agent all         # Run all persistence hunts
+arsenal scripts red-hunting-for-persistence-mechanisms-in-windows registry    # Enumerate registry Run keys
+arsenal scripts red-hunting-for-persistence-mechanisms-in-windows tasks       # Enumerate scheduled tasks
+arsenal scripts red-hunting-for-persistence-mechanisms-in-windows services    # Enumerate suspicious services
+arsenal scripts red-hunting-for-persistence-mechanisms-in-windows all         # Run all persistence hunts
 ```
 
 ## Core Functions

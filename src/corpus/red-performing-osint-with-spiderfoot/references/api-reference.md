@@ -73,7 +73,7 @@ python sf.py -M
 
 ## Agent CLI Usage
 ```bash
-arsenal scripts red-performing-osint-with-spiderfoot/agent --target example.com --use-case footprint --output report.json
-arsenal scripts red-performing-osint-with-spiderfoot/agent --target 203.0.113.5 --use-case investigate --timeout 1200
-arsenal scripts red-performing-osint-with-spiderfoot/agent --list-modules --server http://spiderfoot:5001
+arsenal scripts red-performing-osint-with-spiderfoot --target example.com --use-case footprint --output report.json
+arsenal scripts red-performing-osint-with-spiderfoot --target 203.0.113.5 --use-case investigate --timeout 1200
+arsenal scripts red-performing-osint-with-spiderfoot --list-modules --server http://spiderfoot:5001
 ```

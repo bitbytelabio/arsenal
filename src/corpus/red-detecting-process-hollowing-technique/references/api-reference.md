@@ -40,5 +40,5 @@ index=sysmon EventCode=10
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-process-hollowing-technique/agent --sysmon-log Sysmon.evtx
+arsenal scripts red-detecting-process-hollowing-technique --sysmon-log Sysmon.evtx
 ```

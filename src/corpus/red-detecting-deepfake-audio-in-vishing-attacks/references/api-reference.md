@@ -158,17 +158,17 @@ Based on research from IEEE and Springer publications:
 
 ```bash
 # Analyze a single audio file
-arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks/agent analyze suspect_call.wav
+arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks analyze suspect_call.wav
 
 # Analyze with trained model
-arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks/agent analyze suspect_call.wav --model deepfake_model.joblib -o result.json
+arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks analyze suspect_call.wav --model deepfake_model.joblib -o result.json
 
 # Batch analyze a directory
-arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks/agent batch /path/to/audio/samples/ -o batch_results.json
+arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks batch /path/to/audio/samples/ -o batch_results.json
 
 # Train a model from labeled data
-arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks/agent train --genuine /data/genuine/ --deepfake /data/deepfake/ -o model.joblib
+arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks train --genuine /data/genuine/ --deepfake /data/deepfake/ -o model.joblib
 
 # Extract features only (for custom analysis)
-arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks/agent features suspect_call.wav -o features.json
+arsenal scripts red-detecting-deepfake-audio-in-vishing-attacks features suspect_call.wav -o features.json
 ```

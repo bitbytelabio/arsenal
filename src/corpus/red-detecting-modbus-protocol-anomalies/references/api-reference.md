@@ -59,6 +59,6 @@ tolerance = 0.5
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-modbus-protocol-anomalies/agent --modbus-log modbus.log
-arsenal scripts red-detecting-modbus-protocol-anomalies/agent --modbus-log modbus.log --expected-interval 2.0
+arsenal scripts red-detecting-modbus-protocol-anomalies --modbus-log modbus.log
+arsenal scripts red-detecting-modbus-protocol-anomalies --modbus-log modbus.log --expected-interval 2.0
 ```

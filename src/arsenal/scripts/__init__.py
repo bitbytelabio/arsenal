@@ -2,16 +2,16 @@
 
 Exposes 'arsenal scripts <canonical-id> [args...]' CLI entrypoint.
 Preserves behaviors, flags, and arguments while routing to centralized Python modules.
+All endpoints are resolved via the authoritative playbook catalog with preflight verification.
 """
 
 from __future__ import annotations
 
-import json
 import sys
 from typing import Any, Callable
 
 from arsenal.common import Context, ExitCodes
-from arsenal.scripts.receipts import SCRIPT_RECEIPTS, list_receipts
+from arsenal.scripts.receipts import list_receipts
 
 # Canonical ID to handler mapping
 SCRIPT_HANDLERS: dict[str, tuple[str, Callable[[Context], int], str]] = {}
@@ -39,12 +39,17 @@ def _init_registry() -> None:
     from arsenal.scripts.ida_tools import handle as handle_ida
     from arsenal.scripts.gdpr import handle as handle_gdpr
     from arsenal.scripts.ad_honeytokens import handle as handle_ad
+    from arsenal.scripts.burp_bridge import handle as handle_burp
+    from arsenal.scripts.playbook_catalog import handle_verify, handle_refresh
 
     _register("case-init", handle_case_init, "Initialize case directory and metadata")
     _register("append-evidence", handle_append_evidence, "Append Evidence item under work/<case>/evidence/")
     _register("master-route", handle_master_route, "Skill router analyzer and scope evaluator")
     _register("bootstrap-reverse", handle_bootstrap, "Reverse engineering tool bootstrap and capability verification")
-    from arsenal.scripts.burp_bridge import handle as handle_burp
+
+    # Catalog parity & management
+    _register("catalog/verify", handle_verify, "Verify catalog parity against disk, receipts, and resources")
+    _register("catalog/refresh", handle_refresh, "Regenerate in-package playbook catalog with --write")
 
     # APK tools
     _register("re-apk-reverse/decode", handle_apk, "APK unpacking with jadx and apktool", "apk-decode")
@@ -80,19 +85,68 @@ def _init_registry() -> None:
 
 
 def handle_list(ctx: Context) -> int:
-    """List all registered scripts."""
-    _init_registry()
+    """List all registered scripts from the catalog per contracts/catalog-contract.md."""
+    from arsenal.scripts.playbook_catalog import list_entries
+
+    raw_entries = list_entries()
+
     items = []
-    seen = set()
-    for key, (canonical, _, desc) in sorted(SCRIPT_HANDLERS.items()):
-        if canonical not in seen:
-            seen.add(canonical)
-            items.append({"id": canonical, "description": desc})
+    for e in raw_entries:
+        cid = e["canonical_id"]
+        domain = e.get("domain", "core")
+        entry_type = "core" if domain == "core" else "playbook"
+
+        # Side effects representation
+        side_effects_vec = e.get("side_effects", {})
+        side_effects_list = [
+            f"{k}:{v}" for k, v in side_effects_vec.items()
+            if isinstance(v, str) and v != "none"
+        ]
+
+        item = {
+            "id": cid,
+            "description": e.get("description", ""),
+            "type": entry_type,
+            "domain": domain,
+            "executionMode": e.get("execution_mode", "managed_subprocess"),
+            "admissionStatus": e.get("admission_status", "unclassified"),
+            "sideEffects": side_effects_list,
+            "dependencyProfile": e.get("dependencies", {}).get("profile"),
+            "aliases": e.get("aliases", []),
+            "provenance": {
+                "receiptIds": e.get("provenance", {}).get("receipt_ids", []),
+            },
+        }
+        items.append(item)
+
+    # Filter by domain if requested
+    domain_filter = ctx.values.get("domain")
+    if domain_filter:
+        items = [it for it in items if it["domain"].lower() == domain_filter.lower()]
 
     if not ctx.is_json:
-        print("REGISTERED ARSENAL SCRIPTS:")
+        # Usability-oriented plain-text output (T022)
+        by_domain: dict[str, list[dict[str, Any]]] = {}
         for it in items:
-            print(f"  {it['id']:<38} - {it['description']}")
+            dom = it["domain"]
+            by_domain.setdefault(dom, []).append(it)
+
+        show_all = bool(ctx.values.get("all") or domain_filter)
+        print(f"ARSENAL SCRIPTS INVENTORY ({len(items)} endpoints):")
+        for dom, dom_items in sorted(by_domain.items()):
+            print(f"\n  [{dom.upper()}] ({len(dom_items)} endpoints)")
+            if show_all:
+                for it in dom_items:
+                    print(f"    {it['id']:<42} - {it['description']}")
+            else:
+                for it in dom_items[:5]:
+                    print(f"    {it['id']:<42} - {it['description']}")
+                if len(dom_items) > 5:
+                    print(f"    ... and {len(dom_items) - 5} more. Run with --all or --domain {dom} to see all.")
+
+        if not show_all and len(items) > 20:
+            print("\n  Use 'arsenal scripts list --all' or '--json' to view all endpoints.")
+
     return ctx.result({"scripts": items}, code=ExitCodes.SUCCESS)
 
 
@@ -110,7 +164,6 @@ def handle_receipts(ctx: Context) -> int:
 
 def handle(ctx: Context) -> int:
     """Primary entrypoint for 'arsenal scripts' command family."""
-    _init_registry()
 
     script_id = ctx.subcommand or ""
     # Support 'arsenal scripts --list' or 'arsenal scripts list'
@@ -120,31 +173,47 @@ def handle(ctx: Context) -> int:
     if script_id == "receipts":
         return handle_receipts(ctx)
 
-    # Check direct registered handlers
-    if script_id in SCRIPT_HANDLERS:
-        canonical_id, handler_fn, _ = SCRIPT_HANDLERS[script_id]
-        return handler_fn(ctx)
+    if script_id == "catalog/verify":
+        from arsenal.scripts.playbook_catalog import handle_verify
+        return handle_verify(ctx)
 
-    # Check playbooks: <skill>/agent or <skill>/process
-    if "/" in script_id:
-        skill_name, target = script_id.split("/", 1)
-        if target in ("agent", "process"):
-            from arsenal.scripts.playbook_runner import handle_playbook
-            return handle_playbook(ctx, skill_name, target)
+    if script_id == "catalog/refresh":
+        from arsenal.scripts.playbook_catalog import handle_refresh
+        return handle_refresh(ctx)
+    _init_registry()
 
-    # Check bare skill name
-    if script_id.startswith(("red-", "webapp-", "mobile-", "re-")):
-        from arsenal.scripts.playbook_runner import handle_playbook
-        # Try agent first, then process
-        try:
-            return handle_playbook(ctx, script_id, "agent")
-        except FileNotFoundError:
-            try:
-                return handle_playbook(ctx, script_id, "process")
-            except FileNotFoundError:
-                pass
+    from arsenal.scripts import playbook_boundaries, playbook_catalog, playbook_runner
 
-    return ctx.fail(
-        f"Unknown script identifier: '{script_id}'. Run 'arsenal scripts list' to see available commands.",
-        code=ExitCodes.CLI_USAGE_ERROR,
+    try:
+        entry = playbook_catalog.resolve(script_id)
+    except playbook_catalog.CatalogResolutionError as err:
+        return ctx.fail(str(err), code=ExitCodes.CLI_USAGE_ERROR)
+    except KeyError:
+        return ctx.fail(
+            f"Unknown script identifier: '{script_id}'. Run 'arsenal scripts list' to see available commands.",
+            code=ExitCodes.CLI_USAGE_ERROR,
+        )
+
+    # Core handler dispatch
+    if entry.get("domain") == "core":
+        canonical_id = entry["canonical_id"]
+        if canonical_id in SCRIPT_HANDLERS:
+            _, handler_fn, _ = SCRIPT_HANDLERS[canonical_id]
+            return handler_fn(ctx)
+        # Fallback to shared handler execution
+        return playbook_runner.execute_catalog_entry(ctx, entry)
+
+    # Playbook dispatch with Preflight boundary check
+    raw_args = list(ctx.positionals) + list(ctx.remainder)
+    write_approved = bool(ctx.values.get("write"))
+    decision = playbook_boundaries.evaluate_preflight(
+        entry,
+        raw_args=raw_args,
+        workspace_root=ctx.repo_root,
+        write_gate_approved=write_approved,
     )
+
+    if not decision.is_allowed():
+        return ctx.fail(decision.message, code=decision.exit_code())
+
+    return playbook_runner.execute_catalog_entry(ctx, entry)

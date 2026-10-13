@@ -145,7 +145,7 @@ def ssvc_decision(exploitation, tech_impact, automatability, mission_prevalence,
 ### Step 4: Generate Triage Report
 ```bash
 # Run the SSVC triage script against scan results
-arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework/process --input scan_results.csv --output ssvc_triage_report.json
+arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework --input scan_results.csv --output ssvc_triage_report.json
 
 # View summary
 cat ssvc_triage_report.json | python3 -m json.tool | head -50
@@ -156,7 +156,7 @@ cat ssvc_triage_report.json | python3 -m json.tool | head -50
 ### Import from Nessus CSV
 ```bash
 # Export Nessus scan as CSV, then process
-arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework/process \
+arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework \
   --input nessus_export.csv \
   --format nessus \
   --output ssvc_results.json
@@ -165,7 +165,7 @@ arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework/process \
 ### Import from OpenVAS
 ```bash
 # Export OpenVAS results as XML
-arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework/process \
+arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework \
   --input openvas_report.xml \
   --format openvas \
   --output ssvc_results.json

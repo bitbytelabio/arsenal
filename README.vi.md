@@ -217,11 +217,14 @@ bun test
 ### Resource của corpus và cách chạy helper
 
 - Chỉnh sửa tại `src/corpus/`; `plugin/skills/` là đầu ra được sinh. Liên kết tài liệu hỗ trợ hữu ích từ trang chính của skill và ghi nguồn gốc trong `MANIFEST.json`.
-- Native OMP tiếp tục resolve tài liệu/asset `skill://`. Mã thực thi nằm trong `src/arsenal/scripts/`; chạy `arsenal scripts <canonical-id> -- <tham-số>` thay vì sao chép script từ skill.
+- Native OMP tiếp tục resolve tài liệu/asset `skill://`. Mã thực thi được định tuyến qua danh mục chuẩn hóa trong gói (`src/arsenal/scripts/catalog_data/playbook_catalog.json`); chạy `arsenal scripts <canonical-id> -- <tham-số>` thay vì sao chép script từ skill.
+- Khám phá helper với `arsenal scripts list` (gom theo domain, hỗ trợ `--all` và `--domain <tên>`) hoặc `arsenal scripts --json list` để lấy đầy đủ metadata (loại, domain, chế độ thực thi, trạng thái tiếp nhận, tác dụng phụ, phụ thuộc, nguồn gốc).
+- Cổng kiểm chứng tính toàn vẹn (parity gate): chạy `arsenal scripts catalog/verify --json` để xác minh tính tương đồng tuyệt đối giữa file trên đĩa, descriptor trong catalog, tài nguyên đóng gói và receipt di chuyển lịch sử.
+- Phân tầng ranh giới thực thi: handler thuần túy đã duyệt chạy nội tiến trình (`shared`); helper chưa phân loại chạy trong tiến trình con cô lập (`managed_subprocess`); playbook xung đột phụ thuộc chạy trong virtualenv ngoại tuyến bị khóa (`locked_environment`); công cụ hệ thống chạy qua binary allowlist trên `PATH` với kiểm tra năng lực (`external_tool`).
+- Kiểm soát fail-closed: playbook có tác dụng phụ yêu cầu scope máy đọc chuẩn hóa (`.omp/arsenal/scope.json` hoặc `ARSENAL_SCOPE_FILE`), ủy quyền host tin cậy, định tuyến proxy đã xác minh (Burp cho web/API, mitmproxy+hook cho dịch ngược) và sink bằng chứng sẵn sàng; nếu thiếu hoặc xung đột, việc thực thi bị từ chối trước khi khởi chạy handler.
 - Dùng `arsenal exec -- <chương-trình> <tham-số>` để lưu raw output và receipt. `arsenal scripts append-evidence` giữ tính bất biến của evidence trong case.
-- Chỉ cài nhóm dependency cần dùng, ví dụ `uv tool install "arsenal-security[network] @ git+https://github.com/bitbytelabio/arsenal.git"`. Các nhóm: `scripts`, `mobile`, `wireless`, `network`, `cloud`, `intel`, `forensics`, `re`, `ad`, `ai`, `analysis`, `crypto`, `vuln`.
-- LLM Guard dùng môi trường khóa riêng Python 3.11–3.12 do xung đột crypto với Androguard. Runner báo đường dẫn lệnh `uv sync --locked --project ...` để chuẩn bị; lúc chạy không tự tải dependency trôi nổi.
-
+- Chỉ cài nhóm dependency cần dùng, ví dụ `uv tool install "arsenal[network] @ git+https://github.com/bitbytelabio/arsenal.git"`. Các nhóm: `scripts`, `mobile`, `wireless`, `network`, `cloud`, `intel`, `forensics`, `re`, `ad`, `ai`, `analysis`, `crypto`, `vuln`.
+- LLM Guard dùng môi trường khóa riêng Python 3.11–3.12 do xung đột crypto với Androguard. Runner thực thi khóa và ngoại tuyến duy nhất một lần, không tải dependency trôi nổi khi điều phối; nếu thiếu đồng bộ sẽ báo chính xác lệnh `uv sync --locked --project ...`.
 
 ---
 

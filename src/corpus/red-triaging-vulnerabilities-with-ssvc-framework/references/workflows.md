@@ -107,7 +107,7 @@ Weekly/monthly reporting cycle.
 
 ### Report Generation
 ```bash
-arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework/process \
+arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework \
   --input ssvc_results.csv \
   --output ssvc_metrics_report.json
 ```

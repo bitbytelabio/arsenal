@@ -6,13 +6,13 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-implementing-deception-based-detection-with-canarytoken/agent --console abc123 --auth-token TOKEN ping
-arsenal scripts red-implementing-deception-based-detection-with-canarytoken/agent --console abc123 --auth-token TOKEN list
-arsenal scripts red-implementing-deception-based-detection-with-canarytoken/agent --console abc123 --auth-token TOKEN alerts
-arsenal scripts red-implementing-deception-based-detection-with-canarytoken/agent --console abc123 --auth-token TOKEN create --kind http --memo "Web server token"
-arsenal scripts red-implementing-deception-based-detection-with-canarytoken/agent --console abc123 --auth-token TOKEN create --kind dns --memo "DNS honeypot"
-arsenal scripts red-implementing-deception-based-detection-with-canarytoken/agent --console abc123 --auth-token TOKEN coverage
-arsenal scripts red-implementing-deception-based-detection-with-canarytoken/agent --console abc123 --auth-token TOKEN full
+arsenal scripts red-implementing-deception-based-detection-with-canarytoken --console abc123 --auth-token TOKEN ping
+arsenal scripts red-implementing-deception-based-detection-with-canarytoken --console abc123 --auth-token TOKEN list
+arsenal scripts red-implementing-deception-based-detection-with-canarytoken --console abc123 --auth-token TOKEN alerts
+arsenal scripts red-implementing-deception-based-detection-with-canarytoken --console abc123 --auth-token TOKEN create --kind http --memo "Web server token"
+arsenal scripts red-implementing-deception-based-detection-with-canarytoken --console abc123 --auth-token TOKEN create --kind dns --memo "DNS honeypot"
+arsenal scripts red-implementing-deception-based-detection-with-canarytoken --console abc123 --auth-token TOKEN coverage
+arsenal scripts red-implementing-deception-based-detection-with-canarytoken --console abc123 --auth-token TOKEN full
 ```
 
 ## Core Functions

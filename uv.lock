@@ -134,7 +134,7 @@ wheels = [
 ]
 
 [[package]]
-name = "arsenal-security"
+name = "arsenal"
 source = { editable = "." }
 dependencies = [
     { name = "androguard" },

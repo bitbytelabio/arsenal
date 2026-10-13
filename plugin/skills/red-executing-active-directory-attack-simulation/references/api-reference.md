@@ -10,7 +10,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-executing-active-directory-attack-simulation/agent \
+arsenal scripts red-executing-active-directory-attack-simulation \
   --dc-ip 10.10.10.1 \
   --domain corp.local \
   --username testuser \

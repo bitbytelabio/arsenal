@@ -14,19 +14,19 @@ Parses Atomic Red Team YAML test definitions, correlates execution logs with SIE
 
 ```bash
 # Full analysis: report + navigator layer + sigma suggestions + retest script
-arsenal scripts red-performing-purple-team-atomic-testing/agent --mode all \
+arsenal scripts red-performing-purple-team-atomic-testing --mode all \
   --atomics-path C:\AtomicRedTeam\atomics \
   --log-dir C:\AtomicRedTeam\logs \
   --detections detection_results.json
 
 # Generate only the coverage gap report
-arsenal scripts red-performing-purple-team-atomic-testing/agent --mode report \
+arsenal scripts red-performing-purple-team-atomic-testing --mode report \
   --atomics-path C:\AtomicRedTeam\atomics \
   --log-dir C:\AtomicRedTeam\logs \
   --output-report coverage_report.json
 
 # Generate only the ATT&CK Navigator layer
-arsenal scripts red-performing-purple-team-atomic-testing/agent --mode navigator \
+arsenal scripts red-performing-purple-team-atomic-testing --mode navigator \
   --atomics-path C:\AtomicRedTeam\atomics \
   --log-dir C:\AtomicRedTeam\logs \
   --detections detection_results.json \
@@ -34,14 +34,14 @@ arsenal scripts red-performing-purple-team-atomic-testing/agent --mode navigator
   --layer-name "Q1 2026 Purple Team Coverage"
 
 # Generate Sigma rule suggestions for blind spots
-arsenal scripts red-performing-purple-team-atomic-testing/agent --mode sigma \
+arsenal scripts red-performing-purple-team-atomic-testing --mode sigma \
   --atomics-path C:\AtomicRedTeam\atomics \
   --log-dir C:\AtomicRedTeam\logs \
   --detections detection_results.json \
   --output-sigma sigma_suggestions.json
 
 # Generate PowerShell retest script for blind spots
-arsenal scripts red-performing-purple-team-atomic-testing/agent --mode retest \
+arsenal scripts red-performing-purple-team-atomic-testing --mode retest \
   --atomics-path C:\AtomicRedTeam\atomics \
   --log-dir C:\AtomicRedTeam\logs \
   --detections detection_results.json \

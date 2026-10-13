@@ -6,11 +6,11 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-analyzing-office365-audit-logs-for-compromise/agent --tenant-id T --client-id C --client-secret S audit-logs --days 7
-arsenal scripts red-analyzing-office365-audit-logs-for-compromise/agent --tenant-id T --client-id C --client-secret S inbox-rules --user user@domain.com
-arsenal scripts red-analyzing-office365-audit-logs-for-compromise/agent --tenant-id T --client-id C --client-secret S forwarding --user user@domain.com
-arsenal scripts red-analyzing-office365-audit-logs-for-compromise/agent --tenant-id T --client-id C --client-secret S oauth
-arsenal scripts red-analyzing-office365-audit-logs-for-compromise/agent --tenant-id T --client-id C --client-secret S full --users user1@d.com user2@d.com --days 7
+arsenal scripts red-analyzing-office365-audit-logs-for-compromise --tenant-id T --client-id C --client-secret S audit-logs --days 7
+arsenal scripts red-analyzing-office365-audit-logs-for-compromise --tenant-id T --client-id C --client-secret S inbox-rules --user user@domain.com
+arsenal scripts red-analyzing-office365-audit-logs-for-compromise --tenant-id T --client-id C --client-secret S forwarding --user user@domain.com
+arsenal scripts red-analyzing-office365-audit-logs-for-compromise --tenant-id T --client-id C --client-secret S oauth
+arsenal scripts red-analyzing-office365-audit-logs-for-compromise --tenant-id T --client-id C --client-secret S full --users user1@d.com user2@d.com --days 7
 ```
 
 ## Core Functions

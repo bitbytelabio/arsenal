@@ -6,13 +6,13 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-hardware-security-module-integration/agent --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 slots
-arsenal scripts red-performing-hardware-security-module-integration/agent --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 objects
-arsenal scripts red-performing-hardware-security-module-integration/agent --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 gen-rsa --label mykey --bits 2048
-arsenal scripts red-performing-hardware-security-module-integration/agent --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 gen-ec --label myec
-arsenal scripts red-performing-hardware-security-module-integration/agent --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 sign-verify --key-label mykey
-arsenal scripts red-performing-hardware-security-module-integration/agent --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 mechanisms
-arsenal scripts red-performing-hardware-security-module-integration/agent --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 full
+arsenal scripts red-performing-hardware-security-module-integration --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 slots
+arsenal scripts red-performing-hardware-security-module-integration --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 objects
+arsenal scripts red-performing-hardware-security-module-integration --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 gen-rsa --label mykey --bits 2048
+arsenal scripts red-performing-hardware-security-module-integration --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 gen-ec --label myec
+arsenal scripts red-performing-hardware-security-module-integration --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 sign-verify --key-label mykey
+arsenal scripts red-performing-hardware-security-module-integration --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 mechanisms
+arsenal scripts red-performing-hardware-security-module-integration --lib /usr/lib/softhsm/libsofthsm2.so --token MyToken --pin 1234 full
 ```
 
 ## Core Functions

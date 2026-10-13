@@ -3,7 +3,7 @@ requires = ["hatchling>=1.27,<2"]
 build-backend = "hatchling.build"
 
 [project]
-name = "arsenal-security"
+name = "arsenal"
 dynamic = ["version"]
 description = "Arsenal security analysis, evidence, case review, and reporting CLI"
 readme = "README.md"

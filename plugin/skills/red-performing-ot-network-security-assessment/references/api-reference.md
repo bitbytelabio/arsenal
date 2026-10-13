@@ -7,10 +7,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-ot-network-security-assessment/agent assets --csv ot_inventory.csv
-arsenal scripts red-performing-ot-network-security-assessment/agent segmentation --csv firewall_rules.csv
-arsenal scripts red-performing-ot-network-security-assessment/agent protocols --subnet 192.168.1.0/24
-arsenal scripts red-performing-ot-network-security-assessment/agent report --assets inventory.csv [--firewall fw_rules.csv]
+arsenal scripts red-performing-ot-network-security-assessment assets --csv ot_inventory.csv
+arsenal scripts red-performing-ot-network-security-assessment segmentation --csv firewall_rules.csv
+arsenal scripts red-performing-ot-network-security-assessment protocols --subnet 192.168.1.0/24
+arsenal scripts red-performing-ot-network-security-assessment report --assets inventory.csv [--firewall fw_rules.csv]
 ```
 
 ## Core Functions

@@ -51,8 +51,8 @@ Compares multiple groups: shared techniques, technique counts, software counts.
 ## Usage
 
 ```bash
-arsenal scripts red-profiling-threat-actor-groups/agent APT29
-arsenal scripts red-profiling-threat-actor-groups/agent "Lazarus Group"
+arsenal scripts red-profiling-threat-actor-groups APT29
+arsenal scripts red-profiling-threat-actor-groups "Lazarus Group"
 ```
 
 ## Example Output Fields

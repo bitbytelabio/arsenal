@@ -10,7 +10,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-implementing-container-image-minimal-base-with-distroless/agent \
+arsenal scripts red-implementing-container-image-minimal-base-with-distroless \
   --images gcr.io/distroless/static-debian12 python:3.12-slim \
   --compare python:3.12 gcr.io/distroless/python3-debian12 \
   --output-dir /reports/

@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-implementing-cisa-zero-trust-maturity-model/agent \
+arsenal scripts red-implementing-cisa-zero-trust-maturity-model \
   --data /assessments/zt_responses.json \
   --output-dir /reports/ \
   --output ztmm_report.json

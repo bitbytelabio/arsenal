@@ -18,7 +18,7 @@ from arsenal.scripts.bootstrap_reverse import check_capability, list_capabilitie
 from arsenal.scripts.diagram import infer_diagram_kind
 from arsenal.scripts.gdpr import parse_article30, validate_article30, generate_ropa_report
 from arsenal.scripts.ad_honeytokens import plan_honeytokens
-from arsenal.scripts.playbook_runner import resolve_playbook_path
+from arsenal.scripts.playbook_catalog import resolve as resolve_catalog_entry
 
 
 def test_scripts_list():
@@ -316,8 +316,9 @@ def test_bootstrap_falsifier_mutation_refused_without_write():
 
 
 def test_playbook_path_resolution():
-    """Verify resolving centralized playbooks directly from arsenal.scripts.playbooks."""
-    path = resolve_playbook_path("mobile-analyzing-android-malware-with-apktool", "agent")
-    assert path.is_file()
-    assert path.name == "agent.py"
-    assert "arsenal/scripts/playbooks" in str(path)
+    """Verify resolving centralized playbooks via catalog resolution contract."""
+    entry = resolve_catalog_entry("mobile-analyzing-android-malware-with-apktool/agent")
+    assert entry["canonical_id"] == "mobile-analyzing-android-malware-with-apktool/agent"
+    assert entry["target_kind"] == "agent"
+    assert entry["domain"] == "mobile"
+    assert entry["implementation_ref"]["resource_path"] == "playbooks/mobile/analyzing_android_malware_with_apktool.py"

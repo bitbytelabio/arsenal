@@ -9,10 +9,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-external-network-penetration-test/agent scan --host <target_ip> [--ports 22 80 443]
-arsenal scripts red-performing-external-network-penetration-test/agent nmap --target <ip_or_range> [--type quick|full|vuln|udp]
-arsenal scripts red-performing-external-network-penetration-test/agent dns --domain <domain>
-arsenal scripts red-performing-external-network-penetration-test/agent ssl --host <hostname> [--port 443]
+arsenal scripts red-performing-external-network-penetration-test scan --host <target_ip> [--ports 22 80 443]
+arsenal scripts red-performing-external-network-penetration-test nmap --target <ip_or_range> [--type quick|full|vuln|udp]
+arsenal scripts red-performing-external-network-penetration-test dns --domain <domain>
+arsenal scripts red-performing-external-network-penetration-test ssl --host <hostname> [--port 443]
 ```
 
 ## Core Functions

@@ -8,9 +8,9 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-hunting-for-persistence-via-wmi-subscriptions/agent enumerate                  # WMIC-based WMI subscription enumeration
-arsenal scripts red-hunting-for-persistence-via-wmi-subscriptions/agent powershell                 # PowerShell Get-WMIObject enumeration
-arsenal scripts red-hunting-for-persistence-via-wmi-subscriptions/agent sysmon --evtx-file <path>  # Scan Sysmon EVTX for WMI events
+arsenal scripts red-hunting-for-persistence-via-wmi-subscriptions enumerate                  # WMIC-based WMI subscription enumeration
+arsenal scripts red-hunting-for-persistence-via-wmi-subscriptions powershell                 # PowerShell Get-WMIObject enumeration
+arsenal scripts red-hunting-for-persistence-via-wmi-subscriptions sysmon --evtx-file <path>  # Scan Sysmon EVTX for WMI events
 ```
 
 ## Core Functions

@@ -180,7 +180,7 @@ sigma convert -t elasticsearch misp_domains.yml > misp_domains.eql
 ```bash
 evidence_exec --url https://localhost --key YOUR_AUTH_KEY \
   --last 7d --outdir ./detections --insecure
-# crontab: 0 * * * * /usr/bin/arsenal scripts red-operationalizing-misp-threat-feeds/agent ... >> /var/log/misp_pipeline.log 2>&1
+# crontab: 0 * * * * /usr/bin/arsenal scripts red-operationalizing-misp-threat-feeds ... >> /var/log/misp_pipeline.log 2>&1
 ```
 
 ## Tools and Resources

@@ -1,0 +1,32 @@
+{
+  "record_id": "adm-core-bootstrap-reverse",
+  "catalog_sha256": "294df53fee222116792d324e2037f18847406fd0528ad8ca19c549a1843a1d67",
+  "source_sha256": "6d6be7e7ce90b73ddecd8b85465b24b49922372f824f6cb0e7e09291b7b84a00",
+  "reviewer_role": "security-architect",
+  "reviewer_session": "session-refactor-playbook-runtime",
+  "reviewed_at": "2026-10-13T00:00:00Z",
+  "static_inventory": {
+    "pure_handler": true,
+    "reentrant": true
+  },
+  "dependency_inventory": {
+    "tools": [],
+    "imports": []
+  },
+  "control_decisions": {
+    "scope": "not_applicable",
+    "authorization": "not_applicable"
+  },
+  "falsifier_ids": [
+    "F-CORE-TESTS"
+  ],
+  "decision": "approved_shared",
+  "rationale": "Core handler for bootstrap-reverse verified by unit tests in tests/python/test_scripts.py and tests/python/test_runtime_cli.py.",
+  "invalidation_conditions": [
+    "Modification of source code",
+    "Introduction of undeclared side effects"
+  ],
+  "receipt_ids": [
+    "bootstrap-reverse"
+  ]
+}

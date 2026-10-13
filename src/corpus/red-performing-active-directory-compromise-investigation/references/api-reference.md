@@ -77,5 +77,5 @@ Get-WinEvent -LogName Security | ConvertTo-Json -Depth 5 > events.json
 ## CLI Usage
 
 ```bash
-arsenal scripts red-performing-active-directory-compromise-investigation/agent --log events.json --output report.json
+arsenal scripts red-performing-active-directory-compromise-investigation --log events.json --output report.json
 ```

@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-implementing-aws-macie-for-data-classification/agent \
+arsenal scripts red-implementing-aws-macie-for-data-classification \
   --profile security-audit \
   --region us-east-1 \
   --output-dir /reports/ \

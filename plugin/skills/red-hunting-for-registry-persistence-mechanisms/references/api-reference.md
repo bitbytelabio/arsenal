@@ -8,8 +8,8 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-hunting-for-registry-persistence-mechanisms/agent scan [--categories run_keys winlogon ifeo] [--save-baseline out.json]
-arsenal scripts red-hunting-for-registry-persistence-mechanisms/agent compare --baseline baseline.json
+arsenal scripts red-hunting-for-registry-persistence-mechanisms scan [--categories run_keys winlogon ifeo] [--save-baseline out.json]
+arsenal scripts red-hunting-for-registry-persistence-mechanisms compare --baseline baseline.json
 ```
 
 ## Core Functions

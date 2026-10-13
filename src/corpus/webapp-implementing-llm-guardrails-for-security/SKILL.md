@@ -82,25 +82,25 @@ The agent implements a complete input/output validation pipeline:
 
 ```bash
 # Analyze a single input through all guardrail layers
-arsenal scripts webapp-implementing-llm-guardrails-for-security/agent --input "Tell me how to hack into a system"
+arsenal scripts webapp-implementing-llm-guardrails-for-security --input "Tell me how to hack into a system"
 
 # Analyze input with a custom content policy file
-arsenal scripts webapp-implementing-llm-guardrails-for-security/agent --input "Some text" --policy policy.json
+arsenal scripts webapp-implementing-llm-guardrails-for-security --input "Some text" --policy policy.json
 
 # Scan a file of prompts through the guardrail pipeline
-arsenal scripts webapp-implementing-llm-guardrails-for-security/agent --file prompts.txt --mode full
+arsenal scripts webapp-implementing-llm-guardrails-for-security --file prompts.txt --mode full
 
 # Input-only validation (no LLM call, just check if input is safe)
-arsenal scripts webapp-implementing-llm-guardrails-for-security/agent --input "Some text" --mode input-only
+arsenal scripts webapp-implementing-llm-guardrails-for-security --input "Some text" --mode input-only
 
 # Output validation mode (validate a pre-generated LLM response)
-arsenal scripts webapp-implementing-llm-guardrails-for-security/agent --input "User question" --response "LLM response to validate" --mode output-only
+arsenal scripts webapp-implementing-llm-guardrails-for-security --input "User question" --response "LLM response to validate" --mode output-only
 
 # PII detection and redaction mode
-arsenal scripts webapp-implementing-llm-guardrails-for-security/agent --input "My SSN is 123-45-6789 and email john@example.com" --mode pii
+arsenal scripts webapp-implementing-llm-guardrails-for-security --input "My SSN is 123-45-6789 and email john@example.com" --mode pii
 
 # JSON output for pipeline integration
-arsenal scripts webapp-implementing-llm-guardrails-for-security/agent --file prompts.txt --output json
+arsenal scripts webapp-implementing-llm-guardrails-for-security --file prompts.txt --output json
 ```
 
 ### Step 3: Configure Content Policies
@@ -187,7 +187,7 @@ Review guardrail logs to track block rates, false positives, and bypass attempts
 
 ```bash
 # Generate a summary report from guardrail logs
-arsenal scripts webapp-implementing-llm-guardrails-for-security/agent --file interaction_logs.txt --mode full --output json > guardrail_audit.json
+arsenal scripts webapp-implementing-llm-guardrails-for-security --file interaction_logs.txt --mode full --output json > guardrail_audit.json
 ```
 
 ## Verification
@@ -221,4 +221,4 @@ arsenal scripts webapp-implementing-llm-guardrails-for-security/agent --file int
 
 ## References
 
-- `arsenal scripts webapp-implementing-llm-guardrails-for-security/agent` — Bundled Python CLI helper script
+- `arsenal scripts webapp-implementing-llm-guardrails-for-security` — Bundled Python CLI helper script

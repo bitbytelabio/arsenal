@@ -468,7 +468,7 @@ ORDER BY total_bytes DESC;
 
 ```bash
 # Quick-start: run the forensics agent for a full investigation
-arsenal scripts re-performing-cloud-log-forensics-with-athena/agent \
+arsenal scripts re-performing-cloud-log-forensics-with-athena \
     --action full_investigation \
     --database cloud_forensics \
     --start-date 2024-06-01 \
@@ -476,14 +476,14 @@ arsenal scripts re-performing-cloud-log-forensics-with-athena/agent \
     --output forensics_report.json
 
 # Run specific queries only
-arsenal scripts re-performing-cloud-log-forensics-with-athena/agent \
+arsenal scripts re-performing-cloud-log-forensics-with-athena \
     --action privilege_escalation \
     --database cloud_forensics \
     --start-date 2024-06-15 \
     --end-date 2024-06-16
 
 # Create all forensic tables from scratch
-arsenal scripts re-performing-cloud-log-forensics-with-athena/agent \
+arsenal scripts re-performing-cloud-log-forensics-with-athena \
     --action setup_tables \
     --cloudtrail-bucket my-cloudtrail-logs \
     --vpc-flow-bucket my-vpc-flow-logs \

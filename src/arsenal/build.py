@@ -68,9 +68,11 @@ def copy_skill_directory(src_dir: Path, dest_dir: Path) -> None:
         if ent.is_dir():
             copy_skill_directory(ent, dest_path)
         elif ent.is_file():
-            shutil.copyfile(ent, dest_path)
             try:
-                subprocess.run(["xattr", "-c", str(dest_path)], check=False, capture_output=True)
+                data = ent.read_bytes()
+                if dest_path.exists():
+                    dest_path.unlink()
+                dest_path.write_bytes(data)
                 dest_path.chmod(0o644)
             except OSError:
                 pass
@@ -327,8 +329,10 @@ def handle(ctx: Context) -> int:
 
     # Handle --check-determinism
     if is_check_determinism:
-        with tempfile.TemporaryDirectory(prefix="arsenal-build-det1-") as tmp1, tempfile.TemporaryDirectory(
-            prefix="arsenal-build-det2-"
+        tmp_base = repo_root / "tmp"
+        tmp_base.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix="arsenal-build-det1-", dir=tmp_base) as tmp1, tempfile.TemporaryDirectory(
+            prefix="arsenal-build-det2-", dir=tmp_base
         ) as tmp2:
             t1 = Path(tmp1)
             t2 = Path(tmp2)

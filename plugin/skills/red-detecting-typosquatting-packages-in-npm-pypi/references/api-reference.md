@@ -16,28 +16,28 @@ Detects typosquatting attacks in npm and PyPI package registries by generating c
 
 ```bash
 # Scan for typosquats of a single PyPI package
-arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan requests --registry pypi
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi scan requests --registry pypi
 
 # Scan for typosquats of an npm package
-arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan express --registry npm
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi scan express --registry npm
 
 # Scan with limited candidate count
-arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan numpy --registry pypi --max-candidates 50
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi scan numpy --registry pypi --max-candidates 50
 
 # Scan all dependencies in a requirements file
-arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan-file requirements.txt --registry pypi
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi scan-file requirements.txt --registry pypi
 
 # Scan all dependencies in a package.json
-arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan-file package.json --registry npm
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi scan-file package.json --registry npm
 
 # Check a specific candidate against a target
-arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent check reqeusts requests --registry pypi
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi check reqeusts requests --registry pypi
 
 # Generate typosquat candidates without querying registries
-arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent generate requests
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi generate requests
 
 # Custom output path
-arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan flask --registry pypi --output flask_typosquat_report.json
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi scan flask --registry pypi --output flask_typosquat_report.json
 ```
 
 ## Arguments

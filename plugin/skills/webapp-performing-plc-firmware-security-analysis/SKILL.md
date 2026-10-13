@@ -192,9 +192,9 @@ if __name__ == "__main__":
 
     if len(sys.argv) < 2:
         print("Usage:")
-        print("  python process.py extract-siemens <project.ap17>")
-        print("  python process.py extract-rockwell <project.acd>")
-        print("  python process.py compare <current.bin> <baseline.bin>")
+        print("  arsenal scripts webapp-performing-plc-firmware-security-analysis -- extract-siemens <project.ap17>")
+        print("  arsenal scripts webapp-performing-plc-firmware-security-analysis -- extract-rockwell <project.acd>")
+        print("  arsenal scripts webapp-performing-plc-firmware-security-analysis -- compare <current.bin> <baseline.bin>")
         sys.exit(1)
 
     cmd = sys.argv[1]

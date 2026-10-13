@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-generating-threat-intelligence-reports/agent \
+arsenal scripts red-generating-threat-intelligence-reports \
   --type operational \
   --data /cases/intel_data.json \
   --output-dir /cases/reports/ \

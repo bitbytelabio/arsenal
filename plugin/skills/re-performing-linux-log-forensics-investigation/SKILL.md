@@ -268,7 +268,7 @@ class LinuxLogForensicAnalyzer:
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: python process.py <auth_log_path> <output_dir>")
+        print("Usage: arsenal scripts re-performing-linux-log-forensics-investigation -- <auth_log_path> <output_dir>")
         sys.exit(1)
     analyzer = LinuxLogForensicAnalyzer(os.path.dirname(sys.argv[1]), sys.argv[2])
     analyzer.generate_report(sys.argv[1])

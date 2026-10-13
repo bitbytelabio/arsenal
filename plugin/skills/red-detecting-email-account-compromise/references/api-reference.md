@@ -64,7 +64,7 @@ headers = {"Authorization": f"Bearer {token['access_token']}"}
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-email-account-compromise/agent --input audit_data.json --output report.json
+arsenal scripts red-detecting-email-account-compromise --input audit_data.json --output report.json
 ```
 
 ## Required API Permissions

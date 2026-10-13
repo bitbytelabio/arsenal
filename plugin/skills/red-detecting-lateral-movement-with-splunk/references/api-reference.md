@@ -49,7 +49,7 @@ for result in results.JSONResultsReader(job.results(output_mode="json")):
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-lateral-movement-with-splunk/agent --generate-queries
-arsenal scripts red-detecting-lateral-movement-with-splunk/agent --generate-queries --techniques pass_the_hash psexec_execution
-arsenal scripts red-detecting-lateral-movement-with-splunk/agent --parse-results splunk_output.json
+arsenal scripts red-detecting-lateral-movement-with-splunk --generate-queries
+arsenal scripts red-detecting-lateral-movement-with-splunk --generate-queries --techniques pass_the_hash psexec_execution
+arsenal scripts red-detecting-lateral-movement-with-splunk --parse-results splunk_output.json
 ```

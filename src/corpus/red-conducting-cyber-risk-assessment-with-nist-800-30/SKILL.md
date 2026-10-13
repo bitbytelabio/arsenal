@@ -109,4 +109,4 @@ Produce a **Risk Assessment Report** using `skill://red-conducting-cyber-risk-as
 7. **Top risks summary** — ranked, in business terms, for leadership.
 8. **Maintenance plan** — refresh cadence and re-assessment triggers.
 
-Use `arsenal scripts red-conducting-cyber-risk-assessment-with-nist-800-30/process` to score the register from a risk-input JSON (likelihood × impact → risk level on a configurable matrix), rank risks, and emit the register table.
+Use `arsenal scripts red-conducting-cyber-risk-assessment-with-nist-800-30` to score the register from a risk-input JSON (likelihood × impact → risk level on a configurable matrix), rank risks, and emit the register table.

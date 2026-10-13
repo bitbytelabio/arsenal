@@ -7,8 +7,8 @@
 ## CLI Interface
 
 ```
-arsenal scripts red-hunting-for-living-off-the-cloud-techniques/agent hunt --es-host <url> --index <pattern> [--api-key <key>] [--hours <n>]
-arsenal scripts red-hunting-for-living-off-the-cloud-techniques/agent dns --log-file <path>
+arsenal scripts red-hunting-for-living-off-the-cloud-techniques hunt --es-host <url> --index <pattern> [--api-key <key>] [--hours <n>]
+arsenal scripts red-hunting-for-living-off-the-cloud-techniques dns --log-file <path>
 ```
 
 ## Core Functions

@@ -39,6 +39,6 @@ index=wineventlog (EventCode=4672 OR EventCode=4688)
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-privilege-escalation-attempts/agent --evtx-file Sysmon.evtx
-arsenal scripts red-detecting-privilege-escalation-attempts/agent --text-log auth.log
+arsenal scripts red-detecting-privilege-escalation-attempts --evtx-file Sysmon.evtx
+arsenal scripts red-detecting-privilege-escalation-attempts --text-log auth.log
 ```

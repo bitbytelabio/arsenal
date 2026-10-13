@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-implementing-beyondcorp-zero-trust-access-model/agent \
+arsenal scripts red-implementing-beyondcorp-zero-trust-access-model \
   --project my-gcp-project \
   --output-dir /reports/ \
   --output beyondcorp_report.json

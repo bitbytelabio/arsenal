@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-hunting-for-startup-folder-persistence/agent scan
-arsenal scripts red-hunting-for-startup-folder-persistence/agent registry
-arsenal scripts red-hunting-for-startup-folder-persistence/agent monitor --duration 120
-arsenal scripts red-hunting-for-startup-folder-persistence/agent full
+arsenal scripts red-hunting-for-startup-folder-persistence scan
+arsenal scripts red-hunting-for-startup-folder-persistence registry
+arsenal scripts red-hunting-for-startup-folder-persistence monitor --duration 120
+arsenal scripts red-hunting-for-startup-folder-persistence full
 ```
 
 ## Core Functions

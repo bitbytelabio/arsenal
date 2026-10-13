@@ -14,7 +14,7 @@ Gathers open-source intelligence on target domains using Shodan, certificate tra
 ## CLI Usage
 
 ```bash
-arsenal scripts red-collecting-open-source-intelligence/agent --domain example.com --shodan-key <key> --github-token <token> --output report.json
+arsenal scripts red-collecting-open-source-intelligence --domain example.com --shodan-key <key> --github-token <token> --output report.json
 ```
 
 ## Key Functions

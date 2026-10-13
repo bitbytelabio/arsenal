@@ -5,9 +5,9 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-power-grid-cybersecurity-assessment/agent template [--output nerc_cip_template.csv]
-arsenal scripts red-performing-power-grid-cybersecurity-assessment/agent assess --csv completed_assessment.csv
-arsenal scripts red-performing-power-grid-cybersecurity-assessment/agent esp --firewall-csv esp_rules.csv
+arsenal scripts red-performing-power-grid-cybersecurity-assessment template [--output nerc_cip_template.csv]
+arsenal scripts red-performing-power-grid-cybersecurity-assessment assess --csv completed_assessment.csv
+arsenal scripts red-performing-power-grid-cybersecurity-assessment esp --firewall-csv esp_rules.csv
 ```
 
 ## Core Functions

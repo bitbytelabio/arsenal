@@ -5,7 +5,7 @@
 ```bash
 slither .                                  # whole project (reads foundry.toml + remappings)
 slither . --json slither-report.json       # machine-readable
-slither . --json -                          # JSON to stdout (used by agent.py)
+slither . --json -                          # JSON to stdout (used by automated scanner)
 slither . --print human-summary             # quick overview
 slither . --print inheritance-graph         # inheritance / proxy layout
 slither . --detect reentrancy-eth,unprotected-upgrade   # specific detectors
@@ -29,7 +29,7 @@ Severity matrix (impact × confidence):
 
 ```bash
 aderyn .                                    # markdown report.md by default
-aderyn . -o aderyn-report.json              # JSON (used by agent.py)
+aderyn . -o aderyn-report.json              # JSON (used by automated scanner)
 aderyn . --scope src/                       # limit scope
 ```
 

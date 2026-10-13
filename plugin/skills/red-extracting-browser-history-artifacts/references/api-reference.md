@@ -10,7 +10,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-extracting-browser-history-artifacts/agent \
+arsenal scripts red-extracting-browser-history-artifacts \
   --chrome-dir "/mnt/evidence/Users/suspect/AppData/Local/Google/Chrome/User Data/Default" \
   --firefox-dir "/mnt/evidence/Users/suspect/AppData/Roaming/Mozilla/Firefox/Profiles/abc.default" \
   --output-dir /cases/analysis/ \

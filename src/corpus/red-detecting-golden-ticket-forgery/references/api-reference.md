@@ -76,7 +76,7 @@ event.code: "4769" AND winlog.event_data.TicketEncryptionType: "0x17"
 
 ## CLI Usage
 ```bash
-arsenal scripts red-detecting-golden-ticket-forgery/agent --evtx-xml security_events.xml --output golden_ticket_report.json
-arsenal scripts red-detecting-golden-ticket-forgery/agent --show-splunk
-arsenal scripts red-detecting-golden-ticket-forgery/agent --evtx-xml events.xml --max-ticket-hours 8
+arsenal scripts red-detecting-golden-ticket-forgery --evtx-xml security_events.xml --output golden_ticket_report.json
+arsenal scripts red-detecting-golden-ticket-forgery --show-splunk
+arsenal scripts red-detecting-golden-ticket-forgery --evtx-xml events.xml --max-ticket-hours 8
 ```

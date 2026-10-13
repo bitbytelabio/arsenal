@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-arsenal scripts red-executing-red-team-exercise/agent \
+arsenal scripts red-executing-red-team-exercise \
   --actor "APT29" \
   --target "Retail Corp" \
   --objectives "Access POS data" "Exfiltrate cardholder data" \

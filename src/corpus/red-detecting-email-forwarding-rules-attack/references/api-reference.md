@@ -60,6 +60,6 @@ index=o365 Operation IN ("New-InboxRule", "Set-InboxRule")
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-email-forwarding-rules-attack/agent --token "eyJ..." --user-id user@company.com --org-domain company.com
-arsenal scripts red-detecting-email-forwarding-rules-attack/agent --audit-log exchange_audit.log
+arsenal scripts red-detecting-email-forwarding-rules-attack --token "eyJ..." --user-id user@company.com --org-domain company.com
+arsenal scripts red-detecting-email-forwarding-rules-attack --audit-log exchange_audit.log
 ```

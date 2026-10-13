@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-nist-csf-maturity-assessment/agent assess --csv assessment_responses.csv
-arsenal scripts red-performing-nist-csf-maturity-assessment/agent gaps --csv assessment_responses.csv
-arsenal scripts red-performing-nist-csf-maturity-assessment/agent template [--output template.csv]
-arsenal scripts red-performing-nist-csf-maturity-assessment/agent executive --csv assessment_responses.csv
+arsenal scripts red-performing-nist-csf-maturity-assessment assess --csv assessment_responses.csv
+arsenal scripts red-performing-nist-csf-maturity-assessment gaps --csv assessment_responses.csv
+arsenal scripts red-performing-nist-csf-maturity-assessment template [--output template.csv]
+arsenal scripts red-performing-nist-csf-maturity-assessment executive --csv assessment_responses.csv
 ```
 
 ## Core Functions

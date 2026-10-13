@@ -71,6 +71,9 @@ jobs:
       - name: Verify build determinism
         run: uv run --locked arsenal build --check-determinism --json
 
+      - name: Verify catalog parity
+        run: uv run --locked arsenal scripts catalog/verify --json
+
       - name: Publish to GitHub Packages
         run: npm publish
         env:

@@ -51,5 +51,5 @@ Great-circle distance between two geographic coordinates in km.
 ## Usage
 
 ```bash
-arsenal scripts red-performing-user-behavior-analytics/agent https://elastic.corp.local:9200
+arsenal scripts red-performing-user-behavior-analytics https://elastic.corp.local:9200
 ```

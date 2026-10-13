@@ -86,8 +86,8 @@ results = misp.search(controller="events", tags=["tlp:white", "ransomware"])
 ## CLI Usage
 
 ```bash
-arsenal scripts red-performing-threat-intelligence-sharing-with-misp/agent --input events.json --output report.json
-arsenal scripts red-performing-threat-intelligence-sharing-with-misp/agent --input events.json --misp-url https://misp.example.com --api-key KEY
+arsenal scripts red-performing-threat-intelligence-sharing-with-misp --input events.json --output report.json
+arsenal scripts red-performing-threat-intelligence-sharing-with-misp --input events.json --misp-url https://misp.example.com --api-key KEY
 ```
 
 ## References

@@ -7,11 +7,11 @@
 
 ## CLI Interface
 ```
-arsenal scripts red-performing-paste-site-monitoring-for-credentials/agent [--api-key <hibp_key>] check --email user@example.com
-arsenal scripts red-performing-paste-site-monitoring-for-credentials/agent [--api-key <hibp_key>] pastes --email user@example.com
-arsenal scripts red-performing-paste-site-monitoring-for-credentials/agent [--api-key <hibp_key>] bulk --domain example.com --emails employee_list.txt
-arsenal scripts red-performing-paste-site-monitoring-for-credentials/agent scan --file paste_dump.txt
-arsenal scripts red-performing-paste-site-monitoring-for-credentials/agent [--api-key <hibp_key>] report --domain example.com --emails employees.txt
+arsenal scripts red-performing-paste-site-monitoring-for-credentials [--api-key <hibp_key>] check --email user@example.com
+arsenal scripts red-performing-paste-site-monitoring-for-credentials [--api-key <hibp_key>] pastes --email user@example.com
+arsenal scripts red-performing-paste-site-monitoring-for-credentials [--api-key <hibp_key>] bulk --domain example.com --emails employee_list.txt
+arsenal scripts red-performing-paste-site-monitoring-for-credentials scan --file paste_dump.txt
+arsenal scripts red-performing-paste-site-monitoring-for-credentials [--api-key <hibp_key>] report --domain example.com --emails employees.txt
 ```
 
 ## Core Functions

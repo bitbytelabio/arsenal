@@ -259,17 +259,17 @@ longest = nx.dag_longest_path(G)
 
 ```bash
 # Full SBOM analysis with NVD correlation
-arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities/agent analyze sbom-cyclonedx.json --api-key YOUR_KEY -o report.json
+arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities analyze sbom-cyclonedx.json --api-key YOUR_KEY -o report.json
 
 # Offline analysis (skip NVD queries)
-arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities/agent analyze sbom.json --skip-nvd -o report.json
+arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities analyze sbom.json --skip-nvd -o report.json
 
 # Compare two SBOMs
-arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities/agent diff old-sbom.json new-sbom.json
+arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities diff old-sbom.json new-sbom.json
 
 # Parse and list components only
-arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities/agent parse sbom.json -o components.json
+arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities parse sbom.json -o components.json
 
 # Check license compliance
-arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities/agent licenses sbom.json
+arsenal scripts red-analyzing-sbom-for-supply-chain-vulnerabilities licenses sbom.json
 ```

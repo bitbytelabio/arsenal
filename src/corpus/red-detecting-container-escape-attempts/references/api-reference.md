@@ -67,8 +67,8 @@ docker inspect --format='{{range .Mounts}}{{.Source}}:{{.Destination}} {{end}}' 
 ## CLI Usage
 
 ```bash
-arsenal scripts red-detecting-container-escape-attempts/agent --falco-log /var/log/falco/events.json
-arsenal scripts red-detecting-container-escape-attempts/agent --audit-log /var/log/audit/audit.log
-arsenal scripts red-detecting-container-escape-attempts/agent --check-containers
-arsenal scripts red-detecting-container-escape-attempts/agent --container-id abc123
+arsenal scripts red-detecting-container-escape-attempts --falco-log /var/log/falco/events.json
+arsenal scripts red-detecting-container-escape-attempts --audit-log /var/log/audit/audit.log
+arsenal scripts red-detecting-container-escape-attempts --check-containers
+arsenal scripts red-detecting-container-escape-attempts --container-id abc123
 ```

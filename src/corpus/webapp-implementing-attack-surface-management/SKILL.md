@@ -183,14 +183,14 @@ The scoring algorithm considers:
 
 ```python
 # Exposure Score = sum of weighted factors, normalized to 0-100
-# See scripts/agent.py for the full implementation
+# See arsenal scripts webapp-implementing-attack-surface-management for the full implementation
 ```
 
 ## Examples
 
 ```bash
 # Run complete ASM pipeline against a target domain
-arsenal scripts webapp-implementing-attack-surface-management/agent \
+arsenal scripts webapp-implementing-attack-surface-management \
     --domain example.com \
     --action full_scan \
     --shodan-key YOUR_KEY \
@@ -199,20 +199,20 @@ arsenal scripts webapp-implementing-attack-surface-management/agent \
     --output asm_report.json
 
 # Subdomain enumeration only
-arsenal scripts webapp-implementing-attack-surface-management/agent \
+arsenal scripts webapp-implementing-attack-surface-management \
     --domain example.com \
     --action enumerate \
     --output subdomains.json
 
 # Exposure scoring on previously discovered assets
-arsenal scripts webapp-implementing-attack-surface-management/agent \
+arsenal scripts webapp-implementing-attack-surface-management \
     --domain example.com \
     --action score \
     --input previous_scan.json \
     --output scored_assets.json
 
 # Multi-domain scan from file
-arsenal scripts webapp-implementing-attack-surface-management/agent \
+arsenal scripts webapp-implementing-attack-surface-management \
     --domain-list targets.txt \
     --action full_scan \
     --output multi_domain_report.json
@@ -220,4 +220,4 @@ arsenal scripts webapp-implementing-attack-surface-management/agent \
 
 ## References
 
-- `arsenal scripts webapp-implementing-attack-surface-management/agent` — Bundled Python CLI helper script
+- `arsenal scripts webapp-implementing-attack-surface-management` — Bundled Python CLI helper script

@@ -80,13 +80,13 @@ with evtx.Evtx("PowerShell-Operational.evtx") as log:
 
 ```bash
 # Hunt for suspicious PowerShell in EVTX file
-arsenal scripts red-hunting-for-anomalous-powershell-execution/agent --evtx /path/to/PowerShell-Operational.evtx
+arsenal scripts red-hunting-for-anomalous-powershell-execution --evtx /path/to/PowerShell-Operational.evtx
 
 # Limit events parsed
-arsenal scripts red-hunting-for-anomalous-powershell-execution/agent --evtx logs.evtx --max-events 5000
+arsenal scripts red-hunting-for-anomalous-powershell-execution --evtx logs.evtx --max-events 5000
 
 # Save report to JSON
-arsenal scripts red-hunting-for-anomalous-powershell-execution/agent --evtx logs.evtx --output hunt_report.json
+arsenal scripts red-hunting-for-anomalous-powershell-execution --evtx logs.evtx --output hunt_report.json
 ```
 
 ## Group Policy Settings for Script Block Logging
