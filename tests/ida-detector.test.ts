@@ -27,7 +27,13 @@ describe("IDA Pro & idalib Auto-Detection", () => {
   it("detects mock IDA directory when customBaseDir is provided", () => {
     const tmpDir = path.join(os.tmpdir(), `ida-mock-${Date.now()}`);
     fs.mkdirSync(tmpDir, { recursive: true });
-    fs.writeFileSync(path.join(tmpDir, "libidalib.dylib"), "mock");
+    const libName =
+      process.platform === "darwin"
+        ? "libidalib.dylib"
+        : process.platform === "win32"
+          ? "idalib.dll"
+          : "libidalib.so";
+    fs.writeFileSync(path.join(tmpDir, libName), "mock");
     fs.writeFileSync(path.join(tmpDir, "ida"), "mock");
 
     const res = detectIdaInstallation(tmpDir);
