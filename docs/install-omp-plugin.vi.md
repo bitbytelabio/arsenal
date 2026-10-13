@@ -19,7 +19,7 @@ Các quy trình trong tài liệu này bám sát quy chuẩn của OMP:
 
 ## Cài đặt nhanh bằng Justfile
 
-Yêu cầu `just`, Bun và OMP có trong `PATH`. Chạy từ repository:
+Phát triển từ repo cần `uv`, Python 3.11+, `just`, Bun và OMP trong `PATH`. Python CLI đã cài không cần Bun; việc biên dịch extension native OMP cần Bun.
 
 ```bash
 just                       # Liệt kê các recipe, không tự cài đặt
@@ -27,12 +27,17 @@ just preview               # Preview plugin link, không ghi cấu hình
 just install-local         # Cài dependencies → build bundle → link OMP
 just test-local            # Test profile, MCP, specialist parity và slash commands
 just test                  # Toàn bộ test suite
-just test tests/mcp-lifecycle.test.ts
+uv run --locked pytest tests/python/test_install_mcp.py
 just typecheck
 just determinism
 ```
 
-`install-local` chỉ thực hiện `bun install --frozen-lockfile`, `build` và `link` thư mục `plugin/` vào OMP. Cài đặt plugin đã tự động tích hợp sẵn toàn bộ năng lực (skills, subagents, commands, rules và canonical MCP definitions ở trạng thái disabled).
+`install-local` đồng bộ môi trường Python theo lockfile và dependencies Bun, build rồi link `plugin/` vào OMP. Plugin giữ skills native, agents, commands, rules và MCP definitions mặc định disabled. Cài CLI nghiệp vụ riêng:
+
+```bash
+uv tool install git+https://github.com/bitbytelabio/arsenal.git
+arsenal --help
+```
 
 Bước cài đặt profile template (`just profile-install`) là **tùy chọn (optional)** dành riêng cho người vận hành muốn tùy biến sâu prompt orchestrator `AGENTS.md` hoặc cấu hình riêng trong profile agent directory:
 
@@ -154,10 +159,10 @@ Dành cho nhà phát triển muốn biên dịch và kiểm thử trực tiếp 
 
 ```bash
 # 1. Biên dịch distribution bundle sang plugin/
-bun run bin/arsenal.ts build --write --force
+arsenal build --write --force
 
 # 2. Xác thực tính tiền định byte-for-byte
-bun run bin/arsenal.ts build --check-determinism --json
+arsenal build --check-determinism --json
 ```
 
 ### Bước 2: Kiểm tra cấu hình liên kết (Dry Run)
@@ -200,8 +205,8 @@ OMP_PROFILE=arsenal omp plugin link ./plugin
 4. **Cài đặt Profile Arsenal (Tùy chọn)**:
    Do plugin đã tự động cung cấp subagents và skills qua provider `omp-plugins`, bước cài đặt profile template vào `<profileDir>/agent/` là tùy chọn, chỉ cần thiết khi bạn muốn nạp các prompt mẫu `AGENTS.md` và `RULES.md` tùy chỉnh vào thư mục profile:
    ```bash
-   bun run bin/arsenal.ts profile install --profile ~/.omp/profiles/arsenal/agent --write
-   bun run bin/arsenal.ts profile verify --profile ~/.omp/profiles/arsenal/agent --json
+   arsenal profile install --profile ~/.omp/profiles/arsenal/agent --write
+   arsenal profile verify --profile ~/.omp/profiles/arsenal/agent --json
    ```
 
 ---
@@ -228,7 +233,7 @@ Ví dụ phần cấu hình cần merge khi cài qua **Marketplace**; với loca
 }
 ```
 
-CLI `bun run bin/arsenal.ts mcp` quản lý và kiểm tra file cấu hình native của profile/project (chẳng hạn khi bạn muốn export định nghĩa đầy đủ ra file native để OMP nhận diện độc lập), không can thiệp toàn bộ discovery runtime nội tại của OMP.
+CLI `arsenal mcp` quản lý và kiểm tra file cấu hình native của profile/project (chẳng hạn khi bạn muốn export định nghĩa đầy đủ ra file native để OMP nhận diện độc lập), không can thiệp toàn bộ discovery runtime nội tại của OMP.
 
 ---
 
@@ -238,10 +243,10 @@ Lệnh `mcp list` hiển thị trạng thái của bridge theo phạm vi đượ
 
 ```bash
 # Liệt kê trạng thái bridges trong profile
-bun run bin/arsenal.ts mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
+arsenal mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
 
 # Liệt kê trạng thái bridges trong project
-bun run bin/arsenal.ts mcp list --scope project --repo . --json
+arsenal mcp list --scope project --repo . --json
 ```
 
 ### Kích hoạt và Vô hiệu hóa MCP Bridges có chủ đích (Opt-in)
@@ -250,13 +255,13 @@ Các thao tác `enable` và `disable` chỉ tác động vào đúng file cấu 
 
 ```bash
 # Kích hoạt bridge 'rea' trong profile
-bun run bin/arsenal.ts mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent
+arsenal mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent --write
 
 # Vô hiệu hóa bridge 'rea' trong profile
-bun run bin/arsenal.ts mcp disable rea --scope profile --profile ~/.omp/profiles/arsenal/agent
+arsenal mcp disable rea --scope profile --profile ~/.omp/profiles/arsenal/agent --write
 
 # Kích hoạt bridge 'rea' ở cấp độ project
-bun run bin/arsenal.ts mcp enable rea --scope project --repo .
+arsenal mcp enable rea --scope project --repo . --write
 ```
 
 ### Xác thực cấu hình MCP
@@ -265,10 +270,10 @@ Lệnh `mcp verify` kiểm tra tính toàn vẹn của file cấu hình, điều
 
 ```bash
 # Kiểm tra cấu hình MCP của profile
-bun run bin/arsenal.ts mcp verify --scope profile --profile ~/.omp/profiles/arsenal/agent --json
+arsenal mcp verify --scope profile --profile ~/.omp/profiles/arsenal/agent --json
 
 # Kiểm tra cấu hình MCP của project
-bun run bin/arsenal.ts mcp verify --scope project --repo . --json
+arsenal mcp verify --scope project --repo . --json
 ```
 
 > **Lưu ý về cờ `--check`**: Cờ `--check` là chế độ báo cáo thuần túy (report-only) và cam kết không làm thay đổi hay ghi đè bất kỳ byte nào trên đĩa.
@@ -286,10 +291,10 @@ Các liên kết nội bộ trong `SKILL.md` dùng URI `skill://re-reverse-engin
 
 ```bash
 # Bật bridge REA trong profile
-bun run bin/arsenal.ts mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent
+arsenal mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent --write
 
 # Kiểm tra lại trạng thái
-bun run bin/arsenal.ts mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
+arsenal mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
 ```
 
 Cấu hình entry kết quả trong `mcp.json`:

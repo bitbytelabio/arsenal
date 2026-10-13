@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```bash
-python scripts/agent.py depth --url <endpoint> [--max-depth 20] [--auth-header "Bearer token"]
-python scripts/agent.py circular --url <endpoint> --type-a User --field-a posts --type-b Post --field-b author [--depth 10]
-python scripts/agent.py batch --url <endpoint> [--count 50]
-python scripts/agent.py width --url <endpoint> [--width 50] [--depth 5]
+arsenal scripts webapp-performing-graphql-depth-limit-attack/agent depth --url <endpoint> [--max-depth 20] [--auth-header "Bearer token"]
+arsenal scripts webapp-performing-graphql-depth-limit-attack/agent circular --url <endpoint> --type-a User --field-a posts --type-b Post --field-b author [--depth 10]
+arsenal scripts webapp-performing-graphql-depth-limit-attack/agent batch --url <endpoint> [--count 50]
+arsenal scripts webapp-performing-graphql-depth-limit-attack/agent width --url <endpoint> [--width 50] [--depth 5]
 ```
 
 ## Core Functions

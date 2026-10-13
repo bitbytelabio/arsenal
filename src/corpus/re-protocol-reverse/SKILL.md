@@ -14,7 +14,7 @@ metadata:
 
 1. `NOW`: Read `skill://re-protocol-reverse/support/field-journal/precedent-reverse.md` — Verify authorization and standard operational boundaries
 2. `NOW`: Confirm if the task is **protocol/traffic/serialization format** reverse engineering (if purely Web parameter signatures → redirect to `js-reverse/`)
-3. `NOW`: If target network interaction is involved → complete scope via `skill://re-protocol-reverse/support/templates/case-init.sh`; do NOT ACT against targets if `auth` is not granted
+3. `NOW`: If target network interaction is involved → complete scope via `arsenal scripts case-init`; do NOT ACT against targets if `auth` is not granted
 4. `NEXT`: Read `tool-index` (workstation tool inventory); bootstrap missing tools (tshark/wireshark, etc. may require manual installation)
 5. `ACT`: Enter Workflow Phase 1, produce draft frame layout or message dictionary
 

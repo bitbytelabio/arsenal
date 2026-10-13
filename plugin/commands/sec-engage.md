@@ -32,7 +32,7 @@ This command orchestrates an end-to-end security assessment across five discipli
 ### Phase 3: Vulnerability Assessment & Exploitation
 1. The `master` agent assigns technical task slices to domain specialists:
    - Web application / API targets → `sec-webapp`
-   - Mobile application packages (APK/IPA) → `sec-mobile` (invoking `apk_inspect`)
+   - Mobile application packages (APK/IPA) → `sec-mobile` (APK inspection via `arsenal apk inspect <path> --json`)
    - Compiled binaries, firmware, or protocols → `sec-re`
    - Network penetration, Active Directory, cloud services → `sec-red`
 2. Specialists execute tests adhering strictly to inlined OpSec rules and Epistemic constraints (`E-*` vs `P-*`).
@@ -41,7 +41,7 @@ This command orchestrates an end-to-end security assessment across five discipli
 
 ### Phase 4: Independent Verification Gate
 1. Every candidate finding at severity `low` or above is routed to `sec-verifier` via `/sec-verify`.
-2. `sec-verifier` independently replicates the issue using deterministic verification oracles (`verify_oracle`).
+2. `sec-verifier` independently replicates the issue using `arsenal oracle verify --file <request.json> --json`.
 3. Findings confirmed as `validated` are eligible for executive conclusion reporting.
 4. Refuted, partial, or unverified findings are cataloged in the audit trail.
 

@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-python scripts/agent.py \
+arsenal scripts red-implementing-conduit-security-for-ot-remote-access/agent \
   --targets 10.10.1.1 10.10.1.2 \
   --controls-data /assessments/conduit_controls.json \
   --output-dir /reports/

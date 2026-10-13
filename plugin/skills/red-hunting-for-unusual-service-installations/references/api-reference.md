@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py System.evtx parse
-python scripts/agent.py System.evtx hunt
-python scripts/agent.py System.evtx stats
-python scripts/agent.py System.evtx full
+arsenal scripts red-hunting-for-unusual-service-installations/agent System.evtx parse
+arsenal scripts red-hunting-for-unusual-service-installations/agent System.evtx hunt
+arsenal scripts red-hunting-for-unusual-service-installations/agent System.evtx stats
+arsenal scripts red-hunting-for-unusual-service-installations/agent System.evtx full
 ```
 
 ## Core Functions

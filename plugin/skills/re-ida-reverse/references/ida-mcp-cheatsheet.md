@@ -10,13 +10,11 @@
 ### Server Launch
 
 ```bash
-# Resolve helpers from skill://re-ida-reverse/templates/ to local working directory:
-
 # Start the MCP HTTP server (returns OK:reuse or OK:started)
-bash templates/start.sh [port]
+arsenal scripts re-ida-reverse/start [port]
 
 # Open target file via IDA MCP HTTP API
-bash templates/open.sh "/path/to/target.exe" [port]
+arsenal scripts re-ida-reverse/open "/path/to/target.exe" [port]
 # Output: OK:filename:session_id
 ```
 
@@ -25,7 +23,7 @@ bash templates/open.sh "/path/to/target.exe" [port]
 | Tool | Purpose | Example |
 |------|---------|---------|
 | `idapro_idb_list()` / HTTP `idb_list` | List all sessions | — |
-| `idapro_idb_open()` / HTTP `idb_open` | Open database (prefer using `templates/open.sh`) | Use script for large files |
+| `idapro_idb_open()` / HTTP `idb_open` | Open database (prefer using `arsenal scripts re-ida-reverse/open`) | Use command for large files |
 | `idapro_idb_save(path)` / HTTP `idb_save` | Save database | Save analysis progress |
 | `idapro_idb_current()` | Currently bound session (if supported by version) | — |
 | `idapro_idb_switch(session_id)` | Switch session | When comparing multiple files |
@@ -502,9 +500,9 @@ idapro_py_eval(code="import ida_funcs; f=ida_funcs.get_func(0x401000); print(f.s
 
 | Error | Cause | Solution |
 |------|------|------|
-| "No database bound" | No file opened | Run `skill://re-ida-reverse/templates/open.sh` |
-| "Failed to open database" | Old database locked | `skill://re-ida-reverse/templates/open.sh` automatically falls back to Temp |
-| Schema validation failed | MCP client BUG | Use `skill://re-ida-reverse/templates/open.sh` instead of `idb_open` |
+| "No database bound" | No file opened | Run `arsenal scripts re-ida-reverse/open` |
+| "Failed to open database" | Old database locked | `arsenal scripts re-ida-reverse/open` automatically falls back to Temp |
+| Schema validation failed | MCP client BUG | Use `arsenal scripts re-ida-reverse/open` instead of `idb_open` |
 | Tool timeout | Large file under analysis | Add `-TimeoutSeconds 600` |
 | "ERR:timeout" (start.sh) | Server failed to start | Check Python/idalib-mcp installation |
 | Radix conversion error | Manual calculation error | Use `idapro_int_convert` |

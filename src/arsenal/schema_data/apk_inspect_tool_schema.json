@@ -1,0 +1,22 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/apk-inspect.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "apk_path": {
+      "type": "string"
+    },
+    "extract_components": {
+      "type": "boolean",
+      "default": true
+    },
+    "extract_permissions": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "apk_path"
+  ],
+  "additionalProperties": false
+}

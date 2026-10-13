@@ -109,7 +109,7 @@ Produce a **Vendor Risk Assessment** using `skill://red-managing-third-party-ven
 7. **Monitoring & reassessment plan** — cadence, signals watched, re-tier triggers.
 8. **Nth-party notes** — critical subprocessors and concentration risk.
 
-Use `skill://red-managing-third-party-vendor-risk/templates/process.py` to compute a vendor's inherent-risk tier from a profile JSON, set the assessment depth and reassessment cadence, and flag missing evidence for the assigned tier.
+Use `arsenal scripts red-managing-third-party-vendor-risk/process` to compute a vendor's inherent-risk tier from a profile JSON, set the assessment depth and reassessment cadence, and flag missing evidence for the assigned tier.
 
 ## Shipped Playbook Resources
 

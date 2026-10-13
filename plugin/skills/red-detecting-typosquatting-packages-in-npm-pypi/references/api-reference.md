@@ -16,28 +16,28 @@ Detects typosquatting attacks in npm and PyPI package registries by generating c
 
 ```bash
 # Scan for typosquats of a single PyPI package
-python scripts/agent.py scan requests --registry pypi
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan requests --registry pypi
 
 # Scan for typosquats of an npm package
-python scripts/agent.py scan express --registry npm
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan express --registry npm
 
 # Scan with limited candidate count
-python scripts/agent.py scan numpy --registry pypi --max-candidates 50
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan numpy --registry pypi --max-candidates 50
 
 # Scan all dependencies in a requirements file
-python scripts/agent.py scan-file requirements.txt --registry pypi
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan-file requirements.txt --registry pypi
 
 # Scan all dependencies in a package.json
-python scripts/agent.py scan-file package.json --registry npm
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan-file package.json --registry npm
 
 # Check a specific candidate against a target
-python scripts/agent.py check reqeusts requests --registry pypi
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent check reqeusts requests --registry pypi
 
 # Generate typosquat candidates without querying registries
-python scripts/agent.py generate requests
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent generate requests
 
 # Custom output path
-python scripts/agent.py scan flask --registry pypi --output flask_typosquat_report.json
+arsenal scripts red-detecting-typosquatting-packages-in-npm-pypi/agent scan flask --registry pypi --output flask_typosquat_report.json
 ```
 
 ## Arguments

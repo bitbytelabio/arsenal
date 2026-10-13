@@ -195,4 +195,4 @@ and view financial data without biometric verification.
 ## References
 
 - `skill://mobile-conducting-mobile-app-penetration-test/references/api-reference.md` — API Reference: Mobile App Penetration Testing Agent
-- `skill://mobile-conducting-mobile-app-penetration-test/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)
+- `arsenal scripts mobile-conducting-mobile-app-penetration-test/agent` — Automation and analysis helper script (`arsenal scripts mobile-conducting-mobile-app-penetration-test/agent`)

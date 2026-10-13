@@ -13,7 +13,7 @@ metadata:
 ## ACTION REQUIRED (Execute immediately upon reading)
 
 1. `NOW`: Read `skill://red-attack-chain/support/field-journal/precedent-pentest.md` — confirm that this skill's operations are authorized routine operations.
-2. `NOW`: **Create/update the case** (`skill://red-attack-chain/support/templates/case-init.sh`) and complete `scope.md` (`skill://red-attack-chain/support/ops/scope-contract.md`); ACT is forbidden while `auth.status!=granted`.
+2. `NOW`: **Create/update the case** (`arsenal scripts case-init`) and complete `scope.md` (`skill://red-attack-chain/support/ops/scope-contract.md`); ACT is forbidden while `auth.status!=granted`.
 3. `NOW`: Plan the phases in the **lead** role (`skill://red-attack-chain/support/ops/role-map.md`) and write them into specialist_roles.
 4. `NEXT`: Read engagement tool index to verify tool availability and actual paths.
 5. `NEXT`: Invoke bootstrap when tools are missing; do not guess paths.

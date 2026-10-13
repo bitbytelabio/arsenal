@@ -1,0 +1,81 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/skill-frontmatter.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "name",
+    "description",
+    "domain",
+    "category",
+    "hide",
+    "license",
+    "metadata"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^(re|webapp|mobile|red)-[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "description": {
+      "type": "string",
+      "minLength": 40,
+      "maxLength": 300,
+      "not": {
+        "pattern": "[\r\n]"
+      }
+    },
+    "domain": {
+      "enum": [
+        "re",
+        "webapp",
+        "mobile",
+        "red"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hide": {
+      "type": "boolean"
+    },
+    "license": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9-.]+(\\+|( (AND|OR|WITH) [a-zA-Z0-9-.]+))*$"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "manifest_entry"
+      ],
+      "properties": {
+        "manifest_entry": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "upstream"
+            ]
+          },
+          {
+            "required": [
+              "source_path"
+            ]
+          },
+          {
+            "required": [
+              "source_sha256"
+            ]
+          }
+        ]
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

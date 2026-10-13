@@ -219,4 +219,4 @@ if __name__ == "__main__":
 - `skill://re-performing-memory-forensics-with-volatility3-plugins/references/standards.md` — Volatility3 Memory Forensics Standards
 - `skill://re-performing-memory-forensics-with-volatility3-plugins/references/workflows.md` — Memory Forensics Workflows
 - `skill://re-performing-memory-forensics-with-volatility3-plugins/assets/template.md` — Memory Forensics Analysis Report
-- `skill://re-performing-memory-forensics-with-volatility3-plugins/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)
+- `arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent` — Automation and analysis helper script (`arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent`)

@@ -34,14 +34,14 @@
 
 ```bash
 # Initialize repository
-python scripts/agent.py --repo s3:s3.amazonaws.com/my-backups --action init
+arsenal scripts red-implementing-immutable-backup-with-restic/agent --repo s3:s3.amazonaws.com/my-backups --action init
 
 # Backup with tags
-python scripts/agent.py --repo s3:s3.amazonaws.com/my-backups --action backup \
+arsenal scripts red-implementing-immutable-backup-with-restic/agent --repo s3:s3.amazonaws.com/my-backups --action backup \
   --source /var/lib/postgresql /etc --tags database config
 
 # Full pipeline: backup + verify + retention + restore test
-python scripts/agent.py --repo s3:s3.amazonaws.com/my-backups --action full-pipeline \
+arsenal scripts red-implementing-immutable-backup-with-restic/agent --repo s3:s3.amazonaws.com/my-backups --action full-pipeline \
   --source /srv/data --keep-daily 7 --keep-weekly 4
 ```
 

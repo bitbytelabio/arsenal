@@ -82,5 +82,5 @@ These protocols lack built-in encryption and authentication:
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --target 192.168.1.100 --pcap traffic.pcap --config hmi.json --output report.json
+arsenal scripts red-performing-scada-hmi-security-assessment/agent --target 192.168.1.100 --pcap traffic.pcap --config hmi.json --output report.json
 ```

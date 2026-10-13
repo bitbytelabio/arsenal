@@ -7,8 +7,8 @@
 ## CLI Interface
 
 ```
-python scripts/agent.py bench        # Run full docker-bench-security
-python scripts/agent.py containers   # Check running container configurations
+arsenal scripts red-performing-docker-bench-security-assessment/agent bench        # Run full docker-bench-security
+arsenal scripts red-performing-docker-bench-security-assessment/agent containers   # Check running container configurations
 ```
 
 ## Core Functions

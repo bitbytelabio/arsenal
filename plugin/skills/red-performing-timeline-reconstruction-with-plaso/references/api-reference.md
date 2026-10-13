@@ -55,7 +55,7 @@ chrome_history, firefox_history, winreg
 ## Usage
 
 ```bash
-python scripts/agent.py /cases/evidence.dd /cases/timeline/ "2024-01-15 00:00:00" "2024-01-20 23:59:59"
+arsenal scripts red-performing-timeline-reconstruction-with-plaso/agent /cases/evidence.dd /cases/timeline/ "2024-01-15 00:00:00" "2024-01-20 23:59:59"
 ```
 
 ## Output Files

@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-python templates/agent.py \
+arsenal scripts re-implementing-continuous-security-validation-with-bas/agent \
   --target 10.0.1.50 \
   --siem-url https://siem.example.com \
   --siem-key YOUR_KEY \

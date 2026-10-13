@@ -61,19 +61,19 @@
 
 ```bash
 # List all ATT&CK threat groups
-python scripts/agent.py --list-groups
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --list-groups
 
 # Analyze a specific group
-python scripts/agent.py --group "APT29"
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --group "APT29"
 
 # Generate Navigator layer file
-python scripts/agent.py --group "APT29" --layer-output apt29_layer.json
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --group "APT29" --layer-output apt29_layer.json
 
 # Compare multiple groups
-python scripts/agent.py --compare "APT29" "APT28" "Lazarus Group"
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --compare "APT29" "APT28" "Lazarus Group"
 
 # Save full report as JSON
-python scripts/agent.py --group "APT29" --layer-output apt29.json --output report.json
+arsenal scripts red-analyzing-threat-actor-ttps-with-mitre-navigator/agent --group "APT29" --layer-output apt29.json --output report.json
 ```
 
 ## External References

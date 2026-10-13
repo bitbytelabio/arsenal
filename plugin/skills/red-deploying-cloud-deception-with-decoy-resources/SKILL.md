@@ -133,7 +133,7 @@ Produce a **Cloud Deception Deployment Record** using `skill://red-deploying-clo
 4. **Validation results** — date tested, who tested, end-to-end latency observed, pass/fail.
 5. **Maintenance plan** — rotation cadence and review owner.
 
-Use `skill://red-deploying-cloud-deception-with-decoy-resources/templates/process.py` to render the deployment record and a per-decoy detection checklist from a decoy-inventory JSON, and to flag decoys missing detection wiring or validation.
+Use `arsenal scripts red-deploying-cloud-deception-with-decoy-resources/process` to render the deployment record and a per-decoy detection checklist from a decoy-inventory JSON, and to flag decoys missing detection wiring or validation.
 
 ## Shipped Playbook Resources
 

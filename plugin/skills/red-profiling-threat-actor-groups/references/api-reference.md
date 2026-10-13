@@ -51,8 +51,8 @@ Compares multiple groups: shared techniques, technique counts, software counts.
 ## Usage
 
 ```bash
-python scripts/agent.py APT29
-python scripts/agent.py "Lazarus Group"
+arsenal scripts red-profiling-threat-actor-groups/agent APT29
+arsenal scripts red-profiling-threat-actor-groups/agent "Lazarus Group"
 ```
 
 ## Example Output Fields

@@ -28,15 +28,14 @@ Each evidence item is an independent paragraph or table row:
 **CLI helper** (writes to `work/<case>/evidence/E-*.md`):
 
 ```powershell
-# Resolve helper from skill://webapp-pentest-tools/support/templates/append-evidence.ps1 to local working directory:
-pwsh -File append-evidence.ps1 -CaseRoot work/<case> `
+arsenal scripts append-evidence -CaseRoot work/<case> `
   -Id E-001 -Title "..." -ReproCommand "..." -Severity info -Status observed
 ```
 
 When the evidence is a case-local file, pass `-ArtifactPath` to record a SHA-256 fixity value and a relative artifact path. Review the complete case graph before handoff:
 
 ```bash
-python3 templates/review_case.py work/<case> --verify-hashes --strict
+arsenal case review work/<case> --verify-hashes --strict
 ```
 
 The review is read-only and checks scope fields, Evidence records, work item and timeline references, structured Findings, Paths, and artifact hash matches.

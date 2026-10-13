@@ -14,11 +14,11 @@
 ## CLI Interface
 
 ```bash
-python templates/agent.py triage      # Full forensic triage
-python templates/agent.py processes   # Running processes with PIDs and command lines
-python templates/agent.py network     # Active network connections
-python templates/agent.py autoruns    # Persistence entries
-python templates/agent.py hash --file <filepath>  # Hash file for evidence
+arsenal scripts re-performing-endpoint-forensics-investigation/agent triage      # Full forensic triage
+arsenal scripts re-performing-endpoint-forensics-investigation/agent processes   # Running processes with PIDs and command lines
+arsenal scripts re-performing-endpoint-forensics-investigation/agent network     # Active network connections
+arsenal scripts re-performing-endpoint-forensics-investigation/agent autoruns    # Persistence entries
+arsenal scripts re-performing-endpoint-forensics-investigation/agent hash --file <filepath>  # Hash file for evidence
 ```
 
 ## Core Functions

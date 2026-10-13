@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-python scripts/agent.py \
+arsenal scripts red-executing-red-team-exercise/agent \
   --actor "APT29" \
   --target "Retail Corp" \
   --objectives "Access POS data" "Exfiltrate cardholder data" \

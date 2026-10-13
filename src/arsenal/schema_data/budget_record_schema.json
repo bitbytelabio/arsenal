@@ -1,0 +1,86 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/budget-record.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "engagement_id",
+    "known_spend_usd",
+    "unknown_usage_count",
+    "token_totals",
+    "warned_bands",
+    "reserve_active"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "engagement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allowance_usd": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "known_spend_usd": {
+      "type": "string"
+    },
+    "unknown_usage_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "token_totals": {
+      "type": "object",
+      "required": [
+        "input",
+        "output",
+        "cacheRead",
+        "cacheWrite"
+      ],
+      "properties": {
+        "input": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cacheRead": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cacheWrite": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "warned_bands": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "reserve_active": {
+      "type": "boolean"
+    },
+    "in_flight_spawns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ledger_head_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

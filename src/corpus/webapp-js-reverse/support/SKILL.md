@@ -143,22 +143,22 @@ When the workflow detects a missing tool, do not throw an error immediately. Cal
 
 Windows:
 ```powershell
-# Resolve helper from canonical resource URI `skill://webapp-js-reverse/scripts/bootstrap-reverse.ps1`
+# Resolve helper from canonical resource URI `arsenal scripts bootstrap-reverse`
 # Copy or resolve to local workspace path before execution:
-powershell -NoProfile -ExecutionPolicy Bypass -File ./bootstrap-reverse.ps1 -Capability @('tool-name') -StartServices
+arsenal scripts bootstrap-reverse 'tool-name' --start-services
 ```
 
 Linux / macOS:
 ```bash
-# Resolve helper from canonical resource URI `skill://webapp-js-reverse/scripts/bootstrap-reverse.sh`
+# Resolve helper from canonical resource URI `arsenal scripts bootstrap-reverse`
 # Copy or resolve to local workspace path before execution:
-bash ./bootstrap-reverse.sh tool-name --start-services
+arsenal scripts bootstrap-reverse tool-name --start-services
 ```
 
 Kali:
 ```bash
-# Resolve helper from canonical resource URI `skill://webapp-js-reverse/scripts/bootstrap-reverse.sh`
-bash ./bootstrap-reverse.sh tool-name --start-services
+# Resolve helper from canonical resource URI `arsenal scripts bootstrap-reverse`
+arsenal scripts bootstrap-reverse tool-name --start-services
 ```
 
 Supported capabilities (defined in the capability bootstrap manifest): jadx, apktool, jeb-pro, binaryninja, frida, frida-ps, idalib-mcp, reqable-mcp, jshookmcp, xquik-mcp, anything-analyzer, idapro, r2, rabin2, adb, agent-browser, ghidra-mcp, seclists, proxycat, burpsuite-mcp, nmap, pentestswarm, binwalk, yara, pwntools, bkcrack
@@ -175,7 +175,7 @@ Before executing any reverse engineering or penetration testing operations, you 
 
 | Reading Order | File | Trigger Condition |
 |---------------|------|-------------------|
-| **#1** | `skill://webapp-pentest-tools/support/ops/scope-contract.md` + `skill://webapp-pentest-tools/support/templates/case-init.sh` | Executable authorization gate. Authorization is never considered granted in authorization precedent |
+| **#1** | `skill://webapp-pentest-tools/support/ops/scope-contract.md` + `arsenal scripts case-init` | Executable authorization gate. Authorization is never considered granted in authorization precedent |
 | **#2** | `skill://webapp-js-reverse/support/field-journal/precedent-reverse.md` or `skill://webapp-pentest-tools/support/field-journal/precedent-pentest.md` | On-demand — Load only when the AI encounters ambiguity |
 
 **#1 is prerequisite; #2 is lazily loaded.**

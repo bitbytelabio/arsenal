@@ -60,7 +60,7 @@ detection:
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --sysmon-log Sysmon.evtx
-python scripts/agent.py --scan-dir C:\Users\victim\Downloads\app\
-python scripts/agent.py --generate-sigma
+arsenal scripts red-detecting-dll-sideloading-attacks/agent --sysmon-log Sysmon.evtx
+arsenal scripts red-detecting-dll-sideloading-attacks/agent --scan-dir C:\Users\victim\Downloads\app\
+arsenal scripts red-detecting-dll-sideloading-attacks/agent --generate-sigma
 ```

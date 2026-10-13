@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET grants
-python scripts/agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET apps
-python scripts/agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET audit-logs
-python scripts/agent.py --tenant-id TENANT --client-id CLIENT --client-secret SECRET full --days 30
+arsenal scripts red-detecting-suspicious-oauth-application-consent/agent --tenant-id TENANT --client-id CLIENT --client-secret SECRET grants
+arsenal scripts red-detecting-suspicious-oauth-application-consent/agent --tenant-id TENANT --client-id CLIENT --client-secret SECRET apps
+arsenal scripts red-detecting-suspicious-oauth-application-consent/agent --tenant-id TENANT --client-id CLIENT --client-secret SECRET audit-logs
+arsenal scripts red-detecting-suspicious-oauth-application-consent/agent --tenant-id TENANT --client-id CLIENT --client-secret SECRET full --days 30
 ```
 
 ## Core Functions

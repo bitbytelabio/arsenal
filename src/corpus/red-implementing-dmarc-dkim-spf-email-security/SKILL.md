@@ -95,7 +95,7 @@ v=DMARC1; p=reject; rua=mailto:dmarc-aggregate@example.com; pct=100
 ```
 
 ### Step 5: Monitor and Analyze DMARC Reports
-Use the `skill://red-implementing-dmarc-dkim-spf-email-security/templates/process.py` to parse DMARC aggregate XML reports and identify authentication failures, unauthorized senders, and spoofing attempts.
+Use the `arsenal scripts red-implementing-dmarc-dkim-spf-email-security/process` to parse DMARC aggregate XML reports and identify authentication failures, unauthorized senders, and spoofing attempts.
 
 ## Tools & Resources
 - **MXToolbox**: https://mxtoolbox.com/SuperTool.aspx

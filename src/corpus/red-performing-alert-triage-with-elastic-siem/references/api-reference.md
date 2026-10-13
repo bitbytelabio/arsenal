@@ -108,5 +108,5 @@ GET /api/detection_engine/rules/_find_statuses
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --host https://elastic:9200 --api-key "key" --hours 24 --output report.json
+arsenal scripts red-performing-alert-triage-with-elastic-siem/agent --host https://elastic:9200 --api-key "key" --hours 24 --output report.json
 ```

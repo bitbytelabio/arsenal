@@ -62,5 +62,5 @@ Executes all hunt queries and aggregates results.
 ## Usage
 
 ```bash
-python scripts/agent.py https://elastic.corp.local:9200
+arsenal scripts red-performing-threat-hunting-with-elastic-siem/agent https://elastic.corp.local:9200
 ```

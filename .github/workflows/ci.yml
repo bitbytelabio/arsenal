@@ -47,29 +47,44 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: |
+          bun install --frozen-lockfile
+          uv sync --locked
+
+      - name: Build plugin assets
+        run: uv run --locked arsenal build --write --force
 
       - name: Verify build determinism
-        run: bun --no-env-file run bin/arsenal.ts build --check-determinism --json
+        run: uv run --locked arsenal build --check-determinism --json
 
       - name: Audit skills language
-        run: bun run bin/arsenal.ts skills check --language --json
+        run: uv run --locked arsenal skills check --language --json
 
       - name: Audit skills script references
-        run: bun run bin/arsenal.ts skills scripts-audit --json
+        run: uv run --locked arsenal skills scripts-audit --json
 
       - name: Check domain coverage (RE)
-        run: bun run bin/arsenal.ts skills coverage --domain re --check --json
+        run: uv run --locked arsenal skills coverage --domain re --check --json
 
       - name: Check domain coverage (Webapp)
-        run: bun run bin/arsenal.ts skills coverage --domain webapp --check --json
+        run: uv run --locked arsenal skills coverage --domain webapp --check --json
 
       - name: Check domain coverage (Mobile)
-        run: bun run bin/arsenal.ts skills coverage --domain mobile --check --json
+        run: uv run --locked arsenal skills coverage --domain mobile --check --json
 
       - name: Check domain coverage (Red Team)
-        run: bun run bin/arsenal.ts skills coverage --domain red --check --json
+        run: uv run --locked arsenal skills coverage --domain red --check --json
 
   test:
     name: Test Suite
@@ -83,8 +98,23 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-      - name: Run test suite
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: |
+          bun install --frozen-lockfile
+          uv sync --locked
+
+      - name: Run Python test suite
+        run: uv run --locked pytest
+
+      - name: Run native Bun test suite
         run: bun test

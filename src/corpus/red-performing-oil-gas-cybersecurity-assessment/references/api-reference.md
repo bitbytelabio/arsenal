@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py network --assets ot_inventory.csv
-python scripts/agent.py compliance --csv iec62443_assessment.csv
-python scripts/agent.py safety --assets ot_inventory.csv
-python scripts/agent.py report --assets ot_inventory.csv [--compliance-csv iec62443.csv]
+arsenal scripts red-performing-oil-gas-cybersecurity-assessment/agent network --assets ot_inventory.csv
+arsenal scripts red-performing-oil-gas-cybersecurity-assessment/agent compliance --csv iec62443_assessment.csv
+arsenal scripts red-performing-oil-gas-cybersecurity-assessment/agent safety --assets ot_inventory.csv
+arsenal scripts red-performing-oil-gas-cybersecurity-assessment/agent report --assets ot_inventory.csv [--compliance-csv iec62443.csv]
 ```
 
 ## Core Functions

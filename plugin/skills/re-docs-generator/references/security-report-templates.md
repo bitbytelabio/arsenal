@@ -7,7 +7,7 @@ This document provides documentation templates for security projects including r
 ## 0. Evidence Chain (MUST be included in all security reports)
 
 > Full contract text: `skill://webapp-pentest-tools/support/ops/evidence-finding-path.md`  
-> Case directory: `work/<case>/` (`case-init.sh`)
+> Case directory: `work/<case>/` (`arsenal scripts case-init`)
 
 The report body **MUST** contain the following sections (these may be merged into "Key Findings", but no fields may be omitted):
 

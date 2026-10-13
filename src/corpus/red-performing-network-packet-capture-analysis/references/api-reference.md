@@ -7,10 +7,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py analyze --pcap capture.pcap
-python scripts/agent.py http --pcap capture.pcap
-python scripts/agent.py suspicious --pcap capture.pcap
-python scripts/agent.py conversations --pcap capture.pcap
+arsenal scripts red-performing-network-packet-capture-analysis/agent analyze --pcap capture.pcap
+arsenal scripts red-performing-network-packet-capture-analysis/agent http --pcap capture.pcap
+arsenal scripts red-performing-network-packet-capture-analysis/agent suspicious --pcap capture.pcap
+arsenal scripts red-performing-network-packet-capture-analysis/agent conversations --pcap capture.pcap
 ```
 
 ## Core Functions

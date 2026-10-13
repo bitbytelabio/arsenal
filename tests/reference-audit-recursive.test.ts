@@ -21,8 +21,8 @@ import {
   applyMaterializationPlan,
 } from "../src/core/skill-references.ts";
 import { migrateSkillContent } from "../tools/migrate-skill-uris.ts";
-import { handleSkills } from "../src/cli/skills.ts";
-import { EXIT_CODES } from "../bin/arsenal.ts";
+import { runCommandContext as handleSkills } from "./helpers/python-cli.ts"
+import { EXIT_CODES } from "./helpers/python-cli.ts"
 
 describe("Recursive Reference Audit & Diagnostics", () => {
   it("extracts document anchors and respects code blocks", () => {

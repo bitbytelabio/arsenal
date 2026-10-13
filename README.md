@@ -6,8 +6,8 @@
 
 [![Version](https://img.shields.io/badge/version-3.0.2-10b981?style=flat-square)](package.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Runtime: Bun](https://img.shields.io/badge/runtime-Bun-f472b6?style=flat-square&logo=bun)](https://bun.sh)
-[![Language: TypeScript](https://img.shields.io/badge/language-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Python CLI](https://img.shields.io/badge/CLI-Python-3776ab?style=flat-square&logo=python)](pyproject.toml)
+[![OMP Runtime: TypeScript](https://img.shields.io/badge/OMP%20runtime-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![OMP Plugin](https://img.shields.io/badge/OMP-Plugin-8b5cf6?style=flat-square)](docs/install-omp-plugin.md)
 [![Skills Corpus](https://img.shields.io/badge/skills-1%2C648%20canonical-f59e0b?style=flat-square)](src/corpus)
 [![Build: Deterministic](https://img.shields.io/badge/build-deterministic-06b6d4?style=flat-square)](#cli-cheat-sheet)
@@ -27,7 +27,7 @@
 - **Single Source of Truth (SSOT)**: 1,648 canonical security playbooks with bundled references, templates, and source-backed helpers. Resource identifiers use `skill://<skill-id>/<path>`; bounded asset reads report when content is truncated.
 - **5 Specialist Agents**: Autonomous domain specialists (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) operating under structured epistemic rules (`E-*` empirical facts vs. `P-*` predictive deductions vs. `unk-*` unknowns).
 - **Cryptographic Evidence Ledger**: Monotonic SHA-256 hash-chained event streams recorded to `evidence/ledger.jsonl` backed by WAL-mode SQLite state tracking for tamper-evident provenance.
-- **Native Bun & TypeScript Tooling**: Core tools such as `apk_inspect` run natively. Playbook-specific helpers retain their actual Python, Bash, or PowerShell interpreter and require the dependencies documented by that playbook; execution remains subject to scope and evidence controls.
+- **Python CLI, Native OMP Skills**: `arsenal` owns installation, analysis, evidence, reports, and centralized operational scripts. Native TypeScript retains OMP skill discovery, loading, routing, and host hooks. Maintained parsers and official SDKs handle APK/AXML, JSON Schema, YAML, Markdown, and MCP.
 - **Zero Host Mutation & Dynamic Opt-In MCP**: 6 native tool bridges (`burp-ultra`, `rea`, `playwright`, `ghidra`, `ida-pro`, `jshook`) initialize disabled, toggled safely per-profile or per-project.
 
 ---
@@ -67,7 +67,7 @@ flowchart TD
         direction TB
         Corpus["src/corpus/<br/>1,648 Canonical Skills & skill:// URIs"]
         PluginDist["plugin/<br/>Compiled Extensions & Routing Catalog"]
-        NativeTools["Native TS Tools<br/>apk_inspect, evidence_exec"]
+        NativeTools["Python arsenal CLI<br/>Analysis, Scripts, Evidence, Reports"]
     end
 
     Specialists -->|Resolves Playbooks| CoreEngine
@@ -78,7 +78,7 @@ flowchart TD
         Ledger["evidence/ledger.jsonl<br/>Monotonic SHA-256 Hash Chain"]
     end
 
-    Specialists -->|Append Evidence| EvidenceLedger
+    NativeTools -->|Single Writer| EvidenceLedger
     VE -->|Audit Proofs| EvidenceLedger
 ```
 
@@ -92,9 +92,9 @@ Arsenal provisions five domain specialists. Each agent enforces strict Operation
 |---|---|---|---|
 | `sec-re` | Binary Reverse Engineering | Disassembly, decompilation, control flow graph (CFG) analysis, firmware unpacking, protocol extraction. | `ghidra`, `ida-pro`, `rea`, `file_inspect`, `binwalk` |
 | `sec-webapp` | Web & API Security | Authenticated API audits, business logic flaws, OAuth/JWT vulnerability flows, injection vectors, CSRF/SSRF. | `burp-ultra`, `playwright`, native HTTP engines |
-| `sec-mobile` | Mobile Dynamic Analysis | Android & iOS assessment, runtime instrumentation, inter-process communication (IPC), automated storage audits. | `apk_inspect`, `jshook`, TLS bypass hooks, Frida |
-| `sec-red` | Adversarial Simulation | Cloud infrastructure escalation, container escapes, credential relaying, lateral movement simulation. | Monitored `evidence_exec`, cloud CLI abstractions |
-| `sec-verifier` | Deterministic Verification | Independent finding validation, empirical reproduction scripts, elimination of hallucinations and false positives. | `verify_oracle`, SHA-256 hash validation, isolated repro |
+| `sec-mobile` | Mobile Dynamic Analysis | Android & iOS assessment, runtime instrumentation, inter-process communication (IPC), automated storage audits. | `arsenal apk inspect`, `jshook`, TLS bypass hooks, Frida |
+| `sec-red` | Adversarial Simulation | Cloud infrastructure escalation, container escapes, credential relaying, lateral movement simulation. | `arsenal exec`, cloud CLI tools |
+| `sec-verifier` | Deterministic Verification | Independent finding validation, reproduction, and falsification. | `arsenal oracle verify`, SHA-256 validation, isolated replay |
 
 ---
 
@@ -130,9 +130,9 @@ All external tool bridges use strict opt-in controls (`enabled: false` by defaul
 
 ```bash
 # Manage MCP bridges at the profile or project level
-bun run bin/arsenal.ts mcp enable rea --scope profile
-bun run bin/arsenal.ts mcp disable burp-ultra --scope project
-bun run bin/arsenal.ts mcp status
+arsenal mcp enable rea --scope profile --write
+arsenal mcp disable burp-ultra --scope project --write
+arsenal mcp list
 ```
 
 ---
@@ -152,8 +152,9 @@ OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal
 # 2. Install the plugin
 OMP_PROFILE=arsenal omp plugin install arsenal@arsenal
 
-# 3. Verify installation health
-bunx @bitbytelabio/arsenal doctor
+# 3. Install the independent Python CLI
+uv tool install git+https://github.com/bitbytelabio/arsenal.git
+arsenal --help
 ```
 
 ### Method 2: Local Development Link
@@ -168,18 +169,17 @@ cd arsenal
 just install-local
 ```
 
-### Method 3: Direct CLI via GitHub Packages / bunx
+### Method 3: Python CLI from Git
 
-Configure the `@bitbytelabio` scope to resolve from GitHub Packages (`~/.npmrc` or `bunfig.toml`), then run Arsenal commands directly:
+The npm package distributes the OMP plugin; it no longer exports a CLI binary.
 
 ```bash
-# Configure GitHub Packages registry for @bitbytelabio scope (if not already set)
-npm config set @bitbytelabio:registry https://npm.pkg.github.com
-
-# Run diagnostics or check CLI options
-bunx @bitbytelabio/arsenal --help
-bunx @bitbytelabio/arsenal doctor --json
+uv tool install git+https://github.com/bitbytelabio/arsenal.git
+arsenal --help
+arsenal doctor --json
 ```
+
+Use a Git commit suffix (`.git@<commit>`) for a pinned source revision. `uv tool install` resolves package metadata; it does not automatically honor the repository lockfile. Contributors and CI use `uv sync --locked` and `uv run --locked arsenal ...`.
 
 ---
 
@@ -189,35 +189,38 @@ Arsenal provides a comprehensive command-line suite for managing skills, buildin
 
 ```bash
 # Build & verify plugin distribution
-bun run bin/arsenal.ts build --write --force
-bun run bin/arsenal.ts build --check-determinism --json
+arsenal build --write --force
+arsenal build --check-determinism --json
 
 # Package plugin marketplace release
-bun run bin/arsenal.ts plugin pack --write
+arsenal plugin pack --write
 
 # Skill corpus validation & script audit
-bun run bin/arsenal.ts skills check --domains --json
-bun run bin/arsenal.ts skills check --language --json
-bun run bin/arsenal.ts skills scripts-audit --json
+arsenal skills check --domains --json
+arsenal skills check --language --json
+arsenal skills scripts-audit --json
 
 # Check standards-based capability coverage by domain
-bun run bin/arsenal.ts skills coverage --domain re --check --json
-bun run bin/arsenal.ts skills coverage --domain webapp --check --json
-bun run bin/arsenal.ts skills coverage --domain mobile --check --json
-bun run bin/arsenal.ts skills coverage --domain red --check --json
+arsenal skills coverage --domain re --check --json
+arsenal skills coverage --domain webapp --check --json
+arsenal skills coverage --domain mobile --check --json
+arsenal skills coverage --domain red --check --json
 
 # Verify cryptographic evidence ledger integrity
-bun run bin/arsenal.ts evidence verify --ledger evidence/ledger.jsonl --json
+arsenal evidence verify --repo . --json
 
-# Run test suite
+# Python CLI tests and native OMP tests
+uv run --locked pytest
 bun test
 ```
 
 ### Corpus resources and helper execution
 
 - Edit `src/corpus/`; `plugin/skills/` is generated. Keep useful supporting documents linked from their skill entrypoint and record source provenance in `MANIFEST.json`.
-- `<SKILL_ROOT>` references are canonical `skill://<skill-id>/<path>` resources, not host filesystem placeholders. Resolve a resource before running it; shell interpreters do not execute `skill://` URIs. Copy the **complete** helper and its sibling dependencies to a local directory; a truncated asset preview is not an executable script.
-- Match the documented interpreter and arguments to the shipped helper. The Evidence append helper is `skill://webapp-pentest-tools/support/templates/append-evidence.ps1`, requires PowerShell (`pwsh`), and rejects duplicate records, invalid severity/status, and artifact paths outside the case.
+- Native OMP tools still resolve `skill://` documentation and support assets. Executables live in `src/arsenal/scripts/`; run `arsenal scripts <canonical-id> -- <arguments>` instead of copying scripts out of skills.
+- Use `arsenal exec -- <program> <arguments>` for raw output artifacts and ledger receipts. `arsenal scripts append-evidence` preserves case evidence immutability.
+- Install only needed dependency profiles, for example `uv tool install "arsenal-security[network] @ git+https://github.com/bitbytelabio/arsenal.git"`. Available profiles: `scripts`, `mobile`, `wireless`, `network`, `cloud`, `intel`, `forensics`, `re`, `ad`, `ai`, `analysis`, `crypto`, `vuln`.
+- LLM Guard uses a separate locked Python 3.11–3.12 environment because its crypto requirements conflict with Androguard. Its runner reports the exact `uv sync --locked --project ...` preparation command; execution never installs floating dependencies.
 
 
 ---

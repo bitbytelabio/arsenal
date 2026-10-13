@@ -27,7 +27,7 @@ Under Arsenal Constitution Principle IV (Independent Verification), no specialis
      - `path_traversal`: Proof of filesystem boundary escape with deterministic artifact retrieval.
 
 3. **Oracle Execution**:
-   - Execute the selected verification oracle via `verify_oracle` tool within an isolated 8-turn budget.
+   - Execute `arsenal oracle verify --file <request.json> --json` within the isolated 8-turn verification budget.
    - Record verification transcript and raw output receipts to ledger.
 
 4. **Verdict Classification**:

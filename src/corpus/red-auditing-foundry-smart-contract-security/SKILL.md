@@ -82,7 +82,7 @@ aderyn . -o aderyn-report.json
 Or run the bundled orchestrator that runs both, deduplicates, and gates the result:
 
 ```bash
-python3 templates/agent.py --project . --output audit-report.json
+arsenal scripts red-auditing-foundry-smart-contract-security/agent --project . --output audit-report.json
 ```
 
 ### Step 3: Symbolic execution on critical contracts (optional, slow)
@@ -90,7 +90,7 @@ python3 templates/agent.py --project . --output audit-report.json
 ```bash
 # Only on the highest-value contract(s) — Mythril is path-explosive
 myth analyze src/Vault.sol --solc-json mythril.config.json --execution-timeout 300 -o json
-# or: python3 templates/agent.py --project . --mythril src/Vault.sol
+# or: arsenal scripts red-auditing-foundry-smart-contract-security/agent --project . --mythril src/Vault.sol
 ```
 
 ### Step 4: Property-based testing — fuzz + invariants

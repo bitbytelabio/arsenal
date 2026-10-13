@@ -46,16 +46,16 @@
 
 ```bash
 # Deploy canary files
-python scripts/agent.py --action deploy --dirs /srv/shares /home/admin/Documents
+arsenal scripts red-deploying-ransomware-canary-files/agent --action deploy --dirs /srv/shares /home/admin/Documents
 
 # Monitor canary files with Slack alerts
-python scripts/agent.py --action monitor --slack-webhook https://hooks.slack.com/...
+arsenal scripts red-deploying-ransomware-canary-files/agent --action monitor --slack-webhook https://hooks.slack.com/...
 
 # Verify canary file integrity
-python scripts/agent.py --action verify
+arsenal scripts red-deploying-ransomware-canary-files/agent --action verify
 
 # Test detection pipeline
-python scripts/agent.py --action test
+arsenal scripts red-deploying-ransomware-canary-files/agent --action test
 ```
 
 ## Python Libraries

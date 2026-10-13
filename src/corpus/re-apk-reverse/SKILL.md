@@ -44,10 +44,10 @@ Prioritize using this skill when the task falls into the following scenarios:
 
 The following workflows are high-frequency and have error-prone parameters; prefer using the skill's bundled scripts:
 
-- Perform `jadx + apktool` extraction to disk in one pass and generate a summary: `templates/decode.sh`
-- Frida device checks, process enumeration, spawn/attach injection: `templates/frida-run.sh`
-- Rebuild, align, sign, and install APKs: `templates/rebuild-sign-install.sh`
-- Quickly extract key Manifest components and permissions: `templates/manifest-summary.sh`
+- Perform `jadx + apktool` extraction to disk in one pass and generate a summary: `arsenal scripts re-apk-reverse/decode`
+- Frida device checks, process enumeration, spawn/attach injection: `arsenal scripts re-apk-reverse/frida-run`
+- Rebuild, align, sign, and install APKs: `arsenal scripts re-apk-reverse/rebuild-sign-install`
+- Quickly extract key Manifest components and permissions: `arsenal scripts re-apk-reverse/manifest-summary`
 
 The following one-line commands should be called directly without dedicated wrappers:
 
@@ -59,7 +59,7 @@ The following one-line commands should be called directly without dedicated wrap
 
 ## Bundled Scripts
 
-### `templates/decode.sh`
+### `arsenal scripts re-apk-reverse/decode`
 
 Purpose:
 
@@ -71,10 +71,10 @@ Purpose:
 Examples:
 
 ```bash
-bash templates/decode.sh "path/to/app.apk" [out_dir]
+arsenal scripts re-apk-reverse/decode "path/to/app.apk" [out_dir]
 ```
 
-### `templates/frida-run.sh`
+### `arsenal scripts re-apk-reverse/frida-run`
 
 Purpose:
 
@@ -84,10 +84,10 @@ Purpose:
 Examples:
 
 ```bash
-bash templates/frida-run.sh <package_name> [script_path]
+arsenal scripts re-apk-reverse/frida-run <package_name> [script_path]
 ```
 
-### `templates/rebuild-sign-install.sh`
+### `arsenal scripts re-apk-reverse/rebuild-sign-install`
 
 Purpose:
 
@@ -99,7 +99,7 @@ Purpose:
 Examples:
 
 ```bash
-bash templates/rebuild-sign-install.sh "work/apktool_out"
+arsenal scripts re-apk-reverse/rebuild-sign-install "work/apktool_out"
 ```
 
 Notes:
@@ -107,7 +107,7 @@ Notes:
 - Generates and reuses a debug keystore by default
 - Outputs to the same directory as `ProjectDir` by default, facilitating side-by-side storage with original packages and unpacking directories
 
-### `templates/manifest-summary.sh`
+### `arsenal scripts re-apk-reverse/manifest-summary`
 
 Purpose:
 
@@ -119,7 +119,7 @@ Purpose:
 Example:
 
 ```bash
-bash templates/manifest-summary.sh "work/apktool_out/AndroidManifest.xml"
+arsenal scripts re-apk-reverse/manifest-summary "work/apktool_out/AndroidManifest.xml"
 ```
 
 If analyzing `.so`, `lib/arm64-v8a/*.so`, or `lib/armeabi-v7a/*.so` files, combine with:
@@ -282,7 +282,7 @@ apktool b apktool_out -o rebuilt.apk
 Or close the loop directly via script:
 
 ```bash
-bash templates/rebuild-sign-install.sh "apktool_out"
+arsenal scripts re-apk-reverse/rebuild-sign-install "apktool_out"
 ```
 
 Notes:
@@ -309,7 +309,7 @@ Principles:
 Recommendations:
 
 - Use `frida-*` directly for simple, one-off commands.
-- Prioritize `templates/frida-run.sh` for repeatable and stable injection workflows.
+- Prioritize `arsenal scripts re-apk-reverse/frida-run` for repeatable and stable injection workflows.
 
 ### 6. Native `.so` Triage
 
@@ -395,9 +395,9 @@ The entry scripts of this skill are integrated with the unified bootstrap system
 
 ### Bootstrap Trigger Points
 
-- `templates/decode.sh`: Automatically invokes `bootstrap-reverse.ps1` when jadx or apktool is missing
-- `templates/rebuild-sign-install.sh`: Automatically invokes bootstrap when adb or apktool is missing
-- `templates/frida-run.sh`: Currently still a manual check (frida is typically installed via pip)
+- `arsenal scripts re-apk-reverse/decode`: Automatically invokes `bootstrap-reverse.ps1` when jadx or apktool is missing
+- `arsenal scripts re-apk-reverse/rebuild-sign-install`: Automatically invokes bootstrap when adb or apktool is missing
+- `arsenal scripts re-apk-reverse/frida-run`: Currently still a manual check (frida is typically installed via pip)
 
 ### On Bootstrap Failure
 

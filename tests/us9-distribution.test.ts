@@ -10,15 +10,9 @@ import * as path from "node:path";
 
 describe("User Story 9: Distribution & Build Determinism", () => {
   it("executes vendor check and asserts clean license compliance", () => {
-    const proc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "vendor",
-      "check",
-      "--json",
-    ]);
+    const proc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "vendor",
+    "check",
+    "--json",]);
     expect(proc.exitCode).toBe(0);
     const data = JSON.parse(proc.stdout.toString()) as {
       status: string;
@@ -56,34 +50,22 @@ describe("User Story 9: Distribution & Build Determinism", () => {
     fs.rmSync(b2, { recursive: true, force: true });
 
     // Build scoped to mobile preset for fast unit test execution
-    const p1 = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "build",
-      "--preset",
-      "mobile",
-      "--out",
-      b1,
-      "--write",
-      "--force",
-    ]);
+    const p1 = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "build",
+    "--preset",
+    "mobile",
+    "--out",
+    b1,
+    "--write",
+    "--force",]);
     expect(p1.exitCode).toBe(0);
 
-    const p2 = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "build",
-      "--preset",
-      "mobile",
-      "--out",
-      b2,
-      "--write",
-      "--force",
-    ]);
+    const p2 = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "build",
+    "--preset",
+    "mobile",
+    "--out",
+    b2,
+    "--write",
+    "--force",]);
     expect(p2.exitCode).toBe(0);
 
     // Compare via /usr/bin/diff

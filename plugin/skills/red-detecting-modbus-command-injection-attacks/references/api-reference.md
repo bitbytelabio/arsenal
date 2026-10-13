@@ -62,6 +62,6 @@ for pkt in pkts:
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --zeek-log modbus.log
-python scripts/agent.py --zeek-log modbus.log --authorized-masters 10.0.0.1 10.0.0.2
+arsenal scripts red-detecting-modbus-command-injection-attacks/agent --zeek-log modbus.log
+arsenal scripts red-detecting-modbus-command-injection-attacks/agent --zeek-log modbus.log --authorized-masters 10.0.0.1 10.0.0.2
 ```

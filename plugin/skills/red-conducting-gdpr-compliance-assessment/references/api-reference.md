@@ -5,13 +5,13 @@
 ### Article 30 Parser
 ```bash
 # Parse DPAs and privacy policies for Article 30 fields
-python scripts/article30_parser.py --input contracts/processors/ --output ropa.json
+arsenal scripts gdpr/article30-parser --input contracts/processors/ --output ropa.json
 
 # Validate completeness against mandatory fields
-python scripts/article30_validator.py --ropa ropa.json --check-retention --check-transfers
+arsenal scripts gdpr/article30-validator --ropa ropa.json --check-retention --check-transfers
 
 # Generate Article 30 register in supervisory authority format
-python scripts/generate_ropa_report.py --input ropa.json --output Article30_Register.pdf
+arsenal scripts gdpr/generate-ropa-report --input ropa.json --output Article30_Register.pdf
 ```
 
 ## Data Subject Access Request (DSAR) Automation

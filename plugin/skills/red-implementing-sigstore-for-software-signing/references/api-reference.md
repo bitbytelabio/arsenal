@@ -16,46 +16,46 @@ Automates Sigstore-based software signing and verification using Cosign keyless 
 
 ```bash
 # Check cosign installation and Rekor connectivity
-python scripts/agent.py check
+arsenal scripts red-implementing-sigstore-for-software-signing/agent check
 
 # Sign a file blob (triggers OIDC auth flow)
-python scripts/agent.py sign-blob myfile.tar.gz --bundle myfile.sigstore.json
+arsenal scripts red-implementing-sigstore-for-software-signing/agent sign-blob myfile.tar.gz --bundle myfile.sigstore.json
 
 # Verify a signed blob
-python scripts/agent.py verify-blob myfile.tar.gz --bundle myfile.sigstore.json \
+arsenal scripts red-implementing-sigstore-for-software-signing/agent verify-blob myfile.tar.gz --bundle myfile.sigstore.json \
   --cert-identity user@example.com \
   --cert-oidc-issuer https://accounts.google.com
 
 # Sign a container image (use digest, not tag)
-python scripts/agent.py sign-container registry.io/myimage@sha256:abc123...
+arsenal scripts red-implementing-sigstore-for-software-signing/agent sign-container registry.io/myimage@sha256:abc123...
 
 # Verify a container image
-python scripts/agent.py verify-container registry.io/myimage@sha256:abc123... \
+arsenal scripts red-implementing-sigstore-for-software-signing/agent verify-container registry.io/myimage@sha256:abc123... \
   --cert-identity user@example.com \
   --cert-oidc-issuer https://accounts.google.com
 
 # Search Rekor by artifact hash
-python scripts/agent.py search-rekor --hash <sha256-hash>
+arsenal scripts red-implementing-sigstore-for-software-signing/agent search-rekor --hash <sha256-hash>
 
 # Search Rekor by signer email
-python scripts/agent.py search-rekor --email user@example.com
+arsenal scripts red-implementing-sigstore-for-software-signing/agent search-rekor --email user@example.com
 
 # Search Rekor by file (computes hash automatically)
-python scripts/agent.py search-rekor --file myfile.tar.gz
+arsenal scripts red-implementing-sigstore-for-software-signing/agent search-rekor --file myfile.tar.gz
 
 # Retrieve a specific Rekor entry
-python scripts/agent.py get-rekor-entry <uuid>
+arsenal scripts red-implementing-sigstore-for-software-signing/agent get-rekor-entry <uuid>
 
 # Get Rekor transparency log state
-python scripts/agent.py log-info
+arsenal scripts red-implementing-sigstore-for-software-signing/agent log-info
 
 # Full audit of a signing event
-python scripts/agent.py audit --file myfile.tar.gz \
+arsenal scripts red-implementing-sigstore-for-software-signing/agent audit --file myfile.tar.gz \
   --cert-identity user@example.com \
   --cert-oidc-issuer https://accounts.google.com
 
 # All commands support custom output path
-python scripts/agent.py sign-blob myfile.tar.gz --output custom_report.json
+arsenal scripts red-implementing-sigstore-for-software-signing/agent sign-blob myfile.tar.gz --output custom_report.json
 ```
 
 ## Arguments

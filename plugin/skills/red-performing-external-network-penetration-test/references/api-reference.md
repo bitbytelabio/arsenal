@@ -9,10 +9,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py scan --host <target_ip> [--ports 22 80 443]
-python scripts/agent.py nmap --target <ip_or_range> [--type quick|full|vuln|udp]
-python scripts/agent.py dns --domain <domain>
-python scripts/agent.py ssl --host <hostname> [--port 443]
+arsenal scripts red-performing-external-network-penetration-test/agent scan --host <target_ip> [--ports 22 80 443]
+arsenal scripts red-performing-external-network-penetration-test/agent nmap --target <ip_or_range> [--type quick|full|vuln|udp]
+arsenal scripts red-performing-external-network-penetration-test/agent dns --domain <domain>
+arsenal scripts red-performing-external-network-penetration-test/agent ssl --host <hostname> [--port 443]
 ```
 
 ## Core Functions

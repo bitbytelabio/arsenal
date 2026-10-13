@@ -8,9 +8,9 @@
 ## CLI Interface
 
 ```
-python scripts/agent.py enumerate                    # List and risk-score all tasks
-python scripts/agent.py events --evtx-file <path>    # Scan EVTX for task creation events
-python scripts/agent.py export --task-name <name>    # Export task XML definition
+arsenal scripts red-hunting-for-scheduled-task-persistence/agent enumerate                    # List and risk-score all tasks
+arsenal scripts red-hunting-for-scheduled-task-persistence/agent events --evtx-file <path>    # Scan EVTX for task creation events
+arsenal scripts red-hunting-for-scheduled-task-persistence/agent export --task-name <name>    # Export task XML definition
 ```
 
 ## Core Functions

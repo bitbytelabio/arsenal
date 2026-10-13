@@ -71,7 +71,7 @@ $acl.Access | Where-Object {
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --security-log Security.evtx --dc-accounts known_dcs.txt
-python scripts/agent.py --generate-sigma
-python scripts/agent.py --check-perms
+arsenal scripts red-detecting-dcsync-attack-in-active-directory/agent --security-log Security.evtx --dc-accounts known_dcs.txt
+arsenal scripts red-detecting-dcsync-attack-in-active-directory/agent --generate-sigma
+arsenal scripts red-detecting-dcsync-attack-in-active-directory/agent --check-perms
 ```

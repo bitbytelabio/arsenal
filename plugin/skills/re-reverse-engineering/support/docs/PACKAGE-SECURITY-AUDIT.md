@@ -49,7 +49,7 @@ Searched executable extensions (`.ps1` / `.sh` / `.py` / `.js` / `.java`) for:
 - Reverse shell patterns (`/dev/tcp` abuse, `TcpClient` callbacks)
 - Hidden window process launches (reviewed for legitimacy)
 
-Pass 2: Manual code review of download and cleanup paths in `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.ps1`, `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.sh`, `mcp-bridge.js`, and diagram/cryptography Python helpers.
+Pass 2: Manual code review of download and cleanup paths in `arsenal scripts bootstrap-reverse`, `arsenal scripts bootstrap-reverse`, `arsenal scripts burp-mcp-bridge`, and diagram/cryptography Python helpers.
 
 ## Detailed Findings
 
@@ -57,11 +57,11 @@ Pass 2: Manual code review of download and cleanup paths in `skill://re-reverse-
 
 | Location | Behavior | Risk |
 |----------|----------|------|
-| `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.ps1` (`Expand-ArchiveIntoDirectory`) | Removes target tool install directory before reinstallation; removes `%TEMP%\reverse-bootstrap-*` | Scoped strictly to tool installation paths |
-| `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.ps1` (`anything-analyzer`) | Runs `Remove-Item node_modules` before `pnpm install` on failure | Scoped to cloned tool repository |
-| `skill://re-apk-reverse/templates/decode.sh` | Cleans task output directory for jadx/apktool | Scoped to task output root |
-| `skill://webapp-pentest-tools/support/templates/case-init.sh` | Cleans temporary directory | Temporary workspace only |
-| `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.sh` | Equivalent temp / install target cleanup | Scoped to tool installation paths |
+| `arsenal scripts bootstrap-reverse` (`Expand-ArchiveIntoDirectory`) | Removes target tool install directory before reinstallation; removes `%TEMP%\reverse-bootstrap-*` | Scoped strictly to tool installation paths |
+| `arsenal scripts bootstrap-reverse` (`anything-analyzer`) | Runs `Remove-Item node_modules` before `pnpm install` on failure | Scoped to cloned tool repository |
+| `arsenal scripts re-apk-reverse/decode` | Cleans task output directory for jadx/apktool | Scoped to task output root |
+| `arsenal scripts case-init` | Cleans temporary directory | Temporary workspace only |
+| `arsenal scripts bootstrap-reverse` | Equivalent temp / install target cleanup | Scoped to tool installation paths |
 
 **None found**: No executable `DROP`/`TRUNCATE` or destructive deletion targeting `C:\`, system directories, or arbitrary database connection strings.
 
@@ -69,17 +69,17 @@ Pass 2: Manual code review of download and cleanup paths in `skill://re-reverse-
 
 | Location | Behavior | Notes |
 |----------|----------|-------|
-| `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.ps1` | Queries `api.github.com` for releases; downloads zip/jar via `Invoke-WebRequest` | Repository names come strictly from the **manifest allowlist** |
-| `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.sh` | Runs `curl` / `git clone` / `pipx` / `npm` | Governed by the same manifest allowlist |
-| `skill://webapp-pentest-tools/support/burp-mcp-full/mcp-bridge.js` | Connects only to `127.0.0.1:9876` HTTP -> Burp | Local loopback only |
-| `skill://re-reverse-engineering/support/scripts/lib/ToolDiscovery.ps1` | Probes `http://host:port/mcp` | Local health check |
+| `arsenal scripts bootstrap-reverse` | Queries `api.github.com` for releases; downloads zip/jar via `Invoke-WebRequest` | Repository names come strictly from the **manifest allowlist** |
+| `arsenal scripts bootstrap-reverse` | Runs `curl` / `git clone` / `pipx` / `npm` | Governed by the same manifest allowlist |
+| `arsenal scripts burp-mcp-bridge` | Connects only to `127.0.0.1:9876` HTTP -> Burp | Local loopback only |
+| `arsenal scripts master-route` | Probes `http://host:port/mcp` | Local health check |
 
 ### 3. Hidden Windows
 
 | Location | Purpose |
 |----------|---------|
-| `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.ps1` (`Start-Process ... -WindowStyle Hidden`) | Starts background `pnpm dev` (`anything-analyzer`) |
-| `skill://re-ida-reverse/templates/start.sh` | Starts background IDA MCP supervisor process |
+| `arsenal scripts bootstrap-reverse` (`Start-Process ... -WindowStyle Hidden`) | Starts background `pnpm dev` (`anything-analyzer`) |
+| `arsenal scripts re-ida-reverse/start` | Starts background IDA MCP supervisor process |
 
 All instances are legitimate local service launches; no hidden payload downloads were found.
 
@@ -108,7 +108,7 @@ re-ida-reverse/templates/*
 webapp-browser-automation/templates/*
 re-diagram-generator/templates/*.py
 re-case-review/templates/*.py
-webapp-pentest-tools/support/burp-mcp-full/mcp-bridge.js
+webapp-pentest-tools/support/burp-mcp-full/arsenal scripts burp-mcp-bridge
 ```
 
 ## Recommended Continuous Verification

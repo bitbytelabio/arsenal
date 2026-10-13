@@ -1,0 +1,23 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/verification-oracle.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "oracle_type",
+    "parameters"
+  ],
+  "properties": {
+    "oracle_type": {
+      "type": "string",
+      "enum": [
+        "timing_differential",
+        "authz_matrix",
+        "path_traversal"
+      ]
+    },
+    "parameters": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

@@ -481,4 +481,4 @@ VULNERABILITIES FOUND:
 ## References
 
 - `skill://re-performing-plc-firmware-security-analysis/references/api-reference.md` — API Reference — Performing PLC Firmware Security Analysis
-- `skill://re-performing-plc-firmware-security-analysis/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)
+- `arsenal scripts re-performing-plc-firmware-security-analysis/agent` — Automation and analysis helper script (`arsenal scripts re-performing-plc-firmware-security-analysis/agent`)

@@ -14,23 +14,23 @@ Automates Microsoft Purview DLP monitoring and compliance reporting through the 
 
 ```bash
 # Retrieve DLP alerts from last 7 days
-python scripts/agent.py --tenant-id <tenant-id> --client-id <client-id> \
+arsenal scripts red-implementing-data-loss-prevention-with-microsoft-purview/agent --tenant-id <tenant-id> --client-id <client-id> \
   --client-secret <secret> --action alerts --days 7
 
 # Filter high-severity alerts
-python scripts/agent.py --tenant-id <tenant-id> --client-id <client-id> \
+arsenal scripts red-implementing-data-loss-prevention-with-microsoft-purview/agent --tenant-id <tenant-id> --client-id <client-id> \
   --client-secret <secret> --action alerts --severity high --days 30
 
 # List sensitivity labels
-python scripts/agent.py --tenant-id <tenant-id> --client-id <client-id> \
+arsenal scripts red-implementing-data-loss-prevention-with-microsoft-purview/agent --tenant-id <tenant-id> --client-id <client-id> \
   --client-secret <secret> --action labels
 
 # Check DLP policy health
-python scripts/agent.py --tenant-id <tenant-id> --client-id <client-id> \
+arsenal scripts red-implementing-data-loss-prevention-with-microsoft-purview/agent --tenant-id <tenant-id> --client-id <client-id> \
   --client-secret <secret> --action health --days 14
 
 # Generate full compliance report
-python scripts/agent.py --tenant-id <tenant-id> --client-id <client-id> \
+arsenal scripts red-implementing-data-loss-prevention-with-microsoft-purview/agent --tenant-id <tenant-id> --client-id <client-id> \
   --client-secret <secret> --action report --days 30 --output-dir ./reports
 ```
 

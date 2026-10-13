@@ -26,13 +26,13 @@
 
 ## Evidence Chain Summary (Sanitized)
 <!-- Up to 3 entries: E-id + command pattern + conclusion type; full evidence stays in the user case workspace -->
-<!-- Fields align with skill://re-case-review/templates/review_case.py contract (see below) -->
+<!-- Fields align with arsenal case review contract (see below) -->
 | E-id | severity | status | source_type | Reusable Command Pattern | Linked Finding |
 |------|----------|--------|-------------|--------------------------|----------------|
 | E-001 | info | observed | command | `checksec --file=./pwn1` | F-001 |
 | E-002 | high | validated | command | `python3 exploit.py REMOTE` | F-001 |
 
-> **Contract Alignment (`skill://re-case-review/templates/review_case.py`)**: When a case produces a standalone evidence directory (`./evidence/E-xxx.md`), each evidence record must satisfy the `skill://re-case-review/templates/review_case.py` schema or `--strict` verification will FAIL:
+> **Contract Alignment (`arsenal case review`)**: When a case produces a standalone evidence directory (`./evidence/E-xxx.md`), each evidence record must satisfy the `arsenal case review` schema or `--strict` verification will FAIL:
 >
 > - Heading: `### E-xxx` (must match the evidence record filename, e.g., `E-001` -> `### E-001`)
 > - `- severity:` in `critical` / `high` / `medium` / `low` / `info` / `n/a`
@@ -41,8 +41,8 @@
 > - `- content_hash:` sha256 or `n/a`; when sha256 is provided, pair with `- artifact_path:` (case-relative path)
 > - `- linked_workitem:` optional; referenced `WI-xxx` must exist
 >
-> Self-check (resolve helper from `skill://re-case-review/templates/review_case.py` to local `./review_case.py` first):
-> `python3 ./review_case.py <case_root> --verify-hashes --strict`
+> Self-check (resolve helper from `arsenal case review` to local `./review_case.py` first):
+> `arsenal case review <case_root> --verify-hashes --strict`
 
 ## Finding / Path Summary
 - top_finding:

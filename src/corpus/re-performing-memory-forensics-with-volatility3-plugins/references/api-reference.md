@@ -6,11 +6,11 @@
 
 ## CLI Interface
 ```
-python templates/agent.py plugin --dump memory.raw --name pslist [--args --pid 1234]
-python templates/agent.py malproc --dump memory.raw
-python templates/agent.py inject --dump memory.raw
-python templates/agent.py network --dump memory.raw
-python templates/agent.py triage --dump memory.raw
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent plugin --dump memory.raw --name pslist [--args --pid 1234]
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent malproc --dump memory.raw
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent inject --dump memory.raw
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent network --dump memory.raw
+arsenal scripts re-performing-memory-forensics-with-volatility3-plugins/agent triage --dump memory.raw
 ```
 
 ## Core Functions

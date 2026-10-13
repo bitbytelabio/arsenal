@@ -24,21 +24,15 @@
     ],
     "extensions": [
       "bounding",
-      "ledger",
       "budget",
       "routing"
     ],
     "tools": [
-      "evidence_exec",
       "skill_search",
-      "skill_route",
       "skill_list",
       "skill_load",
-      "consolidate_evidence",
-      "case_review",
-      "verify_oracle",
-      "apk_inspect",
-      "skill_asset_load"
+      "skill_asset_load",
+      "skill_route"
     ]
   }
 }

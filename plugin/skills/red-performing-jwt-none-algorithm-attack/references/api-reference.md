@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py decode --token <jwt_string>
-python scripts/agent.py forge --token <jwt_string> [--claims '{"role":"admin"}']
-python scripts/agent.py confuse --token <jwt_string> [--pubkey public.pem]
-python scripts/agent.py test --url <api_endpoint> --token <original_jwt>
+arsenal scripts red-performing-jwt-none-algorithm-attack/agent decode --token <jwt_string>
+arsenal scripts red-performing-jwt-none-algorithm-attack/agent forge --token <jwt_string> [--claims '{"role":"admin"}']
+arsenal scripts red-performing-jwt-none-algorithm-attack/agent confuse --token <jwt_string> [--pubkey public.pem]
+arsenal scripts red-performing-jwt-none-algorithm-attack/agent test --url <api_endpoint> --token <original_jwt>
 ```
 
 ## Core Functions

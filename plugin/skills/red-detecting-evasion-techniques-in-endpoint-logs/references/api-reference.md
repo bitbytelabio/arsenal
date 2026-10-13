@@ -58,6 +58,6 @@ index=sysmon (EventCode=2 OR EventCode=8 OR EventCode=10)
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --evtx-file Sysmon.evtx
-python scripts/agent.py --evtx-file Security.evtx
+arsenal scripts red-detecting-evasion-techniques-in-endpoint-logs/agent --evtx-file Sysmon.evtx
+arsenal scripts red-detecting-evasion-techniques-in-endpoint-logs/agent --evtx-file Security.evtx
 ```

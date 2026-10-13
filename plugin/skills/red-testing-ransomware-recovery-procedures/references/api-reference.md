@@ -4,19 +4,19 @@
 
 ```bash
 # Generate hash manifest for a directory (pre-backup baseline)
-python scripts/agent.py --hash-dir /data/critical-app -o manifest_baseline.json
+arsenal scripts red-testing-ransomware-recovery-procedures/agent --hash-dir /data/critical-app -o manifest_baseline.json
 
 # Compare original manifest against restored data
-python scripts/agent.py --compare manifest_baseline.json manifest_restored.json
+arsenal scripts red-testing-ransomware-recovery-procedures/agent --compare manifest_baseline.json manifest_restored.json
 
 # Check if a service is running after restore
-python scripts/agent.py --check-service postgresql
+arsenal scripts red-testing-ransomware-recovery-procedures/agent --check-service postgresql
 
 # Check database connectivity after restore
-python scripts/agent.py --check-db postgresql:localhost:5432
+arsenal scripts red-testing-ransomware-recovery-procedures/agent --check-db postgresql:localhost:5432
 
 # Run full recovery drill from config
-python scripts/agent.py --config drill_config.json -o recovery_report.json
+arsenal scripts red-testing-ransomware-recovery-procedures/agent --config drill_config.json -o recovery_report.json
 ```
 
 ## Drill Configuration Format

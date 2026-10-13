@@ -225,8 +225,8 @@ If the AI detects that desktop application automation is required but OpenRevers
 ## References
 
 - `skill://webapp-browser-automation/references/playwright-cheatsheet.md` — Playwright automation and selector cheatsheet
-- `skill://webapp-browser-automation/scripts/bootstrap-reverse.ps1` — Windows capability bootstrap script
-- `skill://webapp-browser-automation/scripts/bootstrap-reverse.sh` — POSIX capability bootstrap script
+- `arsenal scripts bootstrap-reverse` — Windows capability bootstrap script
+- `arsenal scripts bootstrap-reverse` — POSIX capability bootstrap script
 
 ## Routing Context
 

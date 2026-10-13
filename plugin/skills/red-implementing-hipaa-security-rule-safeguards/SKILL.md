@@ -101,4 +101,4 @@ Produce a **HIPAA Security Rule Gap Assessment** using `skill://red-implementing
 6. **2025 NPRM gap view** — readiness against the proposed mandates (clearly labeled proposed).
 7. **Remediation plan** — prioritized, with owners and dates; required specs and risk-analysis gaps first.
 
-Use `skill://red-implementing-hipaa-security-rule-safeguards/templates/process.py` to score a safeguard-status JSON across the §164.308/310/312 standards, weight required gaps above addressable ones, and emit the gap table plus a remediation-priority list.
+Use `arsenal scripts red-implementing-hipaa-security-rule-safeguards/process` to score a safeguard-status JSON across the §164.308/310/312 standards, weight required gaps above addressable ones, and emit the gap table plus a remediation-priority list.

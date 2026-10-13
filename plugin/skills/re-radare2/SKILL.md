@@ -56,7 +56,7 @@ Common Windows executables:
 
 This skill includes two built-in resources. Prioritize reusing them instead of assembling duplicate commands ad hoc every time.
 
-### `templates/recon.sh`
+### `arsenal scripts re-radare2/recon`
 
 Standard reconnaissance script, suitable for performing an initial overview analysis. Outputs:
 
@@ -70,13 +70,13 @@ Standard reconnaissance script, suitable for performing an initial overview anal
 Usage:
 
 ```bash
-bash templates/recon.sh "path/to/sample.exe"
+arsenal scripts re-radare2/recon "path/to/sample.exe"
 ```
 
 If automated analysis via `r2` is needed as well:
 
 ```bash
-bash templates/recon.sh "path/to/sample.exe" --analyze
+arsenal scripts re-radare2/recon "path/to/sample.exe" --analyze
 ```
 
 ### `skill://re-radare2/references/cheatsheet.md`
@@ -128,7 +128,7 @@ Suitable when first receiving a binary file.
 
 For binaries containing import tables such as PE/ELF/Mach-O, the import table inspection **MUST** be completed and documented into Evidence before proceeding to function-level analysis or dynamic steps:
 
-1. Execute `rabin2 -i <sample>` (or the imports section in `recon.sh` output); for DLL/SYS, additionally **MUST** execute `rabin2 -E` and log `E-exports`
+1. Execute `rabin2 -i <sample>` (or the imports section in `arsenal scripts re-radare2/recon` output); for DLL/SYS, additionally **MUST** execute `rabin2 -E` and log `E-exports`
 2. Write complete/categorized import table results into Evidence (recommended id: `E-imports` or `E-triage-imports`), containing at minimum:
    - Reproduction command (`repro_command`)
    - Categorized summary of key imports: Network / File / Crypto / Process Injection / Registry / other suspicious APIs
@@ -143,7 +143,7 @@ Before recording import table (or legitimate equivalent anchor / IAT failure byp
 Prioritize directly running the built-in script:
 
 ```bash
-bash templates/recon.sh "sample.exe"
+arsenal scripts re-radare2/recon "sample.exe"
 ```
 
 If only minimal manual commands are needed, use:
@@ -383,7 +383,7 @@ Procedure:
 ## References
 
 - Command Cheatsheet: `skill://re-radare2/references/cheatsheet.md`
-- Standard Recon Script: `templates/recon.sh`
+- Standard Recon Script: `arsenal scripts re-radare2/recon`
 
 ## radare2-skills Ecosystem
 
@@ -436,7 +436,7 @@ The entry scripts for this skill are integrated into the unified bootstrap syste
 
 ### Bootstrap Trigger Points
 
-- `templates/recon.sh`: Automatically invokes `bootstrap-reverse.ps1` when `rabin2` or `r2` is missing
+- `arsenal scripts re-radare2/recon`: Automatically invokes `bootstrap-reverse.ps1` when `rabin2` or `r2` is missing
 
 ### On Bootstrap Failure
 

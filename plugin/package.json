@@ -6,7 +6,6 @@
   "omp": {
     "extensions": [
       "./dist/extensions/bounding.js",
-      "./dist/extensions/ledger.js",
       "./dist/extensions/budget.js",
       "./dist/extensions/routing.js"
     ],
@@ -17,7 +16,6 @@
   "pi": {
     "extensions": [
       "./dist/extensions/bounding.js",
-      "./dist/extensions/ledger.js",
       "./dist/extensions/budget.js",
       "./dist/extensions/routing.js"
     ],

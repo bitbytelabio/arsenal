@@ -63,6 +63,6 @@ risk = "CRITICAL" if score >= 80 else "HIGH" if score >= 50 else "MEDIUM"
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --activity-log user_activity.jsonl
-python scripts/agent.py --activity-log events.csv --download-threshold 100
+arsenal scripts red-detecting-insider-threat-behaviors/agent --activity-log user_activity.jsonl
+arsenal scripts red-detecting-insider-threat-behaviors/agent --activity-log events.csv --download-threshold 100
 ```

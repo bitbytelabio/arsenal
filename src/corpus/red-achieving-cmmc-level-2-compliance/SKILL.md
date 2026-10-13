@@ -104,7 +104,7 @@ Produce a **CMMC Level 2 Readiness Report** using `skill://red-achieving-cmmc-le
 6. **Assessment path** — self vs C3PAO, target date, affirmation owner.
 7. **Remediation roadmap** — sequenced by point value and effort.
 
-Use `skill://red-achieving-cmmc-level-2-compliance/templates/process.py` to compute the SPRS score from a control-status JSON, flag POA&M-eligibility concerns, and report the gap to the conditional-certification threshold.
+Use `arsenal scripts red-achieving-cmmc-level-2-compliance/process` to compute the SPRS score from a control-status JSON, flag POA&M-eligibility concerns, and report the gap to the conditional-certification threshold.
 
 ## Shipped Playbook Resources
 

@@ -60,6 +60,6 @@ index=o365 Operation IN ("New-InboxRule", "Set-InboxRule")
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --token "eyJ..." --user-id user@company.com --org-domain company.com
-python scripts/agent.py --audit-log exchange_audit.log
+arsenal scripts red-detecting-email-forwarding-rules-attack/agent --token "eyJ..." --user-id user@company.com --org-domain company.com
+arsenal scripts red-detecting-email-forwarding-rules-attack/agent --audit-log exchange_audit.log
 ```

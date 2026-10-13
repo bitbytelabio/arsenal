@@ -6,7 +6,8 @@
 import { describe, expect, it } from "bun:test";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { VERSION } from "../src/core/version.ts";
+const pkg = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf-8")) as { version: string };
+const VERSION = pkg.version;
 
 describe("User Story 2: Profile Installation & Verification", () => {
   const scratchProfile = path.resolve("tests/fixtures/us2-profile");
@@ -23,34 +24,22 @@ describe("User Story 2: Profile Installation & Verification", () => {
     fs.writeFileSync(dbFile, "sqlite-dummy-data", "utf-8");
 
     // Run preview
-    const prevProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "install",
-      "--profile",
-      scratchProfile,
-      "--json",
-    ]);
+    const prevProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "install",
+    "--profile",
+    scratchProfile,
+    "--json",]);
     expect(prevProc.exitCode).toBe(0);
     // In preview mode, AGENTS.md should not exist yet
     expect(fs.existsSync(path.join(scratchProfile, "AGENTS.md"))).toBe(false);
 
     // Run write
-    const writeProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "install",
-      "--profile",
-      scratchProfile,
-      "--write",
-      "--json",
-    ]);
+    const writeProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "install",
+    "--profile",
+    scratchProfile,
+    "--write",
+    "--json",]);
     expect(writeProc.exitCode).toBe(0);
 
     // Verify template files created
@@ -134,17 +123,11 @@ describe("User Story 2: Profile Installation & Verification", () => {
 
   it("verifies profile integrity and catches undocumented agent shadow collisions", () => {
     // Clean verification
-    const verClean = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "verify",
-      "--profile",
-      scratchProfile,
-      "--json",
-    ]);
+    const verClean = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "verify",
+    "--profile",
+    scratchProfile,
+    "--json",]);
     expect(verClean.exitCode).toBe(0);
 
     // Introduce an undocumented agent shadow in profile agents/master.md
@@ -152,17 +135,11 @@ describe("User Story 2: Profile Installation & Verification", () => {
     fs.mkdirSync(agentDir, { recursive: true });
     fs.writeFileSync(path.join(agentDir, "master.md"), "shadow-agent", "utf-8");
 
-    const verShadow = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "verify",
-      "--profile",
-      scratchProfile,
-      "--json",
-    ]);
+    const verShadow = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "verify",
+    "--profile",
+    scratchProfile,
+    "--json",]);
     expect(verShadow.exitCode).toBe(1);
     const jsonRes = JSON.parse(verShadow.stdout.toString()) as { status: string };
     expect(jsonRes.status).toBe("failure");
@@ -177,85 +154,55 @@ describe("User Story 2: Profile Installation & Verification", () => {
 
     // 1. Missing marker
     fs.writeFileSync(agentsPath, originalContent.replace("## Specialist Roster", ""), "utf-8");
-    const verMarker = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "verify",
-      "--profile",
-      scratchProfile,
-      "--json",
-    ]);
+    const verMarker = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "verify",
+    "--profile",
+    scratchProfile,
+    "--json",]);
     expect(verMarker.exitCode).toBe(1);
     const jsonMarker = JSON.parse(verMarker.stdout.toString()) as { errors: string[] };
     expect(jsonMarker.errors.some((e) => e.includes("Missing required marker"))).toBe(true);
 
     // 2. Dangling include
     fs.writeFileSync(agentsPath, originalContent + "\n@path ./nonexistent.md\n", "utf-8");
-    const verInc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "verify",
-      "--profile",
-      scratchProfile,
-      "--json",
-    ]);
+    const verInc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "verify",
+    "--profile",
+    scratchProfile,
+    "--json",]);
     expect(verInc.exitCode).toBe(1);
     const jsonInc = JSON.parse(verInc.stdout.toString()) as { errors: string[] };
     expect(jsonInc.errors.some((e) => e.includes("Dangling include"))).toBe(true);
 
     // 3. Escaped backtick
     fs.writeFileSync(agentsPath, originalContent + "\n\\`sec-re\\`\n", "utf-8");
-    const verTick = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "verify",
-      "--profile",
-      scratchProfile,
-      "--json",
-    ]);
+    const verTick = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "verify",
+    "--profile",
+    scratchProfile,
+    "--json",]);
     expect(verTick.exitCode).toBe(1);
     const jsonTick = JSON.parse(verTick.stdout.toString()) as { errors: string[] };
     expect(jsonTick.errors.some((e) => e.includes("Escaped backticks"))).toBe(true);
 
     // 4. Forbidden vendor token
     fs.writeFileSync(agentsPath, originalContent + "\nvendor token: anthropic\n", "utf-8");
-    const verVendor = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "verify",
-      "--profile",
-      scratchProfile,
-      "--json",
-    ]);
+    const verVendor = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "verify",
+    "--profile",
+    scratchProfile,
+    "--json",]);
     expect(verVendor.exitCode).toBe(1);
     const jsonVendor = JSON.parse(verVendor.stdout.toString()) as { errors: string[] };
     expect(jsonVendor.errors.some((e) => e.includes("Forbidden vendor token"))).toBe(true);
 
     // 5. Specialist set mismatch
     fs.writeFileSync(agentsPath, originalContent.replaceAll("sec-verifier", "sec-unknown"), "utf-8");
-    const verSpec = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "verify",
-      "--profile",
-      scratchProfile,
-      "--json",
-    ]);
+    const verSpec = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "verify",
+    "--profile",
+    scratchProfile,
+    "--json",]);
     expect(verSpec.exitCode).toBe(1);
     const jsonSpec = JSON.parse(verSpec.stdout.toString()) as { errors: string[] };
     expect(jsonSpec.errors.some((e) => e.includes("Specialist set mismatch"))).toBe(true);
@@ -293,18 +240,12 @@ modelRoles:
     fs.writeFileSync(path.join(scratchMerge, "config.yaml"), customConfig, "utf-8");
 
     // Run install without --force (should merge cleanly)
-    const installProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "install",
-      "--profile",
-      scratchMerge,
-      "--write",
-      "--json",
-    ]);
+    const installProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "install",
+    "--profile",
+    scratchMerge,
+    "--write",
+    "--json",]);
     expect(installProc.exitCode).toBe(0);
 
     // 1. Verify AGENTS.md merged: custom codebase-memory preserved, required sections added
@@ -330,28 +271,22 @@ modelRoles:
     expect(mergedConfig).toContain("customOperatorFlag: true");
     expect(mergedConfig).toContain('customRole: "test/model"');
     // Verify only sec-* and default use deepseek, other roles use antigravity
-    expect(mergedConfig).toContain("default: deepseek/deepseek-flash");
-    expect(mergedConfig).toContain("sec-re: deepseek/deepseek-flash");
-    expect(mergedConfig).toContain("sec-webapp: deepseek/deepseek-flash");
-    expect(mergedConfig).toContain("sec-mobile: deepseek/deepseek-flash");
-    expect(mergedConfig).toContain("sec-red: deepseek/deepseek-flash");
-    expect(mergedConfig).toContain("sec-verifier: deepseek/deepseek-flash");
-    expect(mergedConfig).toContain("lead: google-antigravity/claude-opus-4-6:high");
-    expect(mergedConfig).toContain("task: google-antigravity/gemini-3.8-flash:high");
-    expect(mergedConfig).toContain("image: google-antigravity/gemini-3-pro-image");
+    expect(mergedConfig).toContain('default: "deepseek/deepseek-flash"');
+    expect(mergedConfig).toContain('sec-re: "deepseek/deepseek-flash"');
+    expect(mergedConfig).toContain('sec-webapp: "deepseek/deepseek-flash"');
+    expect(mergedConfig).toContain('sec-mobile: "deepseek/deepseek-flash"');
+    expect(mergedConfig).toContain('sec-red: "deepseek/deepseek-flash"');
+    expect(mergedConfig).toContain('sec-verifier: "deepseek/deepseek-flash"');
+    expect(mergedConfig).toContain('lead: "google-antigravity/claude-opus-4-6:high"');
+    expect(mergedConfig).toContain('task: "google-antigravity/gemini-3.8-flash:high"');
+    expect(mergedConfig).toContain('image: "google-antigravity/gemini-3-pro-image"');
 
     // 4. Verify profile verify passes on the merged directory
-    const verProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "verify",
-      "--profile",
-      scratchMerge,
-      "--json",
-    ]);
+    const verProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "verify",
+    "--profile",
+    scratchMerge,
+    "--json",]);
     expect(verProc.exitCode).toBe(0);
 
     fs.rmSync(scratchMerge, { recursive: true, force: true });
@@ -366,19 +301,13 @@ modelRoles:
     fs.writeFileSync(path.join(scratchCorrupt, "mcp.json"), "corrupt-scalar-string", "utf-8");
 
     // Profile install must fail preflight without writing other templates
-    const corruptProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "install",
-      "--profile",
-      scratchCorrupt,
-      "--write",
-      "--force",
-      "--json",
-    ]);
+    const corruptProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "install",
+    "--profile",
+    scratchCorrupt,
+    "--write",
+    "--force",
+    "--json",]);
     expect(corruptProc.exitCode).not.toBe(0);
     expect(fs.existsSync(path.join(scratchCorrupt, "AGENTS.md"))).toBe(false); // No writes occurred!
 
@@ -396,18 +325,12 @@ modelRoles:
     };
     fs.writeFileSync(path.join(scratchPreserve, "mcp.json"), JSON.stringify(operatorMcp, null, 2), "utf-8");
 
-    const preserveProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "profile",
-      "install",
-      "--profile",
-      scratchPreserve,
-      "--write",
-      "--json",
-    ]);
+    const preserveProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    "install",
+    "--profile",
+    scratchPreserve,
+    "--write",
+    "--json",]);
     expect(preserveProc.exitCode).toBe(0);
 
     const merged = JSON.parse(fs.readFileSync(path.join(scratchPreserve, "mcp.json"), "utf-8"));
@@ -429,18 +352,12 @@ modelRoles:
     fs.rmSync(scratchDist, { recursive: true, force: true });
     fs.mkdirSync(scratchDist, { recursive: true });
 
-    const packProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "plugin",
-      "pack",
-      "--out",
-      scratchDist,
-      "--write",
-      "--json",
-    ]);
+    const packProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "plugin",
+    "pack",
+    "--out",
+    scratchDist,
+    "--write",
+    "--json",]);
     expect(packProc.exitCode).toBe(0);
     expect(fs.existsSync(path.join(scratchDist, `arsenal-${VERSION}.tar.gz`))).toBe(true);
     expect(fs.existsSync(path.join(scratchDist, "marketplace.json"))).toBe(true);

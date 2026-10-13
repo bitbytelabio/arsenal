@@ -128,4 +128,4 @@ Produce an **Adversary Engagement Operation Plan** using `skill://red-designing-
 7. **Measurement plan** — metrics per objective (alert latency, dwell time, indicators gained, samples obtained).
 8. **After-action report** — objectives met/missed, intel produced, detections promoted to production, threat-model updates.
 
-Use `skill://red-designing-adversary-engagement-with-mitre-engage/templates/process.py` to validate technique→Activity coverage and generate the operation-plan skeleton from a threat-model input.
+Use `arsenal scripts red-designing-adversary-engagement-with-mitre-engage/process` to validate technique→Activity coverage and generate the operation-plan skeleton from a threat-model input.

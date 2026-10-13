@@ -4,13 +4,13 @@
 
 ```bash
 # Correlate Sherlock + theHarvester results
-python scripts/agent.py --target "targetdomain.com" \
+arsenal scripts red-performing-ai-driven-osint-correlation/agent --target "targetdomain.com" \
   --sherlock sherlock-results.csv \
   --harvester harvester-results.json \
   -o correlation_report.json
 
 # Full multi-source correlation
-python scripts/agent.py --target "john.doe" \
+arsenal scripts red-performing-ai-driven-osint-correlation/agent --target "john.doe" \
   --sherlock sherlock.csv \
   --harvester harvester.json \
   --spiderfoot spiderfoot.json \
@@ -19,11 +19,11 @@ python scripts/agent.py --target "john.doe" \
   --markdown intelligence-profile.md
 
 # Normalize only (no correlation)
-python scripts/agent.py --sherlock sherlock.csv --harvester harvester.json \
+arsenal scripts red-performing-ai-driven-osint-correlation/agent --sherlock sherlock.csv --harvester harvester.json \
   --normalize-only -o normalized.json
 
 # Load pre-normalized generic findings
-python scripts/agent.py --generic normalized_findings.json -o report.json
+arsenal scripts red-performing-ai-driven-osint-correlation/agent --generic normalized_findings.json -o report.json
 ```
 
 ## Supported Data Sources

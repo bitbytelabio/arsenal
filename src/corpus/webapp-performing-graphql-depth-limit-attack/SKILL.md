@@ -398,7 +398,7 @@ GRAPHQL_CONFIG = {
 ## References
 
 - `skill://webapp-performing-graphql-depth-limit-attack/references/api-reference.md` — API reference and CLI invocation commands for depth limit probing
-- `scripts/agent.py` — authentic Python CLI test harness for depth, circular query, and batch probing
+- `arsenal scripts webapp-performing-graphql-depth-limit-attack/agent` — authentic Python CLI test harness for depth, circular query, and batch probing
 - OWASP GraphQL Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html
 - Apollo GraphQL Security Guide: https://www.apollographql.com/blog/securing-your-graphql-api-from-malicious-queries
 - Checkmarx GraphQL Depth Exploitation: https://checkmarx.com/blog/exploiting-graphql-query-depth/

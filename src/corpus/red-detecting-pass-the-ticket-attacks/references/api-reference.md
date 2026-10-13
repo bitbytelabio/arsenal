@@ -94,11 +94,11 @@ POST security-*/_search
 
 ```bash
 # Parse exported event log XML and detect PtT indicators
-python scripts/agent.py --evtx-xml security_events.xml --output report.json
+arsenal scripts red-detecting-pass-the-ticket-attacks/agent --evtx-xml security_events.xml --output report.json
 
 # Show Splunk detection queries
-python scripts/agent.py --show-splunk
+arsenal scripts red-detecting-pass-the-ticket-attacks/agent --show-splunk
 
 # Custom thresholds
-python scripts/agent.py --evtx-xml events.xml --tgs-threshold 30 --preauth-threshold 5
+arsenal scripts red-detecting-pass-the-ticket-attacks/agent --evtx-xml events.xml --tgs-threshold 30 --preauth-threshold 5
 ```

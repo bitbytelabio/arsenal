@@ -1,0 +1,98 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/verification-result.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "finding_id",
+    "verifier",
+    "oracle_name",
+    "oracle_version",
+    "expected_behavior",
+    "observed_behavior",
+    "reproduction_evidence_ids",
+    "outcome",
+    "rationale",
+    "verified_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "finding_id": {
+      "type": "string",
+      "pattern": "^F-[0-9]{6,}$"
+    },
+    "verifier": {
+      "type": "object",
+      "required": [
+        "role",
+        "session_id"
+      ],
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "oracle_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oracle_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_behavior": {
+      "type": "string"
+    },
+    "observed_behavior": {
+      "type": "string"
+    },
+    "reproduction_evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outcome": {
+      "enum": [
+        "validated",
+        "unvalidated",
+        "rejected",
+        "partial",
+        "error"
+      ]
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "counterevidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "execution_error": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

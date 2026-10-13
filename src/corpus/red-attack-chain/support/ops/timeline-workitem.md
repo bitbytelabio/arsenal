@@ -15,10 +15,10 @@ work/<case>/
   report/            # Final report draft or copy
 ```
 
-Initialization: resolve `skill://red-attack-chain/scripts/case-init.ps1`, copy the complete resource to `scripts/case-init.ps1` in the analysis workspace, and run from that workspace:
+Initialization: run case-init via Arsenal CLI:
 
 ```powershell
-powershell -File scripts/case-init.ps1 -Hint "full pentest" -CaseName "acme-2026"
+arsenal scripts case-init -Hint "full pentest" -CaseName "acme-2026"
 ```
 
 ## timeline.md Format

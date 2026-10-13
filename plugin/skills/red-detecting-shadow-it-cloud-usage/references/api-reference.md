@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py access.log --type proxy parse
-python scripts/agent.py access.log --type proxy analyze
-python scripts/agent.py dns-queries.log --type dns full
-python scripts/agent.py traffic.csv --type csv --approved approved.txt full
+arsenal scripts red-detecting-shadow-it-cloud-usage/agent access.log --type proxy parse
+arsenal scripts red-detecting-shadow-it-cloud-usage/agent access.log --type proxy analyze
+arsenal scripts red-detecting-shadow-it-cloud-usage/agent dns-queries.log --type dns full
+arsenal scripts red-detecting-shadow-it-cloud-usage/agent traffic.csv --type csv --approved approved.txt full
 ```
 
 ## Core Functions

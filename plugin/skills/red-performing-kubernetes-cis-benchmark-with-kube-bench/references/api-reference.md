@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py bench [--target master|node|etcd|policies] [--benchmark cis-1.8]
-python scripts/agent.py pods [--namespace default]
-python scripts/agent.py rbac
-python scripts/agent.py netpol [--namespace default]
+arsenal scripts red-performing-kubernetes-cis-benchmark-with-kube-bench/agent bench [--target master|node|etcd|policies] [--benchmark cis-1.8]
+arsenal scripts red-performing-kubernetes-cis-benchmark-with-kube-bench/agent pods [--namespace default]
+arsenal scripts red-performing-kubernetes-cis-benchmark-with-kube-bench/agent rbac
+arsenal scripts red-performing-kubernetes-cis-benchmark-with-kube-bench/agent netpol [--namespace default]
 ```
 
 ## Core Functions

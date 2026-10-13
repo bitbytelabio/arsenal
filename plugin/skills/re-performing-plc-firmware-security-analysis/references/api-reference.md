@@ -9,11 +9,11 @@
 
 ## CLI Interface
 ```
-python templates/agent.py extract --firmware plc_fw.bin [--output /tmp/fw_extract]
-python templates/agent.py metadata --firmware plc_fw.bin
-python templates/agent.py creds --dir /tmp/fw_extract
-python templates/agent.py vulns --dir /tmp/fw_extract
-python templates/agent.py full --firmware plc_fw.bin [--output /tmp/fw_extract]
+arsenal scripts re-performing-plc-firmware-security-analysis/agent extract --firmware plc_fw.bin [--output /tmp/fw_extract]
+arsenal scripts re-performing-plc-firmware-security-analysis/agent metadata --firmware plc_fw.bin
+arsenal scripts re-performing-plc-firmware-security-analysis/agent creds --dir /tmp/fw_extract
+arsenal scripts re-performing-plc-firmware-security-analysis/agent vulns --dir /tmp/fw_extract
+arsenal scripts re-performing-plc-firmware-security-analysis/agent full --firmware plc_fw.bin [--output /tmp/fw_extract]
 ```
 
 ## Core Functions

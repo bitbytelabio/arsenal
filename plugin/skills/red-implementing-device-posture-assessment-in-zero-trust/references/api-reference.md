@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --output-dir /reports/ --output device_posture.json
+arsenal scripts red-implementing-device-posture-assessment-in-zero-trust/agent --output-dir /reports/ --output device_posture.json
 ```
 
 ## Functions

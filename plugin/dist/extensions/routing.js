@@ -7684,36 +7684,23 @@ var require_dist = __commonJS(function(exports, module) {
 });
 
 // plugin/extensions/routing.ts
-import * as fs8 from "fs";
-import * as path7 from "path";
+import * as fs3 from "fs";
+import * as path3 from "path";
 
 // src/core/hash.ts
-import * as fs from "fs";
 import * as crypto from "crypto";
-var GENESIS_PREV_HASH = "0000000000000000000000000000000000000000000000000000000000000000";
 function sha256Bytes(bytes) {
   return crypto.createHash("sha256").update(bytes).digest("hex").toLowerCase();
 }
 function sha256String(text) {
   return crypto.createHash("sha256").update(text, "utf-8").digest("hex").toLowerCase();
 }
-function sha256File(filePath) {
-  const content = fs.readFileSync(filePath);
-  return crypto.createHash("sha256").update(content).digest("hex").toLowerCase();
-}
 
 // src/schemas/validator.ts
 var import__2020 = __toESM(require__2020(), 1);
 var import_ajv_formats = __toESM(require_dist(), 1);
-var ajv = new import__2020.default({
-  allErrors: true,
-  strict: false,
-  useDefaults: false,
-  removeAdditional: false,
-  coerceTypes: false
-});
-import_ajv_formats.default(ajv);
-var SCOPE_SCHEMA = {
+// src/arsenal/schema_data/scope_schema.json
+var scope_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/scope.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -7730,56 +7717,138 @@ var SCOPE_SCHEMA = {
     "window"
   ],
   properties: {
-    schema_version: { const: 1 },
-    engagement_id: { type: "string", minLength: 1 },
-    name: { type: "string", minLength: 1 },
-    created_at: { type: "string", format: "date-time" },
-    domain: { enum: ["re", "webapp", "mobile", "red"] },
+    schema_version: {
+      const: 1
+    },
+    engagement_id: {
+      type: "string",
+      minLength: 1
+    },
+    name: {
+      type: "string",
+      minLength: 1
+    },
+    created_at: {
+      type: "string",
+      format: "date-time"
+    },
+    domain: {
+      enum: [
+        "re",
+        "webapp",
+        "mobile",
+        "red"
+      ]
+    },
     auth: {
       type: "object",
-      required: ["status", "ready_for_act"],
+      required: [
+        "status",
+        "ready_for_act"
+      ],
       properties: {
-        status: { enum: ["incomplete", "granted", "expired", "revoked"] },
-        basis: { type: ["string", "null"] },
-        reference: { type: ["string", "null"] },
-        ready_for_act: { type: "boolean" }
+        status: {
+          enum: [
+            "incomplete",
+            "granted",
+            "expired",
+            "revoked"
+          ]
+        },
+        basis: {
+          type: [
+            "string",
+            "null"
+          ]
+        },
+        reference: {
+          type: [
+            "string",
+            "null"
+          ]
+        },
+        ready_for_act: {
+          type: "boolean"
+        }
       },
       additionalProperties: false
     },
     in_scope: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
     out_of_scope: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
     disallowed_actions: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
     window: {
       type: "object",
-      required: ["start", "end", "timezone"],
+      required: [
+        "start",
+        "end",
+        "timezone"
+      ],
       properties: {
-        start: { type: "string", format: "date-time" },
-        end: { type: "string", format: "date-time" },
-        timezone: { type: "string" },
+        start: {
+          type: "string",
+          format: "date-time"
+        },
+        end: {
+          type: "string",
+          format: "date-time"
+        },
+        timezone: {
+          type: "string"
+        },
         allowed_hours: {
           type: "array",
-          items: { type: "string" }
+          items: {
+            type: "string"
+          }
         }
       },
       additionalProperties: false
     },
-    environment_id: { type: ["string", "null"] },
-    charter_path: { type: ["string", "null"] },
-    charter_sha256: { type: ["string", "null"] },
-    budget_usd: { type: ["string", "number", "null"] }
+    environment_id: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    charter_path: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    charter_sha256: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    budget_usd: {
+      type: [
+        "string",
+        "number",
+        "null"
+      ]
+    }
   },
   additionalProperties: false
 };
-var ENGAGEMENT_SCHEMA = {
+// src/arsenal/schema_data/engagement_schema.json
+var engagement_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/engagement.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -7793,29 +7862,76 @@ var ENGAGEMENT_SCHEMA = {
     "status"
   ],
   properties: {
-    schema_version: { const: 1 },
-    engagement_id: { type: "string", minLength: 1 },
-    name: { type: "string", minLength: 1 },
-    domain: { enum: ["re", "webapp", "mobile", "red"] },
-    created_at: { type: "string", format: "date-time" },
+    schema_version: {
+      const: 1
+    },
+    engagement_id: {
+      type: "string",
+      minLength: 1
+    },
+    name: {
+      type: "string",
+      minLength: 1
+    },
+    domain: {
+      enum: [
+        "re",
+        "webapp",
+        "mobile",
+        "red"
+      ]
+    },
+    created_at: {
+      type: "string",
+      format: "date-time"
+    },
     auth: {
       type: "object",
-      required: ["status", "ready_for_act"],
+      required: [
+        "status",
+        "ready_for_act"
+      ],
       properties: {
-        status: { enum: ["incomplete", "granted", "expired", "revoked"] },
-        basis: { type: ["string", "null"] },
-        reference: { type: ["string", "null"] },
-        ready_for_act: { type: "boolean" }
+        status: {
+          enum: [
+            "incomplete",
+            "granted",
+            "expired",
+            "revoked"
+          ]
+        },
+        basis: {
+          type: [
+            "string",
+            "null"
+          ]
+        },
+        reference: {
+          type: [
+            "string",
+            "null"
+          ]
+        },
+        ready_for_act: {
+          type: "boolean"
+        }
       },
       additionalProperties: false
     },
     status: {
-      enum: ["prepared", "active", "stopped", "completed", "failed"]
+      enum: [
+        "prepared",
+        "active",
+        "stopped",
+        "completed",
+        "failed"
+      ]
     }
   },
   additionalProperties: false
 };
-var ENVIRONMENT_SCHEMA = {
+// src/arsenal/schema_data/environment_schema.json
+var environment_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/environment.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -7827,26 +7943,85 @@ var ENVIRONMENT_SCHEMA = {
     "working_root"
   ],
   properties: {
-    schema_version: { const: 1 },
-    id: { type: "string", minLength: 1 },
-    kind: { enum: ["local", "container", "vm", "remote"] },
-    name: { type: "string", minLength: 1 },
-    address: { type: ["string", "null"] },
-    access_method: { type: ["string", "null"] },
-    working_root: { type: "string" },
-    proxy_url: { type: ["string", "null"] },
-    ca_path: { type: ["string", "null"] },
-    browser_trust_path: { type: ["string", "null"] },
-    tool_index_path: { type: ["string", "null"] },
-    path_overrides: {
-      type: ["array", "null"],
-      items: { type: "string" }
+    schema_version: {
+      const: 1
     },
-    observed_at: { type: ["string", "null"], format: "date-time" }
+    id: {
+      type: "string",
+      minLength: 1
+    },
+    kind: {
+      enum: [
+        "local",
+        "container",
+        "vm",
+        "remote"
+      ]
+    },
+    name: {
+      type: "string",
+      minLength: 1
+    },
+    address: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    access_method: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    working_root: {
+      type: "string"
+    },
+    proxy_url: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    ca_path: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    browser_trust_path: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    tool_index_path: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    path_overrides: {
+      type: [
+        "array",
+        "null"
+      ],
+      items: {
+        type: "string"
+      }
+    },
+    observed_at: {
+      type: [
+        "string",
+        "null"
+      ],
+      format: "date-time"
+    }
   },
   additionalProperties: false
 };
-var EVIDENCE_RECEIPT_SCHEMA = {
+// src/arsenal/schema_data/evidence_receipt_schema.json
+var evidence_receipt_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/evidence-receipt.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -7864,16 +8039,44 @@ var EVIDENCE_RECEIPT_SCHEMA = {
     "data"
   ],
   properties: {
-    schema_version: { const: 1 },
-    engagement_id: { type: "string", minLength: 1 },
-    seq: { type: "integer", minimum: 1 },
-    event_key: { type: "string", minLength: 1 },
-    kind: { const: "evidence_receipt" },
-    entity_id: { type: "string", pattern: "^E-[0-9]{6,}$" },
-    session_id: { type: "string", minLength: 1 },
-    actor: { type: "string", minLength: 1 },
-    recorded_at: { type: "string", format: "date-time" },
-    prev_hash: { type: "string", pattern: "^[0-9a-f]{64}$" },
+    schema_version: {
+      const: 1
+    },
+    engagement_id: {
+      type: "string",
+      minLength: 1
+    },
+    seq: {
+      type: "integer",
+      minimum: 1
+    },
+    event_key: {
+      type: "string",
+      minLength: 1
+    },
+    kind: {
+      const: "evidence_receipt"
+    },
+    entity_id: {
+      type: "string",
+      pattern: "^E-[0-9]{6,}$"
+    },
+    session_id: {
+      type: "string",
+      minLength: 1
+    },
+    actor: {
+      type: "string",
+      minLength: 1
+    },
+    recorded_at: {
+      type: "string",
+      format: "date-time"
+    },
+    prev_hash: {
+      type: "string",
+      pattern: "^[0-9a-f]{64}$"
+    },
     data: {
       type: "object",
       required: [
@@ -7885,14 +8088,31 @@ var EVIDENCE_RECEIPT_SCHEMA = {
         "artifacts"
       ],
       properties: {
-        tool_name: { type: "string" },
-        requested_target: { type: "string" },
-        observed_endpoint: { type: "string" },
-        scope_attribution: { enum: ["in_scope", "out_of_scope", "unknown"] },
+        tool_name: {
+          type: "string"
+        },
+        requested_target: {
+          type: "string"
+        },
+        observed_endpoint: {
+          type: "string"
+        },
+        scope_attribution: {
+          enum: [
+            "in_scope",
+            "out_of_scope",
+            "unknown"
+          ]
+        },
         scope_revision_sha256: {
           oneOf: [
-            { type: "string", pattern: "^([0-9a-f]{64}|unk-[a-z0-9_-]+)$" },
-            { type: "null" }
+            {
+              type: "string",
+              pattern: "^([0-9a-f]{64}|unk-[a-z0-9_-]+)$"
+            },
+            {
+              type: "null"
+            }
           ]
         },
         artifacts: {
@@ -7908,11 +8128,23 @@ var EVIDENCE_RECEIPT_SCHEMA = {
               "fidelity"
             ],
             properties: {
-              artifact_id: { type: "string" },
-              path: { type: "string" },
-              media_type: { type: "string" },
-              byte_length: { type: "integer", minimum: 0 },
-              sha256: { type: "string", pattern: "^[0-9a-f]{64}$" },
+              artifact_id: {
+                type: "string"
+              },
+              path: {
+                type: "string"
+              },
+              media_type: {
+                type: "string"
+              },
+              byte_length: {
+                type: "integer",
+                minimum: 0
+              },
+              sha256: {
+                type: "string",
+                pattern: "^[0-9a-f]{64}$"
+              },
               fidelity: {
                 enum: [
                   "raw",
@@ -7926,16 +8158,32 @@ var EVIDENCE_RECEIPT_SCHEMA = {
             additionalProperties: false
           }
         },
-        capture_gap: { type: ["string", "null"] },
-        attribution_reason: { type: ["string", "null"] },
-        matching_selector: { type: ["string", "null"] }
+        capture_gap: {
+          type: [
+            "string",
+            "null"
+          ]
+        },
+        attribution_reason: {
+          type: [
+            "string",
+            "null"
+          ]
+        },
+        matching_selector: {
+          type: [
+            "string",
+            "null"
+          ]
+        }
       },
       additionalProperties: false
     }
   },
   additionalProperties: false
 };
-var FINDING_SCHEMA = {
+// src/arsenal/schema_data/finding_schema.json
+var finding_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/finding.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -7952,44 +8200,99 @@ var FINDING_SCHEMA = {
     "validation_status"
   ],
   properties: {
-    schema_version: { const: 1 },
-    finding_id: { type: "string", pattern: "^F-[0-9]{6,}$" },
-    engagement_id: { type: "string", minLength: 1 },
-    title: { type: "string", minLength: 1 },
-    description: { type: "string", minLength: 1 },
-    severity: { enum: ["info", "low", "medium", "high", "critical"] },
-    affected_target: { type: "string", minLength: 1 },
-    cwe_id: { type: ["string", "null"] },
-    rule_id: { type: ["string", "null"] },
+    schema_version: {
+      const: 1
+    },
+    finding_id: {
+      type: "string",
+      pattern: "^F-[0-9]{6,}$"
+    },
+    engagement_id: {
+      type: "string",
+      minLength: 1
+    },
+    title: {
+      type: "string",
+      minLength: 1
+    },
+    description: {
+      type: "string",
+      minLength: 1
+    },
+    severity: {
+      enum: [
+        "info",
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    affected_target: {
+      type: "string",
+      minLength: 1
+    },
+    cwe_id: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    rule_id: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
     discoverer: {
       type: "object",
-      required: ["role", "session_id"],
+      required: [
+        "role",
+        "session_id"
+      ],
       properties: {
-        role: { type: "string" },
-        session_id: { type: "string" }
+        role: {
+          type: "string"
+        },
+        session_id: {
+          type: "string"
+        }
       },
       additionalProperties: false
     },
     evidence_ids: {
       type: "array",
       minItems: 1,
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
     related_propositions: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
     related_unknowns: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
     validation_status: {
-      enum: ["validated", "unvalidated", "rejected", "partial", "error"]
+      enum: [
+        "validated",
+        "unvalidated",
+        "rejected",
+        "partial",
+        "error"
+      ]
     }
   },
   additionalProperties: false
 };
-var VERIFICATION_RESULT_SCHEMA = {
+// src/arsenal/schema_data/verification_result_schema.json
+var verification_result_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/verification-result.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -8007,43 +8310,88 @@ var VERIFICATION_RESULT_SCHEMA = {
     "verified_at"
   ],
   properties: {
-    schema_version: { const: 1 },
-    finding_id: { type: "string", pattern: "^F-[0-9]{6,}$" },
+    schema_version: {
+      const: 1
+    },
+    finding_id: {
+      type: "string",
+      pattern: "^F-[0-9]{6,}$"
+    },
     verifier: {
       type: "object",
-      required: ["role", "session_id"],
+      required: [
+        "role",
+        "session_id"
+      ],
       properties: {
-        role: { type: "string" },
-        session_id: { type: "string" }
+        role: {
+          type: "string"
+        },
+        session_id: {
+          type: "string"
+        }
       },
       additionalProperties: false
     },
-    oracle_name: { type: "string", minLength: 1 },
-    oracle_version: { type: "string", minLength: 1 },
+    oracle_name: {
+      type: "string",
+      minLength: 1
+    },
+    oracle_version: {
+      type: "string",
+      minLength: 1
+    },
     input_artifact_refs: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
-    expected_behavior: { type: "string" },
-    observed_behavior: { type: "string" },
+    expected_behavior: {
+      type: "string"
+    },
+    observed_behavior: {
+      type: "string"
+    },
     reproduction_evidence_ids: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
     outcome: {
-      enum: ["validated", "unvalidated", "rejected", "partial", "error"]
+      enum: [
+        "validated",
+        "unvalidated",
+        "rejected",
+        "partial",
+        "error"
+      ]
     },
-    rationale: { type: "string" },
+    rationale: {
+      type: "string"
+    },
     counterevidence_ids: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
-    execution_error: { type: ["string", "null"] },
-    verified_at: { type: "string", format: "date-time" }
+    execution_error: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    verified_at: {
+      type: "string",
+      format: "date-time"
+    }
   },
   additionalProperties: false
 };
-var MANIFEST_SCHEMA = {
+// src/arsenal/schema_data/manifest_schema.json
+var manifest_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/manifest.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -8053,18 +8401,40 @@ var MANIFEST_SCHEMA = {
     "files"
   ],
   properties: {
-    schema_version: { const: 1 },
-    generator: { type: "string", minLength: 1 },
-    created_at: { type: ["string", "null"] },
+    schema_version: {
+      const: 1
+    },
+    generator: {
+      type: "string",
+      minLength: 1
+    },
+    created_at: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
     files: {
       type: "array",
       items: {
         type: "object",
-        required: ["path", "sha256", "bytes"],
+        required: [
+          "path",
+          "sha256",
+          "bytes"
+        ],
         properties: {
-          path: { type: "string" },
-          sha256: { type: "string", pattern: "^[0-9a-f]{64}$" },
-          bytes: { type: "integer", minimum: 0 }
+          path: {
+            type: "string"
+          },
+          sha256: {
+            type: "string",
+            pattern: "^[0-9a-f]{64}$"
+          },
+          bytes: {
+            type: "integer",
+            minimum: 0
+          }
         },
         additionalProperties: false
       }
@@ -8073,15 +8443,35 @@ var MANIFEST_SCHEMA = {
       type: "array",
       items: {
         type: "object",
-        required: ["capability_kind", "name", "source_path", "replaces_path", "reason"],
+        required: [
+          "capability_kind",
+          "name",
+          "source_path",
+          "replaces_path",
+          "reason"
+        ],
         properties: {
-          capability_kind: { type: "string" },
-          name: { type: "string" },
-          source_path: { type: "string" },
-          replaces_path: { type: "string" },
-          reason: { type: "string" },
-          owner: { type: "string" },
-          approved_hash: { type: "string" }
+          capability_kind: {
+            type: "string"
+          },
+          name: {
+            type: "string"
+          },
+          source_path: {
+            type: "string"
+          },
+          replaces_path: {
+            type: "string"
+          },
+          reason: {
+            type: "string"
+          },
+          owner: {
+            type: "string"
+          },
+          approved_hash: {
+            type: "string"
+          }
         },
         additionalProperties: false
       }
@@ -8089,7 +8479,8 @@ var MANIFEST_SCHEMA = {
   },
   additionalProperties: false
 };
-var BUDGET_RECORD_SCHEMA = {
+// src/arsenal/schema_data/budget_record_schema.json
+var budget_record_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/budget-record.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -8103,36 +8494,80 @@ var BUDGET_RECORD_SCHEMA = {
     "reserve_active"
   ],
   properties: {
-    schema_version: { const: 1 },
-    engagement_id: { type: "string", minLength: 1 },
-    allowance_usd: { type: ["string", "null"] },
-    known_spend_usd: { type: "string" },
-    unknown_usage_count: { type: "integer", minimum: 0 },
+    schema_version: {
+      const: 1
+    },
+    engagement_id: {
+      type: "string",
+      minLength: 1
+    },
+    allowance_usd: {
+      type: [
+        "string",
+        "null"
+      ]
+    },
+    known_spend_usd: {
+      type: "string"
+    },
+    unknown_usage_count: {
+      type: "integer",
+      minimum: 0
+    },
     token_totals: {
       type: "object",
-      required: ["input", "output", "cacheRead", "cacheWrite"],
+      required: [
+        "input",
+        "output",
+        "cacheRead",
+        "cacheWrite"
+      ],
       properties: {
-        input: { type: "integer", minimum: 0 },
-        output: { type: "integer", minimum: 0 },
-        cacheRead: { type: "integer", minimum: 0 },
-        cacheWrite: { type: "integer", minimum: 0 }
+        input: {
+          type: "integer",
+          minimum: 0
+        },
+        output: {
+          type: "integer",
+          minimum: 0
+        },
+        cacheRead: {
+          type: "integer",
+          minimum: 0
+        },
+        cacheWrite: {
+          type: "integer",
+          minimum: 0
+        }
       },
       additionalProperties: false
     },
     warned_bands: {
       type: "array",
-      items: { type: "integer" }
+      items: {
+        type: "integer"
+      }
     },
-    reserve_active: { type: "boolean" },
+    reserve_active: {
+      type: "boolean"
+    },
     in_flight_spawns: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
-    ledger_head_hash: { type: ["string", "null"] }
+    ledger_head_hash: {
+      type: [
+        "string",
+        "null"
+      ]
+    }
   },
   additionalProperties: false
 };
-var CLI_ENVELOPE_SCHEMA = {
+// src/arsenal/schema_data/cli_envelope_schema.json
+var cli_envelope_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/cli-envelope.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -8149,26 +8584,56 @@ var CLI_ENVELOPE_SCHEMA = {
     "errors"
   ],
   properties: {
-    $schema: { type: "string" },
-    version: { type: "string", pattern: "^\\d+\\.\\d+\\.\\d+" },
-    command: { type: "string" },
-    status: { enum: ["success", "failure"] },
-    exitCode: { type: "integer" },
-    timestamp: { type: "string", format: "date-time" },
-    mode: { enum: ["preview", "write", "check"] },
-    data: { type: "object" },
+    $schema: {
+      type: "string"
+    },
+    version: {
+      type: "string",
+      pattern: "^\\d+\\.\\d+\\.\\d+"
+    },
+    command: {
+      type: "string"
+    },
+    status: {
+      enum: [
+        "success",
+        "failure"
+      ]
+    },
+    exitCode: {
+      type: "integer"
+    },
+    timestamp: {
+      type: "string",
+      format: "date-time"
+    },
+    mode: {
+      enum: [
+        "preview",
+        "write",
+        "check"
+      ]
+    },
+    data: {
+      type: "object"
+    },
     warnings: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     },
     errors: {
       type: "array",
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     }
   },
   additionalProperties: false
 };
-var SKILL_FRONTMATTER_SCHEMA = {
+// src/arsenal/schema_data/skill_frontmatter_schema.json
+var skill_frontmatter_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/skill-frontmatter.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -8197,7 +8662,12 @@ var SKILL_FRONTMATTER_SCHEMA = {
       }
     },
     domain: {
-      enum: ["re", "webapp", "mobile", "red"]
+      enum: [
+        "re",
+        "webapp",
+        "mobile",
+        "red"
+      ]
     },
     category: {
       type: "string",
@@ -8212,7 +8682,9 @@ var SKILL_FRONTMATTER_SCHEMA = {
     },
     metadata: {
       type: "object",
-      required: ["manifest_entry"],
+      required: [
+        "manifest_entry"
+      ],
       properties: {
         manifest_entry: {
           type: "string",
@@ -8221,9 +8693,21 @@ var SKILL_FRONTMATTER_SCHEMA = {
       },
       not: {
         anyOf: [
-          { required: ["upstream"] },
-          { required: ["source_path"] },
-          { required: ["source_sha256"] }
+          {
+            required: [
+              "upstream"
+            ]
+          },
+          {
+            required: [
+              "source_path"
+            ]
+          },
+          {
+            required: [
+              "source_sha256"
+            ]
+          }
         ]
       },
       additionalProperties: true
@@ -8231,7 +8715,8 @@ var SKILL_FRONTMATTER_SCHEMA = {
   },
   additionalProperties: true
 };
-var CORPUS_MANIFEST_SCHEMA = {
+// src/arsenal/schema_data/corpus_manifest_schema.json
+var corpus_manifest_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/corpus-manifest.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -8244,18 +8729,46 @@ var CORPUS_MANIFEST_SCHEMA = {
     "files"
   ],
   properties: {
-    schema_version: { const: 1 },
-    generator: { type: "string", minLength: 1 },
-    created_at: { type: "null" },
+    schema_version: {
+      const: 1
+    },
+    generator: {
+      type: "string",
+      minLength: 1
+    },
+    created_at: {
+      type: "null"
+    },
     summary: {
       type: "object",
-      required: ["total_considered", "admitted", "quarantined", "excluded", "deduplicated"],
+      required: [
+        "total_considered",
+        "admitted",
+        "quarantined",
+        "excluded",
+        "deduplicated"
+      ],
       properties: {
-        total_considered: { type: "integer", minimum: 0 },
-        admitted: { type: "integer", minimum: 0 },
-        quarantined: { type: "integer", minimum: 0 },
-        excluded: { type: "integer", minimum: 0 },
-        deduplicated: { type: "integer", minimum: 0 }
+        total_considered: {
+          type: "integer",
+          minimum: 0
+        },
+        admitted: {
+          type: "integer",
+          minimum: 0
+        },
+        quarantined: {
+          type: "integer",
+          minimum: 0
+        },
+        excluded: {
+          type: "integer",
+          minimum: 0
+        },
+        deduplicated: {
+          type: "integer",
+          minimum: 0
+        }
       },
       additionalProperties: false
     },
@@ -8263,10 +8776,22 @@ var CORPUS_MANIFEST_SCHEMA = {
       type: "object",
       additionalProperties: {
         type: "object",
-        required: ["repo", "rev", "license"],
+        required: [
+          "repo",
+          "rev",
+          "license"
+        ],
         properties: {
-          repo: { type: "string", minLength: 1 },
-          rev: { type: ["string", "null"] },
+          repo: {
+            type: "string",
+            minLength: 1
+          },
+          rev: {
+            type: [
+              "string",
+              "null"
+            ]
+          },
           license: {
             type: "string",
             pattern: "^[a-zA-Z0-9-.]+(\\+|( (AND|OR|WITH) [a-zA-Z0-9-.]+))*$"
@@ -8274,14 +8799,26 @@ var CORPUS_MANIFEST_SCHEMA = {
         },
         additionalProperties: false
       },
-      propertyNames: { type: "string", minLength: 1 },
+      propertyNames: {
+        type: "string",
+        minLength: 1
+      },
       patternProperties: {
         "^arsenal-local$": {
           type: "object",
-          required: ["repo", "rev", "license"],
+          required: [
+            "repo",
+            "rev",
+            "license"
+          ],
           properties: {
-            repo: { type: "string", minLength: 1 },
-            rev: { type: "null" },
+            repo: {
+              type: "string",
+              minLength: 1
+            },
+            rev: {
+              type: "null"
+            },
             license: {
               type: "string",
               pattern: "^[a-zA-Z0-9-.]+(\\+|( (AND|OR|WITH) [a-zA-Z0-9-.]+))*$"
@@ -8291,10 +8828,20 @@ var CORPUS_MANIFEST_SCHEMA = {
         },
         "^(?!arsenal-local$).*": {
           type: "object",
-          required: ["repo", "rev", "license"],
+          required: [
+            "repo",
+            "rev",
+            "license"
+          ],
           properties: {
-            repo: { type: "string", minLength: 1 },
-            rev: { type: "string", pattern: "^[0-9a-f]{7,64}$" },
+            repo: {
+              type: "string",
+              minLength: 1
+            },
+            rev: {
+              type: "string",
+              pattern: "^[0-9a-f]{7,64}$"
+            },
             license: {
               type: "string",
               pattern: "^[a-zA-Z0-9-.]+(\\+|( (AND|OR|WITH) [a-zA-Z0-9-.]+))*$"
@@ -8316,33 +8863,83 @@ var CORPUS_MANIFEST_SCHEMA = {
           "status"
         ],
         properties: {
-          path: { type: "string", minLength: 1 },
-          source: { type: "string", minLength: 1 },
-          source_rev: { type: ["string", "null"] },
+          path: {
+            type: "string",
+            minLength: 1
+          },
+          source: {
+            type: "string",
+            minLength: 1
+          },
+          source_rev: {
+            type: [
+              "string",
+              "null"
+            ]
+          },
           license: {
             type: "string",
             pattern: "^[a-zA-Z0-9-.]+(\\+|( (AND|OR|WITH) [a-zA-Z0-9-.]+))*$"
           },
           status: {
-            enum: ["admitted", "deduplicated", "quarantined", "excluded"]
+            enum: [
+              "admitted",
+              "deduplicated",
+              "quarantined",
+              "excluded"
+            ]
           },
-          reason: { type: "string" },
-          destination_path: { type: "string" },
-          sha256: { type: "string", pattern: "^[0-9a-f]{64}$" },
-          bytes: { type: "integer", minimum: 0 },
-          superseded_by: { type: "string" },
-          source_path: { type: "string" },
-          source_sha256: { type: "string", pattern: "^[0-9a-f]{64}$" },
+          reason: {
+            type: "string"
+          },
+          destination_path: {
+            type: "string"
+          },
+          sha256: {
+            type: "string",
+            pattern: "^[0-9a-f]{64}$"
+          },
+          bytes: {
+            type: "integer",
+            minimum: 0
+          },
+          superseded_by: {
+            type: "string"
+          },
+          source_path: {
+            type: "string"
+          },
+          source_sha256: {
+            type: "string",
+            pattern: "^[0-9a-f]{64}$"
+          },
           support_files: {
             type: "array",
             items: {
               type: "object",
-              required: ["path", "source_path", "sha256", "bytes"],
+              required: [
+                "path",
+                "source_path",
+                "sha256",
+                "bytes"
+              ],
               properties: {
-                path: { type: "string", minLength: 1 },
-                source_path: { type: "string", minLength: 1 },
-                sha256: { type: "string", pattern: "^[0-9a-f]{64}$" },
-                bytes: { type: "integer", minimum: 0 }
+                path: {
+                  type: "string",
+                  minLength: 1
+                },
+                source_path: {
+                  type: "string",
+                  minLength: 1
+                },
+                sha256: {
+                  type: "string",
+                  pattern: "^[0-9a-f]{64}$"
+                },
+                bytes: {
+                  type: "integer",
+                  minimum: 0
+                }
               },
               additionalProperties: false
             }
@@ -8351,47 +8948,92 @@ var CORPUS_MANIFEST_SCHEMA = {
         allOf: [
           {
             if: {
-              properties: { status: { const: "deduplicated" } }
+              properties: {
+                status: {
+                  const: "deduplicated"
+                }
+              }
             },
             then: {
-              required: ["superseded_by", "reason"],
+              required: [
+                "superseded_by",
+                "reason"
+              ],
               not: {
                 anyOf: [
-                  { required: ["destination_path"] },
-                  { required: ["sha256"] },
-                  { required: ["bytes"] }
+                  {
+                    required: [
+                      "destination_path"
+                    ]
+                  },
+                  {
+                    required: [
+                      "sha256"
+                    ]
+                  },
+                  {
+                    required: [
+                      "bytes"
+                    ]
+                  }
                 ]
               }
             }
           },
           {
             if: {
-              properties: { status: { enum: ["quarantined", "excluded"] } }
+              properties: {
+                status: {
+                  enum: [
+                    "quarantined",
+                    "excluded"
+                  ]
+                }
+              }
             },
             then: {
-              required: ["reason"]
+              required: [
+                "reason"
+              ]
             }
           },
           {
             if: {
-              properties: { status: { const: "admitted" } }
+              properties: {
+                status: {
+                  const: "admitted"
+                }
+              }
             },
             then: {
-              required: ["destination_path", "sha256", "bytes"]
+              required: [
+                "destination_path",
+                "sha256",
+                "bytes"
+              ]
             }
           },
           {
             if: {
-              properties: { source: { const: "arsenal-local" } }
+              properties: {
+                source: {
+                  const: "arsenal-local"
+                }
+              }
             },
             then: {
               properties: {
-                source_rev: { type: "null" }
+                source_rev: {
+                  type: "null"
+                }
               }
             },
             else: {
               properties: {
-                source_rev: { type: "string", pattern: "^[0-9a-f]{7,64}$" }
+                source_rev: {
+                  type: "string",
+                  pattern: "^[0-9a-f]{7,64}$"
+                }
               }
             }
           }
@@ -8411,24 +9053,49 @@ var CORPUS_MANIFEST_SCHEMA = {
           "applied"
         ],
         properties: {
-          key: { type: "string", minLength: 1 },
-          tier: { enum: ["A", "B"] },
+          key: {
+            type: "string",
+            minLength: 1
+          },
+          tier: {
+            enum: [
+              "A",
+              "B"
+            ]
+          },
           members: {
             type: "array",
             minItems: 2,
-            items: { type: "string", minLength: 1 }
+            items: {
+              type: "string",
+              minLength: 1
+            }
           },
-          winner: { type: "string", minLength: 1 },
-          rationale: { type: "string", minLength: 1 },
-          applied: { type: "boolean" }
+          winner: {
+            type: "string",
+            minLength: 1
+          },
+          rationale: {
+            type: "string",
+            minLength: 1
+          },
+          applied: {
+            type: "boolean"
+          }
         },
         allOf: [
           {
             if: {
-              properties: { tier: { const: "A" } }
+              properties: {
+                tier: {
+                  const: "A"
+                }
+              }
             },
             then: {
-              required: ["winner"]
+              required: [
+                "winner"
+              ]
             }
           }
         ],
@@ -8441,12 +9108,29 @@ var CORPUS_MANIFEST_SCHEMA = {
         type: "array",
         items: {
           type: "object",
-          required: ["path", "source_path", "sha256", "bytes"],
+          required: [
+            "path",
+            "source_path",
+            "sha256",
+            "bytes"
+          ],
           properties: {
-            path: { type: "string", minLength: 1 },
-            source_path: { type: "string", minLength: 1 },
-            sha256: { type: "string", pattern: "^[0-9a-f]{64}$" },
-            bytes: { type: "integer", minimum: 0 }
+            path: {
+              type: "string",
+              minLength: 1
+            },
+            source_path: {
+              type: "string",
+              minLength: 1
+            },
+            sha256: {
+              type: "string",
+              pattern: "^[0-9a-f]{64}$"
+            },
+            bytes: {
+              type: "integer",
+              minimum: 0
+            }
           },
           additionalProperties: false
         }
@@ -8455,20 +9139,45 @@ var CORPUS_MANIFEST_SCHEMA = {
   },
   additionalProperties: false
 };
-var ROUTING_TABLE_SCHEMA = {
+// src/arsenal/schema_data/routing_table_schema.json
+var routing_table_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/routing-table.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
-  required: ["schemaVersion", "meta", "categories", "priority", "routes"],
+  required: [
+    "schemaVersion",
+    "meta",
+    "categories",
+    "priority",
+    "routes"
+  ],
   properties: {
-    schemaVersion: { const: "1.1" },
+    schemaVersion: {
+      const: "1.1"
+    },
     meta: {
       type: "object",
-      required: ["domain", "description"],
+      required: [
+        "domain",
+        "description"
+      ],
       properties: {
-        domain: { enum: ["re", "webapp", "mobile", "red"] },
-        description: { type: "string", minLength: 1 },
-        fallbackId: { type: "string", minLength: 1 }
+        domain: {
+          enum: [
+            "re",
+            "webapp",
+            "mobile",
+            "red"
+          ]
+        },
+        description: {
+          type: "string",
+          minLength: 1
+        },
+        fallbackId: {
+          type: "string",
+          minLength: 1
+        }
       },
       additionalProperties: false
     },
@@ -8476,36 +9185,75 @@ var ROUTING_TABLE_SCHEMA = {
       type: "array",
       minItems: 1,
       uniqueItems: true,
-      items: { type: "string", minLength: 1 }
+      items: {
+        type: "string",
+        minLength: 1
+      }
     },
     priority: {
       type: "array",
       minItems: 1,
       uniqueItems: true,
-      items: { type: "string", pattern: "^[A-Z][0-9]+$" }
+      items: {
+        type: "string",
+        pattern: "^[A-Z][0-9]+$"
+      }
     },
     routes: {
       type: "object",
       minProperties: 1,
       additionalProperties: {
         type: "object",
-        required: ["id", "leaf", "category", "must"],
+        required: [
+          "id",
+          "leaf",
+          "category",
+          "must"
+        ],
         properties: {
-          id: { type: "string", pattern: "^[A-Z][0-9]+$" },
-          leaf: { type: "string", pattern: "^(re|webapp|mobile|red)-[a-z0-9-]+$" },
-          category: { type: "string", minLength: 1 },
-          must: { type: "string", minLength: 1 },
+          id: {
+            type: "string",
+            pattern: "^[A-Z][0-9]+$"
+          },
+          leaf: {
+            type: "string",
+            pattern: "^(re|webapp|mobile|red)-[a-z0-9-]+$"
+          },
+          category: {
+            type: "string",
+            minLength: 1
+          },
+          must: {
+            type: "string",
+            minLength: 1
+          },
           mustAll: {
             type: "array",
             minItems: 1,
-            items: { type: "string", minLength: 1 }
+            items: {
+              type: "string",
+              minLength: 1
+            }
           },
-          exclude: { type: "string", minLength: 1 },
-          note: { type: "string", minLength: 1 },
+          exclude: {
+            type: "string",
+            minLength: 1
+          },
+          note: {
+            type: "string",
+            minLength: 1
+          },
           crossDomain: {
             type: "object",
-            required: ["reason"],
-            properties: { reason: { type: "string", minLength: 1 } },
+            required: [
+              "reason"
+            ],
+            properties: {
+              reason: {
+                type: "string",
+                minLength: 1
+              }
+            },
             additionalProperties: false
           }
         },
@@ -8515,45 +9263,109 @@ var ROUTING_TABLE_SCHEMA = {
   },
   additionalProperties: false
 };
-var COVERAGE_BASELINE_SCHEMA = {
+// src/arsenal/schema_data/coverage_baseline_schema.json
+var coverage_baseline_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/coverage-baseline.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
-  required: ["schemaVersion", "domain", "standard", "extracted_from", "license", "capabilities"],
+  required: [
+    "schemaVersion",
+    "domain",
+    "standard",
+    "extracted_from",
+    "license",
+    "capabilities"
+  ],
   properties: {
-    schemaVersion: { const: "1.0" },
-    domain: { enum: ["re", "webapp", "mobile", "red"] },
+    schemaVersion: {
+      const: "1.0"
+    },
+    domain: {
+      enum: [
+        "re",
+        "webapp",
+        "mobile",
+        "red"
+      ]
+    },
     standard: {
       type: "object",
-      required: ["name", "url", "revision"],
+      required: [
+        "name",
+        "url",
+        "revision"
+      ],
       properties: {
-        name: { type: "string", minLength: 1 },
-        url: { type: "string", minLength: 1 },
-        revision: { type: "string", minLength: 1 },
-        version: { type: ["string", "null"] }
+        name: {
+          type: "string",
+          minLength: 1
+        },
+        url: {
+          type: "string",
+          minLength: 1
+        },
+        revision: {
+          type: "string",
+          minLength: 1
+        },
+        version: {
+          type: [
+            "string",
+            "null"
+          ]
+        }
       },
       additionalProperties: false
     },
     extracted_from: {
       type: "object",
-      required: ["path", "sha256"],
+      required: [
+        "path",
+        "sha256"
+      ],
       properties: {
-        path: { type: "string", minLength: 1 },
-        sha256: { type: "string", pattern: "^[0-9a-f]{64}$" }
+        path: {
+          type: "string",
+          minLength: 1
+        },
+        sha256: {
+          type: "string",
+          pattern: "^[0-9a-f]{64}$"
+        }
       },
       additionalProperties: false
     },
-    license: { type: "string", minLength: 1 },
+    license: {
+      type: "string",
+      minLength: 1
+    },
     capabilities: {
       type: "array",
       items: {
         type: "object",
-        required: ["id", "title", "category", "source_ref"],
+        required: [
+          "id",
+          "title",
+          "category",
+          "source_ref"
+        ],
         properties: {
-          id: { type: "string", minLength: 1 },
-          title: { type: "string", minLength: 1 },
-          category: { type: "string", minLength: 1 },
-          source_ref: { type: "string", minLength: 1 }
+          id: {
+            type: "string",
+            minLength: 1
+          },
+          title: {
+            type: "string",
+            minLength: 1
+          },
+          category: {
+            type: "string",
+            minLength: 1
+          },
+          source_ref: {
+            type: "string",
+            minLength: 1
+          }
         },
         additionalProperties: false
       }
@@ -8561,7 +9373,8 @@ var COVERAGE_BASELINE_SCHEMA = {
   },
   additionalProperties: false
 };
-var EXTENSION_BUNDLE_ARTIFACT_SCHEMA = {
+// src/arsenal/schema_data/extension_bundle_artifact_schema.json
+var extension_bundle_artifact_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/extension-bundle-artifact.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
@@ -8576,7 +9389,12 @@ var EXTENSION_BUNDLE_ARTIFACT_SCHEMA = {
   properties: {
     name: {
       type: "string",
-      enum: ["bounding", "ledger", "budget", "routing"]
+      enum: [
+        "bounding",
+        "ledger",
+        "budget",
+        "routing"
+      ]
     },
     entrypoint: {
       type: "string",
@@ -8597,20 +9415,30 @@ var EXTENSION_BUNDLE_ARTIFACT_SCHEMA = {
     externalImports: {
       type: "array",
       maxItems: 0,
-      items: { type: "string" }
+      items: {
+        type: "string"
+      }
     }
   },
   additionalProperties: false
 };
-var VERIFICATION_ORACLE_SCHEMA = {
+// src/arsenal/schema_data/verification_oracle_schema.json
+var verification_oracle_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/verification-oracle.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
-  required: ["oracle_type", "parameters"],
+  required: [
+    "oracle_type",
+    "parameters"
+  ],
   properties: {
     oracle_type: {
       type: "string",
-      enum: ["timing_differential", "authz_matrix", "path_traversal"]
+      enum: [
+        "timing_differential",
+        "authz_matrix",
+        "path_traversal"
+      ]
     },
     parameters: {
       type: "object"
@@ -8618,63 +9446,186 @@ var VERIFICATION_ORACLE_SCHEMA = {
   },
   additionalProperties: false
 };
-var SPECIALIST_HANDOFF_SCHEMA = {
+// src/arsenal/schema_data/specialist_handoff_schema.json
+var specialist_handoff_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/specialist-handoff.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   properties: {
-    taskId: { type: "string", minLength: 1 },
-    role: { type: "string", enum: ["sec-re", "sec-webapp", "sec-mobile", "sec-red", "sec-verifier"] },
+    taskId: {
+      type: "string",
+      minLength: 1
+    },
+    role: {
+      type: "string",
+      enum: [
+        "sec-re",
+        "sec-webapp",
+        "sec-mobile",
+        "sec-red",
+        "sec-verifier"
+      ]
+    },
     findings: {
       type: "array",
       items: {
         type: "object",
         properties: {
-          id: { type: "string", pattern: "^F-[0-9]{3,}$" },
-          title: { type: "string", minLength: 5, maxLength: 150 },
-          severity: { type: "string", enum: ["info", "low", "medium", "high", "critical"] },
-          location: { type: "string", minLength: 1 },
-          cwe: { type: "string", pattern: "^CWE-[0-9]+$" },
-          evidenceReceipts: { type: "array", minItems: 1, items: { type: "string" } },
-          epistemicStatus: { type: "string", enum: ["E", "P"] }
+          id: {
+            type: "string",
+            pattern: "^F-[0-9]{3,}$"
+          },
+          title: {
+            type: "string",
+            minLength: 5,
+            maxLength: 150
+          },
+          severity: {
+            type: "string",
+            enum: [
+              "info",
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          location: {
+            type: "string",
+            minLength: 1
+          },
+          cwe: {
+            type: "string",
+            pattern: "^CWE-[0-9]+$"
+          },
+          evidenceReceipts: {
+            type: "array",
+            minItems: 1,
+            items: {
+              type: "string"
+            }
+          },
+          epistemicStatus: {
+            type: "string",
+            enum: [
+              "E",
+              "P"
+            ]
+          }
         },
-        required: ["id", "title", "severity", "location", "cwe", "evidenceReceipts", "epistemicStatus"],
+        required: [
+          "id",
+          "title",
+          "severity",
+          "location",
+          "cwe",
+          "evidenceReceipts",
+          "epistemicStatus"
+        ],
         additionalProperties: false
       }
     },
-    coverageJudgement: { type: "string", enum: ["covered", "partial", "uncovered"] },
+    coverageJudgement: {
+      type: "string",
+      enum: [
+        "covered",
+        "partial",
+        "uncovered"
+      ]
+    },
     unresolvedVariables: {
       type: "array",
-      items: { type: "string", pattern: "^unk-.*$" }
+      items: {
+        type: "string",
+        pattern: "^unk-.*$"
+      }
     },
-    capabilityGap: { type: ["string", "null"] }
+    capabilityGap: {
+      type: [
+        "string",
+        "null"
+      ]
+    }
   },
-  required: ["taskId", "role", "findings", "coverageJudgement", "unresolvedVariables", "capabilityGap"],
+  required: [
+    "taskId",
+    "role",
+    "findings",
+    "coverageJudgement",
+    "unresolvedVariables",
+    "capabilityGap"
+  ],
   additionalProperties: false
 };
-var APK_INSPECT_TOOL_SCHEMA = {
+// src/arsenal/schema_data/apk_inspect_tool_schema.json
+var apk_inspect_tool_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/apk-inspect.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   properties: {
-    apk_path: { type: "string" },
-    extract_components: { type: "boolean", default: true },
-    extract_permissions: { type: "boolean", default: true }
+    apk_path: {
+      type: "string"
+    },
+    extract_components: {
+      type: "boolean",
+      default: true
+    },
+    extract_permissions: {
+      type: "boolean",
+      default: true
+    }
   },
-  required: ["apk_path"],
+  required: [
+    "apk_path"
+  ],
   additionalProperties: false
 };
-var SKILL_ASSET_LOAD_SCHEMA = {
+// src/arsenal/schema_data/skill_asset_load_schema.json
+var skill_asset_load_schema_default = {
   $id: "https://github.com/bitbytelabio/arsenal/schemas/skill-asset-load.json",
   $schema: "https://json-schema.org/draft/2020-12/schema",
   type: "object",
   properties: {
-    skill_name: { type: "string" },
-    asset_path: { type: "string" }
+    skill_name: {
+      type: "string"
+    },
+    asset_path: {
+      type: "string"
+    }
   },
-  required: ["skill_name", "asset_path"],
+  required: [
+    "skill_name",
+    "asset_path"
+  ],
   additionalProperties: false
 };
+// src/schemas/validator.ts
+var ajv = new import__2020.default({
+  allErrors: true,
+  strict: false,
+  useDefaults: false,
+  removeAdditional: false,
+  coerceTypes: false
+});
+import_ajv_formats.default(ajv);
+var SCOPE_SCHEMA = scope_schema_default;
+var ENGAGEMENT_SCHEMA = engagement_schema_default;
+var ENVIRONMENT_SCHEMA = environment_schema_default;
+var EVIDENCE_RECEIPT_SCHEMA = evidence_receipt_schema_default;
+var FINDING_SCHEMA = finding_schema_default;
+var VERIFICATION_RESULT_SCHEMA = verification_result_schema_default;
+var MANIFEST_SCHEMA = manifest_schema_default;
+var BUDGET_RECORD_SCHEMA = budget_record_schema_default;
+var CLI_ENVELOPE_SCHEMA = cli_envelope_schema_default;
+var SKILL_FRONTMATTER_SCHEMA = skill_frontmatter_schema_default;
+var CORPUS_MANIFEST_SCHEMA = corpus_manifest_schema_default;
+var ROUTING_TABLE_SCHEMA = routing_table_schema_default;
+var COVERAGE_BASELINE_SCHEMA = coverage_baseline_schema_default;
+var EXTENSION_BUNDLE_ARTIFACT_SCHEMA = extension_bundle_artifact_schema_default;
+var VERIFICATION_ORACLE_SCHEMA = verification_oracle_schema_default;
+var SPECIALIST_HANDOFF_SCHEMA = specialist_handoff_schema_default;
+var APK_INSPECT_TOOL_SCHEMA = apk_inspect_tool_schema_default;
+var SKILL_ASSET_LOAD_SCHEMA = skill_asset_load_schema_default;
 ajv.addSchema(SCOPE_SCHEMA);
 ajv.addSchema(ENGAGEMENT_SCHEMA);
 ajv.addSchema(ENVIRONMENT_SCHEMA);
@@ -8693,27 +9644,6 @@ ajv.addSchema(VERIFICATION_ORACLE_SCHEMA);
 ajv.addSchema(SPECIALIST_HANDOFF_SCHEMA);
 ajv.addSchema(APK_INSPECT_TOOL_SCHEMA);
 ajv.addSchema(SKILL_ASSET_LOAD_SCHEMA);
-function formatErrors(errors) {
-  if (!errors || errors.length === 0)
-    return [];
-  return errors.map((err) => `${err.instancePath || "/"}: ${err.message ?? "validation error"}`);
-}
-function validateSchema(schemaId, data) {
-  const validator = ajv.getSchema(schemaId);
-  if (!validator) {
-    return {
-      valid: false,
-      data,
-      errors: [`Schema not found: ${schemaId}`]
-    };
-  }
-  const valid = validator(data);
-  return {
-    valid: Boolean(valid),
-    data,
-    errors: formatErrors(validator.errors)
-  };
-}
 
 // src/core/skill-routing.ts
 var DOMAINS = Object.freeze(["re", "webapp", "mobile", "red"]);
@@ -8844,12 +9774,12 @@ var ROUTER_FRAMING = Object.freeze({
   })
 });
 
-// plugin/tools/evidence-exec.ts
-import * as fs3 from "fs";
+// src/core/fs-safe.ts
+import * as fs2 from "fs";
 import * as path2 from "path";
 
 // src/core/bounding.ts
-import * as fs2 from "fs";
+import * as fs from "fs";
 import * as path from "path";
 var BOUNDING_LIMITS = {
   MAX_LOGICAL_LINES: 500,
@@ -8910,12 +9840,12 @@ function boundAndStore(rawInput, evidenceDir, ext = "txt") {
   }
   const hash = sha256Bytes(bytes);
   const rawDir = path.join(evidenceDir, "raw");
-  fs2.mkdirSync(rawDir, { recursive: true, mode: 448 });
+  fs.mkdirSync(rawDir, { recursive: true, mode: 448 });
   const artifactRelPath = path.join("evidence", "raw", `${hash}.${ext}`);
   const artifactFullPath = path.join(evidenceDir, "raw", `${hash}.${ext}`);
-  fs2.writeFileSync(artifactFullPath, bytes, { mode: 384 });
+  fs.writeFileSync(artifactFullPath, bytes, { mode: 384 });
   try {
-    fs2.chmodSync(artifactFullPath, 384);
+    fs.chmodSync(artifactFullPath, 384);
   } catch {}
   const headLines = lines.slice(0, BOUNDING_LIMITS.HEAD_LINES);
   const tailLines = lines.slice(-BOUNDING_LIMITS.TAIL_LINES);
@@ -8948,1364 +9878,13 @@ function boundAndStore(rawInput, evidenceDir, ext = "txt") {
   };
 }
 
-// plugin/tools/evidence-exec.ts
-async function executeEvidenceCommand(input, evidenceDir) {
-  if (!input.argv || input.argv.length === 0) {
-    throw new Error("evidence_exec: 'argv' must be a non-empty array of strings.");
-  }
-  const timeoutMs = input.timeout_ms && input.timeout_ms > 0 ? input.timeout_ms : 30000;
-  const startTime = Date.now();
-  const rawDir = path2.join(evidenceDir, "raw");
-  fs3.mkdirSync(rawDir, { recursive: true, mode: 448 });
-  let stdinData;
-  if (input.stdin_artifact_id) {
-    const stdinPath = path2.join(rawDir, `${input.stdin_artifact_id}.bin`);
-    if (fs3.existsSync(stdinPath)) {
-      stdinData = fs3.readFileSync(stdinPath);
-    }
-  }
-  let timedOut = false;
-  let timer;
-  const proc = Bun.spawn(input.argv, {
-    cwd: input.cwd ? path2.resolve(input.cwd) : process.cwd(),
-    stdin: stdinData ? new Response(stdinData).body : undefined,
-    env: input.env ? { ...process.env, ...input.env } : process.env
-  });
-  timer = setTimeout(() => {
-    timedOut = true;
-    try {
-      proc.kill(15);
-      proc.kill(9);
-    } catch {}
-  }, timeoutMs);
-  let stdoutBuf;
-  let stderrBuf;
-  let rawExitCode;
-  try {
-    const [out, err] = await Promise.all([
-      new Response(proc.stdout).arrayBuffer(),
-      new Response(proc.stderr).arrayBuffer()
-    ]);
-    stdoutBuf = out;
-    stderrBuf = err;
-    rawExitCode = await proc.exited;
-  } finally {
-    clearTimeout(timer);
-  }
-  const durationMs = Date.now() - startTime;
-  const exitCode = timedOut ? 124 : rawExitCode;
-  const captureGap = timedOut ? `Command execution timed out after ${timeoutMs}ms` : null;
-  const stdoutBytes = new Uint8Array(stdoutBuf);
-  const stderrBytes = new Uint8Array(stderrBuf);
-  const stdoutHash = sha256Bytes(stdoutBytes);
-  const stderrHash = sha256Bytes(stderrBytes);
-  const stdoutPath = path2.join(rawDir, `${stdoutHash}.txt`);
-  const stderrPath = path2.join(rawDir, `${stderrHash}.txt`);
-  fs3.writeFileSync(stdoutPath, stdoutBytes, { mode: 384 });
-  fs3.writeFileSync(stderrPath, stderrBytes, { mode: 384 });
-  const boundStdout = boundAndStore(stdoutBytes, evidenceDir, "txt");
-  const boundStderr = boundAndStore(stderrBytes, evidenceDir, "txt");
-  return {
-    exitCode,
-    stdout: boundStdout.content,
-    stderr: boundStderr.content,
-    stdout_artifact: {
-      path: `evidence/raw/${stdoutHash}.txt`,
-      sha256: stdoutHash,
-      byte_length: stdoutBytes.byteLength
-    },
-    stderr_artifact: {
-      path: `evidence/raw/${stderrHash}.txt`,
-      sha256: stderrHash,
-      byte_length: stderrBytes.byteLength
-    },
-    timed_out: timedOut,
-    timeout_ms: timeoutMs,
-    duration_ms: durationMs,
-    capture_gap: captureGap
-  };
-}
-
-// plugin/tools/consolidate-evidence.ts
-import * as fs4 from "fs";
-import * as path3 from "path";
-function markSuperseded(content, findingId) {
-  const clean = content.charCodeAt(0) === 65279 ? content.slice(1) : content;
-  const statusTest = /^-\s*status:\s*.*$/m;
-  if (statusTest.test(clean)) {
-    return clean.replace(/^-\s*status:\s*.*$/gm, `- status: superseded by ${findingId}`);
-  }
-  const frontmatterTest = /^---\s*$/m;
-  if (frontmatterTest.test(clean)) {
-    return clean.replace(/^---\s*$/m, `---
-- status: superseded by ${findingId}`);
-  }
-  return clean.trimEnd() + `
-- status: superseded by ${findingId}
-`;
-}
-function buildFindingBlock(params) {
-  return `### ${params.findingId}
-` + `- title: ${params.title}
-` + `- severity: ${params.severity}
-` + `- status: ${params.status}
-` + `- confidence: ${params.confidence}
-` + `- location: ${params.location}
-` + `- evidence_ids: ${params.evidenceIds.join(", ")}
-` + `- consolidated_at: ${params.consolidatedAt}
-
-` + `${params.description}
-`;
-}
-function updateReportContent(existingContent, block) {
-  if (existingContent !== null && existingContent !== undefined) {
-    const clean = existingContent.charCodeAt(0) === 65279 ? existingContent.slice(1) : existingContent;
-    let content = clean;
-    if (!content.includes("## Findings")) {
-      content = content.trimEnd() + `
-
-## Findings
-`;
-    }
-    return content.trimEnd() + `
-
-` + block;
-  }
-  return `# Case Report
-
-## Findings
-
-${block}`;
-}
-async function consolidateEvidence(input, caseRootOverride) {
-  const rawCaseRoot = input.case_root ?? input.caseRoot ?? caseRootOverride;
-  if (!rawCaseRoot || typeof rawCaseRoot !== "string" || rawCaseRoot.trim().length === 0) {
-    throw new Error("consolidate_evidence: 'case_root' is required.");
-  }
-  const caseRoot = path3.resolve(rawCaseRoot.trim());
-  if (!fs4.existsSync(caseRoot)) {
-    throw new Error(`consolidate_evidence: case_root directory '${caseRoot}' does not exist.`);
-  }
-  const rawEvidenceIds = input.evidence_ids ?? input.evidenceIds;
-  if (!rawEvidenceIds) {
-    throw new Error("Error: no Evidence IDs provided");
-  }
-  const ids = (Array.isArray(rawEvidenceIds) ? rawEvidenceIds : String(rawEvidenceIds).split(",")).map((id) => typeof id === "string" ? id.trim() : String(id).trim()).filter((id) => id.length > 0);
-  if (ids.length === 0) {
-    throw new Error("Error: no Evidence IDs provided");
-  }
-  const findingId = (input.finding_id ?? input.findingId ?? "").trim();
-  if (!findingId) {
-    throw new Error("consolidate_evidence: 'finding_id' is required.");
-  }
-  const title = (input.title ?? "").trim();
-  if (!title) {
-    throw new Error("consolidate_evidence: 'title' is required.");
-  }
-  const description = (input.description ?? "").trim();
-  if (!description) {
-    throw new Error("consolidate_evidence: 'description' is required.");
-  }
-  const severity = (input.severity ?? "medium").trim();
-  const status = (input.status ?? "validated").trim();
-  const confidence = (input.confidence ?? "medium").trim();
-  const location = (input.location ?? "see evidence_ids").trim();
-  const isWrite = Boolean(input.write);
-  const evidenceDir = path3.join(caseRoot, "evidence");
-  for (const eid of ids) {
-    const f = path3.join(evidenceDir, `${eid}.md`);
-    if (!fs4.existsSync(f)) {
-      throw new Error(`Error: ${f} not found`);
-    }
-  }
-  const modifiedEvidence = [];
-  for (const eid of ids) {
-    const f = path3.join(evidenceDir, `${eid}.md`);
-    const content = fs4.readFileSync(f, "utf-8");
-    const updated = markSuperseded(content, findingId);
-    modifiedEvidence.push({
-      path: f,
-      id: eid,
-      oldContent: content,
-      newContent: updated
-    });
-  }
-  const reportDir = path3.join(caseRoot, "report");
-  const reportFile = path3.join(reportDir, "report.md");
-  const ts = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
-  const block = buildFindingBlock({
-    findingId,
-    title,
-    severity,
-    status,
-    confidence,
-    location,
-    evidenceIds: ids,
-    description,
-    consolidatedAt: ts
-  });
-  const existingReport = fs4.existsSync(reportFile) ? fs4.readFileSync(reportFile, "utf-8") : null;
-  const newReportContent = updateReportContent(existingReport, block);
-  if (isWrite) {
-    for (const item of modifiedEvidence) {
-      fs4.writeFileSync(item.path, item.newContent, "utf-8");
-    }
-    fs4.mkdirSync(reportDir, { recursive: true });
-    fs4.writeFileSync(reportFile, newReportContent, "utf-8");
-  }
-  const messages = [
-    ...ids.map((eid) => `Marked ${eid} as superseded`),
-    `Successfully consolidated ${ids.length} evidence items into ${findingId}`
-  ];
-  return {
-    success: true,
-    finding_id: findingId,
-    consolidated_count: ids.length,
-    evidence_ids: ids,
-    report_path: path3.relative(caseRoot, reportFile),
-    modified_files: [
-      ...modifiedEvidence.map((m) => path3.relative(caseRoot, m.path)),
-      path3.relative(caseRoot, reportFile)
-    ],
-    finding_block: block,
-    write: isWrite,
-    messages
-  };
-}
-
-// plugin/tools/case-review.ts
-import * as fs5 from "fs";
-import * as path4 from "path";
-var EVIDENCE_ID = /\bE-[A-Za-z0-9][A-Za-z0-9_-]*\b/g;
-var WORKITEM_ID = /\bWI-[A-Za-z0-9][A-Za-z0-9_-]*\b/g;
-var WORKITEM_ID_EXACT = /^WI-[A-Za-z0-9][A-Za-z0-9_-]*$/;
-var FIELD_LINE = /^\s*-\s+([A-Za-z0-9_]+):\s*(.*)$/;
-var SECTION_HEADING = /^#{2,6}\s+(.+?)\s*$/;
-var EVIDENCE_HEADING = /^###\s+(E-[A-Za-z0-9][A-Za-z0-9_-]*)\b/m;
-var FINDING_HEADING = /^###\s+(F-[A-Za-z0-9][A-Za-z0-9_-]*)\b/m;
-var PATH_HEADING = /^###\s+(P-[A-Za-z0-9][A-Za-z0-9_-]*)\b/m;
-var SEVERITIES = {
-  critical: true,
-  high: true,
-  medium: true,
-  low: true,
-  info: true,
-  "n/a": true,
-  "n/a_re": true
-};
-var EVIDENCE_STATUSES = {
-  observed: true,
-  candidate: true,
-  validated: true,
-  false_positive: true,
-  accepted_risk: true,
-  superseded: true
-};
-var WORKITEM_STATUSES = {
-  pending: true,
-  in_progress: true,
-  blocked: true,
-  done: true,
-  completed: true,
-  cancelled: true
-};
-var PATH_TYPES = {
-  attack: true,
-  callflow: true,
-  solve: true
-};
-var NETWORK_MODES = {
-  offline: true,
-  lab_only: true,
-  authorized_target_only: true,
-  unrestricted_lab: true
-};
-function splitLines(text) {
-  const lines = text.split(/\r?\n/);
-  if (lines.length > 0 && lines[lines.length - 1] === "") {
-    lines.pop();
-  }
-  return lines;
-}
-function readTextUtf8Sig(filePath) {
-  const content = fs5.readFileSync(filePath, "utf-8");
-  if (content.charCodeAt(0) === 65279) {
-    return content.slice(1);
-  }
-  return content;
-}
-function fieldValue(text, name) {
-  const lines = splitLines(text);
-  for (let index = 0;index < lines.length; index++) {
-    const line = lines[index];
-    const match = FIELD_LINE.exec(line);
-    if (!match || match[1] !== name) {
-      continue;
-    }
-    const value = match[2].trim();
-    if (value !== "|") {
-      return value;
-    }
-    const block = [];
-    for (let continuationIndex = index + 1;continuationIndex < lines.length; continuationIndex++) {
-      const continuation = lines[continuationIndex];
-      if (FIELD_LINE.test(continuation)) {
-        break;
-      }
-      if (SECTION_HEADING.test(continuation)) {
-        break;
-      }
-      if (continuation.trim()) {
-        block.push(continuation.trim());
-      }
-    }
-    return block.join(`
-`).trim();
-  }
-  return "";
-}
-function sectionText(text, title) {
-  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const headingPattern = new RegExp(`^##\\s+${escapedTitle}\\s*$`, "m");
-  const headingMatch = headingPattern.exec(text);
-  if (!headingMatch)
-    return "";
-  let startIndex = headingMatch.index + headingMatch[0].length;
-  if (text.startsWith(`\r
-`, startIndex)) {
-    startIndex += 2;
-  } else if (text.startsWith(`
-`, startIndex)) {
-    startIndex += 1;
-  }
-  const nextHeadingPattern = /^##\s/m;
-  const remaining = text.slice(startIndex);
-  const nextMatch = nextHeadingPattern.exec(remaining);
-  if (nextMatch) {
-    return remaining.slice(0, nextMatch.index);
-  }
-  return remaining;
-}
-function idsIn(value, pattern) {
-  if (!value)
-    return [];
-  const matches = value.match(new RegExp(pattern.source, "g"));
-  if (!matches)
-    return [];
-  return Array.from(new Set(matches)).sort();
-}
-function issue(issues, level, code, message, filePath = "") {
-  issues.push({ level, code, message, path: filePath });
-}
-function relativePath(root, targetPath) {
-  const resolvedRoot = path4.resolve(root);
-  const resolvedTarget = path4.resolve(targetPath);
-  const rel = path4.relative(resolvedRoot, resolvedTarget);
-  if (!rel.startsWith("..") && !path4.isAbsolute(rel)) {
-    return rel.split(path4.sep).join("/");
-  }
-  return targetPath.split(path4.sep).join("/");
-}
-function splitTableRow(line) {
-  const stripped = line.trim();
-  if (!stripped.startsWith("|") || !stripped.endsWith("|")) {
-    return [];
-  }
-  return stripped.slice(1, -1).split("|").map((cell) => cell.trim());
-}
-function parseWorkitems(root, issues) {
-  const workitemsPath = path4.join(root, "workitems.md");
-  const records = {};
-  const references = [];
-  let stat;
-  try {
-    stat = fs5.statSync(workitemsPath);
-  } catch {}
-  if (!stat || !stat.isFile()) {
-    issue(issues, "error", "workitems.missing", "workitems.md is missing", "workitems.md");
-    return { records, references };
-  }
-  const lines = splitLines(readTextUtf8Sig(workitemsPath));
-  for (let lineNumber = 1;lineNumber <= lines.length; lineNumber++) {
-    const line = lines[lineNumber - 1];
-    const cells = splitTableRow(line);
-    if (cells.length < 8 || !WORKITEM_ID_EXACT.test(cells[0])) {
-      continue;
-    }
-    const workitemId = cells[0];
-    const status = cells[5].toLowerCase();
-    if (!WORKITEM_STATUSES[status]) {
-      issue(issues, "error", "workitem.status", "unsupported work item status: " + status, "workitems.md:" + lineNumber);
-    }
-    const evidenceIds = idsIn(cells[6], EVIDENCE_ID);
-    records[workitemId] = { status, evidence_ids: evidenceIds };
-    for (const evidenceId of evidenceIds) {
-      references.push([evidenceId, "workitems.md:" + lineNumber]);
-    }
-  }
-  if (Object.keys(records).length === 0) {
-    issue(issues, "warning", "workitems.empty", "no work item rows were found", "workitems.md");
-  }
-  return { records, references };
-}
-function parseTimeline(root, issues) {
-  const timelinePath = path4.join(root, "timeline.md");
-  const references = [];
-  let events = 0;
-  let stat;
-  try {
-    stat = fs5.statSync(timelinePath);
-  } catch {}
-  if (!stat || !stat.isFile()) {
-    issue(issues, "error", "timeline.missing", "timeline.md is missing", "timeline.md");
-    return { events, references };
-  }
-  const lines = splitLines(readTextUtf8Sig(timelinePath));
-  for (let index = 0;index < lines.length; index++) {
-    const line = lines[index];
-    if (!line.startsWith("## ") || !line.includes("|")) {
-      continue;
-    }
-    events++;
-    let end = lines.length;
-    for (let nextIndex = index + 1;nextIndex < lines.length; nextIndex++) {
-      if (lines[nextIndex].startsWith("## ")) {
-        end = nextIndex;
-        break;
-      }
-    }
-    const body = lines.slice(index, end).join(`
-`);
-    const evidenceIds = idsIn(fieldValue(body, "evidence_ids"), EVIDENCE_ID);
-    for (const evidenceId of evidenceIds) {
-      references.push([evidenceId, "timeline.md:" + (index + 1)]);
-    }
-  }
-  if (events === 0) {
-    issue(issues, "warning", "timeline.empty", "no append-only timeline events were found", "timeline.md");
-  }
-  return { events, references };
-}
-function parseScope(root, issues, strict = false) {
-  const scopePath = path4.join(root, "scope.md");
-  const result = {
-    auth_status: "",
-    network_mode: "",
-    ready_for_act: "",
-    assets: []
-  };
-  let stat;
-  try {
-    stat = fs5.statSync(scopePath);
-  } catch {}
-  if (!stat || !stat.isFile()) {
-    issue(issues, "error", "scope.missing", "scope.md is missing", "scope.md");
-    return result;
-  }
-  const text = readTextUtf8Sig(scopePath);
-  const auth = sectionText(text, "auth");
-  const scopeSection = sectionText(text, "in_scope");
-  const network = sectionText(text, "network_profile");
-  const signoff = sectionText(text, "signoff");
-  result.auth_status = fieldValue(auth, "status").toLowerCase();
-  result.network_mode = fieldValue(network, "mode").toLowerCase();
-  result.ready_for_act = fieldValue(signoff, "ready_for_act").toLowerCase();
-  const assetsHeading = /^\s*-\s+assets:\s*(?:\r?\n|$)/m;
-  const assetsMatch = assetsHeading.exec(scopeSection);
-  if (assetsMatch) {
-    const startIndex = assetsMatch.index + assetsMatch[0].length;
-    const remaining = scopeSection.slice(startIndex);
-    const nextTopField = /^-\s+[A-Za-z0-9_]+:/m;
-    const nextMatch = nextTopField.exec(remaining);
-    const body = nextMatch ? remaining.slice(0, nextMatch.index) : remaining;
-    const lines = splitLines(body);
-    for (const line of lines) {
-      if (/^\s+-\s+\S+/.test(line)) {
-        const stripped = line.trim();
-        const assetValue = stripped.slice(2).trim();
-        if (assetValue !== "[]") {
-          result.assets.push(assetValue);
-        }
-      }
-    }
-  }
-  if (!result.auth_status) {
-    issue(issues, "error", "scope.auth_missing", "auth.status is missing", "scope.md");
-  } else if (!["pending", "granted", "denied", "unknown"].includes(result.auth_status)) {
-    issue(issues, "error", "scope.auth_invalid", "unsupported auth.status: " + result.auth_status, "scope.md");
-  }
-  if (!result.network_mode) {
-    issue(issues, "error", "scope.network_missing", "network_profile.mode is missing", "scope.md");
-  } else if (!NETWORK_MODES[result.network_mode]) {
-    issue(issues, "error", "scope.network_invalid", "unsupported network mode: " + result.network_mode, "scope.md");
-  }
-  if (!result.ready_for_act) {
-    issue(issues, "error", "scope.ready_missing", "signoff.ready_for_act is missing", "scope.md");
-  } else if (!["true", "false"].includes(result.ready_for_act)) {
-    issue(issues, "error", "scope.ready_invalid", "ready_for_act must be true or false", "scope.md");
-  }
-  if (result.network_mode !== "offline" && result.assets.length === 0) {
-    issue(issues, "error", "scope.assets_missing", "in_scope.assets is empty for a network case", "scope.md");
-  }
-  if (result.auth_status !== "granted" || result.ready_for_act !== "true") {
-    const message = "scope is not ready for target ACT";
-    if (strict && result.network_mode !== "offline") {
-      issue(issues, "error", "scope.not_ready", message, "scope.md");
-    } else {
-      issue(issues, "warning", "scope.not_ready", message, "scope.md");
-    }
-  }
-  return result;
-}
-function reportSections(text, headingPattern) {
-  const globalPattern = new RegExp(headingPattern.source, "gm");
-  const matches = [];
-  let m;
-  while ((m = globalPattern.exec(text)) !== null) {
-    matches.push({ id: m[1], start: m.index, end: m.index + m[0].length });
-  }
-  const sections = [];
-  const nextHeadingPattern = /^#{1,3}\s+/m;
-  for (const match of matches) {
-    const after = text.slice(match.end);
-    const nextMatch = nextHeadingPattern.exec(after);
-    const end = nextMatch ? match.end + nextMatch.index : text.length;
-    sections.push({ id: match.id, body: text.slice(match.start, end) });
-  }
-  return sections;
-}
-function findFilesRecursive(dir, extension) {
-  const results = [];
-  function walk(current) {
-    let entries;
-    try {
-      entries = fs5.readdirSync(current, { withFileTypes: true });
-    } catch {
-      return;
-    }
-    for (const entry of entries) {
-      const fullPath = path4.join(current, entry.name);
-      if (entry.isDirectory()) {
-        walk(fullPath);
-      } else if (entry.isFile() && entry.name.endsWith(extension)) {
-        results.push(fullPath);
-      }
-    }
-  }
-  walk(dir);
-  return results.sort();
-}
-function parseReports(root, issues) {
-  const findingRecords = [];
-  const pathRecords = [];
-  const references = [];
-  const reportRoot = path4.join(root, "report");
-  let stat;
-  try {
-    stat = fs5.statSync(reportRoot);
-  } catch {}
-  const reportFiles = stat && stat.isDirectory() ? findFilesRecursive(reportRoot, ".md") : [];
-  if (reportFiles.length === 0) {
-    issue(issues, "warning", "report.missing", "no Markdown report was found", "report");
-    return { findings: findingRecords, paths: pathRecords, references };
-  }
-  for (const reportPath of reportFiles) {
-    const text = readTextUtf8Sig(reportPath);
-    const displayPath = relativePath(root, reportPath);
-    for (const { id: findingId, body } of reportSections(text, FINDING_HEADING)) {
-      const status = fieldValue(body, "status").toLowerCase();
-      const confidence = fieldValue(body, "confidence").toLowerCase();
-      const evidenceIds = idsIn(fieldValue(body, "evidence_ids"), EVIDENCE_ID);
-      const required = ["severity", "evidence_ids", "confidence", "location", "status"];
-      for (const field of required) {
-        if (!fieldValue(body, field)) {
-          issue(issues, "error", "finding.field_missing", findingId + " is missing " + field, displayPath);
-        }
-      }
-      if (!["candidate", "validated", "false_positive", "accepted_risk", "superseded"].includes(status)) {
-        issue(issues, "error", "finding.status", findingId + " has unsupported status", displayPath);
-      }
-      if (status === "validated" && confidence === "low") {
-        issue(issues, "error", "finding.confidence", findingId + " is validated with low confidence", displayPath);
-      }
-      if (evidenceIds.length === 0) {
-        issue(issues, "error", "finding.evidence_missing", findingId + " has no evidence_ids", displayPath);
-      }
-      for (const evidenceId of evidenceIds) {
-        references.push([evidenceId, displayPath]);
-      }
-      findingRecords.push({ id: findingId, status, evidence_ids: evidenceIds, path: displayPath });
-    }
-    for (const { id: pathId, body } of reportSections(text, PATH_HEADING)) {
-      const pathType = fieldValue(body, "path_type").toLowerCase();
-      const evidenceIds = idsIn(body, EVIDENCE_ID);
-      if (!PATH_TYPES[pathType]) {
-        issue(issues, "error", "path.type", pathId + " has unsupported path_type", displayPath);
-      }
-      if (evidenceIds.length === 0) {
-        issue(issues, "error", "path.evidence_missing", pathId + " has no evidence reference", displayPath);
-      }
-      for (const evidenceId of evidenceIds) {
-        references.push([evidenceId, displayPath]);
-      }
-      pathRecords.push({ id: pathId, path_type: pathType, evidence_ids: evidenceIds, path: displayPath });
-    }
-  }
-  return { findings: findingRecords, paths: pathRecords, references };
-}
-function normalizeHash(value) {
-  let normalized = value.trim().toLowerCase();
-  if (normalized.startsWith("sha256:")) {
-    normalized = normalized.slice(7);
-  }
-  if (/^[0-9a-f]{64}$/.test(normalized)) {
-    return normalized;
-  }
-  return "";
-}
-function verifyArtifact(root, artifactPathStr, expectedHash, issues, displayPath) {
-  if (!artifactPathStr) {
-    issue(issues, "warning", "artifact.path_missing", "content_hash is recorded without artifact_path", displayPath);
-    return;
-  }
-  let candidate = artifactPathStr;
-  if (!path4.isAbsolute(candidate)) {
-    candidate = path4.join(root, candidate);
-  }
-  candidate = path4.resolve(candidate);
-  const rel = path4.relative(path4.resolve(root), candidate);
-  if (rel.startsWith("..") || path4.isAbsolute(rel)) {
-    issue(issues, "warning", "artifact.outside_case", "artifact_path points outside the case root", displayPath);
-    return;
-  }
-  let stat;
-  try {
-    stat = fs5.statSync(candidate);
-  } catch {}
-  if (!stat || !stat.isFile()) {
-    issue(issues, "error", "artifact.missing", "artifact_path does not exist", displayPath);
-    return;
-  }
-  const digest = sha256File(candidate);
-  if (digest !== expectedHash) {
-    issue(issues, "error", "artifact.hash_mismatch", "artifact SHA-256 does not match content_hash", displayPath);
-  }
-}
-function parseEvidence(root, workitems, issues, verifyHashes = false) {
-  const evidenceRoot = path4.join(root, "evidence");
-  const records = {};
-  const references = [];
-  let stat;
-  try {
-    stat = fs5.statSync(evidenceRoot);
-  } catch {}
-  if (!stat || !stat.isDirectory()) {
-    issue(issues, "error", "evidence.dir_missing", "evidence directory is missing", "evidence");
-    return { records, references };
-  }
-  const evidenceFiles = [];
-  try {
-    const entries = fs5.readdirSync(evidenceRoot, { withFileTypes: true });
-    for (const entry of entries) {
-      if (entry.isFile() && entry.name.startsWith("E-") && entry.name.endsWith(".md") && entry.name !== "INDEX.md") {
-        evidenceFiles.push(path4.join(evidenceRoot, entry.name));
-      }
-    }
-  } catch {}
-  evidenceFiles.sort();
-  if (evidenceFiles.length === 0) {
-    issue(issues, "warning", "evidence.empty", "no Evidence records were found", "evidence");
-  }
-  for (const evidencePath of evidenceFiles) {
-    const evidenceId = path4.parse(evidencePath).name;
-    const text = readTextUtf8Sig(evidencePath);
-    const displayPath = relativePath(root, evidencePath);
-    const headingMatch = EVIDENCE_HEADING.exec(text);
-    if (!headingMatch) {
-      issue(issues, "error", "evidence.heading_missing", "Evidence record has no matching heading", displayPath);
-    } else if (headingMatch[1] !== evidenceId) {
-      issue(issues, "error", "evidence.heading_mismatch", "Evidence heading does not match its filename", displayPath);
-    }
-    const severity = fieldValue(text, "severity").toLowerCase();
-    let status = fieldValue(text, "status").toLowerCase();
-    if (status.startsWith("superseded by")) {
-      status = "superseded";
-    }
-    const reproCommand = fieldValue(text, "repro_command");
-    const notes = fieldValue(text, "notes").toLowerCase();
-    const linkedWorkitems = idsIn(fieldValue(text, "linked_workitem"), WORKITEM_ID);
-    const contentHashValue = fieldValue(text, "content_hash");
-    const artifactPath = fieldValue(text, "artifact_path");
-    if (!SEVERITIES[severity]) {
-      issue(issues, "error", "evidence.severity", "unsupported severity: " + severity, displayPath);
-    }
-    if (!EVIDENCE_STATUSES[status]) {
-      issue(issues, "error", "evidence.status", "unsupported status: " + status, displayPath);
-    }
-    const offlineNote = ["offline", "\u79BB\u7EBF", "not applicable"].some((marker) => notes.includes(marker));
-    if (!reproCommand || ["n/a", "n/a_re"].includes(reproCommand.toLowerCase()) && !offlineNote) {
-      issue(issues, "error", "evidence.repro_missing", "Evidence requires a reproducible command or documented offline limitation", displayPath);
-    }
-    const expectedHash = contentHashValue.toLowerCase() !== "n/a" ? normalizeHash(contentHashValue) : "";
-    if (contentHashValue.toLowerCase() !== "n/a" && !expectedHash) {
-      issue(issues, "error", "evidence.hash_invalid", "content_hash must be SHA-256", displayPath);
-    }
-    if (verifyHashes && expectedHash) {
-      verifyArtifact(root, artifactPath, expectedHash, issues, displayPath);
-    }
-    for (const workitemId of linkedWorkitems) {
-      if (!(workitemId in workitems)) {
-        issue(issues, "error", "evidence.workitem_missing", "linked work item does not exist: " + workitemId, displayPath);
-      }
-    }
-    records[evidenceId] = { severity, status, artifact_path: artifactPath };
-  }
-  return { records, references };
-}
-function buildTraceability(evidenceIds, references) {
-  const sortedIds = Array.from(new Set(evidenceIds)).sort();
-  const graph = {};
-  for (const id of sortedIds) {
-    graph[id] = { workitems: 0, timeline: 0, reports: 0 };
-  }
-  for (const [evidenceId, source] of references) {
-    if (!graph[evidenceId]) {
-      continue;
-    }
-    if (source.startsWith("workitems.md:")) {
-      graph[evidenceId].workitems += 1;
-    } else if (source.startsWith("timeline.md:")) {
-      graph[evidenceId].timeline += 1;
-    } else {
-      graph[evidenceId].reports += 1;
-    }
-  }
-  return graph;
-}
-function reviewCase(caseRoot, options = {}) {
-  const strict = Boolean(options.strict);
-  const verifyHashes = Boolean(options.verify_hashes);
-  const resolvedRoot = path4.resolve(caseRoot);
-  const issues = [];
-  let stat;
-  try {
-    stat = fs5.statSync(resolvedRoot);
-  } catch {}
-  if (!stat || !stat.isDirectory()) {
-    issue(issues, "error", "case.missing", "case root does not exist", resolvedRoot);
-    return {
-      status: "FAIL",
-      case_root: resolvedRoot,
-      generated_at: new Date().toISOString(),
-      summary: {
-        errors: 1,
-        warnings: 0,
-        evidence: 0,
-        workitems: 0,
-        timeline_events: 0,
-        findings: 0,
-        paths: 0
-      },
-      issues,
-      traceability: {}
-    };
-  }
-  const { records: workitems, references: workitemRefs } = parseWorkitems(resolvedRoot, issues);
-  const { events: timelineEvents, references: timelineRefs } = parseTimeline(resolvedRoot, issues);
-  const scope = parseScope(resolvedRoot, issues, strict);
-  const { records: evidence, references: evidenceRefs } = parseEvidence(resolvedRoot, workitems, issues, verifyHashes);
-  const { findings, paths, references: reportRefs } = parseReports(resolvedRoot, issues);
-  const references = [...workitemRefs, ...timelineRefs, ...evidenceRefs, ...reportRefs];
-  for (const [evidenceId, source] of references) {
-    if (!(evidenceId in evidence)) {
-      issue(issues, "error", "reference.unknown_evidence", "reference points to missing Evidence: " + evidenceId, source);
-    }
-  }
-  const traceability = buildTraceability(Object.keys(evidence), references);
-  for (const [evidenceId, links] of Object.entries(traceability)) {
-    if (links.workitems === 0 && links.timeline === 0 && links.reports === 0) {
-      issue(issues, "warning", "evidence.unlinked", "Evidence is not referenced by a work item, timeline, or report", "evidence/" + evidenceId + ".md");
-    }
-  }
-  const errors = issues.filter((item) => item.level === "error").length;
-  const warnings = issues.filter((item) => item.level === "warning").length;
-  const status = errors > 0 || strict && warnings > 0 ? "FAIL" : warnings > 0 ? "WARN" : "PASS";
-  return {
-    status,
-    case_root: resolvedRoot,
-    generated_at: new Date().toISOString(),
-    scope,
-    summary: {
-      errors,
-      warnings,
-      evidence: Object.keys(evidence).length,
-      workitems: Object.keys(workitems).length,
-      timeline_events: timelineEvents,
-      findings: findings.length,
-      paths: paths.length
-    },
-    issues,
-    traceability
-  };
-}
-function renderMarkdown(report) {
-  const summary = report.summary;
-  const lines = [
-    "# Case review",
-    "",
-    "- status: " + report.status,
-    "- case_root: " + report.case_root,
-    "- generated_at: " + report.generated_at,
-    "",
-    "## Summary",
-    "",
-    "| Metric | Value |",
-    "|---|---:|"
-  ];
-  for (const key of ["errors", "warnings", "evidence", "workitems", "timeline_events", "findings", "paths"]) {
-    lines.push("| " + key + " | " + String(summary[key]) + " |");
-  }
-  lines.push("", "## Checks", "", "| Level | Code | Location | Detail |", "|---|---|---|---|");
-  if (report.issues.length > 0) {
-    for (const item of report.issues) {
-      const location = item.path.replace(/\|/g, "\\|");
-      const detail = item.message.replace(/\|/g, "\\|");
-      lines.push("| " + item.level + " | " + item.code + " | " + location + " | " + detail + " |");
-    }
-  } else {
-    lines.push("| pass | none | n/a | No review issues found |");
-  }
-  lines.push("", "## Traceability", "", "| Evidence | Work items | Timeline | Reports |", "|---|---:|---:|---:|");
-  const traceKeys = Object.keys(report.traceability);
-  if (traceKeys.length > 0) {
-    for (const evidenceId of traceKeys.sort()) {
-      const links = report.traceability[evidenceId];
-      lines.push("| " + evidenceId + " | " + links.workitems + " | " + links.timeline + " | " + links.reports + " |");
-    }
-  } else {
-    lines.push("| n/a | 0 | 0 | 0 |");
-  }
-  return lines.join(`
-`) + `
-`;
-}
-async function caseReview(input) {
-  const report = reviewCase(input.case_root, {
-    strict: input.strict,
-    verify_hashes: input.verify_hashes
-  });
-  const markdown = renderMarkdown(report);
-  return {
-    ...report,
-    markdown
-  };
-}
-
-// src/oracles/verify-timing.ts
-function calculateMedian(values) {
-  if (values.length === 0)
-    return 0;
-  const sorted = [...values].sort((a, b) => a - b);
-  const mid = Math.floor(sorted.length / 2);
-  return sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
-}
-function verifyTimingDifferential(input) {
-  if (input.hasTransportError) {
-    return {
-      outcome: "error",
-      medianBaselineMs: 0,
-      medianProbeMs: 0,
-      medianSeparationMs: 0,
-      pairedDifferences: [],
-      rationale: "Transport error or connection reset encountered during timing probe execution."
-    };
-  }
-  if (input.hasAffirmativeCounterevidence) {
-    return {
-      outcome: "rejected",
-      medianBaselineMs: 0,
-      medianProbeMs: 0,
-      medianSeparationMs: 0,
-      pairedDifferences: [],
-      rationale: "Affirmative counterevidence observed: target explicitly processed probe with immediate benign response."
-    };
-  }
-  const { pairs, expectedDelayMs } = input;
-  if (!pairs || pairs.length < 3) {
-    return {
-      outcome: "partial",
-      medianBaselineMs: 0,
-      medianProbeMs: 0,
-      medianSeparationMs: 0,
-      pairedDifferences: [],
-      rationale: "Insufficient sample size: at least 3 alternating baseline/probe pairs required."
-    };
-  }
-  for (const p of pairs) {
-    if (!Number.isFinite(p.baselineMs) || !Number.isFinite(p.probeMs) || p.baselineMs < 0 || p.probeMs < 0) {
-      return {
-        outcome: "error",
-        medianBaselineMs: 0,
-        medianProbeMs: 0,
-        medianSeparationMs: 0,
-        pairedDifferences: [],
-        rationale: "Invalid observation durations: all baseline and probe values must be finite non-negative numbers."
-      };
-    }
-  }
-  const baselines = pairs.map((p) => p.baselineMs);
-  const probes = pairs.map((p) => p.probeMs);
-  const pairedDiffs = pairs.map((p) => p.probeMs - p.baselineMs);
-  const medianBaseline = calculateMedian(baselines);
-  const medianProbe = calculateMedian(probes);
-  const medianSeparation = medianProbe - medianBaseline;
-  const minMedianSeparation = Math.max(750, 0.6 * expectedDelayMs);
-  const minPairedSeparation = Math.max(500, 0.4 * expectedDelayMs);
-  const qualifyingPairs = pairedDiffs.filter((d) => d >= minPairedSeparation).length;
-  const nMinusOne = pairs.length - 1;
-  if (medianSeparation >= minMedianSeparation && qualifyingPairs >= nMinusOne) {
-    return {
-      outcome: "validated",
-      medianBaselineMs: medianBaseline,
-      medianProbeMs: medianProbe,
-      medianSeparationMs: medianSeparation,
-      pairedDifferences: pairedDiffs,
-      rationale: `Statistical separation confirmed: median probe (${medianProbe}ms) - median baseline (${medianBaseline}ms) = ${medianSeparation}ms >= threshold ${minMedianSeparation}ms; ${qualifyingPairs}/${pairs.length} pairs >= ${minPairedSeparation}ms.`
-    };
-  }
-  return {
-    outcome: "partial",
-    medianBaselineMs: medianBaseline,
-    medianProbeMs: medianProbe,
-    medianSeparationMs: medianSeparation,
-    pairedDifferences: pairedDiffs,
-    rationale: `Insufficient timing separation: median difference ${medianSeparation}ms (required >= ${minMedianSeparation}ms), qualifying pairs ${qualifyingPairs}/${pairs.length} (required >= ${nMinusOne}). Mapped to partial (never rejected without counterevidence).`
-  };
-}
-
-// src/oracles/authz-matrix.ts
-function verifyAuthorizationMatrix(input) {
-  if (input.hasTransportError) {
-    return {
-      outcome: "error",
-      vulnerableIdentities: [],
-      rationale: "Transport or network socket failure during authorization matrix replay."
-    };
-  }
-  const { observations } = input;
-  if (!observations || observations.length === 0) {
-    return {
-      outcome: "partial",
-      vulnerableIdentities: [],
-      rationale: "No identity observations provided for authorization matrix comparison."
-    };
-  }
-  const vulnerable = [];
-  for (const obs of observations) {
-    if (obs.identity === "unauthorized" || obs.identity === "anonymous") {
-      if (obs.statusCode === 200 && obs.isBusinessDataPresent) {
-        vulnerable.push(obs.identity);
-      }
-    }
-  }
-  if (vulnerable.length > 0) {
-    return {
-      outcome: "validated",
-      vulnerableIdentities: vulnerable,
-      rationale: `Broken access control confirmed: unprivileged identity(ies) [${vulnerable.join(", ")}] accessed protected resource with 200 OK and business data payload.`
-    };
-  }
-  const unprivileged = observations.filter((o) => o.identity === "unauthorized" || o.identity === "anonymous");
-  const allRejected = unprivileged.length > 0 && unprivileged.every((o) => o.statusCode === 401 || o.statusCode === 403);
-  if (allRejected) {
-    return {
-      outcome: "rejected",
-      vulnerableIdentities: [],
-      rationale: "Affirmative counterevidence: all unprivileged identities correctly blocked with 401/403 status codes."
-    };
-  }
-  return {
-    outcome: "partial",
-    vulnerableIdentities: [],
-    rationale: "Ambiguous response: target returned inconclusive status codes without confidential business payload."
-  };
-}
-
-// src/oracles/verify-path-traversal.ts
-var PASSWD_REGEX = /root:[^:]*:[0-9]+:[0-9]+:[^:]*:[^:]*:[^\n\r]*/;
-function verifyPathTraversal(input) {
-  if (input.hasTransportError) {
-    return {
-      outcome: "error",
-      rationale: "Transport failure or network socket error during path traversal probe execution."
-    };
-  }
-  if (PASSWD_REGEX.test(input.baselineBody)) {
-    return {
-      outcome: "error",
-      rationale: "Invalid oracle baseline: baseline response already contained target file signature."
-    };
-  }
-  for (const probe of input.probeResponses) {
-    if (probe.statusCode === 200 && PASSWD_REGEX.test(probe.body)) {
-      return {
-        outcome: "validated",
-        matchedDepth: probe.depth,
-        rationale: `Confirmed path traversal file leak at depth ${probe.depth}: response contains /etc/passwd root account entry not present in baseline.`
-      };
-    }
-  }
-  const allBlocked = input.probeResponses.every((p) => p.statusCode === 403 || p.statusCode === 401 || p.body.toLowerCase().includes("access denied"));
-  if (allBlocked && input.probeResponses.length > 0) {
-    return {
-      outcome: "rejected",
-      rationale: "Affirmative counterevidence: target explicitly denied or normalized all traversal probe depths (403/401 Access Denied)."
-    };
-  }
-  return {
-    outcome: "partial",
-    rationale: "Inconclusive response: target returned benign status (e.g. 404 / 200 without file content). No proof of file disclosure."
-  };
-}
-
-// plugin/tools/verify-oracle.ts
-async function handleVerifyOracle(args) {
-  const input = args ?? {};
-  if (!input.oracle_type) {
-    return {
-      outcome: "error",
-      rationale: "Missing required 'oracle_type' parameter.",
-      error: "INVALID_ARGUMENT"
-    };
-  }
-  const params = input.parameters ?? {};
-  switch (input.oracle_type) {
-    case "timing_differential": {
-      const expectedDelayMs = Number(params.expectedDelayMs ?? params.expected_delay_ms ?? 0);
-      const rawPairs = params.pairs ?? [];
-      const pairs = rawPairs.map((p) => ({
-        baselineMs: Number(p.baselineMs ?? p.baseline_ms ?? 0),
-        probeMs: Number(p.probeMs ?? p.probe_ms ?? 0)
-      }));
-      const timingInput = {
-        expectedDelayMs,
-        pairs,
-        hasTransportError: Boolean(params.hasTransportError ?? params.has_transport_error),
-        hasAffirmativeCounterevidence: Boolean(params.hasAffirmativeCounterevidence ?? params.has_affirmative_counterevidence)
-      };
-      const result = verifyTimingDifferential(timingInput);
-      return {
-        outcome: result.outcome,
-        rationale: result.rationale,
-        details: {
-          medianBaselineMs: result.medianBaselineMs,
-          medianProbeMs: result.medianProbeMs,
-          medianSeparationMs: result.medianSeparationMs,
-          pairedDifferences: result.pairedDifferences
-        }
-      };
-    }
-    case "authz_matrix": {
-      const endpoint = String(params.endpoint ?? params.endpoints?.[0] ?? "/api");
-      const rawObservations = params.observations ?? [];
-      const observations = rawObservations.map((obs) => {
-        let identity = "anonymous";
-        const rawId = String(obs.identity ?? obs.role ?? "anonymous").toLowerCase();
-        if (rawId === "authorized" || rawId === "admin") {
-          identity = "authorized";
-        } else if (rawId === "unauthorized" || rawId === "user" || rawId === "victim") {
-          identity = "unauthorized";
-        }
-        const statusCode = Number(obs.statusCode ?? obs.status_code ?? obs.observedStatus ?? 200);
-        const body = String(obs.body ?? "");
-        const isBusinessDataPresent = Boolean(obs.isBusinessDataPresent ?? obs.is_business_data_present ?? obs.observedOutcome === "allow");
-        return {
-          identity,
-          statusCode,
-          body,
-          isBusinessDataPresent
-        };
-      });
-      const authzInput = {
-        endpoint,
-        observations,
-        hasTransportError: Boolean(params.hasTransportError ?? params.has_transport_error)
-      };
-      const result = verifyAuthorizationMatrix(authzInput);
-      return {
-        outcome: result.outcome,
-        rationale: result.rationale,
-        details: {
-          vulnerableIdentities: result.vulnerableIdentities
-        }
-      };
-    }
-    case "path_traversal": {
-      const baselineStatusCode = Number(params.baselineStatusCode ?? params.baseline_status_code ?? 404);
-      const baselineBody = String(params.baselineBody ?? params.baseline_body ?? "");
-      const rawProbes = params.probeResponses ?? params.probe_responses ?? params.probes ?? [];
-      const probeResponses = rawProbes.map((p, idx) => ({
-        depth: Number(p.depth ?? idx + 1),
-        statusCode: Number(p.statusCode ?? p.status_code ?? 200),
-        body: String(p.body ?? p.responseBytes ?? p.response_body ?? "")
-      }));
-      const traversalInput = {
-        baselineStatusCode,
-        baselineBody,
-        probeResponses,
-        hasTransportError: Boolean(params.hasTransportError ?? params.has_transport_error)
-      };
-      const result = verifyPathTraversal(traversalInput);
-      return {
-        outcome: result.outcome,
-        rationale: result.rationale,
-        details: {
-          matchedDepth: result.matchedDepth
-        }
-      };
-    }
-    default:
-      return {
-        outcome: "error",
-        rationale: `Unsupported oracle_type '${input.oracle_type}'. Supported: timing_differential, authz_matrix, path_traversal.`,
-        error: "UNSUPPORTED_ORACLE_TYPE"
-      };
-  }
-}
-
-// plugin/tools/apk-inspect.ts
-import * as fs6 from "fs";
-import * as path5 from "path";
-import * as zlib from "zlib";
-function extractFromZip(zipPath, targetFileName) {
-  const buf = fs6.readFileSync(zipPath);
-  let eocdOffset = -1;
-  const searchLimit = Math.max(0, buf.length - 65536);
-  for (let i = buf.length - 22;i >= searchLimit; i--) {
-    if (buf.readUInt32LE(i) === 101010256) {
-      eocdOffset = i;
-      break;
-    }
-  }
-  if (eocdOffset === -1) {
-    throw new Error(`Invalid ZIP/APK archive: EOCD record not found in ${zipPath}`);
-  }
-  const cdCount = buf.readUInt16LE(eocdOffset + 10);
-  const cdOffset = buf.readUInt32LE(eocdOffset + 16);
-  let pos = cdOffset;
-  for (let i = 0;i < cdCount; i++) {
-    if (pos + 46 > buf.length || buf.readUInt32LE(pos) !== 33639248)
-      break;
-    const compression = buf.readUInt16LE(pos + 10);
-    const compressedSize = buf.readUInt32LE(pos + 20);
-    const nameLen = buf.readUInt16LE(pos + 28);
-    const extraLen = buf.readUInt16LE(pos + 30);
-    const commentLen = buf.readUInt16LE(pos + 32);
-    const localHeaderOffset = buf.readUInt32LE(pos + 42);
-    const fileName = buf.toString("utf-8", pos + 46, pos + 46 + nameLen);
-    pos += 46 + nameLen + extraLen + commentLen;
-    if (fileName === targetFileName) {
-      if (localHeaderOffset + 30 > buf.length) {
-        throw new Error(`Corrupted ZIP entry offset for ${targetFileName}`);
-      }
-      const localNameLen = buf.readUInt16LE(localHeaderOffset + 26);
-      const localExtraLen = buf.readUInt16LE(localHeaderOffset + 28);
-      const dataStart = localHeaderOffset + 30 + localNameLen + localExtraLen;
-      if (dataStart + compressedSize > buf.length) {
-        throw new Error(`Unexpected EOF while reading ${targetFileName}`);
-      }
-      const rawData = buf.subarray(dataStart, dataStart + compressedSize);
-      if (compression === 0) {
-        return Buffer.from(rawData);
-      } else if (compression === 8) {
-        return zlib.inflateRawSync(rawData);
-      } else {
-        throw new Error(`Unsupported compression method (${compression}) in ${zipPath}`);
-      }
-    }
-  }
-  throw new Error(`File '${targetFileName}' not found in APK: ${zipPath}`);
-}
-function parseTextManifest(xmlText) {
-  const packageMatch = xmlText.match(/package\s*=\s*["']([^"']+)["']/i);
-  const packageName = packageMatch ? packageMatch[1] : "unknown.package";
-  const vCodeMatch = xmlText.match(/versionCode\s*=\s*["']([^"']+)["']/i);
-  const versionCode = vCodeMatch ? parseInt(vCodeMatch[1], 10) : undefined;
-  const vNameMatch = xmlText.match(/versionName\s*=\s*["']([^"']+)["']/i);
-  const versionName = vNameMatch ? vNameMatch[1] : undefined;
-  const minSdkMatch = xmlText.match(/minSdkVersion\s*=\s*["']([^"']+)["']/i);
-  const minSdkVersion = minSdkMatch ? parseInt(minSdkMatch[1], 10) : undefined;
-  const targetSdkMatch = xmlText.match(/targetSdkVersion\s*=\s*["']([^"']+)["']/i);
-  const targetSdkVersion = targetSdkMatch ? parseInt(targetSdkMatch[1], 10) : undefined;
-  const permissions = [];
-  const permRegex = /<uses-permission[^>]*android:name\s*=\s*["']([^"']+)["'][^>]*>/gi;
-  let permMatch;
-  while ((permMatch = permRegex.exec(xmlText)) !== null) {
-    if (permMatch[1] && !permissions.includes(permMatch[1])) {
-      permissions.push(permMatch[1]);
-    }
-  }
-  const debuggableMatch = xmlText.match(/android:debuggable\s*=\s*["']true["']/i);
-  const debuggable = Boolean(debuggableMatch);
-  const allowBackupMatch = xmlText.match(/android:allowBackup\s*=\s*["']true["']/i);
-  const allowBackup = Boolean(allowBackupMatch);
-  const dangerousFlags = [];
-  if (debuggable)
-    dangerousFlags.push("debuggable");
-  if (allowBackup)
-    dangerousFlags.push("allowBackup");
-  if (/android:usesCleartextTraffic\s*=\s*["']true["']/i.test(xmlText)) {
-    dangerousFlags.push("usesCleartextTraffic");
-  }
-  if (/android:testOnly\s*=\s*["']true["']/i.test(xmlText)) {
-    dangerousFlags.push("testOnly");
-  }
-  const exportedComponents = [];
-  const componentTypes = [
-    { tag: "activity", type: "activity" },
-    { tag: "service", type: "service" },
-    { tag: "receiver", type: "receiver" },
-    { tag: "provider", type: "provider" }
-  ];
-  for (const { tag, type } of componentTypes) {
-    const tagRegex = new RegExp(`<${tag}\\b([\\s\\S]*?)(?:\\/>|>([\\s\\S]*?)<\\/${tag}>)`, "gi");
-    let match;
-    while ((match = tagRegex.exec(xmlText)) !== null) {
-      const attrs = match[1] || "";
-      const inner = match[2] || "";
-      const nameMatch = attrs.match(/android:name\s*=\s*["']([^"']+)["']/i);
-      if (!nameMatch || !nameMatch[1])
-        continue;
-      const name = nameMatch[1];
-      const exportedExplicitMatch = attrs.match(/android:exported\s*=\s*["'](true|false)["']/i);
-      let exported = false;
-      if (exportedExplicitMatch) {
-        exported = exportedExplicitMatch[1].toLowerCase() === "true";
-      } else {
-        exported = /<intent-filter\b/i.test(inner);
-      }
-      if (exported) {
-        const permAttrMatch = attrs.match(/android:permission\s*=\s*["']([^"']+)["']/i);
-        const permission = permAttrMatch ? permAttrMatch[1] : null;
-        exportedComponents.push({ type, name, permission });
-      }
-    }
-  }
-  return {
-    packageName,
-    versionCode,
-    versionName,
-    minSdkVersion,
-    targetSdkVersion,
-    debuggable,
-    allowBackup,
-    permissions,
-    exportedComponents,
-    dangerousFlags
-  };
-}
-function parseBinaryManifest(rawBuf) {
-  const magic = rawBuf.readUInt32LE(0);
-  if (magic !== 524291) {
-    return parseTextManifest(rawBuf.toString("utf-8"));
-  }
-  let stringPoolOffset = 8;
-  const poolType = rawBuf.readUInt16LE(stringPoolOffset);
-  if (poolType !== 1) {
-    throw new Error("Invalid AXML: Expected StringPool chunk at offset 8");
-  }
-  const stringCount = rawBuf.readUInt32LE(stringPoolOffset + 8);
-  const flags = rawBuf.readUInt32LE(stringPoolOffset + 16);
-  const stringsStart = stringPoolOffset + rawBuf.readUInt32LE(stringPoolOffset + 20);
-  const isUtf8 = (flags & 1 << 8) !== 0;
-  const strings = [];
-  const offsetTableStart = stringPoolOffset + 28;
-  for (let i = 0;i < stringCount; i++) {
-    const strOffset = stringsStart + rawBuf.readUInt32LE(offsetTableStart + i * 4);
-    if (strOffset >= rawBuf.length)
-      continue;
-    if (isUtf8) {
-      let lenOffset = strOffset;
-      let len = rawBuf.readUInt8(lenOffset++);
-      if ((len & 128) !== 0) {
-        len = (len & 127) << 8 | rawBuf.readUInt8(lenOffset++);
-      }
-      let byteLen = rawBuf.readUInt8(lenOffset++);
-      if ((byteLen & 128) !== 0) {
-        byteLen = (byteLen & 127) << 8 | rawBuf.readUInt8(lenOffset++);
-      }
-      strings.push(rawBuf.toString("utf-8", lenOffset, lenOffset + byteLen));
-    } else {
-      let lenOffset = strOffset;
-      let len = rawBuf.readUInt16LE(lenOffset);
-      lenOffset += 2;
-      if ((len & 32768) !== 0) {
-        len = (len & 32767) << 16 | rawBuf.readUInt16LE(lenOffset);
-        lenOffset += 2;
-      }
-      strings.push(rawBuf.toString("utf16le", lenOffset, lenOffset + len * 2));
-    }
-  }
-  let packageName = "unknown.package";
-  const permissions = [];
-  const exportedComponents = [];
-  const dangerousFlags = [];
-  let debuggable = false;
-  let allowBackup = false;
-  for (const s of strings) {
-    if (s.startsWith("android.permission.")) {
-      if (!permissions.includes(s))
-        permissions.push(s);
-    }
-    if (s === "debuggable") {
-      debuggable = true;
-      if (!dangerousFlags.includes("debuggable"))
-        dangerousFlags.push("debuggable");
-    }
-    if (s === "allowBackup") {
-      allowBackup = true;
-      if (!dangerousFlags.includes("allowBackup"))
-        dangerousFlags.push("allowBackup");
-    }
-    if (s === "usesCleartextTraffic") {
-      if (!dangerousFlags.includes("usesCleartextTraffic"))
-        dangerousFlags.push("usesCleartextTraffic");
-    }
-  }
-  const candidatePkg = strings.find((s) => s.includes(".") && !s.startsWith("android.") && !s.includes("/") && !s.endsWith(".xml"));
-  if (candidatePkg) {
-    packageName = candidatePkg;
-  }
-  return {
-    packageName,
-    debuggable,
-    allowBackup,
-    permissions,
-    exportedComponents,
-    dangerousFlags
-  };
-}
-async function inspectApk(input) {
-  const resolvedPath = path5.resolve(input.apk_path);
-  if (!fs6.existsSync(resolvedPath)) {
-    throw new Error(`APK file not found: ${resolvedPath}`);
-  }
-  const manifestBuf = extractFromZip(resolvedPath, "AndroidManifest.xml");
-  if (manifestBuf.length >= 4 && manifestBuf.readUInt32LE(0) === 524291) {
-    return parseBinaryManifest(manifestBuf);
-  }
-  return parseTextManifest(manifestBuf.toString("utf-8"));
-}
-
 // src/core/fs-safe.ts
-import * as fs7 from "fs";
-import * as path6 from "path";
 function safeReadBoundedFile(filePath, maxBytes = BOUNDING_LIMITS.MAX_DELIVERED_BYTES) {
-  const resolved = path6.resolve(filePath);
-  if (!fs7.existsSync(resolved)) {
+  const resolved = path2.resolve(filePath);
+  if (!fs2.existsSync(resolved)) {
     throw new Error(`File not found: ${resolved}`);
   }
-  const rawBytes = fs7.readFileSync(resolved);
+  const rawBytes = fs2.readFileSync(resolved);
   const sizeBytes = rawBytes.length;
   const rawStr = new TextDecoder("utf-8", { fatal: false }).decode(rawBytes);
   if (sizeBytes <= maxBytes) {
@@ -10326,33 +9905,33 @@ function safeReadBoundedFile(filePath, maxBytes = BOUNDING_LIMITS.MAX_DELIVERED_
 // plugin/extensions/routing.ts
 function resolvePluginRoot(baseDir) {
   if (baseDir) {
-    const resolved = path7.resolve(baseDir);
-    if (fs8.existsSync(path7.join(resolved, "catalog/skills.index.jsonl"))) {
+    const resolved = path3.resolve(baseDir);
+    if (fs3.existsSync(path3.join(resolved, "catalog/skills.index.jsonl"))) {
       return resolved;
     }
-    if (fs8.existsSync(path7.join(resolved, "plugin/catalog/skills.index.jsonl"))) {
-      return path7.join(resolved, "plugin");
+    if (fs3.existsSync(path3.join(resolved, "plugin/catalog/skills.index.jsonl"))) {
+      return path3.join(resolved, "plugin");
     }
-    if (fs8.existsSync(path7.join(resolved, "plugin"))) {
-      return path7.join(resolved, "plugin");
+    if (fs3.existsSync(path3.join(resolved, "plugin"))) {
+      return path3.join(resolved, "plugin");
     }
     return resolved;
   }
   const metaDir = typeof import.meta !== "undefined" && import.meta.dir ? import.meta.dir : process.cwd();
-  const distRoot = path7.resolve(metaDir, "../..");
-  if (fs8.existsSync(path7.join(distRoot, "catalog/skills.index.jsonl"))) {
+  const distRoot = path3.resolve(metaDir, "../..");
+  if (fs3.existsSync(path3.join(distRoot, "catalog/skills.index.jsonl"))) {
     return distRoot;
   }
-  const sourceRoot = path7.resolve(metaDir, "..");
-  if (fs8.existsSync(path7.join(sourceRoot, "catalog/skills.index.jsonl"))) {
+  const sourceRoot = path3.resolve(metaDir, "..");
+  if (fs3.existsSync(path3.join(sourceRoot, "catalog/skills.index.jsonl"))) {
     return sourceRoot;
   }
-  const cwdPlugin = path7.resolve(process.cwd(), "plugin");
-  if (fs8.existsSync(path7.join(cwdPlugin, "catalog/skills.index.jsonl"))) {
+  const cwdPlugin = path3.resolve(process.cwd(), "plugin");
+  if (fs3.existsSync(path3.join(cwdPlugin, "catalog/skills.index.jsonl"))) {
     return cwdPlugin;
   }
-  if (fs8.existsSync(path7.resolve(process.cwd(), "catalog/skills.index.jsonl"))) {
-    return path7.resolve(process.cwd());
+  if (fs3.existsSync(path3.resolve(process.cwd(), "catalog/skills.index.jsonl"))) {
+    return path3.resolve(process.cwd());
   }
   return distRoot;
 }
@@ -10363,21 +9942,21 @@ class SkillCatalogManager {
   routingDir;
   constructor(baseDir) {
     const root = resolvePluginRoot(baseDir);
-    this.catalogPath = path7.resolve(root, "catalog/skills.index.jsonl");
-    this.skillsDir = path7.resolve(root, "skills");
-    this.routingDir = path7.resolve(root, "catalog/routing");
+    this.catalogPath = path3.resolve(root, "catalog/skills.index.jsonl");
+    this.skillsDir = path3.resolve(root, "skills");
+    this.routingDir = path3.resolve(root, "catalog/routing");
   }
   loadRoutingTables() {
     const domains = ["re", "webapp", "mobile", "red"];
     const tables = {};
     for (const domain of domains) {
-      const file = path7.join(this.routingDir, `${domain}.json`);
-      if (!fs8.existsSync(file)) {
+      const file = path3.join(this.routingDir, `${domain}.json`);
+      if (!fs3.existsSync(file)) {
         tables[domain] = null;
         continue;
       }
       try {
-        tables[domain] = JSON.parse(fs8.readFileSync(file, "utf-8"));
+        tables[domain] = JSON.parse(fs3.readFileSync(file, "utf-8"));
       } catch {
         tables[domain] = null;
       }
@@ -10388,10 +9967,10 @@ class SkillCatalogManager {
     return routeHint(hint, domain, this.loadRoutingTables());
   }
   loadCatalog() {
-    if (!fs8.existsSync(this.catalogPath)) {
+    if (!fs3.existsSync(this.catalogPath)) {
       return [];
     }
-    const raw = fs8.readFileSync(this.catalogPath, "utf-8");
+    const raw = fs3.readFileSync(this.catalogPath, "utf-8");
     return raw.split(`
 `).filter((l) => l.trim().length > 0).map((l) => JSON.parse(l));
   }
@@ -10471,11 +10050,11 @@ class SkillCatalogManager {
     };
   }
   load(name) {
-    const skillPath = path7.join(this.skillsDir, name, "SKILL.md");
-    if (!fs8.existsSync(skillPath)) {
+    const skillPath = path3.join(this.skillsDir, name, "SKILL.md");
+    if (!fs3.existsSync(skillPath)) {
       return { error: "SKILL_NOT_FOUND", name };
     }
-    const raw = fs8.readFileSync(skillPath, "utf-8");
+    const raw = fs3.readFileSync(skillPath, "utf-8");
     const computedHash = sha256String(raw);
     const catalog = this.loadCatalog();
     const entry = catalog.find((c) => c.name === name);
@@ -10494,16 +10073,16 @@ class SkillCatalogManager {
     };
   }
   loadAsset(skillName, assetPath) {
-    const skillDir = path7.join(this.skillsDir, skillName);
-    if (!fs8.existsSync(skillDir)) {
+    const skillDir = path3.join(this.skillsDir, skillName);
+    if (!fs3.existsSync(skillDir)) {
       throw new Error(`Skill '${skillName}' not found`);
     }
     const cleanSubpath = assetPath.replace(/^(\.\/|\/)+/, "");
-    const targetPath = path7.resolve(skillDir, cleanSubpath);
+    const targetPath = path3.resolve(skillDir, cleanSubpath);
     if (!targetPath.startsWith(skillDir)) {
       throw new Error(`Path traversal denied: '${assetPath}' escapes skill directory`);
     }
-    if (!fs8.existsSync(targetPath)) {
+    if (!fs3.existsSync(targetPath)) {
       throw new Error(`Asset '${cleanSubpath}' not found in skill '${skillName}'`);
     }
     const bounded = safeReadBoundedFile(targetPath);
@@ -10636,102 +10215,6 @@ function routingExtension(pi) {
     handler: async (args) => {
       const { hint, domain } = args || {};
       return manager.route(hint, domain);
-    }
-  });
-  registerTool(pi, {
-    name: "evidence_exec",
-    description: "Execute a command directly without shell interpolation and record raw evidence artifacts.",
-    parameters: {
-      type: "object",
-      properties: {
-        argv: { type: "array", items: { type: "string" }, description: "Command arguments array" },
-        cwd: { type: "string", description: "Working directory" },
-        stdin_artifact_id: { type: "string", description: "Artifact ID for stdin data" },
-        timeout_ms: { type: "integer", description: "Maximum execution duration in ms" }
-      },
-      required: ["argv"]
-    },
-    handler: async (args) => {
-      const evidenceDir = path7.resolve(process.cwd(), "evidence");
-      return executeEvidenceCommand(args || {}, evidenceDir);
-    }
-  });
-  registerTool(pi, {
-    name: "consolidate_evidence",
-    description: "Consolidate evidence receipts into a formal finding and append to case report.",
-    parameters: {
-      type: "object",
-      properties: {
-        case_root: { type: "string" },
-        evidence_ids: { type: "array", items: { type: "string" } },
-        finding_id: { type: "string" },
-        title: { type: "string" },
-        description: { type: "string" },
-        severity: { type: "string" },
-        status: { type: "string" },
-        confidence: { type: "string" },
-        location: { type: "string" },
-        write: { type: "boolean" }
-      },
-      required: ["title", "description"]
-    },
-    handler: async (args) => {
-      return consolidateEvidence(args || {});
-    }
-  });
-  registerTool(pi, {
-    name: "case_review",
-    description: "Review engagement case consistency across evidence, workitems, scope, and timeline.",
-    parameters: {
-      type: "object",
-      properties: {
-        case_root: { type: "string" },
-        strict: { type: "boolean" },
-        verify_hashes: { type: "boolean" }
-      },
-      required: ["case_root"]
-    },
-    handler: async (args) => {
-      return caseReview(args || {});
-    }
-  });
-  registerTool(pi, {
-    name: "verify_oracle",
-    description: "Execute deterministic mathematical and logical verification oracles to independently validate candidate security findings.",
-    parameters: {
-      type: "object",
-      properties: {
-        oracle_type: {
-          type: "string",
-          enum: ["timing_differential", "authz_matrix", "path_traversal"],
-          description: "Type of verification oracle to execute"
-        },
-        parameters: {
-          type: "object",
-          description: "Typed input parameters corresponding to the selected oracle"
-        }
-      },
-      required: ["oracle_type", "parameters"]
-    },
-    handler: async (args) => {
-      return handleVerifyOracle(args || {});
-    }
-  });
-  registerTool(pi, {
-    name: "apk_inspect",
-    description: "Natively inspect an Android APK archive and extract structured manifest metadata, permissions, components, and security flags.",
-    parameters: {
-      type: "object",
-      properties: {
-        apk_path: { type: "string", description: "Path to the APK file on the filesystem." },
-        extract_components: { type: "boolean", default: true },
-        extract_permissions: { type: "boolean", default: true }
-      },
-      required: ["apk_path"]
-    },
-    handler: async (args) => {
-      const { apk_path, extract_components, extract_permissions } = args || {};
-      return inspectApk({ apk_path, extract_components, extract_permissions });
     }
   });
 }

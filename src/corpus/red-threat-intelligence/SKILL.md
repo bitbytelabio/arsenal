@@ -66,15 +66,15 @@ Stage Exits:
 
 Prefer Xquik MCP. Running the platform bootstrap will only register the remote URL inside MCP clients explicitly selected by the user. It will not install local bridges, write secrets, or start background services.
 
-Resolve `skill://red-threat-intelligence/scripts/bootstrap-reverse.ps1` or `skill://red-threat-intelligence/scripts/bootstrap-reverse.sh` for your platform. Copy the complete selected helper into the local scripts directory in your workspace before executing it; do not pass a skill URI to a shell.
+Resolve `arsenal scripts bootstrap-reverse` or `arsenal scripts bootstrap-reverse` for your platform. Copy the complete selected helper into the local scripts directory in your workspace before executing it; do not pass a skill URI to a shell.
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/bootstrap-reverse.ps1 `
+arsenal scripts bootstrap-reverse `
   -Capability xquik-mcp -McpHostTarget Codex
 ```
 
 ```bash
-bash scripts/bootstrap-reverse.sh xquik-mcp --mcp-host=codex
+arsenal scripts bootstrap-reverse xquik-mcp --mcp-host=codex
 ```
 
 Complete OAuth subsequently within the client. If falling back to REST, read `XQUIK_API_KEY` only from the environment or an approved secrets store. Writing secrets into command lines, configurations, reports, or evidence text is prohibited.

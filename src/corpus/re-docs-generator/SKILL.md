@@ -72,7 +72,7 @@ Takes effect **concurrently** with §0 Evidence→Finding→Path; in case of con
 - Replace sensitive information (real tokens, passwords, internal URLs) with placeholders.
 - **MUST** include an Evidence → Finding → Path chain (see `skill://re-docs-generator/support/ops/evidence-finding-path.md` and template §0).
 - **MUST** read `skill://re-docs-generator/references/vendor-report-rules.md`: Select `malware` / `apt` or `flavor = null` (thin `vuln` can be overlaid for vulnerability tasks); when no flavor is set, only output the original task template and applicable Base elements without forcing IOC/ATT&CK.
-- **SHOULD** reference case `scope.md` / `timeline.md` (`skill://re-docs-generator/support/templates/case-init.sh`).
+- **SHOULD** reference case `scope.md` / `timeline.md` (`arsenal scripts case-init`).
 
 ### Diagram Integration
 

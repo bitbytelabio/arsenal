@@ -10,7 +10,7 @@
 ## CLI Usage
 
 ```bash
-python scripts/agent.py \
+arsenal scripts red-extracting-credentials-from-memory-dump/agent \
   --dump /cases/case-001/memory.raw \
   --output-dir /cases/case-001/analysis/ \
   --output credential_report.json

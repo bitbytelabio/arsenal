@@ -9,8 +9,8 @@ This page provides general procedures without machine-specific absolute paths. T
 | IDA Installation Directory | Environment variable `IDADIR` (contains `ida.exe` or `ida.dll`) |
 | HTTP MCP | `http://127.0.0.1:13337/mcp` |
 | Client Server Name | Use only **`idapro`** (do not register `ida-pro-mcp` concurrently) |
-| Startup | `templates/start.sh` (`--unsafe`, without `?ext=dbg`) |
-| Opening Database | For large files, prefer `templates/open.sh`; do not invoke `idb_open` directly through certain clients |
+| Startup | `arsenal scripts re-ida-reverse/start` (`--unsafe`, without `?ext=dbg`) |
+| Opening Database | For large files, prefer `arsenal scripts re-ida-reverse/open`; do not invoke `idb_open` directly through certain clients |
 
 Pointing two MCP names to the same port 13337 registers tools twice and causes port conflicts with the idalib worker.
 
@@ -35,23 +35,23 @@ MCP entries with `type: http` do not automatically launch processes. When port 1
 
 | Script | Purpose |
 |--------|---------|
-| `templates/start.sh` | Outputs `OK:<n>:reuse` and updates last-healthy if healthy; treats the port as busy and avoids killing it if listening but RPC times out; replaces the managed supervisor only if nobody is listening, `py_eval` is missing, or tools/list consecutively fails for over 3 minutes (and no `opening.lock` exists); never kills `ida.exe` |
-| `templates/watchdog.ps1` | Inspects every minute; reuses if healthy; reuses if GUI / `templates/open.sh` database opening lock / last-healthy is within 3 minutes; **applies `-Force` only if tools/list consecutively fails for over 3 minutes** |
-| `templates/recover.sh` | Immediately applies `-Force` to restart supervisor (does not kill `ida.exe`). Use this when HTTP clients flag `idapro` as error |
-| `templates/install-autostart.sh` | Registers scheduled task `reverse-skill-ida-mcp` (on logon + every minute) |
-| `templates/start-gui.sh` | Launches GUI plugin when idalib license fails |
-| `templates/open.sh` | Calls `idb_open` directly via HTTP, bypassing schema validation in certain clients |
+| `arsenal scripts re-ida-reverse/start` | Outputs `OK:<n>:reuse` and updates last-healthy if healthy; treats the port as busy and avoids killing it if listening but RPC times out; replaces the managed supervisor only if nobody is listening, `py_eval` is missing, or tools/list consecutively fails for over 3 minutes (and no `opening.lock` exists); never kills `ida.exe` |
+| `arsenal scripts re-ida-reverse/watchdog` | Inspects every minute; reuses if healthy; reuses if GUI / `arsenal scripts re-ida-reverse/open` database opening lock / last-healthy is within 3 minutes; **applies `-Force` only if tools/list consecutively fails for over 3 minutes** |
+| `arsenal scripts re-ida-reverse/recover` | Immediately applies `-Force` to restart supervisor (does not kill `ida.exe`). Use this when HTTP clients flag `idapro` as error |
+| `arsenal scripts re-ida-reverse/install-autostart` | Registers scheduled task `reverse-skill-ida-mcp` (on logon + every minute) |
+| `arsenal scripts re-ida-reverse/start-gui` | Launches GUI plugin when idalib license fails |
+| `arsenal scripts re-ida-reverse/open` | Calls `idb_open` directly via HTTP, bypassing schema validation in certain clients |
 
 Logs: `%LOCALAPPDATA%\reverse-skill\ida-mcp\supervisor.log` and `watchdog.log`.
 
 ```bash
-# Resolve helpers from skill://re-ida-reverse/templates/ to local working directory:
-bash templates/start.sh [port]
-bash templates/open.sh "/path/to/target.exe" [port]
-bash templates/install-autostart.sh
+# Run IDA reverse engineering helpers via Arsenal CLI:
+arsenal scripts re-ida-reverse/start [port]
+arsenal scripts re-ida-reverse/open "/path/to/target.exe" [port]
+arsenal scripts re-ida-reverse/install-autostart
 ```
 
-If GUI occupies port 13337 but temporarily does not respond, `templates/start.sh` outputs `WARN:gui_busy` and exits to prevent killing the IDA instance currently performing analysis.
+If GUI occupies port 13337 but temporarily does not respond, `arsenal scripts re-ida-reverse/start` outputs `WARN:gui_busy` and exits to prevent killing the IDA instance currently performing analysis.
 
 ## Clients
 
@@ -61,8 +61,8 @@ A new session must be started after modifying configurations. If the port is not
 
 ## Known Considerations
 
-1. System32 files: `templates/open.sh` copies them to a temporary path (output contains `(temp copy)`)
+1. System32 files: `arsenal scripts re-ida-reverse/open` copies them to a temporary path (output contains `(temp copy)`)
 2. Do not invoke `idb_open` directly via MCP in certain clients
-3. `templates/start.sh` prefers `python -m ida_pro_mcp.idalib_supervisor`, which is more stable than `.cmd` wrappers
+3. `arsenal scripts re-ida-reverse/start` prefers `python -m ida_pro_mcp.idalib_supervisor`, which is more stable than `.cmd` wrappers
 4. If both an official installation and a desktop portable package coexist, `IDADIR` takes precedence
 5. Do not append `?ext=dbg` (debugger tools are not exposed by default)

@@ -190,7 +190,7 @@ The scoring algorithm considers:
 
 ```bash
 # Run complete ASM pipeline against a target domain
-python scripts/agent.py \
+arsenal scripts webapp-implementing-attack-surface-management/agent \
     --domain example.com \
     --action full_scan \
     --shodan-key YOUR_KEY \
@@ -199,20 +199,20 @@ python scripts/agent.py \
     --output asm_report.json
 
 # Subdomain enumeration only
-python scripts/agent.py \
+arsenal scripts webapp-implementing-attack-surface-management/agent \
     --domain example.com \
     --action enumerate \
     --output subdomains.json
 
 # Exposure scoring on previously discovered assets
-python scripts/agent.py \
+arsenal scripts webapp-implementing-attack-surface-management/agent \
     --domain example.com \
     --action score \
     --input previous_scan.json \
     --output scored_assets.json
 
 # Multi-domain scan from file
-python scripts/agent.py \
+arsenal scripts webapp-implementing-attack-surface-management/agent \
     --domain-list targets.txt \
     --action full_scan \
     --output multi_domain_report.json
@@ -220,4 +220,4 @@ python scripts/agent.py \
 
 ## References
 
-- `skill://webapp-implementing-attack-surface-management/scripts/agent.py` — Bundled Python CLI helper script (`scripts/agent.py`)
+- `arsenal scripts webapp-implementing-attack-surface-management/agent` — Bundled Python CLI helper script

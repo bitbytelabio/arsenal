@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-python scripts/agent.py \
+arsenal scripts red-implementing-aws-macie-for-data-classification/agent \
   --profile security-audit \
   --region us-east-1 \
   --output-dir /reports/ \

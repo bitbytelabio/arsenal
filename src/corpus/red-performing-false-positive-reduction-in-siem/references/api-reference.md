@@ -6,9 +6,9 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py analyze --csv alerts.csv [--threshold 5]
-python scripts/agent.py tune --csv alerts.csv
-python scripts/agent.py simulate --csv alerts.csv [--disable-rules "Rule A" "Rule B"] [--whitelist-sources 10.0.0.1]
+arsenal scripts red-performing-false-positive-reduction-in-siem/agent analyze --csv alerts.csv [--threshold 5]
+arsenal scripts red-performing-false-positive-reduction-in-siem/agent tune --csv alerts.csv
+arsenal scripts red-performing-false-positive-reduction-in-siem/agent simulate --csv alerts.csv [--disable-rules "Rule A" "Rule B"] [--whitelist-sources 10.0.0.1]
 ```
 
 ## Core Functions

@@ -10,8 +10,8 @@ This directory contains a collection of reverse engineering skill modules. Each 
 
 After reading this file, responding with only "read/understood" is NOT allowed. You MUST execute the following sequence in order:
 
-1. `NOW`: Run the platform-native router (Windows `skill://re-reverse-engineering/support/scripts/master-route.ps1`; Linux/macOS/Kali `skill://re-reverse-engineering/support/scripts/master-route.sh`), determine the PRIMARY module from `skill://re-reverse-engineering/support/config/routing.json`; read the 3-axis appendix in `skill://re-reverse-engineering/support/routing.md` only for complex edge cases.
-2. `NOW`: Run platform-native `case-init` (`skill://webapp-pentest-tools/support/templates/case-init.sh` or `skill://red-attack-chain/scripts/case-init.ps1`) to generate `work/<case>/scope.md` for the current target project; **ACT on targets is strictly FORBIDDEN before auth is granted**. For local offline samples, use the `offline-sample` preset + explicit sample; Force MUST NOT bypass hard gates.
+1. `NOW`: Run the platform-native router (Windows `arsenal scripts master-route`; Linux/macOS/Kali `arsenal scripts master-route`), determine the PRIMARY module from `skill://re-reverse-engineering/support/config/routing.json`; read the 3-axis appendix in `skill://re-reverse-engineering/support/routing.md` only for complex edge cases.
+2. `NOW`: Run platform-native `case-init` (`arsenal scripts case-init` or `arsenal scripts case-init`) to generate `work/<case>/scope.md` for the current target project; **ACT on targets is strictly FORBIDDEN before auth is granted**. For local offline samples, use the `offline-sample` preset + explicit sample; Force MUST NOT bypass hard gates.
 3. `ACT`: Immediately open the PRIMARY `SKILL.md` and execute ACTION REQUIRED.
 4. `NEXT`: Tool paths are recognized strictly from `tool-index`; missing tools → use platform-native bootstrap (manifest only).
 5. Conclusions MUST follow Evidence→Finding→Path. Reports/journals are SHOULD, unless deliverables are explicitly requested by the user.
@@ -85,8 +85,8 @@ If routing fails to find a match, you MUST first search the web to augment metho
 
 When encountering reverse engineering, CTF, traffic interception, frontend signature analysis, APK patching, or binary analysis tasks, navigate sequentially:
 
-1. Run platform-native router (Windows `skill://re-reverse-engineering/support/scripts/master-route.ps1`; Linux/macOS/Kali `skill://re-reverse-engineering/support/scripts/master-route.sh`) → determine PRIMARY (`skill://re-reverse-engineering/support/config/routing.json`)
-2. Run platform-native `case-init` (`skill://webapp-pentest-tools/support/templates/case-init.sh` or `skill://red-attack-chain/scripts/case-init.ps1`) → initialize `scope.md`
+1. Run platform-native router (Windows `arsenal scripts master-route`; Linux/macOS/Kali `arsenal scripts master-route`) → determine PRIMARY (`skill://re-reverse-engineering/support/config/routing.json`)
+2. Run platform-native `case-init` (`arsenal scripts case-init` or `arsenal scripts case-init`) → initialize `scope.md`
 3. Open PRIMARY `SKILL.md`
 4. Consult `skill://re-reverse-engineering/support/routing.md` for ambiguous scenarios, and consult `tool-index` for local machine tool paths
 
@@ -143,23 +143,23 @@ When the workflow detects a missing tool, do not throw an error immediately. Cal
 
 Windows:
 ```powershell
-# Resolve bootstrap script from skill://re-reverse-engineering/support/scripts/bootstrap-reverse.ps1 to ./bootstrap-reverse.ps1:
-powershell -NoProfile -ExecutionPolicy Bypass -File "./bootstrap-reverse.ps1" -Capability @('tool-name') -StartServices
+# Run reverse engineering bootstrap tool via Arsenal CLI:
+arsenal scripts bootstrap-reverse 'tool-name' --start-services
 ```
 
 Linux / macOS:
 ```bash
-# Resolve bootstrap script from skill://re-reverse-engineering/support/scripts/bootstrap-reverse.sh to ./bootstrap-reverse.sh:
-bash ./bootstrap-reverse.sh tool-name --start-services
+# Run reverse engineering bootstrap tool via Arsenal CLI:
+arsenal scripts bootstrap-reverse tool-name --start-services
 ```
 
 Kali:
 ```bash
-# Resolve bootstrap script from skill://re-reverse-engineering/support/scripts/bootstrap-reverse.sh to ./bootstrap-reverse.sh:
-bash ./bootstrap-reverse.sh tool-name --start-services
+# Run reverse engineering bootstrap tool via Arsenal CLI:
+arsenal scripts bootstrap-reverse tool-name --start-services
 ```
 
-> The bootstrap helper scripts live at `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.ps1` and `skill://re-reverse-engineering/support/scripts/bootstrap-reverse.sh`. Copy the complete script (and `lib/` helpers on Windows) to your local environment before executing.
+> The bootstrap helper scripts live at `arsenal scripts bootstrap-reverse` and `arsenal scripts bootstrap-reverse`. Copy the complete script (and `lib/` helpers on Windows) to your local environment before executing.
 
 Supported capabilities (defined in `skill://re-reverse-engineering/support/scripts/bootstrap-manifest.json`): jadx, apktool, jeb-pro, binaryninja, frida, frida-ps, idalib-mcp, reqable-mcp, jshookmcp, xquik-mcp, anything-analyzer, idapro, r2, rabin2, adb, agent-browser, ghidra-mcp, seclists, proxycat, burpsuite-mcp, nmap, pentestswarm, binwalk, yara, pwntools, bkcrack
 
@@ -175,7 +175,7 @@ Before executing any reverse engineering or penetration testing operations, you 
 
 | Reading Order | File | Trigger Condition |
 |---------------|------|-------------------|
-| **#1** | `skill://webapp-pentest-tools/support/ops/scope-contract.md` + `skill://webapp-pentest-tools/support/templates/case-init.sh` | Executable authorization gate. Authorization is never considered granted in `skill://webapp-pentest-tools/support/field-journal/precedent-auth.md` |
+| **#1** | `skill://webapp-pentest-tools/support/ops/scope-contract.md` + `arsenal scripts case-init` | Executable authorization gate. Authorization is never considered granted in `skill://webapp-pentest-tools/support/field-journal/precedent-auth.md` |
 | **#2** | `skill://re-reverse-engineering/support/field-journal/precedent-reverse.md` or `skill://webapp-pentest-tools/support/field-journal/precedent-pentest.md` | On-demand — Load only when the AI encounters ambiguity |
 
 **#1 is prerequisite; #2 is lazily loaded.**

@@ -7,11 +7,11 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py extract --file threat_report.txt
-python scripts/agent.py ingest --csv ioc_feed.csv
-python scripts/agent.py expire --csv ioc_db.csv [--ttl 90]
-python scripts/agent.py dedup --csv ioc_feed.csv
-python scripts/agent.py report --csv ioc_db.csv [--ttl 90]
+arsenal scripts red-performing-indicator-lifecycle-management/agent extract --file threat_report.txt
+arsenal scripts red-performing-indicator-lifecycle-management/agent ingest --csv ioc_feed.csv
+arsenal scripts red-performing-indicator-lifecycle-management/agent expire --csv ioc_db.csv [--ttl 90]
+arsenal scripts red-performing-indicator-lifecycle-management/agent dedup --csv ioc_feed.csv
+arsenal scripts red-performing-indicator-lifecycle-management/agent report --csv ioc_db.csv [--ttl 90]
 ```
 
 ## Core Functions

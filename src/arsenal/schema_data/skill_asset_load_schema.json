@@ -1,0 +1,18 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/skill-asset-load.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "skill_name": {
+      "type": "string"
+    },
+    "asset_path": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "skill_name",
+    "asset_path"
+  ],
+  "additionalProperties": false
+}

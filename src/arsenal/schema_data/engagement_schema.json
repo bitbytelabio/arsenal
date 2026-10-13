@@ -1,0 +1,82 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/engagement.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "engagement_id",
+    "name",
+    "domain",
+    "created_at",
+    "auth",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "engagement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "enum": [
+        "re",
+        "webapp",
+        "mobile",
+        "red"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "auth": {
+      "type": "object",
+      "required": [
+        "status",
+        "ready_for_act"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "incomplete",
+            "granted",
+            "expired",
+            "revoked"
+          ]
+        },
+        "basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ready_for_act": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "enum": [
+        "prepared",
+        "active",
+        "stopped",
+        "completed",
+        "failed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

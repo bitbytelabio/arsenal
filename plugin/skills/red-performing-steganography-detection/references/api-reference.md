@@ -62,5 +62,5 @@ Full analysis pipeline combining all detection methods.
 ## Usage
 
 ```bash
-python scripts/agent.py suspect_image.png
+arsenal scripts red-performing-steganography-detection/agent suspect_image.png
 ```

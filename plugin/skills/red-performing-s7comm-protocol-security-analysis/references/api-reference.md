@@ -76,5 +76,5 @@ Any write_var, run, or stop function codes should be flagged and correlated with
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --pcap capture.pcap --brute-threshold 10 --output report.json
+arsenal scripts red-performing-s7comm-protocol-security-analysis/agent --pcap capture.pcap --brute-threshold 10 --output report.json
 ```

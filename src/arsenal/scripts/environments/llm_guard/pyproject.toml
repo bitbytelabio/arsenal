@@ -1,0 +1,8 @@
+[project]
+name = "arsenal-env-llm-guard"
+version = "0.1.0"
+description = "Isolated environment bundle for LLM Guard assessment playbook"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "llm-guard==0.3.16",
+]

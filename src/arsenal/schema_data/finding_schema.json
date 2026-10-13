@@ -1,0 +1,108 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/finding.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "finding_id",
+    "engagement_id",
+    "title",
+    "description",
+    "severity",
+    "affected_target",
+    "discoverer",
+    "evidence_ids",
+    "validation_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "finding_id": {
+      "type": "string",
+      "pattern": "^F-[0-9]{6,}$"
+    },
+    "engagement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "severity": {
+      "enum": [
+        "info",
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "affected_target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cwe_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rule_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "discoverer": {
+      "type": "object",
+      "required": [
+        "role",
+        "session_id"
+      ],
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_propositions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_status": {
+      "enum": [
+        "validated",
+        "unvalidated",
+        "rejected",
+        "partial",
+        "error"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

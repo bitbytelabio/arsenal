@@ -107,7 +107,7 @@ Weekly/monthly reporting cycle.
 
 ### Report Generation
 ```bash
-python3 templates/process.py \
+arsenal scripts red-triaging-vulnerabilities-with-ssvc-framework/process \
   --input ssvc_results.csv \
   --output ssvc_metrics_report.json
 ```

@@ -30,7 +30,7 @@ Follow this seven-step order strictly per `contracts/skill-lifecycle.md` §2:
    - Zero forbidden vendor tokens (`anthropic`, `xalgorix`, `claudered`, `claude-red`, `revskill`, `reverse-skill`, `strix`)
    - Description is a complete single-line scalar of 40–300 characters ending with terminal punctuation
    - Professional English-only prose and action directives
-   - Resolvable references to native tools, documented prerequisites, or `evidence_exec`
+   - Resolvable CLI commands, documented prerequisites, and evidence capture through `arsenal exec`
 
 ### Step 3: Present Diff
 1. Display the prospective change set or preview against the canonical tier file (`src/corpus/<id>/SKILL.md` or `presets/skills/<id>/SKILL.md`).
@@ -39,17 +39,17 @@ Follow this seven-step order strictly per `contracts/skill-lifecycle.md` §2:
 ### Step 4: Apply
 1. Apply the update using the CLI command:
    ```bash
-   bun --no-env-file run bin/arsenal.ts skills update --target <id> --from <candidate-file> --write
+   arsenal skills update --target <id> --from <candidate-file> --write
    ```
    Or for a new skill:
    ```bash
-   bun --no-env-file run bin/arsenal.ts skills new --domain <domain> --slug <slug> --from <candidate-file> --write
+   arsenal skills new --domain <domain> --slug <slug> --from <candidate-file> --write
    ```
 
 ### Step 5: Rebuild Generated Distribution
 1. Materialize `plugin/` distribution and catalog:
    ```bash
-   bun --no-env-file run bin/arsenal.ts build --write --force
+   arsenal build --write --force
    ```
 
 ### Step 6: Reconcile Manifest
@@ -58,8 +58,8 @@ Follow this seven-step order strictly per `contracts/skill-lifecycle.md` §2:
 ### Step 7: Mandatory Verification Gate
 1. Execute all three quality gates:
    ```bash
-   bun --no-env-file run bin/arsenal.ts skills check
-   bun --no-env-file run bin/arsenal.ts skills scripts-audit
-   bun --no-env-file run bin/arsenal.ts skills check --language
+   arsenal skills check
+   arsenal skills scripts-audit
+   arsenal skills check --language
    ```
 2. Report the gate result to the operator. If any gate fails, report the failure with named diagnostics and do not claim success.

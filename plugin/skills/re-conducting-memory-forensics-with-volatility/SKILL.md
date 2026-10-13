@@ -265,4 +265,4 @@ Mutexes:    Global\MSCTF.Shared.MUTEX.ZRQ
 ## References
 
 - `skill://re-conducting-memory-forensics-with-volatility/references/api-reference.md` — API Reference: Memory Forensics Agent (Volatility 3)
-- `skill://re-conducting-memory-forensics-with-volatility/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)
+- `arsenal scripts re-conducting-memory-forensics-with-volatility/agent` — Automation and analysis helper script (`arsenal scripts re-conducting-memory-forensics-with-volatility/agent`)

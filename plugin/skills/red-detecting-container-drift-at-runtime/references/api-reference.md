@@ -77,6 +77,6 @@ securityContext:
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --container my-app-container
-python scripts/agent.py --container abc123 --all
+arsenal scripts red-detecting-container-drift-at-runtime/agent --container my-app-container
+arsenal scripts red-detecting-container-drift-at-runtime/agent --container abc123 --all
 ```

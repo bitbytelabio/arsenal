@@ -10,7 +10,7 @@
 ## CLI Usage
 
 ```bash
-python scripts/agent.py \
+arsenal scripts red-executing-active-directory-attack-simulation/agent \
   --dc-ip 10.10.10.1 \
   --domain corp.local \
   --username testuser \

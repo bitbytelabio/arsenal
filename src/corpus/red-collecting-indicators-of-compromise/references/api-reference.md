@@ -14,8 +14,8 @@ Extracts indicators of compromise from text/files using regex patterns, enriches
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --input-file incident_report.txt --vt-key <key> --output iocs.json
-python scripts/agent.py --input-text "C2 at 185.220.101.42 hash a1b2c3..." --output iocs.json
+arsenal scripts red-collecting-indicators-of-compromise/agent --input-file incident_report.txt --vt-key <key> --output iocs.json
+arsenal scripts red-collecting-indicators-of-compromise/agent --input-text "C2 at 185.220.101.42 hash a1b2c3..." --output iocs.json
 ```
 
 ## Key Functions

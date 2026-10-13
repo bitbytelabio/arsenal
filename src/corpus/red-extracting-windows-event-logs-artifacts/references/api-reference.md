@@ -9,13 +9,13 @@
 ## CLI Usage
 
 ```bash
-python scripts/agent.py \
+arsenal scripts red-extracting-windows-event-logs-artifacts/agent \
   --evtx-dir /cases/case-001/evtx/ \
   --output-dir /cases/case-001/analysis/ \
   --output evtx_report.json
 
 # Or specify individual files:
-python scripts/agent.py \
+arsenal scripts red-extracting-windows-event-logs-artifacts/agent \
   --evtx-files Security.evtx System.evtx \
   --output-dir /cases/analysis/
 ```

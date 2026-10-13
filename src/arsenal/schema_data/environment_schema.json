@@ -1,0 +1,89 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/environment.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "kind",
+    "name",
+    "working_root"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "local",
+        "container",
+        "vm",
+        "remote"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "address": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "access_method": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "working_root": {
+      "type": "string"
+    },
+    "proxy_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ca_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "browser_trust_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tool_index_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "path_overrides": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "observed_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

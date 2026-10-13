@@ -7,10 +7,10 @@
 ## CLI Interface
 
 ```
-python scripts/agent.py --region us-east-1 encrypt --input <file> --output <out> --key-id <kms_key>
-python scripts/agent.py --region us-east-1 decrypt --input <encrypted> --output <out>
-python scripts/agent.py --region us-east-1 list-keys
-python scripts/agent.py --region us-east-1 audit --key-id <kms_key>
+arsenal scripts red-implementing-envelope-encryption-with-aws-kms/agent --region us-east-1 encrypt --input <file> --output <out> --key-id <kms_key>
+arsenal scripts red-implementing-envelope-encryption-with-aws-kms/agent --region us-east-1 decrypt --input <encrypted> --output <out>
+arsenal scripts red-implementing-envelope-encryption-with-aws-kms/agent --region us-east-1 list-keys
+arsenal scripts red-implementing-envelope-encryption-with-aws-kms/agent --region us-east-1 audit --key-id <kms_key>
 ```
 
 ## Core Functions

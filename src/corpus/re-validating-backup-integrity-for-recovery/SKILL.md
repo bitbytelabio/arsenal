@@ -114,7 +114,7 @@ find /restore-test -type f \( \
 
 # Check file entropy (high entropy = possible encryption)
 # Files with entropy > 7.9 out of 8.0 are likely encrypted
-python templates/agent.py --entropy-scan /restore-test
+arsenal scripts re-validating-backup-integrity-for-recovery/agent --entropy-scan /restore-test
 ```
 
 ### Step 6: Automate and Schedule Validation

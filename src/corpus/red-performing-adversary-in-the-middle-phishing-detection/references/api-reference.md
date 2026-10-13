@@ -86,5 +86,5 @@ def haversine_km(lat1, lon1, lat2, lon2):
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --logs signin_logs.json --inbox-rules rules.json --output report.json
+arsenal scripts red-performing-adversary-in-the-middle-phishing-detection/agent --logs signin_logs.json --inbox-rules rules.json --output report.json
 ```

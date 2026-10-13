@@ -81,8 +81,8 @@ helm install falco falcosecurity/falco \
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --check-status
-python scripts/agent.py --validate-rules /etc/falco/rules.d/escape.yaml
-python scripts/agent.py --parse-alerts /var/log/falco/events.json --min-priority Warning
-python scripts/agent.py --generate-rules > escape-rules.yaml
+arsenal scripts red-detecting-container-escape-with-falco-rules/agent --check-status
+arsenal scripts red-detecting-container-escape-with-falco-rules/agent --validate-rules /etc/falco/rules.d/escape.yaml
+arsenal scripts red-detecting-container-escape-with-falco-rules/agent --parse-alerts /var/log/falco/events.json --min-priority Warning
+arsenal scripts red-detecting-container-escape-with-falco-rules/agent --generate-rules > escape-rules.yaml
 ```

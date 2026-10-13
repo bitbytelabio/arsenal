@@ -149,7 +149,7 @@ For confirmed token abuse, revoke sessions and rotate, then promote the hunt to 
 az rest --method POST \
   --url "https://graph.microsoft.com/v1.0/users/<userId>/revokeSignInSessions"
 ```
-See `skill://red-hunting-saas-sso-token-abuse/templates/agent.py` to pull Okta logs and flag reused session tokens automatically.
+See `arsenal scripts red-hunting-saas-sso-token-abuse/agent` to pull Okta logs and flag reused session tokens automatically.
 
 ## Tools and Resources
 

@@ -246,4 +246,4 @@ Validation Schedule:
 - `skill://re-implementing-continuous-security-validation-with-bas/references/standards.md` — Standards and References - Continuous Security Validation with BAS
 - `skill://re-implementing-continuous-security-validation-with-bas/references/workflows.md` — Workflows - BAS Continuous Security Validation
 - `skill://re-implementing-continuous-security-validation-with-bas/assets/template.md` — BAS Security Validation Report Template
-- `skill://re-implementing-continuous-security-validation-with-bas/templates/agent.py` — Automation and analysis helper script (`python templates/agent.py`)
+- `arsenal scripts re-implementing-continuous-security-validation-with-bas/agent` — Automation and analysis helper script (`arsenal scripts re-implementing-continuous-security-validation-with-bas/agent`)

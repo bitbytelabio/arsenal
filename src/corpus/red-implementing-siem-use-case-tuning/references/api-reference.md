@@ -73,10 +73,10 @@ event.kind: "signal" AND kibana.alert.rule.name: "Brute Force Detection"
 
 ```bash
 # Analyze alert CSV export
-python scripts/agent.py --alert-csv notable_export.csv --output tuning.json
+arsenal scripts red-implementing-siem-use-case-tuning/agent --alert-csv notable_export.csv --output tuning.json
 
 # Adjust FP threshold for whitelist candidates
-python scripts/agent.py --alert-csv alerts.csv --fp-threshold 0.9 --top-rules 10
+arsenal scripts red-implementing-siem-use-case-tuning/agent --alert-csv alerts.csv --fp-threshold 0.9 --top-rules 10
 
 # CSV format: rule_name,timestamp,disposition,source,user,severity
 ```

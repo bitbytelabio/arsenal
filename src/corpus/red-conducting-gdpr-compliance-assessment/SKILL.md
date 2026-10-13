@@ -63,7 +63,7 @@ Document for EACH activity:
 - Retention periods
 - Security measures
 
-**Tools**: Use `scripts/article30_parser.py`, `scripts/article30_validator.py`, `scripts/generate_ropa_report.py`
+**Tools**: Use `arsenal scripts gdpr/article30-parser`, `arsenal scripts gdpr/article30-validator`, `arsenal scripts gdpr/generate-ropa-report`
 
 **Common gaps**: Missing retention periods (68%), vague purposes, undocumented transfers
 
@@ -88,7 +88,7 @@ Verify capability for:
 - **Objection** (21): Opt-out of legitimate interest processing
 - **Automated Decision-Making** (22): Human review of algorithmic decisions
 
-**Test**: Process sample DSAR through full workflow. Use `scripts/article30_parser.py` and `scripts/article30_validator.py` for automation.
+**Test**: Process sample DSAR through full workflow. Use `arsenal scripts gdpr/article30-parser` and `arsenal scripts gdpr/article30-validator` for automation.
 
 ### Phase 5: Review DPIAs (Article 35)
 
@@ -162,7 +162,7 @@ Generate compliance report:
 - **ICO Self-Assessment**: https://ico.org.uk/for-organisations/sme-web-hub/checklists/gdpr-check-list/
 - **EDPB Guidelines**: https://edpb.europa.eu/our-work-tools/general-guidance_en
 - **OneTrust / TrustArc**: Commercial GRC platforms with DPIA, Article 30, cookie consent modules
-- **Article 30 Scripts**: `article30_parser.py`, `article30_validator.py` (included)
+- **Article 30 Scripts**: `arsenal scripts gdpr/article30-parser`, `arsenal scripts gdpr/article30-validator`
 - **SCCs (2021)**: https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en
 - **DPO Certification**: IAPP CIPP/E (Certified Information Privacy Professional/Europe)
 

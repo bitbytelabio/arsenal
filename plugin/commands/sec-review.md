@@ -11,7 +11,7 @@ Audit active assessment case files for evidence continuity, orphaned receipts, a
 ```
 
 ## Description
-Executes the native `case_review` verification engine against the current engagement case directory. Asserts that the assessment is ready for final reporting by verifying that all findings are backed by evidence receipts, no broken cryptographic hash chains exist, and scope constraints were strictly maintained.
+Run `arsenal case review --case-root <workspace> --strict --verify-hashes --json`, then `arsenal evidence verify --repo <workspace> --json`. Review case traceability and cryptographic integrity separately before final reporting; do not infer scope compliance merely from either check.
 
 ## Workflow
 

@@ -76,5 +76,5 @@ Snyk results can be converted to SARIF 2.1.0 for GitHub Code Scanning. The SARIF
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --project /app --severity high --max-critical 0 --max-high 5 --output report.json
+arsenal scripts red-performing-sca-dependency-scanning-with-snyk/agent --project /app --severity high --max-critical 0 --max-high 5 --output report.json
 ```

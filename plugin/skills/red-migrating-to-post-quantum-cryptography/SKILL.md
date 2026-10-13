@@ -97,7 +97,7 @@ cbomkit-theia dir ./myapp --output cbom.json
 # or with cdxgen (Java keystores, certs, source-level algorithms)
 cdxgen -t java --include-crypto -o cbom.json ./myapp
 ```
-Enumerate TLS algorithms and certificate signature schemes across live endpoints with the helper `agent.py scan` (below), and the public-key strength of any certificate:
+Enumerate TLS algorithms and certificate signature schemes across live endpoints with the helper `arsenal scripts red-migrating-to-post-quantum-cryptography/agent scan` (below), and the public-key strength of any certificate:
 ```bash
 openssl x509 -in server.crt -noout -text | grep -E 'Signature Algorithm|Public Key'
 ```

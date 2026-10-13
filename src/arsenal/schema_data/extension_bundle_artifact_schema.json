@@ -1,0 +1,48 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/extension-bundle-artifact.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "name",
+    "entrypoint",
+    "outputPath",
+    "byteLength",
+    "sha256",
+    "externalImports"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "enum": [
+        "bounding",
+        "ledger",
+        "budget",
+        "routing"
+      ]
+    },
+    "entrypoint": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outputPath": {
+      "type": "string",
+      "minLength": 1
+    },
+    "byteLength": {
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "externalImports": {
+      "type": "array",
+      "maxItems": 0,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

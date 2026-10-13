@@ -8,12 +8,12 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py identify --hash <hash_string>
-python scripts/agent.py identify --file hashes.txt
-python scripts/agent.py crack --hash-file hashes.txt --mode 0 --attack dictionary --wordlist rockyou.txt [--rules best64.rule]
-python scripts/agent.py crack --hash-file hashes.txt --mode 1000 --attack brute --mask "?u?l?l?l?d?d?d?s"
-python scripts/agent.py parse --potfile hashcat.potfile
-python scripts/agent.py gen --text "password123" --algo sha256
+arsenal scripts red-performing-hash-cracking-with-hashcat/agent identify --hash <hash_string>
+arsenal scripts red-performing-hash-cracking-with-hashcat/agent identify --file hashes.txt
+arsenal scripts red-performing-hash-cracking-with-hashcat/agent crack --hash-file hashes.txt --mode 0 --attack dictionary --wordlist rockyou.txt [--rules best64.rule]
+arsenal scripts red-performing-hash-cracking-with-hashcat/agent crack --hash-file hashes.txt --mode 1000 --attack brute --mask "?u?l?l?l?d?d?d?s"
+arsenal scripts red-performing-hash-cracking-with-hashcat/agent parse --potfile hashcat.potfile
+arsenal scripts red-performing-hash-cracking-with-hashcat/agent gen --text "password123" --algo sha256
 ```
 
 ## Core Functions

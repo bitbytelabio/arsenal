@@ -178,7 +178,7 @@ Rules:
 - Needs local reproduction → `skill://webapp-js-reverse/references/local-rebuild.md` / `skill://webapp-js-reverse/references/node-env-rebuild.md`
 - Needs deobfuscation → `skill://webapp-js-reverse/references/ast-deobfuscation.md`
 - Blocked / fallback required → `skill://webapp-js-reverse/references/fallbacks.md`
-- Bootstrap helpers → `skill://webapp-js-reverse/scripts/bootstrap-reverse.ps1` and `skill://webapp-js-reverse/scripts/bootstrap-reverse.sh`
+- Bootstrap helpers → `arsenal scripts bootstrap-reverse` and `arsenal scripts bootstrap-reverse`
 
 **Related Sibling Modules**: anything-analyzer MCP (browser automation and HTTP capture capabilities can complement each other)
 
@@ -199,13 +199,13 @@ The MCP capabilities required by this skill can be installed via the unified boo
 ### Bootstrap Method
 
 ```powershell
-# Resolve helper from canonical resource URI: skill://webapp-js-reverse/scripts/bootstrap-reverse.ps1
+# Resolve helper from canonical resource URI: arsenal scripts bootstrap-reverse
 # Copy or resolve to local workspace path before execution:
 # Install and register jshookmcp; Codex can be replaced with Claude or Both
-powershell -File ./bootstrap-reverse.ps1 -Capability @('jshookmcp') -McpHostTarget Codex
+arsenal scripts bootstrap-reverse -Capability @('jshookmcp') -McpHostTarget Codex
 
 # Register and start anything-analyzer
-powershell -File ./bootstrap-reverse.ps1 -Capability @('anything-analyzer') -StartServices -McpHostTarget Codex
+arsenal scripts bootstrap-reverse -Capability @('anything-analyzer') -StartServices -McpHostTarget Codex
 ```
 
 ### Important Notes

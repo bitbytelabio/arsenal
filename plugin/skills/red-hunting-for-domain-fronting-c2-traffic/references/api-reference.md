@@ -73,6 +73,6 @@ for i in range(x509.get_extension_count()):
 
 ## CLI Usage
 ```bash
-python scripts/agent.py --proxy-log squid_access.csv --output fronting_report.json
-python scripts/agent.py --proxy-log logs.csv --check-certs
+arsenal scripts red-hunting-for-domain-fronting-c2-traffic/agent --proxy-log squid_access.csv --output fronting_report.json
+arsenal scripts red-hunting-for-domain-fronting-c2-traffic/agent --proxy-log logs.csv --check-certs
 ```

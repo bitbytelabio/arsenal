@@ -59,6 +59,6 @@ kerberos::golden /user:admin /domain:corp.local /sid:S-1-5-21-... /krbtgt:hash /
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --security-log Security.evtx --domain corp.local
-python scripts/agent.py --generate-sigma
+arsenal scripts red-detecting-golden-ticket-attacks-in-kerberos-logs/agent --security-log Security.evtx --domain corp.local
+arsenal scripts red-detecting-golden-ticket-attacks-in-kerberos-logs/agent --generate-sigma
 ```

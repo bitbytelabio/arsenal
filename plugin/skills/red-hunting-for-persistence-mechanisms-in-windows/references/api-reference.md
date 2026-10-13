@@ -8,10 +8,10 @@
 ## CLI Interface
 
 ```
-python scripts/agent.py registry    # Enumerate registry Run keys
-python scripts/agent.py tasks       # Enumerate scheduled tasks
-python scripts/agent.py services    # Enumerate suspicious services
-python scripts/agent.py all         # Run all persistence hunts
+arsenal scripts red-hunting-for-persistence-mechanisms-in-windows/agent registry    # Enumerate registry Run keys
+arsenal scripts red-hunting-for-persistence-mechanisms-in-windows/agent tasks       # Enumerate scheduled tasks
+arsenal scripts red-hunting-for-persistence-mechanisms-in-windows/agent services    # Enumerate suspicious services
+arsenal scripts red-hunting-for-persistence-mechanisms-in-windows/agent all         # Run all persistence hunts
 ```
 
 ## Core Functions

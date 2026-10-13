@@ -1,8 +1,24 @@
 import { describe, expect, it } from "bun:test";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { executeBuild, collectArtifacts } from "../src/cli/build.js";
-import { SkillCatalogManager } from "../plugin/extensions/routing.js";
+import { SkillCatalogManager } from "../plugin/extensions/routing.ts";
+
+function collectArtifacts(baseDir: string): Set<string> {
+  const result = new Set<string>();
+  function walk(dir: string, rel: string) {
+    if (!fs.existsSync(dir)) return;
+    for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+      const relPath = rel ? path.join(rel, ent.name) : ent.name;
+      if (ent.isDirectory()) {
+        walk(path.join(dir, ent.name), relPath);
+      } else {
+        result.add(relPath);
+      }
+    }
+  }
+  walk(baseDir, "");
+  return result;
+}
 
 describe("Distribution Bundle & Catalog Portability (US1)", () => {
   const repoRoot = path.resolve(import.meta.dir, "..");
@@ -15,20 +31,28 @@ describe("Distribution Bundle & Catalog Portability (US1)", () => {
     const tempDir = fs.mkdtempSync(path.join(tmpBase, "bundle-test-"));
 
     try {
-      const corpusEntries = fs.existsSync(corpusDir)
-        ? fs.readdirSync(corpusDir).filter((e) => !e.startsWith("."))
-        : [];
-      const presetEntries = fs.existsSync(presetsDir)
-        ? fs.readdirSync(presetsDir).filter((e) => !e.startsWith("."))
-        : [];
-
-      // Test build into tempDir
-      await executeBuild(tempDir, corpusDir, presetsDir, corpusEntries, presetEntries, "re");
-
+      // Execute plugin build via Python CLI into tempDir
+      const buildProc = Bun.spawnSync([
+        "uv",
+        "run",
+        "--locked",
+        "arsenal",
+        "build",
+        "--repo",
+        repoRoot,
+        "--out",
+        tempDir,
+        "--preset",
+        "re",
+        "--write",
+        "--force",
+        "--json",
+      ]);
+      expect(buildProc.exitCode).toBe(0);
       const extDir = path.join(tempDir, "dist/extensions");
       expect(fs.existsSync(extDir)).toBe(true);
 
-      const expectedFiles = ["bounding.js", "ledger.js", "budget.js", "routing.js"];
+      const expectedFiles = ["bounding.js", "budget.js", "routing.js"];
       for (const file of expectedFiles) {
         const filePath = path.join(extDir, file);
         expect(fs.existsSync(filePath)).toBe(true);

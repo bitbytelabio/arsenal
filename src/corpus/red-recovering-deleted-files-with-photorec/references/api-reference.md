@@ -55,5 +55,5 @@ End-to-end: image info -> PhotoRec recovery -> catalog -> sort.
 ## Usage
 
 ```bash
-python scripts/agent.py /cases/evidence.dd /cases/recovered/ jpg,pdf,doc
+arsenal scripts red-recovering-deleted-files-with-photorec/agent /cases/evidence.dd /cases/recovered/ jpg,pdf,doc
 ```

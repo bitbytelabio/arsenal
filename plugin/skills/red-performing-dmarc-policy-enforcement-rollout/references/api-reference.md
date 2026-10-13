@@ -6,8 +6,8 @@
 ## CLI Interface
 
 ```
-python scripts/agent.py check --domain example.com
-python scripts/agent.py audit --domains example.com example.org [--selectors default google k1]
+arsenal scripts red-performing-dmarc-policy-enforcement-rollout/agent check --domain example.com
+arsenal scripts red-performing-dmarc-policy-enforcement-rollout/agent audit --domains example.com example.org [--selectors default google k1]
 ```
 
 ## Core Functions

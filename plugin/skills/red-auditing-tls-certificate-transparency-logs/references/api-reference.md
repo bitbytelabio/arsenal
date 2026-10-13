@@ -18,27 +18,27 @@ The core monitoring functionality requires only `requests`. The `cryptography` a
 
 ```bash
 # One-shot scan with report
-python scripts/agent.py --domains example.com --db ct_monitor.db --report report.json
+arsenal scripts red-auditing-tls-certificate-transparency-logs/agent --domains example.com --db ct_monitor.db --report report.json
 
 # Continuous monitoring with Slack alerts
-python scripts/agent.py --domains example.com --continuous --interval 900 \
+arsenal scripts red-auditing-tls-certificate-transparency-logs/agent --domains example.com --continuous --interval 900 \
     --webhook https://hooks.slack.com/services/XXX/YYY/ZZZ
 
 # Build baseline and auto-detect authorized CAs
-python scripts/agent.py --domains example.com --auto-baseline --db ct_monitor.db
+arsenal scripts red-auditing-tls-certificate-transparency-logs/agent --domains example.com --auto-baseline --db ct_monitor.db
 
 # Monitor multiple domains with email alerts
-python scripts/agent.py --domains example.com bank.example.com \
+arsenal scripts red-auditing-tls-certificate-transparency-logs/agent --domains example.com bank.example.com \
     --continuous --interval 600 \
     --smtp-host smtp.gmail.com --smtp-port 587 \
     --smtp-user alerts@example.com --smtp-pass "app-password" \
     --email-to security@example.com soc@example.com
 
 # Scan for typosquat phishing domains
-python scripts/agent.py --domains example.com --typosquats --report typosquat_report.json
+arsenal scripts red-auditing-tls-certificate-transparency-logs/agent --domains example.com --typosquats --report typosquat_report.json
 
 # Manually add an authorized CA
-python scripts/agent.py --domains example.com --add-ca "DigiCert SHA2 Extended Validation Server CA" 1397
+arsenal scripts red-auditing-tls-certificate-transparency-logs/agent --domains example.com --add-ca "DigiCert SHA2 Extended Validation Server CA" 1397
 ```
 
 ## Arguments

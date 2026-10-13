@@ -8,10 +8,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py scan
-python scripts/agent.py registry
-python scripts/agent.py monitor --duration 120
-python scripts/agent.py full
+arsenal scripts red-hunting-for-startup-folder-persistence/agent scan
+arsenal scripts red-hunting-for-startup-folder-persistence/agent registry
+arsenal scripts red-hunting-for-startup-folder-persistence/agent monitor --duration 120
+arsenal scripts red-hunting-for-startup-folder-persistence/agent full
 ```
 
 ## Core Functions

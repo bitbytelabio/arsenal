@@ -8,7 +8,7 @@ description: Reverse JavaScript-based custom DSL/VM interpreters, non-standard W
 ## ACTION REQUIRED (Execute immediately upon reading)
 
 1. `NOW`: Confirm the current task is a custom JS opcode VM or risk-control engine, not standard WASM or ordinary webpack bundles.
-2. `NOW`: Run `case-init` (resolve from `skill://webapp-pentest-tools/support/templates/case-init.sh`) until `scope.md` is ready; use `offline` or `lab` for offline samples.
+2. `NOW`: Run `case-init` (resolve from `arsenal scripts case-init`) until `scope.md` is ready; use `offline` or `lab` for offline samples.
 3. `ACT`: Start file classification from "3. General Reverse Engineering Workflow" Phase 1; do not stop at directory listings.
 
 > Used for reverse engineering JavaScript-based custom WASM-like virtual machines and risk-control engines.

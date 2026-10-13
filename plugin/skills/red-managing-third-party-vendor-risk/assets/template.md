@@ -12,7 +12,7 @@
 - **Regulatory scope:** PII / state payroll requirements.
 
 ## 2. Inherent-Risk Tier
-*(scored by `templates/process.py`)*
+*(scored by `arsenal scripts red-managing-third-party-vendor-risk/process`)*
 
 | Factor | Value | Points |
 |---|---|---|

@@ -6,8 +6,8 @@
 
 [![Phiên bản](https://img.shields.io/badge/phiên%20bản-3.0.2-10b981?style=flat-square)](package.json)
 [![Giấy phép: MIT](https://img.shields.io/badge/giấy%20phép-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Runtime: Bun](https://img.shields.io/badge/runtime-Bun-f472b6?style=flat-square&logo=bun)](https://bun.sh)
-[![Ngôn ngữ: TypeScript](https://img.shields.io/badge/ngôn%20ngữ-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Python CLI](https://img.shields.io/badge/CLI-Python-3776ab?style=flat-square&logo=python)](pyproject.toml)
+[![OMP Runtime: TypeScript](https://img.shields.io/badge/OMP%20runtime-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![OMP Plugin](https://img.shields.io/badge/OMP-Plugin-8b5cf6?style=flat-square)](docs/install-omp-plugin.vi.md)
 [![Kho kỹ năng](https://img.shields.io/badge/kỹ%20năng-1%2C648%20chuẩn%20hóa-f59e0b?style=flat-square)](src/corpus)
 [![Build: Tiền định](https://img.shields.io/badge/build-tiền%20định-06b6d4?style=flat-square)](#danh-mục-lệnh-cli-cheat-sheet)
@@ -27,7 +27,7 @@
 - **Mô hình Nguồn chân lý duy nhất (SSOT)**: 1.648 playbook chuẩn hóa kèm tài liệu tham khảo, template và helper có nguồn gốc xác định. Resource dùng định danh `skill://<skill-id>/<path>`; công cụ đọc asset có giới hạn kích thước và báo rõ khi nội dung bị cắt.
 - **Đội ngũ 5 Tác tử Chuyên gia (Specialists)**: Các chuyên gia độc lập theo miền (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) hoạt động dưới các quy tắc nhận thức luận chặt chẽ (`E-*` dữ kiện thực nghiệm vs. `P-*` suy luận dự đoán vs. `unk-*` ẩn số chưa xác định).
 - **Sổ cái bằng chứng Mật mã học (Cryptographic Evidence Ledger)**: Chuỗi sự kiện gắn băm SHA-256 đơn điệu chỉ-ghi-nối (append-only) tại `evidence/ledger.jsonl`, được hỗ trợ bởi cơ chế theo dõi trạng thái SQLite chế độ WAL chống giả mạo.
-- **Công cụ thuần Bun & TypeScript**: Công cụ lõi như `apk_inspect` chạy native. Helper riêng của playbook giữ đúng interpreter Python, Bash hoặc PowerShell cùng dependency được tài liệu chỉ rõ; việc thực thi vẫn chịu kiểm soát phạm vi và bằng chứng.
+- **Python CLI, skills native OMP**: `arsenal` xử lý cài đặt, phân tích, evidence, report và script tập trung. TypeScript chỉ giữ discovery/load/routing của skills cùng hooks trong OMP. APK/AXML, JSON Schema, YAML, Markdown và MCP dùng parser/SDK được duy trì.
 - **Cơ chế MCP Opt-In động & An toàn tuyệt đối**: 6 cầu nối công cụ chuẩn (`burp-ultra`, `rea`, `playwright`, `ghidra`, `ida-pro`, `jshook`) mặc định ở trạng thái vô hiệu hóa, bật/tắt linh hoạt theo phạm vi profile hoặc dự án.
 
 ---
@@ -67,7 +67,7 @@ flowchart TD
         direction TB
         Corpus["src/corpus/<br/>1.648 Kỹ năng & URI skill://"]
         PluginDist["plugin/<br/>Extension Biên dịch & Danh mục Định tuyến"]
-        NativeTools["Công cụ Native TS<br/>apk_inspect, evidence_exec"]
+        NativeTools["Python arsenal CLI<br/>Phân tích, Scripts, Evidence, Report"]
     end
 
     Specialists -->|Phân giải Kịch bản| CoreEngine
@@ -78,7 +78,7 @@ flowchart TD
         Ledger["evidence/ledger.jsonl<br/>Chuỗi băm SHA-256 Đơn điệu"]
     end
 
-    Specialists -->|Ghi nhận Bằng chứng| EvidenceLedger
+    NativeTools -->|Một authority ghi| EvidenceLedger
     VE -->|Kiểm toán Bằng chứng| EvidenceLedger
 ```
 
@@ -92,9 +92,9 @@ Arsenal cung cấp năm tác tử chuyên gia theo miền chuyên sâu. Mỗi t�
 |---|---|---|---|
 | `sec-re` | Dịch ngược Nhị phân | Phân tích disassembled/decompiled, biểu đồ luồng điều khiển (CFG), giải nén firmware, trích xuất giao thức. | `ghidra`, `ida-pro`, `rea`, `file_inspect`, `binwalk` |
 | `sec-webapp` | Bảo mật Web & API | Kiểm toán API có xác thực, lỗi logic nghiệp vụ, lỗ hổng luồng OAuth/JWT, các vector tiêm mã, CSRF/SSRF. | `burp-ultra`, `playwright`, HTTP engine native |
-| `sec-mobile` | Phân tích Động Mobile | Đánh giá Android & iOS, can thiệp runtime, phân tích IPC, kiểm toán lưu trữ cục bộ tự động. | `apk_inspect`, `jshook`, TLS bypass hooks, Frida |
-| `sec-red` | Mô phỏng Đối kháng | Leo thang đặc quyền hạ tầng đám mây, thoát container, chuyển tiếp thông tin xác thực, mô phỏng di chuyển ngang. | `evidence_exec` được giám sát, CLI đám mây |
-| `sec-verifier` | Kiểm chứng Tiền định | Thẩm định độc lập các phát hiện, kịch bản tái hiện thực nghiệm, triệt tiêu ảo giác và cảnh báo giả. | `verify_oracle`, đối soát băm SHA-256, môi trường cô lập |
+| `sec-mobile` | Phân tích Động Mobile | Đánh giá Android & iOS, can thiệp runtime, phân tích IPC và lưu trữ. | `arsenal apk inspect`, `jshook`, TLS bypass hooks, Frida |
+| `sec-red` | Mô phỏng Đối kháng | Kiểm thử hạ tầng, cloud, container và mạng được cấp phép. | `arsenal exec`, CLI cloud |
+| `sec-verifier` | Kiểm chứng độc lập | Tái hiện, xác nhận và bác bỏ finding bằng evidence. | `arsenal oracle verify`, đối soát SHA-256, replay cô lập |
 
 ---
 
@@ -130,9 +130,9 @@ Toàn bộ các cầu nối công cụ ngoài vận hành theo cơ chế chọn 
 
 ```bash
 # Quản lý cầu nối MCP ở cấp độ profile hoặc project
-bun run bin/arsenal.ts mcp enable rea --scope profile
-bun run bin/arsenal.ts mcp disable burp-ultra --scope project
-bun run bin/arsenal.ts mcp status
+arsenal mcp enable rea --scope profile --write
+arsenal mcp disable burp-ultra --scope project --write
+arsenal mcp list
 ```
 
 ---
@@ -152,8 +152,9 @@ OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal
 # 2. Cài đặt plugin
 OMP_PROFILE=arsenal omp plugin install arsenal@arsenal
 
-# 3. Kiểm tra chẩn đoán sau cài đặt
-bunx @bitbytelabio/arsenal doctor
+# 3. Cài Python CLI riêng
+uv tool install git+https://github.com/bitbytelabio/arsenal.git
+arsenal --help
 ```
 
 ### Phương thức 2: Liên kết Phát triển Cục bộ (Local Link)
@@ -168,18 +169,17 @@ cd arsenal
 just install-local
 ```
 
-### Phương thức 3: Thực thi CLI trực tiếp qua GitHub Packages / bunx
+### Phương thức 3: Python CLI từ Git
 
-Cấu hình scope `@bitbytelabio` trỏ về GitHub Packages (`~/.npmrc` hoặc `bunfig.toml`), sau đó chạy trực tiếp các lệnh Arsenal:
+Package npm phân phối plugin OMP, không còn xuất CLI binary.
 
 ```bash
-# Cấu hình GitHub Packages registry cho scope @bitbytelabio (nếu chưa thiết lập)
-npm config set @bitbytelabio:registry https://npm.pkg.github.com
-
-# Chạy chẩn đoán hoặc tra cứu các tùy chọn dòng lệnh
-bunx @bitbytelabio/arsenal --help
-bunx @bitbytelabio/arsenal doctor --json
+uv tool install git+https://github.com/bitbytelabio/arsenal.git
+arsenal --help
+arsenal doctor --json
 ```
+
+Thêm `.git@<commit>` để ghim revision. `uv tool install` resolve theo metadata package, không tự dùng lockfile của repo. Môi trường phát triển và CI dùng `uv sync --locked`, `uv run --locked arsenal ...`.
 
 ---
 
@@ -189,35 +189,38 @@ Arsenal cung cấp bộ công cụ dòng lệnh toàn diện để quản trị 
 
 ```bash
 # Biên dịch & kiểm chứng gói phân phối plugin
-bun run bin/arsenal.ts build --write --force
-bun run bin/arsenal.ts build --check-determinism --json
+arsenal build --write --force
+arsenal build --check-determinism --json
 
 # Đóng gói bản phát hành marketplace
-bun run bin/arsenal.ts plugin pack --write
+arsenal plugin pack --write
 
 # Kiểm toán kho kỹ năng & rà soát mã thực thi
-bun run bin/arsenal.ts skills check --domains --json
-bun run bin/arsenal.ts skills check --language --json
-bun run bin/arsenal.ts skills scripts-audit --json
+arsenal skills check --domains --json
+arsenal skills check --language --json
+arsenal skills scripts-audit --json
 
 # Kiểm tra độ phủ năng lực theo chuẩn theo từng miền
-bun run bin/arsenal.ts skills coverage --domain re --check --json
-bun run bin/arsenal.ts skills coverage --domain webapp --check --json
-bun run bin/arsenal.ts skills coverage --domain mobile --check --json
-bun run bin/arsenal.ts skills coverage --domain red --check --json
+arsenal skills coverage --domain re --check --json
+arsenal skills coverage --domain webapp --check --json
+arsenal skills coverage --domain mobile --check --json
+arsenal skills coverage --domain red --check --json
 
 # Xác thực tính toàn vẹn của sổ cái bằng chứng mật mã học
-bun run bin/arsenal.ts evidence verify --ledger evidence/ledger.jsonl --json
+arsenal evidence verify --repo . --json
 
-# Chạy bộ kiểm thử tự động
+# Kiểm thử Python CLI và native OMP
+uv run --locked pytest
 bun test
 ```
 
 ### Resource của corpus và cách chạy helper
 
 - Chỉnh sửa tại `src/corpus/`; `plugin/skills/` là đầu ra được sinh. Liên kết tài liệu hỗ trợ hữu ích từ trang chính của skill và ghi nguồn gốc trong `MANIFEST.json`.
-- Reference `<SKILL_ROOT>` tương ứng resource canonical `skill://<skill-id>/<path>`, không phải placeholder đường dẫn trên máy. Resolve resource trước khi chạy; shell không thực thi trực tiếp URI `skill://`. Sao chép **toàn bộ** helper cùng các dependency file đi kèm ra thư mục cục bộ; bản xem trước asset bị cắt không phải script hoàn chỉnh.
-- Interpreter và tham số phải khớp helper được đóng gói. Helper ghi Evidence là `skill://webapp-pentest-tools/support/templates/append-evidence.ps1`, cần PowerShell (`pwsh`), từ chối record trùng, severity/status sai và artifact nằm ngoài case.
+- Native OMP tiếp tục resolve tài liệu/asset `skill://`. Mã thực thi nằm trong `src/arsenal/scripts/`; chạy `arsenal scripts <canonical-id> -- <tham-số>` thay vì sao chép script từ skill.
+- Dùng `arsenal exec -- <chương-trình> <tham-số>` để lưu raw output và receipt. `arsenal scripts append-evidence` giữ tính bất biến của evidence trong case.
+- Chỉ cài nhóm dependency cần dùng, ví dụ `uv tool install "arsenal-security[network] @ git+https://github.com/bitbytelabio/arsenal.git"`. Các nhóm: `scripts`, `mobile`, `wireless`, `network`, `cloud`, `intel`, `forensics`, `re`, `ad`, `ai`, `analysis`, `crypto`, `vuln`.
+- LLM Guard dùng môi trường khóa riêng Python 3.11–3.12 do xung đột crypto với Androguard. Runner báo đường dẫn lệnh `uv sync --locked --project ...` để chuẩn bị; lúc chạy không tự tải dependency trôi nổi.
 
 
 ---

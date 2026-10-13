@@ -19,7 +19,7 @@ The procedures described here strictly align with official OMP standards:
 
 ## Quick Start via Justfile
 
-Prerequisites: `just`, `bun`, and `omp` available in your `PATH`. Run from repository root:
+Prerequisites: `uv`, Python 3.11+, `just`, `bun`, and `omp` in `PATH` for repository development. The installed Python CLI itself does not require Bun; native OMP extension compilation does.
 
 ```bash
 just                       # List available recipes without installing
@@ -27,12 +27,17 @@ just preview               # Preview plugin link without writing configuration
 just install-local         # Install dependencies → build bundle → link OMP
 just test-local            # Test profile, MCP, specialist parity, and slash commands
 just test                  # Run full test suite
-just test tests/mcp-lifecycle.test.ts
+uv run --locked pytest tests/python/test_install_mcp.py
 just typecheck             # Run TypeScript type check
 just determinism           # Verify byte-for-byte build determinism
 ```
 
-`install-local` executes `bun install --frozen-lockfile`, `build`, and links the `./plugin` directory into OMP. Installing the plugin automatically provides all capabilities (skills, subagents, commands, rules, and canonical MCP definitions initialized to disabled).
+`install-local` synchronizes the locked Python environment and Bun build dependencies, compiles the plugin, and links `./plugin` into OMP. Plugin installation supplies native skills, subagents, commands, rules, and disabled MCP definitions. Install the operational CLI separately:
+
+```bash
+uv tool install git+https://github.com/bitbytelabio/arsenal.git
+arsenal --help
+```
 
 The profile template installation step (`just profile-install`) is **optional**, intended solely for operators who wish to deeply customize the orchestrator prompt (`AGENTS.md`) or deploy custom configuration into their profile agent directory:
 
@@ -156,10 +161,10 @@ For developers building and testing directly from source:
 
 ```bash
 # 1. Compile distribution bundle into plugin/
-bun run bin/arsenal.ts build --write --force
+arsenal build --write --force
 
 # 2. Assert byte-for-byte build determinism
-bun run bin/arsenal.ts build --check-determinism --json
+arsenal build --check-determinism --json
 ```
 
 ### Step 2: Preview Symlink (Dry Run)
@@ -202,8 +207,8 @@ OMP_PROFILE=arsenal omp plugin link ./plugin
 4. **Optional Profile Installation**:
    Since the plugin delivers subagents and skills automatically, installing profile templates is optional:
    ```bash
-   bun run bin/arsenal.ts profile install --profile ~/.omp/profiles/arsenal/agent --write
-   bun run bin/arsenal.ts profile verify --profile ~/.omp/profiles/arsenal/agent --json
+   arsenal profile install --profile ~/.omp/profiles/arsenal/agent --write
+   arsenal profile verify --profile ~/.omp/profiles/arsenal/agent --json
    ```
 
 ---
@@ -234,23 +239,23 @@ The Arsenal CLI manages native configuration files across profile and project sc
 
 ```bash
 # List bridges in profile scope
-bun run bin/arsenal.ts mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
+arsenal mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
 
 # List bridges in project scope
-bun run bin/arsenal.ts mcp list --scope project --repo . --json
+arsenal mcp list --scope project --repo . --json
 
 # Enable 'rea' in profile scope
-bun run bin/arsenal.ts mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent
+arsenal mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent --write
 
 # Disable 'rea' in profile scope
-bun run bin/arsenal.ts mcp disable rea --scope profile --profile ~/.omp/profiles/arsenal/agent
+arsenal mcp disable rea --scope profile --profile ~/.omp/profiles/arsenal/agent --write
 
 # Enable 'rea' in project scope
-bun run bin/arsenal.ts mcp enable rea --scope project --repo .
+arsenal mcp enable rea --scope project --repo . --write
 
 # Verify MCP configuration integrity
-bun run bin/arsenal.ts mcp verify --scope profile --profile ~/.omp/profiles/arsenal/agent --json
-bun run bin/arsenal.ts mcp verify --scope project --repo . --json
+arsenal mcp verify --scope profile --profile ~/.omp/profiles/arsenal/agent --json
+arsenal mcp verify --scope project --repo . --json
 ```
 
 ---
@@ -265,10 +270,10 @@ To enable REA in your profile:
 
 ```bash
 # Enable REA bridge in profile
-bun run bin/arsenal.ts mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent
+arsenal mcp enable rea --scope profile --profile ~/.omp/profiles/arsenal/agent --write
 
 # Verify activation status
-bun run bin/arsenal.ts mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
+arsenal mcp list --scope profile --profile ~/.omp/profiles/arsenal/agent --json
 ```
 
 Resulting configuration entry in `mcp.json`:

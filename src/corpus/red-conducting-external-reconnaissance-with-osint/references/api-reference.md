@@ -14,7 +14,7 @@ Maps an organization's external attack surface using passive OSINT: certificate 
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --domain example.com --org "Example Corp" --shodan-key <key> \
+arsenal scripts red-conducting-external-reconnaissance-with-osint/agent --domain example.com --org "Example Corp" --shodan-key <key> \
   --github-token <token> --output recon.json
 ```
 

@@ -7,8 +7,8 @@
 ## CLI Interface
 
 ```
-python scripts/agent.py hunt --es-host <url> --index <pattern> [--api-key <key>] [--hours <n>]
-python scripts/agent.py dns --log-file <path>
+arsenal scripts red-hunting-for-living-off-the-cloud-techniques/agent hunt --es-host <url> --index <pattern> [--api-key <key>] [--hours <n>]
+arsenal scripts red-hunting-for-living-off-the-cloud-techniques/agent dns --log-file <path>
 ```
 
 ## Core Functions

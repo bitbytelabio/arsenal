@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py recon
-python scripts/agent.py sa-perms [--namespace default]
-python scripts/agent.py dashboards
-python scripts/agent.py escape [--namespace default]
+arsenal scripts red-performing-kubernetes-penetration-testing/agent recon
+arsenal scripts red-performing-kubernetes-penetration-testing/agent sa-perms [--namespace default]
+arsenal scripts red-performing-kubernetes-penetration-testing/agent dashboards
+arsenal scripts red-performing-kubernetes-penetration-testing/agent escape [--namespace default]
 ```
 
 ## Core Functions

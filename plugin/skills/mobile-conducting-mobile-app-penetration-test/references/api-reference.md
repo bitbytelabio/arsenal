@@ -15,7 +15,7 @@ Tests Android mobile applications for OWASP MASTG vulnerabilities: insecure stor
 ## CLI Usage
 
 ```bash
-python templates/agent.py --apk target.apk --manifest AndroidManifest.xml \
+arsenal scripts mobile-conducting-mobile-app-penetration-test/agent --apk target.apk --manifest AndroidManifest.xml \
   --api-url https://api.target.com --auth-token <jwt> --output report.json
 ```
 

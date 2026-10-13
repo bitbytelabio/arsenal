@@ -18,8 +18,8 @@ work/<case>/
 Initialization:
 
 ```bash
-# Resolve helper from skill://re-docs-generator/support/templates/case-init.sh to local working directory:
-bash case-init.sh --hint "full pentest" --case-name "acme-2026"
+# Resolve helper from arsenal scripts case-init to local working directory:
+arsenal scripts case-init --hint "full pentest" --case-name "acme-2026"
 ```
 
 ## timeline.md Format

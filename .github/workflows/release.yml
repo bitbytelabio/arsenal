@@ -25,6 +25,16 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -33,16 +43,33 @@ jobs:
           scope: "@bitbytelabio"
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: |
+          bun install --frozen-lockfile
+          uv sync --locked
+
+      - name: Validate tag matches package.json SSOT
+        run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION="${GITHUB_REF#refs/tags/v}"
+          if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
+            echo "Error: Tag version 'v$TAG_VERSION' does not match package.json version '$PKG_VERSION'" >&2
+            exit 1
+          fi
 
       - name: Verify typecheck
         run: bun run typecheck
 
-      - name: Run test suite
+      - name: Run Python test suite
+        run: uv run --locked pytest
+
+      - name: Run native Bun test suite
         run: bun test
 
+      - name: Build plugin assets
+        run: uv run --locked arsenal build --write --force
+
       - name: Verify build determinism
-        run: bun --no-env-file run bin/arsenal.ts build --check-determinism --json
+        run: uv run --locked arsenal build --check-determinism --json
 
       - name: Publish to GitHub Packages
         run: npm publish
@@ -50,7 +77,10 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Package plugin marketplace distribution
-        run: bun --no-env-file run bin/arsenal.ts plugin pack --write
+        run: uv run --locked arsenal plugin pack --write
+
+      - name: Build Python wheel and sdist
+        run: uv build --out-dir dist
 
       - name: Generate SHA-256 checksums
         working-directory: dist

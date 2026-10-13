@@ -190,8 +190,8 @@ Solution:
 ### Bootstrap command
 
 ```powershell
-# Resolve skill://red-edr-bypass-re/scripts/bootstrap-reverse.ps1 to local path before execution
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/bootstrap-reverse.ps1 -Capability @('pe-sieve','syswhispers3','sysmon') -StartServices
+# Resolve arsenal scripts bootstrap-reverse to local path before execution
+arsenal scripts bootstrap-reverse -Capability @('pe-sieve','syswhispers3','sysmon') -StartServices
 ```
 
 ## Routing Context

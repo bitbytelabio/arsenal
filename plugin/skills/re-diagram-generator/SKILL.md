@@ -27,7 +27,7 @@ Create clear, editable diagrams from messy or structured inputs. Prefer text-bas
 2. Choose the diagram family and language using the decision table below.
 3. Normalize entities, relationships, labels, states, branches, and time/order information before writing diagram code.
 4. Generate concise, readable diagram source.
-5. Validate the syntax mentally and, when creating files, run `templates/render_diagram.py`.
+5. Validate the syntax mentally and, when creating files, run `arsenal scripts re-diagram-generator/render-diagram`.
 6. Return the diagram source plus a short note about assumptions. When files are generated, include links to the output files.
 
 Do not over-ask for clarification. If the request is underspecified, make reasonable assumptions and label them briefly.
@@ -111,15 +111,15 @@ Use SVG only when text diagram languages cannot express the requested visual rel
 
 ## Rendering files
 
-When the user asks for PNG/SVG/PDF, create a source file and run `templates/render_diagram.py` (provided at `skill://re-diagram-generator/templates/render_diagram.py`; resolve or copy to a local directory before execution):
+When the user asks for PNG/SVG/PDF, create a source file and run `arsenal scripts re-diagram-generator/render-diagram`:
 
 ```bash
-python templates/render_diagram.py input.mmd --format svg --out output.svg
-python templates/render_diagram.py input.dot --format png --out output.png
-python templates/render_diagram.py input.puml --format svg --out output.svg
+arsenal scripts re-diagram-generator/render-diagram input.mmd --format svg --out output.svg
+arsenal scripts re-diagram-generator/render-diagram input.dot --format png --out output.png
+arsenal scripts re-diagram-generator/render-diagram input.puml --format svg --out output.svg
 ```
 
-> The helper script is located at `skill://re-diagram-generator/templates/render_diagram.py`.
+> The helper script is located at `arsenal scripts re-diagram-generator/render-diagram`.
 The renderer is intentionally dependency-tolerant. It tries common local tools and reports actionable installation hints if a renderer is unavailable. Do not claim an image was rendered unless the script completed successfully and the output file exists.
 
 ## Validation checklist

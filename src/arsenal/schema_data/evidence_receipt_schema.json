@@ -1,0 +1,161 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/evidence-receipt.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "engagement_id",
+    "seq",
+    "event_key",
+    "kind",
+    "entity_id",
+    "session_id",
+    "actor",
+    "recorded_at",
+    "prev_hash",
+    "data"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "engagement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "event_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "const": "evidence_receipt"
+    },
+    "entity_id": {
+      "type": "string",
+      "pattern": "^E-[0-9]{6,}$"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "prev_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "tool_name",
+        "requested_target",
+        "observed_endpoint",
+        "scope_attribution",
+        "scope_revision_sha256",
+        "artifacts"
+      ],
+      "properties": {
+        "tool_name": {
+          "type": "string"
+        },
+        "requested_target": {
+          "type": "string"
+        },
+        "observed_endpoint": {
+          "type": "string"
+        },
+        "scope_attribution": {
+          "enum": [
+            "in_scope",
+            "out_of_scope",
+            "unknown"
+          ]
+        },
+        "scope_revision_sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^([0-9a-f]{64}|unk-[a-z0-9_-]+)$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "artifact_id",
+              "path",
+              "media_type",
+              "byte_length",
+              "sha256",
+              "fidelity"
+            ],
+            "properties": {
+              "artifact_id": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "media_type": {
+                "type": "string"
+              },
+              "byte_length": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "fidelity": {
+                "enum": [
+                  "raw",
+                  "tool_result",
+                  "host_sanitized",
+                  "host_truncated",
+                  "unavailable"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "capture_gap": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attribution_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "matching_selector": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

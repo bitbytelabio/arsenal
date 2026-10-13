@@ -1,0 +1,147 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/scope.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "engagement_id",
+    "name",
+    "created_at",
+    "domain",
+    "auth",
+    "in_scope",
+    "out_of_scope",
+    "disallowed_actions",
+    "window"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "engagement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "domain": {
+      "enum": [
+        "re",
+        "webapp",
+        "mobile",
+        "red"
+      ]
+    },
+    "auth": {
+      "type": "object",
+      "required": [
+        "status",
+        "ready_for_act"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "incomplete",
+            "granted",
+            "expired",
+            "revoked"
+          ]
+        },
+        "basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ready_for_act": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "in_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "out_of_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "disallowed_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "window": {
+      "type": "object",
+      "required": [
+        "start",
+        "end",
+        "timezone"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "allowed_hours": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "environment_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "charter_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "charter_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "budget_usd": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

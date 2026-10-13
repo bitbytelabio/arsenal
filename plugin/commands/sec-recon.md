@@ -27,11 +27,11 @@ Before initiating any network probes, the command validates target authorization
    - Assert read-only / non-destructive testing constraints.
 
 2. **Reconnaissance Dispatch**:
-   - For web targets: Dispatch `sec-webapp` to perform subdomain enumeration, HTTP header audits, TLS ciphersuite evaluation, and technology stack fingerprinting via `evidence_exec`.
+   - For web targets: Dispatch `sec-webapp` to perform authorized subdomain, HTTP header, TLS, and technology probes through `arsenal exec -- <program> <args...>`.
    - For network / infrastructure targets: Dispatch `sec-red` to probe authorized ports and services.
 
 3. **Evidence Recording**:
-   - All tool commands are executed through `evidence_exec` or native discovery tools.
+   - Execute commands through `arsenal exec -- <program> <args...>` so Python persists raw outputs and appends evidence receipts.
    - Outputs are bounded ($\le 4096$ bytes) and committed to `evidence/ledger.jsonl`.
 
 4. **Surface Synthesis**:

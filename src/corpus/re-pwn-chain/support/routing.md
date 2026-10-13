@@ -1,13 +1,13 @@
 # Reverse Engineering Skill Routing Matrix
 
-> **Advisory only.** PRIMARY comes from `skill://re-reverse-engineering/support/config/routing.json` via `skill://re-reverse-engineering/support/scripts/master-route.ps1` (or `skill://re-reverse-engineering/support/scripts/master-route.sh`). This file is a 3-axis disambiguation view. If a row here disagrees with JSON, JSON wins.
+> **Advisory only.** PRIMARY comes from `skill://re-reverse-engineering/support/config/routing.json` via `arsenal scripts master-route` (or `arsenal scripts master-route`). This file is a 3-axis disambiguation view. If a row here disagrees with JSON, JSON wins.
 
 Route tasks to the most appropriate skill module by target type, user intent, and toolchain.
 
 ## CRITICAL: Routing Execution Protocol
 
 1. **MUST** complete routing BEFORE executing. Do NOT "do first, route later".
-2. **MUST** start from `skill://re-reverse-engineering/support/scripts/master-route.ps1` (JSON). Use this matrix only when PRIMARY is ambiguous.
+2. **MUST** start from `arsenal scripts master-route` (JSON). Use this matrix only when PRIMARY is ambiguous.
 3. **MUST** match dimensions (target type + user intent + toolchain) before entering a skill.
 4. If route not matched → propose new skill, do NOT force-fit.
 5. Cross-module tasks → combine skills per "Path Crossing" section.
@@ -295,11 +295,11 @@ Some tasks span multiple modules. Common crossings:
 
 ```text
 APK Reverse Path:
-  skill://re-apk-reverse/templates/decode.sh → Java layer analysis
+  arsenal scripts re-apk-reverse/decode → Java layer analysis
   ↓ If core is in .so
   skill://re-ida-reverse/SKILL.md or skill://re-radare2/SKILL.md → .so analysis
   ↓ If dynamic verification needed
-  skill://re-apk-reverse/templates/frida-run.sh → Frida Hook
+  arsenal scripts re-apk-reverse/frida-run → Frida Hook
 
 Frontend JS Reverse Path:
   skill://webapp-js-reverse/SKILL.md (Observe) → locate target request

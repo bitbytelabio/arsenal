@@ -16,20 +16,14 @@ describe("User Story 1: Engagement Preparation & Inspection", () => {
 
     for (const preset of ["re", "webapp", "mobile", "red"]) {
       const targetDir = path.join(scratchBase, `target-${preset}`);
-      const proc = Bun.spawnSync([
-        "bun",
-        "--no-env-file",
-        "run",
-        "bin/arsenal.ts",
-        "init",
-        targetDir,
-        "--preset",
-        preset,
-        "--name",
-        `Test-${preset}`,
-        "--write",
-        "--json",
-      ]);
+      const proc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "init",
+      targetDir,
+      "--preset",
+      preset,
+      "--name",
+      `Test-${preset}`,
+      "--write",
+      "--json",]);
 
       expect(proc.exitCode).toBe(0);
       const res = JSON.parse(proc.stdout.toString()) as { status: string; data: { preset: string } };
@@ -50,32 +44,20 @@ describe("User Story 1: Engagement Preparation & Inspection", () => {
     const webTarget = path.join(scratchBase, "target-webapp");
 
     // Clean check
-    const checkClean = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "init",
-      webTarget,
-      "--check",
-      "--json",
-    ]);
+    const checkClean = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "init",
+    webTarget,
+    "--check",
+    "--json",]);
     expect(checkClean.exitCode).toBe(0);
 
     // Alter a managed file (drift)
     const scopePath = path.join(webTarget, ".omp", "scope.json");
     fs.appendFileSync(scopePath, "\n// Drift comment\n", "utf-8");
 
-    const checkDrift = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "init",
-      webTarget,
-      "--check",
-      "--json",
-    ]);
+    const checkDrift = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "init",
+    webTarget,
+    "--check",
+    "--json",]);
     expect(checkDrift.exitCode).toBe(1);
     const driftJson = JSON.parse(checkDrift.stdout.toString()) as { status: string };
     expect(driftJson.status).toBe("failure");
@@ -83,17 +65,11 @@ describe("User Story 1: Engagement Preparation & Inspection", () => {
 
   it("inspects authorization record via scope show", () => {
     const reTarget = path.join(scratchBase, "target-re");
-    const scopeShow = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "scope",
-      "show",
-      "--repo",
-      reTarget,
-      "--json",
-    ]);
+    const scopeShow = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "scope",
+    "show",
+    "--repo",
+    reTarget,
+    "--json",]);
     expect(scopeShow.exitCode).toBe(0);
     const scopeData = JSON.parse(scopeShow.stdout.toString()) as {
       data: { domain: string; auth_status: string; ready_for_act: boolean };
@@ -105,33 +81,21 @@ describe("User Story 1: Engagement Preparation & Inspection", () => {
 
   it("runs context verify on target repository", () => {
     const reTarget = path.join(scratchBase, "target-re");
-    const ctxVerify = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "context",
-      "verify",
-      "--repo",
-      reTarget,
-      "--json",
-    ]);
+    const ctxVerify = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "context",
+    "verify",
+    "--repo",
+    reTarget,
+    "--json",]);
     expect(ctxVerify.exitCode).toBe(0);
   });
 
   it("runs doctor checks", () => {
     const reTarget = path.join(scratchBase, "target-re");
-    const docProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "doctor",
-      "--repo",
-      reTarget,
-      "--schema",
-      "--json",
-    ]);
+    const docProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "doctor",
+    "--repo",
+    reTarget,
+    "--schema",
+    "--json",]);
     expect(docProc.exitCode).toBe(0);
 
     fs.rmSync(scratchBase, { recursive: true, force: true });

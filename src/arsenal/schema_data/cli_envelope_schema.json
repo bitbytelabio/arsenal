@@ -1,0 +1,65 @@
+{
+  "$id": "https://github.com/bitbytelabio/arsenal/schemas/cli-envelope.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "$schema",
+    "version",
+    "command",
+    "status",
+    "exitCode",
+    "timestamp",
+    "mode",
+    "data",
+    "warnings",
+    "errors"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+"
+    },
+    "command": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "success",
+        "failure"
+      ]
+    },
+    "exitCode": {
+      "type": "integer"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode": {
+      "enum": [
+        "preview",
+        "write",
+        "check"
+      ]
+    },
+    "data": {
+      "type": "object"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

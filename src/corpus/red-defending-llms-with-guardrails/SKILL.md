@@ -240,7 +240,7 @@ rails:
 
 ### Step 7: Validate the stack against a known-bad corpus
 
-Run the helper script in `skill://red-defending-llms-with-guardrails/templates/agent.py` over a JSONL of labeled prompts and compute block rate / false-positive rate.
+Run the helper script in `arsenal scripts red-defending-llms-with-guardrails/agent` over a JSONL of labeled prompts and compute block rate / false-positive rate.
 
 ```bash
 evidence_exec llmguard --input payloads.jsonl --report report.json

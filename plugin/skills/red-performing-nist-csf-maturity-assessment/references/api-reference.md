@@ -6,10 +6,10 @@
 
 ## CLI Interface
 ```
-python scripts/agent.py assess --csv assessment_responses.csv
-python scripts/agent.py gaps --csv assessment_responses.csv
-python scripts/agent.py template [--output template.csv]
-python scripts/agent.py executive --csv assessment_responses.csv
+arsenal scripts red-performing-nist-csf-maturity-assessment/agent assess --csv assessment_responses.csv
+arsenal scripts red-performing-nist-csf-maturity-assessment/agent gaps --csv assessment_responses.csv
+arsenal scripts red-performing-nist-csf-maturity-assessment/agent template [--output template.csv]
+arsenal scripts red-performing-nist-csf-maturity-assessment/agent executive --csv assessment_responses.csv
 ```
 
 ## Core Functions

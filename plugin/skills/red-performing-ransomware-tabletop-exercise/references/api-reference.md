@@ -78,7 +78,7 @@ Rating thresholds:
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --mode demo --output aar.json
-python scripts/agent.py --mode generate --variant accelerated --output scenario.json
-python scripts/agent.py --mode score --responses-file responses.json --output aar.json
+arsenal scripts red-performing-ransomware-tabletop-exercise/agent --mode demo --output aar.json
+arsenal scripts red-performing-ransomware-tabletop-exercise/agent --mode generate --variant accelerated --output scenario.json
+arsenal scripts red-performing-ransomware-tabletop-exercise/agent --mode score --responses-file responses.json --output aar.json
 ```

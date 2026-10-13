@@ -4,22 +4,22 @@
 
 ```bash
 # Generate SHA-256 hash manifest for a directory
-python templates/agent.py --generate-manifest /data/production -o manifest.json
+arsenal scripts re-validating-backup-integrity-for-recovery/agent --generate-manifest /data/production -o manifest.json
 
 # Generate manifest with SHA-512
-python templates/agent.py --generate-manifest /data/production --algorithm sha512 -o manifest.json
+arsenal scripts re-validating-backup-integrity-for-recovery/agent --generate-manifest /data/production --algorithm sha512 -o manifest.json
 
 # Compare baseline vs restored manifest
-python templates/agent.py --compare baseline_manifest.json restored_manifest.json
+arsenal scripts re-validating-backup-integrity-for-recovery/agent --compare baseline_manifest.json restored_manifest.json
 
 # Run full backup validation suite
-python templates/agent.py --validate /restore-test --baseline baseline_manifest.json -o report.json
+arsenal scripts re-validating-backup-integrity-for-recovery/agent --validate /restore-test --baseline baseline_manifest.json -o report.json
 
 # Scan for ransomware artifacts in restored data
-python templates/agent.py --ransomware-scan /restore-test
+arsenal scripts re-validating-backup-integrity-for-recovery/agent --ransomware-scan /restore-test
 
 # Scan for high-entropy (possibly encrypted) files
-python templates/agent.py --entropy-scan /restore-test --entropy-threshold 7.9
+arsenal scripts re-validating-backup-integrity-for-recovery/agent --entropy-scan /restore-test --entropy-threshold 7.9
 ```
 
 ## Hash Algorithms Supported

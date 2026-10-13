@@ -39,6 +39,6 @@ index=wineventlog (EventCode=4672 OR EventCode=4688)
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --evtx-file Sysmon.evtx
-python scripts/agent.py --text-log auth.log
+arsenal scripts red-detecting-privilege-escalation-attempts/agent --evtx-file Sysmon.evtx
+arsenal scripts red-detecting-privilege-escalation-attempts/agent --text-log auth.log
 ```

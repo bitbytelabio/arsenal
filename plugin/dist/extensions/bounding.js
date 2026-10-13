@@ -3,22 +3,16 @@
 import * as path2 from "path";
 
 // src/core/bounding.ts
-import * as fs2 from "fs";
+import * as fs from "fs";
 import * as path from "path";
 
 // src/core/hash.ts
-import * as fs from "fs";
 import * as crypto from "crypto";
-var GENESIS_PREV_HASH = "0000000000000000000000000000000000000000000000000000000000000000";
 function sha256Bytes(bytes) {
   return crypto.createHash("sha256").update(bytes).digest("hex").toLowerCase();
 }
 function sha256String(text) {
   return crypto.createHash("sha256").update(text, "utf-8").digest("hex").toLowerCase();
-}
-function sha256File(filePath) {
-  const content = fs.readFileSync(filePath);
-  return crypto.createHash("sha256").update(content).digest("hex").toLowerCase();
 }
 
 // src/core/bounding.ts
@@ -81,12 +75,12 @@ function boundAndStore(rawInput, evidenceDir, ext = "txt") {
   }
   const hash = sha256Bytes(bytes);
   const rawDir = path.join(evidenceDir, "raw");
-  fs2.mkdirSync(rawDir, { recursive: true, mode: 448 });
+  fs.mkdirSync(rawDir, { recursive: true, mode: 448 });
   const artifactRelPath = path.join("evidence", "raw", `${hash}.${ext}`);
   const artifactFullPath = path.join(evidenceDir, "raw", `${hash}.${ext}`);
-  fs2.writeFileSync(artifactFullPath, bytes, { mode: 384 });
+  fs.writeFileSync(artifactFullPath, bytes, { mode: 384 });
   try {
-    fs2.chmodSync(artifactFullPath, 384);
+    fs.chmodSync(artifactFullPath, 384);
   } catch {}
   const headLines = lines.slice(0, BOUNDING_LIMITS.HEAD_LINES);
   const tailLines = lines.slice(-BOUNDING_LIMITS.TAIL_LINES);

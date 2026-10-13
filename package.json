@@ -1,22 +1,15 @@
 {
   "name": "@bitbytelabio/arsenal",
   "version": "3.0.2",
-  "description": "Arsenal Security Engagement Harness Plugin & CLI for Oh My Pi",
+  "description": "Arsenal Security Engagement Harness Plugin for Oh My Pi; Python CLI via uv",
   "license": "MIT",
   "type": "module",
-  "bin": {
-    "arsenal": "bin/arsenal.js"
-  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "files": [
-    "bin",
-    "src",
     "plugin",
-    "presets",
-    "tools",
     "marketplace.json",
     "plugin.json",
     "docs",
@@ -33,11 +26,11 @@
   },
   "homepage": "https://github.com/bitbytelabio/arsenal#readme",
   "scripts": {
-    "build": "bun run bin/arsenal.ts build",
+    "build": "uv run --locked arsenal build --write --force",
     "test": "bun test",
     "typecheck": "tsc --noEmit",
-    "upstream:check": "bun --no-env-file run tools/sync-upstreams.ts --check",
-    "upstream:update": "bun --no-env-file run tools/sync-upstreams.ts --write"
+    "upstream:check": "uv run --locked arsenal skills sync-upstreams --check",
+    "upstream:update": "uv run --locked arsenal skills sync-upstreams --write"
   },
   "dependencies": {
     "ajv": "^8.17.1",
@@ -53,7 +46,6 @@
   "omp": {
     "extensions": [
       "./plugin/dist/extensions/bounding.js",
-      "./plugin/dist/extensions/ledger.js",
       "./plugin/dist/extensions/budget.js",
       "./plugin/dist/extensions/routing.js"
     ],
@@ -64,7 +56,6 @@
   "pi": {
     "extensions": [
       "./plugin/dist/extensions/bounding.js",
-      "./plugin/dist/extensions/ledger.js",
       "./plugin/dist/extensions/budget.js",
       "./plugin/dist/extensions/routing.js"
     ],

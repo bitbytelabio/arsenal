@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as os from "node:os";
-import { handleMcp } from "../src/cli/mcp.ts";
+import { runCommandContext as handleMcp } from "./helpers/python-cli.ts"
 
 describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)", () => {
   const tmpRepo = fs.mkdtempSync(path.join(os.tmpdir(), "arsenal-mcp-repo-"));
@@ -10,18 +10,12 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
   const tmpProfileWithSpaces = fs.mkdtempSync(path.join(os.tmpdir(), "arsenal mcp prof with spaces-"));
 
   test("meaningful path isolation: fresh profile with spaces gets mcp.json while repo is untouched", () => {
-    const installProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "install",
-      "--profile",
-      tmpProfileWithSpaces,
-      "--write",
-      "--json",
-    ]);
+    const installProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "install",
+    "--profile",
+    tmpProfileWithSpaces,
+    "--write",
+    "--json",]);
     expect(installProc.exitCode).toBe(0);
 
     const profMcp = path.join(tmpProfileWithSpaces, "mcp.json");
@@ -33,20 +27,14 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
 
   test("meaningful path isolation: profile toggle mutates only profile and leaves repo untouched", () => {
     // Enable playwright in profile
-    const enableProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "enable",
-      "playwright",
-      "--profile",
-      tmpProfile,
-      "--repo",
-      tmpRepo,
-      "--json",
-    ]);
+    const enableProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "enable",
+    "playwright",
+    "--profile",
+    tmpProfile,
+    "--repo",
+    tmpRepo,
+    "--json",]);
     expect(enableProc.exitCode).toBe(0);
 
     const profMcp = path.join(tmpProfile, "mcp.json");
@@ -63,22 +51,16 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     const ompDir = path.join(tmpRepo, ".omp");
     fs.mkdirSync(ompDir, { recursive: true });
 
-    const enableProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "enable",
-      "playwright",
-      "--scope",
-      "project",
-      "--repo",
-      tmpRepo,
-      "--profile",
-      tmpProfile,
-      "--json",
-    ]);
+    const enableProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "enable",
+    "playwright",
+    "--scope",
+    "project",
+    "--repo",
+    tmpRepo,
+    "--profile",
+    tmpProfile,
+    "--json",]);
     expect(enableProc.exitCode).toBe(0);
 
     const repoMcp = path.join(ompDir, "mcp.json");
@@ -87,22 +69,16 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     expect(repoCfg.mcpServers["playwright"].enabled).toBe(true);
 
     // Disable in project
-    const disableProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "disable",
-      "playwright",
-      "--scope",
-      "project",
-      "--repo",
-      tmpRepo,
-      "--profile",
-      tmpProfile,
-      "--json",
-    ]);
+    const disableProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "disable",
+    "playwright",
+    "--scope",
+    "project",
+    "--repo",
+    tmpRepo,
+    "--profile",
+    tmpProfile,
+    "--json",]);
     expect(disableProc.exitCode).toBe(0);
     const repoCfgDisabled = JSON.parse(fs.readFileSync(repoMcp, "utf-8"));
     expect(repoCfgDisabled.mcpServers["playwright"].enabled).toBe(false);
@@ -117,19 +93,13 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     const profMcp = path.join(tmpProfile, "mcp.json");
     const initialBytes = fs.readFileSync(profMcp);
 
-    const checkProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "enable",
-      "rea",
-      "--profile",
-      tmpProfile,
-      "--check",
-      "--json",
-    ]);
+    const checkProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "enable",
+    "rea",
+    "--profile",
+    tmpProfile,
+    "--check",
+    "--json",]);
     expect(checkProc.exitCode).toBe(0);
 
     const postBytes = fs.readFileSync(profMcp);
@@ -140,19 +110,13 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     const profMcp = path.join(tmpProfile, "mcp.json");
     const initialBytes = fs.readFileSync(profMcp);
 
-    const installCheckProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "install",
-      "--profile",
-      tmpProfile,
-      "--write",
-      "--check",
-      "--json",
-    ]);
+    const installCheckProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "install",
+    "--profile",
+    tmpProfile,
+    "--write",
+    "--check",
+    "--json",]);
     expect(installCheckProc.exitCode).toBe(0);
 
     const postBytes = fs.readFileSync(profMcp);
@@ -173,17 +137,11 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     };
     fs.writeFileSync(profMcp, JSON.stringify(evalConfig, null, 2), "utf-8");
 
-    const listProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "list",
-      "--profile",
-      tmpProfile,
-      "--json",
-    ]);
+    const listProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "list",
+    "--profile",
+    tmpProfile,
+    "--json",]);
     expect(listProc.exitCode).toBe(0);
     const listJson = JSON.parse(listProc.stdout.toString()) as {
       data: { bridges: Array<{ id: string; effectiveState: string }> };
@@ -330,18 +288,12 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     fs.writeFileSync(profMcp, JSON.stringify(customOperatorConfig, null, 2), "utf-8");
 
     // Reinstall canonical bridges
-    const installProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "install",
-      "--profile",
-      tmpProfile,
-      "--write",
-      "--json",
-    ]);
+    const installProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "install",
+    "--profile",
+    tmpProfile,
+    "--write",
+    "--json",]);
     expect(installProc.exitCode).toBe(0);
 
     const mergedCfg = JSON.parse(fs.readFileSync(profMcp, "utf-8"));
@@ -360,18 +312,12 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     expect(mergedCfg.mcpServers["ida-pro"].enabled).toBe(false);
 
     // Reinstall when unchanged returns identical action
-    const reinstallProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "install",
-      "--profile",
-      tmpProfile,
-      "--write",
-      "--json",
-    ]);
+    const reinstallProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "install",
+    "--profile",
+    tmpProfile,
+    "--write",
+    "--json",]);
     expect(reinstallProc.exitCode).toBe(0);
     const reinstallJson = JSON.parse(reinstallProc.stdout.toString());
     expect(reinstallJson.data.action).toBe("identical");
@@ -382,69 +328,45 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     const corruptContent = "scalar-string-not-an-object";
     fs.writeFileSync(corruptFile, corruptContent, "utf-8");
 
-    const installProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "install",
-      "--profile",
-      tmpProfile,
-      "--write",
-      "--force",
-      "--json",
-    ]);
+    const installProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "install",
+    "--profile",
+    tmpProfile,
+    "--write",
+    "--force",
+    "--json",]);
     expect(installProc.exitCode).not.toBe(0);
     expect(fs.readFileSync(corruptFile, "utf-8")).toBe(corruptContent);
 
-    const enableProc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "enable",
-      "playwright",
-      "--profile",
-      tmpProfile,
-      "--force",
-      "--json",
-    ]);
+    const enableProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "enable",
+    "playwright",
+    "--profile",
+    tmpProfile,
+    "--force",
+    "--json",]);
     expect(enableProc.exitCode).not.toBe(0);
     expect(fs.readFileSync(corruptFile, "utf-8")).toBe(corruptContent);
   });
 
   test("rejects invalid scope argument", () => {
-    const proc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "list",
-      "--scope",
-      "invalid-scope",
-      "--json",
-    ]);
+    const proc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "list",
+    "--scope",
+    "invalid-scope",
+    "--json",]);
     expect(proc.exitCode).toBe(2);
     const json = JSON.parse(proc.stdout.toString());
     expect(json.errors[0]).toContain("Invalid scope 'invalid-scope'");
   });
 
   test("rejects enabling unknown tool bridge", () => {
-    const proc = Bun.spawnSync([
-      "bun",
-      "--no-env-file",
-      "run",
-      "bin/arsenal.ts",
-      "mcp",
-      "enable",
-      "non-existent-bridge",
-      "--profile",
-      tmpProfileWithSpaces,
-      "--json",
-    ]);
+    const proc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
+    "enable",
+    "non-existent-bridge",
+    "--profile",
+    tmpProfileWithSpaces,
+    "--json",]);
     expect(proc.exitCode).toBe(2);
     const json = JSON.parse(proc.stdout.toString());
     expect(json.errors[0]).toContain("Unknown tool bridge 'non-existent-bridge'");

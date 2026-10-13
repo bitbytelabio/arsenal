@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-python scripts/agent.py --data /intel/events.json --output-dir /reports/
+arsenal scripts red-implementing-diamond-model-analysis/agent --data /intel/events.json --output-dir /reports/
 ```
 
 ## Functions

@@ -9,7 +9,7 @@
 ## CLI Usage
 
 ```bash
-python scripts/agent.py \
+arsenal scripts red-implementing-attack-path-analysis-with-xm-cyber/agent \
   --url https://xmcyber.example.com \
   --api-key YOUR_API_KEY \
   --output-dir /reports/ \
