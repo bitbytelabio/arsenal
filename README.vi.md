@@ -1,90 +1,203 @@
-[ English ](README.md) | [ Tiếng Việt ]
+<div align="center">
 
 # Arsenal
 
-> **Plugin-First Offensive Security & Reverse Engineering Harness cho Oh My Pi (OMP)**
+**Bộ khung khai thác bảo mật & dịch ngược mã nguồn (Plugin-First Harness) cho Oh My Pi (OMP)**
 
-Arsenal là một bộ công cụ kiểm thử bảo mật chuyên nghiệp (security engagement harness) và kho lưu trữ năng lực (skill corpus) phục vụ tấn công thâm nhập (penetration testing), dịch ngược nhị phân (binary reverse engineering), và đánh giá lỗ hổng động (dynamic vulnerability assessment).
+[![Phiên bản](https://img.shields.io/badge/phiên%20bản-3.0.2-10b981?style=flat-square)](package.json)
+[![Giấy phép: MIT](https://img.shields.io/badge/giấy%20phép-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Runtime: Bun](https://img.shields.io/badge/runtime-Bun-f472b6?style=flat-square&logo=bun)](https://bun.sh)
+[![Ngôn ngữ: TypeScript](https://img.shields.io/badge/ngôn%20ngữ-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![OMP Plugin](https://img.shields.io/badge/OMP-Plugin-8b5cf6?style=flat-square)](docs/install-omp-plugin.vi.md)
+[![Kho kỹ năng](https://img.shields.io/badge/kỹ%20năng-1%2C647%20chuẩn%20hóa-f59e0b?style=flat-square)](src/corpus)
+[![Build: Tiền định](https://img.shields.io/badge/build-tiền%20định-06b6d4?style=flat-square)](#danh-mục-lệnh-cli-cheat-sheet)
 
----
+[ English ](README.md) &bull; [ Tiếng Việt ]
 
-## Tổng quan kiến trúc
-
-Arsenal được thiết kế theo mô hình **Single Source of Truth (SSOT)** với sự phân lập chặt chẽ giữa các thành phần:
-
-- **Single Source of Truth (`src/corpus/`, `presets/`, `src/core/`)**:
-  Các kịch bản bảo mật chuẩn (security playbooks), bảng định tuyến (routing tables), bản đồ phủ năng lực baseline (coverage mappings), và công cụ xác thực CLI.
-- **Gói phân phối được tạo tự động (`plugin/`)**:
-  Plugin OMP độc lập chứa các runtime extensions đã biên dịch, chỉ mục danh mục (catalog indexes), và định nghĩa định tuyến.
-- **Trạng thái Runtime (`evidence/`)**:
-  Nhật ký sự kiện JSONL chỉ-ghi-nối (append-only) có thể kiểm chứng mật mã học với chuỗi băm SHA-256 và nhật ký SQLite chế độ WAL.
+</div>
 
 ---
 
-## Tài liệu & Cài đặt
+## Tổng quan
 
-- [Hướng dẫn cài đặt OMP Plugin](docs/install-omp-plugin.vi.md) ([Bản tiếng Anh](docs/install-omp-plugin.md)): Hướng dẫn cài đặt qua cơ chế Marketplace theo tài liệu OMP (`OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal`, `OMP_PROFILE=arsenal omp plugin install arsenal@arsenal`), liên kết phát triển cục bộ (`OMP_PROFILE=arsenal omp plugin link ./plugin`), và quản lý cấu hình MCP bridges theo profile / project.
+**Arsenal** (`@bitbytelab/arsenal`) là bộ công cụ kiểm thử bảo mật chuyên nghiệp (security engagement harness) và kho lưu trữ năng lực chuẩn tắc (authoritative skill corpus) được thiết kế chuyên biệt cho Oh My Pi (OMP). Được tối ưu cho hoạt động diễn tập tấn công (red teaming), thâm nhập mục tiêu (penetration testing), dịch ngược nhị phân (binary reverse engineering), và đánh giá lỗ hổng động (dynamic vulnerability assessment), Arsenal kết hợp khả năng điều phối tác tử tự hành tốc độ cao với cơ chế kiểm chứng tiền định và quản lý bằng chứng bằng mật mã học.
 
----
+### Điểm nổi bật cốt lõi
 
-## Tính năng nổi bật của Arsenal Harness
-
-### 1. Công cụ phân tích bảo mật bằng TypeScript thuần (`apk_inspect`)
-- Các tác vụ phân tích trọng yếu (bao gồm kiểm tra Android APK và phân tích manifest nhị phân) thực thi trực tiếp bên trong runtime plugin thông qua các công cụ native Bun/TS, không phụ thuộc vào Python của máy host hay thư viện chưa quản lý.
-- Loại bỏ toàn bộ các script đơn lẻ tự do trong corpus, thay thế bằng tài sản mẫu có quản lý và các lệnh gọi công cụ `evidence_exec` được giám sát chặt chẽ.
-
-### 2. Định danh URI chuẩn `skill://` & Tải tài sản động
-- Toàn bộ 3.288 tài liệu tham khảo và trích dẫn hỗ trợ trên 1.647 playbooks đều sử dụng URI chuẩn của nền tảng (`skill://<skill-id>/references/...` hoặc `skill://<skill-id>/support/...`).
-- Cơ chế tải tài sản động (`skill_asset_load`, `skills read-asset`) giúp phân giải tài liệu tham khảo phụ trợ, checklist, và mẫu payload bất kể thư mục làm việc hiện tại của agent, với giới hạn đầu ra an toàn ký tự ($\le 4096$ bytes).
-
-### 3. Quản trị Subagent & Khởi tạo Profile
-- Toàn bộ 5 prompt của agent chuyên gia (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) được tích hợp sẵn các cổng an toàn OpSec và ràng buộc đánh giá nhận thức luận (`E-*` quan sát thực nghiệm vs `P-*` suy luận phân tích vs `unk-*` biến số chưa rõ).
-- Thực thi chuyển giao tác vụ theo JSON schema có định kiểu với logic tự phục hồi sau một lần thử lại.
-- Cài đặt plugin sẽ tự động cung cấp `master`, toàn bộ 5 chuyên gia, rules, commands, và định nghĩa MCP. Lệnh `arsenal profile install` là tùy chọn cho template của người vận hành; lệnh này ghi đè các cấu hình chuyên gia vào `<profileDir>/agents/`.
-
-### 4. Quản lý vòng đời MCP động & Bộ chạy `uv` cô lập
-- Các lệnh phụ CLI `arsenal mcp enable <name>` và `arsenal mcp disable <name>` bật/tắt động các tool bridges dưới cơ chế chọn tham gia (opt-in) nghiêm ngặt với sự phân lập theo profile (`--scope profile`, mặc định) hoặc project (`--scope project`).
-- Danh mục chính thức hỗ trợ 6 bridges chuẩn: `ida-pro`, `ghidra`, `jshook`, `burp-ultra`, `playwright`, và `rea` (tất cả khởi tạo ở trạng thái `enabled: false`).
-- Các bridge viết bằng Python thực thi qua môi trường `uv` cô lập, kèm chẩn đoán báo lỗi nhanh nếu `uv` chưa được cài trên host.
-- REA chạy thông qua `bunx rea-agents@6.4.0 mcp`. Skill `re-reverse-engineer-anything` đi kèm, 6 tài liệu tham khảo và giấy phép MIT được đóng gói sẵn trong plugin; xem chi tiết tại [hướng dẫn cài đặt REA](docs/install-omp-plugin.vi.md#6-rea-reverse-engineer-anything).
-
-### 5. Bộ Slash Commands tác chiến toàn diện
-- 8 slash commands hướng dẫn các giai đoạn đánh giá an ninh:
-  - `/sec-scope`: Quản lý phạm vi, thực thi danh sách mục tiêu hợp lệ và danh sách loại trừ.
-  - `/sec-recon`: Điều phối trinh sát bề mặt tấn công với lời nhắc ủy quyền tương tác đối với mục tiêu ngoài phạm vi.
-  - `/sec-engage`: Điều phối quy trình đánh giá an ninh 5 giai đoạn từ đầu đến cuối.
-  - `/sec-verify`: Điều phối trực tiếp đến `sec-verifier` chạy các oracle tiền định (`verify_oracle`).
-  - `/sec-finding`: Ghi nhận phát hiện có cấu trúc, liên kết trực tiếp tới biên lai sổ cái bằng chứng SHA-256.
-  - `/sec-review`: Kiểm toán xem xét case, khẳng định tính liên tục của bằng chứng qua toàn bộ 37 mã xác thực.
-  - `/sec-report`: Trình biên dịch báo cáo bàn giao hỗ trợ xuất Markdown, JSON, và SARIF (mặc định tại `.omp/arsenal/reports/report-<timestamp>.md` kèm tóm tắt terminal).
-  - `/sec-doctor`: Trình kiểm tra chẩn đoán nền tảng, xác thực độ lành mạnh của plugin, bridges, và manifests.
-
-### 6. Độ phủ kỹ thuật dựa trên bằng chứng & Tính toàn vẹn của Manifest
-- 496 ánh xạ kỹ thuật được kiểm chứng thực nghiệm đưa vào `presets/baselines/coverage-map.json` sử dụng bộ định vị tiêu đề markdown trong các playbook `SKILL.md`.
-- Giảm hơn 50% các mục giả lập `accepted-gaps.json` nhằm tuân thủ nghiêm ngặt Nguyên tắc III (Evidence Rigor) và quy tắc CM-4.
-- Đạt 100% độ toàn vẹn manifest của corpus, xác thực qua `arsenal skills check --domains` (0 lỗi).
+- **Mô hình Nguồn chân lý duy nhất (SSOT)**: 1.647 kịch bản tấn công (playbooks) chuẩn mực và 3.288 trích dẫn tham khảo được phân giải động qua định danh `skill://` với kiểm soát kích thước nghiêm ngặt ($\le 4096$ bytes).
+- **Đội ngũ 5 Tác tử Chuyên gia (Specialists)**: Các chuyên gia độc lập theo miền (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) hoạt động dưới các quy tắc nhận thức luận chặt chẽ (`E-*` dữ kiện thực nghiệm vs. `P-*` suy luận dự đoán vs. `unk-*` ẩn số chưa xác định).
+- **Sổ cái bằng chứng Mật mã học (Cryptographic Evidence Ledger)**: Chuỗi sự kiện gắn băm SHA-256 đơn điệu chỉ-ghi-nối (append-only) tại `evidence/ledger.jsonl`, được hỗ trợ bởi cơ chế theo dõi trạng thái SQLite chế độ WAL chống giả mạo.
+- **Công cụ thuần Bun & TypeScript**: Loại bỏ hoàn toàn các script Python tự do trên máy host thông qua các công cụ biên dịch có kiểm toán như `apk_inspect` và quy trình thực thi được giám sát `evidence_exec`.
+- **Cơ chế MCP Opt-In động & An toàn tuyệt đối**: 6 cầu nối công cụ chuẩn (`burp-ultra`, `rea`, `playwright`, `ghidra`, `ida-pro`, `jshook`) mặc định ở trạng thái vô hiệu hóa, bật/tắt linh hoạt theo phạm vi profile hoặc dự án.
 
 ---
 
-## Sử dụng CLI
+## Kiến trúc hệ thống
+
+Arsenal phân tách rành mạch giữa tài liệu đặc tả bảo mật, luồng điều phối tác chiến, và nhật ký kiểm toán mật mã học:
+
+```mermaid
+flowchart TD
+    Op([Chuyên gia An ninh]) -->|Kích hoạt| Cmd["8 Slash Commands<br/>/sec-scope, /sec-recon, /sec-engage..."]
+    Cmd --> Orchestrator["Master Orchestrator<br/>Cổng Nhận thức luận & Phạm vi tác chiến"]
+
+    subgraph Specialists ["Đội ngũ Tác tử Chuyên gia"]
+        direction TB
+        RE["sec-re<br/>Dịch ngược Nhị phân & Firmware"]
+        WA["sec-webapp<br/>Kiểm thử Ứng dụng Web & API"]
+        MO["sec-mobile<br/>Phân tích Động Android & iOS"]
+        RT["sec-red<br/>Mô phỏng Tấn công & Cloud"]
+        VE["sec-verifier<br/>Kiểm chứng Tiền định bằng Oracle"]
+    end
+
+    Orchestrator -->|Phân công Tác vụ| Specialists
+
+    subgraph Bridges ["Cầu nối MCP Công cụ (Opt-In)"]
+        direction TB
+        B1["burp-ultra<br/>Proxy HTTP/s"]
+        B2["rea<br/>Dịch ngược Toàn năng"]
+        B3["playwright<br/>Tự động hóa Trình duyệt"]
+        B4["ghidra / ida-pro<br/>Phân tích Tĩnh Nhị phân"]
+        B5["jshook<br/>Frida / Hook Runtime"]
+    end
+
+    Specialists <-->|Giao thức Công cụ| Bridges
+
+    subgraph CoreEngine ["Nguồn Chân lý & Môi trường Runtime"]
+        direction TB
+        Corpus["src/corpus/<br/>1.647 Kỹ năng & URI skill://"]
+        PluginDist["plugin/<br/>Extension Biên dịch & Danh mục Định tuyến"]
+        NativeTools["Công cụ Native TS<br/>apk_inspect, evidence_exec"]
+    end
+
+    Specialists -->|Phân giải Kịch bản| CoreEngine
+
+    subgraph EvidenceLedger ["Mặt phẳng Kiểm toán Mật mã học"]
+        direction TB
+        Journal["Nhật ký SQLite WAL<br/>Theo dõi Trạng thái & Tính toàn vẹn"]
+        Ledger["evidence/ledger.jsonl<br/>Chuỗi băm SHA-256 Đơn điệu"]
+    end
+
+    Specialists -->|Ghi nhận Bằng chứng| EvidenceLedger
+    VE -->|Kiểm toán Bằng chứng| EvidenceLedger
+```
+
+---
+
+## Ma trận Tác tử Chuyên gia
+
+Arsenal cung cấp năm tác tử chuyên gia theo miền chuyên sâu. Mỗi tác tử tuân thủ nghiêm ngặt các rào chắn An ninh Tác chiến (OpSec), ranh giới quan sát nhận thức luận, và schema bàn giao có định kiểu:
+
+| Tác tử | Miền chuyên môn | Trọng tâm & Trách nhiệm | Công cụ & Phương pháp cốt lõi |
+|---|---|---|---|
+| `sec-re` | Dịch ngược Nhị phân | Phân tích disassembled/decompiled, biểu đồ luồng điều khiển (CFG), giải nén firmware, trích xuất giao thức. | `ghidra`, `ida-pro`, `rea`, `file_inspect`, `binwalk` |
+| `sec-webapp` | Bảo mật Web & API | Kiểm toán API có xác thực, lỗi logic nghiệp vụ, lỗ hổng luồng OAuth/JWT, các vector tiêm mã, CSRF/SSRF. | `burp-ultra`, `playwright`, HTTP engine native |
+| `sec-mobile` | Phân tích Động Mobile | Đánh giá Android & iOS, can thiệp runtime, phân tích IPC, kiểm toán lưu trữ cục bộ tự động. | `apk_inspect`, `jshook`, TLS bypass hooks, Frida |
+| `sec-red` | Mô phỏng Đối kháng | Leo thang đặc quyền hạ tầng đám mây, thoát container, chuyển tiếp thông tin xác thực, mô phỏng di chuyển ngang. | `evidence_exec` được giám sát, CLI đám mây |
+| `sec-verifier` | Kiểm chứng Tiền định | Thẩm định độc lập các phát hiện, kịch bản tái hiện thực nghiệm, triệt tiêu ảo giác và cảnh báo giả. | `verify_oracle`, đối soát băm SHA-256, môi trường cô lập |
+
+---
+
+## Danh mục Slash Commands Tác chiến
+
+Điều phối các chiến dịch đánh giá an ninh đa giai đoạn thông qua hệ thống slash commands chuẩn hóa trong Oh My Pi:
+
+| Lệnh | Giai đoạn Vòng đời | Chức năng Vận hành |
+|---|---|---|
+| `/sec-scope` | Chuẩn bị Tác chiến | Định nghĩa và thực thi nghiêm ngặt danh sách tên miền mục tiêu, dải IP, và các tài sản loại trừ ngoài phạm vi. |
+| `/sec-recon` | Khám phá Bề mặt | Lập bản đồ bề mặt tấn công; kích hoạt yêu cầu xác nhận tương tác nếu phát hiện tài sản chưa được cấp phép. |
+| `/sec-engage` | Vòng lặp Khai thác | Điều phối quy trình đánh giá có cấu trúc 5 giai đoạn xuyên suốt các tác tử chuyên gia đang kích hoạt. |
+| `/sec-verify` | Xác thực Bằng chứng | Chuyển giao trực tiếp yêu cầu kiểm chứng tới `sec-verifier` bằng các oracle tiền định. |
+| `/sec-finding` | Ghi nhận Phát hiện | Lưu trữ các lỗ hổng tiềm năng có cấu trúc, liên kết trực tiếp với biên lai sổ cái bằng chứng băm SHA-256. |
+| `/sec-review` | Đảm bảo Chất lượng | Kiểm toán trạng thái chiến dịch và xác nhận tính liên tục của bằng chứng trên toàn bộ 37 mã xác thực. |
+| `/sec-report` | Xuất Báo cáo | Biên dịch kết quả kiểm toán thành định dạng Markdown, JSON, và SARIF tại thư mục `.omp/arsenal/reports/`. |
+| `/sec-doctor` | Chẩn đoán Hệ thống | Kiểm tra các phụ thuộc máy host, độ lành mạnh của plugin, trạng thái MCP bridges, và tính toàn vẹn manifest. |
+
+---
+
+## Cầu nối MCP Động
+
+Toàn bộ các cầu nối công cụ ngoài vận hành theo cơ chế chọn tham gia (opt-in) nghiêm ngặt (`enabled: false` theo mặc định). Bạn có thể bật/tắt cầu nối mà không cần chỉnh sửa thủ công các tệp JSON:
+
+| Cầu nối | Mục đích Sử dụng Chính | Động cơ Thực thi | Trạng thái Mặc định |
+|---|---|---|---|
+| `burp-ultra` | Giám sát & Phân tích Lưu lượng Web & API | Cầu nối REST / Extension của Burp Suite | Vô hiệu hóa (`opt-in`) |
+| `rea` | Động cơ Dịch ngược Toàn năng | `bunx rea-agents@6.4.0 mcp` | Vô hiệu hóa (`opt-in`) |
+| `playwright` | Tự động hóa Trình duyệt & Kiểm tra DOM | Worker Node.js / Bun cô lập | Vô hiệu hóa (`opt-in`) |
+| `ghidra` | Phân tích Nhị phân Java (Headless & GUI) | Môi trường `uv` cô lập + Ghidra Bridge | Vô hiệu hóa (`opt-in`) |
+| `ida-pro` | Tích hợp Trình Dịch ngược Tương tác IDA | Môi trường `uv` cô lập + IDA RPC | Vô hiệu hóa (`opt-in`) |
+| `jshook` | Can thiệp Runtime Động Ứng dụng Di động | Trình quản lý Hook Frida / Cầu nối TS | Vô hiệu hóa (`opt-in`) |
 
 ```bash
-# Chạy trực tiếp qua bunx không cần cài đặt
+# Quản lý cầu nối MCP ở cấp độ profile hoặc project
+bun run bin/arsenal.ts mcp enable rea --scope profile
+bun run bin/arsenal.ts mcp disable burp-ultra --scope project
+bun run bin/arsenal.ts mcp status
+```
+
+---
+
+## Hướng dẫn Cài đặt & Bắt đầu Nhanh
+
+Chọn phương thức triển khai phù hợp với bạn. Chi tiết từng bước vui lòng xem tại [Tài liệu Cài đặt Plugin Toàn diện](docs/install-omp-plugin.vi.md).
+
+### Phương thức 1: OMP Marketplace (Khuyến nghị)
+
+Đăng ký kho lưu trữ chính thức và cài đặt plugin trực tiếp vào profile OMP của bạn:
+
+```bash
+# 1. Thêm kho lưu trữ marketplace
+OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal
+
+# 2. Cài đặt plugin
+OMP_PROFILE=arsenal omp plugin install arsenal@arsenal
+
+# 3. Kiểm tra chẩn đoán sau cài đặt
+bunx @bitbytelab/arsenal doctor
+```
+
+### Phương thức 2: Liên kết Phát triển Cục bộ (Local Link)
+
+Dành cho các nhà phát triển tinh chỉnh kịch bản hoặc mở rộng runtime extensions:
+
+```bash
+git clone https://github.com/bitbytelabio/arsenal.git
+cd arsenal
+
+# Biên dịch gói phân phối và liên kết tới OMP chỉ trong một lệnh
+just install-local
+```
+
+### Phương thức 3: Thực thi CLI trực tiếp qua bunx
+
+Chạy các lệnh Arsenal mà không cần clone repository hoặc cài đặt lưu trữ vĩnh viễn:
+
+```bash
+# Chạy chẩn đoán hoặc tra cứu các tùy chọn dòng lệnh
 bunx @bitbytelab/arsenal --help
 bunx @bitbytelab/arsenal doctor --json
+```
 
-# Biên dịch gói phân phối plugin và xác thực tính tiền định byte-for-byte
+---
+
+## Danh mục Lệnh CLI (Cheat Sheet)
+
+Arsenal cung cấp bộ công cụ dòng lệnh toàn diện để quản trị kỹ năng, đóng gói phân phối và xác thực bằng chứng:
+
+```bash
+# Biên dịch & kiểm chứng gói phân phối plugin
 bun run bin/arsenal.ts build --write --force
 bun run bin/arsenal.ts build --check-determinism --json
 
-# Đóng gói plugin phân phối marketplace
+# Đóng gói bản phát hành marketplace
 bun run bin/arsenal.ts plugin pack --write
 
-# Kiểm tra tuân thủ ngôn ngữ và trích dẫn script
+# Kiểm toán kho kỹ năng & rà soát mã thực thi
+bun run bin/arsenal.ts skills check --domains --json
 bun run bin/arsenal.ts skills check --language --json
 bun run bin/arsenal.ts skills scripts-audit --json
 
-# Kiểm tra độ phủ năng lực theo chuẩn giữa các domain
+# Kiểm tra độ phủ năng lực theo chuẩn theo từng miền
 bun run bin/arsenal.ts skills coverage --domain re --check --json
 bun run bin/arsenal.ts skills coverage --domain webapp --check --json
 bun run bin/arsenal.ts skills coverage --domain mobile --check --json
@@ -93,12 +206,27 @@ bun run bin/arsenal.ts skills coverage --domain red --check --json
 # Xác thực tính toàn vẹn của sổ cái bằng chứng mật mã học
 bun run bin/arsenal.ts evidence verify --ledger evidence/ledger.jsonl --json
 
-# Chạy toàn bộ test suite
+# Chạy bộ kiểm thử tự động
 bun test
 ```
 
 ---
 
+## Sổ cái Bằng chứng & Cam kết OpSec
+
+Mọi kết luận do các chuyên gia của Arsenal đưa ra đều phải thỏa mãn tiêu chuẩn kiểm chứng thực nghiệm trước khi được ghi nhận là lỗ hổng hợp lệ:
+
+1. **Chuỗi băm Bất biến (Immutable Hash Chain)**: Toàn bộ đầu ra câu lệnh, phản hồi payload, và dữ liệu bắt gói tin đều được ghi nối vào `evidence/ledger.jsonl` với liên kết băm SHA-256 đơn điệu liên tục ($H_n = \text{SHA-256}(H_{n-1} \parallel \text{Entry}_n)$).
+2. **Phân loại Nhận thức luận (Epistemic Classification)**:
+   - `E-*` (**Thực nghiệm - Empirical**): Dữ liệu quan sát trực tiếp, trao đổi mạng thô, crash dump được xác nhận.
+   - `P-*` (**Dự đoán - Predictive**): Suy luận phân tích, giả thuyết đường dẫn leo thang đặc quyền.
+   - `unk-*` (**Ẩn số - Unknown**): Các biến số chưa được quan sát và dữ liệu đo đạc chưa đầy đủ.
+3. **Chính sách Bắt chặn Lưu lượng Có định hướng**:
+   - Lưu lượng Web & API được định tuyến qua Burp Suite; giao thức dịch ngược ứng dụng nhị phân được điều hướng qua mitmproxy kèm runtime hooks.
+   - Khi đánh giá ứng dụng di động trong phạm vi, chuyên gia được ủy quyền triển khai vượt cơ chế khóa chứng chỉ TLS (SSL pinning bypass) trên mọi tầng mà không cần xác nhận lặp lại, đồng thời ghi lại đầy đủ hash nhị phân, phiên bản hệ điều hành và vị trí đặt hook.
+
+---
+
 ## Giấy phép
 
-MIT
+Dự án này được phân phối theo các điều khoản của [Giấy phép MIT](LICENSE).
