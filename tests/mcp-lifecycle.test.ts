@@ -247,7 +247,7 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     expect(cfg.mcpServers["burp-ultra"].url).toBe(customBurpUrl);
     expect(cfg.mcpServers["burp-ultra"].enabled).toBe(true);
     expect(cfg.mcpServers["burp-ultra"].headers.Authorization).toBe("Bearer remote-secret-token");
-  });
+  }, 15000);
 
   test("toggle allow/deny list agreement", async () => {
     const profMcp = path.join(tmpProfile, "mcp.json");

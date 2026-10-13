@@ -5,6 +5,7 @@
  */
 
 import type { Finding, FindingSuppression } from "./findings.ts";
+import { VERSION } from "./version.ts";
 
 export interface SarifDocument {
   $schema: string;
@@ -117,7 +118,7 @@ export function exportToSarif(
         tool: {
           driver: {
             name: "Arsenal Security Harness",
-            version: "3.0.2",
+            version: VERSION,
             informationUri: "https://github.com/bitbytelabio/arsenal",
             rules,
           },

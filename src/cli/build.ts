@@ -251,6 +251,10 @@ export async function executeBuild(
     2
   );
   safeWriteFile(path.join(targetDir, "plugin.json"), pluginJsonContent, { write: true, force: true });
+  const repoRootDir = path.resolve(corpusDir, "../..");
+  if (fs.existsSync(path.join(repoRootDir, "plugin.json"))) {
+    safeWriteFile(path.join(repoRootDir, "plugin.json"), pluginJsonContent, { write: true, force: true });
+  }
 
   const mcpCatalogContent = JSON.stringify(createCanonicalMcpCatalog(), null, 2);
   safeWriteFile(path.join(targetDir, ".mcp.json"), mcpCatalogContent, { write: true, force: true });

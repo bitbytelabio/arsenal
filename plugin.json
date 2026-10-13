@@ -36,7 +36,9 @@
       "skill_load",
       "consolidate_evidence",
       "case_review",
-      "verify_oracle"
+      "verify_oracle",
+      "apk_inspect",
+      "skill_asset_load"
     ]
   }
 }
