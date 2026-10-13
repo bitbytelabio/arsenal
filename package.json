@@ -1,5 +1,5 @@
 {
-  "name": "@bitbytelab/arsenal",
+  "name": "@bitbytelabio/arsenal",
   "version": "3.0.2",
   "description": "Arsenal Security Engagement Harness Plugin & CLI for Oh My Pi",
   "license": "MIT",
@@ -8,6 +8,7 @@
     "arsenal": "bin/arsenal.js"
   },
   "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "files": [

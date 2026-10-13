@@ -20,7 +20,7 @@
 
 ## Overview
 
-**Arsenal** (`@bitbytelab/arsenal`) is an enterprise-grade offensive security engagement harness and authoritative skill corpus built for Oh My Pi (OMP). Designed for adversarial red teaming, targeted penetration testing, binary reverse engineering, and continuous dynamic vulnerability assessment, Arsenal bridges high-velocity autonomous agent coordination with deterministic verification and cryptographic evidence handling.
+**Arsenal** (`@bitbytelabio/arsenal`) is an enterprise-grade offensive security engagement harness and authoritative skill corpus built for Oh My Pi (OMP). Designed for adversarial red teaming, targeted penetration testing, binary reverse engineering, and continuous dynamic vulnerability assessment, Arsenal bridges high-velocity autonomous agent coordination with deterministic verification and cryptographic evidence handling.
 
 ### Key Highlights
 
@@ -153,7 +153,7 @@ OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal
 OMP_PROFILE=arsenal omp plugin install arsenal@arsenal
 
 # 3. Verify installation health
-bunx @bitbytelab/arsenal doctor
+bunx @bitbytelabio/arsenal doctor
 ```
 
 ### Method 2: Local Development Link
@@ -168,14 +168,17 @@ cd arsenal
 just install-local
 ```
 
-### Method 3: Direct CLI via bunx
+### Method 3: Direct CLI via GitHub Packages / bunx
 
-Run Arsenal commands without cloning or persistent installation:
+Configure the `@bitbytelabio` scope to resolve from GitHub Packages (`~/.npmrc` or `bunfig.toml`), then run Arsenal commands directly:
 
 ```bash
+# Configure GitHub Packages registry for @bitbytelabio scope (if not already set)
+npm config set @bitbytelabio:registry https://npm.pkg.github.com
+
 # Run diagnostics or check CLI options
-bunx @bitbytelab/arsenal --help
-bunx @bitbytelab/arsenal doctor --json
+bunx @bitbytelabio/arsenal --help
+bunx @bitbytelabio/arsenal doctor --json
 ```
 
 ---

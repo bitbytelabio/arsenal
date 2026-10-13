@@ -20,7 +20,7 @@
 
 ## Tổng quan
 
-**Arsenal** (`@bitbytelab/arsenal`) là bộ công cụ kiểm thử bảo mật chuyên nghiệp (security engagement harness) và kho lưu trữ năng lực chuẩn tắc (authoritative skill corpus) được thiết kế chuyên biệt cho Oh My Pi (OMP). Được tối ưu cho hoạt động diễn tập tấn công (red teaming), thâm nhập mục tiêu (penetration testing), dịch ngược nhị phân (binary reverse engineering), và đánh giá lỗ hổng động (dynamic vulnerability assessment), Arsenal kết hợp khả năng điều phối tác tử tự hành tốc độ cao với cơ chế kiểm chứng tiền định và quản lý bằng chứng bằng mật mã học.
+**Arsenal** (`@bitbytelabio/arsenal`) là bộ công cụ kiểm thử bảo mật chuyên nghiệp (security engagement harness) và kho lưu trữ năng lực chuẩn tắc (authoritative skill corpus) được thiết kế chuyên biệt cho Oh My Pi (OMP). Được tối ưu cho hoạt động diễn tập tấn công (red teaming), thâm nhập mục tiêu (penetration testing), dịch ngược nhị phân (binary reverse engineering), và đánh giá lỗ hổng động (dynamic vulnerability assessment), Arsenal kết hợp khả năng điều phối tác tử tự hành tốc độ cao với cơ chế kiểm chứng tiền định và quản lý bằng chứng bằng mật mã học.
 
 ### Điểm nổi bật cốt lõi
 
@@ -153,7 +153,7 @@ OMP_PROFILE=arsenal omp plugin marketplace add bitbytelabio/arsenal
 OMP_PROFILE=arsenal omp plugin install arsenal@arsenal
 
 # 3. Kiểm tra chẩn đoán sau cài đặt
-bunx @bitbytelab/arsenal doctor
+bunx @bitbytelabio/arsenal doctor
 ```
 
 ### Phương thức 2: Liên kết Phát triển Cục bộ (Local Link)
@@ -168,14 +168,17 @@ cd arsenal
 just install-local
 ```
 
-### Phương thức 3: Thực thi CLI trực tiếp qua bunx
+### Phương thức 3: Thực thi CLI trực tiếp qua GitHub Packages / bunx
 
-Chạy các lệnh Arsenal mà không cần clone repository hoặc cài đặt lưu trữ vĩnh viễn:
+Cấu hình scope `@bitbytelabio` trỏ về GitHub Packages (`~/.npmrc` hoặc `bunfig.toml`), sau đó chạy trực tiếp các lệnh Arsenal:
 
 ```bash
+# Cấu hình GitHub Packages registry cho scope @bitbytelabio (nếu chưa thiết lập)
+npm config set @bitbytelabio:registry https://npm.pkg.github.com
+
 # Chạy chẩn đoán hoặc tra cứu các tùy chọn dòng lệnh
-bunx @bitbytelab/arsenal --help
-bunx @bitbytelab/arsenal doctor --json
+bunx @bitbytelabio/arsenal --help
+bunx @bitbytelabio/arsenal doctor --json
 ```
 
 ---
