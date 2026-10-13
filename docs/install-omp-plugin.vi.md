@@ -130,6 +130,20 @@ OMP_PROFILE=arsenal omp plugin install --scope project arsenal@arsenal
 OMP_PROFILE=arsenal omp plugin list
 ```
 
+### Bước 4: Cập nhật và nâng cấp Plugin (Update & Upgrade)
+
+OMP phân tách giữa việc đồng bộ bản sao repository của marketplace và việc nâng cấp phiên bản cài đặt của plugin. Mặc định `marketplace.autoUpdate` chỉ tự động làm mới catalog theo cơ chế best-effort khi cache đã quá 24 giờ; lệnh `omp plugin upgrade` đơn lẻ sẽ không tự động làm mới cache marketplace trên mỗi lần chạy.
+
+Khi có bản cập nhật mới trên GitHub, hãy chạy theo quy trình 2 bước:
+
+```bash
+# 1. Đồng bộ mã nguồn và catalog mới nhất từ remote về cache
+OMP_PROFILE=arsenal omp plugin marketplace update arsenal
+
+# 2. Nâng cấp plugin từ cache mới
+OMP_PROFILE=arsenal omp plugin upgrade arsenal@arsenal
+```
+
 ---
 
 ## 3. Quy trình chuẩn bị và liên kết Plugin cục bộ (Local Link)

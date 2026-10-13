@@ -132,6 +132,20 @@ OMP_PROFILE=arsenal omp plugin install --scope project arsenal@arsenal
 OMP_PROFILE=arsenal omp plugin list
 ```
 
+### Step 4: Update and Upgrade Plugin
+
+OMP separates updating the marketplace repository clone from upgrading installed plugins. By default, `marketplace.autoUpdate` only refreshes catalogs best-effort once cached metadata is older than 24 hours; a targeted `omp plugin upgrade` invocation does not automatically refresh the marketplace repository cache on each run.
+
+When a new version is released on GitHub, update and upgrade using the two-step workflow:
+
+```bash
+# 1. Sync latest source and catalog from remote repository into local cache
+OMP_PROFILE=arsenal omp plugin marketplace update arsenal
+
+# 2. Upgrade plugin from the refreshed cache
+OMP_PROFILE=arsenal omp plugin upgrade arsenal@arsenal
+```
+
 ---
 
 ## 3. Local Link Development Workflow
