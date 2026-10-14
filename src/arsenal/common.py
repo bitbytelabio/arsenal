@@ -37,7 +37,7 @@ def _resolve_version() -> str:
             return version("arsenal-security")
     except Exception:
         pass
-    return "4.0.1"
+    return "4.0.2"
 
 VERSION = _resolve_version()
 

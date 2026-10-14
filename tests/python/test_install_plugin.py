@@ -136,7 +136,9 @@ class TestInstallPlugin(unittest.TestCase):
         self.assertTrue((dist_dir / "marketplace.json").is_file())
         market = json.loads((dist_dir / "marketplace.json").read_text(encoding="utf-8"))
         self.assertEqual(market["name"], "arsenal")
-        self.assertTrue(market["archive"].startswith("arsenal-"))
+        self.assertTrue(market["archive"].startswith("arsenal-plugin-"))
+        # Explicit collision prevention: plugin bundle must not collide with Python sdist naming
+        self.assertNotEqual(market["archive"], f"arsenal-{market.get('version', '')}.tar.gz")
 
         tar_path = dist_dir / market["archive"]
         self.assertTrue(tar_path.is_file())

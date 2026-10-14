@@ -348,7 +348,7 @@ modelRoles:
     "--write",
     "--json",]);
     expect(packProc.exitCode).toBe(0);
-    expect(fs.existsSync(path.join(scratchDist, `arsenal-${VERSION}.tar.gz`))).toBe(true);
+    expect(fs.existsSync(path.join(scratchDist, `arsenal-plugin-${VERSION}.tar.gz`))).toBe(true);
     expect(fs.existsSync(path.join(scratchDist, "marketplace.json"))).toBe(true);
 
     fs.rmSync(scratchProfile, { recursive: true, force: true });

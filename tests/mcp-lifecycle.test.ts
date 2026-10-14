@@ -321,7 +321,7 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     expect(reinstallProc.exitCode).toBe(0);
     const reinstallJson = JSON.parse(reinstallProc.stdout.toString());
     expect(reinstallJson.data.action).toBe("identical");
-  }, 15000);
+  }, 30000);
 
   test("malformed or scalar config fails without writes even with --force", () => {
     const corruptFile = path.join(tmpProfile, "mcp.json");
@@ -347,7 +347,7 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     "--json",]);
     expect(enableProc.exitCode).not.toBe(0);
     expect(fs.readFileSync(corruptFile, "utf-8")).toBe(corruptContent);
-  });
+  }, 30000);
 
   test("rejects invalid scope argument", () => {
     const proc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",

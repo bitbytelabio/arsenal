@@ -116,7 +116,7 @@ def handle_plugin_pack(ctx: Context) -> int:
         if ctx.values.get("out")
         else (ctx.repo_root / "dist")
     )
-    archive_name = f"arsenal-{VERSION}.tar.gz"
+    archive_name = f"arsenal-plugin-{VERSION}.tar.gz"
     archive_path = out_dir / archive_name
 
     if not is_write:

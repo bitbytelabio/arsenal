@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "arsenal",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Arsenal Security Engagement Harness Plugin for Oh My Pi",
   "author": {
     "name": "arsenal"

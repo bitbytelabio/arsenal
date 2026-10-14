@@ -85,6 +85,19 @@ jobs:
       - name: Build Python wheel and sdist
         run: uv build --out-dir dist
 
+      - name: Validate distribution artifacts integrity
+        run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          test -f "dist/arsenal-plugin-${PKG_VERSION}.tar.gz"
+          test -f "dist/arsenal-${PKG_VERSION}.tar.gz"
+          test -f "dist/arsenal-${PKG_VERSION}-py3-none-any.whl"
+          test -f "dist/marketplace.json"
+          # Verify plugin bundle contains plugin directory, not sdist PKG-INFO
+          tar -ztvf "dist/arsenal-plugin-${PKG_VERSION}.tar.gz" | grep "plugin/plugin.json"
+          ! tar -ztvf "dist/arsenal-plugin-${PKG_VERSION}.tar.gz" | grep "PKG-INFO"
+          # Verify python sdist contains PKG-INFO
+          tar -ztvf "dist/arsenal-${PKG_VERSION}.tar.gz" | grep "PKG-INFO"
+
       - name: Generate SHA-256 checksums
         working-directory: dist
         run: |
