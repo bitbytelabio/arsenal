@@ -3092,6 +3092,18 @@ SCRIPT_RECEIPTS: list[dict[str, Any]] = [
         "target_command": "arsenal scripts burp-mcp-bridge",
         "description": "Burp Suite MCP stdio bridge",
         "migrated_path": "src/arsenal/scripts/burp_bridge.py"
+    },
+    {
+        "original_path": "src/corpus/webapp-web-surface-discovery/scripts/agent.py",
+        "filename": "agent.py",
+        "sha256": "32042680c10964ff849e5366358ce8a6502df95c75fad8f9839b6f8ad20761a1",
+        "bytes": 3366,
+        "license": "Apache-2.0",
+        "canonical_id": "webapp-web-surface-discovery/agent",
+        "status": "migrated",
+        "target_command": "arsenal scripts webapp-web-surface-discovery/agent",
+        "description": "Domain assessment agent for webapp-web-surface-discovery",
+        "migrated_path": "src/arsenal/scripts/playbooks/webapp/web_surface_discovery.py"
     }
 ]
 

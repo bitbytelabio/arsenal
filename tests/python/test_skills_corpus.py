@@ -24,6 +24,7 @@ from arsenal.corpus.catalog import (
 )
 from arsenal.corpus.coverage import build_coverage_report, load_baseline, load_coverage_map
 from arsenal.corpus.dedup import (
+    apply_tier_b_aliases,
     detect_tier_a_collision_groups,
     detect_tier_b_groups,
     resolve_tier_a_winner,
@@ -581,3 +582,116 @@ def test_build_orchestration_execute_and_verify() -> None:
         assert (out_plugin / "package.json").is_file()
         assert (out_plugin / "plugin.json").is_file()
         assert (out_plugin / ".mcp.json").is_file()
+
+
+def test_detect_tier_b_groups_reports_string_aliases() -> None:
+    pending = detect_tier_b_groups({"red-old", "webapp-new"}, {"aliases": {"red-old": "webapp-new"}})
+    assert len(pending) == 1
+    assert pending[0]["tier"] == "B"
+    assert pending[0]["members"] == ["red-old", "webapp-new"]
+    assert pending[0]["applied"] is False
+
+    applied = detect_tier_b_groups({"webapp-new"}, {"aliases": {"red-old": "webapp-new"}})
+    assert len(applied) == 1
+    assert applied[0]["members"] == ["webapp-new"]
+    assert applied[0]["applied"] is True
+
+    broken = detect_tier_b_groups({"red-old"}, {"aliases": {"red-old": "webapp-new"}})
+    assert broken == []
+
+
+def test_apply_tier_b_aliases_prunes_deprecated_and_marks_manifest() -> None:
+    with tempfile.TemporaryDirectory() as tmpdir:
+        repo_root = Path(tmpdir)
+        corpus_dir = repo_root / "src/corpus"
+        for name in ("red-old-skill", "webapp-new-skill"):
+            (corpus_dir / name).mkdir(parents=True)
+            (corpus_dir / name / "SKILL.md").write_text(f"# {name}\n", encoding="utf-8")
+
+        manifest_path = corpus_dir / "MANIFEST.json"
+        manifest = {
+            "schema_version": 1,
+            "generator": "arsenal",
+            "created_at": None,
+            "summary": {
+                "total_considered": 2,
+                "admitted": 2,
+                "quarantined": 0,
+                "excluded": 0,
+                "deduplicated": 0,
+            },
+            "sources": {"arsenal-local": {"repo": "local", "rev": None, "license": "MIT"}},
+            "files": [
+                {
+                    "path": "red-old-skill/SKILL.md",
+                    "source": "arsenal-local",
+                    "source_rev": None,
+                    "license": "MIT",
+                    "status": "admitted",
+                    "destination_path": "src/corpus/red-old-skill/SKILL.md",
+                    "sha256": "a" * 64,
+                    "bytes": 10,
+                    "source_path": "red-old-skill/SKILL.md",
+                    "source_sha256": "b" * 64,
+                },
+                {
+                    "path": "webapp-new-skill/SKILL.md",
+                    "source": "arsenal-local",
+                    "source_rev": None,
+                    "license": "MIT",
+                    "status": "admitted",
+                    "destination_path": "src/corpus/webapp-new-skill/SKILL.md",
+                    "sha256": "c" * 64,
+                    "bytes": 12,
+                    "source_path": "webapp-new-skill/SKILL.md",
+                    "source_sha256": "d" * 64,
+                },
+            ],
+        }
+        manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+
+        aliases = {"aliases": {"red-old-skill": "webapp-new-skill"}}
+        result = apply_tier_b_aliases(corpus_dir, manifest_path, aliases)
+
+        assert result["errors"] == []
+        assert [row["key"] for row in result["applied"]] == ["red-old-skill"]
+        assert result["manifestEntriesUpdated"] == 1
+        assert result["dedupGroupsAdded"] == 1
+        assert not (corpus_dir / "red-old-skill").exists()
+
+        updated = json.loads(manifest_path.read_text(encoding="utf-8"))
+        flipped = next(entry for entry in updated["files"] if entry["path"] == "red-old-skill/SKILL.md")
+        assert flipped["status"] == "deduplicated"
+        assert flipped["superseded_by"] == "src/corpus/webapp-new-skill/SKILL.md"
+        assert flipped["reason"] == "tier B operator alias (red-old-skill -> webapp-new-skill)"
+        assert "destination_path" not in flipped
+        assert "sha256" not in flipped
+        assert "bytes" not in flipped
+        assert updated["summary"] == {
+            "total_considered": 2,
+            "admitted": 1,
+            "quarantined": 0,
+            "excluded": 0,
+            "deduplicated": 1,
+        }
+        groups = [group for group in updated["dedup_groups"] if group["key"] == "red-old-skill"]
+        assert len(groups) == 1
+        assert groups[0]["tier"] == "B"
+        assert groups[0]["members"] == ["red-old-skill", "webapp-new-skill"]
+        assert groups[0]["winner"] == "webapp-new-skill"
+        assert groups[0]["applied"] is True
+
+        # Second run is a no-op and must not duplicate groups.
+        again = apply_tier_b_aliases(corpus_dir, manifest_path, aliases)
+        assert again["errors"] == []
+        assert again["applied"] == []
+        assert again["skipped"] == [{"key": "red-old-skill", "reason": "already applied"}]
+        assert again["dedupGroupsAdded"] == 0
+        reloaded = json.loads(manifest_path.read_text(encoding="utf-8"))
+        assert len([group for group in reloaded["dedup_groups"] if group["key"] == "red-old-skill"]) == 1
+
+        # Missing canonical target aborts without mutating anything.
+        (corpus_dir / "orphan-skill").mkdir()
+        bad = apply_tier_b_aliases(corpus_dir, manifest_path, {"aliases": {"orphan-skill": "re-missing-skill"}})
+        assert bad["applied"] == []
+        assert bad["errors"] and "does not exist" in bad["errors"][0]

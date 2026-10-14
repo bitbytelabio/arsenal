@@ -4,7 +4,7 @@
  */
 
 import { describe, expect, it } from "bun:test";
-import { boundAndStore, boundOutput } from "../src/core/bounding.ts";
+import { boundAndStore, boundOutput, truncateHeadToByteBudget, truncateTailToByteBudget } from "../src/core/bounding.ts";
 import * as fs from "node:fs";
 import * as path from "node:path";
 
@@ -90,5 +90,83 @@ describe("Output Bounding Engine", () => {
     expect(res.bounded).not.toContain("\uFFFD");
 
     fs.rmSync(scratchDir, { recursive: true, force: true });
+  });
+});
+
+describe("Codepoint-Boundary Truncation Equivalence", () => {
+  function referenceHead(str: string, maxBytes: number): string {
+    if (maxBytes <= 0) return "";
+    const encoder = new TextEncoder();
+    let currentBytes = 0;
+    let result = "";
+    for (const char of str) {
+      const charBytes = encoder.encode(char).byteLength;
+      if (currentBytes + charBytes > maxBytes) break;
+      result += char;
+      currentBytes += charBytes;
+    }
+    return result;
+  }
+
+  function referenceTail(str: string, maxBytes: number): string {
+    if (maxBytes <= 0) return "";
+    const encoder = new TextEncoder();
+    const chars = Array.from(str);
+    let currentBytes = 0;
+    const picked: string[] = [];
+    for (let i = chars.length - 1; i >= 0; i--) {
+      const char = chars[i]!;
+      const charBytes = encoder.encode(char).byteLength;
+      if (currentBytes + charBytes > maxBytes) break;
+      picked.push(char);
+      currentBytes += charBytes;
+    }
+    picked.reverse();
+    return picked.join("");
+  }
+
+  function mulberry32(seed: number): () => number {
+    let state = seed >>> 0;
+    return () => {
+      state = (state + 0x6d2b79f5) >>> 0;
+      let t = state;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  const budgets = [0, 1, 2, 3, 4, 5, 7, 8, 11, 16, 32, 64, 4096];
+
+  it("matches the per-character reference implementation across mixed scripts", () => {
+    const alphabet = ["a", "B", "9", "_", "-", " ", "\n", "ế", "ộ", "安", "全", "🛡", "🚨", "\u0301", "👩"];
+    const random = mulberry32(0x5eed);
+    for (let sample = 0; sample < 250; sample++) {
+      let text = "";
+      const length = Math.floor(random() * 40);
+      for (let i = 0; i < length; i++) {
+        text += alphabet[Math.floor(random() * alphabet.length)]!;
+      }
+      for (const budget of budgets) {
+        expect(truncateHeadToByteBudget(text, budget)).toBe(referenceHead(text, budget));
+        expect(truncateTailToByteBudget(text, budget)).toBe(referenceTail(text, budget));
+      }
+    }
+  });
+
+  it("handles lone surrogates exactly like TextEncoder encoding", () => {
+    const text = "A\uD800B\uDE00C";
+    for (const budget of budgets) {
+      expect(truncateHeadToByteBudget(text, budget)).toBe(referenceHead(text, budget));
+      expect(truncateTailToByteBudget(text, budget)).toBe(referenceTail(text, budget));
+    }
+  });
+
+  it("returns the original string when no truncation is required", () => {
+    const text = "Tiếng Việt an toàn 🛡";
+    expect(truncateHeadToByteBudget(text, 4096)).toBe(text);
+    expect(truncateTailToByteBudget(text, 4096)).toBe(text);
+    expect(truncateHeadToByteBudget(text, 0)).toBe("");
+    expect(truncateTailToByteBudget(text, 0)).toBe("");
   });
 });

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_sha256": "5e3993c927d93ba726bdea45e4f31a703497119a0f06d00443ed48d8e57b7772",
+  "catalog_sha256": "c3893c25485f1979d2197518e92cd5d810d19473d9b66644fa8973d5a02afac7",
   "generated_at": "2026-10-13T00:00:00Z",
   "entries": [
     {
@@ -15915,6 +15915,300 @@
         "status": "migrated",
         "license": "Apache-2.0",
         "shared_implementation_id": "shared/backup_integrity"
+      },
+      "admission_record_id": null
+    },
+    {
+      "schema_version": 1,
+      "canonical_id": "webapp-web-surface-discovery/agent",
+      "aliases": [
+        "webapp-web-surface-discovery"
+      ],
+      "domain": "webapp",
+      "target_kind": "agent",
+      "description": "Domain assessment agent for webapp-web-surface-discovery",
+      "implementation_ref": {
+        "resource_path": "playbooks/webapp/web_surface_discovery.py"
+      },
+      "source_sha256": "32042680c10964ff849e5366358ce8a6502df95c75fad8f9839b6f8ad20761a1",
+      "execution_mode": "managed_subprocess",
+      "admission_status": "unclassified",
+      "isolation_reason": [
+        "Retained legacy subprocess isolation"
+      ],
+      "side_effects": {
+        "network": "active",
+        "credentials": "none",
+        "target_mutation": "local",
+        "filesystem": "read",
+        "external_process": "allowlisted",
+        "evidence_write": "none"
+      },
+      "controls": {
+        "scope": "required",
+        "authorization": "host_required",
+        "proxy": "burp_required",
+        "write": "forbidden",
+        "verification": "none",
+        "evidence": "none"
+      },
+      "dependencies": {
+        "profile": null,
+        "imports": [
+          "__future__",
+          "argparse",
+          "arsenal",
+          "asyncio",
+          "json",
+          "os",
+          "pathlib",
+          "sys"
+        ],
+        "tools": [],
+        "lock_hash": null,
+        "project_path": null,
+        "environment_dir": null
+      },
+      "interface": {
+        "argument_schema": null,
+        "output_format": "json",
+        "exit_mapping": null,
+        "timeout_ms": 30000,
+        "stdout_limit": 1048576,
+        "stderr_limit": 1048576
+      },
+      "provenance": {
+        "original_path": "src/corpus/webapp-web-surface-discovery/scripts/agent.py",
+        "migrated_path": "src/arsenal/scripts/playbooks/webapp/web_surface_discovery.py",
+        "receipt_ids": [
+          "webapp-web-surface-discovery/agent"
+        ],
+        "status": "migrated",
+        "license": "Apache-2.0",
+        "shared_implementation_id": null
+      },
+      "admission_record_id": null
+    },
+    {
+      "schema_version": 1,
+      "canonical_id": "webapp-performing-ssrf-vulnerability-exploitation/agent",
+      "aliases": [
+        "webapp-performing-ssrf-vulnerability-exploitation"
+      ],
+      "domain": "webapp",
+      "target_kind": "agent",
+      "description": "Automated SSRF and cloud metadata probe agent for webapp-performing-ssrf-vulnerability-exploitation",
+      "implementation_ref": {
+        "resource_path": "playbooks/webapp/ssrf_probe.py"
+      },
+      "source_sha256": "ac49b7117c5b3d6b3344632ac7384720a1b0ec0645f02bdb0285d5bb3b10cfbb",
+      "execution_mode": "managed_subprocess",
+      "admission_status": "unclassified",
+      "isolation_reason": [
+        "Retained legacy subprocess isolation"
+      ],
+      "side_effects": {
+        "network": "active",
+        "credentials": "none",
+        "target_mutation": "none",
+        "filesystem": "read",
+        "external_process": "allowlisted",
+        "evidence_write": "none"
+      },
+      "controls": {
+        "scope": "required",
+        "authorization": "host_required",
+        "proxy": "burp_required",
+        "write": "forbidden",
+        "verification": "independent_verifier_required",
+        "evidence": "none"
+      },
+      "dependencies": {
+        "profile": null,
+        "imports": [
+          "__future__",
+          "argparse",
+          "arsenal",
+          "dataclasses",
+          "json",
+          "os",
+          "pathlib",
+          "sys",
+          "time",
+          "typing",
+          "urllib.parse"
+        ],
+        "tools": [],
+        "lock_hash": null,
+        "project_path": null,
+        "environment_dir": null
+      },
+      "interface": {
+        "argument_schema": null,
+        "output_format": "json",
+        "exit_mapping": null,
+        "timeout_ms": 30000,
+        "stdout_limit": 1048576,
+        "stderr_limit": 1048576
+      },
+      "provenance": {
+        "original_path": "src/corpus/webapp-performing-ssrf-vulnerability-exploitation/scripts/agent.py",
+        "migrated_path": "src/arsenal/scripts/playbooks/webapp/ssrf_probe.py",
+        "receipt_ids": [
+          "webapp-performing-ssrf-vulnerability-exploitation/agent"
+        ],
+        "status": "migrated",
+        "license": "Apache-2.0",
+        "shared_implementation_id": null
+      },
+      "admission_record_id": null
+    },
+    {
+      "schema_version": 1,
+      "canonical_id": "webapp-web-offensive-ssti/agent",
+      "aliases": [
+        "webapp-web-offensive-ssti"
+      ],
+      "domain": "webapp",
+      "target_kind": "agent",
+      "description": "Automated SSTI template engine probe and arithmetic verification agent",
+      "implementation_ref": {
+        "resource_path": "playbooks/webapp/ssti_probe.py"
+      },
+      "source_sha256": "28ab50ec4a0d607c8defe12d0d18e795b64d02e8b7685ae58c0490a89384e9e4",
+      "execution_mode": "managed_subprocess",
+      "admission_status": "unclassified",
+      "isolation_reason": [
+        "Retained legacy subprocess isolation"
+      ],
+      "side_effects": {
+        "network": "active",
+        "credentials": "none",
+        "target_mutation": "none",
+        "filesystem": "read",
+        "external_process": "allowlisted",
+        "evidence_write": "none"
+      },
+      "controls": {
+        "scope": "required",
+        "authorization": "host_required",
+        "proxy": "burp_required",
+        "write": "forbidden",
+        "verification": "independent_verifier_required",
+        "evidence": "none"
+      },
+      "dependencies": {
+        "profile": null,
+        "imports": [
+          "__future__",
+          "argparse",
+          "arsenal",
+          "dataclasses",
+          "json",
+          "os",
+          "pathlib",
+          "sys",
+          "time",
+          "typing",
+          "urllib.parse"
+        ],
+        "tools": [],
+        "lock_hash": null,
+        "project_path": null,
+        "environment_dir": null
+      },
+      "interface": {
+        "argument_schema": null,
+        "output_format": "json",
+        "exit_mapping": null,
+        "timeout_ms": 30000,
+        "stdout_limit": 1048576,
+        "stderr_limit": 1048576
+      },
+      "provenance": {
+        "original_path": "src/corpus/webapp-web-offensive-ssti/scripts/agent.py",
+        "migrated_path": "src/arsenal/scripts/playbooks/webapp/ssti_probe.py",
+        "receipt_ids": [
+          "webapp-web-offensive-ssti/agent"
+        ],
+        "status": "migrated",
+        "license": "Apache-2.0",
+        "shared_implementation_id": null
+      },
+      "admission_record_id": null
+    },
+    {
+      "schema_version": 1,
+      "canonical_id": "webapp-exploiting-sql-injection-vulnerabilities/agent",
+      "aliases": [
+        "webapp-exploiting-sql-injection-vulnerabilities"
+      ],
+      "domain": "webapp",
+      "target_kind": "agent",
+      "description": "Statistical timing and boolean differential SQL injection probe agent",
+      "implementation_ref": {
+        "resource_path": "playbooks/webapp/sqli_probe.py"
+      },
+      "source_sha256": "b49ea2814b44e22b50d6cdb50bf7c7540db4b82bc7ab683f234b93a894073228",
+      "execution_mode": "managed_subprocess",
+      "admission_status": "unclassified",
+      "isolation_reason": [
+        "Retained legacy subprocess isolation"
+      ],
+      "side_effects": {
+        "network": "active",
+        "credentials": "none",
+        "target_mutation": "none",
+        "filesystem": "read",
+        "external_process": "allowlisted",
+        "evidence_write": "none"
+      },
+      "controls": {
+        "scope": "required",
+        "authorization": "host_required",
+        "proxy": "burp_required",
+        "write": "forbidden",
+        "verification": "independent_verifier_required",
+        "evidence": "none"
+      },
+      "dependencies": {
+        "profile": null,
+        "imports": [
+          "__future__",
+          "argparse",
+          "arsenal",
+          "dataclasses",
+          "json",
+          "math",
+          "os",
+          "pathlib",
+          "sys",
+          "time",
+          "typing",
+          "urllib.parse"
+        ],
+        "tools": [],
+        "lock_hash": null,
+        "project_path": null,
+        "environment_dir": null
+      },
+      "interface": {
+        "argument_schema": null,
+        "output_format": "json",
+        "exit_mapping": null,
+        "timeout_ms": 30000,
+        "stdout_limit": 1048576,
+        "stderr_limit": 1048576
+      },
+      "provenance": {
+        "original_path": "src/corpus/webapp-exploiting-sql-injection-vulnerabilities/scripts/agent.py",
+        "migrated_path": "src/arsenal/scripts/playbooks/webapp/sqli_probe.py",
+        "receipt_ids": [
+          "webapp-exploiting-sql-injection-vulnerabilities/agent"
+        ],
+        "status": "migrated",
+        "license": "Apache-2.0",
+        "shared_implementation_id": null
       },
       "admission_record_id": null
     }

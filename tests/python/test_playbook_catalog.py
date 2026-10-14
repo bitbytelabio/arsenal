@@ -163,12 +163,12 @@ def test_catalog_listing_completeness_and_determinism() -> None:
 
     entries1 = list_entries()
     entries2 = list_entries()
-    assert len(entries1) == 231
+    assert len(entries1) == 235
     assert [e["canonical_id"] for e in entries1] == [e["canonical_id"] for e in entries2]
 
     playbooks = [e for e in entries1 if e["domain"] != "core"]
     cores = [e for e in entries1 if e["domain"] == "core"]
-    assert len(playbooks) == 209
+    assert len(playbooks) == 213
     assert len(cores) == 22
 
     cids = [e["canonical_id"] for e in entries1]
@@ -203,7 +203,7 @@ def test_zero_side_effects_on_listing(monkeypatch: pytest.MonkeyPatch) -> None:
     doc = json.loads(f_json.getvalue())
     assert doc["status"] == "success"
     json_ids = {s["id"] for s in doc["data"]["scripts"]}
-    assert len(json_ids) == 231
+    assert len(json_ids) == 235
 
     # Test Plain-text mode listing with --all
     f_text = io.StringIO()
@@ -211,7 +211,7 @@ def test_zero_side_effects_on_listing(monkeypatch: pytest.MonkeyPatch) -> None:
         code_text = main(["scripts", "list", "--all"])
     assert code_text == 0
     text_output = f_text.getvalue()
-    assert "231 endpoints" in text_output
+    assert "235 endpoints" in text_output
 
 
 def test_parity_oracle_detects_inconsistencies(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -220,9 +220,9 @@ def test_parity_oracle_detects_inconsistencies(tmp_path: Path, monkeypatch: pyte
     # Base state is clean
     base_res = verify_parity()
     assert base_res["ok"] is True
-    assert base_res["playbookEntries"] == 209
+    assert base_res["playbookEntries"] == 213
     assert base_res["coreEntries"] == 22
-    assert base_res["historicalReceipts"] == 257
+    assert base_res["historicalReceipts"] == 258
 
     # 1. Stale source_sha256 detection
     cat_data, _ = load_catalog_data()
@@ -350,7 +350,7 @@ def test_status_parity_receipts(monkeypatch: pytest.MonkeyPatch) -> None:
     from arsenal.scripts.playbook_catalog import resolve, list_entries, verify_parity, load_catalog_data
 
     # 1. All 257 receipts remain schema/hash valid
-    assert len(SCRIPT_RECEIPTS) == 257
+    assert len(SCRIPT_RECEIPTS) == 258
     for r in SCRIPT_RECEIPTS:
         assert len(r["sha256"]) == 64
         assert r["status"] in ("migrated", "absorbed", "retained_external")
@@ -389,11 +389,11 @@ def test_installed_artifact_resolution(tmp_path: Path, monkeypatch: pytest.Monke
 
     data, digest = load_catalog_data()
     assert len(digest) == 64
-    assert len(data["entries"]) == 231
+    assert len(data["entries"]) == 235
 
     # Listing and resolve succeed from unrelated directory
     entries = list_entries()
-    assert len(entries) == 231
+    assert len(entries) == 235
     entry = resolve("red-detecting-ai-model-prompt-injection-attacks/agent")
     assert entry["canonical_id"] == "red-detecting-ai-model-prompt-injection-attacks/agent"
     assert "playbooks/shared/prompt_injection.py" in entry["implementation_ref"]["resource_path"]

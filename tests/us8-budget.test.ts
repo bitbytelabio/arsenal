@@ -4,7 +4,7 @@
  */
 
 import { describe, expect, it } from "bun:test";
-import { BudgetTracker } from "../plugin/extensions/budget.ts";
+import { BudgetTracker, estimateTokenUsageFromContent } from "../plugin/extensions/budget.ts";
 import { createBudgetRecord } from "../src/core/budget.ts";
 import { createContextCheckpoint } from "../src/core/context-checkpoint.ts";
 
@@ -103,5 +103,19 @@ describe("User Story 8: Financial Budget & Spend Governor", () => {
 
     expect(chk.unresolved_unknown_ids).toContain("unk-000001");
     expect(chk.last_two_interaction_turns.length).toBe(2);
+  });
+
+  it("estimates token usage from content when provider usage is absent", () => {
+    expect(estimateTokenUsageFromContent(null)).toBeNull();
+    expect(estimateTokenUsageFromContent("")).toBeNull();
+
+    const fromString = estimateTokenUsageFromContent("12345678");
+    expect(fromString).toEqual({ input: 0, output: 2, cacheRead: 0, cacheWrite: 0 });
+
+    const fromBlocks = estimateTokenUsageFromContent([
+      { type: "text", text: "hello " },
+      { type: "text", text: "world!" },
+    ]);
+    expect(fromBlocks).toEqual({ input: 0, output: 3, cacheRead: 0, cacheWrite: 0 });
   });
 });

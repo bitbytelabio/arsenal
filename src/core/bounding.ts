@@ -38,50 +38,65 @@ export const BOUNDING_LIMITS = {
 } as const;
 
 /**
+ * UTF-8 byte length of one code point using TextEncoder semantics
+ * (unpaired surrogates encode as U+FFFD, i.e. 3 bytes).
+ */
+function utf8ByteLength(codePoint: number): number {
+  if (codePoint < 0x80) return 1;
+  if (codePoint < 0x800) return 2;
+  if (codePoint < 0x10000) return 3;
+  return 4;
+}
+
+/**
  * Truncates characters from the beginning of string to fit within maxBytes.
  * Guarantees zero partial codepoints and zero \uFFFD replacement characters.
+ * Allocation-free: counts UTF-8 bytes by code point, then slices once.
  */
 export function truncateHeadToByteBudget(str: string, maxBytes: number): string {
   if (maxBytes <= 0) return "";
-  const encoder = new TextEncoder();
-  let currentBytes = 0;
-  let result = "";
+  let usedBytes = 0;
+  let index = 0;
 
-  for (const char of str) {
-    const charBytes = encoder.encode(char).byteLength;
-    if (currentBytes + charBytes > maxBytes) {
-      break;
-    }
-    result += char;
-    currentBytes += charBytes;
+  while (index < str.length) {
+    const codePoint = str.codePointAt(index)!;
+    const bytes = utf8ByteLength(codePoint);
+    if (usedBytes + bytes > maxBytes) break;
+    usedBytes += bytes;
+    index += codePoint > 0xffff ? 2 : 1;
   }
 
-  return result;
+  return index === str.length ? str : str.slice(0, index);
 }
 
 /**
  * Truncates characters from the end of string backwards to fit within maxBytes.
  * Guarantees zero partial codepoints and zero \uFFFD replacement characters.
+ * Allocation-free: walks code points backwards, then slices once.
  */
 export function truncateTailToByteBudget(str: string, maxBytes: number): string {
   if (maxBytes <= 0) return "";
-  const encoder = new TextEncoder();
-  const chars = Array.from(str);
-  let currentBytes = 0;
-  const picked: string[] = [];
+  let usedBytes = 0;
+  let index = str.length;
 
-  for (let i = chars.length - 1; i >= 0; i--) {
-    const char = chars[i]!;
-    const charBytes = encoder.encode(char).byteLength;
-    if (currentBytes + charBytes > maxBytes) {
-      break;
+  while (index > 0) {
+    const low = str.charCodeAt(index - 1);
+    let codePoint = low;
+    let step = 1;
+    if (low >= 0xdc00 && low <= 0xdfff && index >= 2) {
+      const high = str.charCodeAt(index - 2);
+      if (high >= 0xd800 && high <= 0xdbff) {
+        codePoint = (high - 0xd800) * 0x400 + (low - 0xdc00) + 0x10000;
+        step = 2;
+      }
     }
-    picked.push(char);
-    currentBytes += charBytes;
+    const bytes = utf8ByteLength(codePoint);
+    if (usedBytes + bytes > maxBytes) break;
+    usedBytes += bytes;
+    index -= step;
   }
 
-  picked.reverse();
-  return picked.join("");
+  return index === 0 ? str : str.slice(index);
 }
 
 export function boundAndStore(

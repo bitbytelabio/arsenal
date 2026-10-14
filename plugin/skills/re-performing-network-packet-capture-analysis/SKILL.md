@@ -235,7 +235,7 @@ class PCAPForensicAnalyzer:
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: arsenal scripts re-performing-network-packet-capture-analysis -- <pcap_file> <output_dir>")
+        print("Usage: arsenal scripts red-performing-network-packet-capture-analysis -- <pcap_file> <output_dir>")
         sys.exit(1)
     analyzer = PCAPForensicAnalyzer(sys.argv[1], sys.argv[2])
     analyzer.generate_report()

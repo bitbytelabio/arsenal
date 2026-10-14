@@ -360,5 +360,5 @@ def generate_playbook_entries(repo_root: Path | None = None) -> list[dict[str, A
         }
         entries.append(entry)
 
-    assert len(entries) == 209, f"Expected exactly 209 playbook entries, got {len(entries)}"
+    assert len(entries) == 210, f"Expected exactly 210 playbook entries, got {len(entries)}"
     return sorted(entries, key=lambda e: e["canonical_id"])

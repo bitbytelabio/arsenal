@@ -29,18 +29,92 @@ PRESET_TOOL_REQUIREMENTS: dict[str, list[str]] = {
 }
 
 COMMON_TOOL_PROBES: dict[str, dict[str, str]] = {
+    # 1. Core Platform & Runtime
+    "git": {"category": "vcs", "install": "brew install git / apt install git"},
+    "python3": {"category": "runtime", "install": "brew install python / apt install python3"},
+    "bun": {"category": "runtime", "install": "curl -fsSL https://bun.sh/install | bash"},
+    "curl": {"category": "transport", "install": "brew install curl / apt install curl"},
+    # 2. Reconnaissance & Surface Discovery
+    "subfinder": {"category": "reconnaissance", "install": "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"},
+    "amass": {"category": "reconnaissance", "install": "brew install amass / go install -v github.com/owasp-amass/amass/v4/...@master"},
+    "httpx": {"category": "reconnaissance", "install": "go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest"},
+    "katana": {"category": "reconnaissance", "install": "go install github.com/projectdiscovery/katana/cmd/katana@latest"},
+    "gauplus": {"category": "reconnaissance", "install": "go install github.com/bp0lr/gauplus@latest"},
+    "waybackurls": {"category": "reconnaissance", "install": "go install github.com/tomnomnom/waybackurls@latest"},
+    "dnsx": {"category": "reconnaissance", "install": "go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest"},
+    "naabu": {"category": "reconnaissance", "install": "go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest"},
+    "paramspider": {"category": "reconnaissance", "install": "pipx install git+https://github.com/devanshbatham/paramspider"},
+    "arjun": {"category": "reconnaissance", "install": "pipx install arjun"},
+    # 3. Web & API Security Testing
+    "nmap": {"category": "network", "install": "brew install nmap / apt install nmap"},
+    "ffuf": {"category": "fuzzing", "install": "go install github.com/ffuf/ffuf/v2@latest / brew install ffuf"},
+    "feroxbuster": {"category": "discovery", "install": "brew install feroxbuster / cargo install feroxbuster"},
+    "gobuster": {"category": "discovery", "install": "go install github.com/OJ/gobuster/v3@latest"},
+    "nuclei": {"category": "vulnerability_scanner", "install": "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest"},
+    "sqlmap": {"category": "injection", "install": "pip3 install sqlmap"},
+    "commix": {"category": "command_injection", "install": "pipx install commix / brew install commix"},
+    "sstimap": {"category": "ssti", "install": "pipx install sstimap"},
+    "jwt_tool": {"category": "auth", "install": "pipx install git+https://github.com/ticarpi/jwt_tool"},
+    "mitmproxy": {"category": "proxy", "install": "brew install mitmproxy / pipx install mitmproxy"},
+    "dalfox": {"category": "xss", "install": "go install github.com/hahwul/dalfox/v2@latest"},
+    "whatweb": {"category": "fingerprinting", "install": "brew install whatweb / apt install whatweb"},
+    "wappalyzergo": {"category": "fingerprinting", "install": "go install github.com/projectdiscovery/wappalyzergo/cmd/wappalyzergo@latest"},
+    "wafw00f": {"category": "waf_detection", "install": "pipx install wafw00f / brew install wafw00f"},
+    "nikto": {"category": "web_scanner", "install": "brew install nikto / apt install nikto"},
+    "sslscan": {"category": "tls_auditing", "install": "brew install sslscan / apt install sslscan"},
+    "testssl.sh": {"category": "tls_auditing", "install": "brew install testssl / git clone https://github.com/drwetter/testssl.sh.git"},
+    "wpscan": {"category": "cms_scanner", "install": "gem install wpscan / brew install wpscanteam/tap/wpscan"},
+    # 4. Mobile Security
+    "adb": {"category": "mobile", "install": "brew install --cask android-platform-tools"},
+    "apktool": {"category": "mobile", "install": "brew install apktool / apt install apktool"},
+    "jadx": {"category": "mobile", "install": "brew install jadx"},
+    "frida": {"category": "instrumentation", "install": "pip3 install frida-tools"},
+    "objection": {"category": "mobile", "install": "pipx install objection"},
+    "apksigner": {"category": "mobile", "install": "brew install apksigner / part of android build-tools"},
+    "zipalign": {"category": "mobile", "install": "part of android build-tools"},
+    # 5. Reverse Engineering & Binary Analysis
     "radare2": {"category": "disassembler", "install": "brew install radare2 / apt install radare2"},
     "ghidra": {"category": "decompiler", "install": "brew install --cask ghidra / apt install ghidra"},
-    "frida": {"category": "instrumentation", "install": "pip3 install frida-tools"},
-    "nmap": {"category": "network", "install": "brew install nmap / apt install nmap"},
-    "apktool": {"category": "mobile", "install": "brew install apktool / apt install apktool"},
-    "sqlmap": {"category": "injection", "install": "pip3 install sqlmap"},
-    "curl": {"category": "transport", "install": "brew install curl / apt install curl"},
-    "git": {"category": "vcs", "install": "brew install git / apt install git"},
-    "bun": {"category": "runtime", "install": "curl -fsSL https://bun.sh/install | bash"},
-    "python3": {"category": "runtime", "install": "brew install python / apt install python3"},
-    "adb": {"category": "mobile", "install": "brew install --cask android-platform-tools"},
+    "pwndbg": {"category": "exploitation", "install": "git clone https://github.com/pwndbg/pwndbg && setup.sh"},
+    "checksec": {"category": "binary_analysis", "install": "brew install checksec / apt install checksec"},
+    "binwalk": {"category": "firmware", "install": "brew install binwalk / pipx install binwalk"},
+    "unblob": {"category": "firmware", "install": "pipx install unblob"},
+    "angr": {"category": "symbolic_execution", "install": "uv pip install angr / pipx install angr"},
+    "ropper": {"category": "exploitation", "install": "pipx install ropper"},
+    # 6. Active Directory & Red Team
+    "netexec": {"category": "active_directory", "install": "pipx install netexec / brew install netexec"},
+    "bloodhound": {"category": "active_directory", "install": "pipx install bloodhound / docker run bloodhound"},
+    "impacket": {"category": "protocols", "install": "pipx install impacket"},
+    "responder": {"category": "poisoning", "install": "brew install responder / apt install responder"},
+    "certipy": {"category": "active_directory", "install": "pipx install certipy-ad"},
+    "evil-winrm": {"category": "lateral_movement", "install": "gem install evil-winrm / brew install evil-winrm"},
+    "prowler": {"category": "cloud", "install": "pipx install prowler / brew install prowler"},
+    "cloudfox": {"category": "cloud", "install": "brew install cloudfox / go install github.com/BishopFox/cloudfox@latest"},
 }
+
+
+def resolve_tool_path(tool_id: str) -> str | None:
+    """Find binary executable via system PATH and standard developer installation directories."""
+    found = shutil.which(tool_id)
+    if found:
+        return found
+
+    candidate_dirs = [
+        Path("/opt/homebrew/bin"),
+        Path("/usr/local/bin"),
+        Path.home() / ".local" / "bin",
+        Path.home() / "go" / "bin",
+    ]
+    gopath = os.environ.get("GOPATH")
+    if gopath:
+        candidate_dirs.append(Path(gopath) / "bin")
+
+    for c_dir in candidate_dirs:
+        candidate = c_dir / tool_id
+        if candidate.is_file() and os.access(candidate, os.X_OK):
+            return str(candidate.resolve())
+
+    return None
 
 
 def execute_command(
@@ -207,7 +281,7 @@ def handle_tools(ctx: Context) -> int:
         results: list[dict[str, Any]] = []
 
         for tid, info in COMMON_TOOL_PROBES.items():
-            resolved = shutil.which(tid)
+            resolved = resolve_tool_path(tid)
             results.append({
                 "id": tid,
                 "category": info["category"],
@@ -253,7 +327,7 @@ def handle_tools(ctx: Context) -> int:
         missing: list[dict[str, str]] = []
 
         for req in required:
-            loc = shutil.which(req)
+            loc = resolve_tool_path(req)
             if loc:
                 detected.append(req)
             else:

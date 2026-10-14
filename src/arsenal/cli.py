@@ -62,6 +62,7 @@ def build_cli_parser() -> ArsenalArgumentParser:
     parent.add_argument("--language", action="store_true", default=argparse.SUPPRESS)
     parent.add_argument("--domains", action="store_true", default=argparse.SUPPRESS)
     parent.add_argument("--apply-tier-a", "--apply_tier_a", action="store_true", default=argparse.SUPPRESS, dest="apply_tier_a")
+    parent.add_argument("--apply-aliases", "--apply_aliases", action="store_true", default=argparse.SUPPRESS, dest="apply_aliases")
     parent.add_argument("--apply-alias", "--apply_alias", dest="apply_alias", type=str, default=argparse.SUPPRESS)
     parent.add_argument("--map", type=str, default=argparse.SUPPRESS)
     parent.add_argument("--case-root", "--case_root", "--caseRoot", dest="case_root", type=str, default=argparse.SUPPRESS)

@@ -15,7 +15,14 @@
     "M2",
     "M3",
     "M4",
-    "M5"
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10",
+    "M11",
+    "M12"
   ],
   "routes": {
     "M1": {
@@ -55,6 +62,58 @@
       "category": "repackaging",
       "must": "repackage|re-sign|resign|zipalign|smali.*modif",
       "note": "Android repackaging, resigning, and installation",
+      "crossDomain": {
+        "reason": "APK repackaging is owned by the re playbook re-apk-reverse; mobile declares the dependency explicitly."
+      }
+    },
+    "M6": {
+      "id": "M6",
+      "leaf": "mobile-exploiting-insecure-data-storage-in-mobile",
+      "category": "apk-analysis",
+      "must": "keystore.*audit|hardware.*keystore|strongbox|keymaster|android.*keystore",
+      "note": "Android Keystore and hardware-backed key storage auditing"
+    },
+    "M7": {
+      "id": "M7",
+      "leaf": "mobile-performing-dynamic-analysis-of-android-app",
+      "category": "instrumentation",
+      "must": "root.*detection.*bypass|jailbreak.*detection.*bypass|bypass.*root|rootbeer.*bypass|unroot",
+      "note": "Dynamic root and jailbreak detection bypass using instrumentation"
+    },
+    "M8": {
+      "id": "M8",
+      "leaf": "mobile-testing-android-intents-for-vulnerabilities",
+      "category": "apk-analysis",
+      "must": "android.*ipc|intent.*injection|exported.*activity|broadcast.*receiver|drozer.*ipc",
+      "note": "Android inter-process communication and intent attack surface audit"
+    },
+    "M9": {
+      "id": "M9",
+      "leaf": "mobile-performing-mobile-app-certificate-pinning-bypass",
+      "category": "instrumentation",
+      "must": "flutter.*intercept|react.*native.*intercept|boringssl.*pinning|flutter.*traffic",
+      "note": "Flutter and React Native traffic interception and BoringSSL custom pinning bypass"
+    },
+    "M10": {
+      "id": "M10",
+      "leaf": "mobile-performing-ios-app-security-assessment",
+      "category": "ios-analysis",
+      "must": "macho.*decrypt|fairplay.*decrypt|frida-ios-dump|dump.*decrypted|cryptid",
+      "note": "iOS FairPlay DRM Mach-O binary decryption and header dumping"
+    },
+    "M11": {
+      "id": "M11",
+      "leaf": "mobile-intercepting-mobile-traffic-with-burpsuite",
+      "category": "apk-analysis",
+      "must": "mobile.*traffic.*intercept|burp.*mobile|intercept.*mobile.*http|proxy.*mobile",
+      "note": "Mobile HTTP/HTTPS traffic proxying and interception with Burp Suite"
+    },
+    "M12": {
+      "id": "M12",
+      "leaf": "re-apk-reverse",
+      "category": "repackaging",
+      "must": "apk.*republish|apk.*tamper|android.*republish",
+      "note": "APK republishing and anti-tamper modification",
       "crossDomain": {
         "reason": "APK repackaging is owned by the re playbook re-apk-reverse; mobile declares the dependency explicitly."
       }

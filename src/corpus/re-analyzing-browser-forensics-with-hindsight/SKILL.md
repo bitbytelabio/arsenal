@@ -213,7 +213,7 @@ def analyze_chrome_history(profile_path: str, output_dir: str) -> dict:
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: arsenal scripts re-analyzing-browser-forensics-with-hindsight -- <chrome_profile_path> <output_dir>")
+        print("Usage: python3 browser_forensics.py <chrome_profile_path> <output_dir>")
         sys.exit(1)
     analyze_chrome_history(sys.argv[1], sys.argv[2])
 

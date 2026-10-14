@@ -6,6 +6,7 @@ Implements data-model.md §6, research.md R4, and Task T009.
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 from typing import Any, Final
 
@@ -170,7 +171,8 @@ def detect_tier_b_groups(
             rationale = val.get("rationale", rationale)
             applied = bool(val.get("applied", False))
         elif isinstance(val, str):
-            members = [val]
+            members = [key, val]
+            applied = key not in catalog_names and val in catalog_names
 
         matching_members = [m for m in members if m in catalog_names]
         if len(matching_members) >= 2 or (matching_members and applied):
@@ -192,3 +194,130 @@ def format_dedup_summary(groups: list[dict[str, Any]]) -> str:
     for g in groups:
         lines.append(f" - [{g['tier']}] {g['key']}: {len(g['members'])} candidates -> winner: {g.get('winner', 'none')} ({g['rationale']})")
     return "\n".join(lines)
+
+
+def apply_tier_b_aliases(
+    corpus_dir: Path,
+    manifest_path: Path,
+    aliases_data: dict[str, Any],
+    only_key: str | None = None,
+) -> dict[str, Any]:
+    """Apply operator-reviewed Tier B aliases to the corpus and manifest.
+
+    For every `deprecated -> canonical` alias: the deprecated corpus directory is
+    removed, and its admitted manifest entries are flipped to `deduplicated` with
+    `superseded_by` pointing at the canonical entry (schema invariant IN-7). The
+    manifest is validated before it is written, then resolution groups are
+    recorded so subsequent `skills dedup` runs report the aliases as applied.
+
+    Idempotent: aliases whose deprecated directory is already absent are skipped,
+    and previously recorded groups are never duplicated.
+    """
+    aliases = aliases_data.get("aliases", {})
+    result: dict[str, Any] = {
+        "applied": [],
+        "skipped": [],
+        "manifestEntriesUpdated": 0,
+        "dedupGroupsAdded": 0,
+        "errors": [],
+    }
+
+    if not isinstance(aliases, dict):
+        result["errors"] = ["Alias payload 'aliases' must be an object."]
+        return result
+    if only_key is not None and only_key not in aliases:
+        result["errors"] = [f"Unknown alias key '{only_key}'."]
+        return result
+    if not manifest_path.is_file():
+        result["errors"] = [f"Corpus manifest not found: '{manifest_path}'."]
+        return result
+
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001 - surfaced as CLI error payload
+        result["errors"] = [f"Invalid corpus manifest JSON: {exc}"]
+        return result
+
+    files = manifest.get("files", [])
+    repo_root = corpus_dir.parent.parent
+    pending: list[tuple[str, str]] = []
+
+    for key in sorted(aliases):
+        value = aliases[key]
+        if not isinstance(value, str) or value == key:
+            continue
+        if only_key is not None and key != only_key:
+            continue
+        if not (corpus_dir / value).is_dir():
+            result["errors"].append(f"Alias target '{value}' for '{key}' does not exist in '{corpus_dir}'.")
+            return result
+        if not (corpus_dir / key).is_dir():
+            result["skipped"].append({"key": key, "reason": "already applied"})
+            continue
+        pending.append((key, value))
+
+    for key, canonical in pending:
+        prefix = f"src/corpus/{key}/"
+        for entry in files:
+            destination = entry.get("destination_path")
+            if not isinstance(destination, str) or not destination.startswith(prefix):
+                continue
+            mirrored = f"src/corpus/{canonical}/{destination[len(prefix):]}"
+            if not (repo_root / mirrored).is_file():
+                mirrored = f"src/corpus/{canonical}/SKILL.md"
+            entry.pop("destination_path", None)
+            entry.pop("sha256", None)
+            entry.pop("bytes", None)
+            entry.pop("support_files", None)
+            entry["status"] = "deduplicated"
+            entry["reason"] = f"tier B operator alias ({key} -> {canonical})"
+            entry["superseded_by"] = mirrored
+            result["manifestEntriesUpdated"] += 1
+        result["applied"].append({"key": key, "canonical": canonical})
+
+    if not pending:
+        return result
+
+    existing_group_keys = {group.get("key") for group in manifest.get("dedup_groups", [])}
+    new_groups = [
+        {
+            "key": key,
+            "tier": "B",
+            "members": [key, canonical],
+            "winner": canonical,
+            "rationale": "operator-reviewed technique alias",
+            "applied": True,
+        }
+        for key, canonical in pending
+        if key not in existing_group_keys
+    ]
+    if new_groups:
+        manifest["dedup_groups"] = list(manifest.get("dedup_groups", [])) + new_groups
+
+    from arsenal.corpus.manifest import (
+        compute_manifest_summary,
+        serialize_corpus_manifest,
+        validate_corpus_manifest,
+    )
+
+    manifest["summary"] = compute_manifest_summary(files)
+    valid, validation_errors = validate_corpus_manifest(manifest)
+    if not valid:
+        result["errors"] = [
+            f"Manifest validation failed after alias application: {error}" for error in validation_errors
+        ]
+        result["applied"] = []
+        result["manifestEntriesUpdated"] = 0
+        return result
+
+    manifest_path.write_text(serialize_corpus_manifest(manifest), encoding="utf-8")
+    result["dedupGroupsAdded"] = len(new_groups)
+
+    for key, _ in pending:
+        target = corpus_dir / key
+        try:
+            shutil.rmtree(target)
+        except OSError as exc:
+            result["errors"].append(f"Failed to remove deprecated directory '{target}': {exc}")
+
+    return result

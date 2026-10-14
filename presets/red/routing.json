@@ -31,7 +31,17 @@
     "A10",
     "A11",
     "A12",
-    "A13"
+    "A13",
+    "A14",
+    "A15",
+    "A16",
+    "A17",
+    "A18",
+    "A19",
+    "A20",
+    "A21",
+    "A22",
+    "A23"
   ],
   "routes": {
     "A1": {
@@ -64,7 +74,7 @@
     },
     "A5": {
       "id": "A5",
-      "leaf": "red-conducting-network-penetration-test",
+      "leaf": "red-network-offensive-network-attacks",
       "category": "network",
       "must": "network.*penetration|internal.*pentest|network.*pivot|service.*exploit",
       "note": "Internal network penetration testing"
@@ -78,14 +88,14 @@
     },
     "A7": {
       "id": "A7",
-      "leaf": "red-conducting-wireless-network-penetration-test",
+      "leaf": "red-wireless-offensive-wifi",
       "category": "wireless",
       "must": "wireless.*penetration|wifi.*attack|wpa2|wlan|rogue.*ap",
       "note": "Wireless network penetration testing"
     },
     "A8": {
       "id": "A8",
-      "leaf": "red-collecting-threat-intelligence-with-misp",
+      "leaf": "red-operationalizing-misp-threat-feeds",
       "category": "threat-intelligence",
       "must": "misp|threat.*intel|cti.*collect|stix.*taxii",
       "note": "Threat intelligence collection and sharing"
@@ -113,7 +123,7 @@
     },
     "A12": {
       "id": "A12",
-      "leaf": "red-analyzing-persistence-mechanisms-in-linux",
+      "leaf": "red-post-exploitation-offensive-persistence",
       "category": "persistence",
       "must": "persistence.*mechanism|establish.*persistence|cron.*persistence|systemd.*persist",
       "note": "Persistence mechanism establishment and analysis"
@@ -124,6 +134,76 @@
       "category": "reconnaissance",
       "must": "external.*recon|osint.*engagement|footprint|open.*source.*recon",
       "note": "External reconnaissance and footprinting"
+    },
+    "A14": {
+      "id": "A14",
+      "leaf": "red-extracting-credentials-from-memory-dump",
+      "category": "credential-access",
+      "must": "lsass|nanodump|procdump|minidumpwritedump|mimikatz.*dump",
+      "note": "LSASS process memory dumping and offline credential extraction"
+    },
+    "A15": {
+      "id": "A15",
+      "leaf": "red-exploiting-adcs-with-certipy",
+      "category": "active-directory",
+      "must": "adcs|certipy|esc1|esc8|certificate.*template.*abuse",
+      "note": "Active Directory Certificate Services enumeration and ESC1/ESC8 exploitation"
+    },
+    "A16": {
+      "id": "A16",
+      "leaf": "red-privesc-offensive-windows-privesc",
+      "category": "privesc",
+      "must": "windows.*privesc|windows.*privilege.*escalation|token.*privilege|unquoted.*service.*path",
+      "note": "Windows local privilege escalation and service misconfiguration abuse"
+    },
+    "A17": {
+      "id": "A17",
+      "leaf": "red-privesc-offensive-windows-privesc",
+      "category": "privesc",
+      "must": "uac.*bypass|user.*account.*control.*bypass|mock.*system32|cmstp.*bypass",
+      "note": "User Account Control bypass and high-integrity token elevation"
+    },
+    "A18": {
+      "id": "A18",
+      "leaf": "red-infrastructure-offensive-edr-evasion",
+      "category": "evasion",
+      "must": "process.*injection|process.*hollowing|early.*bird.*apc|thread.*hijack|dll.*injection",
+      "note": "Process injection techniques and evasion of API monitoring hooks"
+    },
+    "A19": {
+      "id": "A19",
+      "leaf": "red-post-exploitation-offensive-lateral-movement",
+      "category": "c2-operations",
+      "must": "lateral.*movement|psexec|wmiexec|smbexec|winrm.*exec",
+      "note": "Lateral movement execution across Windows environments"
+    },
+    "A20": {
+      "id": "A20",
+      "leaf": "red-post-exploitation-offensive-lateral-movement",
+      "category": "c2-operations",
+      "must": "pth\\b|overpass.*the.*hash|pass.*hash|hash.*execution",
+      "note": "Pass-the-hash and credential-based lateral execution"
+    },
+    "A21": {
+      "id": "A21",
+      "leaf": "red-azure-entra-cloud-pentesting",
+      "category": "cloud-security",
+      "must": "azure.*pentest|entra.*pentest|azure.*cloud|entra.*id.*attack",
+      "note": "Azure and Entra ID cloud offensive assessment and privilege escalation"
+    },
+    "A22": {
+      "id": "A22",
+      "leaf": "red-gcp-cloud-pentesting",
+      "category": "cloud-security",
+      "must": "gcp.*pentest|google.*cloud.*pentest|gcp.*cloud|gcp.*iam.*escalat",
+      "note": "Google Cloud Platform offensive testing and IAM privilege escalation"
+    },
+    "A23": {
+      "id": "A23",
+      "leaf": "red-post-exploitation-offensive-data-exfiltration",
+      "category": "c2-operations",
+      "must": "data.*exfiltration|exfiltrat|dns.*tunnel.*exfil|c2.*exfil|storage.*exfil",
+      "note": "Post-exploitation data exfiltration and tunneling methods"
     }
   }
 }

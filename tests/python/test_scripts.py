@@ -40,7 +40,7 @@ def test_scripts_list():
 def test_migration_receipts_inventory():
     """Verify all 257 operational scripts have un-falsified provenance receipts."""
     receipts = list_receipts()
-    assert len(receipts) == 257
+    assert len(receipts) == 258
 
     # Check required fields
     for r in receipts:

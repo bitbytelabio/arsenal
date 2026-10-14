@@ -1,5 +1,29 @@
 // @bun
 // plugin/extensions/budget.ts
+function estimateTokenUsageFromContent(content) {
+  if (!content)
+    return null;
+  let textLength = 0;
+  if (typeof content === "string") {
+    textLength = content.length;
+  } else if (Array.isArray(content)) {
+    for (const block of content) {
+      if (block && typeof block === "object" && "text" in block && typeof block.text === "string") {
+        textLength += block.text.length;
+      }
+    }
+  }
+  if (textLength <= 0)
+    return null;
+  const estimatedTokens = Math.ceil(textLength / 4);
+  return {
+    input: 0,
+    output: estimatedTokens,
+    cacheRead: 0,
+    cacheWrite: 0
+  };
+}
+
 class BudgetTracker {
   budgetUsd = null;
   totalSpendUsd = 0;
@@ -90,7 +114,7 @@ function budgetExtension(pi) {
         return;
       }
     }
-    const usage = event.message?.usage;
+    const usage = event.message?.usage ?? estimateTokenUsageFromContent(event.message?.content);
     if (usage) {
       const res = globalBudgetTracker.recordTurnSpend(usage, ctx.model?.cost);
       if (res.warning) {
@@ -106,5 +130,6 @@ function budgetExtension(pi) {
 export {
   BudgetTracker,
   budgetExtension as default,
+  estimateTokenUsageFromContent,
   globalBudgetTracker
 };

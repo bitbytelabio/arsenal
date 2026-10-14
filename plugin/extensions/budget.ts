@@ -21,7 +21,34 @@ export interface TurnEndEvent {
   turnIndex: number;
   message?: {
     role?: string;
+    content?: Array<{ type: string; text?: string; data?: unknown }> | string;
     usage?: TokenUsage;
+  };
+}
+
+/**
+ * Token usage estimation fallback when the provider omits usage reporting
+ * (e.g. offline models, non-conforming OpenAI proxies).
+ */
+export function estimateTokenUsageFromContent(content: unknown): TokenUsage | null {
+  if (!content) return null;
+  let textLength = 0;
+  if (typeof content === "string") {
+    textLength = content.length;
+  } else if (Array.isArray(content)) {
+    for (const block of content) {
+      if (block && typeof block === "object" && "text" in block && typeof block.text === "string") {
+        textLength += block.text.length;
+      }
+    }
+  }
+  if (textLength <= 0) return null;
+  const estimatedTokens = Math.ceil(textLength / 4);
+  return {
+    input: 0,
+    output: estimatedTokens,
+    cacheRead: 0,
+    cacheWrite: 0,
   };
 }
 
@@ -176,7 +203,7 @@ export default function budgetExtension(pi: {
       }
     }
 
-    const usage = event.message?.usage;
+    const usage = event.message?.usage ?? estimateTokenUsageFromContent(event.message?.content);
     if (usage) {
       const res = globalBudgetTracker.recordTurnSpend(usage, ctx.model?.cost);
       if (res.warning) {

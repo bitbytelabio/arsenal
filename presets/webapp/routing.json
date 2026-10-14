@@ -48,7 +48,23 @@
     "W23",
     "W24",
     "W25",
-    "W26"
+    "W26",
+    "W27",
+    "W28",
+    "W29",
+    "W30",
+    "W31",
+    "W32",
+    "W33",
+    "W34",
+    "W35",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41",
+    "W42"
   ],
   "routes": {
     "W1": {
@@ -232,6 +248,118 @@
       "category": "ai-security",
       "must": "prompt.*injection|llm.*jailbreak|ai.*red.*team|genai.*security",
       "note": "LLM prompt injection and jailbreak testing"
+    },
+    "W27": {
+      "id": "W27",
+      "leaf": "webapp-web-offensive-xss",
+      "category": "injection",
+      "must": "reflected.*xss|rxss|reflected.*cross.*site",
+      "note": "Reflected Cross-Site Scripting discovery and payload execution"
+    },
+    "W28": {
+      "id": "W28",
+      "leaf": "webapp-testing-for-xss-vulnerabilities",
+      "category": "injection",
+      "must": "stored.*xss|blind.*xss|persistent.*xss",
+      "note": "Stored and blind Cross-Site Scripting testing"
+    },
+    "W29": {
+      "id": "W29",
+      "leaf": "webapp-exploiting-os-command-injection",
+      "category": "injection",
+      "must": "command.*injection|os.*command|shell.*injection|blind.*command",
+      "note": "Operating system command injection and shell execution testing"
+    },
+    "W30": {
+      "id": "W30",
+      "leaf": "webapp-web-offensive-ssti",
+      "category": "injection",
+      "must": "ssti|template.*injection|server.*side.*template|jinja.*inject",
+      "note": "Server-Side Template Injection across template engines"
+    },
+    "W31": {
+      "id": "W31",
+      "leaf": "webapp-web-offensive-xxe",
+      "category": "injection",
+      "must": "xxe|xml.*external.*entity|blind.*xxe|billion.*laughs",
+      "note": "XML External Entity injection and out-of-band data exfiltration"
+    },
+    "W32": {
+      "id": "W32",
+      "leaf": "webapp-web-offensive-ssrf",
+      "category": "injection",
+      "must": "ssrf|server.*side.*request.*forgery|blind.*ssrf|metadata.*ssrf",
+      "note": "Server-Side Request Forgery and cloud metadata exploitation"
+    },
+    "W33": {
+      "id": "W33",
+      "leaf": "webapp-web-offensive-file-upload",
+      "category": "application-security",
+      "must": "file.*upload.*bypass|malicious.*upload|upload.*bypass|unrestricted.*file.*upload",
+      "note": "File upload validation bypass and malicious payload execution"
+    },
+    "W34": {
+      "id": "W34",
+      "leaf": "webapp-performing-csrf-attack-simulation",
+      "category": "client-side",
+      "must": "csrf|cross.*site.*request.*forgery|samesite.*bypass|csrf.*poc",
+      "note": "Cross-Site Request Forgery simulation and SameSite bypass"
+    },
+    "W35": {
+      "id": "W35",
+      "leaf": "webapp-testing-cors-misconfiguration",
+      "category": "client-side",
+      "must": "cors.*misconfig|cross.*origin.*resource.*sharing|cors.*bypass|null.*origin",
+      "note": "Cross-Origin Resource Sharing policy auditing and exploitation"
+    },
+    "W36": {
+      "id": "W36",
+      "leaf": "webapp-web-offensive-request-smuggling",
+      "category": "application-security",
+      "must": "request.*smuggling|http.*desync|cl\\.te|te\\.cl|h2.*desync",
+      "note": "HTTP request smuggling and front-end/back-end desynchronization"
+    },
+    "W37": {
+      "id": "W37",
+      "leaf": "webapp-testing-websocket-api-security",
+      "category": "client-side",
+      "must": "websocket|cswsh|cross.*site.*websocket|ws.*injection",
+      "note": "WebSocket API testing, CSWSH, and message frame injection"
+    },
+    "W38": {
+      "id": "W38",
+      "leaf": "webapp-web-offensive-graphql",
+      "category": "api",
+      "must": "graphql|introspection.*query|graphql.*injection|graphql.*bypass",
+      "note": "GraphQL API offensive testing, introspection, and injection"
+    },
+    "W39": {
+      "id": "W39",
+      "leaf": "webapp-testing-api-authentication-weaknesses",
+      "category": "authz",
+      "must": "default.*cred|auth.*bypass|broken.*auth|weak.*credential",
+      "note": "Default credential testing and authentication mechanism bypass"
+    },
+    "W40": {
+      "id": "W40",
+      "leaf": "webapp-authentication-session-testing",
+      "category": "authz",
+      "must": "session.*fixation|session.*hijack|session.*lifecycle|session.*token",
+      "note": "Authentication lifecycle and session management flaw testing"
+    },
+    "W41": {
+      "id": "W41",
+      "leaf": "webapp-web-surface-discovery",
+      "category": "reconnaissance",
+      "must": "web.*crawl|spidering|surface.*discovery|endpoint.*discovery",
+      "note": "Modern attack surface discovery and web crawling"
+    },
+    "W42": {
+      "id": "W42",
+      "leaf": "webapp-javascript-analysis",
+      "category": "client-side",
+      "must": "javascript.*analysis|js.*analysis|source.*map.*extract|js.*secret",
+      "note": "Client-side JavaScript and source map attack surface analysis"
     }
   }
 }

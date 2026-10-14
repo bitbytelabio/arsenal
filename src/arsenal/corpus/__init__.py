@@ -20,6 +20,7 @@ from arsenal.corpus.coverage import (
 from arsenal.corpus.dedup import (
     detect_tier_a_collision_groups,
     detect_tier_b_groups,
+    apply_tier_b_aliases,
     format_dedup_summary,
     load_tier_b_aliases,
     resolve_tier_a_winner,

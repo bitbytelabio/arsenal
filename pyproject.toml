@@ -54,8 +54,6 @@ all = [
   "psutil>=5.9,<8", "watchdog>=4,<7",
 ]
 
-
-
 [project.urls]
 Repository = "https://github.com/bitbytelabio/arsenal"
 Issues = "https://github.com/bitbytelabio/arsenal/issues"

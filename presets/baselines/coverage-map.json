@@ -1596,7 +1596,7 @@
       "domain": "re",
       "skills": [
         {
-          "id": "re-conducting-memory-forensics-with-volatility",
+          "id": "webapp-conducting-memory-forensics-with-volatility",
           "evidence": {
             "locator": "## When to Use",
             "note": "Memory image acquisition and Volatility analysis."
@@ -1731,10 +1731,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-exercise",
+          "id": "webapp-performing-purple-team-exercise",
           "evidence": {
             "locator": "# Test 4: T1003.001 — Credential Dumping",
-            "note": "Covers ATT&CK technique T1003.001 (LSASS Memory) in red-performing-purple-team-exercise."
+            "note": "Covers ATT&CK technique T1003.001 (LSASS Memory) in webapp-performing-purple-team-exercise."
           }
         }
       ],
@@ -1746,10 +1746,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1003.002 (Security Account Manager) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1003.002 (Security Account Manager) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -1761,10 +1761,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1003.003 (NTDS) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1003.003 (NTDS) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -1881,10 +1881,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-exfiltration-indicators",
+          "id": "webapp-hunting-for-data-exfiltration-indicators",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1020 (Automated Exfiltration) in red-hunting-for-data-exfiltration-indicators."
+            "note": "Covers ATT&CK technique T1020 (Automated Exfiltration) in webapp-hunting-for-data-exfiltration-indicators."
           }
         }
       ],
@@ -1896,10 +1896,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-dcom-lateral-movement",
+          "id": "webapp-hunting-for-dcom-lateral-movement",
           "evidence": {
             "locator": "## Overview",
-            "note": "Covers ATT&CK technique T1021 (Remote Services) in red-hunting-for-dcom-lateral-movement."
+            "note": "Covers ATT&CK technique T1021 (Remote Services) in webapp-hunting-for-dcom-lateral-movement."
           }
         }
       ],
@@ -1911,10 +1911,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-exercise",
+          "id": "webapp-performing-purple-team-exercise",
           "evidence": {
             "locator": "### Step 2: Build ATT&CK-Mapped Test Plan",
-            "note": "Covers ATT&CK technique T1021.001 (Remote Desktop Protocol) in red-performing-purple-team-exercise."
+            "note": "Covers ATT&CK technique T1021.001 (Remote Desktop Protocol) in webapp-performing-purple-team-exercise."
           }
         }
       ],
@@ -1926,10 +1926,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-analyzing-windows-event-logs-in-splunk",
+          "id": "webapp-analyzing-windows-event-logs-in-splunk",
           "evidence": {
             "locator": "### Step 4: Lateral Movement Detection",
-            "note": "Covers ATT&CK technique T1021.002 (SMB/Windows Admin Shares) in red-analyzing-windows-event-logs-in-splunk."
+            "note": "Covers ATT&CK technique T1021.002 (SMB/Windows Admin Shares) in webapp-analyzing-windows-event-logs-in-splunk."
           }
         }
       ],
@@ -1941,10 +1941,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-dcom-lateral-movement",
+          "id": "webapp-hunting-for-dcom-lateral-movement",
           "evidence": {
             "locator": "## Overview",
-            "note": "Covers ATT&CK technique T1021.003 (Distributed Component Object Model) in red-hunting-for-dcom-lateral-movement."
+            "note": "Covers ATT&CK technique T1021.003 (Distributed Component Object Model) in webapp-hunting-for-dcom-lateral-movement."
           }
         }
       ],
@@ -1956,10 +1956,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-lateral-movement-with-splunk",
+          "id": "webapp-detecting-lateral-movement-with-splunk",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1021.004 (SSH) in red-detecting-lateral-movement-with-splunk."
+            "note": "Covers ATT&CK technique T1021.004 (SSH) in webapp-detecting-lateral-movement-with-splunk."
           }
         }
       ],
@@ -1971,10 +1971,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-lateral-movement-with-splunk",
+          "id": "webapp-detecting-lateral-movement-with-splunk",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1021.006 (Windows Remote Management) in red-detecting-lateral-movement-with-splunk."
+            "note": "Covers ATT&CK technique T1021.006 (Windows Remote Management) in webapp-detecting-lateral-movement-with-splunk."
           }
         }
       ],
@@ -2076,10 +2076,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-process-injection-techniques",
+          "id": "webapp-detecting-process-injection-techniques",
           "evidence": {
             "locator": "## Output Format",
-            "note": "Covers ATT&CK technique T1036.005 (Match Legitimate Resource Name or Location) in red-detecting-process-injection-techniques."
+            "note": "Covers ATT&CK technique T1036.005 (Match Legitimate Resource Name or Location) in webapp-detecting-process-injection-techniques."
           }
         }
       ],
@@ -2151,10 +2151,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-exfiltration-indicators",
+          "id": "webapp-hunting-for-data-exfiltration-indicators",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1048 (Exfiltration Over Alternative Protocol) in red-hunting-for-data-exfiltration-indicators."
+            "note": "Covers ATT&CK technique T1048 (Exfiltration Over Alternative Protocol) in webapp-hunting-for-data-exfiltration-indicators."
           }
         }
       ],
@@ -2166,10 +2166,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-exfiltration-indicators",
+          "id": "webapp-hunting-for-data-exfiltration-indicators",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1048.001 (Exfiltration Over Symmetric Encrypted Non-C2 Protocol) in red-hunting-for-data-exfiltration-indicators."
+            "note": "Covers ATT&CK technique T1048.001 (Exfiltration Over Symmetric Encrypted Non-C2 Protocol) in webapp-hunting-for-data-exfiltration-indicators."
           }
         }
       ],
@@ -2181,10 +2181,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-exfiltration-indicators",
+          "id": "webapp-hunting-for-data-exfiltration-indicators",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1048.002 (Exfiltration Over Asymmetric Encrypted Non-C2 Protocol) in red-hunting-for-data-exfiltration-indicators."
+            "note": "Covers ATT&CK technique T1048.002 (Exfiltration Over Asymmetric Encrypted Non-C2 Protocol) in webapp-hunting-for-data-exfiltration-indicators."
           }
         }
       ],
@@ -2211,10 +2211,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1049 (System Network Connections Discovery) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1049 (System Network Connections Discovery) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -2226,10 +2226,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-exfiltration-indicators",
+          "id": "webapp-hunting-for-data-exfiltration-indicators",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1052 (Exfiltration Over Physical Medium) in red-hunting-for-data-exfiltration-indicators."
+            "note": "Covers ATT&CK technique T1052 (Exfiltration Over Physical Medium) in webapp-hunting-for-data-exfiltration-indicators."
           }
         }
       ],
@@ -2241,10 +2241,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-scheduled-task-persistence",
+          "id": "webapp-hunting-for-scheduled-task-persistence",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1053 (Scheduled Task/Job) in red-hunting-for-scheduled-task-persistence."
+            "note": "Covers ATT&CK technique T1053 (Scheduled Task/Job) in webapp-hunting-for-scheduled-task-persistence."
           }
         }
       ],
@@ -2256,10 +2256,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-scheduled-task-persistence",
+          "id": "webapp-hunting-for-scheduled-task-persistence",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1053.002 (At) in red-hunting-for-scheduled-task-persistence."
+            "note": "Covers ATT&CK technique T1053.002 (At) in webapp-hunting-for-scheduled-task-persistence."
           }
         }
       ],
@@ -2271,10 +2271,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-scheduled-task-persistence",
+          "id": "webapp-hunting-for-scheduled-task-persistence",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1053.003 (Cron) in red-hunting-for-scheduled-task-persistence."
+            "note": "Covers ATT&CK technique T1053.003 (Cron) in webapp-hunting-for-scheduled-task-persistence."
           }
         }
       ],
@@ -2286,10 +2286,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-suspicious-scheduled-tasks",
+          "id": "webapp-hunting-for-suspicious-scheduled-tasks",
           "evidence": {
             "locator": "## When to Use",
-            "note": "Covers ATT&CK technique T1053.005 (Scheduled Task) in red-hunting-for-suspicious-scheduled-tasks."
+            "note": "Covers ATT&CK technique T1053.005 (Scheduled Task) in webapp-hunting-for-suspicious-scheduled-tasks."
           }
         }
       ],
@@ -2301,10 +2301,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1055-process-injection-with-sysmon",
+          "id": "webapp-detecting-t1055-process-injection-with-sysmon",
           "evidence": {
             "locator": "# Detecting T1055 Process Injection with Sysmon",
-            "note": "Covers ATT&CK technique T1055 (Process Injection) in red-detecting-t1055-process-injection-with-sysmon."
+            "note": "Covers ATT&CK technique T1055 (Process Injection) in webapp-detecting-t1055-process-injection-with-sysmon."
           }
         }
       ],
@@ -2316,10 +2316,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1055-process-injection-with-sysmon",
+          "id": "webapp-detecting-t1055-process-injection-with-sysmon",
           "evidence": {
             "locator": "## Workflow",
-            "note": "Covers ATT&CK technique T1055.001 (Dynamic-link Library Injection) in red-detecting-t1055-process-injection-with-sysmon."
+            "note": "Covers ATT&CK technique T1055.001 (Dynamic-link Library Injection) in webapp-detecting-t1055-process-injection-with-sysmon."
           }
         }
       ],
@@ -2331,10 +2331,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1055-process-injection-with-sysmon",
+          "id": "webapp-detecting-t1055-process-injection-with-sysmon",
           "evidence": {
             "locator": "## Workflow",
-            "note": "Covers ATT&CK technique T1055.002 (Portable Executable Injection) in red-detecting-t1055-process-injection-with-sysmon."
+            "note": "Covers ATT&CK technique T1055.002 (Portable Executable Injection) in webapp-detecting-t1055-process-injection-with-sysmon."
           }
         }
       ],
@@ -2346,10 +2346,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1055-process-injection-with-sysmon",
+          "id": "webapp-detecting-t1055-process-injection-with-sysmon",
           "evidence": {
             "locator": "## Workflow",
-            "note": "Covers ATT&CK technique T1055.003 (Thread Execution Hijacking) in red-detecting-t1055-process-injection-with-sysmon."
+            "note": "Covers ATT&CK technique T1055.003 (Thread Execution Hijacking) in webapp-detecting-t1055-process-injection-with-sysmon."
           }
         }
       ],
@@ -2361,10 +2361,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1055-process-injection-with-sysmon",
+          "id": "webapp-detecting-t1055-process-injection-with-sysmon",
           "evidence": {
             "locator": "## Workflow",
-            "note": "Covers ATT&CK technique T1055.004 (Asynchronous Procedure Call) in red-detecting-t1055-process-injection-with-sysmon."
+            "note": "Covers ATT&CK technique T1055.004 (Asynchronous Procedure Call) in webapp-detecting-t1055-process-injection-with-sysmon."
           }
         }
       ],
@@ -2376,10 +2376,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1055-process-injection-with-sysmon",
+          "id": "webapp-detecting-t1055-process-injection-with-sysmon",
           "evidence": {
             "locator": "## Workflow",
-            "note": "Covers ATT&CK technique T1055.005 (Thread Local Storage) in red-detecting-t1055-process-injection-with-sysmon."
+            "note": "Covers ATT&CK technique T1055.005 (Thread Local Storage) in webapp-detecting-t1055-process-injection-with-sysmon."
           }
         }
       ],
@@ -2391,10 +2391,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-process-injection-techniques",
+          "id": "webapp-detecting-process-injection-techniques",
           "evidence": {
             "locator": "### Step 5: Map to MITRE ATT&CK",
-            "note": "Covers ATT&CK technique T1055.008 (Ptrace System Calls) in red-detecting-process-injection-techniques."
+            "note": "Covers ATT&CK technique T1055.008 (Ptrace System Calls) in webapp-detecting-process-injection-techniques."
           }
         }
       ],
@@ -2406,10 +2406,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-process-injection-techniques",
+          "id": "webapp-detecting-process-injection-techniques",
           "evidence": {
             "locator": "### Step 5: Map to MITRE ATT&CK",
-            "note": "Covers ATT&CK technique T1055.009 (Proc Memory) in red-detecting-process-injection-techniques."
+            "note": "Covers ATT&CK technique T1055.009 (Proc Memory) in webapp-detecting-process-injection-techniques."
           }
         }
       ],
@@ -2421,10 +2421,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-process-injection-techniques",
+          "id": "webapp-detecting-process-injection-techniques",
           "evidence": {
             "locator": "### Step 5: Map to MITRE ATT&CK",
-            "note": "Covers ATT&CK technique T1055.011 (Extra Window Memory Injection) in red-detecting-process-injection-techniques."
+            "note": "Covers ATT&CK technique T1055.011 (Extra Window Memory Injection) in webapp-detecting-process-injection-techniques."
           }
         }
       ],
@@ -2436,10 +2436,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-process-hollowing-technique",
+          "id": "webapp-detecting-process-hollowing-technique",
           "evidence": {
             "locator": "## When to Use",
-            "note": "Covers ATT&CK technique T1055.012 (Process Hollowing) in red-detecting-process-hollowing-technique."
+            "note": "Covers ATT&CK technique T1055.012 (Process Hollowing) in webapp-detecting-process-hollowing-technique."
           }
         }
       ],
@@ -2451,10 +2451,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1055-process-injection-with-sysmon",
+          "id": "webapp-detecting-t1055-process-injection-with-sysmon",
           "evidence": {
             "locator": "## Workflow",
-            "note": "Covers ATT&CK technique T1055.013 (Process Doppelgänging) in red-detecting-t1055-process-injection-with-sysmon."
+            "note": "Covers ATT&CK technique T1055.013 (Process Doppelgänging) in webapp-detecting-t1055-process-injection-with-sysmon."
           }
         }
       ],
@@ -2466,10 +2466,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-process-injection-techniques",
+          "id": "webapp-detecting-process-injection-techniques",
           "evidence": {
             "locator": "### Step 5: Map to MITRE ATT&CK",
-            "note": "Covers ATT&CK technique T1055.014 (VDSO Hijacking) in red-detecting-process-injection-techniques."
+            "note": "Covers ATT&CK technique T1055.014 (VDSO Hijacking) in webapp-detecting-process-injection-techniques."
           }
         }
       ],
@@ -2481,10 +2481,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-process-injection-techniques",
+          "id": "webapp-detecting-process-injection-techniques",
           "evidence": {
             "locator": "### Step 5: Map to MITRE ATT&CK",
-            "note": "Covers ATT&CK technique T1055.015 (ListPlanting) in red-detecting-process-injection-techniques."
+            "note": "Covers ATT&CK technique T1055.015 (ListPlanting) in webapp-detecting-process-injection-techniques."
           }
         }
       ],
@@ -2496,10 +2496,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1057 (Process Discovery) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1057 (Process Discovery) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -2511,10 +2511,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# List all tests for a specific technique",
-            "note": "Covers ATT&CK technique T1059 (Command and Scripting Interpreter) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1059 (Command and Scripting Interpreter) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -2526,10 +2526,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-suspicious-powershell-execution",
+          "id": "webapp-detecting-suspicious-powershell-execution",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1059.001 (PowerShell) in red-detecting-suspicious-powershell-execution."
+            "note": "Covers ATT&CK technique T1059.001 (PowerShell) in webapp-detecting-suspicious-powershell-execution."
           }
         }
       ],
@@ -2541,10 +2541,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-suspicious-powershell-execution",
+          "id": "webapp-detecting-suspicious-powershell-execution",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1059.003 (Windows Command Shell) in red-detecting-suspicious-powershell-execution."
+            "note": "Covers ATT&CK technique T1059.003 (Windows Command Shell) in webapp-detecting-suspicious-powershell-execution."
           }
         }
       ],
@@ -2586,10 +2586,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1059.006 (Python) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1059.006 (Python) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -2616,10 +2616,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-privilege-escalation-attempts",
+          "id": "webapp-detecting-privilege-escalation-attempts",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1068 (Exploitation for Privilege Escalation) in red-detecting-privilege-escalation-attempts."
+            "note": "Covers ATT&CK technique T1068 (Exploitation for Privilege Escalation) in webapp-detecting-privilege-escalation-attempts."
           }
         }
       ],
@@ -2631,10 +2631,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1069 (Permission Groups Discovery) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1069 (Permission Groups Discovery) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -2706,10 +2706,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1070.004 (File Deletion) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1070.004 (File Deletion) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -2736,10 +2736,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-unusual-network-connections",
+          "id": "webapp-hunting-for-unusual-network-connections",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1071 (Application Layer Protocol) in red-hunting-for-unusual-network-connections."
+            "note": "Covers ATT&CK technique T1071 (Application Layer Protocol) in webapp-hunting-for-unusual-network-connections."
           }
         }
       ],
@@ -2781,10 +2781,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-staging-before-exfiltration",
+          "id": "webapp-hunting-for-data-staging-before-exfiltration",
           "evidence": {
             "locator": "## Overview",
-            "note": "Covers ATT&CK technique T1074 (Data Staged) in red-hunting-for-data-staging-before-exfiltration."
+            "note": "Covers ATT&CK technique T1074 (Data Staged) in webapp-hunting-for-data-staging-before-exfiltration."
           }
         }
       ],
@@ -2796,10 +2796,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-staging-before-exfiltration",
+          "id": "webapp-hunting-for-data-staging-before-exfiltration",
           "evidence": {
             "locator": "## Expected Output",
-            "note": "Covers ATT&CK technique T1074.001 (Local Data Staging) in red-hunting-for-data-staging-before-exfiltration."
+            "note": "Covers ATT&CK technique T1074.001 (Local Data Staging) in webapp-hunting-for-data-staging-before-exfiltration."
           }
         }
       ],
@@ -2811,10 +2811,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-staging-before-exfiltration",
+          "id": "webapp-hunting-for-data-staging-before-exfiltration",
           "evidence": {
             "locator": "## Expected Output",
-            "note": "Covers ATT&CK technique T1074.002 (Remote Data Staging) in red-hunting-for-data-staging-before-exfiltration."
+            "note": "Covers ATT&CK technique T1074.002 (Remote Data Staging) in webapp-hunting-for-data-staging-before-exfiltration."
           }
         }
       ],
@@ -2841,10 +2841,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-service-account-abuse",
+          "id": "webapp-detecting-service-account-abuse",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1078.001 (Default Accounts) in red-detecting-service-account-abuse."
+            "note": "Covers ATT&CK technique T1078.001 (Default Accounts) in webapp-detecting-service-account-abuse."
           }
         }
       ],
@@ -2886,10 +2886,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1082 (System Information Discovery) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1082 (System Information Discovery) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -2916,10 +2916,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1087 (Account Discovery) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1087 (Account Discovery) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -2931,10 +2931,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1087.001 (Local Account) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1087.001 (Local Account) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -2976,10 +2976,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1090 (Proxy) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1090 (Proxy) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3051,10 +3051,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-command-and-control-beaconing",
+          "id": "webapp-hunting-for-command-and-control-beaconing",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1095 (Non-Application Layer Protocol) in red-hunting-for-command-and-control-beaconing."
+            "note": "Covers ATT&CK technique T1095 (Non-Application Layer Protocol) in webapp-hunting-for-command-and-control-beaconing."
           }
         }
       ],
@@ -3066,10 +3066,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-t1098-account-manipulation",
+          "id": "webapp-hunting-for-t1098-account-manipulation",
           "evidence": {
             "locator": "# Hunting for T1098 Account Manipulation",
-            "note": "Covers ATT&CK technique T1098 (Account Manipulation) in red-hunting-for-t1098-account-manipulation."
+            "note": "Covers ATT&CK technique T1098 (Account Manipulation) in webapp-hunting-for-t1098-account-manipulation."
           }
         }
       ],
@@ -3126,10 +3126,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-implementing-security-monitoring-with-datadog",
+          "id": "webapp-implementing-security-monitoring-with-datadog",
           "evidence": {
             "locator": "### Step 4: Configure Workload Protection (CSM Threats)",
-            "note": "Covers ATT&CK technique T1098.004 (SSH Authorized Keys) in red-implementing-security-monitoring-with-datadog."
+            "note": "Covers ATT&CK technique T1098.004 (SSH Authorized Keys) in webapp-implementing-security-monitoring-with-datadog."
           }
         }
       ],
@@ -3156,10 +3156,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-living-off-the-cloud-techniques",
+          "id": "webapp-hunting-for-living-off-the-cloud-techniques",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1102 (Web Service) in red-hunting-for-living-off-the-cloud-techniques."
+            "note": "Covers ATT&CK technique T1102 (Web Service) in webapp-hunting-for-living-off-the-cloud-techniques."
           }
         }
       ],
@@ -3171,10 +3171,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-threat-hunting-with-elastic-siem",
+          "id": "webapp-performing-threat-hunting-with-elastic-siem",
           "evidence": {
             "locator": "### Step 1: Develop Hunting Hypothesis",
-            "note": "Covers ATT&CK technique T1105 (Ingress Tool Transfer) in red-performing-threat-hunting-with-elastic-siem."
+            "note": "Covers ATT&CK technique T1105 (Ingress Tool Transfer) in webapp-performing-threat-hunting-with-elastic-siem."
           }
         }
       ],
@@ -3186,10 +3186,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-analyzing-windows-event-logs-in-splunk",
+          "id": "webapp-analyzing-windows-event-logs-in-splunk",
           "evidence": {
             "locator": "### Step 6: Create Lookup Tables for Enrichment",
-            "note": "Covers ATT&CK technique T1110 (Brute Force) in red-analyzing-windows-event-logs-in-splunk."
+            "note": "Covers ATT&CK technique T1110 (Brute Force) in webapp-analyzing-windows-event-logs-in-splunk."
           }
         }
       ],
@@ -3201,10 +3201,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-building-detection-rule-with-splunk-spl",
+          "id": "webapp-building-detection-rule-with-splunk-spl",
           "evidence": {
             "locator": "### Correlation Search Configuration Template",
-            "note": "Covers ATT&CK technique T1110.001 (Password Guessing) in red-building-detection-rule-with-splunk-spl."
+            "note": "Covers ATT&CK technique T1110.001 (Password Guessing) in webapp-building-detection-rule-with-splunk-spl."
           }
         }
       ],
@@ -3231,10 +3231,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-implementing-siem-use-cases-for-detection",
+          "id": "webapp-implementing-siem-use-cases-for-detection",
           "evidence": {
             "locator": "# Load current detection rules mapped to ATT&CK",
-            "note": "Covers ATT&CK technique T1110.003 (Password Spraying) in red-implementing-siem-use-cases-for-detection."
+            "note": "Covers ATT&CK technique T1110.003 (Password Spraying) in webapp-implementing-siem-use-cases-for-detection."
           }
         }
       ],
@@ -3321,10 +3321,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1129 (Shared Modules) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1129 (Shared Modules) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3366,10 +3366,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-threat-landscape-assessment-for-sector",
+          "id": "webapp-performing-threat-landscape-assessment-for-sector",
           "evidence": {
             "locator": "### Step 2: Analyze Attack Vectors and Initial Access",
-            "note": "Covers ATT&CK technique T1133 (External Remote Services) in red-performing-threat-landscape-assessment-for-sector."
+            "note": "Covers ATT&CK technique T1133 (External Remote Services) in webapp-performing-threat-landscape-assessment-for-sector."
           }
         }
       ],
@@ -3381,10 +3381,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-analyzing-windows-event-logs-in-splunk",
+          "id": "webapp-analyzing-windows-event-logs-in-splunk",
           "evidence": {
             "locator": "### Step 2: Privilege Escalation Detection",
-            "note": "Covers ATT&CK technique T1134 (Access Token Manipulation) in red-analyzing-windows-event-logs-in-splunk."
+            "note": "Covers ATT&CK technique T1134 (Access Token Manipulation) in webapp-analyzing-windows-event-logs-in-splunk."
           }
         }
       ],
@@ -3441,10 +3441,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# List tests for a tactic (e.g., Persistence)",
-            "note": "Covers ATT&CK technique T1136 (Create Account) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1136 (Create Account) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3456,10 +3456,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-analyzing-windows-event-logs-in-splunk",
+          "id": "webapp-analyzing-windows-event-logs-in-splunk",
           "evidence": {
             "locator": "### Step 2: Privilege Escalation Detection",
-            "note": "Covers ATT&CK technique T1136.001 (Local Account) in red-analyzing-windows-event-logs-in-splunk."
+            "note": "Covers ATT&CK technique T1136.001 (Local Account) in webapp-analyzing-windows-event-logs-in-splunk."
           }
         }
       ],
@@ -3486,10 +3486,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-living-off-the-land-with-lolbas",
+          "id": "webapp-detecting-living-off-the-land-with-lolbas",
           "evidence": {
             "locator": "## Expected Output",
-            "note": "Covers ATT&CK technique T1140 (Deobfuscate/Decode Files or Information) in red-detecting-living-off-the-land-with-lolbas."
+            "note": "Covers ATT&CK technique T1140 (Deobfuscate/Decode Files or Information) in webapp-detecting-living-off-the-land-with-lolbas."
           }
         }
       ],
@@ -3546,10 +3546,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-supply-chain-compromise",
+          "id": "webapp-hunting-for-supply-chain-compromise",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1195 (Supply Chain Compromise) in red-hunting-for-supply-chain-compromise."
+            "note": "Covers ATT&CK technique T1195 (Supply Chain Compromise) in webapp-hunting-for-supply-chain-compromise."
           }
         }
       ],
@@ -3561,10 +3561,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-supply-chain-compromise",
+          "id": "webapp-hunting-for-supply-chain-compromise",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1195.001 (Compromise Software Dependencies and Development Tools) in red-hunting-for-supply-chain-compromise."
+            "note": "Covers ATT&CK technique T1195.001 (Compromise Software Dependencies and Development Tools) in webapp-hunting-for-supply-chain-compromise."
           }
         }
       ],
@@ -3576,10 +3576,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-supply-chain-compromise",
+          "id": "webapp-hunting-for-supply-chain-compromise",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1195.002 (Compromise Software Supply Chain) in red-hunting-for-supply-chain-compromise."
+            "note": "Covers ATT&CK technique T1195.002 (Compromise Software Supply Chain) in webapp-hunting-for-supply-chain-compromise."
           }
         }
       ],
@@ -3591,10 +3591,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# List tests for a tactic (e.g., Persistence)",
-            "note": "Covers ATT&CK technique T1197 (BITS Jobs) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1197 (BITS Jobs) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3606,10 +3606,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-supply-chain-compromise",
+          "id": "webapp-hunting-for-supply-chain-compromise",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1199 (Trusted Relationship) in red-hunting-for-supply-chain-compromise."
+            "note": "Covers ATT&CK technique T1199 (Trusted Relationship) in webapp-hunting-for-supply-chain-compromise."
           }
         }
       ],
@@ -3636,10 +3636,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1203 (Exploitation for Client Execution) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1203 (Exploitation for Client Execution) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3666,10 +3666,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-exercise",
+          "id": "webapp-performing-purple-team-exercise",
           "evidence": {
             "locator": "### Step 2: Build ATT&CK-Mapped Test Plan",
-            "note": "Covers ATT&CK technique T1204.002 (Malicious File) in red-performing-purple-team-exercise."
+            "note": "Covers ATT&CK technique T1204.002 (Malicious File) in webapp-performing-purple-team-exercise."
           }
         }
       ],
@@ -3711,10 +3711,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-lolbins-execution-in-endpoint-logs",
+          "id": "webapp-hunting-for-lolbins-execution-in-endpoint-logs",
           "evidence": {
             "locator": "## When to Use",
-            "note": "Covers ATT&CK technique T1218 (System Binary Proxy Execution) in red-hunting-for-lolbins-execution-in-endpoint-logs."
+            "note": "Covers ATT&CK technique T1218 (System Binary Proxy Execution) in webapp-hunting-for-lolbins-execution-in-endpoint-logs."
           }
         }
       ],
@@ -3726,10 +3726,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-living-off-the-land-binaries",
+          "id": "webapp-hunting-for-living-off-the-land-binaries",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1218.001 (Compiled HTML File) in red-hunting-for-living-off-the-land-binaries."
+            "note": "Covers ATT&CK technique T1218.001 (Compiled HTML File) in webapp-hunting-for-living-off-the-land-binaries."
           }
         }
       ],
@@ -3741,10 +3741,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-living-off-the-land-binaries",
+          "id": "webapp-hunting-for-living-off-the-land-binaries",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1218.002 (Control Panel) in red-hunting-for-living-off-the-land-binaries."
+            "note": "Covers ATT&CK technique T1218.002 (Control Panel) in webapp-hunting-for-living-off-the-land-binaries."
           }
         }
       ],
@@ -3756,10 +3756,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-living-off-the-land-binaries",
+          "id": "webapp-hunting-for-living-off-the-land-binaries",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1218.003 (CMSTP) in red-hunting-for-living-off-the-land-binaries."
+            "note": "Covers ATT&CK technique T1218.003 (CMSTP) in webapp-hunting-for-living-off-the-land-binaries."
           }
         }
       ],
@@ -3771,10 +3771,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1218.005 (Mshta) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1218.005 (Mshta) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3801,10 +3801,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1218.011 (Rundll32) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1218.011 (Rundll32) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3831,10 +3831,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1219 (Remote Access Tools) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1219 (Remote Access Tools) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3906,10 +3906,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-shadow-copy-deletion",
+          "id": "webapp-hunting-for-shadow-copy-deletion",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1485 (Data Destruction) in red-hunting-for-shadow-copy-deletion."
+            "note": "Covers ATT&CK technique T1485 (Data Destruction) in webapp-hunting-for-shadow-copy-deletion."
           }
         }
       ],
@@ -3921,10 +3921,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-exercise",
+          "id": "webapp-performing-purple-team-exercise",
           "evidence": {
             "locator": "### Step 2: Build ATT&CK-Mapped Test Plan",
-            "note": "Covers ATT&CK technique T1486 (Data Encrypted for Impact) in red-performing-purple-team-exercise."
+            "note": "Covers ATT&CK technique T1486 (Data Encrypted for Impact) in webapp-performing-purple-team-exercise."
           }
         }
       ],
@@ -3951,10 +3951,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-shadow-copy-deletion",
+          "id": "webapp-hunting-for-shadow-copy-deletion",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1490 (Inhibit System Recovery) in red-hunting-for-shadow-copy-deletion."
+            "note": "Covers ATT&CK technique T1490 (Inhibit System Recovery) in webapp-hunting-for-shadow-copy-deletion."
           }
         }
       ],
@@ -3966,10 +3966,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1491 (Defacement) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1491 (Defacement) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3981,10 +3981,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1505 (Server Software Component) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1505 (Server Software Component) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -3996,10 +3996,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1505.003 (Web Shell) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1505.003 (Web Shell) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -4011,10 +4011,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1518 (Software Discovery) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1518 (Software Discovery) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -4026,10 +4026,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1518.001 (Security Software Discovery) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1518.001 (Security Software Discovery) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -4116,10 +4116,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-exfiltration-indicators",
+          "id": "webapp-hunting-for-data-exfiltration-indicators",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1537 (Transfer Data to Cloud Account) in red-hunting-for-data-exfiltration-indicators."
+            "note": "Covers ATT&CK technique T1537 (Transfer Data to Cloud Account) in webapp-hunting-for-data-exfiltration-indicators."
           }
         }
       ],
@@ -4176,10 +4176,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-analyzing-uefi-bootkit-persistence",
+          "id": "re-analyzing-uefi-bootkit-persistence",
           "evidence": {
             "locator": "### Step 7: Document UEFI Bootkit Analysis Findings",
-            "note": "Covers ATT&CK technique T1542.001 (System Firmware) in red-analyzing-uefi-bootkit-persistence."
+            "note": "Covers ATT&CK technique T1542.001 (System Firmware) in re-analyzing-uefi-bootkit-persistence."
           }
         }
       ],
@@ -4191,10 +4191,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-analyzing-uefi-bootkit-persistence",
+          "id": "re-analyzing-uefi-bootkit-persistence",
           "evidence": {
             "locator": "### Step 7: Document UEFI Bootkit Analysis Findings",
-            "note": "Covers ATT&CK technique T1542.003 (Bootkit) in red-analyzing-uefi-bootkit-persistence."
+            "note": "Covers ATT&CK technique T1542.003 (Bootkit) in re-analyzing-uefi-bootkit-persistence."
           }
         }
       ],
@@ -4206,10 +4206,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# List tests for a tactic (e.g., Persistence)",
-            "note": "Covers ATT&CK technique T1543 (Create or Modify System Process) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1543 (Create or Modify System Process) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -4236,10 +4236,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-unusual-service-installations",
+          "id": "webapp-hunting-for-unusual-service-installations",
           "evidence": {
             "locator": "## Overview",
-            "note": "Covers ATT&CK technique T1543.003 (Windows Service) in red-hunting-for-unusual-service-installations."
+            "note": "Covers ATT&CK technique T1543.003 (Windows Service) in webapp-hunting-for-unusual-service-installations."
           }
         }
       ],
@@ -4251,10 +4251,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# List tests for a tactic (e.g., Persistence)",
-            "note": "Covers ATT&CK technique T1546 (Event Triggered Execution) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1546 (Event Triggered Execution) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -4266,10 +4266,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# List tests for a tactic (e.g., Persistence)",
-            "note": "Covers ATT&CK technique T1546.001 (Change Default File Association) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1546.001 (Change Default File Association) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -4281,10 +4281,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-persistence-via-wmi-subscriptions",
+          "id": "webapp-hunting-for-persistence-via-wmi-subscriptions",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1546.003 (Windows Management Instrumentation Event Subscription) in red-hunting-for-persistence-via-wmi-subscriptions."
+            "note": "Covers ATT&CK technique T1546.003 (Windows Management Instrumentation Event Subscription) in webapp-hunting-for-persistence-via-wmi-subscriptions."
           }
         }
       ],
@@ -4296,10 +4296,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-persistence-mechanisms-in-windows",
+          "id": "webapp-hunting-for-persistence-mechanisms-in-windows",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1546.010 (AppInit DLLs) in red-hunting-for-persistence-mechanisms-in-windows."
+            "note": "Covers ATT&CK technique T1546.010 (AppInit DLLs) in webapp-hunting-for-persistence-mechanisms-in-windows."
           }
         }
       ],
@@ -4311,10 +4311,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-persistence-mechanisms-in-windows",
+          "id": "webapp-hunting-for-persistence-mechanisms-in-windows",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1546.012 (Image File Execution Options Injection) in red-hunting-for-persistence-mechanisms-in-windows."
+            "note": "Covers ATT&CK technique T1546.012 (Image File Execution Options Injection) in webapp-hunting-for-persistence-mechanisms-in-windows."
           }
         }
       ],
@@ -4326,10 +4326,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-persistence-mechanisms-in-windows",
+          "id": "webapp-hunting-for-persistence-mechanisms-in-windows",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1546.015 (Component Object Model Hijacking) in red-hunting-for-persistence-mechanisms-in-windows."
+            "note": "Covers ATT&CK technique T1546.015 (Component Object Model Hijacking) in webapp-hunting-for-persistence-mechanisms-in-windows."
           }
         }
       ],
@@ -4341,10 +4341,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-registry-persistence-mechanisms",
+          "id": "webapp-hunting-for-registry-persistence-mechanisms",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1547 (Boot or Logon Autostart Execution) in red-hunting-for-registry-persistence-mechanisms."
+            "note": "Covers ATT&CK technique T1547 (Boot or Logon Autostart Execution) in webapp-hunting-for-registry-persistence-mechanisms."
           }
         }
       ],
@@ -4356,10 +4356,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-startup-folder-persistence",
+          "id": "webapp-hunting-for-startup-folder-persistence",
           "evidence": {
             "locator": "## Overview",
-            "note": "Covers ATT&CK technique T1547.001 (Registry Run Keys / Startup Folder) in red-hunting-for-startup-folder-persistence."
+            "note": "Covers ATT&CK technique T1547.001 (Registry Run Keys / Startup Folder) in webapp-hunting-for-startup-folder-persistence."
           }
         }
       ],
@@ -4371,10 +4371,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-persistence-mechanisms-in-windows",
+          "id": "webapp-hunting-for-persistence-mechanisms-in-windows",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1547.004 (Winlogon Helper DLL) in red-hunting-for-persistence-mechanisms-in-windows."
+            "note": "Covers ATT&CK technique T1547.004 (Winlogon Helper DLL) in webapp-hunting-for-persistence-mechanisms-in-windows."
           }
         }
       ],
@@ -4386,10 +4386,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-persistence-mechanisms-in-windows",
+          "id": "webapp-hunting-for-persistence-mechanisms-in-windows",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1547.005 (Security Support Provider) in red-hunting-for-persistence-mechanisms-in-windows."
+            "note": "Covers ATT&CK technique T1547.005 (Security Support Provider) in webapp-hunting-for-persistence-mechanisms-in-windows."
           }
         }
       ],
@@ -4401,10 +4401,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1547.009 (Shortcut Modification) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1547.009 (Shortcut Modification) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -4416,10 +4416,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1548-abuse-elevation-control-mechanism",
+          "id": "webapp-detecting-t1548-abuse-elevation-control-mechanism",
           "evidence": {
             "locator": "# Detecting T1548 Abuse Elevation Control Mechanism",
-            "note": "Covers ATT&CK technique T1548 (Abuse Elevation Control Mechanism) in red-detecting-t1548-abuse-elevation-control-mechanism."
+            "note": "Covers ATT&CK technique T1548 (Abuse Elevation Control Mechanism) in webapp-detecting-t1548-abuse-elevation-control-mechanism."
           }
         }
       ],
@@ -4431,10 +4431,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-privilege-escalation-in-kubernetes-pods",
+          "id": "webapp-detecting-privilege-escalation-in-kubernetes-pods",
           "evidence": {
             "locator": "# /etc/falco/rules.d/privesc-detection.yaml",
-            "note": "Covers ATT&CK technique T1548.001 (Setuid and Setgid) in red-detecting-privilege-escalation-in-kubernetes-pods."
+            "note": "Covers ATT&CK technique T1548.001 (Setuid and Setgid) in webapp-detecting-privilege-escalation-in-kubernetes-pods."
           }
         }
       ],
@@ -4446,10 +4446,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1548-abuse-elevation-control-mechanism",
+          "id": "webapp-detecting-t1548-abuse-elevation-control-mechanism",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1548.002 (Bypass User Account Control) in red-detecting-t1548-abuse-elevation-control-mechanism."
+            "note": "Covers ATT&CK technique T1548.002 (Bypass User Account Control) in webapp-detecting-t1548-abuse-elevation-control-mechanism."
           }
         }
       ],
@@ -4461,10 +4461,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1548-abuse-elevation-control-mechanism",
+          "id": "webapp-detecting-t1548-abuse-elevation-control-mechanism",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1548.003 (Sudo and Sudo Caching) in red-detecting-t1548-abuse-elevation-control-mechanism."
+            "note": "Covers ATT&CK technique T1548.003 (Sudo and Sudo Caching) in webapp-detecting-t1548-abuse-elevation-control-mechanism."
           }
         }
       ],
@@ -4476,10 +4476,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-t1548-abuse-elevation-control-mechanism",
+          "id": "webapp-detecting-t1548-abuse-elevation-control-mechanism",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1548.004 (Elevated Execution with Prompt) in red-detecting-t1548-abuse-elevation-control-mechanism."
+            "note": "Covers ATT&CK technique T1548.004 (Elevated Execution with Prompt) in webapp-detecting-t1548-abuse-elevation-control-mechanism."
           }
         }
       ],
@@ -4656,10 +4656,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-analyzing-uefi-bootkit-persistence",
+          "id": "re-analyzing-uefi-bootkit-persistence",
           "evidence": {
             "locator": "## Output Format",
-            "note": "Covers ATT&CK technique T1553.006 (Code Signing Policy Modification) in red-analyzing-uefi-bootkit-persistence."
+            "note": "Covers ATT&CK technique T1553.006 (Code Signing Policy Modification) in re-analyzing-uefi-bootkit-persistence."
           }
         }
       ],
@@ -4761,10 +4761,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-ntlm-relay-with-event-correlation",
+          "id": "webapp-detecting-ntlm-relay-with-event-correlation",
           "evidence": {
             "locator": "## When to Use",
-            "note": "Covers ATT&CK technique T1557.001 (Name Resolution Poisoning and SMB Relay) in red-detecting-ntlm-relay-with-event-correlation."
+            "note": "Covers ATT&CK technique T1557.001 (Name Resolution Poisoning and SMB Relay) in webapp-detecting-ntlm-relay-with-event-correlation."
           }
         }
       ],
@@ -4821,10 +4821,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-analyzing-windows-event-logs-in-splunk",
+          "id": "webapp-analyzing-windows-event-logs-in-splunk",
           "evidence": {
             "locator": "### Step 6: Create Lookup Tables for Enrichment",
-            "note": "Covers ATT&CK technique T1558 (Steal or Forge Kerberos Tickets) in red-analyzing-windows-event-logs-in-splunk."
+            "note": "Covers ATT&CK technique T1558 (Steal or Forge Kerberos Tickets) in webapp-analyzing-windows-event-logs-in-splunk."
           }
         }
       ],
@@ -4836,10 +4836,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-golden-ticket-forgery",
+          "id": "webapp-detecting-golden-ticket-forgery",
           "evidence": {
             "locator": "## Overview",
-            "note": "Covers ATT&CK technique T1558.001 (Golden Ticket) in red-detecting-golden-ticket-forgery."
+            "note": "Covers ATT&CK technique T1558.001 (Golden Ticket) in webapp-detecting-golden-ticket-forgery."
           }
         }
       ],
@@ -4896,10 +4896,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-staging-before-exfiltration",
+          "id": "webapp-hunting-for-data-staging-before-exfiltration",
           "evidence": {
             "locator": "## Expected Output",
-            "note": "Covers ATT&CK technique T1560 (Archive Collected Data) in red-hunting-for-data-staging-before-exfiltration."
+            "note": "Covers ATT&CK technique T1560 (Archive Collected Data) in webapp-hunting-for-data-staging-before-exfiltration."
           }
         }
       ],
@@ -5016,10 +5016,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-exfiltration-indicators",
+          "id": "webapp-hunting-for-data-exfiltration-indicators",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1567 (Exfiltration Over Web Service) in red-hunting-for-data-exfiltration-indicators."
+            "note": "Covers ATT&CK technique T1567 (Exfiltration Over Web Service) in webapp-hunting-for-data-exfiltration-indicators."
           }
         }
       ],
@@ -5031,10 +5031,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-data-exfiltration-indicators",
+          "id": "webapp-hunting-for-data-exfiltration-indicators",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1567.002 (Exfiltration to Cloud Storage) in red-hunting-for-data-exfiltration-indicators."
+            "note": "Covers ATT&CK technique T1567.002 (Exfiltration to Cloud Storage) in webapp-hunting-for-data-exfiltration-indicators."
           }
         }
       ],
@@ -5046,10 +5046,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-command-and-control-beaconing",
+          "id": "webapp-hunting-for-command-and-control-beaconing",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1568 (Dynamic Resolution) in red-hunting-for-command-and-control-beaconing."
+            "note": "Covers ATT&CK technique T1568 (Dynamic Resolution) in webapp-hunting-for-command-and-control-beaconing."
           }
         }
       ],
@@ -5061,10 +5061,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-beaconing-with-frequency-analysis",
+          "id": "webapp-hunting-for-beaconing-with-frequency-analysis",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1568.002 (Domain Generation Algorithms) in red-hunting-for-beaconing-with-frequency-analysis."
+            "note": "Covers ATT&CK technique T1568.002 (Domain Generation Algorithms) in webapp-hunting-for-beaconing-with-frequency-analysis."
           }
         }
       ],
@@ -5076,10 +5076,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# Tactic-to-technique mapping for common techniques (subset for illustration)",
-            "note": "Covers ATT&CK technique T1569 (System Services) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1569 (System Services) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -5121,10 +5121,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-unusual-network-connections",
+          "id": "webapp-hunting-for-unusual-network-connections",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1571 (Non-Standard Port) in red-hunting-for-unusual-network-connections."
+            "note": "Covers ATT&CK technique T1571 (Non-Standard Port) in webapp-hunting-for-unusual-network-connections."
           }
         }
       ],
@@ -5136,10 +5136,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-hunting-for-dns-tunneling-with-zeek",
+          "id": "webapp-hunting-for-dns-tunneling-with-zeek",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1572 (Protocol Tunneling) in red-hunting-for-dns-tunneling-with-zeek."
+            "note": "Covers ATT&CK technique T1572 (Protocol Tunneling) in webapp-hunting-for-dns-tunneling-with-zeek."
           }
         }
       ],
@@ -5211,10 +5211,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-purple-team-atomic-testing",
+          "id": "webapp-performing-purple-team-atomic-testing",
           "evidence": {
             "locator": "# List tests for a tactic (e.g., Persistence)",
-            "note": "Covers ATT&CK technique T1574.001 (DLL) in red-performing-purple-team-atomic-testing."
+            "note": "Covers ATT&CK technique T1574.001 (DLL) in webapp-performing-purple-team-atomic-testing."
           }
         }
       ],
@@ -5256,10 +5256,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-privilege-escalation-attempts",
+          "id": "webapp-detecting-privilege-escalation-attempts",
           "evidence": {
             "locator": "## Key Concepts",
-            "note": "Covers ATT&CK technique T1574.009 (Path Interception by Unquoted Path) in red-detecting-privilege-escalation-attempts."
+            "note": "Covers ATT&CK technique T1574.009 (Path Interception by Unquoted Path) in webapp-detecting-privilege-escalation-attempts."
           }
         }
       ],
@@ -5271,10 +5271,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-performing-cloud-incident-containment-procedures",
+          "id": "webapp-performing-cloud-incident-containment-procedures",
           "evidence": {
             "locator": "## MITRE ATT&CK Cloud Techniques",
-            "note": "Covers ATT&CK technique T1578 (Modify Cloud Compute Infrastructure) in red-performing-cloud-incident-containment-procedures."
+            "note": "Covers ATT&CK technique T1578 (Modify Cloud Compute Infrastructure) in webapp-performing-cloud-incident-containment-procedures."
           }
         }
       ],
@@ -5631,10 +5631,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-container-escape-with-falco-rules",
+          "id": "webapp-detecting-container-escape-with-falco-rules",
           "evidence": {
             "locator": "### Rule 3: Detect Privileged Container Launch",
-            "note": "Covers ATT&CK technique T1610 (Deploy Container) in red-detecting-container-escape-with-falco-rules."
+            "note": "Covers ATT&CK technique T1610 (Deploy Container) in webapp-detecting-container-escape-with-falco-rules."
           }
         }
       ],
@@ -5646,10 +5646,10 @@
       "domain": "red",
       "skills": [
         {
-          "id": "red-detecting-container-escape-attempts",
+          "id": "webapp-detecting-container-escape-attempts",
           "evidence": {
             "locator": "### Common Container Escape Vectors",
-            "note": "Covers ATT&CK technique T1611 (Escape to Host) in red-detecting-container-escape-attempts."
+            "note": "Covers ATT&CK technique T1611 (Escape to Host) in webapp-detecting-container-escape-attempts."
           }
         }
       ],
@@ -6081,7 +6081,7 @@
       "domain": "webapp",
       "skills": [
         {
-          "id": "webapp-validating-backup-integrity-for-recovery",
+          "id": "re-validating-backup-integrity-for-recovery",
           "evidence": {
             "locator": "## When to Use",
             "note": "Testing data integrity checks in business workflows."
@@ -6246,7 +6246,7 @@
       "domain": "webapp",
       "skills": [
         {
-          "id": "webapp-testing-for-open-redirect-vulnerabilities",
+          "id": "red-testing-for-open-redirect-vulnerabilities",
           "evidence": {
             "locator": "## When to Use",
             "note": "Testing client-side and URL redirection vulnerabilities."
@@ -6306,7 +6306,7 @@
       "domain": "webapp",
       "skills": [
         {
-          "id": "webapp-performing-clickjacking-attack-test",
+          "id": "red-performing-clickjacking-attack-test",
           "evidence": {
             "locator": "## When to Use",
             "note": "Clickjacking / frame-ancestors testing."
@@ -6486,7 +6486,7 @@
       "domain": "webapp",
       "skills": [
         {
-          "id": "webapp-performing-http-parameter-pollution-attack",
+          "id": "red-performing-http-parameter-pollution-attack",
           "evidence": {
             "locator": "## When to Use",
             "note": "Auditing HTTP methods, verb tampering, and parameter handling."
@@ -6786,7 +6786,7 @@
       "domain": "webapp",
       "skills": [
         {
-          "id": "webapp-conducting-external-reconnaissance-with-osint",
+          "id": "red-conducting-external-reconnaissance-with-osint",
           "evidence": {
             "locator": "## When to Use",
             "note": "Conducting search engine reconnaissance and OSINT for information leakage."
@@ -6966,7 +6966,7 @@
       "domain": "webapp",
       "skills": [
         {
-          "id": "webapp-performing-http-parameter-pollution-attack",
+          "id": "red-performing-http-parameter-pollution-attack",
           "evidence": {
             "locator": "## When to Use",
             "note": "Testing HTTP verb tampering and request parameter handling."
@@ -6981,7 +6981,7 @@
       "domain": "webapp",
       "skills": [
         {
-          "id": "webapp-performing-http-parameter-pollution-attack",
+          "id": "red-performing-http-parameter-pollution-attack",
           "evidence": {
             "locator": "## When to Use",
             "note": "HTTP parameter pollution testing."
@@ -7116,7 +7116,7 @@
       "domain": "webapp",
       "skills": [
         {
-          "id": "webapp-performing-binary-exploitation-analysis",
+          "id": "re-performing-binary-exploitation-analysis",
           "evidence": {
             "locator": "## When to Use",
             "note": "Testing format string injection vulnerabilities in native services."
@@ -7208,7 +7208,7 @@
         {
           "id": "webapp-performing-ssrf-vulnerability-exploitation",
           "evidence": {
-            "locator": "## Helper prerequisites",
+            "locator": "## When to Use",
             "note": "Server-side request forgery testing."
           }
         }

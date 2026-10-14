@@ -24,6 +24,7 @@ from arsenal.corpus.catalog import (
 )
 from arsenal.corpus.coverage import build_coverage_report
 from arsenal.corpus.dedup import (
+    apply_tier_b_aliases,
     detect_tier_a_collision_groups,
     detect_tier_b_groups,
     format_dedup_summary,
@@ -435,6 +436,30 @@ def handle_skills(ctx: Context) -> int:
 
         aliases_file = repo_root / "presets/skills/dedup-aliases.json"
         aliases_data = load_tier_b_aliases(aliases_file)
+
+        apply_aliases = bool(ctx.values.get("apply-aliases") or ctx.values.get("apply_aliases"))
+        apply_alias = ctx.values.get("apply-alias") or ctx.values.get("apply_alias")
+        applied_result: dict[str, Any] | None = None
+
+        if (apply_aliases or apply_alias) and not is_write:
+            msg = "skills dedup --apply-aliases/--apply-alias requires --write when invoked; refusing to mutate."
+            return ctx.result({"requiredFlag": "--write"}, code=ExitCodes.MUTATION_REFUSED, errors=[msg])
+
+        if (apply_aliases or apply_alias) and is_write:
+            applied_result = apply_tier_b_aliases(
+                corpus_dir,
+                manifest_path,
+                aliases_data,
+                only_key=str(apply_alias) if apply_alias else None,
+            )
+            if applied_result.get("errors"):
+                return ctx.result(applied_result, code=ExitCodes.CHECK_FAILURE, errors=applied_result["errors"])
+            if manifest_path.is_file():
+                try:
+                    manifest_data = json.loads(manifest_path.read_text(encoding="utf-8"))
+                except Exception:
+                    manifest_data = None
+
         skill_names = {d.name for d in corpus_dir.iterdir() if d.is_dir()} if corpus_dir.is_dir() else set()
         tier_b_groups = detect_tier_b_groups(skill_names, aliases_data)
         all_groups = tier_a_groups + tier_b_groups
@@ -443,19 +468,26 @@ def handle_skills(ctx: Context) -> int:
         apply_tier_a = bool(ctx.values.get("apply-tier-a") or ctx.values.get("applyTierA"))
         if apply_tier_a and is_write and manifest_data and manifest_path.is_file():
             from arsenal.corpus.manifest import serialize_corpus_manifest
-            manifest_data["dedup_groups"] = all_groups
+            manifest_data["dedup_groups"] = [g for g in all_groups if g.get("applied")]
             manifest_path.write_text(serialize_corpus_manifest(manifest_data), encoding="utf-8")
 
-        return ctx.result(
-            {
-                "summary": summary,
-                "tierAGroupsCount": len(tier_a_groups),
-                "tierBGroupsCount": len(tier_b_groups),
-                "tierAGroups": tier_a_groups[:30],
-                "tierBGroups": tier_b_groups,
-            },
-            code=ExitCodes.SUCCESS,
-        )
+        payload: dict[str, Any] = {
+            "summary": summary,
+            "tierAGroupsCount": len(tier_a_groups),
+            "tierBGroupsCount": len(tier_b_groups),
+            "tierBAppliedCount": sum(1 for g in tier_b_groups if g.get("applied")),
+            "tierBPendingCount": sum(1 for g in tier_b_groups if not g.get("applied")),
+            "tierAGroups": tier_a_groups[:30],
+            "tierBGroups": tier_b_groups[:50],
+        }
+        if applied_result is not None:
+            payload["appliedAliases"] = {
+                "count": len(applied_result.get("applied", [])),
+                "manifestEntriesUpdated": applied_result.get("manifestEntriesUpdated", 0),
+                "dedupGroupsAdded": applied_result.get("dedupGroupsAdded", 0),
+                "skipped": applied_result.get("skipped", []),
+            }
+        return ctx.result(payload, code=ExitCodes.SUCCESS)
 
     # 13. scripts-audit ([--fix] [--write] [--domain <dom>] [--skill <id>])
     if subcommand == "scripts-audit":

@@ -23,40 +23,53 @@ var BOUNDING_LIMITS = {
   HEAD_LINES: 20,
   TAIL_LINES: 20
 };
+function utf8ByteLength(codePoint) {
+  if (codePoint < 128)
+    return 1;
+  if (codePoint < 2048)
+    return 2;
+  if (codePoint < 65536)
+    return 3;
+  return 4;
+}
 function truncateHeadToByteBudget(str, maxBytes) {
   if (maxBytes <= 0)
     return "";
-  const encoder = new TextEncoder;
-  let currentBytes = 0;
-  let result = "";
-  for (const char of str) {
-    const charBytes = encoder.encode(char).byteLength;
-    if (currentBytes + charBytes > maxBytes) {
+  let usedBytes = 0;
+  let index = 0;
+  while (index < str.length) {
+    const codePoint = str.codePointAt(index);
+    const bytes = utf8ByteLength(codePoint);
+    if (usedBytes + bytes > maxBytes)
       break;
-    }
-    result += char;
-    currentBytes += charBytes;
+    usedBytes += bytes;
+    index += codePoint > 65535 ? 2 : 1;
   }
-  return result;
+  return index === str.length ? str : str.slice(0, index);
 }
 function truncateTailToByteBudget(str, maxBytes) {
   if (maxBytes <= 0)
     return "";
-  const encoder = new TextEncoder;
-  const chars = Array.from(str);
-  let currentBytes = 0;
-  const picked = [];
-  for (let i = chars.length - 1;i >= 0; i--) {
-    const char = chars[i];
-    const charBytes = encoder.encode(char).byteLength;
-    if (currentBytes + charBytes > maxBytes) {
-      break;
+  let usedBytes = 0;
+  let index = str.length;
+  while (index > 0) {
+    const low = str.charCodeAt(index - 1);
+    let codePoint = low;
+    let step = 1;
+    if (low >= 56320 && low <= 57343 && index >= 2) {
+      const high = str.charCodeAt(index - 2);
+      if (high >= 55296 && high <= 56319) {
+        codePoint = (high - 55296) * 1024 + (low - 56320) + 65536;
+        step = 2;
+      }
     }
-    picked.push(char);
-    currentBytes += charBytes;
+    const bytes = utf8ByteLength(codePoint);
+    if (usedBytes + bytes > maxBytes)
+      break;
+    usedBytes += bytes;
+    index -= step;
   }
-  picked.reverse();
-  return picked.join("");
+  return index === 0 ? str : str.slice(index);
 }
 function boundAndStore(rawInput, evidenceDir, ext = "txt") {
   const bytes = typeof rawInput === "string" ? new TextEncoder().encode(rawInput) : rawInput;

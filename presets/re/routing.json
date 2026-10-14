@@ -22,7 +22,13 @@
     "R7",
     "R8",
     "R9",
-    "R10"
+    "R10",
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R15",
+    "R16"
   ],
   "routes": {
     "R1": {
@@ -62,7 +68,7 @@
     },
     "R6": {
       "id": "R6",
-      "leaf": "re-conducting-memory-forensics-with-volatility",
+      "leaf": "re-performing-memory-forensics-with-volatility3",
       "category": "forensics",
       "must": "memory.*forensic|volatility|lime|memory.*dump.*analys",
       "note": "Memory forensics acquisition and volatility analysis"
@@ -94,6 +100,48 @@
       "category": "cryptography",
       "must": "certificate.*authority|openssl.*ca\\b|pki|x509|hsm",
       "note": "PKI, certificate authority, and key storage configuration"
+    },
+    "R11": {
+      "id": "R11",
+      "leaf": "re-reverse-engineering",
+      "category": "binary-analysis",
+      "must": "anti-?debug.*bypass|anti-?analysis|dynamic.*debug|ptrace.*bypass|beingdebugged",
+      "note": "Dynamic debugging through anti-analysis and debugger detection protections"
+    },
+    "R12": {
+      "id": "R12",
+      "leaf": "re-binary-diff",
+      "category": "binary-analysis",
+      "must": "binary.*diff|symbol.*migration|cross-?version.*diff|diffing.*executable",
+      "note": "Binary differential analysis and cross-version symbol migration"
+    },
+    "R13": {
+      "id": "R13",
+      "leaf": "re-performing-return-oriented-programming",
+      "category": "exploitation",
+      "must": "arm64.*exploit|arm64.*rop|aarch64.*pwn|arm64.*pwn",
+      "note": "ARM64 binary exploitation, ROP chain construction, and gadget alignment"
+    },
+    "R14": {
+      "id": "R14",
+      "leaf": "re-performing-firmware-extraction-with-binwalk",
+      "category": "firmware",
+      "must": "binwalk|unblob|sasquatch|firmware.*extraction|unpack.*rootfs",
+      "note": "Firmware unpacking, filesystem extraction, and archive decompression"
+    },
+    "R15": {
+      "id": "R15",
+      "leaf": "re-reverse-engineering",
+      "category": "binary-analysis",
+      "must": "symbolic.*execution|\\bangr\\b|path.*exploration|constraint.*solv|z3.*solver",
+      "note": "Symbolic execution, constraint solving, and binary path exploration with angr"
+    },
+    "R16": {
+      "id": "R16",
+      "leaf": "re-performing-cryptographic-audit-of-application",
+      "category": "cryptography",
+      "must": "crypto.*audit|cryptographic.*audit|weak.*crypto.*primitive|insecure.*encryption.*mode",
+      "note": "Cryptographic implementation audit and primitive analysis"
     }
   }
 }
