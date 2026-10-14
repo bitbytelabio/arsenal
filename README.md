@@ -4,7 +4,7 @@
 
 **Plugin-First Offensive Security & Reverse Engineering Harness for Oh My Pi (OMP)**
 
-[![Version](https://img.shields.io/badge/version-4.0.0-10b981?style=flat-square)](package.json)
+[![Version](https://img.shields.io/badge/version-4.0.1-10b981?style=flat-square)](package.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Python CLI](https://img.shields.io/badge/CLI-Python-3776ab?style=flat-square&logo=python)](pyproject.toml)
 [![OMP Runtime: TypeScript](https://img.shields.io/badge/OMP%20runtime-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
@@ -98,9 +98,27 @@ Arsenal provisions five domain specialists. Each agent enforces strict Operation
 
 ---
 
+## OMP Magic Keywords
+
+OMP recognizes four exact lowercase, standalone words in the operator's original prompt or expanded slash command. These are turn-scoped OMP controls; they are not Arsenal skill instructions and do not activate when copied into synthetic subagent handoffs, skill files, or rules.
+
+| Keyword | Use |
+|---|---|
+| `ultrathink` | Force the highest supported reasoning effort for complex threat models and failure analysis. |
+| `orchestrate` | Enable OMP's multi-agent orchestration contract for substantial parallel work. |
+| `workflowz` | Use the persistent Eval-kernel workflow for broad research, reviews, and migrations when `eval` and `task` are available. |
+| `jevify` | Batch-classify long homogeneous audit lists with a fixed rubric before opening flagged items. |
+
+Use the exact lowercase word as normal prose, not inside a fenced code block or inline code span. Recommended operator patterns: `orchestrate` for `/arsenal-engage`, `jevify` for `/arsenal-review`, and `workflowz` for `/arsenal-skill-update`. Add `ultrathink` when the engagement requires unusually deep threat-model or evidence reasoning.
+
+Reference: [OMP Magic Keywords](https://github.com/can1357/oh-my-pi/blob/main/docs/magic-keywords.md).
+
+---
+
 ## Operational Slash Commands
 
 Execute structured engagements through standard slash commands supported inside Oh My Pi:
+
 
 | Command | Lifecycle Phase | Operational Function |
 |---|---|---|

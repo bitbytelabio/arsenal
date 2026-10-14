@@ -10,6 +10,8 @@ Audit active assessment case files for evidence continuity, orphaned receipts, a
 /arsenal-review [--strict] [--verify-hashes] [--fix]
 ```
 
+Operator optimization: use the standalone keyword `jevify` in the original request when this review contains a long homogeneous list of receipts, validation results, or integrity findings.
+
 ## Description
 Run `arsenal case review --case-root <workspace> --strict --verify-hashes --json`, then `arsenal evidence verify --repo <workspace> --json`. Review case traceability and cryptographic integrity separately before final reporting; do not infer scope compliance merely from either check.
 

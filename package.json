@@ -1,6 +1,6 @@
 {
   "name": "@bitbytelabio/arsenal",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Arsenal Security Engagement Harness Plugin for Oh My Pi; Python CLI via uv",
   "license": "MIT",
   "type": "module",

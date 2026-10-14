@@ -4,7 +4,7 @@
 
 **Bộ khung khai thác bảo mật & dịch ngược mã nguồn (Plugin-First Harness) cho Oh My Pi (OMP)**
 
-[![Phiên bản](https://img.shields.io/badge/phiên%20bản-4.0.0-10b981?style=flat-square)](package.json)
+[![Phiên bản](https://img.shields.io/badge/phiên%20bản-4.0.1-10b981?style=flat-square)](package.json)
 [![Giấy phép: MIT](https://img.shields.io/badge/giấy%20phép-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Python CLI](https://img.shields.io/badge/CLI-Python-3776ab?style=flat-square&logo=python)](pyproject.toml)
 [![OMP Runtime: TypeScript](https://img.shields.io/badge/OMP%20runtime-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
@@ -98,9 +98,27 @@ Arsenal cung cấp năm tác tử chuyên gia theo miền chuyên sâu. Mỗi t�
 
 ---
 
+## Magic Keywords của OMP
+
+OMP nhận diện bốn từ độc lập, viết thường chính xác trong prompt gốc của người vận hành hoặc slash command sau khi được mở rộng. Đây là control theo từng lượt của OMP; không phải chỉ thị cho skill Arsenal và sẽ **không** kích hoạt khi chép vào handoff của subagent, file skill hoặc rules.
+
+| Keyword | Tác dụng |
+|---|---|
+| `ultrathink` | Buộc mức suy luận cao nhất mà model hỗ trợ cho threat model và phân tích lỗi phức tạp. |
+| `orchestrate` | Bật contract điều phối multi-agent của OMP cho công việc lớn có thể chạy song song. |
+| `workflowz` | Dùng workflow trên Eval kernel cho research, review và migration diện rộng khi có `eval` và `task`. |
+| `jevify` | Phân loại hàng loạt danh sách audit đồng nhất bằng rubric cố định trước khi đọc các mục bị đánh dấu. |
+
+Dùng đúng từ viết thường như prose thông thường, không đặt trong fenced code block hoặc inline code span. Pattern khuyến nghị: `orchestrate` cho `/arsenal-engage`, `jevify` cho `/arsenal-review`, `workflowz` cho `/arsenal-skill-update`; thêm `ultrathink` khi cần threat model hoặc suy luận evidence sâu hơn.
+
+Tham chiếu: [OMP Magic Keywords](https://github.com/can1357/oh-my-pi/blob/main/docs/magic-keywords.md).
+
+---
+
 ## Danh mục Slash Commands Tác chiến
 
 Điều phối các chiến dịch đánh giá an ninh đa giai đoạn thông qua hệ thống slash commands chuẩn hóa trong Oh My Pi:
+
 
 | Lệnh | Giai đoạn Vòng đời | Chức năng Vận hành |
 |---|---|---|

@@ -17,3 +17,8 @@ Arsenal structures security assessments across exactly six explicit roles:
 ## 3. Tool Execution & Guidance
 - Tier 1 domain routers are available in the base prompt.
 - Tier 3 leaf playbooks are retrieved on demand using \`skill_search\` and \`skill_load\`.
+
+## 4. OMP Magic-Keyword Boundary
+- OMP magic keywords are recognized only in the operator's original prompt or expanded slash-command text.
+- Do not rely on `ultrathink`, `orchestrate`, `workflowz`, or `jevify` inside skills, rules, or synthetic subagent handoffs; those locations are instructional content, not trigger input.
+- Recommend `orchestrate` for substantial multi-agent engagement work, `workflowz` for broad research or migration workflows, `jevify` for homogeneous audit lists, and `ultrathink` for unusually complex reasoning.

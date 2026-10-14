@@ -517,7 +517,7 @@ export default function routingExtension(pi: ExtensionContext): void {
           query: hostZod.string().describe("Search keywords or technique description"),
           domain: hostZod.enum(["re", "webapp", "mobile", "red"]).optional().describe("Filter playbooks by security domain"),
           category: hostZod.string().optional().describe("Filter playbooks by category"),
-          limit: hostZod.number().int().min(1).max(25).default(10).optional().describe("Maximum matching playbooks to return"),
+          limit: hostZod.number().int().min(1).max(25).default(10).describe("Maximum matching playbooks to return"),
         }) as Record<string, unknown>)
       : {
           type: "object",
@@ -547,8 +547,8 @@ export default function routingExtension(pi: ExtensionContext): void {
       ? (hostZod.object({
           domain: hostZod.enum(["re", "webapp", "mobile", "red"]).optional().describe("Filter playbooks by security domain"),
           category: hostZod.string().optional().describe("Filter playbooks by category"),
-          offset: hostZod.number().int().min(0).default(0).optional().describe("Pagination offset"),
-          limit: hostZod.number().int().min(1).max(100).default(20).optional().describe("Maximum playbooks to return"),
+          offset: hostZod.number().int().min(0).default(0).describe("Pagination offset"),
+          limit: hostZod.number().int().min(1).max(100).default(20).describe("Maximum playbooks to return"),
         }) as Record<string, unknown>)
       : {
           type: "object",

@@ -10,6 +10,8 @@ Initiate and coordinate a structured, multi-phase offensive security evaluation 
 /arsenal-engage --target <target> [--mode <comprehensive|webapp|mobile|red|re>] [--phase <recon|exploit|verify|report>]
 ```
 
+Operator optimization: use the standalone keyword `orchestrate` in the original request for OMP's multi-agent orchestration contract. Add `ultrathink` for unusually complex threat modeling or evidence synthesis. These words must be operator prose; putting them in specialist handoffs does not activate OMP.
+
 ## Description
 This command orchestrates an end-to-end security assessment across five disciplined phases. It mobilizes the `master` orchestrator agent to plan, delegate technical execution to domain specialists (`arsenal-reverse`, `arsenal-web`, `arsenal-mobile`, `arsenal-redteam`), enforce independent verification via `arsenal-verifier`, and compile evidence-backed deliverables.
 

@@ -14,6 +14,8 @@ $ARGUMENTS
 
 You **MUST** consider the user input before proceeding (if not empty).
 
+Operator optimization: use the standalone keyword `workflowz` in the original request for broad skill reviews, migrations, or adversarial coverage across multiple playbooks. The keyword is effective only when OMP has both Eval and task tooling enabled.
+
 ## Fixed Execution Workflow
 
 Follow this seven-step order strictly per `contracts/skill-lifecycle.md` §2:

@@ -12,6 +12,7 @@ Các quy trình trong tài liệu này bám sát quy chuẩn của OMP:
 - [MCP Configuration in OMP](https://github.com/can1357/oh-my-pi/blob/main/docs/mcp-config.md)
 - [Plugin Manager and Installer Plumbing](https://github.com/can1357/oh-my-pi/blob/main/docs/plugin-manager-installer-plumbing.md)
 - [Public Arsenal Marketplace Catalog](https://raw.githubusercontent.com/bitbytelabio/arsenal/main/.omp-plugin/marketplace.json)
+- [OMP Magic Keywords](https://github.com/can1357/oh-my-pi/blob/main/docs/magic-keywords.md)
 
 > **Lưu ý về định danh và bảo chứng**: Arsenal là một bộ harness / plugin độc lập dành cho Oh My Pi, không phải là một plugin được OMP bảo chứng chính thức (not an OMP-endorsed plugin). Các gói cài đặt từ xa luôn cần được người vận hành tự thẩm định trước khi tích hợp vào môi trường bảo mật nhạy cảm.
 
@@ -52,6 +53,14 @@ ARSENAL_PROFILE=/tmp/arsenal-test/agent just verify
 ```
 
 `just build`, `just profile-install` và `just link` cũng chạy độc lập được. Recipe giữ nguyên hành vi merge/conflict của CLI; không tự ép ghi đè file.
+
+## Magic Keywords OMP cho Prompt của Người vận hành
+
+OMP nhận diện chính xác các từ độc lập viết thường `ultrathink`, `orchestrate`, `workflowz` và `jevify` trong prompt gốc của người vận hành cũng như sau khi slash command được mở rộng. Dùng `orchestrate` cho `/arsenal-engage`, `jevify` cho `/arsenal-review`, `workflowz` cho `/arsenal-skill-update`; thêm `ultrathink` khi cần suy luận đặc biệt sâu.
+
+Magic keywords là control theo lượt của OMP, không phải nội dung prompt của Arsenal. Chúng không kích hoạt khi nằm trong skill, rules hoặc handoff tổng hợp của subagent. Giữ chúng là prose độc lập, bên ngoài fenced code block và inline code span.
+
+Xem [tài liệu magic keywords chính thức của OMP](https://github.com/can1357/oh-my-pi/blob/main/docs/magic-keywords.md).
 ---
 ## Runtime Playbook Tác Vụ (Operational Playbook Runtime)
 

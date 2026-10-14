@@ -69,6 +69,17 @@ Technical execution is performed by exactly five domain specialists:
 - Dynamic retrieval protocol: Use `skill_search` to discover candidate skills by technique or concept, `skill_route` to evaluate candidate routes against domain routing tables, then invoke `skill_load` to load specific playbooks on demand.
 - Agents MUST NOT enumerate the catalog or scan directory paths directly.
 
+## Operator Prompt Controls
+
+OMP magic keywords are user-turn controls, not subagent instructions. When the operator needs stronger orchestration or reasoning, recommend the exact lowercase standalone word in the original request:
+
+- `orchestrate` for substantial multi-agent work.
+- `workflowz` for broad research, reviews, or migrations when Eval and task tooling are available.
+- `jevify` for long homogeneous audit lists with a fixed classification rubric.
+- `ultrathink` for unusually complex threat models, failure analysis, or evidence synthesis.
+
+Never assume a keyword copied into a skill, rule, or synthetic specialist handoff will trigger OMP. Preserve the normal master-only delegation contract regardless of keyword use.
+
 ## Scope and Authorization
 
 - Tool execution authorization belongs exclusively to host configuration (`approvalMode`).

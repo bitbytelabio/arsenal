@@ -12,6 +12,7 @@ The procedures described here strictly align with official OMP standards:
 - [MCP Configuration in OMP](https://github.com/can1357/oh-my-pi/blob/main/docs/mcp-config.md)
 - [Plugin Manager and Installer Plumbing](https://github.com/can1357/oh-my-pi/blob/main/docs/plugin-manager-installer-plumbing.md)
 - [Public Arsenal Marketplace Catalog](https://raw.githubusercontent.com/bitbytelabio/arsenal/main/.omp-plugin/marketplace.json)
+- [OMP Magic Keywords](https://github.com/can1357/oh-my-pi/blob/main/docs/magic-keywords.md)
 
 > **Identity & Endorsement Notice**: Arsenal is an independent security engagement harness and plugin designed for Oh My Pi; it is **not an OMP-endorsed plugin**. Third-party remote packages must always be audited by security operators before integration into sensitive assessment environments.
 
@@ -52,6 +53,14 @@ ARSENAL_PROFILE=/tmp/arsenal-test/agent just verify
 ```
 
 `just build`, `just profile-install`, and `just link` can also be run independently. Recipes preserve CLI merge/conflict behavior and never force overwrite files unless explicitly requested.
+
+## OMP Magic Keywords for Operator Prompts
+
+OMP recognizes the exact lowercase standalone words `ultrathink`, `orchestrate`, `workflowz`, and `jevify` in the operator's original prompt and after slash-command expansion. Use `orchestrate` for `/arsenal-engage`, `jevify` for `/arsenal-review`, and `workflowz` for `/arsenal-skill-update`; add `ultrathink` for unusually complex reasoning.
+
+Magic keywords are OMP turn controls, not Arsenal prompt content. They do not fire when embedded in skill files, rules, or synthetic subagent handoffs. Keep them as standalone prose outside fenced code blocks and inline code spans.
+
+See the [official OMP magic-keyword reference](https://github.com/can1357/oh-my-pi/blob/main/docs/magic-keywords.md).
 
 ---
 ## Operational Playbook Runtime
