@@ -211,10 +211,53 @@ export default function budgetExtension(pi: {
       }
     }
   });
-
   // 2. Intercept subagent spawns on before_subagent_spawn
   pi.on("before_subagent_spawn", async (rawEvent: unknown) => {
     const event = rawEvent as SpawnEvent;
-    return globalBudgetTracker.shouldBlockExploratorySpawn(event.agent);
+    return resolveSubagentSpawnResult(event, globalBudgetTracker);
   });
+}
+
+/**
+ * Resolves the spawn result for a subagent lifecycle request.
+ * Enforces financial budget limits and ensures model resolution consistency:
+ * when a subagent is spawned without an explicit requestModel or has resolved
+ * to a generic worker role override (@implementer, @reasoning, @verifier, etc.),
+ * it routes to "@default" to strictly adhere to the profile's default model (e.g. DeepSeek)
+ * instead of falling back to unintended external providers (e.g. GPT).
+ */
+export function resolveSubagentSpawnResult(
+  event: SpawnEvent,
+  tracker: BudgetTracker = globalBudgetTracker
+): SpawnResult {
+  const blockResult = tracker.shouldBlockExploratorySpawn(event.agent);
+  if (blockResult.block) {
+    return blockResult;
+  }
+
+  // Enforce profile default model consistency for Arsenal specialists:
+  // When an Arsenal specialist is spawned without an explicit model parameter or
+  // resolves to a generic role alias, route to "@default" to strictly adhere to the
+  // profile's default model (e.g. DeepSeek) instead of external role fallbacks.
+  // Non-Arsenal agents remain untouched to respect host OMP config boundaries.
+  if (event.agent.startsWith("arsenal-")) {
+    const normalizedRole = event.modelRole?.replace(/^@/, "").toLowerCase();
+    const isGenericWorkerRole =
+      normalizedRole === "implementer" ||
+      normalizedRole === "reasoning" ||
+      normalizedRole === "verifier" ||
+      normalizedRole === "default" ||
+      normalizedRole === "lead" ||
+      normalizedRole === "task";
+    const hasNoExplicitPatterns = !event.patterns || event.patterns.length === 0;
+
+    if (isGenericWorkerRole || hasNoExplicitPatterns) {
+      return {
+        ...blockResult,
+        model: "@default",
+      };
+    }
+  }
+
+  return blockResult;
 }

@@ -124,12 +124,31 @@ function budgetExtension(pi) {
   });
   pi.on("before_subagent_spawn", async (rawEvent) => {
     const event = rawEvent;
-    return globalBudgetTracker.shouldBlockExploratorySpawn(event.agent);
+    return resolveSubagentSpawnResult(event, globalBudgetTracker);
   });
+}
+function resolveSubagentSpawnResult(event, tracker = globalBudgetTracker) {
+  const blockResult = tracker.shouldBlockExploratorySpawn(event.agent);
+  if (blockResult.block) {
+    return blockResult;
+  }
+  if (event.agent.startsWith("arsenal-")) {
+    const normalizedRole = event.modelRole?.replace(/^@/, "").toLowerCase();
+    const isGenericWorkerRole = normalizedRole === "implementer" || normalizedRole === "reasoning" || normalizedRole === "verifier" || normalizedRole === "default" || normalizedRole === "lead" || normalizedRole === "task";
+    const hasNoExplicitPatterns = !event.patterns || event.patterns.length === 0;
+    if (isGenericWorkerRole || hasNoExplicitPatterns) {
+      return {
+        ...blockResult,
+        model: "@default"
+      };
+    }
+  }
+  return blockResult;
 }
 export {
   BudgetTracker,
   budgetExtension as default,
   estimateTokenUsageFromContent,
-  globalBudgetTracker
+  globalBudgetTracker,
+  resolveSubagentSpawnResult
 };

@@ -4,7 +4,7 @@
  */
 
 import { describe, expect, it } from "bun:test";
-import { BudgetTracker, estimateTokenUsageFromContent } from "../plugin/extensions/budget.ts";
+import { BudgetTracker, estimateTokenUsageFromContent, resolveSubagentSpawnResult } from "../plugin/extensions/budget.ts";
 import { createBudgetRecord } from "../src/core/budget.ts";
 import { createContextCheckpoint } from "../src/core/context-checkpoint.ts";
 
@@ -72,6 +72,52 @@ describe("User Story 8: Financial Budget & Spend Governor", () => {
     const allowVer = tracker.shouldBlockExploratorySpawn("arsenal-verifier");
     expect(allowVer.block).toBeUndefined();
     expect(allowVer.note).toContain("Prioritizing verifier task");
+  });
+
+  it("routes subagents to @default to uphold profile default and prevent external fallback drift", () => {
+    const tracker = new BudgetTracker();
+
+    // Specialist spawned with bare role (real OMP event shape) routes to @default
+    const reSpawnBare = resolveSubagentSpawnResult({
+      agent: "arsenal-reverse",
+      modelRole: "reasoning",
+      patterns: ["google-antigravity/claude-opus-4-6:high"],
+    }, tracker);
+    expect(reSpawnBare.model).toBe("@default");
+
+    // Verifier spawned with bare role routes to @default
+    const verSpawnBare = resolveSubagentSpawnResult({
+      agent: "arsenal-verifier",
+      modelRole: "verifier",
+      patterns: ["google-antigravity/claude-sonnet-4-6:high"],
+    }, tracker);
+    expect(verSpawnBare.model).toBe("@default");
+
+    // Backward-compatible with @-prefixed roles
+    const reSpawnPrefixed = resolveSubagentSpawnResult({
+      agent: "arsenal-reverse",
+      modelRole: "@reasoning",
+      patterns: ["google-antigravity/claude-opus-4-6:high"],
+    }, tracker);
+    expect(reSpawnPrefixed.model).toBe("@default");
+
+    // Non-Arsenal generic task() spawn is not hijacked; respects host OMP config
+    const genericTaskSpawn = resolveSubagentSpawnResult({
+      agent: "task",
+      invocationKind: "task",
+      modelRole: "implementer",
+      patterns: ["google-antigravity/gemini-3.8-flash:high"],
+    }, tracker);
+    expect(genericTaskSpawn.model).toBeUndefined();
+
+    // Explicit model requested by user is preserved
+    const customSpawn = resolveSubagentSpawnResult({
+      agent: "arsenal-web",
+      invocationKind: "task",
+      patterns: ["custom-domain/specialist-model"],
+    }, tracker);
+    expect(customSpawn.model).toBeUndefined();
+    expect(customSpawn.block).toBeUndefined();
   });
 
   it("persists budget records formatted to 12 decimal places", () => {

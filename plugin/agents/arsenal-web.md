@@ -1,7 +1,7 @@
 ---
 name: arsenal-web
 description: "Web Application & API Security Specialist. Audits web applications, APIs, auth systems, and cloud-hosted web surfaces."
-model: "@reasoning"
+model: "@default"
 spawns: []
 skills:
   - arsenal-webapp-router

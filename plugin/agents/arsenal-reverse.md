@@ -1,7 +1,7 @@
 ---
 name: arsenal-reverse
 description: "Reverse Engineering & Binary Analysis Specialist. Disassembles, decompiles, and analyzes binary executables, firmware, and protocols."
-model: "@reasoning"
+model: "@default"
 spawns: []
 skills:
   - arsenal-re-router

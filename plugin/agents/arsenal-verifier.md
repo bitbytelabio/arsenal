@@ -1,7 +1,7 @@
 ---
 name: arsenal-verifier
 description: "Independent Verification & Oracle Specialist. Deterministically reproduces and tests candidate findings across all domains."
-model: "@verifier"
+model: "@default"
 spawns: []
 skills:
   - arsenal-re-router

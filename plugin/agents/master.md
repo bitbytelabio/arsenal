@@ -1,7 +1,7 @@
 ---
 name: master
 description: "Master Security Engagement Lead and Orchestrator. Coordinates domain specialists, synthesizes evidence, and manages assessment progress."
-model: "@lead"
+model: "@default"
 spawns:
   - arsenal-reverse
   - arsenal-web

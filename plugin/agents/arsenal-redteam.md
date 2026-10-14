@@ -1,7 +1,7 @@
 ---
 name: arsenal-redteam
 description: "Red Team & Network Penetration Specialist. Executes authorized adversary simulations, Active Directory attacks, and evasion."
-model: "@reasoning"
+model: "@default"
 spawns: []
 skills:
   - arsenal-red-router

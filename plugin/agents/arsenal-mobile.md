@@ -1,7 +1,7 @@
 ---
 name: arsenal-mobile
 description: "Mobile Security Specialist. Analyzes Android and iOS applications, APKs, IPAs, native libraries, and runtime instrumentations."
-model: "@reasoning"
+model: "@default"
 spawns: []
 skills:
   - arsenal-mobile-router
