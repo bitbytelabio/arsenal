@@ -43,7 +43,7 @@ export interface Finding {
   epistemicStatus: EpistemicStatus;
 }
 
-export type SpecialistRole = "sec-re" | "sec-webapp" | "sec-mobile" | "sec-red" | "sec-verifier";
+export type SpecialistRole = "arsenal-reverse" | "arsenal-web" | "arsenal-mobile" | "arsenal-redteam" | "arsenal-verifier";
 export type CoverageJudgement = "covered" | "partial" | "uncovered";
 
 export interface SpecialistHandoff {

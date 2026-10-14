@@ -105,7 +105,7 @@ describe("JSON Schema 2020-12 Validation Suite", () => {
       kind: "evidence_receipt",
       entity_id: "E-000001",
       session_id: "sess-01",
-      actor: "sec-webapp",
+      actor: "arsenal-web",
       recorded_at: "2026-10-08T12:00:00.000Z",
       prev_hash: "0000000000000000000000000000000000000000000000000000000000000000",
       data: {
@@ -143,7 +143,7 @@ describe("JSON Schema 2020-12 Validation Suite", () => {
       affected_target: "https://target.local/api/users",
       cwe_id: "CWE-89",
       rule_id: "rule-sqli-01",
-      discoverer: { role: "sec-webapp", session_id: "sess-01" },
+      discoverer: { role: "arsenal-web", session_id: "sess-01" },
       evidence_ids: ["E-000001"],
       validation_status: "unvalidated",
     };
@@ -156,7 +156,7 @@ describe("JSON Schema 2020-12 Validation Suite", () => {
     const validResult = {
       schema_version: 1,
       finding_id: "F-000001",
-      verifier: { role: "sec-verifier", session_id: "sess-02" },
+      verifier: { role: "arsenal-verifier", session_id: "sess-02" },
       oracle_name: "verify_timing",
       oracle_version: "1.0.0",
       input_artifact_refs: ["art-001"],
@@ -218,7 +218,7 @@ describe("JSON Schema 2020-12 Validation Suite", () => {
   it("compiles and validates cli-envelope.json", () => {
     const validEnvelope = {
       $schema: "https://json-schema.org/draft/2020-12/schema",
-      version: "3.0.0",
+      version: "4.0.0",
       command: "arsenal init",
       status: "success",
       exitCode: 0,

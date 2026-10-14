@@ -1,17 +1,17 @@
-# /sec-verify: Independent Oracle Verification Dispatch
+# /arsenal-verify: Independent Oracle Verification Dispatch
 
-Dispatch the independent `sec-verifier` specialist to validate or refute a candidate security finding using deterministic mathematical and logical oracles.
+Dispatch the independent `arsenal-verifier` specialist to validate or refute a candidate security finding using deterministic mathematical and logical oracles.
 
 ---
 
 ## Usage
 
 ```text
-/sec-verify --finding <finding-id> [--oracle <oracle-type>] [--evidence <receipt-id>]
+/arsenal-verify --finding <finding-id> [--oracle <oracle-type>] [--evidence <receipt-id>]
 ```
 
 ## Description
-Under Arsenal Constitution Principle IV (Independent Verification), no specialist may self-certify its own findings. This command mobilizes `sec-verifier` to evaluate candidate vulnerabilities against falsifiable conditions before any finding is promoted to an executive deliverable.
+Under Arsenal Constitution Principle IV (Independent Verification), no specialist may self-certify its own findings. This command mobilizes `arsenal-verifier` to evaluate candidate vulnerabilities against falsifiable conditions before any finding is promoted to an executive deliverable.
 
 ## Workflow
 

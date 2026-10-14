@@ -15,13 +15,13 @@ from typing import Final
 DOMAINS: Final[tuple[str, ...]] = ("re", "webapp", "mobile", "red")
 
 SPECIALIST_FILE: Final[dict[str, str]] = {
-    "re": "sec-re.md",
-    "webapp": "sec-webapp.md",
-    "mobile": "sec-mobile.md",
-    "red": "sec-red.md",
+    "re": "arsenal-reverse.md",
+    "webapp": "arsenal-web.md",
+    "mobile": "arsenal-mobile.md",
+    "red": "arsenal-redteam.md",
 }
 
-VERIFIER_FILE: Final[str] = "sec-verifier.md"
+VERIFIER_FILE: Final[str] = "arsenal-verifier.md"
 
 REQUIRED_DOMAIN_HEADINGS: Final[tuple[str, ...]] = (
     "Owned Categories",
@@ -186,7 +186,7 @@ def evaluate_specialist_parity(repo_root: Path) -> list[ParityViolation]:
                     )
                 )
 
-    # P-4: sec-verifier owns no category
+    # P-4: arsenal-verifier owns no category
     verifier_path = agents_dir / VERIFIER_FILE
     if verifier_path.is_file():
         v_md = verifier_path.read_text(encoding="utf-8")
@@ -207,7 +207,7 @@ def evaluate_specialist_parity(repo_root: Path) -> list[ParityViolation]:
                     invariant="P-4",
                     domain=None,
                     subject=f"{VERIFIER_FILE}:{','.join(owned)}",
-                    message=f"sec-verifier owns no domain category but lists '{', '.join(owned)}'",
+                    message=f"arsenal-verifier owns no domain category but lists '{', '.join(owned)}'",
                 )
             )
 

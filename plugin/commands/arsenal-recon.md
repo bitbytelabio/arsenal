@@ -1,4 +1,4 @@
-# /sec-recon: Automated Attack Surface Reconnaissance
+# /arsenal-recon: Automated Attack Surface Reconnaissance
 
 Coordinate non-destructive surface mapping and service discovery against authorized in-scope assets.
 
@@ -7,7 +7,7 @@ Coordinate non-destructive surface mapping and service discovery against authori
 ## Usage
 
 ```text
-/sec-recon [--target <domain|ip>] [--depth <quick|deep>]
+/arsenal-recon [--target <domain|ip>] [--depth <quick|deep>]
 ```
 
 ## Description
@@ -27,8 +27,8 @@ Before initiating any network probes, the command validates target authorization
    - Assert read-only / non-destructive testing constraints.
 
 2. **Reconnaissance Dispatch**:
-   - For web targets: Dispatch `sec-webapp` to perform authorized subdomain, HTTP header, TLS, and technology probes through `arsenal exec -- <program> <args...>`.
-   - For network / infrastructure targets: Dispatch `sec-red` to probe authorized ports and services.
+   - For web targets: Dispatch `arsenal-web` to perform authorized subdomain, HTTP header, TLS, and technology probes through `arsenal exec -- <program> <args...>`.
+   - For network / infrastructure targets: Dispatch `arsenal-redteam` to probe authorized ports and services.
 
 3. **Evidence Recording**:
    - Execute commands through `arsenal exec -- <program> <args...>` so Python persists raw outputs and appends evidence receipts.

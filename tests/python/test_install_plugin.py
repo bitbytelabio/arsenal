@@ -9,6 +9,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+from arsenal.build import execute_build
 from arsenal.common import Context, ExitCodes
 from arsenal.installation.plugin import handle_plugin
 
@@ -30,7 +31,7 @@ class TestInstallPlugin(unittest.TestCase):
         self.plugin_dir = self.repo_root / "plugin"
         self.plugin_dir.mkdir(parents=True)
         (self.plugin_dir / "plugin.json").write_text('{"name": "arsenal"}', encoding="utf-8")
-        (self.plugin_dir / "package.json").write_text('{"version": "3.0.2"}', encoding="utf-8")
+        (self.plugin_dir / "package.json").write_text('{"version": "4.0.0"}', encoding="utf-8")
 
     def tearDown(self) -> None:
         self.home_patcher.stop()
@@ -148,6 +149,63 @@ class TestInstallPlugin(unittest.TestCase):
             self.assertFalse(any(".env" in n for n in names))
             self.assertFalse(any("agent.key" in n for n in names))
 
+    def test_build_preserves_source_mcp_json_and_roles(self) -> None:
+        custom_mcp_content = {
+            "mcpServers": {
+                "jshook": {
+                    "type": "stdio",
+                    "command": "npx",
+                    "args": ["-y", "@jshookmcp/jshook@0.3.5"],
+                    "env": {"MCP_TOOL_PROFILE": "search"},
+                },
+                "rea": {"type": "stdio", "command": "bunx", "enabled": True},
+            }
+        }
+        mcp_path = self.plugin_dir / ".mcp.json"
+        mcp_path.write_text(json.dumps(custom_mcp_content, indent=2), encoding="utf-8")
+        initial_bytes = mcp_path.read_bytes()
+
+        corpus_dir = self.repo_root / "src/corpus"
+        presets_dir = self.repo_root / "presets"
+        corpus_dir.mkdir(parents=True)
+        presets_dir.mkdir(parents=True)
+
+        # 1. In-place build does NOT touch source .mcp.json
+        execute_build(
+            target_dir=self.plugin_dir,
+            corpus_dir=corpus_dir,
+            presets_dir=presets_dir,
+            corpus_entries=[],
+            preset_entries=[],
+        )
+        self.assertEqual(mcp_path.read_bytes(), initial_bytes)
+
+        # 2. Build to distinct target copies source .mcp.json verbatim
+        dist_target = self.base_dir / "build_output"
+        dist_target.mkdir(parents=True)
+        execute_build(
+            target_dir=dist_target,
+            corpus_dir=corpus_dir,
+            presets_dir=presets_dir,
+            corpus_entries=[],
+            preset_entries=[],
+        )
+        self.assertEqual((dist_target / ".mcp.json").read_bytes(), initial_bytes)
+
+        # 3. Target plugin.json contains new arsenal-* roles
+        plugin_json = json.loads((dist_target / "plugin.json").read_text(encoding="utf-8"))
+        roles = plugin_json["capabilities"]["roles"]
+        self.assertEqual(
+            roles,
+            [
+                "master",
+                "arsenal-reverse",
+                "arsenal-web",
+                "arsenal-mobile",
+                "arsenal-redteam",
+                "arsenal-verifier",
+            ],
+        )
 
 if __name__ == "__main__":
     unittest.main()

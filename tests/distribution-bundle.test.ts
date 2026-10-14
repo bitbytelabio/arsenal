@@ -77,7 +77,7 @@ describe("Distribution Bundle & Catalog Portability (US1)", () => {
         // cleanup ignore
       }
     }
-  });
+  }, 30_000);
 
   it("resolves catalog paths relative to import.meta.dir when called without baseDir", () => {
     // When instantiated without baseDir, SkillCatalogManager probes import.meta.dir

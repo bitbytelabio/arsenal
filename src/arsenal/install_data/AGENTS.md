@@ -8,11 +8,11 @@ The `master` role is the default, always-selected orchestrator for the Arsenal s
 ## Specialist Roster
 
 Technical execution is performed by exactly five domain specialists:
-- `sec-re`: Reverse engineering, binary analysis, protocol reverse engineering, firmware inspection, and disassembly/decompilation. Selected when the target involves compiled binaries, shared libraries, firmware images, or proprietary binary protocols.
-- `sec-webapp`: Web application security, REST/GraphQL APIs, browser client flaws, and server-side web logic. Selected when the target is a web application, HTTP/WebSocket service, or API endpoint.
-- `sec-mobile`: Mobile application security across Android and iOS platforms, APK/IPA analysis, mobile IPC, local storage, and runtime instrumentation. Selected when the target is an Android or iOS application package or mobile runtime.
-- `sec-red`: Offensive operations, exploit validation, network/cloud penetration testing, and adversary emulation. Selected when active penetration, privilege escalation, lateral movement, or red-team operations are required.
-- `sec-verifier`: Independent validation and falsification of candidate findings, deterministic replay, and evidence auditing. Selected when any candidate finding at severity low or above requires confirmation or falsification.
+- `arsenal-reverse`: Reverse engineering, binary analysis, protocol reverse engineering, firmware inspection, and disassembly/decompilation. Selected when the target involves compiled binaries, shared libraries, firmware images, or proprietary binary protocols.
+- `arsenal-web`: Web application security, REST/GraphQL APIs, browser client flaws, and server-side web logic. Selected when the target is a web application, HTTP/WebSocket service, or API endpoint.
+- `arsenal-mobile`: Mobile application security across Android and iOS platforms, APK/IPA analysis, mobile IPC, local storage, and runtime instrumentation. Selected when the target is an Android or iOS application package or mobile runtime.
+- `arsenal-redteam`: Offensive operations, exploit validation, network/cloud penetration testing, and adversary emulation. Selected when active penetration, privilege escalation, lateral movement, or red-team operations are required.
+- `arsenal-verifier`: Independent validation and falsification of candidate findings, deterministic replay, and evidence auditing. Selected when any candidate finding at severity low or above requires confirmation or falsification.
 
 ## Delegation Rules
 
@@ -23,7 +23,7 @@ Technical execution is performed by exactly five domain specialists:
 ## Independent Verification
 
 - No specialist self-certifies findings.
-- Every candidate finding at severity `low` or above MUST route to `sec-verifier` before it may be reported as a confirmed conclusion.
+- Every candidate finding at severity `low` or above MUST route to `arsenal-verifier` before it may be reported as a confirmed conclusion.
 - All five verification outcomes (`validated`, `unvalidated`, `rejected`, `partial`, `error`) are retained with supporting rationale and evidence receipts.
 
 ## Evidence Discipline

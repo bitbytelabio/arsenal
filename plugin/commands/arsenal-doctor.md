@@ -1,4 +1,4 @@
-# /sec-doctor: Platform Health & Diagnostic Suite
+# /arsenal-doctor: Platform Health & Diagnostic Suite
 
 Inspect and verify the complete operational health of the Arsenal plugin harness, tool bridges, specialist profiles, and corpus manifests.
 
@@ -7,7 +7,7 @@ Inspect and verify the complete operational health of the Arsenal plugin harness
 ## Usage
 
 ```text
-/sec-doctor [--json] [--verbose]
+/arsenal-doctor [--json] [--verbose]
 ```
 
 ## Description
@@ -25,7 +25,7 @@ Runs end-to-end diagnostics across the entire Arsenal system, verifying runtime 
    - Runner availability for enabled bridges.
 
 3. **Specialist Profiles**:
-   - Verification of all 5 specialist definitions (`sec-re.md`, `sec-webapp.md`, `sec-mobile.md`, `sec-red.md`, `sec-verifier.md`) in active profile path.
+   - Verification of all 5 specialist definitions (`arsenal-reverse.md`, `arsenal-web.md`, `arsenal-mobile.md`, `arsenal-redteam.md`, `arsenal-verifier.md`) in active profile path.
    - Assert presence of OpSec rules, Epistemic rules, and typed handoff contracts.
 
 4. **Corpus & Manifest Integrity**:

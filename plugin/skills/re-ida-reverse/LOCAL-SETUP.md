@@ -11,6 +11,7 @@ This page provides general procedures without machine-specific absolute paths. T
 | Client Server Name | Use only **`idapro`** (do not register `ida-pro-mcp` concurrently) |
 | Startup | `arsenal scripts re-ida-reverse/start` (`--unsafe`, without `?ext=dbg`) |
 | Opening Database | For large files, prefer `arsenal scripts re-ida-reverse/open`; do not invoke `idb_open` directly through certain clients |
+| Remote Debug Guests | User-owned `config.yml`/`config.yaml` (`remoteDebug.guests`); `IDA_DIR`, `IDA_INSTALL_DIR`, `IDA_PYTHON` are `.env` overrides |
 
 Pointing two MCP names to the same port 13337 registers tools twice and causes port conflicts with the idalib worker.
 

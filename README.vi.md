@@ -4,7 +4,7 @@
 
 **Bộ khung khai thác bảo mật & dịch ngược mã nguồn (Plugin-First Harness) cho Oh My Pi (OMP)**
 
-[![Phiên bản](https://img.shields.io/badge/phiên%20bản-3.0.2-10b981?style=flat-square)](package.json)
+[![Phiên bản](https://img.shields.io/badge/phiên%20bản-4.0.0-10b981?style=flat-square)](package.json)
 [![Giấy phép: MIT](https://img.shields.io/badge/giấy%20phép-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Python CLI](https://img.shields.io/badge/CLI-Python-3776ab?style=flat-square&logo=python)](pyproject.toml)
 [![OMP Runtime: TypeScript](https://img.shields.io/badge/OMP%20runtime-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
@@ -25,7 +25,7 @@
 ### Điểm nổi bật cốt lõi
 
 - **Mô hình Nguồn chân lý duy nhất (SSOT)**: 1.648 playbook chuẩn hóa kèm tài liệu tham khảo, template và helper có nguồn gốc xác định. Resource dùng định danh `skill://<skill-id>/<path>`; công cụ đọc asset có giới hạn kích thước và báo rõ khi nội dung bị cắt.
-- **Đội ngũ 5 Tác tử Chuyên gia (Specialists)**: Các chuyên gia độc lập theo miền (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) hoạt động dưới các quy tắc nhận thức luận chặt chẽ (`E-*` dữ kiện thực nghiệm vs. `P-*` suy luận dự đoán vs. `unk-*` ẩn số chưa xác định).
+- **Đội ngũ 5 Tác tử Chuyên gia (Specialists)**: Các chuyên gia độc lập theo miền (`arsenal-reverse`, `arsenal-web`, `arsenal-mobile`, `arsenal-redteam`, `arsenal-verifier`) hoạt động dưới các quy tắc nhận thức luận chặt chẽ (`E-*` dữ kiện thực nghiệm vs. `P-*` suy luận dự đoán vs. `unk-*` ẩn số chưa xác định).
 - **Sổ cái bằng chứng Mật mã học (Cryptographic Evidence Ledger)**: Chuỗi sự kiện gắn băm SHA-256 đơn điệu chỉ-ghi-nối (append-only) tại `evidence/ledger.jsonl`, được hỗ trợ bởi cơ chế theo dõi trạng thái SQLite chế độ WAL chống giả mạo.
 - **Python CLI, skills native OMP**: `arsenal` xử lý cài đặt, phân tích, evidence, report và script tập trung. TypeScript chỉ giữ discovery/load/routing của skills cùng hooks trong OMP. APK/AXML, JSON Schema, YAML, Markdown và MCP dùng parser/SDK được duy trì.
 - **Cơ chế MCP Opt-In động & An toàn tuyệt đối**: 6 cầu nối công cụ chuẩn (`burp-ultra`, `rea`, `playwright`, `ghidra`, `ida-pro`, `jshook`) mặc định ở trạng thái vô hiệu hóa, bật/tắt linh hoạt theo phạm vi profile hoặc dự án.
@@ -38,16 +38,16 @@ Arsenal phân tách rành mạch giữa tài liệu đặc tả bảo mật, lu�
 
 ```mermaid
 flowchart TD
-    Op([Chuyên gia An ninh]) -->|Kích hoạt| Cmd["8 Slash Commands<br/>/sec-scope, /sec-recon, /sec-engage..."]
+    Op([Chuyên gia An ninh]) -->|Kích hoạt| Cmd["8 Slash Commands<br/>/arsenal-scope, /arsenal-recon, /arsenal-engage..."]
     Cmd --> Orchestrator["Master Orchestrator<br/>Cổng Nhận thức luận & Phạm vi tác chiến"]
 
     subgraph Specialists ["Đội ngũ Tác tử Chuyên gia"]
         direction TB
-        RE["sec-re<br/>Dịch ngược Nhị phân & Firmware"]
-        WA["sec-webapp<br/>Kiểm thử Ứng dụng Web & API"]
-        MO["sec-mobile<br/>Phân tích Động Android & iOS"]
-        RT["sec-red<br/>Mô phỏng Tấn công & Cloud"]
-        VE["sec-verifier<br/>Kiểm chứng Tiền định bằng Oracle"]
+        RE["arsenal-reverse<br/>Dịch ngược Nhị phân & Firmware"]
+        WA["arsenal-web<br/>Kiểm thử Ứng dụng Web & API"]
+        MO["arsenal-mobile<br/>Phân tích Động Android & iOS"]
+        RT["arsenal-redteam<br/>Mô phỏng Tấn công & Cloud"]
+        VE["arsenal-verifier<br/>Kiểm chứng Tiền định bằng Oracle"]
     end
 
     Orchestrator -->|Phân công Tác vụ| Specialists
@@ -90,11 +90,11 @@ Arsenal cung cấp năm tác tử chuyên gia theo miền chuyên sâu. Mỗi t�
 
 | Tác tử | Miền chuyên môn | Trọng tâm & Trách nhiệm | Công cụ & Phương pháp cốt lõi |
 |---|---|---|---|
-| `sec-re` | Dịch ngược Nhị phân | Phân tích disassembled/decompiled, biểu đồ luồng điều khiển (CFG), giải nén firmware, trích xuất giao thức. | `ghidra`, `ida-pro`, `rea`, `file_inspect`, `binwalk` |
-| `sec-webapp` | Bảo mật Web & API | Kiểm toán API có xác thực, lỗi logic nghiệp vụ, lỗ hổng luồng OAuth/JWT, các vector tiêm mã, CSRF/SSRF. | `burp-ultra`, `playwright`, HTTP engine native |
-| `sec-mobile` | Phân tích Động Mobile | Đánh giá Android & iOS, can thiệp runtime, phân tích IPC và lưu trữ. | `arsenal apk inspect`, `jshook`, TLS bypass hooks, Frida |
-| `sec-red` | Mô phỏng Đối kháng | Kiểm thử hạ tầng, cloud, container và mạng được cấp phép. | `arsenal exec`, CLI cloud |
-| `sec-verifier` | Kiểm chứng độc lập | Tái hiện, xác nhận và bác bỏ finding bằng evidence. | `arsenal oracle verify`, đối soát SHA-256, replay cô lập |
+| `arsenal-reverse` | Dịch ngược Nhị phân | Phân tích disassembled/decompiled, biểu đồ luồng điều khiển (CFG), giải nén firmware, trích xuất giao thức. | `ghidra`, `ida-pro`, `rea`, `file_inspect`, `binwalk` |
+| `arsenal-web` | Bảo mật Web & API | Kiểm toán API có xác thực, lỗi logic nghiệp vụ, lỗ hổng luồng OAuth/JWT, các vector tiêm mã, CSRF/SSRF. | `burp-ultra`, `playwright`, HTTP engine native |
+| `arsenal-mobile` | Phân tích Động Mobile | Đánh giá Android & iOS, can thiệp runtime, phân tích IPC và lưu trữ. | `arsenal apk inspect`, `jshook`, TLS bypass hooks, Frida |
+| `arsenal-redteam` | Mô phỏng Đối kháng | Kiểm thử hạ tầng, cloud, container và mạng được cấp phép. | `arsenal exec`, CLI cloud |
+| `arsenal-verifier` | Kiểm chứng độc lập | Tái hiện, xác nhận và bác bỏ finding bằng evidence. | `arsenal oracle verify`, đối soát SHA-256, replay cô lập |
 
 ---
 
@@ -104,32 +104,33 @@ Arsenal cung cấp năm tác tử chuyên gia theo miền chuyên sâu. Mỗi t�
 
 | Lệnh | Giai đoạn Vòng đời | Chức năng Vận hành |
 |---|---|---|
-| `/sec-scope` | Chuẩn bị Tác chiến | Định nghĩa và thực thi nghiêm ngặt danh sách tên miền mục tiêu, dải IP, và các tài sản loại trừ ngoài phạm vi. |
-| `/sec-recon` | Khám phá Bề mặt | Lập bản đồ bề mặt tấn công; kích hoạt yêu cầu xác nhận tương tác nếu phát hiện tài sản chưa được cấp phép. |
-| `/sec-engage` | Vòng lặp Khai thác | Điều phối quy trình đánh giá có cấu trúc 5 giai đoạn xuyên suốt các tác tử chuyên gia đang kích hoạt. |
-| `/sec-verify` | Xác thực Bằng chứng | Chuyển giao trực tiếp yêu cầu kiểm chứng tới `sec-verifier` bằng các oracle tiền định. |
-| `/sec-finding` | Ghi nhận Phát hiện | Lưu trữ các lỗ hổng tiềm năng có cấu trúc, liên kết trực tiếp với biên lai sổ cái bằng chứng băm SHA-256. |
-| `/sec-review` | Đảm bảo Chất lượng | Kiểm toán trạng thái chiến dịch và xác nhận tính liên tục của bằng chứng trên toàn bộ 37 mã xác thực. |
-| `/sec-report` | Xuất Báo cáo | Biên dịch kết quả kiểm toán thành định dạng Markdown, JSON, và SARIF tại thư mục `.omp/arsenal/reports/`. |
-| `/sec-doctor` | Chẩn đoán Hệ thống | Kiểm tra các phụ thuộc máy host, độ lành mạnh của plugin, trạng thái MCP bridges, và tính toàn vẹn manifest. |
+| `/arsenal-scope` | Chuẩn bị Tác chiến | Định nghĩa và thực thi nghiêm ngặt danh sách tên miền mục tiêu, dải IP, và các tài sản loại trừ ngoài phạm vi. |
+| `/arsenal-recon` | Khám phá Bề mặt | Lập bản đồ bề mặt tấn công; kích hoạt yêu cầu xác nhận tương tác nếu phát hiện tài sản chưa được cấp phép. |
+| `/arsenal-engage` | Vòng lặp Khai thác | Điều phối quy trình đánh giá có cấu trúc 5 giai đoạn xuyên suốt các tác tử chuyên gia đang kích hoạt. |
+| `/arsenal-verify` | Xác thực Bằng chứng | Chuyển giao trực tiếp yêu cầu kiểm chứng tới `arsenal-verifier` bằng các oracle tiền định. |
+| `/arsenal-finding` | Ghi nhận Phát hiện | Lưu trữ các lỗ hổng tiềm năng có cấu trúc, liên kết trực tiếp với biên lai sổ cái bằng chứng băm SHA-256. |
+| `/arsenal-review` | Đảm bảo Chất lượng | Kiểm toán trạng thái chiến dịch và xác nhận tính liên tục của bằng chứng trên toàn bộ 37 mã xác thực. |
+| `/arsenal-report` | Xuất Báo cáo | Biên dịch kết quả kiểm toán thành định dạng Markdown, JSON, và SARIF tại thư mục `.omp/arsenal/reports/`. |
+| `/arsenal-doctor` | Chẩn đoán Hệ thống | Kiểm tra các phụ thuộc máy host, độ lành mạnh của plugin, trạng thái MCP bridges, và tính toàn vẹn manifest. |
 
 ---
 
 ## Cầu nối MCP Động
 
-Toàn bộ các cầu nối công cụ ngoài vận hành theo cơ chế chọn tham gia (opt-in) nghiêm ngặt (`enabled: false` theo mặc định). Bạn có thể bật/tắt cầu nối mà không cần chỉnh sửa thủ công các tệp JSON:
+Tệp `.mcp.json` của plugin là nguồn gốc định nghĩa cấu hình các bridge. OMP sẽ tự động nạp từ thư mục gốc của plugin đã cài đặt; ngoài ra lệnh `arsenal mcp install` có thể hiện thực hóa cấu hình này vào file `mcp.json` cấp profile hoặc project mà vẫn bảo toàn các thiết lập tùy biến của người vận hành. Trạng thái `enabled: false` sẽ tường minh vô hiệu hóa bridge; ngược lại loader host áp dụng thiết lập MCP mặc định.
 
-| Cầu nối | Mục đích Sử dụng Chính | Động cơ Thực thi | Trạng thái Mặc định |
+| Cầu nối | Mục đích Sử dụng Chính | Động cơ Thực thi | Cấu hình |
 |---|---|---|---|
-| `burp-ultra` | Giám sát & Phân tích Lưu lượng Web & API | Cầu nối REST / Extension của Burp Suite | Vô hiệu hóa (`opt-in`) |
-| `rea` | Động cơ Dịch ngược Toàn năng | `bunx rea-agents@6.4.0 mcp` | Vô hiệu hóa (`opt-in`) |
-| `playwright` | Tự động hóa Trình duyệt & Kiểm tra DOM | Worker Node.js / Bun cô lập | Vô hiệu hóa (`opt-in`) |
-| `ghidra` | Phân tích Nhị phân Java (Headless & GUI) | Môi trường `uv` cô lập + Ghidra Bridge | Vô hiệu hóa (`opt-in`) |
-| `ida-pro` | Tích hợp Trình Dịch ngược Tương tác IDA | Môi trường `uv` cô lập + IDA RPC | Vô hiệu hóa (`opt-in`) |
-| `jshook` | Can thiệp Runtime Động Ứng dụng Di động | Trình quản lý Hook Frida / Cầu nối TS | Vô hiệu hóa (`opt-in`) |
+| `burp-ultra` | Giám sát & Phân tích Lưu lượng Web & API | Cầu nối REST / Extension của Burp Suite | Manifest plugin |
+| `rea` | Động cơ Dịch ngược Toàn năng | `bunx rea-agents@6.4.0 mcp` | Manifest plugin |
+| `playwright` | Tự động hóa Trình duyệt & Kiểm tra DOM | Worker Node.js / Bun cô lập | Manifest plugin |
+| `ghidra` | Phân tích Nhị phân Java (Headless & GUI) | Môi trường `uv` cô lập + Ghidra Bridge | Manifest plugin |
+| `ida-pro` | Tích hợp Trình Dịch ngược Tương tác IDA | Môi trường `uv` cô lập + IDA RPC | Manifest plugin |
+| `jshook` | Can thiệp Runtime Động Ứng dụng Di động | Trình quản lý Hook Frida / Cầu nối TS | Manifest plugin |
 
 ```bash
-# Quản lý cầu nối MCP ở cấp độ profile hoặc project
+# Hiện thực hóa và quản lý cầu nối MCP ở cấp độ profile hoặc project
+arsenal mcp install --scope profile --write
 arsenal mcp enable rea --scope profile --write
 arsenal mcp disable burp-ultra --scope project --write
 arsenal mcp list

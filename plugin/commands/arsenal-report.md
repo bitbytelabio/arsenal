@@ -1,4 +1,4 @@
-# /sec-report: Deliverable Report Compiler
+# /arsenal-report: Deliverable Report Compiler
 
 Compile verified assessment findings and evidence receipts into executive reports, technical appendices, and SARIF audit artifacts.
 
@@ -7,11 +7,11 @@ Compile verified assessment findings and evidence receipts into executive report
 ## Usage
 
 ```text
-/sec-report [--min-severity <info|low|medium|high|critical>] [--format <markdown|json|sarif>] [--output <path>]
+/arsenal-report [--min-severity <info|low|medium|high|critical>] [--format <markdown|json|sarif>] [--output <path>]
 ```
 
 ## Description
-This command synthesizes engagement observations into formal deliverables. It adheres strictly to the Epistemic Reporting Discipline: only findings independently validated by `sec-verifier` appear as confirmed vulnerabilities in executive conclusions.
+This command synthesizes engagement observations into formal deliverables. It adheres strictly to the Epistemic Reporting Discipline: only findings independently validated by `arsenal-verifier` appear as confirmed vulnerabilities in executive conclusions.
 
 ---
 

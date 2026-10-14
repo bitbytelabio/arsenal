@@ -21,6 +21,7 @@ from arsenal.installation.mcp_core import (
     build_canonical_server_entry,
     evaluate_server_state,
     load_dotenv_without_override,
+    load_plugin_mcp_servers,
     merge_mcp_config_with_defaults,
     parse_and_validate_mcp_config,
     probe_live_server,
@@ -58,15 +59,38 @@ def handle_mcp(ctx: Context) -> int:
 
 def _handle_mcp_install(ctx: Context, scope: str, target_mcp_path: Path) -> int:
     is_write = bool(ctx.values.get("write")) and not bool(ctx.values.get("check")) and ctx.mode != "check"
+
+    # Preflight check: malformed or corrupt installed plugin .mcp.json fails closed before writes
+    plugin_ok, plugin_servers, plugin_err = load_plugin_mcp_servers(ctx.repo_root, ctx.profile_dir)
+    if not plugin_ok:
+        return ctx.result(
+            data={"scope": scope, "path": str(target_mcp_path)},
+            code=ExitCodes.MUTATION_REFUSED,
+            errors=[plugin_err],
+        )
+
+    available_bridges: dict[str, Any] = {}
+    if plugin_servers:
+        available_bridges.update(plugin_servers)
+    for k, v in CANONICAL_MCP_BRIDGES.items():
+        if k not in available_bridges:
+            available_bridges[k] = v
+
     server_name = ctx.values.get("server")
     if server_name:
         server_str = str(server_name)
-        if server_str not in CANONICAL_MCP_BRIDGES:
-            err = f"Unknown tool bridge '{server_str}'. Available: {', '.join(CANONICAL_MCP_BRIDGES.keys())}"
+        if server_str not in available_bridges:
+            err = f"Unknown tool bridge '{server_str}'. Available: {', '.join(sorted(available_bridges.keys()))}"
             return ctx.result(data={}, code=ExitCodes.CLI_USAGE_ERROR, errors=[err])
         servers_to_install = [server_str]
     else:
-        servers_to_install = list(CANONICAL_MCP_BRIDGES.keys())
+        source_names: list[str] = []
+        if plugin_servers:
+            source_names.extend(plugin_servers.keys())
+        for k in CANONICAL_MCP_BRIDGES.keys():
+            if k not in source_names:
+                source_names.append(k)
+        servers_to_install = source_names
 
     existing_config: dict[str, Any] | None = None
     if target_mcp_path.is_file():
@@ -80,7 +104,12 @@ def _handle_mcp_install(ctx: Context, scope: str, target_mcp_path: Path) -> int:
             )
         existing_config = parsed
 
-    new_config = merge_mcp_config_with_defaults(existing_config, servers_to_install)
+    new_config = merge_mcp_config_with_defaults(
+        existing=existing_config,
+        server_names_to_install=servers_to_install,
+        canonical_bridges=CANONICAL_MCP_BRIDGES,
+        plugin_servers=plugin_servers,
+    )
     new_content = json.dumps(new_config, indent=2)
 
     safe_res = safe_write_file(
@@ -109,7 +138,9 @@ def _handle_mcp_install(ctx: Context, scope: str, target_mcp_path: Path) -> int:
                 state_lbl = "enabled: true" if curr_entry.get("enabled") is True else ("enabled: false" if curr_entry.get("enabled") is False else "default")
                 print(f" - {s}: preserved existing config ({state_lbl})")
             else:
-                print(f" - {s}: added canonical default (enabled: false)")
+                state_lbl = "enabled: true" if curr_entry.get("enabled") is True else "enabled: false"
+                source_lbl = "plugin default" if plugin_servers and s in plugin_servers else "canonical default"
+                print(f" - {s}: added {source_lbl} ({state_lbl})")
 
     return ctx.result(
         data={
@@ -123,6 +154,14 @@ def _handle_mcp_install(ctx: Context, scope: str, target_mcp_path: Path) -> int:
 
 
 def _handle_mcp_list(ctx: Context, scope: str, target_mcp_path: Path) -> int:
+    plugin_ok, plugin_servers, plugin_err = load_plugin_mcp_servers(ctx.repo_root, ctx.profile_dir)
+    if not plugin_ok:
+        return ctx.result(
+            data={"scope": scope, "path": str(target_mcp_path)},
+            code=ExitCodes.CHECK_FAILURE,
+            errors=[plugin_err],
+        )
+
     target_config: dict[str, Any] = {"mcpServers": {}}
     if target_mcp_path.is_file():
         ok, parsed, err = parse_and_validate_mcp_config(target_mcp_path.read_text(encoding="utf-8"))
@@ -146,13 +185,15 @@ def _handle_mcp_list(ctx: Context, scope: str, target_mcp_path: Path) -> int:
             except Exception:
                 pass
 
-    all_ids = sorted(list(set(list(CANONICAL_MCP_BRIDGES.keys()) + list((target_config.get("mcpServers") or {}).keys()))))
+    plugin_keys = list(plugin_servers.keys()) if plugin_servers else []
+    all_ids = sorted(list(set(list(CANONICAL_MCP_BRIDGES.keys()) + plugin_keys + list((target_config.get("mcpServers") or {}).keys()))))
     bridge_states: list[dict[str, Any]] = []
 
     for b_id in all_ids:
         tgt_entry = (target_config.get("mcpServers") or {}).get(b_id, {})
         canonical_def = CANONICAL_MCP_BRIDGES.get(b_id, {})
-        b_type = tgt_entry.get("type") or canonical_def.get("type") or "custom"
+        plugin_def = plugin_servers.get(b_id, {}) if plugin_servers else {}
+        b_type = tgt_entry.get("type") or plugin_def.get("type") or canonical_def.get("type") or "custom"
 
         evaluation = evaluate_server_state(
             server_id=b_id,
@@ -199,6 +240,14 @@ def _handle_mcp_toggle(ctx: Context, sub: str, scope: str, target_mcp_path: Path
         err = f"Bridge name is required for mcp {sub}"
         return ctx.result(data={}, code=ExitCodes.CLI_USAGE_ERROR, errors=[err])
 
+    plugin_ok, plugin_servers, plugin_err = load_plugin_mcp_servers(ctx.repo_root, ctx.profile_dir)
+    if not plugin_ok:
+        return ctx.result(
+            data={"scope": scope, "path": str(target_mcp_path)},
+            code=ExitCodes.MUTATION_REFUSED,
+            errors=[plugin_err],
+        )
+
     existing_config: dict[str, Any] | None = None
     if target_mcp_path.is_file():
         ok, parsed, err = parse_and_validate_mcp_config(target_mcp_path.read_text(encoding="utf-8"))
@@ -211,9 +260,19 @@ def _handle_mcp_toggle(ctx: Context, sub: str, scope: str, target_mcp_path: Path
             )
         existing_config = parsed
 
-    is_known = bridge_name in CANONICAL_MCP_BRIDGES or (existing_config and bridge_name in (existing_config.get("mcpServers") or {}))
+    plugin_keys = list(plugin_servers.keys()) if plugin_servers else []
+    is_known = (
+        bridge_name in CANONICAL_MCP_BRIDGES
+        or bridge_name in plugin_keys
+        or (existing_config and bridge_name in (existing_config.get("mcpServers") or {}))
+    )
     if not is_known:
-        err = f"Unknown tool bridge '{bridge_name}'. Available canonical: {', '.join(CANONICAL_MCP_BRIDGES.keys())}"
+        avail = sorted(list(set(
+            list(CANONICAL_MCP_BRIDGES.keys())
+            + plugin_keys
+            + list((existing_config.get("mcpServers") or {}).keys() if existing_config else [])
+        )))
+        err = f"Unknown tool bridge '{bridge_name}'. Available: {', '.join(avail)}"
         return ctx.result(data={}, code=ExitCodes.CLI_USAGE_ERROR, errors=[err])
 
     enabled = (sub == "enable")
@@ -242,14 +301,19 @@ def _handle_mcp_toggle(ctx: Context, sub: str, scope: str, target_mcp_path: Path
     mcp_servers = cfg["mcpServers"]
     current_entry = mcp_servers.get(bridge_name)
     if not current_entry:
-        defn = CANONICAL_MCP_BRIDGES[bridge_name]
-        current_entry = build_canonical_server_entry(defn, enabled=enabled)
+        if plugin_servers and bridge_name in plugin_servers:
+            current_entry = dict(plugin_servers[bridge_name])
+            current_entry["enabled"] = enabled
+        elif bridge_name in CANONICAL_MCP_BRIDGES:
+            defn = CANONICAL_MCP_BRIDGES[bridge_name]
+            current_entry = build_canonical_server_entry(defn, enabled=enabled)
+        else:
+            current_entry = {"type": "stdio", "enabled": enabled}
     else:
         current_entry = dict(current_entry)
         current_entry["enabled"] = enabled
 
     mcp_servers[bridge_name] = current_entry
-
     # Synchronize allow/deny lists
     if enabled:
         if "disabledServers" in cfg and isinstance(cfg["disabledServers"], list):
@@ -319,6 +383,10 @@ def _handle_mcp_verify(ctx: Context, scope: str, target_mcp_path: Path) -> int:
         except Exception:
             pass
 
+    plugin_ok, plugin_servers, plugin_err = load_plugin_mcp_servers(ctx.repo_root, ctx.profile_dir)
+    if not plugin_ok:
+        errors.append(plugin_err)
+
     if not target_mcp_path.is_file():
         errors.append(f"Missing MCP configuration at '{target_mcp_path}'.")
     else:
@@ -348,11 +416,16 @@ def _handle_mcp_verify(ctx: Context, scope: str, target_mcp_path: Path) -> int:
 
                 if eval_res.effective_state == "enabled":
                     defn = CANONICAL_MCP_BRIDGES.get(s_id, {})
-                    binary_prereq = defn.get("binaryPrereq")
+                    plugin_defn = (plugin_servers.get(s_id) if plugin_servers else {}) or {}
+
+                    binary_prereq = plugin_defn.get("binaryPrereq") or s_entry.get("binaryPrereq") or defn.get("binaryPrereq")
+                    if not binary_prereq and s_entry.get("type") == "stdio" and s_entry.get("command"):
+                        if not defn:
+                            binary_prereq = s_entry.get("command")
                     if binary_prereq and not shutil.which(binary_prereq):
                         errors.append(f"PREREQUISITE_MISSING: '{s_id}' requires binary '{binary_prereq}' in PATH.")
 
-                    runner = defn.get("runner")
+                    runner = plugin_defn.get("runner") or s_entry.get("runner") or defn.get("runner")
                     if runner == "uv" and not shutil.which("uv"):
                         errors.append(f"RUNNER_MISSING: '{s_id}' requires runner 'uv' in PATH. Install via curl -LsSf https://astral.sh/uv/install.sh")
 
@@ -372,7 +445,6 @@ def _handle_mcp_verify(ctx: Context, scope: str, target_mcp_path: Path) -> int:
             print(f"[mcp verify failed] Errors ({scope}: {target_mcp_path}):", file=sys.stderr)
             for e in errors:
                 print(f" - {e}", file=sys.stderr)
-
     return ctx.result(
         data={
             "clean": clean,

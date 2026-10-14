@@ -61,15 +61,15 @@ describe("User Story 8: Financial Budget & Spend Governor", () => {
     tracker.totalSpendUsd = 9.2; // 92% spend
 
     // Exploratory roles are blocked
-    const blockWeb = tracker.shouldBlockExploratorySpawn("sec-webapp");
+    const blockWeb = tracker.shouldBlockExploratorySpawn("arsenal-web");
     expect(blockWeb.block).toBe(true);
     expect(blockWeb.reason).toContain("Subagent budget reserve active");
 
-    const blockRe = tracker.shouldBlockExploratorySpawn("sec-re");
+    const blockRe = tracker.shouldBlockExploratorySpawn("arsenal-reverse");
     expect(blockRe.block).toBe(true);
 
-    // sec-verifier is permitted!
-    const allowVer = tracker.shouldBlockExploratorySpawn("sec-verifier");
+    // arsenal-verifier is permitted!
+    const allowVer = tracker.shouldBlockExploratorySpawn("arsenal-verifier");
     expect(allowVer.block).toBeUndefined();
     expect(allowVer.note).toContain("Prioritizing verifier task");
   });

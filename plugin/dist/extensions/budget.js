@@ -65,14 +65,14 @@ class BudgetTracker {
     }
     const percentage = this.totalSpendUsd / this.budgetUsd * 100;
     if (percentage >= 90) {
-      if (agentName === "sec-verifier" || agentName === "master") {
+      if (agentName === "arsenal-verifier" || agentName === "master") {
         return {
           note: `Budget reserve active (${percentage.toFixed(1)}% spend). Prioritizing verifier task.`
         };
       }
       return {
         block: true,
-        reason: `Subagent budget reserve active (>=90% spend). Exploratory spawns declined; sec-verifier and master reporting prioritized.`
+        reason: `Subagent budget reserve active (>=90% spend). Exploratory spawns declined; arsenal-verifier and master reporting prioritized.`
       };
     }
     return {};
@@ -83,9 +83,9 @@ function budgetExtension(pi) {
   pi.on("turn_end", async (rawEvent, rawCtx) => {
     const event = rawEvent;
     const ctx = rawCtx;
-    if (ctx.agent?.kind === "sub" && ctx.agent.name === "sec-verifier") {
+    if (ctx.agent?.kind === "sub" && ctx.agent.name === "arsenal-verifier") {
       if (event.turnIndex >= 7) {
-        ctx.ui.notify("sec-verifier reached maximum 8-turn budget. Terminating child session.", "warn");
+        ctx.ui.notify("arsenal-verifier reached maximum 8-turn budget. Terminating child session.", "warn");
         ctx.abort();
         return;
       }

@@ -39,7 +39,7 @@ def create_finding(params: dict[str, Any]) -> dict[str, Any]:
     discoverer_role = str(
         params.get("discoverer_role")
         or params.get("discovererRole")
-        or params.get("discoverer", {}).get("role", "sec-re")
+        or params.get("discoverer", {}).get("role", "arsenal-reverse")
     )
     discoverer_session = str(
         params.get("discoverer_session_id")
@@ -503,7 +503,7 @@ def handle(ctx: Context) -> int:
     }
 
     if not ctx.is_json:
-        print(f"[sec-report] Generated {fmt.upper()} deliverable report at:")
+        print(f"[arsenal-report] Generated {fmt.upper()} deliverable report at:")
         print(f" -> {out_path}")
         print("\n--- Executive Summary ---\n")
         first_lines = report_content.splitlines()[:20]

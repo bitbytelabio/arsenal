@@ -37,7 +37,7 @@ class TestRuntimeLedger(unittest.TestCase):
             event_key="evt-001",
             kind="tool_execution",
             session_id="sess-01",
-            actor="sec-mobile",
+            actor="arsenal-mobile",
             data={"target": "sample.apk"},
         )
         self.assertEqual(ev1["seq"], 1)
@@ -49,7 +49,7 @@ class TestRuntimeLedger(unittest.TestCase):
             event_key="evt-002",
             kind="tool_result",
             session_id="sess-01",
-            actor="sec-mobile",
+            actor="arsenal-mobile",
             data={"packageName": "com.example.app", "vulnerable": True},
         )
         self.assertEqual(ev2["seq"], 2)
@@ -81,7 +81,7 @@ class TestRuntimeLedger(unittest.TestCase):
             event_key="evt-001",
             kind="evidence_receipt",
             session_id="sess-01",
-            actor="sec-webapp",
+            actor="arsenal-web",
             data={"url": "https://api.clean.com"},
         )
         actor.append_event(
@@ -89,7 +89,7 @@ class TestRuntimeLedger(unittest.TestCase):
             event_key="evt-002",
             kind="evidence_receipt",
             session_id="sess-01",
-            actor="sec-webapp",
+            actor="arsenal-web",
             data={"url": "https://api.clean.com/users"},
         )
         actor.close()
@@ -139,7 +139,7 @@ class TestRuntimeLedger(unittest.TestCase):
             event_key="evt-art-001",
             kind="evidence_receipt",
             session_id="sess-01",
-            actor="sec-webapp",
+            actor="arsenal-web",
             data={
                 "artifacts": [
                     {

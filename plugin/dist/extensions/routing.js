@@ -9459,11 +9459,11 @@ var specialist_handoff_schema_default = {
     role: {
       type: "string",
       enum: [
-        "sec-re",
-        "sec-webapp",
-        "sec-mobile",
-        "sec-red",
-        "sec-verifier"
+        "arsenal-reverse",
+        "arsenal-web",
+        "arsenal-mobile",
+        "arsenal-redteam",
+        "arsenal-verifier"
       ]
     },
     findings: {

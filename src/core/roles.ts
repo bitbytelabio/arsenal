@@ -5,19 +5,19 @@
 
 export const CANONICAL_ROLES: Record<string, true> = {
   master: true,
-  "sec-re": true,
-  "sec-webapp": true,
-  "sec-mobile": true,
-  "sec-red": true,
-  "sec-verifier": true,
+  "arsenal-reverse": true,
+  "arsenal-web": true,
+  "arsenal-mobile": true,
+  "arsenal-redteam": true,
+  "arsenal-verifier": true,
 };
 
 export const MASTER_ALLOWED_CHILDREN: Record<string, true> = {
-  "sec-re": true,
-  "sec-webapp": true,
-  "sec-mobile": true,
-  "sec-red": true,
-  "sec-verifier": true,
+  "arsenal-reverse": true,
+  "arsenal-web": true,
+  "arsenal-mobile": true,
+  "arsenal-redteam": true,
+  "arsenal-verifier": true,
 };
 
 export interface RoleInvocationRecord {
@@ -59,7 +59,7 @@ export function validateRoleSpawn(
   if (!MASTER_ALLOWED_CHILDREN[childRole]) {
     return {
       allowed: false,
-      reason: `Master role may only spawn canonical sec-* specialist roles. Spawn of '${childRole}' denied.`,
+      reason: `Master role may only spawn canonical arsenal-* specialist roles. Spawn of '${childRole}' denied.`,
     };
   }
 

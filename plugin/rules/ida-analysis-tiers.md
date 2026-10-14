@@ -62,7 +62,7 @@ Apply this rule whenever inspecting, decompiling, or scripting compiled binaries
 - Built-in worker helpers: `resolve(t)`, `func(t)`, `name_of(ea)`, `hexdump(t, size=64)`, `read_bytes(t, size)`
 - IDAPython standard libraries: `idapro`, `ida_domain`, `ida_bytes`, `ida_funcs`, `ida_name`, `ida_typeinf`, `idautils`
 - Multi-architecture universal slices: address slice explicitly as `<bin>:@<arch>` (e.g. `bin:@arm64`)
-- Remote debugging bridges (when configured): `remoteDebug` guest execution (`ubuntu`, `winbase`, `macos` stubs via `dbgsrv`)
+- Remote debugging bridges (when configured): `remoteDebug` guest execution (`ubuntu`, `winbase`, `macos` stubs via `dbgsrv`). Multi-guest definitions reside in user-owned `config.yml`/`config.yaml`; `IDA_DIR`, `IDA_INSTALL_DIR`, and `IDA_PYTHON` in `.env` serve only as optional local path overrides.
 
 ### Rules & Constraints
 - **Worker Daemon Lifecycle**:

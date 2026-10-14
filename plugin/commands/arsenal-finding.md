@@ -1,4 +1,4 @@
-# /sec-finding: Structured Vulnerability Logger
+# /arsenal-finding: Structured Vulnerability Logger
 
 Record an identified vulnerability and bind it directly to verifiable cryptographic evidence receipts in the ledger.
 
@@ -7,7 +7,7 @@ Record an identified vulnerability and bind it directly to verifiable cryptograp
 ## Usage
 
 ```text
-/sec-finding --title <title> --severity <info|low|medium|high|critical> --location <endpoint|path> --cwe <cwe-id> --evidence <receipt-id,...> [--remediation <text>]
+/arsenal-finding --title <title> --severity <info|low|medium|high|critical> --location <endpoint|path> --cwe <cwe-id> --evidence <receipt-id,...> [--remediation <text>]
 ```
 
 ## Description
@@ -23,7 +23,7 @@ This command creates a standardized vulnerability finding record. Every finding 
    - Set initial epistemic status:
      - `E` (Empirical observation) if direct proof was captured in evidence.
      - `P` (Analytical inference) if inferred from configuration or secondary indicators.
-   - Set initial validation status to `unvalidated` pending independent verification by `sec-verifier`.
+   - Set initial validation status to `unvalidated` pending independent verification by `arsenal-verifier`.
 
 3. **Persistence**:
    - Append structured JSON record to `.omp/arsenal/findings.jsonl`.

@@ -92,8 +92,20 @@ def build_canonical_server_entry(
 
 def create_canonical_mcp_catalog(
     bridges: dict[str, dict[str, Any]] = CANONICAL_MCP_BRIDGES,
+    plugin_servers: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Construct full canonical MCP catalog with all bridges present and disabled."""
+    """Construct full canonical MCP catalog with all bridges present.
+
+    If plugin_servers is provided, merges plugin entries (preserving custom servers,
+    env, headers, and explicit enabled status, defaulting unstated enabled to False)
+    with canonical bridges as fallback.
+    """
+    if plugin_servers:
+        return merge_mcp_config_with_defaults(
+            existing=None,
+            canonical_bridges=bridges,
+            plugin_servers=plugin_servers,
+        )
     servers: dict[str, dict[str, Any]] = {}
     for name, defn in bridges.items():
         servers[name] = build_canonical_server_entry(defn, enabled=False)
@@ -184,8 +196,9 @@ def merge_mcp_config_with_defaults(
     existing: dict[str, Any] | None = None,
     server_names_to_install: list[str] | None = None,
     canonical_bridges: dict[str, dict[str, Any]] = CANONICAL_MCP_BRIDGES,
+    plugin_servers: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Idempotently merge canonical defaults into an existing configuration."""
+    """Idempotently merge plugin and canonical defaults into an existing configuration."""
     result: dict[str, Any] = dict(existing) if existing else {}
 
     if "$schema" not in result:
@@ -197,15 +210,69 @@ def merge_mcp_config_with_defaults(
     for name, cfg in existing_servers.items():
         merged_servers[name] = dict(cfg) if isinstance(cfg, dict) else cfg
 
-    target_names = server_names_to_install or list(canonical_bridges.keys())
+    source_names: list[str] = []
+    if plugin_servers:
+        source_names.extend(plugin_servers.keys())
+    for name in canonical_bridges.keys():
+        if name not in source_names:
+            source_names.append(name)
+
+    target_names = server_names_to_install if server_names_to_install is not None else source_names
     for name in target_names:
         if name not in merged_servers:
-            defn = canonical_bridges.get(name)
-            if defn:
-                merged_servers[name] = build_canonical_server_entry(defn, enabled=False)
+            if plugin_servers and name in plugin_servers:
+                entry = dict(plugin_servers[name])
+                if "enabled" not in entry:
+                    entry["enabled"] = False
+                merged_servers[name] = entry
+            elif name in canonical_bridges:
+                merged_servers[name] = build_canonical_server_entry(
+                    canonical_bridges[name], enabled=False
+                )
 
     result["mcpServers"] = merged_servers
     return result
+
+
+def load_plugin_mcp_servers(
+    repo_root: Path | None = None,
+    profile_dir: Path | None = None,
+) -> tuple[bool, dict[str, dict[str, Any]] | None, str | None]:
+    """Discover, read, and structurally validate installed plugin .mcp.json if present.
+
+    Returns:
+        (is_valid, servers_dict_or_none, error_message_or_none)
+        If no plugin or no .mcp.json found, returns (True, None, None).
+        If malformed/invalid, returns (False, None, error_message).
+        If valid, returns (True, servers_dict, None).
+    """
+    from arsenal.installation.resources import resolve_installed_plugin_dir
+
+    plugin_dir = resolve_installed_plugin_dir(repo_root=repo_root, profile_dir=profile_dir)
+    if not plugin_dir:
+        return True, None, None
+
+    mcp_file = plugin_dir / ".mcp.json"
+    if not mcp_file.is_file():
+        return True, None, None
+
+    try:
+        raw = mcp_file.read_text(encoding="utf-8")
+    except Exception as e:
+        return False, None, f"CONFIG_INVALID: Failed to read plugin MCP file at '{mcp_file}': {e}"
+
+    ok, parsed, err = parse_and_validate_mcp_config(raw)
+    if not ok:
+        return (
+            False,
+            None,
+            f"CONFIG_INVALID: Installed plugin MCP configuration at '{mcp_file}' is malformed or corrupt: {err}",
+        )
+
+    servers = parsed.get("mcpServers") if parsed else None
+    if isinstance(servers, dict):
+        return True, servers, None
+    return True, {}, None
 
 
 @dataclass

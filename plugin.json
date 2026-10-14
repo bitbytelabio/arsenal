@@ -1,20 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "arsenal",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "Arsenal Security Engagement Harness Plugin for Oh My Pi",
-  "author": {
-    "name": "arsenal"
-  },
+  "author": { "name": "arsenal" },
   "license": "MIT",
   "capabilities": {
     "roles": [
       "master",
-      "sec-re",
-      "sec-webapp",
-      "sec-mobile",
-      "sec-red",
-      "sec-verifier"
+      "arsenal-reverse",
+      "arsenal-web",
+      "arsenal-mobile",
+      "arsenal-redteam",
+      "arsenal-verifier"
     ],
     "routers": [
       "arsenal-re-router",
@@ -22,17 +20,7 @@
       "arsenal-mobile-router",
       "arsenal-red-router"
     ],
-    "extensions": [
-      "bounding",
-      "budget",
-      "routing"
-    ],
-    "tools": [
-      "skill_search",
-      "skill_route",
-      "skill_list",
-      "skill_load",
-      "skill_asset_load"
-    ]
+    "extensions": ["bounding", "budget", "routing"],
+    "tools": ["skill_search", "skill_route", "skill_list", "skill_load", "skill_asset_load"]
   }
 }

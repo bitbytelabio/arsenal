@@ -13,22 +13,22 @@ import * as path from "node:path";
 describe("User Story 3: Roles, Dispatch, and Guidance Discovery", () => {
   it("enforces exactly 6 canonical roles and validates master spawns", () => {
     expect(isValidRole("master")).toBe(true);
-    expect(isValidRole("sec-re")).toBe(true);
-    expect(isValidRole("sec-webapp")).toBe(true);
-    expect(isValidRole("sec-mobile")).toBe(true);
-    expect(isValidRole("sec-red")).toBe(true);
-    expect(isValidRole("sec-verifier")).toBe(true);
+    expect(isValidRole("arsenal-reverse")).toBe(true);
+    expect(isValidRole("arsenal-web")).toBe(true);
+    expect(isValidRole("arsenal-mobile")).toBe(true);
+    expect(isValidRole("arsenal-redteam")).toBe(true);
+    expect(isValidRole("arsenal-verifier")).toBe(true);
     expect(isValidRole("random-agent")).toBe(false);
 
     // Master spawning specialists is allowed
-    const spawnRe = validateRoleSpawn("master", "sec-re");
+    const spawnRe = validateRoleSpawn("master", "arsenal-reverse");
     expect(spawnRe.allowed).toBe(true);
 
-    const spawnVer = validateRoleSpawn("master", "sec-verifier");
+    const spawnVer = validateRoleSpawn("master", "arsenal-verifier");
     expect(spawnVer.allowed).toBe(true);
 
     // Specialists spawning children is denied (no recursive delegation)
-    const recSpawn = validateRoleSpawn("sec-re", "sec-webapp");
+    const recSpawn = validateRoleSpawn("arsenal-reverse", "arsenal-web");
     expect(recSpawn.allowed).toBe(false);
     expect(recSpawn.reason).toContain("declares spawns: []");
   });

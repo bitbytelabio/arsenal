@@ -96,7 +96,7 @@ Theo kiểm chứng thực nghiệm trên OMP 18.10.2:
 - **Hai cơ chế nạp (Two Loaders)**:
   - Cài đặt qua **Marketplace** nạp qua provider `claude-plugins` (priority 70): các MCP servers được đặt tiền tố namespace theo tên marketplace/plugin (ví dụ: `arsenal:burp-ultra`, `arsenal:rea`).
   - Cài đặt qua **Local Link** (`omp plugin link`) nạp qua provider legacy `omp-plugins` (priority 90): các MCP servers giữ nguyên định danh bare ID ban đầu (`burp-ultra`, `rea`).
-- **Năng lực tự động sẵn sàng**: `master` cùng 5 specialist agents (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`), 9 slash commands và rules được nạp từ plugin mà không cần chạy `profile install`. Đã kiểm chứng qua RPC trên OMP 18.10.2.
+- **Năng lực tự động sẵn sàng**: `master` cùng 5 specialist agents (`arsenal-reverse`, `arsenal-web`, `arsenal-mobile`, `arsenal-redteam`, `arsenal-verifier`), 9 slash commands (`/arsenal-*`) và rules được nạp từ plugin mà không cần chạy `profile install`. Đã kiểm chứng qua RPC trên OMP 18.10.2.
 - **Quyền ưu tiên**: Cấu hình native của profile/project (priority 100) có quyền ưu tiên cao hơn khi dùng đúng cùng định danh server, bao gồm namespace nếu cài qua marketplace. Plugin không ghi lại file cấu hình native của user.
 
 Phương thức phân phối:
@@ -231,13 +231,15 @@ OMP_PROFILE=arsenal omp plugin link ./plugin
    - Lệnh `/reload-plugins` trong phiên tương tác chỉ làm mới task agents, skills, slash commands và MCP servers.
    - Đối với các công cụ không thuộc MCP (non-MCP tools), hooks, hoặc runtime extension modules (như các bundle JavaScript trong `plugin/dist/extensions/`), bạn **bắt buộc phải khởi động lại (restart) phiên OMP** để nạp mã thực thi mới.
 
-4. **Cài đặt Profile Arsenal (Tùy chọn)**:
+4. **Cài đặt Profile Arsenal (Tùy chọn) & Cấu hình OMP**:
    Do plugin đã tự động cung cấp subagents và skills qua provider `omp-plugins`, bước cài đặt profile template vào `<profileDir>/agent/` là tùy chọn, chỉ cần thiết khi bạn muốn nạp các prompt mẫu `AGENTS.md` và `RULES.md` tùy chỉnh vào thư mục profile:
    ```bash
    arsenal profile install --profile ~/.omp/profiles/arsenal/agent --write
    arsenal profile verify --profile ~/.omp/profiles/arsenal/agent --json
    ```
-
+   - **Quy ước tên lệnh và specialist**: Tất cả slash commands sử dụng tiền tố `/arsenal-*` (ví dụ: `/arsenal-engage`, `/arsenal-doctor`), và các specialist subagents mang tên `arsenal-*` (`arsenal-reverse`, `arsenal-web`, `arsenal-mobile`, `arsenal-redteam`, `arsenal-verifier`).
+   - **Phân giải Model & Cấu hình OMP**: OMP **không** tự động nạp các file `config.yml` tùy ý của plugin. Arsenal sử dụng cơ chế phân giải model mặc định của OMP. Lệnh `arsenal profile install` không ghi file `config.yml` hoặc `models.yml`, cũng như không yêu cầu thiết lập `modelRoles` hay `task.agentModelOverrides`. Để chỉ định file cấu hình trong OMP, hãy dùng biến môi trường `PI_CONFIG_FILES`, cờ `--config`, hoặc cấu hình native profile/project.
+   - **Cấu hình IDA Guest Remote Debugging**: Các định nghĩa remote guest (`remoteDebug.guests`) được lưu trong `config.yml` / `config.yaml` do người dùng quản lý vì cấu hình đa host qua biến môi trường rất bất tiện; các biến `IDA_DIR`, `IDA_INSTALL_DIR`, và `IDA_PYTHON` trong `.env` chỉ là các tùy chọn ghi đè đường dẫn cục bộ.
 ---
 
 ## 5. Cấu hình và Quản lý MCP Bridges
@@ -457,7 +459,7 @@ Rule nguồn nằm tại `plugin/rules/proxy-analysis-tiers.md`. `profile instal
 
 Tier phân biệt độ sâu phân tích và chất lượng bằng chứng, không phải cổng phân quyền công cụ hay các bước bắt buộc tuần tự. Không tự đặt quota capture, số request, thời gian hoặc rate theo tier; chỉ tuân theo cấu hình thực tế của operator/host và yêu cầu ổn định của target. Không hỏi lại cho từng thao tác đã nằm trong phạm vi được phép.
 
-Master truyền workflow, tier và phạm vi cho specialist. Các prompt `sec-re`, `sec-mobile` và `sec-webapp` áp dụng cùng lựa chọn theo mục tiêu; mobile API security có thể dùng Burp trực tiếp, không bắt buộc qua RE.
+Master truyền workflow, tier và phạm vi cho specialist. Các prompt `arsenal-reverse`, `arsenal-mobile` và `arsenal-web` áp dụng cùng lựa chọn theo mục tiêu; mobile API security có thể dùng Burp trực tiếp, không bắt buộc qua RE.
 
 **Capture HTTPS trên Android và iOS:** khi SSL/TLS pinning cản interception, được dùng bypass có phạm vi đúng target (test build hoặc hook Frida/debugger tại điểm kiểm tra pinning Java/Kotlin/native trên Android hoặc Objective-C/Swift/native trên iOS) ở mọi tier trong phạm vi đã được phép, không cần hỏi lại. Phân biệt lỗi routing, CA trust và pinning; cài CA không tự bypass pinning. Giữ lần chạy trước bypass kể cả khi chỉ có lỗi handshake, rồi lặp lại cùng thao tác sau bypass. Ghi app version, package/bundle ID, APK/IPA hoặc app-binary hash, OS/device, cấu hình proxy/CA, script/hash và điểm hook; ghi khác biệt về signing, root/jailbreak hoặc emulator/simulator nếu có; đối chiếu flow đã giải mã với runtime và kết quả trên app. Dữ liệu chỉ quan sát qua hook phải được ghi rõ là runtime-only, không gọi là wire capture.
 

@@ -1,4 +1,4 @@
-# /sec-review: Engagement Case File Integrity Auditor
+# /arsenal-review: Engagement Case File Integrity Auditor
 
 Audit active assessment case files for evidence continuity, orphaned receipts, and cryptographic consistency across all 37 validation codes.
 
@@ -7,7 +7,7 @@ Audit active assessment case files for evidence continuity, orphaned receipts, a
 ## Usage
 
 ```text
-/sec-review [--strict] [--verify-hashes] [--fix]
+/arsenal-review [--strict] [--verify-hashes] [--fix]
 ```
 
 ## Description

@@ -10,14 +10,7 @@ from pathlib import Path
 from typing import Any
 
 def _resolve_version() -> str:
-    try:
-        from importlib.metadata import version
-        try:
-            return version("arsenal")
-        except Exception:
-            return version("arsenal-security")
-    except Exception:
-        pass
+    # 1. package.json is the Version Single Source of Truth (SSOT)
     try:
         candidate = Path(__file__).resolve().parent.parent.parent / "package.json"
         if candidate.is_file():
@@ -26,6 +19,7 @@ def _resolve_version() -> str:
                 return str(data["version"])
     except Exception:
         pass
+    # 2. Package resources / metadata
     try:
         import importlib.resources as pkg_resources
         res_pkg = pkg_resources.files("arsenal").joinpath("resources/package.json")
@@ -35,7 +29,15 @@ def _resolve_version() -> str:
                 return str(data["version"])
     except Exception:
         pass
-    return "3.0.2"
+    try:
+        from importlib.metadata import version
+        try:
+            return version("arsenal")
+        except Exception:
+            return version("arsenal-security")
+    except Exception:
+        pass
+    return "4.0.0"
 
 VERSION = _resolve_version()
 
@@ -58,7 +60,7 @@ def create_json_envelope(
     errors: list[str] | None = None,
     version: str = VERSION,
 ) -> dict[str, Any]:
-    """Create a RFC-compliant JSON envelope matching Arsenal v3 TS contract."""
+    """Create a RFC-compliant JSON envelope matching the Arsenal TypeScript contract."""
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "version": version,

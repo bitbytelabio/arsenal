@@ -337,6 +337,154 @@ class TestInstallMcp(unittest.TestCase):
         self.assertTrue(ok)
         self.assertIsNone(err)
 
+    def test_project_installed_mcp_loaded_preserves_fields_and_enabled(self) -> None:
+        plugin_node_dir = self.repo_root / "plugins" / "node_modules" / "arsenal"
+        plugin_node_dir.mkdir(parents=True)
+        plugin_mcp_content = {
+            "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
+            "mcpServers": {
+                "ida-pro": {"type": "stdio", "command": "uvx", "args": ["ida-pro-mcp"]},
+                "jshook": {
+                    "type": "stdio",
+                    "command": "npx",
+                    "args": ["-y", "@jshookmcp/jshook@0.3.5"],
+                    "env": {"MCP_TOOL_PROFILE": "search", "npm_config_omit": "optional"},
+                },
+                "burp-ultra": {
+                    "type": "sse",
+                    "url": "${BURP_MCP_URL:-http://127.0.0.1:9876/}",
+                    "enabled": False,
+                    "headers": {"Authorization": "Bearer ${BURP_MCP_TOKEN}"},
+                },
+                "rea": {
+                    "type": "stdio",
+                    "command": "bunx",
+                    "args": ["rea-agents@6.4.0", "mcp"],
+                    "enabled": True,
+                },
+                "custom-bridge": {
+                    "type": "stdio",
+                    "command": "custom-cmd",
+                    "args": ["--serve"],
+                },
+            },
+        }
+        (plugin_node_dir / ".mcp.json").write_text(json.dumps(plugin_mcp_content, indent=2), encoding="utf-8")
+
+        ctx = Context(
+            family="mcp",
+            subcommand="install",
+            positionals=[],
+            values={"write": True},
+            repo_root=self.repo_root,
+            profile_dir=self.profile_dir,
+            mode="write",
+            is_json=True,
+            raw_args=["mcp", "install", "--write", "--json"],
+        )
+        code = handle_mcp(ctx)
+        self.assertEqual(code, ExitCodes.SUCCESS)
+
+        target_file = self.profile_dir / "mcp.json"
+        self.assertTrue(target_file.is_file())
+        target_cfg = json.loads(target_file.read_text(encoding="utf-8"))
+        servers = target_cfg["mcpServers"]
+
+        # jshook preserves custom command/args/env and defaults enabled to False
+        self.assertEqual(servers["jshook"]["command"], "npx")
+        self.assertEqual(servers["jshook"]["args"], ["-y", "@jshookmcp/jshook@0.3.5"])
+        self.assertEqual(servers["jshook"]["env"], {"MCP_TOOL_PROFILE": "search", "npm_config_omit": "optional"})
+        self.assertFalse(servers["jshook"]["enabled"])
+
+        # burp-ultra preserves explicit enabled=False
+        self.assertFalse(servers["burp-ultra"]["enabled"])
+        self.assertEqual(servers["burp-ultra"]["headers"], {"Authorization": "Bearer ${BURP_MCP_TOKEN}"})
+
+        # rea preserves explicit enabled=True
+        self.assertTrue(servers["rea"]["enabled"])
+        self.assertEqual(servers["rea"]["args"], ["rea-agents@6.4.0", "mcp"])
+
+        # custom-bridge is materialized with defaulted enabled=False
+        self.assertIn("custom-bridge", servers)
+        self.assertEqual(servers["custom-bridge"]["command"], "custom-cmd")
+        self.assertFalse(servers["custom-bridge"]["enabled"])
+
+        # Existing target entries win on subsequent installs
+        servers["jshook"]["enabled"] = True
+        target_file.write_text(json.dumps(target_cfg, indent=2), encoding="utf-8")
+
+        code_reinstall = handle_mcp(ctx)
+        self.assertEqual(code_reinstall, ExitCodes.SUCCESS)
+        reinstalled_cfg = json.loads(target_file.read_text(encoding="utf-8"))
+        self.assertTrue(reinstalled_cfg["mcpServers"]["jshook"]["enabled"])
+
+    def test_invalid_installed_plugin_config_refuses_without_writes(self) -> None:
+        plugin_node_dir = self.repo_root / "plugins" / "node_modules" / "arsenal"
+        plugin_node_dir.mkdir(parents=True)
+        (plugin_node_dir / ".mcp.json").write_text("{ malformed json syntax", encoding="utf-8")
+
+        target_file = self.profile_dir / "mcp.json"
+        ctx = Context(
+            family="mcp",
+            subcommand="install",
+            positionals=[],
+            values={"write": True},
+            repo_root=self.repo_root,
+            profile_dir=self.profile_dir,
+            mode="write",
+            is_json=True,
+            raw_args=["mcp", "install", "--write", "--json"],
+        )
+        code = handle_mcp(ctx)
+        self.assertEqual(code, ExitCodes.MUTATION_REFUSED)
+        self.assertFalse(target_file.exists())
+
+    def test_installed_plugin_custom_server_in_list_and_toggle(self) -> None:
+        plugin_node_dir = self.repo_root / "plugins" / "node_modules" / "arsenal"
+        plugin_node_dir.mkdir(parents=True)
+        plugin_mcp_content = {
+            "mcpServers": {
+                "my-custom-tool": {
+                    "type": "stdio",
+                    "command": "tool-binary",
+                    "args": ["serve"],
+                }
+            }
+        }
+        (plugin_node_dir / ".mcp.json").write_text(json.dumps(plugin_mcp_content), encoding="utf-8")
+
+        # 1. List recognizes custom server
+        ctx_list = Context(
+            family="mcp",
+            subcommand="list",
+            positionals=[],
+            values={},
+            repo_root=self.repo_root,
+            profile_dir=self.profile_dir,
+            mode="check",
+            is_json=True,
+            raw_args=["mcp", "list", "--json"],
+        )
+        self.assertEqual(handle_mcp(ctx_list), ExitCodes.SUCCESS)
+
+        # 2. Enable recognizes custom server and sets enabled=True
+        ctx_enable = Context(
+            family="mcp",
+            subcommand="enable",
+            positionals=["my-custom-tool"],
+            values={},
+            repo_root=self.repo_root,
+            profile_dir=self.profile_dir,
+            mode="write",
+            is_json=True,
+            raw_args=["mcp", "enable", "my-custom-tool", "--json"],
+        )
+        self.assertEqual(handle_mcp(ctx_enable), ExitCodes.SUCCESS)
+        target_file = self.profile_dir / "mcp.json"
+        self.assertTrue(target_file.is_file())
+        cfg = json.loads(target_file.read_text(encoding="utf-8"))
+        self.assertTrue(cfg["mcpServers"]["my-custom-tool"]["enabled"])
+        self.assertEqual(cfg["mcpServers"]["my-custom-tool"]["command"], "tool-binary")
 
 if __name__ == "__main__":
     unittest.main()

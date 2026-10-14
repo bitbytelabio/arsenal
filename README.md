@@ -4,7 +4,7 @@
 
 **Plugin-First Offensive Security & Reverse Engineering Harness for Oh My Pi (OMP)**
 
-[![Version](https://img.shields.io/badge/version-3.0.2-10b981?style=flat-square)](package.json)
+[![Version](https://img.shields.io/badge/version-4.0.0-10b981?style=flat-square)](package.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Python CLI](https://img.shields.io/badge/CLI-Python-3776ab?style=flat-square&logo=python)](pyproject.toml)
 [![OMP Runtime: TypeScript](https://img.shields.io/badge/OMP%20runtime-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
@@ -25,7 +25,7 @@
 ### Key Highlights
 
 - **Single Source of Truth (SSOT)**: 1,648 canonical security playbooks with bundled references, templates, and source-backed helpers. Resource identifiers use `skill://<skill-id>/<path>`; bounded asset reads report when content is truncated.
-- **5 Specialist Agents**: Autonomous domain specialists (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`) operating under structured epistemic rules (`E-*` empirical facts vs. `P-*` predictive deductions vs. `unk-*` unknowns).
+- **5 Specialist Agents**: Autonomous domain specialists (`arsenal-reverse`, `arsenal-web`, `arsenal-mobile`, `arsenal-redteam`, `arsenal-verifier`) operating under structured epistemic rules (`E-*` empirical facts vs. `P-*` predictive deductions vs. `unk-*` unknowns).
 - **Cryptographic Evidence Ledger**: Monotonic SHA-256 hash-chained event streams recorded to `evidence/ledger.jsonl` backed by WAL-mode SQLite state tracking for tamper-evident provenance.
 - **Python CLI, Native OMP Skills**: `arsenal` owns installation, analysis, evidence, reports, and centralized operational scripts. Native TypeScript retains OMP skill discovery, loading, routing, and host hooks. Maintained parsers and official SDKs handle APK/AXML, JSON Schema, YAML, Markdown, and MCP.
 - **Zero Host Mutation & Dynamic Opt-In MCP**: 6 native tool bridges (`burp-ultra`, `rea`, `playwright`, `ghidra`, `ida-pro`, `jshook`) initialize disabled, toggled safely per-profile or per-project.
@@ -38,16 +38,16 @@ Arsenal decouples declarative security specifications from operational execution
 
 ```mermaid
 flowchart TD
-    Op([Security Operator]) -->|Invokes| Cmd["8 Slash Commands<br/>/sec-scope, /sec-recon, /sec-engage..."]
+    Op([Security Operator]) -->|Invokes| Cmd["8 Slash Commands<br/>/arsenal-scope, /arsenal-recon, /arsenal-engage..."]
     Cmd --> Orchestrator["Master Orchestrator<br/>Epistemic Reasoning & Scope Gates"]
 
     subgraph Specialists ["Specialist Agent Fleet"]
         direction TB
-        RE["sec-re<br/>Binary & Firmware Reversing"]
-        WA["sec-webapp<br/>Web & API Penetration"]
-        MO["sec-mobile<br/>iOS & Android Dynamic Analysis"]
-        RT["sec-red<br/>Adversarial Simulation & Cloud"]
-        VE["sec-verifier<br/>Deterministic Oracle Verification"]
+        RE["arsenal-reverse<br/>Binary & Firmware Reversing"]
+        WA["arsenal-web<br/>Web & API Penetration"]
+        MO["arsenal-mobile<br/>iOS & Android Dynamic Analysis"]
+        RT["arsenal-redteam<br/>Adversarial Simulation & Cloud"]
+        VE["arsenal-verifier<br/>Deterministic Oracle Verification"]
     end
 
     Orchestrator -->|Delegates Task| Specialists
@@ -90,11 +90,11 @@ Arsenal provisions five domain specialists. Each agent enforces strict Operation
 
 | Agent | Domain | Focus & Responsibilities | Core Tooling & Methods |
 |---|---|---|---|
-| `sec-re` | Binary Reverse Engineering | Disassembly, decompilation, control flow graph (CFG) analysis, firmware unpacking, protocol extraction. | `ghidra`, `ida-pro`, `rea`, `file_inspect`, `binwalk` |
-| `sec-webapp` | Web & API Security | Authenticated API audits, business logic flaws, OAuth/JWT vulnerability flows, injection vectors, CSRF/SSRF. | `burp-ultra`, `playwright`, native HTTP engines |
-| `sec-mobile` | Mobile Dynamic Analysis | Android & iOS assessment, runtime instrumentation, inter-process communication (IPC), automated storage audits. | `arsenal apk inspect`, `jshook`, TLS bypass hooks, Frida |
-| `sec-red` | Adversarial Simulation | Cloud infrastructure escalation, container escapes, credential relaying, lateral movement simulation. | `arsenal exec`, cloud CLI tools |
-| `sec-verifier` | Deterministic Verification | Independent finding validation, reproduction, and falsification. | `arsenal oracle verify`, SHA-256 validation, isolated replay |
+| `arsenal-reverse` | Binary Reverse Engineering | Disassembly, decompilation, control flow graph (CFG) analysis, firmware unpacking, protocol extraction. | `ghidra`, `ida-pro`, `rea`, `file_inspect`, `binwalk` |
+| `arsenal-web` | Web & API Security | Authenticated API audits, business logic flaws, OAuth/JWT vulnerability flows, injection vectors, CSRF/SSRF. | `burp-ultra`, `playwright`, native HTTP engines |
+| `arsenal-mobile` | Mobile Dynamic Analysis | Android & iOS assessment, runtime instrumentation, inter-process communication (IPC), automated storage audits. | `arsenal apk inspect`, `jshook`, TLS bypass hooks, Frida |
+| `arsenal-redteam` | Adversarial Simulation | Cloud infrastructure escalation, container escapes, credential relaying, lateral movement simulation. | `arsenal exec`, cloud CLI tools |
+| `arsenal-verifier` | Deterministic Verification | Independent finding validation, reproduction, and falsification. | `arsenal oracle verify`, SHA-256 validation, isolated replay |
 
 ---
 
@@ -104,36 +104,38 @@ Execute structured engagements through standard slash commands supported inside 
 
 | Command | Lifecycle Phase | Operational Function |
 |---|---|---|
-| `/sec-scope` | Pre-Engagement | Defines and strictly enforces target domains, IP blocks, and explicit out-of-scope exclusions. |
-| `/sec-recon` | Surface Discovery | Maps attack surface; triggers interactive confirmation gates if un-scoped assets are identified. |
-| `/sec-engage` | Engagement Loop | Drives the 5-phase structured assessment cycle across active specialist agents. |
-| `/sec-verify` | Proof Validation | Dispatches verification requirements directly to `sec-verifier` using deterministic oracles. |
-| `/sec-finding` | Finding Ingestion | Logs structured vulnerability candidates directly linked to immutable SHA-256 evidence ledger receipts. |
-| `/sec-review` | Quality Assurance | Audits engagement state and validates continuity across all 37 validation codes. |
-| `/sec-report` | Deliverable Export | Compiles audit findings into Markdown, JSON, and SARIF exports at `.omp/arsenal/reports/`. |
-| `/sec-doctor` | System Diagnostics | Inspects host dependencies, plugin health, MCP bridge states, and manifest schema integrity. |
+| `/arsenal-scope` | Pre-Engagement | Defines and strictly enforces target domains, IP blocks, and explicit out-of-scope exclusions. |
+| `/arsenal-recon` | Surface Discovery | Maps attack surface; triggers interactive confirmation gates if un-scoped assets are identified. |
+| `/arsenal-engage` | Engagement Loop | Drives the 5-phase structured assessment cycle across active specialist agents. |
+| `/arsenal-verify` | Proof Validation | Dispatches verification requirements directly to `arsenal-verifier` using deterministic oracles. |
+| `/arsenal-finding` | Finding Ingestion | Logs structured vulnerability candidates directly linked to immutable SHA-256 evidence ledger receipts. |
+| `/arsenal-review` | Quality Assurance | Audits engagement state and validates continuity across all 37 validation codes. |
+| `/arsenal-report` | Deliverable Export | Compiles audit findings into Markdown, JSON, and SARIF exports at `.omp/arsenal/reports/`. |
+| `/arsenal-doctor` | System Diagnostics | Inspects host dependencies, plugin health, MCP bridge states, and manifest schema integrity. |
 
 ---
 
 ## Dynamic MCP Bridges
 
-All external tool bridges use strict opt-in controls (`enabled: false` by default). Bridges can be toggled without editing raw JSON files:
+The plugin's `.mcp.json` is the source of bridge definitions. OMP loads it from the installed plugin root; `arsenal mcp install` can materialize the same entries into profile or project-native `mcp.json` while preserving operator overrides. Explicit `enabled: false` disables a bridge; otherwise the host loader applies its normal MCP defaults.
 
-| Bridge | Primary Use Case | Execution Engine | Default Status |
+| Bridge | Primary Use Case | Execution Engine | Configuration |
 |---|---|---|---|
-| `burp-ultra` | Web & API Security Traffic Inspection | Burp Suite REST / Extension Bridge | Disabled (`opt-in`) |
-| `rea` | Universal Reverse Engineering Engine | `bunx rea-agents@6.4.0 mcp` | Disabled (`opt-in`) |
-| `playwright` | Headless Web Automation & DOM Inspection | Isolated Node.js / Bun worker | Disabled (`opt-in`) |
-| `ghidra` | Headless & GUI Java Binary Analysis | Isolated `uv` runner + Ghidra Bridge | Disabled (`opt-in`) |
-| `ida-pro` | Interactive Disassembler Integration | Isolated `uv` runner + IDA RPC | Disabled (`opt-in`) |
-| `jshook` | Mobile & Dynamic Runtime Instrumentation | Frida Hook Manager / TypeScript Bridge | Disabled (`opt-in`) |
+| `burp-ultra` | Web & API Security Traffic Inspection | Burp Suite REST / Extension Bridge | Plugin manifest |
+| `rea` | Universal Reverse Engineering Engine | `bunx rea-agents@6.4.0 mcp` | Plugin manifest |
+| `playwright` | Headless Web Automation & DOM Inspection | Isolated Node.js / Bun worker | Plugin manifest |
+| `ghidra` | Headless & GUI Java Binary Analysis | Isolated `uv` runner + Ghidra Bridge | Plugin manifest |
+| `ida-pro` | Interactive Disassembler Integration | Isolated `uv` runner + IDA RPC | Plugin manifest |
+| `jshook` | Mobile & Dynamic Runtime Instrumentation | Frida Hook Manager / TypeScript Bridge | Plugin manifest |
 
 ```bash
-# Manage MCP bridges at the profile or project level
+# Materialize and manage MCP bridges at profile or project scope
+arsenal mcp install --scope profile --write
 arsenal mcp enable rea --scope profile --write
 arsenal mcp disable burp-ultra --scope project --write
 arsenal mcp list
 ```
+
 
 ---
 

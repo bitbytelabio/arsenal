@@ -4,19 +4,19 @@ import * as path from "node:path";
 
 describe("Operational Slash Commands Suite", () => {
   const commandsDir = path.resolve("plugin/commands");
-  const secCommands = [
-    "sec-engage.md",
-    "sec-report.md",
-    "sec-scope.md",
-    "sec-recon.md",
-    "sec-verify.md",
-    "sec-finding.md",
-    "sec-review.md",
-    "sec-doctor.md",
+  const arsenalCommands = [
+    "arsenal-engage.md",
+    "arsenal-report.md",
+    "arsenal-scope.md",
+    "arsenal-recon.md",
+    "arsenal-verify.md",
+    "arsenal-finding.md",
+    "arsenal-review.md",
+    "arsenal-doctor.md",
   ];
 
   test("all canonical slash command definitions exist in plugin/commands/", () => {
-    for (const cmd of secCommands) {
+    for (const cmd of arsenalCommands) {
       const cmdPath = path.join(commandsDir, cmd);
       expect(fs.existsSync(cmdPath)).toBe(true);
       const content = fs.readFileSync(cmdPath, "utf-8");
@@ -30,8 +30,8 @@ describe("Operational Slash Commands Suite", () => {
     expect(fs.readFileSync(updateCmd, "utf-8")).toContain("## Fixed Execution Workflow");
   });
 
-  test("sec-engage defines 5 sequential assessment phases", () => {
-    const engageContent = fs.readFileSync(path.join(commandsDir, "sec-engage.md"), "utf-8");
+  test("arsenal-engage defines 5 sequential assessment phases", () => {
+    const engageContent = fs.readFileSync(path.join(commandsDir, "arsenal-engage.md"), "utf-8");
     expect(engageContent).toContain("Phase 1: Scoping");
     expect(engageContent).toContain("Phase 2: Surface Reconnaissance");
     expect(engageContent).toContain("Phase 3: Vulnerability Assessment");
@@ -39,13 +39,13 @@ describe("Operational Slash Commands Suite", () => {
     expect(engageContent).toContain("Phase 5: Case Review & Reporting");
   });
 
-  test("sec-report specifies default timestamped report destination", () => {
-    const reportContent = fs.readFileSync(path.join(commandsDir, "sec-report.md"), "utf-8");
+  test("arsenal-report specifies default timestamped report destination", () => {
+    const reportContent = fs.readFileSync(path.join(commandsDir, "arsenal-report.md"), "utf-8");
     expect(reportContent).toContain(".omp/arsenal/reports/report-<timestamp>.md");
   });
 
-  test("sec-scope and sec-recon define interactive authorization gate", () => {
-    const reconContent = fs.readFileSync(path.join(commandsDir, "sec-recon.md"), "utf-8");
+  test("arsenal-scope and arsenal-recon define interactive authorization gate", () => {
+    const reconContent = fs.readFileSync(path.join(commandsDir, "arsenal-recon.md"), "utf-8");
     expect(reconContent).toContain("Pre-Execution Scope Gate");
     expect(reconContent).toContain("Add target to scope, proceed conditionally, or abort?");
   });

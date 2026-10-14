@@ -135,8 +135,8 @@ export class BudgetTracker {
 
     const percentage = (this.totalSpendUsd / this.budgetUsd) * 100;
     if (percentage >= 90) {
-      // Permit sec-verifier and master
-      if (agentName === "sec-verifier" || agentName === "master") {
+      // Permit arsenal-verifier and master
+      if (agentName === "arsenal-verifier" || agentName === "master") {
         return {
           note: `Budget reserve active (${percentage.toFixed(1)}% spend). Prioritizing verifier task.`,
         };
@@ -145,7 +145,7 @@ export class BudgetTracker {
       // Block exploratory specialists
       return {
         block: true,
-        reason: `Subagent budget reserve active (>=90% spend). Exploratory spawns declined; sec-verifier and master reporting prioritized.`,
+        reason: `Subagent budget reserve active (>=90% spend). Exploratory spawns declined; arsenal-verifier and master reporting prioritized.`,
       };
     }
 
@@ -165,10 +165,10 @@ export default function budgetExtension(pi: {
     const ctx = rawCtx as ExtensionContext;
 
     // Check verifier turn limit (8 turns strictly enforced: turnIndex >= 7)
-    if (ctx.agent?.kind === "sub" && ctx.agent.name === "sec-verifier") {
+    if (ctx.agent?.kind === "sub" && ctx.agent.name === "arsenal-verifier") {
       if (event.turnIndex >= 7) {
         ctx.ui.notify(
-          "sec-verifier reached maximum 8-turn budget. Terminating child session.",
+          "arsenal-verifier reached maximum 8-turn budget. Terminating child session.",
           "warn"
         );
         ctx.abort();

@@ -19,7 +19,6 @@ from arsenal.corpus.frontmatter import parse_skill_frontmatter
 from arsenal.corpus.manifest import sha256_file
 from arsenal.corpus.routing import DOMAINS
 
-
 def get_local_override_reason(fm: dict[str, Any] | None) -> str | None:
     """Extract explicit local override reason from frontmatter."""
     if not fm:
@@ -224,7 +223,14 @@ def execute_build(
         "author": {"name": "arsenal"},
         "license": "MIT",
         "capabilities": {
-            "roles": ["master", "sec-re", "sec-webapp", "sec-mobile", "sec-red", "sec-verifier"],
+            "roles": [
+                "master",
+                "arsenal-reverse",
+                "arsenal-web",
+                "arsenal-mobile",
+                "arsenal-redteam",
+                "arsenal-verifier",
+            ],
             "routers": [
                 "arsenal-re-router",
                 "arsenal-webapp-router",
@@ -238,8 +244,14 @@ def execute_build(
     (target_dir / "plugin.json").write_text(json.dumps(plugin_json, indent=2) + "\n", encoding="utf-8")
 
 
-    mcp_catalog = create_canonical_mcp_catalog()
-    (target_dir / ".mcp.json").write_text(json.dumps(mcp_catalog, indent=2) + "\n", encoding="utf-8")
+    source_mcp = source_plugin / ".mcp.json"
+    target_mcp = target_dir / ".mcp.json"
+    if source_mcp.is_file():
+        if source_mcp.resolve() != target_mcp.resolve():
+            target_mcp.write_bytes(source_mcp.read_bytes())
+    else:
+        mcp_catalog = create_canonical_mcp_catalog()
+        target_mcp.write_text(json.dumps(mcp_catalog, indent=2) + "\n", encoding="utf-8")
 
     # Bun is needed only to compile the native in-process OMP extensions.
     ext_entrypoints = [

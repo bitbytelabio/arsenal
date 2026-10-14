@@ -1,50 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
   "mcpServers": {
-    "ida-pro": {
-      "type": "stdio",
-      "command": "uvx",
-      "args": [
-        "ida-pro-mcp"
-      ]
-    },
-    "ghidra": {
-      "type": "stdio",
-      "command": "uv",
-      "args": [
-        "run",
-        "-m",
-        "ghidra_mcp"
-      ]
-    },
+    "ida-pro": { "type": "stdio", "command": "uvx", "args": ["ida-pro-mcp"] },
+    "ghidra": { "type": "stdio", "command": "uv", "args": ["run", "-m", "ghidra_mcp"] },
     "jshook": {
       "type": "stdio",
-      "command": "node",
-      "args": [
-        "jshookmcp.js"
-      ]
+      "command": "npx",
+      "args": ["-y", "@jshookmcp/jshook@0.3.5"],
+      "env": { "MCP_TOOL_PROFILE": "search", "npm_config_omit": "optional" }
     },
     "burp-ultra": {
       "type": "sse",
       "url": "${BURP_MCP_URL:-http://127.0.0.1:9876/}",
-      "headers": {
-        "Authorization": "Bearer ${BURP_MCP_TOKEN}"
-      }
+      "enabled": false,
+      "headers": { "Authorization": "Bearer ${BURP_MCP_TOKEN}" }
     },
-    "playwright": {
-      "type": "stdio",
-      "command": "bunx",
-      "args": [
-        "@playwright/mcp@latest"
-      ]
-    },
+    "playwright": { "type": "stdio", "command": "bunx", "args": ["@playwright/mcp@latest"] },
     "rea": {
       "type": "stdio",
       "command": "bunx",
-      "args": [
-        "rea-agents@6.4.0",
-        "mcp"
-      ]
+      "args": ["rea-agents@6.4.0", "mcp"],
+      "enabled": true
     }
   }
 }

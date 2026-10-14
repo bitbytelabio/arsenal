@@ -96,7 +96,7 @@ Empirical verification on OMP 18.10.2 establishes:
 - **Two Loaders**:
   - **Marketplace Installation**: Loaded via the `claude-plugins` provider (priority 70). MCP servers are automatically namespaced with the marketplace/plugin identifier prefix (e.g., `arsenal:burp-ultra`, `arsenal:rea`).
   - **Local Link (`omp plugin link`)**: Loaded via the legacy `omp-plugins` provider (priority 90). MCP servers retain their original bare identifiers (`burp-ultra`, `rea`).
-- **Automatic Capability Availability**: The `master` agent, 5 specialist subagents (`sec-re`, `sec-webapp`, `sec-mobile`, `sec-red`, `sec-verifier`), 9 slash commands, and security rules are loaded directly from the plugin without requiring `profile install`. Verified via OMP RPC inspection.
+- **Automatic Capability Availability**: The `master` agent, 5 specialist subagents (`arsenal-reverse`, `arsenal-web`, `arsenal-mobile`, `arsenal-redteam`, `arsenal-verifier`), 9 slash commands (`/arsenal-*`), and security rules are loaded directly from the plugin without requiring `profile install`. Verified via OMP RPC inspection.
 - **Configuration Precedence**: Native profile/project configuration (priority 100) takes precedence when matching server identifiers (including namespaced IDs for marketplace installations). The plugin never overwrites existing native user configurations.
 
 Distribution Modes:
@@ -232,12 +232,15 @@ OMP_PROFILE=arsenal omp plugin link ./plugin
    - The interactive `/reload-plugins` command reloads task agents, skills, slash commands, and MCP servers.
    - For non-MCP tools, hooks, or runtime extension modules (such as JavaScript bundles in `plugin/dist/extensions/`), **you must restart the OMP session** to load updated bytecode.
 
-4. **Optional Profile Installation**:
+4. **Optional Profile Installation & OMP Configuration**:
    Since the plugin delivers subagents and skills automatically, installing profile templates is optional:
    ```bash
    arsenal profile install --profile ~/.omp/profiles/arsenal/agent --write
    arsenal profile verify --profile ~/.omp/profiles/arsenal/agent --json
    ```
+   - **Commands and Specialists**: Slash commands use the `/arsenal-*` namespace (e.g., `/arsenal-engage`, `/arsenal-doctor`), and specialist agents use `arsenal-*` (e.g., `arsenal-reverse`, `arsenal-web`, `arsenal-mobile`, `arsenal-redteam`, `arsenal-verifier`).
+   - **Model Resolution & OMP Config**: OMP does **not** auto-load arbitrary plugin `config.yml` files. Arsenal relies on OMP's default agent model resolution. Running `arsenal profile install` does not write OMP `config.yml` or `models.yml`, nor are `modelRoles` or `task.agentModelOverrides` required setup steps. To load custom configurations in OMP, specify files via `PI_CONFIG_FILES`, pass `--config` flags, or manage native profile/project configuration.
+   - **IDA Guest Remote Debugging**: Remote guest definitions (`remoteDebug.guests`) stay in user-owned `config.yml` / `config.yaml` because multi-host environment variables are cumbersome across multiple VMs; `IDA_DIR`, `IDA_INSTALL_DIR`, and `IDA_PYTHON` in `.env` are optional local path overrides only.
 
 ---
 

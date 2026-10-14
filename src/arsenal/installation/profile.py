@@ -13,26 +13,29 @@ import sys
 
 from arsenal.common import Context, ExitCodes
 from arsenal.installation.fs_safe import safe_write_file
-from arsenal.installation.ida_detector import detect_ida_installation
 from arsenal.installation.markdown_editor import merge_agents_markdown, merge_rules_markdown
 from arsenal.installation.mcp_core import (
     create_canonical_mcp_catalog,
+    load_plugin_mcp_servers,
     merge_mcp_config_with_defaults,
     parse_and_validate_mcp_config,
 )
-from arsenal.installation.resources import get_template_text, resolve_plugin_dir
+from arsenal.installation.resources import (
+    get_template_text,
+    resolve_installed_plugin_dir,
+    resolve_plugin_dir,
+)
 from arsenal.installation.specialist_parity import (
     FORBIDDEN_VENDOR_SEGMENTS,
     evaluate_specialist_parity,
 )
-from arsenal.installation.yaml_editor import merge_yaml_preserving_comments
 
 SPECIALIST_FILES = (
-    "sec-re.md",
-    "sec-webapp.md",
-    "sec-mobile.md",
-    "sec-red.md",
-    "sec-verifier.md",
+    "arsenal-reverse.md",
+    "arsenal-web.md",
+    "arsenal-mobile.md",
+    "arsenal-redteam.md",
+    "arsenal-verifier.md",
 )
 
 REQUIRED_MARKERS = (
@@ -74,45 +77,34 @@ def handle_profile_install(ctx: Context) -> int:
                 code=ExitCodes.MUTATION_REFUSED,
                 errors=[error_msg],
             )
-
-    has_existing_yaml = (profile_dir / "config.yaml").is_file()
-    config_rel_path = "config.yaml" if has_existing_yaml else "config.yml"
-
-    detected_ida = detect_ida_installation()
-    ida_section = ""
-    if detected_ida.found and detected_ida.install_dir and detected_ida.python:
-        ida_section = (
-            "ida:\n"
-            "  enabled: true\n"
-            f'  python: "{detected_ida.python}"\n'
-            f'  installDir: "{detected_ida.install_dir}"\n'
-            "  maxOpen: 4\n"
-            "  idleCloseSec: 900\n"
+    # Preflight check: malformed or corrupt installed plugin .mcp.json fails without writes
+    plugin_ok, plugin_servers, plugin_err = load_plugin_mcp_servers(ctx.repo_root, ctx.profile_dir)
+    if not plugin_ok:
+        return ctx.result(
+            data={"profileDir": str(profile_dir)},
+            code=ExitCodes.MUTATION_REFUSED,
+            errors=[plugin_err],
         )
 
-    base_config = get_template_text("config.yml")
-    config_template = f"{ida_section}{base_config}"
     agents_template = get_template_text("AGENTS.md")
     rules_template = get_template_text("RULES.md")
-    models_template = get_template_text("models.yml")
-    mcp_template = json.dumps(create_canonical_mcp_catalog(), indent=2)
+    mcp_template = json.dumps(create_canonical_mcp_catalog(plugin_servers=plugin_servers), indent=2)
 
     templates: list[dict[str, str]] = [
         {"relPath": "AGENTS.md", "content": agents_template},
         {"relPath": "RULES.md", "content": rules_template},
-        {"relPath": config_rel_path, "content": config_template},
+        {"relPath": "mcp.json", "content": mcp_template},
     ]
-
-    if not has_existing_yaml:
-        templates.append({"relPath": "models.yml", "content": models_template})
-
-    templates.append({"relPath": "mcp.json", "content": mcp_template})
 
     # Prefer operator repository assets, then fill missing managed components
     # from the packaged native OMP plugin resources.
-    plugin_dir = resolve_plugin_dir(ctx.repo_root)
+    installed_plugin_dir = resolve_installed_plugin_dir(ctx.repo_root, ctx.profile_dir)
+    repo_plugin_dir = resolve_plugin_dir(ctx.repo_root)
     fallback_plugin_dir = resolve_plugin_dir(None)
-    source_dirs = [p for p in (plugin_dir, fallback_plugin_dir) if p is not None]
+    source_dirs: list[Path] = []
+    for p in (installed_plugin_dir, repo_plugin_dir, fallback_plugin_dir):
+        if p is not None and p not in source_dirs:
+            source_dirs.append(p)
     seen_specialists: set[str] = set()
     seen_rules: set[str] = set()
     for current_plugin_dir in source_dirs:
@@ -150,13 +142,10 @@ def handle_profile_install(ctx: Context) -> int:
             elif rel == "RULES.md":
                 existing = full_path.read_text(encoding="utf-8")
                 content_to_write = merge_rules_markdown(existing, t["content"])
-            elif rel.endswith(".yml") or rel.endswith(".yaml"):
-                existing = full_path.read_text(encoding="utf-8")
-                content_to_write = merge_yaml_preserving_comments(existing, t["content"])
             elif rel.endswith("mcp.json"):
                 try:
                     existing_json = json.loads(full_path.read_text(encoding="utf-8"))
-                    merged = merge_mcp_config_with_defaults(existing_json)
+                    merged = merge_mcp_config_with_defaults(existing_json, plugin_servers=plugin_servers)
                     content_to_write = json.dumps(merged, indent=2)
                 except Exception:
                     pass
@@ -164,8 +153,6 @@ def handle_profile_install(ctx: Context) -> int:
         is_premerged = (
             rel in ("AGENTS.md", "RULES.md")
             or rel.startswith("rules/")
-            or rel.endswith(".yml")
-            or rel.endswith(".yaml")
             or rel.endswith("mcp.json")
         )
 
@@ -206,28 +193,10 @@ def handle_profile_verify(ctx: Context) -> int:
     shadows: list[str] = []
     errors: list[str] = []
 
-    has_config = (profile_dir / "config.yaml").is_file() or (profile_dir / "config.yml").is_file()
-
-    def _has_roles(p: Path) -> bool:
-        if not p.is_file():
-            return False
-        c = p.read_text(encoding="utf-8")
-        return "modelRoles:" in c or "roles:" in c
-
-    has_models = (
-        (profile_dir / "models.yml").is_file()
-        or _has_roles(profile_dir / "config.yaml")
-        or _has_roles(profile_dir / "config.yml")
-    )
-
     if not (profile_dir / "AGENTS.md").is_file():
         missing.append("AGENTS.md")
     if not (profile_dir / "RULES.md").is_file():
         missing.append("RULES.md")
-    if not has_config:
-        missing.append("config.yaml (or config.yml)")
-    if not has_models:
-        missing.append("models.yml (or roles in config.yaml)")
     if not (profile_dir / "mcp.json").is_file():
         missing.append("mcp.json")
 
@@ -278,7 +247,7 @@ def handle_profile_verify(ctx: Context) -> int:
             errors.append(f"Escaped backticks found in AGENTS.md: {escaped_count} occurrence(s)")
 
         # 4. Specialist set equality
-        plugin_dir = resolve_plugin_dir(ctx.repo_root)
+        plugin_dir = resolve_installed_plugin_dir(ctx.repo_root, ctx.profile_dir) or resolve_plugin_dir(ctx.repo_root)
         plugin_specialists: list[str] = []
         if plugin_dir and (plugin_dir / "plugin.json").is_file():
             try:
@@ -302,7 +271,7 @@ def handle_profile_verify(ctx: Context) -> int:
             except Exception:
                 errors.append("Failed to parse frontmatter from master.md")
 
-        agents_specialists = sorted(list(set(re.findall(r"\bsec-[a-z0-9-]+\b", agents_content))))
+        agents_specialists = sorted(list(set(re.findall(r"\b(arsenal-(?:reverse|web|mobile|redteam|verifier))\b", agents_content))))
         if plugin_specialists:
             p_joined = ",".join(plugin_specialists)
             m_joined = ",".join(master_spawns)
@@ -333,7 +302,7 @@ def handle_profile_verify(ctx: Context) -> int:
                 errors.append(f'Forbidden vendor token "{vendor}" found in RULES.md')
 
     # Check master.md
-    plugin_dir = resolve_plugin_dir(ctx.repo_root)
+    plugin_dir = resolve_installed_plugin_dir(ctx.repo_root, ctx.profile_dir) or resolve_plugin_dir(ctx.repo_root)
     if plugin_dir and (plugin_dir / "agents/master.md").is_file():
         master_content = (plugin_dir / "agents/master.md").read_text(encoding="utf-8")
         escaped_master_count = len(re.findall(r"\\`", master_content))

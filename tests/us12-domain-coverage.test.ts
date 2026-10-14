@@ -262,8 +262,8 @@ describe("US5 — specialist definitions (P-1..P-4, SC-007, SC-008)", () => {
     expect(violations.map((v) => `${v.invariant} ${v.domain ?? "-"} ${v.subject}`)).toEqual([]);
   });
 
-  it("sec-verifier owns no domain category", () => {
-    const md = fs.readFileSync(path.join(REPO_ROOT, "plugin/agents/sec-verifier.md"), "utf-8");
+  it("arsenal-verifier owns no domain category", () => {
+    const md = fs.readFileSync(path.join(REPO_ROOT, "plugin/agents/arsenal-verifier.md"), "utf-8");
     expect(parseOwnedCategories(md) ?? []).toEqual([]);
   });
 });

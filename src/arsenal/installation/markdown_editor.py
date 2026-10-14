@@ -86,21 +86,29 @@ def normalize_rule_text(line: str) -> str:
 
 
 def merge_rules_markdown(existing: str, template: str) -> str:
-    """Merge RULES.md preserving verbatim line order, custom headings, comments, and sub-bullets.
-
-    Appends missing template rules while keeping operator custom rules intact.
-    """
+    """Merge RULES.md with a replaceable Arsenal block and preserved operator rules."""
     if not existing.strip():
-        return template.rstrip() + "\n"
+        normalized_template = template.strip()
+        if not has_tagged_block(normalized_template, "arsenal"):
+            normalized_template = f"<!-- arsenal:start -->\n{normalized_template}\n<!-- arsenal:end -->"
+        return normalized_template.rstrip() + "\n"
     if not template.strip():
         return existing.rstrip() + "\n"
 
-    existing_lines = existing.splitlines()
-    template_lines = template.splitlines()
+    normalized_template = template.strip()
+    if not has_tagged_block(normalized_template, "arsenal"):
+        normalized_template = f"<!-- arsenal:start -->\n{normalized_template}\n<!-- arsenal:end -->"
+    template_block = extract_tagged_block(normalized_template, "arsenal") or normalized_template
 
-    existing_bullets_normalized = set()
+    if has_tagged_block(existing, "arsenal"):
+        _, updated = replace_tagged_block(existing, "arsenal", template_block)
+        return updated.rstrip() + "\n"
+
+    # Legacy untagged documents are append-only: preserve every existing rule and
+    # add a managed block containing only template bullets not already present.
+    existing_bullets_normalized: set[str] = set()
     in_code = False
-    for line in existing_lines:
+    for line in existing.splitlines():
         trimmed = line.strip()
         if trimmed.startswith("```") or trimmed.startswith("~~~"):
             in_code = not in_code
@@ -108,20 +116,23 @@ def merge_rules_markdown(existing: str, template: str) -> str:
         if not in_code and (trimmed.startswith("-") or trimmed.startswith("*")):
             existing_bullets_normalized.add(normalize_rule_text(trimmed))
 
-    missing_template_bullets: list[str] = []
+    template_lines = template_block.splitlines()
+    filtered_lines: list[str] = []
     in_code = False
     for line in template_lines:
         trimmed = line.strip()
+        if trimmed.startswith("<!--") and trimmed.endswith("-->"):
+            continue
         if trimmed.startswith("```") or trimmed.startswith("~~~"):
             in_code = not in_code
+            filtered_lines.append(line)
             continue
         if not in_code and (trimmed.startswith("-") or trimmed.startswith("*")):
-            norm = normalize_rule_text(trimmed)
-            if norm not in existing_bullets_normalized:
-                missing_template_bullets.append(line)
-                existing_bullets_normalized.add(norm)
+            normalized = normalize_rule_text(trimmed)
+            if normalized in existing_bullets_normalized:
+                continue
+            existing_bullets_normalized.add(normalized)
+        filtered_lines.append(line)
 
-    if not missing_template_bullets:
-        return existing.rstrip() + "\n"
-
-    return existing.rstrip() + "\n" + "\n".join(missing_template_bullets) + "\n"
+    managed_block = "<!-- arsenal:start -->\n" + "\n".join(filtered_lines).strip() + "\n<!-- arsenal:end -->"
+    return existing.rstrip() + "\n\n" + managed_block + "\n"

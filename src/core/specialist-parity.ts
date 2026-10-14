@@ -40,13 +40,13 @@ export function validateSpecialistHandoff(rawPayload: unknown): HandoffValidatio
 }
 
 export const SPECIALIST_FILE: Readonly<Record<SkillDomain, string>> = Object.freeze({
-  re: "sec-re.md",
-  webapp: "sec-webapp.md",
-  mobile: "sec-mobile.md",
-  red: "sec-red.md",
+  re: "arsenal-reverse.md",
+  webapp: "arsenal-web.md",
+  mobile: "arsenal-mobile.md",
+  red: "arsenal-redteam.md",
 });
 
-export const VERIFIER_FILE = "sec-verifier.md";
+export const VERIFIER_FILE = "arsenal-verifier.md";
 
 /** Headings required on each domain specialist definition. */
 export const REQUIRED_DOMAIN_HEADINGS: readonly string[] = Object.freeze([
@@ -211,7 +211,7 @@ export function evaluateSpecialistParity(repoRoot = "."): ParityViolation[] {
     }
   }
 
-  // P-4: sec-verifier owns no category.
+  // P-4: arsenal-verifier owns no category.
   const verifier = readAgent(repoRoot, VERIFIER_FILE);
   if (verifier !== null) {
     for (const phrase of REQUIRED_VERIFIER_HEADINGS) {
@@ -230,7 +230,7 @@ export function evaluateSpecialistParity(repoRoot = "."): ParityViolation[] {
         invariant: "P-4",
         domain: null,
         subject: `${VERIFIER_FILE}:${owned.join(",")}`,
-        message: `sec-verifier owns no domain category but lists '${owned.join(", ")}'`,
+        message: `arsenal-verifier owns no domain category but lists '${owned.join(", ")}'`,
       });
     }
   }

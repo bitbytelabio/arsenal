@@ -8,7 +8,7 @@ describe("Specialist Subagent Handoff Contract Validation", () => {
   test("accepts fully compliant specialist handoff payload", () => {
     const validHandoff: SpecialistHandoff = {
       taskId: "task-web-001",
-      role: "sec-webapp",
+      role: "arsenal-web",
       findings: [
         {
           id: "F-001",
@@ -33,7 +33,7 @@ describe("Specialist Subagent Handoff Contract Validation", () => {
   test("rejects handoff payload missing required evidenceReceipts or fields", () => {
     const invalidHandoff = {
       taskId: "task-002",
-      role: "sec-webapp",
+      role: "arsenal-web",
       findings: [
         {
           id: "F-002",

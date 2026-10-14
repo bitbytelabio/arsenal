@@ -1,4 +1,4 @@
-# /sec-scope: Engagement Scope Management
+# /arsenal-scope: Engagement Scope Management
 
 Manage, inspect, and enforce authorized security assessment boundaries in `.omp/arsenal/scope.json`.
 
@@ -7,7 +7,7 @@ Manage, inspect, and enforce authorized security assessment boundaries in `.omp/
 ## Usage
 
 ```text
-/sec-scope [--target <url|ip|cidr|package>] [--exclude <url|ip|package>] [--show] [--auth <contact>] [--expire <iso-date>] [--safe-mode <true|false>]
+/arsenal-scope [--target <url|ip|cidr|package>] [--exclude <url|ip|package>] [--show] [--auth <contact>] [--expire <iso-date>] [--safe-mode <true|false>]
 ```
 
 ## Description
