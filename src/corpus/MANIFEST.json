@@ -3,7 +3,7 @@
   "generator": "arsenal-corpus-internalize-v3.0.0",
   "created_at": null,
   "summary": {
-    "total_considered": 1815,
+    "total_considered": 1818,
     "admitted": 1104,
     "quarantined": 1,
     "excluded": 0,
@@ -38,6 +38,11 @@
     "xalgorix": {
       "repo": "xalgorix",
       "rev": "911ac7310ba3666c1e5efc0abcb5327d1fc71be4",
+      "license": "Apache-2.0"
+    },
+    "arsenal-local": {
+      "repo": "presets/skills",
+      "rev": null,
       "license": "Apache-2.0"
     }
   },
@@ -101,8 +106,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-achieving-cmmc-level-2-compliance/SKILL.md",
-      "sha256": "c9f22ecd4722dde1a6cec40454d399ac63f5563780be2ab91695adc698152e45",
-      "bytes": 8100,
+      "sha256": "338d8ccdc2a0e1e625d794c84f6411665f06fdf675fc559fbcfdf649b4084af0",
+      "bytes": 8092,
       "source_path": "achieving-cmmc-level-2-compliance/SKILL.md",
       "source_sha256": "f5124addbf044b13ff6332872087d93062bfbbdd5283aac96bd76d4c9ddd7a67",
       "support_files": [
@@ -185,8 +190,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-llm-guardrails-for-security/SKILL.md",
-      "sha256": "8110d215f9a5bd13af45c003a2eef391480ee7c7bea16ea7088f638afd7d1202",
-      "bytes": 10425,
+      "sha256": "3301be1191c16add170823a82f475d5815c73ac5b2106b8b4ac53eca9c6a228e",
+      "bytes": 10371,
       "source_path": "ai-security/implementing-llm-guardrails-for-security/SKILL.md",
       "source_sha256": "9f7c31b34bc7b1bb92c05bd28e8b48223cf55e39864c73caf0dfcc3c97e39c58"
     },
@@ -256,8 +261,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/mobile-analyzing-android-malware-with-apktool/SKILL.md",
-      "sha256": "5fd072f22176db5fae50cba4e20570e8b36b42ff9da28503731278dadfcd0b2e",
-      "bytes": 2469,
+      "sha256": "94946366cbf7aa79c3a5ac37b443afe8ded4c2df4185a2bb3a9c2402b88c67a8",
+      "bytes": 2463,
       "source_path": "analyzing-android-malware-with-apktool/SKILL.md",
       "source_sha256": "35c586c0d04a334249bdba66ef41578921c8695b3500f066a69de95e2d9fd720",
       "support_files": [
@@ -1740,8 +1745,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-auditing-foundry-smart-contract-security/SKILL.md",
-      "sha256": "06af8a0b2e118a01e7543d5b033f17ea5c335c7958b942585a4ad435f1634247",
-      "bytes": 7173,
+      "sha256": "8a5c8f35d43f2d93c5a601cc034a8d5e5d01f496c7375950a32f0c470c4eeeda",
+      "bytes": 7161,
       "source_path": "auditing-foundry-smart-contract-security/SKILL.md",
       "source_sha256": "1d631c528d15c299be4e6446b31e0901484c2a89bbdcb95fd545e5e438db8259",
       "support_files": [
@@ -2933,8 +2938,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-conducting-cyber-risk-assessment-with-nist-800-30/SKILL.md",
-      "sha256": "38fd63ce02fc1ee1b9689fc64560ffe3c3cc3439c2dccba521c5d4f7316aa19d",
-      "bytes": 9289,
+      "sha256": "44e6949e8a4126b4eb26bb6ac87ac9d66094620fe3e2099f5b138866feca1a3b",
+      "bytes": 9281,
       "source_path": "conducting-cyber-risk-assessment-with-nist-800-30/SKILL.md",
       "source_sha256": "2cf6a3a884c4fba73fafd45afad1d5fdd7e34ec6eef25039948ed26fd605c756",
       "support_files": [
@@ -3094,8 +3099,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/mobile-conducting-mobile-app-penetration-test/SKILL.md",
-      "sha256": "d8cbb2fc00e082b8426106ab7f92a2e8a9e314f7e9d8164a4047bd57774977dd",
-      "bytes": 12503,
+      "sha256": "0f87daa1b426598e865fd81522ceabe4b80e5c36754289572bc117261b7abac8",
+      "bytes": 12491,
       "source_path": "conducting-mobile-app-penetration-test/SKILL.md",
       "source_sha256": "88e772bdee5f51ab9dfef446d64f8c9930838e4623d84cebd91b7795ee4bfef8",
       "support_files": [
@@ -4215,8 +4220,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-defending-llms-with-guardrails/SKILL.md",
-      "sha256": "c08ba45c8227a5d65f5e324e54a331c04ca776ab377a6ddd507beaa71cacfab2",
-      "bytes": 12306,
+      "sha256": "08b83d6a281f8361a5fa98a544422dd5a8768e275bc189db3aea84683858c294",
+      "bytes": 12300,
       "source_path": "defending-llms-with-guardrails/SKILL.md",
       "source_sha256": "800fb9260b8690b5af810445660eda128351e2075f0aa307b5262174ebb1e1e2",
       "support_files": [
@@ -4283,8 +4288,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-deploying-cloud-deception-with-decoy-resources/SKILL.md",
-      "sha256": "c658fd631aedc97c961632b42cffe415d421af77b37148a6ada71c7a2c21879d",
-      "bytes": 10621,
+      "sha256": "c55927a5db92fb79808d64081a6f3fec423a50a198eb5ea8e987ec35dcb910d6",
+      "bytes": 10613,
       "source_path": "deploying-cloud-deception-with-decoy-resources/SKILL.md",
       "source_sha256": "38a696a5b3686fe575bbcd0de8cefe5f4272f65c2d0a422fcaffed91d566ef55",
       "support_files": [
@@ -4423,8 +4428,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-designing-adversary-engagement-with-mitre-engage/SKILL.md",
-      "sha256": "f0279e7c1619e83d7d0301dc0945f14009a3f27c3a413e5160a60f3d2792a106",
-      "bytes": 11042,
+      "sha256": "290765cb3e2551fc3ed204430598fc85fc24de1e4731bfc47eb03adc2c3b709c",
+      "bytes": 11034,
       "source_path": "designing-adversary-engagement-with-mitre-engage/SKILL.md",
       "source_sha256": "6f9230b7a8d4c29657d053af7453080e8dd47dca39458e0f22741e999ccdd41c",
       "support_files": [
@@ -4449,8 +4454,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-ai-model-prompt-injection-attacks/SKILL.md",
-      "sha256": "6f7cdae519f5b00ab2e31491a43d95b0e6e30ded29e132c4dd617107bf04f4d3",
-      "bytes": 7639,
+      "sha256": "ed77563cdc7ed598709132dfc5d9fefdfd5394b478e69de15f5ea64d9607d9a4",
+      "bytes": 7597,
       "source_path": "detecting-ai-model-prompt-injection-attacks/SKILL.md",
       "source_sha256": "c6be759524e385194b85e79b7d38545a9914c79d95c65ad946a2e0444527cdcd",
       "support_files": [
@@ -5862,8 +5867,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-spearphishing-with-email-gateway/SKILL.md",
-      "sha256": "2077bbb2663a2285e4bb77c2fbce0cc55221dd02e4d850069dcc588a59ac0ad9",
-      "bytes": 5183,
+      "sha256": "9bb552a9200139d031aeea5d70d8c7b54f548c918b8ea7c1f7d5d4ea2c2eaeed",
+      "bytes": 5175,
       "source_path": "detecting-spearphishing-with-email-gateway/SKILL.md",
       "source_sha256": "3015374924723812858995f549396019c607837a16d22f32115a41323529ca58",
       "support_files": [
@@ -6641,8 +6646,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-performing-cloud-log-forensics-with-athena/SKILL.md",
-      "sha256": "0847ead83f4ebe4e7e6889e7497a13b638af8076a6c284570410596b4cef64fa",
-      "bytes": 17192,
+      "sha256": "b59884a57ed2db28536b4cf146695d1541e881e6d316b2651fa670ee39dc5443",
+      "bytes": 17174,
       "source_path": "digital-forensics/performing-cloud-log-forensics-with-athena/SKILL.md",
       "source_sha256": "7cd71e8f74bd45f0a47828867919b147d6c88ddc033be6c4ba35f14ec20c3e95",
       "support_files": [
@@ -6845,8 +6850,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-emulating-cloud-attacks-with-stratus-red-team/SKILL.md",
-      "sha256": "aebf8e6859a357aea48b5c53f7cde3b1934a15b5718145dda5ae9351b58dceac",
-      "bytes": 11340,
+      "sha256": "5ebe8a9d1e0cbe94090e615e918a8ceacafaa773271783d992b1b291a24aed8e",
+      "bytes": 11334,
       "source_path": "emulating-cloud-attacks-with-stratus-red-team/SKILL.md",
       "source_sha256": "8c65abcfc2791c72bd3c695c70ab18abdad2722052857e8e3cd1766d3bffd29c",
       "support_files": [
@@ -7073,8 +7078,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-enumerating-cloud-with-cloudfox/SKILL.md",
-      "sha256": "eb21546733e23b99018a04926dbc31c88c134c3c86e166b76e0a612abb375ca1",
-      "bytes": 9771,
+      "sha256": "212a6dd3c93a4543a8fcbca0776fdee095e3f77d32b872f6717632e634c480a3",
+      "bytes": 9765,
       "source_path": "enumerating-cloud-with-cloudfox/SKILL.md",
       "source_sha256": "e234e7894163f107784f18811e0039b3fbf029bd5fbcbfa1b8ef036860e7c944",
       "support_files": [
@@ -7167,8 +7172,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-executing-nist-rmf-authorization-to-operate/SKILL.md",
-      "sha256": "480e2f877fb5c0a9a8429199ceab4169e8479ec8f2cad002caa12be368802f7b",
-      "bytes": 8245,
+      "sha256": "7baf6c32069df54e9a27256370ab150dd1787ca173d407a29edfaa3c9bb0b722",
+      "bytes": 8237,
       "source_path": "executing-nist-rmf-authorization-to-operate/SKILL.md",
       "source_sha256": "48c8e110fd95a5cbf653f50eefe75b1f1f2cdfc40b70ba842dbe035b6519a732",
       "support_files": [
@@ -7384,8 +7389,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-exploiting-aws-with-pacu/SKILL.md",
-      "sha256": "8de6be4eea7f9e9b7e77ba77940c53d0828a72b1cf86053ef1a4d4182abd6ff9",
-      "bytes": 10402,
+      "sha256": "a4a423f8379c09d617afc47904e5d2f24758f3910a3c9d970a216c8e7bc419c8",
+      "bytes": 10396,
       "source_path": "exploiting-aws-with-pacu/SKILL.md",
       "source_sha256": "45188f8b2ac6e0104f3b83d89eacc02d317e1d8e3a62502f55666583eea13bcb",
       "support_files": [
@@ -8650,8 +8655,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-hunting-saas-sso-token-abuse/SKILL.md",
-      "sha256": "caf295116b8d588692dfb0044abead7d97d03ea63076e2472735409d1ada6a4a",
-      "bytes": 11605,
+      "sha256": "cac1a7bf1e4e637e9db7dde8bef803a4281a35433a90b046b395d724f5e351d7",
+      "bytes": 11599,
       "source_path": "hunting-saas-sso-token-abuse/SKILL.md",
       "source_sha256": "66851481f372bae50bf9a35a0fcc8b4c3172847cb5d646a5cfe6d7b7505eb49c",
       "support_files": [
@@ -9175,8 +9180,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-anti-phishing-training-program/SKILL.md",
-      "sha256": "d4bc07411292014561f4ad51898d420d4295671b4f17d2869d9314d28df4841e",
-      "bytes": 4846,
+      "sha256": "312e77c941e86642af48550af209ef583193c78c579f1437a7a694e1f814683c",
+      "bytes": 4838,
       "source_path": "implementing-anti-phishing-training-program/SKILL.md",
       "source_sha256": "c082da8787f495197df15fd9e2857d83e168ccce94a3e64ddd07781f8bdfbc94",
       "support_files": [
@@ -9444,8 +9449,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-attack-surface-management/SKILL.md",
-      "sha256": "cc9a993c9b96fe1d290938c449d7e5ca55f2f345a7242f7285b156001547120e",
-      "bytes": 7211,
+      "sha256": "e52ab50c6dc84bcc3a622c9c2e222cb071d023869854dfa29ade62dd8e18857d",
+      "bytes": 7237,
       "source_path": "implementing-attack-surface-management/SKILL.md",
       "source_sha256": "425776aa4f183491d9241f0954152cf0744010067bbd7bfeadaf504796e88085",
       "support_files": [
@@ -9743,8 +9748,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-implementing-continuous-security-validation-with-bas/SKILL.md",
-      "sha256": "deb52d8607032f9ebf8be0e1d10df43f2614ee5abce2e9e45d4bc5e2ae6b6924",
-      "bytes": 10263,
+      "sha256": "9fe5371fdb82c9eac89c8d2c841edebcbc2a13923bcde152b8596866331ad1a0",
+      "bytes": 10251,
       "source_path": "implementing-continuous-security-validation-with-bas/SKILL.md",
       "source_sha256": "d89e6267c61a5202cfa69c8945b8b78f9fd7abcb3e16ae4c01d3afcb8b9b0592",
       "support_files": [
@@ -10176,8 +10181,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-implementing-hipaa-security-rule-safeguards/SKILL.md",
-      "sha256": "617b1d6d283292ccd12748cd88ba4ed25c0898763b31e73cee1c49404aadfbe3",
-      "bytes": 8960,
+      "sha256": "0f96de00612c4c16c66f2924550cd56eba4a8615f9421ef76c708f691ad15a13",
+      "bytes": 8952,
       "source_path": "implementing-hipaa-security-rule-safeguards/SKILL.md",
       "source_sha256": "eec382e0dabb7b2f970982ea65259db1ce9964e14d964ed8e31ce93c5c58b8df",
       "support_files": [
@@ -12455,8 +12460,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-managing-third-party-vendor-risk/SKILL.md",
-      "sha256": "5f1efb30356eafc06b3194d5ddd97abbbf00e8e9bf241e5c0e2f3c5cdcf2d588",
-      "bytes": 8539,
+      "sha256": "ef544e16995f6f9d16772f49211ea5fab6a66aee4d56ee0240fb45ec379c38bf",
+      "bytes": 8531,
       "source_path": "managing-third-party-vendor-risk/SKILL.md",
       "source_sha256": "140f002e300e75f94277f8a402e252773ff39125a6dc81fc4417dde91caf361e",
       "support_files": [
@@ -12527,8 +12532,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-migrating-to-post-quantum-cryptography/SKILL.md",
-      "sha256": "2aa2433656cdabf70fd52a6595869ed2117159717ecadebdfe9761b6fcc0c09d",
-      "bytes": 12140,
+      "sha256": "92f88c5463d63f9efce8e6b81e97909cb0f359bba11c6cb88b4d2621bf909a0e",
+      "bytes": 12134,
       "source_path": "migrating-to-post-quantum-cryptography/SKILL.md",
       "source_sha256": "ac25fddc9244a85610c2feda73b0124776220158645a5d8d53d8b3b78912be30",
       "support_files": [
@@ -12685,8 +12690,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/mobile-testing-android-intents-for-vulnerabilities/SKILL.md",
-      "sha256": "b2ddfc8513cde01f7948273966cfc77b4bf95cfc30ae86fe3c28b9556109272b",
-      "bytes": 7588,
+      "sha256": "67aa80f346dbc933bafb98b8eaa3297719688ec11e700f7822793ee36e04b40d",
+      "bytes": 12767,
       "source_path": "mobile-security/testing-android-intents-for-vulnerabilities/SKILL.md",
       "source_sha256": "831e1e46a87e8a324e6636e9a43be598d4530cd217976c7f01189104aa5ca093"
     },
@@ -12951,8 +12956,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-lateral-movement-with-zeek/SKILL.md",
-      "sha256": "f7e785e30e5591ac4fadd179e7b87f316cb8562fa4d32446b24ca5839f1e8342",
-      "bytes": 9592,
+      "sha256": "dbb5b8ba0ce575894c156e1be9056eb9fcaef67e37d09851050f547005efa355",
+      "bytes": 9601,
       "source_path": "network-security/detecting-lateral-movement-with-zeek/SKILL.md",
       "source_sha256": "c5c818e72b6224925b24676b2465fce3a158e574c937b8cce026594b23834333"
     },
@@ -13853,8 +13858,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-operationalizing-misp-threat-feeds/SKILL.md",
-      "sha256": "e7ffa007fcc86cdfbd359073475f6925cc4b80d5502454e9137142c263a112d4",
-      "bytes": 10587,
+      "sha256": "3fe134c7801b365d559930ead25ca993cf3a23c54fb66c4695bc0ab7384f936a",
+      "bytes": 10581,
       "source_path": "operationalizing-misp-threat-feeds/SKILL.md",
       "source_sha256": "c568fc3afc62140b55439e6385a96dfdffb2d1a339097d8017b7ea631136a888",
       "support_files": [
@@ -15614,8 +15619,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-performing-graphql-depth-limit-attack/SKILL.md",
-      "sha256": "50c8c7c731548da0362c55a2de367518d1421f458e53e22e5b846f553e2362c4",
-      "bytes": 13125,
+      "sha256": "0d58f66e52d0266f467ee152edfdc37fa642e2b210ba4aa4830a61c1981d6c62",
+      "bytes": 13119,
       "source_path": "performing-graphql-depth-limit-attack/SKILL.md",
       "source_sha256": "18eca70b625f4e75a027d7ceb3235a0fecd4a722bc397bfaaec9ef145a689055",
       "support_files": [
@@ -15634,8 +15639,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-performing-graphql-introspection-attack/SKILL.md",
-      "sha256": "048b8fd307e6c0ddb29c2b727537e15875bfc1b850629996f8c4ae51f8cbea7f",
-      "bytes": 19763,
+      "sha256": "2c61f5e8671f2dff9df42bde589f9233d63a3044634745a28485f8aabeda3ed1",
+      "bytes": 19757,
       "source_path": "performing-graphql-introspection-attack/SKILL.md",
       "source_sha256": "f4682dc9765e33250430a60ab5df3add604b80d8b1ad9009715b894affc3da90",
       "support_files": [
@@ -16183,8 +16188,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-performing-phishing-simulation-with-gophish/SKILL.md",
-      "sha256": "9a3e3bba0f9c8162b0a436b43ccd05838b54722f12936f9e2951ffc66f4ba11b",
-      "bytes": 4821,
+      "sha256": "d772ff5654272bacc545ba4a716a4c4f5033be5b72c91c934df92b7be23f1956",
+      "bytes": 4837,
       "source_path": "performing-phishing-simulation-with-gophish/SKILL.md",
       "source_sha256": "079fe569b452e7825c836ba07a9528b12ba359ec1e9fa29d9a9ff39c19fce1fc",
       "support_files": [
@@ -16232,8 +16237,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-performing-plc-firmware-security-analysis/SKILL.md",
-      "sha256": "55550386671edcc8bbe8f36770f9edd3afeeae1c986c5948b590c1e7d44a929a",
-      "bytes": 19495,
+      "sha256": "6cc09f6c793b3135db6f830cff0cb0d7fdad4174eed8520b9ec579af716920dd",
+      "bytes": 19621,
       "source_path": "performing-plc-firmware-security-analysis/SKILL.md",
       "source_sha256": "f5eb45d2da16ec948ef370cc87efd0481180582c10d3c5f27e56ed9825909cdc",
       "support_files": [
@@ -17539,8 +17544,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-technology-fingerprinting/SKILL.md",
-      "sha256": "4025c51af368a9942d17e430a6a12630a6b8550e413722d3498257591f737f7f",
-      "bytes": 2342,
+      "sha256": "0231e7403c0b47d4514e4a9c5d2daf85bf28212b627d4e21221882bdf7b11171",
+      "bytes": 16320,
       "source_path": "reconnaissance/technology-fingerprinting/SKILL.md",
       "source_sha256": "ec6865e11ac2f543fc077826953feac2269eae5113ad072bc2d785f0c2625d4f"
     },
@@ -17776,8 +17781,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-exploiting-kerberoasting-with-impacket/SKILL.md",
-      "sha256": "b40f20e5bf8e8f334735ee05a231309f498a3f207232ee6cd12b40b6092114fd",
-      "bytes": 8560,
+      "sha256": "917a332c254275bdaca944b8ec5235f1f8736f7014b76254d0b8a34086bf077d",
+      "bytes": 13517,
       "source_path": "red-teaming/exploiting-kerberoasting-with-impacket/SKILL.md",
       "source_sha256": "eade79284c20a3c9638277c512565e0a5d512d0b89246379203d06675003f9c6"
     },
@@ -17993,8 +17998,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/mobile-reverse-engineering-android-malware-with-jadx/SKILL.md",
-      "sha256": "c3d92ef94c6b9dbce90ea1ed49c1f7a1c2670befcfca315972c0cd6d61a1c379",
-      "bytes": 12913,
+      "sha256": "a934261cb1a1c9cec5c683b2a73b17dc7eced0655cdb3fe7437401fa11f03f10",
+      "bytes": 12901,
       "source_path": "reverse-engineering-android-malware-with-jadx/SKILL.md",
       "source_sha256": "92daf40393506f41a3f3998243500b6cb51ab7f83de4a163b765e0fb841c1d06",
       "support_files": [
@@ -18013,8 +18018,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-reverse-engineering-dotnet-malware-with-dnspy/SKILL.md",
-      "sha256": "c2b45237764be03fb85e34abc3d3b2d1970ece874bb39721420482b90027cacc",
-      "bytes": 13404,
+      "sha256": "8419df158d2757bade7c78f363bfb64e36f37f02652b6bfff5121ac5ff60d641",
+      "bytes": 13392,
       "source_path": "reverse-engineering-dotnet-malware-with-dnspy/SKILL.md",
       "source_sha256": "4510707a6b5392802b8fe25828039349eac2da068c63b64c2a98f13ab3d913f5",
       "support_files": [
@@ -18044,8 +18049,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-reverse-engineering-malware-with-ghidra/SKILL.md",
-      "sha256": "ce51fae8d3c5671c7bf7229f4db187dddab85f3bb6f3431e6a81beb8f3b363d9",
-      "bytes": 12321,
+      "sha256": "83b189572780d8694bcd261c0891e4cd52c108d182066d1d88f0bb546830e083",
+      "bytes": 12309,
       "source_path": "reverse-engineering-malware-with-ghidra/SKILL.md",
       "source_sha256": "8efdb034080a021e63afb78985b0cdd2a767c16111221d4358a49ffb2e1533f3",
       "support_files": [
@@ -18882,8 +18887,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-performing-ssrf-vulnerability-exploitation/SKILL.md",
-      "sha256": "300fc338ef1c40994b9746e6733b20a95824b015cee9cbbb874ed351f47e5dc2",
-      "bytes": 3948,
+      "sha256": "67ccc555aa1b3acd204e6a9865cce19d21b50e3685548721327cd23ac25d579c",
+      "bytes": 18198,
       "source_path": "security-operations/performing-ssrf-vulnerability-exploitation/SKILL.md",
       "source_sha256": "47e33b6cb2ca47c0fb1debec6c065dc655f1c057fc157e25c30ac2e8c7243b49"
     },
@@ -19320,8 +19325,8 @@
       "license": "MIT",
       "status": "admitted",
       "destination_path": "src/corpus/re-diagram-generator/SKILL.md",
-      "sha256": "352f4a54070d41f1072d7af7a048a4ff072ab6e5dee1e5fc6af87c90d84e10de",
-      "bytes": 9878,
+      "sha256": "7e1800ee741ce7d9906d17cc020bb21464a368c089462a83ebab783aedf2431b",
+      "bytes": 9915,
       "source_path": "skills/diagram-generator/SKILL.md",
       "source_sha256": "ed02e5d9f08db6c8648d8311bab7a45af14751b5e594a9b37240878dd72de0c7",
       "support_files": [
@@ -23356,8 +23361,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/re-validating-backup-integrity-for-recovery/SKILL.md",
-      "sha256": "39eb4b75457e5dbd610a871ec96f33e07331cd7e24a7060a23df22087e49014a",
-      "bytes": 7092,
+      "sha256": "ac49ad027b02c1ba643e942a8ea2673667d70bbadcbf095b87113330be24b013",
+      "bytes": 7086,
       "source_path": "validating-backup-integrity-for-recovery/SKILL.md",
       "source_sha256": "81bba3e34a6c091117440392ca3bca25d8c22abafdaa22e59ea71dd021c9b41b",
       "support_files": [
@@ -23570,8 +23575,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-implementing-vulnerability-remediation-sla/SKILL.md",
-      "sha256": "e456df2ab209f0e8870ae460f3a6cf8bd2ba9b623fe655d729ebf99eae585cd4",
-      "bytes": 8120,
+      "sha256": "d09f7fb2ced965504d27fc462b360064279884fc30a694c37a5fe186bf7af21d",
+      "bytes": 8159,
       "source_path": "vulnerability-management/implementing-vulnerability-remediation-sla/SKILL.md",
       "source_sha256": "75b3ed98d5e16d61ef935baeee2beed5c91dc3abff77d0180acbf09f8db76a53"
     },
@@ -23989,8 +23994,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/webapp-exploiting-os-command-injection/SKILL.md",
-      "sha256": "f176f853cd54c6b46e2d54f146244d71c22912ca4dd41f5cc4dda365352543ad",
-      "bytes": 7926,
+      "sha256": "fd02b7acf223c7fd11cc931b3e9c949bf05369bc52aee2efd8871846f5b9bcaa",
+      "bytes": 11985,
       "source_path": "web-application-security/exploiting-os-command-injection/SKILL.md",
       "source_sha256": "41e07e482479d9646707a09476006cf2ac01f141425cd324aa057480f365d2b3"
     },
@@ -24766,8 +24771,8 @@
       "license": "Apache-2.0",
       "status": "admitted",
       "destination_path": "src/corpus/red-detecting-bluetooth-low-energy-attacks/SKILL.md",
-      "sha256": "e9a0de84198e47d1fb53bff86db1ae327dae153dcfb804c6f4e41dfee6d2a020",
-      "bytes": 14924,
+      "sha256": "af961481d91696e91da2f570b26d80a6a15fbac31c0d0ea68362f7452c182cd3",
+      "bytes": 14906,
       "source_path": "wireless-security/detecting-bluetooth-low-energy-attacks/SKILL.md",
       "source_sha256": "f24052dfc1fb673d73d833ab7e93dab52b7c3ea6d56d8b28854788cb3f23cee4"
     },
@@ -25190,6 +25195,65 @@
       "bytes": 15867,
       "source_path": "zero-trust-architecture/implementing-zero-trust-with-hashicorp-boundary/SKILL.md",
       "source_sha256": "3e96818bdbc7683197c4e36597d690f8c07be847c27d1162193edfa6842949d8"
+    },
+    {
+      "path": "mobile-instrumentation-root-jailbreak-bypass/SKILL.md",
+      "source": "arsenal-local",
+      "source_rev": null,
+      "license": "Apache-2.0",
+      "status": "admitted",
+      "destination_path": "src/corpus/mobile-instrumentation-root-jailbreak-bypass/SKILL.md",
+      "sha256": "2749277d6266acfad3b9971831e209542a8f6085b06cc6c90493e33b5157c06b",
+      "bytes": 13785,
+      "source_path": "mobile-instrumentation-root-jailbreak-bypass/SKILL.md",
+      "source_sha256": "2749277d6266acfad3b9971831e209542a8f6085b06cc6c90493e33b5157c06b",
+      "support_files": [
+        {
+          "path": "scripts/universal_unjailbreak.js",
+          "source_path": "scripts/universal_unjailbreak.js",
+          "sha256": "9f24710a08f66110a4aac76f9840873e5e86dc475a96ed28cba246761ffa2ef9",
+          "bytes": 1803
+        },
+        {
+          "path": "scripts/universal_unroot.js",
+          "source_path": "scripts/universal_unroot.js",
+          "sha256": "c021297ebefb94e2ef06603d0bff5396794f0a2879360fe2df1aa1a270b4da7b",
+          "bytes": 2103
+        }
+      ]
+    },
+    {
+      "path": "mobile-instrumentation-flutter-traffic-interception/SKILL.md",
+      "source": "arsenal-local",
+      "source_rev": null,
+      "license": "Apache-2.0",
+      "status": "admitted",
+      "destination_path": "src/corpus/mobile-instrumentation-flutter-traffic-interception/SKILL.md",
+      "sha256": "8e7ab90c534c8f44d1401c3023ac8b9b2eb1b191fc4f172cf08b30e1d67d806a",
+      "bytes": 12333,
+      "source_path": "mobile-instrumentation-flutter-traffic-interception/SKILL.md",
+      "source_sha256": "8e7ab90c534c8f44d1401c3023ac8b9b2eb1b191fc4f172cf08b30e1d67d806a",
+      "support_files": [
+        {
+          "path": "scripts/flutter_ssl_bypass.js",
+          "source_path": "scripts/flutter_ssl_bypass.js",
+          "sha256": "167dea5f0b1b5c0ff37528cdbaafde81ec97a93f04a2caaf8c1efb7a4e0bd287",
+          "bytes": 2317
+        }
+      ]
+    },
+    {
+      "path": "red-privesc-windows-uac-bypass/SKILL.md",
+      "source": "arsenal-local",
+      "source_rev": null,
+      "license": "Apache-2.0",
+      "status": "admitted",
+      "destination_path": "src/corpus/red-privesc-windows-uac-bypass/SKILL.md",
+      "sha256": "a02e4f081b75b5058129e8342b4a27fa7109ac8b9224da02ab4bc5ba9ff85464",
+      "bytes": 11863,
+      "source_path": "red-privesc-windows-uac-bypass/SKILL.md",
+      "source_sha256": "a02e4f081b75b5058129e8342b4a27fa7109ac8b9224da02ab4bc5ba9ff85464",
+      "support_files": []
     }
   ],
   "dedup_groups": [
