@@ -4,7 +4,7 @@
 
 **Plugin-First Offensive Security & Reverse Engineering Harness for Oh My Pi (OMP)**
 
-[![Version](https://img.shields.io/badge/version-4.0.2-10b981?style=flat-square)](package.json)
+[![Version](https://img.shields.io/badge/version-4.0.3-10b981?style=flat-square)](package.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Python CLI](https://img.shields.io/badge/CLI-Python-3776ab?style=flat-square&logo=python)](pyproject.toml)
 [![OMP Runtime: TypeScript](https://img.shields.io/badge/OMP%20runtime-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)

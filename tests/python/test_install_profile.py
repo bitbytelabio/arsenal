@@ -8,6 +8,7 @@ import tempfile
 import unittest
 
 from arsenal.common import Context, ExitCodes
+from arsenal.installation.fs_safe import safe_write_file
 from arsenal.installation.profile import handle_profile, handle_profile_install, handle_profile_verify
 
 
@@ -126,86 +127,41 @@ class TestInstallProfile(unittest.TestCase):
         self.assertFalse((self.profile_dir / "config.yml").exists())
         self.assertFalse((self.profile_dir / "config.yaml").exists())
         self.assertFalse((self.profile_dir / "models.yml").exists())
-        self.assertTrue((self.profile_dir / "mcp.json").is_file())
-
-        # Specialists created
-        for sf in (
-            "arsenal-reverse.md",
-            "arsenal-web.md",
-            "arsenal-mobile.md",
-            "arsenal-redteam.md",
-            "arsenal-verifier.md",
-        ):
-            self.assertTrue((self.profile_dir / "agents" / sf).is_file())
-        # Rules created
-        self.assertTrue((self.profile_dir / "rules" / "proxy-analysis-tiers.md").is_file())
-
+        self.assertFalse((self.profile_dir / "mcp.json").exists())
+        self.assertFalse((self.profile_dir / "agents").exists())
+        self.assertFalse((self.profile_dir / "rules").exists())
         # Operator files completely preserved
         self.assertEqual(env_file.read_text(encoding="utf-8"), "SECRET_TOKEN=xyz123\n")
         self.assertEqual(db_file.read_text(encoding="utf-8"), "sqlite-dummy-data")
 
-    def test_preflight_corrupt_mcp_fails_before_writes(self) -> None:
-        (self.profile_dir / "mcp.json").write_text("corrupt-scalar-string", encoding="utf-8")
+    def test_safe_write_file_conflict_refuses_without_force_and_creates_backup_with_force(self) -> None:
+        target_file = self.profile_dir / "custom.txt"
+        target_file.write_text("custom analyst text", encoding="utf-8")
 
-        ctx = Context(
-            family="profile",
-            subcommand="install",
-            positionals=[],
-            values={"write": True, "force": True},
-            repo_root=self.repo_root,
-            profile_dir=self.profile_dir,
-            mode="write",
-            is_json=True,
-            raw_args=["profile", "install", "--write", "--force", "--json"],
+        # safe_write_file without force and allow_update=False refuses
+        res_no_force = safe_write_file(
+            target_file,
+            "incoming text",
+            write=True,
+            force=False,
+            allow_update=False,
         )
-        code = handle_profile(ctx)
-        self.assertEqual(code, ExitCodes.MUTATION_REFUSED)
-        # Ensure AGENTS.md was NOT written because preflight failed
-        self.assertFalse((self.profile_dir / "AGENTS.md").exists())
+        self.assertEqual(res_no_force.action, "refused")
+        self.assertEqual(target_file.read_text(encoding="utf-8"), "custom analyst text")
 
-    def test_unmanaged_file_conflict_refuses_without_force_and_creates_backup_with_force(self) -> None:
-        # Pre-create an unmanaged specialist file with different content
-        agents_dir = self.profile_dir / "agents"
-        agents_dir.mkdir(parents=True)
-        custom_spec = agents_dir / "arsenal-reverse.md"
-        custom_spec.write_text("custom analyst text", encoding="utf-8")
-
-        # Install without force should refuse
-        ctx_no_force = Context(
-            family="profile",
-            subcommand="install",
-            positionals=[],
-            values={"write": True},
-            repo_root=self.repo_root,
-            profile_dir=self.profile_dir,
-            mode="write",
-            is_json=True,
-            raw_args=["profile", "install", "--write", "--json"],
+        # safe_write_file with force succeeds and creates backup
+        res_force = safe_write_file(
+            target_file,
+            "incoming text",
+            write=True,
+            force=True,
+            allow_update=False,
         )
-        code_refused = handle_profile(ctx_no_force)
-        self.assertEqual(code_refused, ExitCodes.MUTATION_REFUSED)
-        self.assertEqual(custom_spec.read_text(encoding="utf-8"), "custom analyst text")
-
-        # Install with force should succeed and create a backup
-        ctx_force = Context(
-            family="profile",
-            subcommand="install",
-            positionals=[],
-            values={"write": True, "force": True},
-            repo_root=self.repo_root,
-            profile_dir=self.profile_dir,
-            mode="write",
-            is_json=True,
-            raw_args=["profile", "install", "--write", "--force", "--json"],
-        )
-        code_success = handle_profile(ctx_force)
-        self.assertEqual(code_success, ExitCodes.SUCCESS)
-
-        # Check backup file exists
-        backups = list(agents_dir.glob("arsenal-reverse.md.bak.*"))
+        self.assertEqual(res_force.action, "updated")
+        self.assertEqual(target_file.read_text(encoding="utf-8"), "incoming text")
+        backups = list(self.profile_dir.glob("custom.txt.bak.*"))
         self.assertEqual(len(backups), 1)
         self.assertEqual(backups[0].read_text(encoding="utf-8"), "custom analyst text")
-
     def test_non_destructive_merge_agents_rules_config(self) -> None:
         custom_agents = (
             "# Arsenal Master Orchestrator\n\n"
@@ -291,6 +247,7 @@ class TestInstallProfile(unittest.TestCase):
         self.assertEqual(handle_profile(ctx_verify), ExitCodes.SUCCESS)
 
         # 1. Shadow collision (master.md in profile agents/)
+        (self.profile_dir / "agents").mkdir(parents=True, exist_ok=True)
         (self.profile_dir / "agents/master.md").write_text("shadow", encoding="utf-8")
         self.assertEqual(handle_profile(ctx_verify), ExitCodes.CHECK_FAILURE)
         (self.profile_dir / "agents/master.md").unlink()
@@ -308,76 +265,6 @@ class TestInstallProfile(unittest.TestCase):
         # 4. Forbidden vendor token
         agents_path.write_text(orig_agents + "\nanthropic tool\n", encoding="utf-8")
         self.assertEqual(handle_profile(ctx_verify), ExitCodes.CHECK_FAILURE)
-
-    def test_profile_install_loads_installed_plugin_mcp_as_template(self) -> None:
-        plugin_node_dir = self.repo_root / "plugins" / "node_modules" / "arsenal"
-        plugin_node_dir.mkdir(parents=True)
-        plugin_mcp_content = {
-            "mcpServers": {
-                "jshook": {
-                    "type": "stdio",
-                    "command": "npx",
-                    "args": ["-y", "@jshookmcp/jshook@0.3.5"],
-                    "env": {"MCP_TOOL_PROFILE": "search"},
-                },
-                "rea": {
-                    "type": "stdio",
-                    "command": "bunx",
-                    "args": ["rea-agents@6.4.0", "mcp"],
-                    "enabled": True,
-                },
-                "custom-profile-server": {
-                    "type": "stdio",
-                    "command": "custom-binary",
-                },
-            }
-        }
-        (plugin_node_dir / ".mcp.json").write_text(json.dumps(plugin_mcp_content, indent=2), encoding="utf-8")
-
-        ctx_install = Context(
-            family="profile",
-            subcommand="install",
-            positionals=[],
-            values={"write": True},
-            repo_root=self.repo_root,
-            profile_dir=self.profile_dir,
-            mode="write",
-            is_json=True,
-            raw_args=["profile", "install", "--write", "--json"],
-        )
-        self.assertEqual(handle_profile(ctx_install), ExitCodes.SUCCESS)
-
-        target_mcp = self.profile_dir / "mcp.json"
-        self.assertTrue(target_mcp.is_file())
-        cfg = json.loads(target_mcp.read_text(encoding="utf-8"))
-        servers = cfg["mcpServers"]
-
-        self.assertEqual(servers["jshook"]["command"], "npx")
-        self.assertEqual(servers["jshook"]["env"], {"MCP_TOOL_PROFILE": "search"})
-        self.assertFalse(servers["jshook"]["enabled"])
-        self.assertTrue(servers["rea"]["enabled"])
-        self.assertIn("custom-profile-server", servers)
-        self.assertFalse(servers["custom-profile-server"]["enabled"])
-
-    def test_profile_install_fails_closed_on_invalid_installed_plugin_mcp(self) -> None:
-        plugin_node_dir = self.repo_root / "plugins" / "node_modules" / "arsenal"
-        plugin_node_dir.mkdir(parents=True)
-        (plugin_node_dir / ".mcp.json").write_text("{ corrupt json", encoding="utf-8")
-
-        ctx_install = Context(
-            family="profile",
-            subcommand="install",
-            positionals=[],
-            values={"write": True},
-            repo_root=self.repo_root,
-            profile_dir=self.profile_dir,
-            mode="write",
-            is_json=True,
-            raw_args=["profile", "install", "--write", "--json"],
-        )
-        self.assertEqual(handle_profile(ctx_install), ExitCodes.MUTATION_REFUSED)
-        self.assertFalse((self.profile_dir / "AGENTS.md").exists())
-        self.assertFalse((self.profile_dir / "mcp.json").exists())
 
 
 if __name__ == "__main__":

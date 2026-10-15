@@ -47,14 +47,12 @@ describe("User Story 2: Profile Installation & Verification", () => {
     expect(fs.existsSync(path.join(scratchProfile, "RULES.md"))).toBe(true);
     expect(fs.existsSync(path.join(scratchProfile, "config.yml"))).toBe(false);
     expect(fs.existsSync(path.join(scratchProfile, "models.yml"))).toBe(false);
+    expect(fs.existsSync(path.join(scratchProfile, "mcp.json"))).toBe(false);
+    expect(fs.existsSync(path.join(scratchProfile, "agents"))).toBe(false);
 
-
-    // Verify all 5 specialist agent definitions created in agents/
-    const agentAgentsDir = fs.existsSync(path.join(scratchProfile, "agents"))
-      ? path.join(scratchProfile, "agents")
-      : path.join(scratchProfile, "agent", "agents");
+    // Verify all 5 specialist agent definitions reside in plugin/agents/
     for (const spec of ["arsenal-reverse.md", "arsenal-web.md", "arsenal-mobile.md", "arsenal-redteam.md", "arsenal-verifier.md"]) {
-      const specFile = path.join(agentAgentsDir, spec);
+      const specFile = path.resolve("plugin/agents", spec);
       expect(fs.existsSync(specFile)).toBe(true);
       const specContent = fs.readFileSync(specFile, "utf-8");
       expect(specContent).toContain("## Operational Security (OpSec) Rules");
@@ -81,18 +79,15 @@ describe("User Story 2: Profile Installation & Verification", () => {
       expect(agentsContent).toContain(specialist);
     }
 
-    expect(agentsContent).toContain("@path ./RULES.md");
     expect(agentsContent).not.toContain("@path ./operating-model.md");
     expect(agentsContent).not.toContain("@path ./evidence-model.md");
 
     const includes = Array.from(agentsContent.matchAll(/@path\s+(\S+)/g))
       .map((m) => m[1])
       .filter((inc): inc is string => typeof inc === "string" && inc.length > 0);
-    expect(includes.length).toBeGreaterThan(0);
     for (const inc of includes) {
       expect(fs.existsSync(path.join(scratchProfile, inc))).toBe(true);
     }
-
     expect(agentsContent).not.toContain("\\`");
 
     // Verify RULES.md contract: <= 10 imperative bullets, no narrative duplication, no vendor tokens
@@ -257,7 +252,6 @@ modelRoles:
     expect(mergedAgents).toContain("<!-- codebase-memory-mcp:end -->");
     expect(mergedAgents).toContain("## Custom Operator Notes");
     expect(mergedAgents).toContain("Operator custom notes here.");
-    expect(mergedAgents).toContain("@path ./RULES.md");
     expect(mergedAgents).toContain("## Specialist Roster");
     expect(mergedAgents).toContain("## Scope and Authorization");
 
@@ -290,15 +284,16 @@ modelRoles:
     fs.writeFileSync(path.join(scratchCorrupt, "mcp.json"), "corrupt-scalar-string", "utf-8");
 
     // Profile install must fail preflight without writing other templates
-    const corruptProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    const corruptProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
     "install",
+    "--scope", "profile",
     "--profile",
     scratchCorrupt,
     "--write",
     "--force",
     "--json",]);
     expect(corruptProc.exitCode).not.toBe(0);
-    expect(fs.existsSync(path.join(scratchCorrupt, "AGENTS.md"))).toBe(false); // No writes occurred!
+    expect(fs.readFileSync(path.join(scratchCorrupt, "mcp.json"), "utf-8")).toBe("corrupt-scalar-string");
 
     // 2. Test operator server preservation on valid merge
     const scratchPreserve = path.resolve("tests/fixtures/us2-preserve-mcp");
@@ -314,8 +309,9 @@ modelRoles:
     };
     fs.writeFileSync(path.join(scratchPreserve, "mcp.json"), JSON.stringify(operatorMcp, null, 2), "utf-8");
 
-    const preserveProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "profile",
+    const preserveProc = Bun.spawnSync(["uv", "run", "--locked", "arsenal", "mcp",
     "install",
+    "--scope", "profile",
     "--profile",
     scratchPreserve,
     "--write",

@@ -2,8 +2,6 @@
 # Arsenal Master Orchestrator
 
 The `master` role is the default, always-selected orchestrator for the Arsenal security harness profile. It coordinates engagement planning, threat modeling, task delegation, and evidence synthesis rather than executing raw technical exploits directly.
-@path ./RULES.md
-@path ./rules/proxy-analysis-tiers.md
 
 ## Specialist Roster
 

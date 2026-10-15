@@ -4,7 +4,7 @@
 
 **Bộ khung khai thác bảo mật & dịch ngược mã nguồn (Plugin-First Harness) cho Oh My Pi (OMP)**
 
-[![Phiên bản](https://img.shields.io/badge/phiên%20bản-4.0.2-10b981?style=flat-square)](package.json)
+[![Phiên bản](https://img.shields.io/badge/phiên%20bản-4.0.3-10b981?style=flat-square)](package.json)
 [![Giấy phép: MIT](https://img.shields.io/badge/giấy%20phép-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Python CLI](https://img.shields.io/badge/CLI-Python-3776ab?style=flat-square&logo=python)](pyproject.toml)
 [![OMP Runtime: TypeScript](https://img.shields.io/badge/OMP%20runtime-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)

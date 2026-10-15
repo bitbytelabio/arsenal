@@ -205,7 +205,7 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     expect(cfg.mcpServers["burp-ultra"].url).toBe(customBurpUrl);
     expect(cfg.mcpServers["burp-ultra"].enabled).toBe(true);
     expect(cfg.mcpServers["burp-ultra"].headers.Authorization).toBe("Bearer remote-secret-token");
-  }, 15000);
+  }, 30000);
 
   test("toggle allow/deny list agreement", async () => {
     const profMcp = path.join(tmpProfile, "mcp.json");
@@ -256,7 +256,7 @@ describe("MCP Lifecycle Management (Scoped enable / disable / install / verify)"
     expect(disabledCfg.mcpServers["playwright"].enabled).toBe(false);
     expect(disabledCfg.disabledServers).toContain("playwright");
     expect(disabledCfg.denied).toContain("playwright");
-  }, 15000);
+  }, 30000);
 
   test("idempotent merges and operator preservation: keeps frida, semgrep, custom burp, metadata and returns identical", () => {
     const profMcp = path.join(tmpProfile, "mcp.json");

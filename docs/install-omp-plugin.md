@@ -425,9 +425,7 @@ Verify clean removal with `OMP_PROFILE=arsenal omp plugin list`.
 ---
 
 ## 9. Proxy Analysis Tiers: Burp and mitmproxy + Hooks
-
-Canonical policy resides in `plugin/rules/proxy-analysis-tiers.md`. Running `profile install` copies this rule to `<profile>/rules/` and configures `@path ./rules/proxy-analysis-tiers.md` in `AGENTS.md`.
-
+Canonical policy resides in `plugin/rules/proxy-analysis-tiers.md`, automatically loaded by OMP from the installed plugin root.
 - **Web/API Security**: Prioritize Burp Suite Proxy history and Repeater.
 - **Reverse Engineering (Native/Mobile/Electron/JavaScript)**: Prioritize mitmproxy for network visibility coupled with scoped runtime hooks for code/data correlation. Use `mitmdump` for headless automation and `mitmweb` for interactive UI.
 - **Tier 1 (Active Discovery)**: Capture, replay, scan/fuzz, and modify requests/responses as needed for authorized targets while retaining clean baselines.

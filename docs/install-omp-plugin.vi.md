@@ -457,9 +457,7 @@ Sau đó kiểm tra lại với `OMP_PROFILE=arsenal omp plugin list` để bả
 ---
 
 ## 9. Proxy analysis tiers: Burp và mitmproxy + hook
-
-Rule nguồn nằm tại `plugin/rules/proxy-analysis-tiers.md`. `profile install` chép rule vào `<profile>/rules/` và thêm `@path ./rules/proxy-analysis-tiers.md` trong phần managed của `AGENTS.md`. Không cần bật MCP hay cấu hình proxy hệ thống để cài rule.
-
+Rule nguồn nằm tại `plugin/rules/proxy-analysis-tiers.md` và được OMP tự động nạp từ thư mục plugin đã cài đặt.
 - **Web/API security:** ưu tiên Burp Proxy history và Repeater.
 - **Reverse engineering native/mobile/Electron/JavaScript:** ưu tiên mitmproxy để quan sát network, kết hợp hook runtime có phạm vi hẹp để đối chiếu code/data. Dùng `mitmdump` cho capture/addon tự động; `mitmweb` khi cần xem trực quan.
 - **Tier 1:** discovery chủ động; được capture, replay, scan/fuzz và sửa request/response ngay khi cần cho mục tiêu đã được phép, đồng thời giữ baseline để phân biệt traffic gốc với probe hoặc dữ liệu đã sửa.

@@ -14,12 +14,6 @@ import sys
 from arsenal.common import Context, ExitCodes
 from arsenal.installation.fs_safe import safe_write_file
 from arsenal.installation.markdown_editor import merge_agents_markdown, merge_rules_markdown
-from arsenal.installation.mcp_core import (
-    create_canonical_mcp_catalog,
-    load_plugin_mcp_servers,
-    merge_mcp_config_with_defaults,
-    parse_and_validate_mcp_config,
-)
 from arsenal.installation.resources import (
     get_template_text,
     resolve_installed_plugin_dir,
@@ -65,68 +59,14 @@ def handle_profile_install(ctx: Context) -> int:
     is_write = bool(ctx.values.get("write")) and not bool(ctx.values.get("check")) and ctx.mode != "check"
     is_force = bool(ctx.values.get("force"))
 
-    # Preflight check: malformed or corrupt profile mcp.json fails without writes
-    profile_mcp_file = profile_dir / "mcp.json"
-    if profile_mcp_file.is_file():
-        mcp_raw = profile_mcp_file.read_text(encoding="utf-8")
-        ok, _, err = parse_and_validate_mcp_config(mcp_raw)
-        if not ok:
-            error_msg = f"CONFIG_INVALID: Operator profile mcp.json at '{profile_mcp_file}' is malformed or corrupt: {err}"
-            return ctx.result(
-                data={"profileDir": str(profile_dir)},
-                code=ExitCodes.MUTATION_REFUSED,
-                errors=[error_msg],
-            )
-    # Preflight check: malformed or corrupt installed plugin .mcp.json fails without writes
-    plugin_ok, plugin_servers, plugin_err = load_plugin_mcp_servers(ctx.repo_root, ctx.profile_dir)
-    if not plugin_ok:
-        return ctx.result(
-            data={"profileDir": str(profile_dir)},
-            code=ExitCodes.MUTATION_REFUSED,
-            errors=[plugin_err],
-        )
-
     agents_template = get_template_text("AGENTS.md")
     rules_template = get_template_text("RULES.md")
-    mcp_template = json.dumps(create_canonical_mcp_catalog(plugin_servers=plugin_servers), indent=2)
 
     templates: list[dict[str, str]] = [
         {"relPath": "AGENTS.md", "content": agents_template},
         {"relPath": "RULES.md", "content": rules_template},
-        {"relPath": "mcp.json", "content": mcp_template},
     ]
 
-    # Prefer operator repository assets, then fill missing managed components
-    # from the packaged native OMP plugin resources.
-    installed_plugin_dir = resolve_installed_plugin_dir(ctx.repo_root, ctx.profile_dir)
-    repo_plugin_dir = resolve_plugin_dir(ctx.repo_root)
-    fallback_plugin_dir = resolve_plugin_dir(None)
-    source_dirs: list[Path] = []
-    for p in (installed_plugin_dir, repo_plugin_dir, fallback_plugin_dir):
-        if p is not None and p not in source_dirs:
-            source_dirs.append(p)
-    seen_specialists: set[str] = set()
-    seen_rules: set[str] = set()
-    for current_plugin_dir in source_dirs:
-        plugin_agents_dir = current_plugin_dir / "agents"
-        for sf in SPECIALIST_FILES:
-            src_path = plugin_agents_dir / sf
-            if sf not in seen_specialists and src_path.is_file():
-                templates.append({
-                    "relPath": f"agents/{sf}",
-                    "content": src_path.read_text(encoding="utf-8"),
-                })
-                seen_specialists.add(sf)
-
-        plugin_rules_dir = current_plugin_dir / "rules"
-        if plugin_rules_dir.is_dir():
-            for rf in plugin_rules_dir.iterdir():
-                if rf.suffix == ".md" and rf.is_file() and rf.name not in seen_rules:
-                    templates.append({
-                        "relPath": f"rules/{rf.name}",
-                        "content": rf.read_text(encoding="utf-8"),
-                    })
-                    seen_rules.add(rf.name)
     actions: list[dict[str, str]] = []
     refused = False
 
@@ -142,19 +82,8 @@ def handle_profile_install(ctx: Context) -> int:
             elif rel == "RULES.md":
                 existing = full_path.read_text(encoding="utf-8")
                 content_to_write = merge_rules_markdown(existing, t["content"])
-            elif rel.endswith("mcp.json"):
-                try:
-                    existing_json = json.loads(full_path.read_text(encoding="utf-8"))
-                    merged = merge_mcp_config_with_defaults(existing_json, plugin_servers=plugin_servers)
-                    content_to_write = json.dumps(merged, indent=2)
-                except Exception:
-                    pass
 
-        is_premerged = (
-            rel in ("AGENTS.md", "RULES.md")
-            or rel.startswith("rules/")
-            or rel.endswith("mcp.json")
-        )
+        is_premerged = rel in ("AGENTS.md", "RULES.md")
 
         res = safe_write_file(
             full_path,
@@ -166,7 +95,6 @@ def handle_profile_install(ctx: Context) -> int:
         if res.action == "refused":
             refused = True
         actions.append({"path": rel, "action": res.action})
-
     if refused:
         msg = "Unmanaged profile files conflict with templates. Specify --force to overwrite with backup."
         return ctx.result(
@@ -197,14 +125,6 @@ def handle_profile_verify(ctx: Context) -> int:
         missing.append("AGENTS.md")
     if not (profile_dir / "RULES.md").is_file():
         missing.append("RULES.md")
-    if not (profile_dir / "mcp.json").is_file():
-        missing.append("mcp.json")
-
-    for sf in SPECIALIST_FILES:
-        in_agents = (profile_dir / "agents" / sf).is_file()
-        in_agent_agents = (profile_dir / "agent/agents" / sf).is_file()
-        if not in_agents and not in_agent_agents:
-            missing.append(f"agents/{sf}")
 
     # Undocumented shadow collisions
     agent_dir = profile_dir / "agents"
